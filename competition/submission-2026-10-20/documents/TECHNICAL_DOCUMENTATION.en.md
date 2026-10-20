@@ -1,3 +1,5 @@
+> Superseded by the expanded [LaTeX report PDF](mandate-wallet-technical-documentation.pdf) and [editable source](latex/main.tex), revised 20 October 2026. This text is retained as the earlier short summary.
+
 # Mandate Wallet: scoped agent payments and purchase evidence
 
 Technical documentation | 2026 FinTechathon, Topic F: Agent Wallet

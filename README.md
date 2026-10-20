@@ -69,3 +69,8 @@ Inspect the trust file separately. Recorded sessions may now be expired or revok
 Project-authored code is MIT. Pinned Echo, x402, OpenZeppelin and forge-std sources retain their own licenses and notices. [Source delivery](competition/SOURCE_DELIVERY.en.md) identifies the public snapshot and reproduction evidence. Registration files, private proposal originals, credentials, databases, signed transaction journals and machine-bound connection packages are excluded.
 
 The prior README is retained as [historical reproduction notes](docs/HISTORICAL_REPRODUCTION.zh-CN.md). Its dated status statements do not override the current task checklist or source manifest. No official competition submission has been sent by preparing or publishing this repository.
+
+
+## Expanded LaTeX documentation
+
+The current written deliverables are the [technical report](competition/submission-2026-10-20/documents/mandate-wallet-technical-documentation.pdf), [security self-assessment](competition/submission-2026-10-20/documents/mandate-wallet-security-self-assessment.pdf), [execution evidence guide](competition/submission-2026-10-20/documents/mandate-wallet-execution-evidence.pdf) and [reproduction/deployment guide](competition/submission-2026-10-20/documents/mandate-wallet-reproduction-and-deployment.pdf). Their covers identify all registered team members and academic contacts. The technical report has seven native architecture, sequence, state and verification diagrams and 25 bibliography entries. [LaTeX sources and compilation instructions](competition/submission-2026-10-20/documents/latex/README.en.md) accompany all four PDFs. The documents preserve the distinction between tested implementation, recorded evidence and prospective research.

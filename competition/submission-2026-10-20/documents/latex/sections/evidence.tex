@@ -1,0 +1,42 @@
+\section{Evidence protocol and independent verification}\label{sec:evidence}
+\subsection{Data objects and stage association}
+A version-2 SessionAttestation is a signed checkpoint header containing chain/wallet scope, root and session, policy version and epoch, step, sequence, stage kind, previous checkpoint digest, Merkle field root, leaf count, observation time and signer. Allowed stage kinds are pre-payment, registration, payment, service and decision. Observation time is a signed local statement, not an independently trusted clock.
+
+The pre-payment fields bind the canonical request, terms, signed offer where present, internal quote signature, payment, token domain, registration/token digests and authority snapshot. Registration fields add the original pre-checkpoint root and transaction/block identity. Payment fields record canonical settlement identity and state. Service/decision fields record independent payment, service and result states, result digest, optionally disclosed result, merchant receipt and safe error code. The exact field inventory is in \src{mandate/evidence/stage-fields.ts}.\sourcecite
+
+ActionProof signs the shared scope, step, pre-payment checkpoint digest, $R(p)$, $D(p)$ and signer under domain \code{MandateActionEvidence}, version 2, chain and wallet. It links a claim about a session to a specific purchase. It is not a zero-knowledge proof, binary execution proof or on-chain verification of the complete transcript.
+\input{figures/evidence}
+
+\subsection{Canonical salted field commitments}
+Each checkpoint commits to a sorted set of named fields. For field index $j$, name $n_j$, value $x_j$ and random 32-byte salt $s_j$, the exact construction is
+\begin{align}
+ \ell_j &=\Hh\!\left(\Enc(d_L,j,n_j,\Hh(\mathrm{utf8}(\CJ(x_j))),s_j)\right),\label{eq:leaf}\\
+ \operatorname{Node}(a,b)&=\Hh\!\left(\Enc(d_N,a,b)\right),\\
+ \operatorname{Pad}(j,m)&=\Hh\!\left(\Enc(d_P,j,m)\right),
+\end{align}
+where $d_L,d_N,d_P$ are hashes of distinct versioned leaf, node and padding labels. Leaves use lexicographically sorted unique field names and consecutive indices. The tree pads to the next power of two with explicit padding hashes. Including order, field name, salt and separate domains avoids conflating values, structure and padding.
+
+If $m$ fields produce field root $\mu_i$, checkpoint $i$ has digest
+\begin{equation}
+ \rho_i=H_{712}(\mathcal D_E,\operatorname{typedHeader}(scope,k,i,kind,\rho_{i-1},\mu_i,m,t_i,K_s)),
+\end{equation}
+where $\mathcal D_E$ is \code{MandateSessionEvidence}/2 bound to chain and wallet. The first previous-root value is zero. The signature authenticates $\rho_i$; it is distinct from the internal Merkle root $\mu_i$. The verifier checks consecutive sequence, unchanged scope/version/epoch, the previous-root link and nondecreasing stated observation times.
+
+A disclosure contains name, value, salt, index, leaf count and ordered siblings. The verifier requires an index in range, the exact expected number of siblings, the expected leaf count, and no duplicate index/name. The path reconstructs $\mu_i$, and the signed header binds that root to its context. A standard disclosure costs $O(\log m)$ sibling hashes, while the full field tree construction is $O(m)$ hash work apart from sorting.
+
+The implementation bounds a checkpoint to 1--256 leaves, an individual encoded value to 65536 bytes, total values to 1048576 bytes, nesting depth to 32 and visited JSON nodes to 10000. A disclosed path has at most eight siblings. The checkpoint-chain input has its own maximum of 10000 entries. These limits are rejection boundaries for parsing and resource use, not security claims derived from asymptotic notation.
+
+\subsection{Verifier algorithm and evidence grades}
+\input{figures/verifier}
+The verifier runs separately from the agent's private runtime and requires an explicit trust file. It first checks structural limits, scope, signatures, selective disclosures and ActionProof links. It then checks pinned code/owner/asset context, exact registration transaction and event, historical root/session/merchant/step authority, and occupied budget reconstructed from root registration/release evidence. It verifies the canonical token authorization and matching transfer, then evaluates disclosed merchant claims and the configured result predicate.
+
+Historical reads at registration prevent a later revocation from incorrectly invalidating evidence that was authorized at the time. Conversely, a historic active grant does not imply permission to pay now. Budget auditing must include root-creation evidence from an appropriate start block. The current verifier bounds its audit range to 20000 blocks; an older or larger history needs a separately designed observation/import strategy rather than a claim of unrestricted archival verification.
+
+Each check reports confirmed, incomplete, contradicted or unsupported with its evidence source and exact guarantee. The required financial set comprises checkpoint integrity, ActionProof association, registration authority, budget and payment. The flag \code{requiredChecksPassed} also requires no contradicted/unsupported check. Overall status aggregates all checks. Therefore required checks can pass while overall remains incomplete for missing HTTPS source or unobserved history.
+
+The merchant's standard signed offer authenticates its signed payment terms. Its standard receipt authenticates the signed resource, payer and settlement claim, with configured identity binding. The implemented receipt does not cover payment amount, request body or result body; those facts require separate evidence.\citep{x402receipt} A locally signed checkpoint cannot independently establish that a legacy HTTPS server sent the data. The optional TLSNotary public-API experiment demonstrates a different source-evidence primitive under its own pinned notary assumptions. It is not evidence for the controlled paid merchant.\citep{tlsnotary}
+
+\subsection{Selective disclosure and privacy interpretation}
+Minimal export omits content while retaining the committed financial association. An auditor can verify a disclosed leaf and its context, but cannot validate a hidden request or result body. Salted commitments reduce simple direct dictionary testing when salts remain hidden; they do not provide differential privacy or a zero-knowledge compliance proof. Amount, payee and timing remain visible on chain, and low-entropy or contextual information may still be inferred.
+
+A useful disclosure design therefore states which claim requires each field. Payment evidence needs the commitment, domain, registration and transfer context. A deterministic sample-quality claim additionally needs the result and checker definition. Independent HTTPS-origin claims additionally need an external source witness. Whole-history claims additionally need trusted retention and observation assumptions. Reducing export bytes alone does not measure semantic privacy.

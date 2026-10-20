@@ -1,0 +1,32 @@
+\begin{figure}[htbp]\centering
+\begin{adjustbox}{max width=\linewidth}
+\begin{tikzpicture}[>=Latex]
+\node[box,text width=3cm] (owner) at (0,0) {Owner wallet\\Rabby / trusted signer};
+\node[box,text width=3cm] (ui) at (0,-2) {Mandate workspace\\review and account views};
+\node[box,text width=3cm] (agent) at (5.4,0) {Agent host\\\mbox{Claude Desktop}\\CLI client};
+\node[box,text width=3cm] (gw) at (5.4,-2) {Local MCP gateway\\purchase SDK};
+\node[box,text width=3cm] (db) at (5.4,-4) {Private journal\\orders and\\transaction hashes};
+\node[box,text width=3cm] (merchant) at (10.8,0) {API merchant\\402 quote and service};
+\node[box,text width=3cm] (fac) at (10.8,-2) {Facilitator\\verify and settle};
+\node[box,text width=3cm] (verify) at (0,-4) {Evidence verifier\\bundle and trust\\reviewed separately};
+\node[box,text width=3cm] (wallet) at (0,-6.4) {MandateAccount\\policy / session\\reservations};
+\node[box,text width=3cm] (token) at (10.8,-6.4) {USDC token\\authorization and transfer};
+\draw[arr] (ui) -- node[lab,left]{review / sign} (owner);
+\draw[arr] (agent) -- node[lab,right]{stdio MCP} (gw);
+\draw[arr] (ui.east) -- node[lab,above]{status API} (gw.west);
+\draw[arr] (gw.north east) -- node[lab,sloped,above]{HTTP / x402} (merchant.south west);
+\draw[arr] (merchant) -- node[lab,right]{verify / settle} (fac);
+\draw[arr] (gw) -- node[lab,right]{persist intent} (db);
+\draw[ret] (db) -- node[lab,above]{redacted export} (verify);
+\draw[arr] (gw.south west) -- node[lab,sloped,above,pos=.65]{register} (wallet.north east);
+\draw[arr] (owner.west) -- (-2.5,0) -- node[lab,rotate=90,above]{owner transactions} (-2.5,-6.4) -- (wallet.west);
+\draw[arr] (fac.east) -- (13.3,-2) -- node[lab,rotate=90,above]{token settlement} (13.3,-6.4) -- (token.east);
+\draw[arr] (token) -- node[lab,above]{ERC-1271: validate registered digest} (wallet);
+\begin{scope}[on background layer]
+\node[draw=mandategray,dashed,rounded corners,fit=(wallet)(token),inner sep=9pt,label={[font=\sffamily\small]below:Public chain: independent ordering and state}] {};
+\node[draw=mandategray!65,dashed,rounded corners,fit=(agent)(gw)(db),inner sep=9pt] {};
+\end{scope}
+\end{tikzpicture}
+\end{adjustbox}
+\caption{System architecture and the main data and authority paths. The dashed local-host region does not provide isolation against its administrator. Owner transactions and session-signed purchase operations carry different authority. The separate verifier needs an independently reviewed trust file.}\label{fig:architecture}
+\end{figure}

@@ -1,0 +1,55 @@
+\section{Contract and MCP interface reference}\label{app:interfaces}
+\subsection{Account methods and observable errors}
+\begin{longtable}{L{5.3cm}L{9.4cm}}\toprule
+Method & Responsibility and checks\\\midrule\endfirsthead\toprule Method & Responsibility and checks\\\midrule\endhead
+\src{createMandate} & Owner-only creation of a new root, task, limits, merchants and approved steps.\\
+\src{replacePolicy} & Owner-only new version with occupancy/used-step preservation.\\
+\src{setPaused} & Owner-only pause/resume with version increment and stale old grants.\\
+\src{revokeMandate} & Owner-only irreversible root revocation.\\
+\src{grantSession} & Owner-only new session ID, signer and current policy subset.\\
+\src{revokeSession} & Owner-only revocation and epoch increment.\\
+\src{registerPayment} & Session/quote verification, atomic double reservation and permanent step use.\\
+\src{isValidSignature} & View-only validation of an existing registered digest under current authority.\\
+\src{releaseExpired} & Permissionless safe release after strict expiry with an unused token nonce.\\
+\src{ownerWithdraw} & Owner-only token withdrawal with SafeERC20 and reentrancy guard.\\
+\src{getPolicy/getSession/getStep/getMerchant/getCommitment} & Read policy, grant, versioned scope and committed payment.\\
+\src{paymentNonce/paymentDigest/registrationDigest/quoteDigest} & Shared digest/nonce encoding for clients and review.\\\bottomrule
+\end{longtable}
+
+Observable account errors include Unauthorized, InvalidPolicy, InvalidSession, InvalidPayment, InvalidSignature, BudgetExceeded, StepAlreadyUsed, UnsafeRelease and UnsupportedAsset. They identify the failed account predicate, not an automatically inferred malicious actor. ERC-1271 returns its specified valid/invalid bytes4 values for its normal signature path.
+
+\subsection{MCP tools and effect boundaries}
+\begin{longtable}{L{5.7cm}L{9cm}}\toprule
+Tool & Inputs and intended effect\\\midrule\endfirsthead\toprule Tool & Inputs and intended effect\\\midrule\endhead
+\src{mandate_get_context} & No arguments; read bound identity, chain, root/session and budgets.\\
+\src{mandate_request_authorization} & taskDescription, budgetAtomic, maxPerPaymentAtomic and finite ttlSeconds; prepare an unsigned owner request.\\
+\src{mandate_search_services} & query and bounded limit; discover untrusted metadata and approved configured services.\\
+\src{mandate_quote_service} & serviceId; obtain current terms and scope checks without payment.\\
+\src{mandate_call_service} & serviceId; execute or reconcile the original approved purchase. This can spend test assets.\\
+\src{mandate_get_task} & No arguments; inspect independent payment/delivery/result states.\\
+\src{mandate_get_receipt} & serviceId; export a redacted receipt/evidence reference.\\
+\src{mandate_request_revoke} & No arguments; prepare an unsigned owner session-revocation request.\\\bottomrule
+\end{longtable}
+
+Tool schemas are strict. A service ID refers to configured scope; it is not an arbitrary URL or arbitrary-sign operation. Requesting authorization or revocation does not sign, broadcast or activate it. MCP annotations are host-facing hints rather than financial enforcement. The contract and owner transaction boundary remain authoritative.
+
+\section{Reproduction and deployment reference}\label{app:reproduction}
+The companion reproduction guide supplies detailed commands and acceptance interpretation. The minimal local sequence uses Node 24.x (at least 24.2), pnpm 11.25.0, Python 3.12+ and Foundry 1.5.1. The contracts pin Solidity 0.8.26, optimizer 200, viaIR and Cancun. A separate synchronized execution/consensus node is unnecessary for this reproduction.
+\begin{lstlisting}
+python3 scripts/bootstrap-sdk.py
+CI=true pnpm install --frozen-lockfile
+pnpm sdk:build
+pnpm sdk:demo artifacts/reproduction/demo
+pnpm setup:build
+pnpm setup:start
+\end{lstlisting}
+The demo uses local Anvil and mock USDC. The setup process prints a loopback URL, normally port 18743. Use an independent profile and never copy somebody else's bound package or private runtime. Public deployments use separately funded roles, a checked asset domain and explicit owner intents. Existing historical manifests and signing journals must not be overwritten or reused with another identity.
+
+Read-only verification uses the public bundle and separately reviewed trust file:
+\begin{lstlisting}
+node --import tsx mandate/evidence/cli.ts \
+  --bundle competition/video/claude-desktop-base-v1/execution-evidence/purchase-bundle.json \
+  --trust competition/video/claude-desktop-base-v1/execution-evidence/verifier-trust.json \
+  --output /tmp/mandate-public-verification.json
+\end{lstlisting}
+Missing historical RPC data leaves a check incomplete. It is not a reason to create a new payment. Base Sepolia native test USDC and Ethereum Sepolia controlled-token experiments retain separate manifests. Base mainnet inspection is read-only, and Permit2/ERC-7710/third-party facilitator acceptance does not follow from protocol-level compatibility claims.

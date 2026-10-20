@@ -1,0 +1,23 @@
+\section{Durable execution and recovery}\label{sec:runtime}
+\subsection{Persisted identity and concurrency control}
+The purchase key is the tuple $(c,W,r,k)$. The same task step therefore resolves to the same stored order even when a process restarts or another session tries to execute it. The SQLite purchase row stores its canonical JSON and a version. A lease table records the worker and expiry. Updates verify the live lease and expected purchase version within an immediate transaction, preventing a stale worker from overwriting a later result. These local controls coordinate honest workers; they are not the mechanism enforcing the chain's root budget.
+
+The signed-transaction table stores transaction ID, chain, sender, nonce, intent hash, raw bytes, expected hash and broadcast state. A uniqueness constraint on $(chain,sender,nonce)$ prevents a second different local intent from reusing that transaction nonce. Raw bytes are private recovery material, persisted before broadcast. The public export exposes only their non-secret metadata and transaction hashes.
+
+The audit log retains transitions. Seen quotes bind policy version, request hash and requirements hash, so a retry does not silently accept changed terms. Private result bodies and payment payloads stay out of default public tool exports. Service and result observations remain separate from transaction journal state.
+
+\subsection{Outcome state and canonical reconciliation}
+\input{figures/state-machine}
+A payment state can be draft, registering, reserved, pending, paid, consumed\_unknown, canceled, rejected or released. Delivery independently records not\_requested, returned, failed or unknown. Result inspection records unchecked, valid or invalid. These axes prevent the common error of treating an outer transaction receipt, an authorization nonce or an HTTP success as proof of the entire purchase.
+
+For paid status the reader requires a successful canonical receipt, sufficient configured confirmations, a token AuthorizationUsed event for the exact wallet/nonce, and the matching Transfer from the wallet to the approved recipient for the exact amount. A used nonce without that evidence remains consumed\_unknown. An absent receipt remains unresolved while RPC observations are uncertain. The reader checks receipt block hashes and compares configured providers; it cannot infer that a missing response means the transaction was never sent.
+
+A transaction timeout preserves the original intent, raw operation, nonce and expected hash. Bounded rechecks and explicit read-only reconciliation precede recovery. A transport error cannot authorize a new business nonce, refreshed quote or replacement payment window. A reorg can remove a previously observed registration or payment. Recovery re-evaluates canonical state and, where valid, restores the same signed operation. New outcome checkpoints are ordered after the recovered canonical payment, while earlier observations remain in the journal.
+
+\subsection{Paid failure, expired commitment and administrative recovery}
+\input{figures/recovery-sequence}
+If the token payment is proven but service delivery fails, the client retrieves the same paid order. The controlled merchant checks its cached result against canonical settlement before returning it. An unchanged hash alone is insufficient if its receipt became noncanonical. The public demonstration exercises HTTP 500 after payment followed by HTTP 200 without a second settlement.
+
+An unpaid payment commitment that expires is a different case. It must not be signed with a later expiry or a fresh nonce. A safe release may remove occupancy after the strict expiry/unused-nonce check, but the business step stays used. A genuinely new purchase requires a new owner-approved root or step. During recording, an earlier registered order expired before settlement; the exact transport cause could no longer be recovered from its old generic diagnostic. The owner approved a new ETH task in the same funded account. The successful task's later paid-service recovery reused its own nonce and hash. These two histories are retained separately.\citep{case}
+
+Owner actions also have durable identity. The application distinguishes requested, signed/broadcast, canonically applied and currently active authority. A transaction can have applied successfully yet its session later expire or be revoked. Guide progress reset, a connector reload and rotating a connection credential are not substitutes for an on-chain policy change.

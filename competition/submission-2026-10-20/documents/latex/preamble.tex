@@ -1,0 +1,46 @@
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,microtype}
+\usepackage[a4paper,margin=24mm,headheight=15pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array,tabularx,longtable}
+\usepackage{graphicx,xcolor,tikz,adjustbox,float,placeins}
+\usetikzlibrary{arrows.meta,positioning,fit,backgrounds,shapes.geometric,calc}
+\usepackage{algorithm,algpseudocode,listings,enumitem}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{xurl,hyperref,cleveref,fancyhdr,titlesec}
+\definecolor{mandateblue}{HTML}{235C99}
+\definecolor{mandateink}{HTML}{111820}
+\definecolor{mandatelight}{HTML}{EDF3F9}
+\definecolor{mandategray}{HTML}{586574}
+\hypersetup{colorlinks=true,linkcolor=mandateblue,citecolor=mandateblue,urlcolor=mandateblue,pdfauthor={Mengzhong Ma; Sat Chidananda; Vrushank Ajay Ahire; Wilfried Ariel Mulyawan},pdftitle={Mandate Wallet}}
+\urlstyle{same}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\emergencystretch}{2em}
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.16}
+\titleformat{\section}{\large\sffamily\bfseries\color{mandateblue}}{\thesection}{.6em}{}
+\titleformat{\subsection}{\normalsize\sffamily\bfseries}{\thesubsection}{.6em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{.6em}{}
+\setcounter{tocdepth}{2}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\sffamily\small Mandate Wallet}
+\fancyhead[R]{\sffamily\small\DocumentTitle}
+\fancyfoot[L]{\sffamily\footnotesize 20 October 2026}
+\fancyfoot[R]{\sffamily\footnotesize \thepage}
+\renewcommand{\headrulewidth}{.3pt}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newtheorem{property}{Property}
+\newtheorem{observation}{Observation}
+\newcommand{\Hh}{\operatorname{keccak256}}
+\newcommand{\Enc}{\operatorname{abi.encode}}
+\newcommand{\CJ}{\operatorname{canonicalJSON}}
+\newcommand{\code}[1]{\texttt{\small #1}}
+\newcommand{\src}[1]{\texttt{\small\nolinkurl{#1}}}
+\newcommand{\repo}{\url{https://github.com/MandateLabs666/mandate-wallet}}
+\newcommand{\SourceCommit}{29d10422954d36f0e37c2d89336986d10d014aba}
+\newcommand{\sourcecite}{\citep{implementation}}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,columns=fullflexible,keepspaces=true,showstringspaces=false,frame=single,rulecolor=\color{mandategray!35},backgroundcolor=\color{mandatelight!45},xleftmargin=5pt,xrightmargin=5pt,aboveskip=8pt,belowskip=8pt}
+\setlist{nosep,leftmargin=1.8em}
+\tikzset{box/.style={draw=mandateblue!65,fill=mandatelight,rounded corners=2pt,align=center,font=\sffamily\small,inner sep=5pt},actor/.style={box,minimum width=2.45cm,minimum height=.9cm,text width=2.28cm},arr/.style={-{Latex[length=2mm]},thick,draw=mandateblue},ret/.style={arr,dashed},lifeline/.style={dashed,draw=mandategray!65},lab/.style={font=\sffamily\footnotesize,fill=white,inner sep=1.5pt,align=center},gate/.style={diamond,aspect=2,draw=mandateblue,fill=mandatelight,align=center,font=\sffamily\small,inner sep=2pt}}

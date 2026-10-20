@@ -1,0 +1,32 @@
+\section{How a reviewer should inspect the evidence}
+Start with \src{run.json} for chain, account, role addresses, source fingerprints and installed connector identity. Inspect \src{transactions.json} and \src{final-transactions.json} for the eight key receipts, logs and network-fee components. The export's \src{SHA256SUMS} covers the evidence files. An explorer screenshot is a useful presentation aid; the exported canonical transaction data carries the checkable financial facts.
+
+\src{service-and-orders.json} separates first failed delivery from recovered success. \src{checks.json} summarizes payment amount, nonce/hash identity, final balance, independent result state and refusal. \src{refusal-evidence.json} records that the unused BTC step was rejected with no new registration, service request or transaction. A pre-broadcast refusal is not represented as a mined reverted transaction.
+
+\src{purchase-bundle.json} contains disclosed signed checkpoints and ActionProof. \src{verifier-trust.json} independently pins the expected code, account, authority, request, merchant, budget and RPC inputs. \src{independent-verification.json} is the resulting report. The trust file must be reviewed separately from the bundle; a self-asserted wallet address is not a root of trust.\citep{case,implementation}
+
+\section{Read-only verification and expected outcome}
+Install the repository's frozen dependencies, then run from its root:
+
+\noindent\begin{minipage}{\linewidth}
+\begin{lstlisting}
+node --import tsx mandate/evidence/cli.ts \
+  --bundle competition/video/claude-desktop-base-v1/execution-evidence/purchase-bundle.json \
+  --trust competition/video/claude-desktop-base-v1/execution-evidence/verifier-trust.json \
+  --output /tmp/mandate-public-verification.json
+\end{lstlisting}
+\end{minipage}\par
+
+This command requires historical RPC access but no owner key, session key or new transfer. It can fail or remain incomplete if a provider cannot supply the required historic state. No recovery should create a new payment merely to replace missing read-only evidence.
+
+The recorded required-check set confirms integrity, ActionProof, registration authority, budget and payment. Other disclosed request/merchant/result checks also pass in the recorded report. The expected overall grade remains incomplete because no independent HTTPS witness or complete-history anchor is supplied. Contract signatures and transfer authorizations have different responsibilities, and the verifier checks the token events rather than treating a used nonce alone as paid.\citep{erc1271,erc3009}
+
+\section{Source identity, editing and fee interpretation}
+The actual recording source had uncommitted changes. \src{run.json} retains fingerprints for the exact account, gateway, transaction logic, verifier, onboarding and installed connector bundle. The later public code commit and its clean reproduction are different versioned artifacts. An accepted later build does not prove that the video originally ran from that clean commit.\citep{repro}
+
+The video uses actual captured UI views with editorial cuts and held shots. \src{scene-map.json} links chapters to evidence; the adjacent video JSON maps shots to source-frame hashes. Debugging and waiting were edited out. \src{recording-history.json} retains the earlier expired unpaid order, explicit owner-approved new task and connector update. The edit does not imply uninterrupted deployment-to-purchase execution.
+
+Purchase cost is 0.01 test USDC. The exported network fees distinguish execution gas and L1 data fee in wei. Native gas funding is not a USDC service charge. The eight key transactions do not include every historical debugging transaction, so their sum must not be labeled the entire recording's total cost. The service/facilitator are controlled, the statistics are fixed and no market-price or third-party marketplace guarantee follows.
+
+\section{Integrity and disclosure boundary}
+The public export omits private keys, connection tokens, token payment-authorization signatures and raw signed transactions. It retains public evidence and merchant signatures needed for verification. Original registration attachments and the private proposal PDF are not included. The disclosed result is a public fixture. The independently graded limitations are part of the evidence, not reasons to relabel an incomplete report as confirmed.

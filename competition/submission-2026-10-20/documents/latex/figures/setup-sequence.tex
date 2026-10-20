@@ -1,0 +1,18 @@
+\begin{figure}[htbp]\centering
+\begin{adjustbox}{max width=\linewidth}
+\begin{tikzpicture}
+\foreach \x/\id/\txt in {0/owner/{Owner wallet\\Rabby},3.2/ui/{Mandate\\workspace},6.4/gw/{Local\\gateway},9.6/agent/{Claude\\Desktop},12.8/chain/{Base Sepolia\\factory / account}}{
+\node[actor] (\id) at (\x,0) {\txt};\draw[lifeline] (\x,-.5)--(\x,-9.5);}
+\draw[arr] (3.2,-1.1)--node[lab,above]{1. Review deployment and funding}(0,-1.1);
+\draw[arr] (0,-2)--node[lab,above]{2. Sign and broadcast exact owner transactions}(12.8,-2);
+\draw[arr] (3.2,-2.9)--node[lab,above]{3. Review root scope and finite session}(0,-2.9);
+\draw[arr] (0,-3.8)--node[lab,above]{4. Create mandate and grant session}(12.8,-3.8);
+\draw[ret] (12.8,-4.7)--node[lab,above]{5. Confirm receipts, events and authority}(3.2,-4.7);
+\draw[arr] (3.2,-5.6)--node[lab,above]{6. Generate a connection-bound package}(6.4,-5.6);
+\draw[ret] (3.2,-6.5)--node[lab,above]{7. User imports and enables Guided extension}(9.6,-6.5);
+\draw[arr] (9.6,-7.4)--node[lab,above]{8. get\_context}(6.4,-7.4);
+\draw[arr] (6.4,-8.3)--node[lab,above]{9. Read current account and grant}(12.8,-8.3);
+\draw[ret] (6.4,-9.2)--node[lab,above]{10. Return verified context}(9.6,-9.2);
+\end{tikzpicture}\end{adjustbox}
+\caption{Account preparation and graphical agent connection. Package import is a user operation. A local MCP connectivity probe and a model invocation inside Claude are different checks. Reinstalling a connector does not reactivate a revoked grant.}\label{fig:setup}
+\end{figure}

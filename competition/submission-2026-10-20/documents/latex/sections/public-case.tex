@@ -1,0 +1,29 @@
+\section{Public Base Sepolia execution case}\label{sec:publiccase}
+\subsection{Roles, account and scope}
+The native run used chain 84532 with account \src{0xa794DAa86ff10920B75a4de3b0E752586e8703D2}. Its owner was \src{0xaA987fC286434D205669814Ba46b1d8df824fB36}, signing through Rabby. The asset was native Base Sepolia test USDC at \src{0x036CbD53842c5426634e7929541eC2318f3dCF7e}. The session signer was \src{0x818D3bd3ddf805FA9916AB50813d0EB67e40862f}, and the payee was \src{0x5B608Ea8219185dc5C971D2924913bF1e60fCEc1}. The owner key was not supplied to Claude or the production gateway.\citep{case}
+
+The root was \src{0x65a5386f35ae1dc848584bd51d1a8211110aa02b8c5264238aa4d4aa7d5a8c89}. The two-hour session was \src{0x0263e35063f897a6639f0272e8d6b8a3ff3d19c772f5d8b04baf05ae7c4ebd47}. These are historical identifiers, now subject to expiry and confirmed revocation. They are not reusable live access credentials.
+
+\subsection{Transactions and separate outcomes}
+The account received 150000 atomic USDC units, independently of native gas funding to the execution role. The successful task registered and paid 10000 atomic units once. Payment nonce \src{0xa65dbb50c51b68982cb7c19d440efad2bf574303856b0bb48a949f82f7cedddb} and settlement hash remained unchanged during paid-service recovery. Final observed wallet balance was 140000 units. The settlement and revocation rows below are the principal explorer evidence; all eight rows have exported receipts and logs.
+\begin{longtable}{L{2.2cm}L{2.1cm}L{10.4cm}}\caption{Eight key public transactions. Hashes are clickable Base Sepolia explorer links.}\label{tab:transactions}\\\toprule Purpose & Block & Transaction hash\\\midrule\endfirsthead\toprule Purpose & Block & Transaction hash\\\midrule\endhead
+account & 48316879 & \href{https://sepolia.basescan.org/tx/0x2ba48a2f3197c6dfac2b3c5579b0e3e01350a2ba1290d019d044a685ed21cb26}{\nolinkurl{0x2ba48a2f3197c6dfac2b3c5579b0e3e01350a2ba1290d019d044a685ed21cb26}}\\
+fund gas & 48318701 & \href{https://sepolia.basescan.org/tx/0x6ddf321b74a123e0ac7ee5007042c80dd667ac25a993f790622c258a91aebe2e}{\nolinkurl{0x6ddf321b74a123e0ac7ee5007042c80dd667ac25a993f790622c258a91aebe2e}}\\
+fund usdc & 48318779 & \href{https://sepolia.basescan.org/tx/0x3bb4b38d34ddea128a261e8c5da4ca28dfd2369f8671f2b4a718ed8c25ff61e2}{\nolinkurl{0x3bb4b38d34ddea128a261e8c5da4ca28dfd2369f8671f2b4a718ed8c25ff61e2}}\\
+task & 48324013 & \href{https://sepolia.basescan.org/tx/0x8336dc072584e2c29201de51e6d7ee1d44ba5c0ddf475188abcee7f0973b7505}{\nolinkurl{0x8336dc072584e2c29201de51e6d7ee1d44ba5c0ddf475188abcee7f0973b7505}}\\
+session & 48324110 & \href{https://sepolia.basescan.org/tx/0x6311ac19a4b212aa656d2e8b74a631f5c99fc0a109d3bfdf273c93ab142a1180}{\nolinkurl{0x6311ac19a4b212aa656d2e8b74a631f5c99fc0a109d3bfdf273c93ab142a1180}}\\
+registration & 48324434 & \href{https://sepolia.basescan.org/tx/0xdad95b5ada48d537a8fcd117be8ebab442d2032b4c1ac18810d5dd9d77d8b1e1}{\nolinkurl{0xdad95b5ada48d537a8fcd117be8ebab442d2032b4c1ac18810d5dd9d77d8b1e1}}\\
+settlement & 48324438 & \href{https://sepolia.basescan.org/tx/0xc23d943b69c94a5a8468ab32ee9b454ab6b57f7681ba4b93f16e4d58ae840c5d}{\nolinkurl{0xc23d943b69c94a5a8468ab32ee9b454ab6b57f7681ba4b93f16e4d58ae840c5d}}\\
+revocation & 48324929 & \href{https://sepolia.basescan.org/tx/0x5ba3feb1febde1fc2637c524ac031aa17e0a9f583bf39fc843bb865162d69a6e}{\nolinkurl{0x5ba3feb1febde1fc2637c524ac031aa17e0a9f583bf39fc843bb865162d69a6e}}\\
+\bottomrule\end{longtable}
+
+The service outcome first recorded paid/failed/unchecked with HTTP 500, then paid/returned/valid with HTTP 200. The valid result means the disclosed fixed sample matched the explicit deterministic checker. It does not establish an accurate market observation. After owner-signed session revocation, Claude attempted the unused BTC sample and received \code{AGENT\_GRANT\_INACTIVE}. The step remained unregistered, no service was requested and no new transaction or USDC transfer occurred.
+
+The public evidence retains an earlier expired, unsettled ETH order and an explicitly authorized new task in the same wallet. The wallet was not redeployed and no second top-up was hidden as recovery. An updated connector version 0.2.1 and its installed bundle fingerprints are also recorded. The raw run came from a working tree with changes; its file and bundle hashes, rather than Git HEAD alone, identify its source.
+
+\subsection{Independent evidence status and finality interpretation}
+The standalone verifier report confirms checkpoint integrity, request disclosure, ActionProof, registration authority, budget, canonical token payment, merchant offer/receipt and fixed-result checks. It has \code{requiredChecksPassed=true} and \code{overall=incomplete}. Independent HTTPS source evidence and complete history are missing. The workspace button lacked a trusted verification profile during recording. The successful report came from the standalone verifier with the explicit trust file, not from that button.
+
+Two RPC providers reported all eight transactions below their common finalized height of 48325041 at the recorded observation. The exported receipts preserve block hashes and fee components. Provider agreement is a trust-based observation, not a locally verified consensus or rollup proof. The code and evidence are available for read-only review without a signer or new payment.
+
+The picture edit contains actual UI captures with cuts, crops, scaling and held views. It is not an uninterrupted or synchronized multi-feed recording. The current picture duration is 290 seconds, with user narration pending in the material preparation snapshot. The merchant and facilitator remain controlled fixtures. No arbitrary Bazaar, mainnet, signed-installer or independent audit acceptance follows from this run.

@@ -1,0 +1,13 @@
+\begin{figure}[htbp]\centering
+\begin{adjustbox}{max width=\linewidth}
+\begin{tikzpicture}[node distance=1.05cm and 1cm]
+\node[box,text width=4.1cm] (input) {Bundle + independently approved trust file};
+\node[box,below=of input,text width=4.1cm] (integrity) {Check scope, signatures, sequence and disclosures};
+\node[box,below=of integrity,text width=4.1cm] (chain) {Check account code\\authority and budgets\\canonical payment};
+\node[box,below=of chain,text width=4.1cm] (claims) {Check merchant claims and disclosed result predicates};
+\node[box,right=2cm of chain,text width=4.4cm] (source) {Report missing HTTPS witness, hidden result or unknown history explicitly};
+\node[box,below=of claims,text width=4.1cm] (report) {Per-check results\\\mbox{requiredChecksPassed}\\overall status};
+\draw[arr] (input)--(integrity);\draw[arr] (integrity)--(chain);\draw[arr] (chain)--(claims);\draw[arr] (claims)--(report);\draw[ret] (integrity.east)-|(source.north);\draw[arr] (source.south)|-(report.east);
+\end{tikzpicture}\end{adjustbox}
+\caption{Independent verification flow. Required financial checks can pass while the overall report remains incomplete. A contradiction or unsupported route prevents treating the report as confirmed.}\label{fig:verifier}
+\end{figure}

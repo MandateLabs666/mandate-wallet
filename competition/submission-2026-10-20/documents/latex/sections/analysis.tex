@@ -1,0 +1,67 @@
+\section{Security properties and host-interference analysis}\label{sec:analysis}
+\subsection{Budget invariants and concurrent requests}
+\begin{property}[Conservation and bounded authorization]\label{prop:budget}
+Under the assumptions in \cref{sec:model}, successful account transitions preserve \cref{eq:ledger}. Token value settled through the root's commitments is bounded by its occupied budget and the owner's currently approved root budget.
+\end{property}
+\begin{proof}[Manual inductive argument]
+Creation initializes occupancy to zero. Registration checks both remaining budgets and atomically increments both ledgers while inserting one commitment. Safe release removes one unreleased commitment and subtracts the identical amount once. Payment settlement, pause and revocation do not decrement occupancy. Replacement cannot set a root budget below its current occupancy. These are the only relevant transitions. Token nonce uniqueness and refusal to release consumed authorizations keep settled value within the unreleased set. Reverts preserve the prior application state.
+\end{proof}
+
+The result concerns this account/asset route, not all possible owner-approved roots, native gas or future malicious token behavior. Independent balance/reservation invariants exercise the implementation, but the argument has not been machine checked. The original documented property set and its counterexamples are retained separately.\citep{formal}
+
+\begin{property}[Shared-budget concurrency]
+With root budget 150000 and two independent 100000-unit registration requests, at most one can successfully reserve under that root before an owner-approved change or eligible release.
+\end{property}
+The EVM orders both registrations. The second reads the occupancy resulting from the first and fails the remaining-budget condition. This holds even if both prior off-chain simulations succeeded and the requests use different transaction senders. A client-only check against the same stale balance provides no such shared-state guarantee.
+
+\subsection{Replay, version changes and signature binding}
+\begin{property}[Business-step uniqueness]
+Within a root identifier's lifetime, a step registers at most once and its deterministic token nonce authorizes at most one transfer under the assumed token behavior.
+\end{property}
+The account changes $U(r,k)$ only from false to true. Replacement, session changes and expiry release never reset it. Equation~\eqref{eq:nonce} also omits session/version. The token independently consumes the authorization nonce. Distinct owner-approved step IDs can still describe the same real-world service, so this property is not a semantic deduplication oracle.
+
+The registration digest binds the entire payment context, chain and wallet. Altering amount, payee or token validity changes the token digest, which no longer indexes the original commitment. Altering root/session context invalidates registration or liveness. Scope is checked during registration, and current version/epoch must still match at settlement. A zero configured merchant signer deliberately removes merchant quote-signature authentication; it does not remove the financial constraints.
+
+\subsection{Revocation, expiry and release ordering}
+\begin{property}[Settlement-time revocation]
+If revocation or replacement becomes canonical before the token's signature check for an unpaid authorization, the previous commitment cannot pass the account's live-authority predicate.
+\end{property}
+The token's actual callback reads current root/session state. A prior facilitator precheck cannot override the new version or epoch. If payment is canonically earlier, later revocation does not reverse it. The preverify--revoke--settle experiment tests this ordering directly; the public video additionally demonstrates a fresh step rejected before broadcast after revocation.
+
+Safe release requires strict expiry and an unused token nonce. It preserves financial conservatism at the cost of potential long-lived occupancy when cancellation or settlement evidence is ambiguous. A design that releases on HTTP failure alone would permit overspending after a payment succeeded but delivery failed. The same case motivates separate payment, service and result states.
+
+\subsection{Session evidence integrity and the missing-tail limit}
+\begin{property}[Disclosed-field integrity under the stated signer trust]
+A valid disclosure and signed checkpoint bind the disclosed field, index and scope to that checkpoint, subject to the commitment and signature assumptions.
+\end{property}
+This result authenticates a signer's statement and its linkage. A hostile session signer can still create a new internally consistent false observation. It does not establish independent source truth or a complete history.
+
+\begin{observation}[Unanchored-prefix indistinguishability]\label{obs:tail}
+Let $H=(h_0,\ldots,h_n,h_{n+1})$ be a valid signed chain and let $H'=(h_0,\ldots,h_n)$. An auditor whose entire input is $H'$ and who has no independent latest-head information receives identical input in a world ending at $h_n$ and a world that suppresses $h_{n+1}$. Signature and previous-root checks alone cannot distinguish those worlds.
+\end{observation}
+A separately retained latest root can contradict a shortened export. It does not prove that all activity before observation or outside the retained interface was captured. The B3/B4 experiments distinguish altering disclosed data, deleting a known retained tail and deleting an unknown unanchored tail. Treating all three as the same attack would overstate the guarantee.
+
+\subsection{Reference controller, grinding and suppression}
+The reference controller accepts an owner-signed finite envelope binding scope, steps, a per-step query cap, start/end times, expected checkpoint kinds and deadline. Authenticated request IDs are durable and idempotent. The controller charges a new admitted query before invoking the configured query function, so a crash does not create a free query retry. It signs allow/reject/pending/completed/failed/detected statements with its own role key. A repeated request ID must match its prior digest and cannot create a second distinct query.
+
+A cap of three rejects the fourth distinct request through the honest controller. It does not bound other model or API calls made by the same hostile host. A session-key holder can bypass the controller and still make a financially approved payment; the on-chain reservation constraints remain. A reference controller on the same machine therefore supplies a measurable interface boundary, not an enclave or malicious-administrator defense.
+
+Missing expected checkpoints after a configured deadline produce a signed alert. They can indicate interruption, cancellation or delay, not necessarily an intentional attack. Live pre-action gating and historical observation/import are separately labeled modes. Current financial validation does not enforce the complete controller statement or session root.
+
+\begin{table}[htbp]\centering\small
+\begin{tabularx}{\linewidth}{L{2.8cm}YY}\toprule
+Attack class & Current mechanism & Residual boundary\\\midrule
+Replay & Permanent used step, deterministic nonce, original transaction recovery & Different owner-approved business IDs are distinct authority\\
+Delay & Finite token/root/session windows and live settlement checks & Cannot force timely inclusion or delivery\\
+Grinding & Durable query count at the reference-controller interface & Hidden calls or direct session-key use bypass the interface\\
+Evidence suppression & Signed links and comparison with known retained roots & Unknown tail and common-host deletion remain unresolved\\\bottomrule
+\end{tabularx}\caption{Implemented controls and limits for the proposal's host-interference taxonomy.}\label{tab:interference}\end{table}
+
+Future anti-grinding work could commit a decision before a specified future beacon round and verify the beacon signature and interpretation.\citep{drand} A public beacon alone does not prove that a host ran one model invocation or revealed every output. A future design must specify commitment timing, selective aborts, independent enforcement and liveness costs. The present experiments do not implement this path.
+
+\subsection{Echo v2 and the original proposal}
+Echo's repaired route validates an operation-bound signature against a final UserOperation and its policy/session context, then rechecks execution authority and actual swap input usage. It supports the selected deadline-bearing Uniswap V3 single-swap ABI, zero native value, bounded input allowance and allowance cleanup. Strict EntryPoint/bundler acceptance uses the pinned v0.7 contract and strict Alto configuration over third-party RPC. Validation and execution have different responsibilities because bundlers simulate validation before the account executes.\citep{erc4337,erc7562,implementation}
+
+Mandate reserves a token payment before emitting its payment signature and supports direct EIP-3009 settlement without an EntryPoint call for each service purchase. Echo actual input-spend accounting and Mandate occupied commitments must therefore not share a misleading single ``spent'' measure. The controlled swap reference is evaluated separately from HTTP service procurement.
+
+The previous proposal envisaged a more integrated proof-consuming execution pipeline. The current ActionProof is an evidence association; the account does not verify the complete SessionAttestation or ContainmentDecisionLog as a mandatory condition. The current controller uses typed statements with an envelope, request ID, kind, outcome, code, observation time, controller identity and details. This implements the decision-log role without claiming byte-for-byte conformance to every prospective proposal field. These distinctions preserve a testable connection to the research while avoiding a claim of completion for its entire agenda.

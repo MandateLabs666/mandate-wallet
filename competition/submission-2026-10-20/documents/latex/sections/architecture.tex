@@ -1,0 +1,32 @@
+\section{Architecture and trust boundaries}\label{sec:architecture}
+\input{figures/architecture}
+\subsection{Owner plane, agent plane and chain plane}
+The owner plane comprises the workspace, onboarding service and external signing wallet. The workspace constructs an unsigned intent, displays the target chain, account, method and scope, and observes its resulting transaction. An intent is not applied authority until a matching successful receipt and contract event establish the change. The trusted owner must review the decoded transaction rather than infer its effect from a page title.
+
+The agent plane contains the MCP transport, fixed connection profile, purchase client, session signer and durable store. The profile binds a particular chain, wallet, root, session and configured services. A connection token authenticates access to that profile. The production gateway does not load the owner private key. A registration relayer submits session-signed registrations and pays native gas. The facilitator submits the token transfer. Holding either gas key does not create owner authority.\sourcecite
+
+The chain plane contains an immutable \code{MandateAccount}, a deterministic deployment factory and the selected token. The account fixes owner, asset, deployment chain and token EIP-712 domain at construction. The factory exposes deterministic prediction and idempotent account creation. The account has no agent-facing arbitrary call executor or upgrade administrator. Owner withdrawal remains possible and does not escrow the cash represented by reservations.
+
+The merchant and facilitator are external roles in the architecture, but controlled team services in the demonstrated run. The merchant checks the HTTP request against the registered commitment and returns service data. Its facilitator prevalidation and settlement are different steps. An independently deployed third-party combination requires its own compatibility and request-binding acceptance.
+
+\subsection{Deployment and local product components}
+\begin{table}[htbp]\centering\small
+\begin{tabularx}{\linewidth}{L{3.1cm}YL{4.2cm}}\toprule
+Component & Implementation responsibility & Principal source\\\midrule
+Account / factory & Root and session scope, reservations, signature validation, release & \src{mandate/contracts/src/}\\
+Purchase layer & Quote checks, original-order recovery, merchant and facilitator fixtures & \src{mandate/services/}\\
+Agent integration & MCP tools, fixed profile, safe public outputs & \src{mandate/gateway/}, \src{mandate/desktop/}\\
+Owner application & Onboarding, external-wallet intents, task and outcome views & \src{mandate/onboarding/}, \src{mandate/web/}\\
+Evidence layer & Checkpoints, ActionProof, selective disclosure, verification and controller & \src{mandate/evidence/}\\
+Evaluation / operations & Invalid inputs, stateful attacks, monitoring and fault recovery & \src{mandate/research/}, \src{mandate/operations/}\\\bottomrule
+\end{tabularx}\caption{Component-to-source mapping for the accepted code snapshot.}\label{tab:components}\end{table}
+
+The source-mode onboarding component supports separate Local and Testnet profiles. Local practice starts an isolated Anvil chain and mock token without requiring a personal wallet. Testnet mode prepares deployment, token funding, relayer gas and finite permissions for an external owner wallet. Independent profile directories prevent a newly prepared account from silently replacing an installed agent binding. Restarting guide progress preserves accounts, orders and on-chain authority.
+
+The Guided Claude Desktop package points to the selected local connection and has no required manual profile fields. The user imports and enables it in Claude's graphical extension settings. The advanced manual extension retains Agent profile and Connection file selection. Claude Code and Codex configuration flows preview an additive MCP entry and preserve existing configuration. Host installation, project trust and tool approval continue to apply. MCP describes available tools; it does not itself create a chain grant.\citep{mcp,implementation}
+\input{figures/setup-sequence}
+
+\subsection{Data handling and isolation}
+Private stores retain session/operator keys, connection configuration, payment payload signatures and raw signed transactions needed for recovery. Public exports omit those values and expose approved public-data summaries and evidence references. Mode-0600 files and restricted directories reduce accidental disclosure. They do not isolate a signer or journal from a process running as the same user or from the administrator.
+
+The public verifier consumes an exported bundle and an independently reviewed trust configuration. The latter pins chain, account code, owner, asset, request, merchant identity and RPC assumptions. A claim inside the bundle cannot supply its own trust root. Multiple RPC observations improve cross-checking but do not constitute an independently verified consensus proof.

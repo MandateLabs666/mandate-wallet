@@ -3,11 +3,11 @@
   "currentSourceCandidate": "artifacts/competition/source-delivery/submission20261020/acceptance.json",
   "kind": "20 October submission preparation; official submission not sent",
   "primary": {
-    "report": "competition/TECHNICAL_REPORT.en.md",
-    "security": "competition/SECURITY_SELF_ASSESSMENT.en.md",
+    "report": "competition/submission-2026-10-20/documents/latex/main.tex",
+    "security": "competition/submission-2026-10-20/documents/latex/security.tex",
     "toolReview": "competition/STATIC_TOOL_REVIEW.en.md",
-    "execution": "competition/EXECUTION_EVIDENCE.en.md",
-    "buildGuide": "competition/BUILD_AND_DEPLOY.en.md",
+    "execution": "competition/submission-2026-10-20/documents/latex/execution.tex",
+    "buildGuide": "competition/submission-2026-10-20/documents/latex/reproduction.tex",
     "sourceDelivery": "competition/SOURCE_DELIVERY.en.md",
     "checklist": "competition/DELIVERY_CHECKLIST.en.md",
     "deck": "competition/submission-2026-10-20/presentation/mandate-wallet-10min-final.pptx",
@@ -22,7 +22,12 @@
     "deckPDF": "competition/submission-2026-10-20/presentation/mandate-wallet-10min.pdf",
     "technicalPDF": "competition/submission-2026-10-20/documents/mandate-wallet-technical-documentation.pdf",
     "securityPDF": "competition/submission-2026-10-20/documents/mandate-wallet-security-self-assessment.pdf",
-    "executionPackage": "competition/video/claude-desktop-base-v1/mandate-base-sepolia-execution-evidence.zip"
+    "executionPackage": "competition/video/claude-desktop-base-v1/mandate-base-sepolia-execution-evidence.zip",
+    "executionPDF": "competition/submission-2026-10-20/documents/mandate-wallet-execution-evidence.pdf",
+    "buildGuidePDF": "competition/submission-2026-10-20/documents/mandate-wallet-reproduction-and-deployment.pdf",
+    "latexSourceGuide": "competition/submission-2026-10-20/documents/latex/README.en.md",
+    "latexSourcePackage": "competition/submission-2026-10-20/documents/mandate-wallet-latex-sources.zip",
+    "documentationValidation": "competition/submission-2026-10-20/documents/latex-validation.json"
   },
   "websiteSource": [
     "mandate/web/static/index.html",
@@ -174,6 +179,16 @@
   "sourceRepository": {
     "url": "https://github.com/MandateLabs666/mandate-wallet",
     "testedSourceCommit": "29d10422954d36f0e37c2d89336986d10d014aba",
+    "officialSubmissionSent": false
+  },
+  "documentationRevision": {
+    "date": "2026-10-20",
+    "format": "LaTeX and BibTeX; native TikZ diagrams",
+    "technicalPages": 28,
+    "technicalFigures": 7,
+    "teamInformation": "all four members, advisor and academic contact details from registration",
+    "sourceCommit": "29d10422954d36f0e37c2d89336986d10d014aba",
+    "historicalMarkdownReportsRetained": true,
     "officialSubmissionSent": false
   }
 }

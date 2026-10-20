@@ -1,0 +1,20 @@
+\begin{figure}[htbp]\centering
+\begin{adjustbox}{max width=\linewidth}
+\begin{tikzpicture}
+\foreach \x/\id/\txt in {0/agent/{Claude\\agent},2.8/gw/{Gateway\\session signer},5.6/m/{API\\merchant},8.4/f/{Payment\\facilitator},11.2/w/{Mandate\\account},14/t/{USDC\\token}}{
+\node[actor,minimum width=2.15cm,text width=2.02cm] (\id) at (\x,0) {\txt};\draw[lifeline] (\x,-.5)--(\x,-11.2);}
+\draw[arr] (0,-1)--node[lab,above]{1. call\_service}(2.8,-1);
+\draw[arr] (2.8,-1.9)--node[lab,above]{2. Request quote}(5.6,-1.9);
+\draw[ret] (5.6,-2.8)--node[lab,above]{3. HTTP 402 and exact terms}(2.8,-2.8);
+\draw[arr] (2.8,-3.7)--node[lab,above]{4. Persist intent; submit signed registration}(11.2,-3.7);
+\draw[ret] (11.2,-4.6)--node[lab,above]{5. Root/session budget reserved; confirm event}(2.8,-4.6);
+\draw[arr] (2.8,-5.5)--node[lab,above]{6. Send payment payload}(5.6,-5.5);
+\draw[arr] (5.6,-6.4)--node[lab,above]{7. verify / settle}(8.4,-6.4);
+\draw[arr] (8.4,-7.3)--node[lab,above]{8. TransferWithAuthorization}(14,-7.3);
+\draw[arr] (14,-8.2)--node[lab,above]{9. ERC-1271 check}(11.2,-8.2);
+\draw[ret] (11.2,-9.1)--node[lab,above]{10. Live authority}(14,-9.1);
+\draw[ret] (5.6,-10)--node[lab,above]{11. Service response and settlement receipt}(2.8,-10);
+\draw[ret] (2.8,-10.9)--node[lab,above]{12. Separate outcomes}(0,-10.9);
+\end{tikzpicture}\end{adjustbox}
+\caption{The deployed-account x402 purchase route. Step 6 occurs only after canonical registration. The token performs its own live wallet check at settlement. The gateway verifies the resulting token events separately from HTTP delivery and data quality.}\label{fig:payment}
+\end{figure}

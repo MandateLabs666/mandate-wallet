@@ -1,0 +1,12 @@
+\begin{figure}[htbp]\centering
+\begin{adjustbox}{max width=\linewidth}
+\begin{tikzpicture}[node distance=1.1cm and .7cm]
+\node[box,text width=2.5cm] (pre) {pre-payment\\root $\rho_0$};\node[box,right=of pre,text width=2.5cm] (reg) {registration\\root $\rho_1$};\node[box,right=of reg,text width=2.5cm] (pay) {payment\\root $\rho_2$};\node[box,right=of pay,text width=2.5cm] (srv) {service\\root $\rho_3$};
+\draw[arr] (pre)--(reg);\draw[arr] (reg)--(pay);\draw[arr] (pay)--(srv);
+\node[box,below=of pre,text width=3.4cm] (action) {ActionProof\\$\rho_0,R(p),D(p)$};
+\node[box,below=of pay,text width=4.7cm] (chain) {Canonical chain evidence\\registration and token events};
+\node[box,below=2.7cm of reg,text width=5.7cm] (verifier) {Separate verifier\\disclosures and signatures\\independently reviewed trust};
+\draw[arr] (pre)--(action);\draw[arr] (action)--(verifier);\draw[arr] (reg)--(chain);\draw[arr] (pay)--(chain);\draw[arr] (chain)--(verifier);\draw[arr] (srv.south) |- (verifier.east);
+\end{tikzpicture}\end{adjustbox}
+\caption{Evidence association. Each $\rho_i$ signs a header containing a separate Merkle field root $\mu_i$ and the previous checkpoint digest. ActionProof links the pre-payment checkpoint to registration and token-payment digests. The account does not verify the entire off-chain checkpoint chain.}\label{fig:evidence}
+\end{figure}

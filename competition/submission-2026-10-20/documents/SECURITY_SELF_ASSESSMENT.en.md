@@ -1,3 +1,5 @@
+> Superseded by the expanded [LaTeX report PDF](mandate-wallet-security-self-assessment.pdf) and [editable source](latex/security.tex), revised 20 October 2026. This text is retained as the earlier short summary.
+
 # Mandate Wallet security self-assessment
 
 Mandate Labs | 20 October 2026 | Author assessment for a testnet engineering release

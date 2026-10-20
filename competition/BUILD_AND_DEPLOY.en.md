@@ -1,3 +1,5 @@
+> Current written report: [Reproduction and Deployment PDF](submission-2026-10-20/documents/mandate-wallet-reproduction-and-deployment.pdf) and [LaTeX source](submission-2026-10-20/documents/latex/reproduction.tex), expanded on 20 October 2026. This Markdown file is retained as an earlier summary and engineering index. The current report includes the detailed design and citations.
+
 # Source build, tests and deployment guide
 
 This guide accompanies an engineering source candidate, not the final competition freeze. The package manifest records the exact source commit and files tested. The later acceptance record accompanies the archive; the task-list snapshot inside the source commit may precede that package's acceptance. Final version freeze remains T11.09.

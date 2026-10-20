@@ -1,0 +1,97 @@
+\section{Authorization objects and payment protocol}\label{sec:protocol}
+\subsection{PolicySpec and the actual owner authorization path}
+\code{PolicySpec} is the specification-level view of owner intent: domain, root identifier, task hash, limits, merchant map and approved steps. In the deployed account it is represented by \code{Policy}, \code{Merchant}, \code{Step} and their versioned mappings. The owner signs administrative transactions, and the contract enforces \code{onlyOwner}. The account does not accept a generic off-chain \code{PolicySpec(userSig)} as an alternative administrative path. This differs from the prospective interface in the previous proposal.\citep{proposal,implementation}
+
+\begin{table}[htbp]\centering\small
+\begin{tabularx}{\linewidth}{L{2.9cm}YL{3.5cm}}\toprule
+Object & Security-relevant contents & Lifecycle constraint\\\midrule
+Root policy & taskHash, budget, maxPerPayment, occupied, expiresAt, version, paused/revoked/existence & ID never recreated after creation; task hash fixed\\
+Merchant & ID, payTo, optional quoteSigner & Versioned; maximum 32 per policy\\
+Business step & ID, merchantId, approved requestHash & Versioned approval; usedStep persists across versions\\
+Session & signer, budget/maximum/occupied, expiry, policyVersion, epoch, revoked/existence & New ID, current root subset; maximum 64 approved steps\\
+Commitment & Full Payment plus exists and released flags, indexed by token digest & Stores authorization state, not a paid flag\\\bottomrule
+\end{tabularx}\caption{Deployed state objects, distinct from prospective research schema fields.}\label{tab:objects}\end{table}
+
+Creation requires a new nonzero root and task hash, valid limits, nonempty scope and unique merchant/step identifiers. Replacement raises the version, preserves occupancy and permanent used steps, and cannot lower the budget below occupancy. Pausing and resuming also raise the version, making prior sessions stale. Resuming a root therefore does not automatically restore its old grants. Root and session revocation are irreversible for their identifiers. A session must expire no later than its root, approve only current root steps, and respect both root and session amount limits.
+
+\subsection{Canonical requests, terms and deterministic nonces}
+The canonical request hash is
+\begin{equation}
+ h_{req}=\Hh\!\left(\CJ\left(\{\text{schemaVersion}:2,\text{method},\text{url},\text{body}\}\right)\right).
+\end{equation}
+The implementation recursively sorts object keys, preserves array order and uses JSON serialization for supported finite primitive values. It is a project-specific encoding, not a claim of general RFC canonicalization conformance. Amounts are bounded integer values, serialized as canonical decimal strings at JSON boundaries; floating-point procurement amounts are rejected. The URL uses the platform URL parser's normalized \code{href}. Credentials and fragments are rejected, GET bodies must be null, and only the supported GET/POST methods are accepted. Query parameter reordering is not automatically treated as the same approved request.
+
+The quote hash commits to the selected canonical payment requirements. The gateway chooses only a compatible asset, network, recipient, amount and facilitator route. A changed quote is not silently substituted into an already persisted purchase. An owner-configured nonzero merchant signer also supplies an internal \code{MerchantQuote} signature before registration; zero signer explicitly omits that proof rather than creating an authenticated quote.
+
+For a root $r$ and step $k$, the account and SDK derive
+\begin{equation}\label{eq:nonce}
+ n_{r,k}=\Hh\!\left(\Enc(c,W,r,k)\right).
+\end{equation}
+Session and policy version are intentionally absent from this business nonce. They remain present in the registration context. A new session or policy version therefore cannot transform a retry into a new purchase of the same step.
+
+\subsection{Typed messages and domains}
+The registration signature covers every field in \cref{tab:payment-fields} using EIP-712 with domain name \code{MandateWallet}, version \code{2}, chain $c$ and verifying account $W$.\citep{erc712} The token-payment signature uses the selected token's own domain and \code{TransferWithAuthorization} message. Write
+\begin{align}
+ R(p)&=H_{712}(\mathcal D_W,\operatorname{RegisterPayment}(p)),\\
+ D(p)&=H_{712}(\mathcal D_A,(W,p.to,a_p,p.validAfter,p.validBefore,n_{r,k})).
+\end{align}
+The digest $R(p)$ authorizes reservation. The digest $D(p)$ authorizes the concrete token transfer. They serve different functions and cannot substitute for each other. A merchant's optional internal signature uses the account domain and a narrower \code{MerchantQuote} structure binding the root/version, step, request/quote hashes, payee, value and payment expiry.
+
+\begin{table}[htbp]\centering\small
+\begin{tabularx}{\linewidth}{L{5.6cm}L{2cm}Y}\toprule
+Payment fields & Solidity type & Meaning\\\midrule
+mandateId, sessionId, stepId, merchantId & bytes32 & Root, grant and business scope\\
+policyVersion, sessionEpoch & uint64 & Current authority generation\\
+requestHash, quoteHash & bytes32 & Approved request and selected terms\\
+to & address & Approved payee\\
+value & uint256 & Positive atomic token amount\\
+validAfter, validBefore & uint256 & Token authorization bounds\\
+nonce & bytes32 & Deterministic business nonce\\\bottomrule
+\end{tabularx}\caption{Exact fields bound by the deployed RegisterPayment message.}\label{tab:payment-fields}\end{table}
+
+The account accepts the tested 65-byte session ECDSA signature. It does not implement a generic multisignature or arbitrary validator-prefixed format. The token digest indexes the entire stored commitment, so the account can recover the corresponding signer and root/session context without embedding a new grant identifier inside the token signature.
+
+\subsection{Registration, signature release and settlement}
+\input{figures/payment-sequence}
+A live payment requires the deployment chain, an existing active unexpired root, matching policy version, an existing unrevoked unexpired session, matching session version and epoch, and an approved session step. Registration additionally checks exact merchant/request/payee/nonce, nonzero quote hash and positive amount, unchanged token domain, unused token nonce, both per-payment limits and both remaining budgets.
+
+The current account fixes \code{validAfter=0}. At registration time $t$, the payment expiry satisfies
+\begin{equation}
+ t < p.validBefore \le \min(t+300,T_r,T_s).
+\end{equation}
+The client may choose a shorter window for a quote. A two-hour session does not change this immutable maximum payment window. At signature validation the account requires $p.validAfter<t<p.validBefore$. Safe release instead requires $t>p.validBefore$. Equality at the deadline is not a settlement or release success condition.
+
+\begin{algorithm}[htbp]\caption{Atomic registration (implementation-oriented specification)}\label{alg:register}
+\begin{algorithmic}[1]
+\Require payment $p$, session signature $\sigma_R$, optional merchant signature $\sigma_Q$
+\State Read current root, session, merchant and approved step
+\State Require live version/epoch and approved request, step, recipient and asset domain
+\State Require $\neg U(r,k)$, unused token nonce, positive value and valid time window
+\State Require $a_p\le M_r$, $a_p\le M_s$, $a_p\le B_r-O_r$, $a_p\le B_s-O_s$
+\State Verify $\sigma_R$ over $R(p)$ with the approved session signer
+\State If quoteSigner is nonzero, verify $\sigma_Q$ over the internal merchant quote
+\State Require no commitment already exists at $D(p)$
+\State Atomically set $O_r\gets O_r+a_p$, $O_s\gets O_s+a_p$, $U(r,k)\gets\mathrm{true}$
+\State Store commitment at $D(p)$ and emit PaymentRegistered
+\end{algorithmic}
+\end{algorithm}
+
+The gateway persists the original intent and registration operation before broadcast. It checks the canonical registration receipt and corresponding commitment before generating the token authorization signature. At token settlement, \code{isValidSignature(D(p),signature)} returns the ERC-1271 magic value only for an existing unreleased live commitment, an unchanged token domain, an unused token nonce and the correct session signer.\citep{erc1271} Validation is a view operation. It cannot safely serve as the place to update shared spend counters during the token's signature callback.
+
+The selected facilitator may preverify the payload and later submit settlement. Time, revocation or policy replacement can change between those actions. A successful precheck never locks the earlier state. The actual token call must re-evaluate the account. The route depends on the particular token implementation supporting that callback; the generic transfer-authorization specification does not establish support for every token.\citep{erc3009,x402compat}
+
+\subsection{Conservative budget accounting and safe release}
+For each root and session, the account maintains
+\begin{equation}\label{eq:ledger}
+ O_r=\sum_{p\in C_r} a_p,\qquad O_s=\sum_{p\in C_s}a_p,\qquad 0\le O_r\le B_r,\quad 0\le O_s\le B_s.
+\end{equation}
+Paid commitments remain in these sets. Pending, uncertain and canceled-or-consumed-unknown authorizations also remain occupied. Only an existing, unreleased commitment whose window has strictly expired and whose token nonce is unused can leave the sets. Release subtracts the same amount from both ledgers exactly once and preserves the used-step flag.
+
+This accounting is intentionally conservative. The token's used-nonce bit does not identify whether an authorization paid, was canceled or has insufficient observed evidence. A view callback also cannot maintain a reliable account-side paid counter for a facilitator that calls the token directly. The client therefore proves paid value from canonical token events and keeps it separate from occupancy.
+
+Reservation is not escrow. An owner withdrawal can reduce spendable cash while occupancy remains unchanged. Different roots can collectively authorize more than the wallet's balance, and each chain has an independent ledger. Failed inclusion or service delivery does not automatically refund budget, and gas is accounted for separately from token procurement.
+
+\subsection{HTTP request binding and compatibility boundaries}
+The deployed token authorization contains financial fields, not the service URL or request body. Registration links its digest to the approved request hash. The controlled merchant completes the binding by checking that its actual HTTP request and the received payment correspond to that stored commitment. An arbitrary merchant that does not perform this check cannot inherit an on-chain guarantee about the semantic purpose of an HTTP request.
+
+x402 v2 uses the payment-required, payment-signature and payment-response headers for the relevant request/response steps.\citep{x402} The implementation checks its configured route rather than accepting every scheme advertised in a catalog. Permit2, ERC-7710, counterfactual account deployment during settlement and arbitrary third-party facilitator combinations remain unsupported here. Bazaar supplies discovery metadata and cannot add a merchant or step to owner authority.\citep{bazaar}

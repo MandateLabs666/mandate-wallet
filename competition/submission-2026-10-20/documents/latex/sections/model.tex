@@ -1,0 +1,17 @@
+\section{System model and security objectives}\label{sec:model}
+\subsection{Entities, state and adversary}
+Fix a chain $c$, account $W$, owner $O$ and six-decimal asset $A$. A root $r$ has policy version $v_r$, budget $B_r$, maximum $M_r$, expiry $T_r$, occupancy $O_r$ and approved merchants and steps. Session $s$ has signer $K_s$, policy version, epoch $e_s$, budget $B_s$, maximum $M_s$, expiry $T_s$, occupancy $O_s$ and a step subset. Occupancy symbols $O_r,O_s$ are distinct from the owner identity $O$.
+
+A payment $p$ records root, policy version, session, epoch, step $k$, merchant, request and quote hashes, recipient, amount $a_p$, validity and nonce. Let $C_r$ and $C_s$ be registered commitments not safely released. Let $U(r,k)$ indicate a permanently used business step, and let $N(W,n)$ be the token's used-authorization state. Canonical chain transactions define transition order. A reverted operation changes no application state but may spend gas.
+
+The hostile agent host can change prompts, call the session signer directly, forge local application state, concurrently request actions, delay or suppress submissions and delete its local evidence. It may collude with a merchant over delivery. It cannot forge the owner key or alter a correctly executing account/token outside their normal interfaces. This distinction deliberately permits financial tests that bypass the SDK. Honest SDK behavior is not an assumption of on-chain budget safety.
+
+\subsection{Assumptions}
+ECDSA signatures and Keccak commitments must provide their intended authenticity and binding properties. The EVM must execute transactions atomically. The approved token must enforce its authorization nonce and amount, invoke the tested ERC-1271 route at actual settlement, and not maliciously upgrade its behavior. The wallet pins the token domain, not the token proxy's future implementation. A same-domain malicious token upgrade is outside the financial guarantee.
+
+The owner key and the owner's interpretation of the displayed administrative intent remain trusted. The selected RPCs and historical states must correspond to the claimed canonical chain. The account's immutability does not remove these external assumptions. The same-host evidence/controller implementation cannot assume its own protection from the administrator.
+
+\subsection{Objectives and non-objectives}
+The financial objectives are bounded root/session authorization, one business registration per step, binding of the concrete payment to approved scope, revocation at settlement, and conservative release. The accountability objective is to establish which disclosed observations correspond to that authorization and canonical payment, while distinguishing evidence integrity from independent source provenance.
+
+Availability, timely inclusion, refunds, merchant honesty, arbitrary result quality, secrecy of public-chain amounts, global limits on unobserved model calls and completeness of an unanchored history are separate objectives. The present release does not guarantee them. A missing observation can result from a crash or outage and does not by itself prove malicious suppression.

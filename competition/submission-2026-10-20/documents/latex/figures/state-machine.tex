@@ -1,0 +1,21 @@
+\begin{figure}[htbp]\centering
+\begin{adjustbox}{max width=\linewidth}
+\begin{tikzpicture}
+\node[box,minimum width=2cm] (draft) at (0,0) {draft};
+\node[box,minimum width=2cm] (reg) at (3.1,0) {registering};
+\node[box,minimum width=2cm] (res) at (6.2,0) {reserved};
+\node[box,minimum width=2cm] (pend) at (9.3,0) {pending};
+\node[box,minimum width=2cm] (paid) at (12.4,0) {paid};
+\node[box] (reject) at (3.1,-2) {rejected};
+\node[box] (release) at (6.2,-2) {released};
+\node[box] (unknown) at (9.3,-2) {consumed\_unknown};
+\node[box,text width=4.8cm] (service) at (12.4,-4.2) {Delivery\\returned / failed / unknown\\Result\\valid / invalid / unchecked};
+\draw[arr] (draft)--(reg);\draw[arr] (reg)--(res);\draw[arr] (res)--(pend);\draw[arr] (pend)--(paid);
+\draw[arr] (reg)--(reject);\draw[arr] (pend)--(unknown);
+\draw[arr] (res)--node[lab,left]{expired;\\nonce unused}(release);
+\draw[ret] (unknown.north east) to[out=50,in=-90] (paid.south);
+\node[lab] at (10.9,-.95) {payment\\confirmed};
+\draw[arr] (paid)--node[lab,right,pos=.7]{delivery / result}(service);
+\end{tikzpicture}\end{adjustbox}
+\caption{A projection of the durable purchase state machine. Payment, service and result are separate axes. The implementation also retains canceled token status and failed/unknown observations. A reconciliation edge is a state investigation, never permission to issue a new payment.}\label{fig:state}
+\end{figure}

@@ -1,0 +1,18 @@
+\begin{figure}[htbp]\centering
+\begin{adjustbox}{max width=\linewidth}
+\begin{tikzpicture}
+\foreach \x/\id/\txt in {0/a/{Claude\\agent},3.2/g/{Gateway\\durable store},6.4/m/{Controlled\\merchant},9.6/c/{Base Sepolia\\account / token},12.8/o/{Owner\\Rabby}}{
+\node[actor] (\id) at (\x,0) {\txt};\draw[lifeline] (\x,-.5)--(\x,-9.7);}
+\draw[arr] (6.4,-1)--node[lab,above]{1. Settle original payment}(9.6,-1);
+\draw[ret] (6.4,-1.9)--node[lab,above]{2. HTTP 500 after payment}(3.2,-1.9);
+\draw[ret] (3.2,-2.8)--node[lab,above]{3. paid / failed / unchecked}(0,-2.8);
+\draw[arr] (0,-3.7)--node[lab,above]{4. Retry same service}(3.2,-3.7);
+\draw[arr] (3.2,-4.6)--node[lab,above]{5. Reconcile original hash, nonce and events}(9.6,-4.6);
+\draw[arr] (3.2,-5.5)--node[lab,above]{6. Recover paid order}(6.4,-5.5);
+\draw[ret] (6.4,-6.4)--node[lab,above]{7. HTTP 200; no new settlement}(3.2,-6.4);
+\draw[arr] (12.8,-7.3)--node[lab,above]{8. Owner signs session revocation}(9.6,-7.3);
+\draw[arr] (0,-8.2)--node[lab,above]{9. Attempt unused step}(3.2,-8.2);
+\draw[ret] (3.2,-9.1)--node[lab,above]{10. Grant inactive; no new transaction}(0,-9.1);
+\end{tikzpicture}\end{adjustbox}
+\caption{Observed delivery recovery and subsequent owner revocation. An expired, never-settled commitment requires a different handling path, as described in the text. The video preserves that earlier history separately.}\label{fig:recovery}
+\end{figure}

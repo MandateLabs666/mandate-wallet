@@ -1,3 +1,5 @@
+> Current written report: [Security Self-assessment PDF](submission-2026-10-20/documents/mandate-wallet-security-self-assessment.pdf) and [LaTeX source](submission-2026-10-20/documents/latex/security.tex), expanded on 20 October 2026. This Markdown file is retained as an earlier summary and engineering index. The current report includes the detailed design and citations.
+
 # Mandate Wallet security self-assessment
 
 Mandate Labs | 20 October 2026 | Author assessment for a testnet engineering release

@@ -1,3 +1,5 @@
+> Current written report: [Execution Evidence PDF](submission-2026-10-20/documents/mandate-wallet-execution-evidence.pdf) and [LaTeX source](submission-2026-10-20/documents/latex/execution.tex), expanded on 20 October 2026. This Markdown file is retained as an earlier summary and engineering index. The current report includes the detailed design and citations.
+
 # Execution evidence
 
 Current presentation case: native Claude Desktop, external Rabby and Base Sepolia, recorded 19 October 2026. The main video picture edit is 4 minutes 50 seconds. User voice-over is pending. The merchant/facilitator are controlled fixtures and the statistics are fixed sample data.
