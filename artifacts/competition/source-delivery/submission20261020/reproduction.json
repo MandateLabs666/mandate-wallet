@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-20T04:55:05.888476+00:00",
+  "sourceCommit": "29d10422954d36f0e37c2d89336986d10d014aba",
+  "archiveSHA256": "dcd6c193102d3cd787f1a1b1b149471ef394ef887d09d565b9f90cb3c014d339",
+  "cleanDirectory": "/private/var/folders/f_/2883bgz93kd1j3dbr6xtb3cc0000gn/T/mandate-delivery-cxk44_93",
+  "initialPrivateRuntimeOrDependenciesPresent": false,
+  "publicSourceArchiveCacheSeeded": [
+    "x402",
+    "forge-std",
+    "openzeppelin-contracts",
+    "account-abstraction"
+  ],
+  "sharedHostToolchainAndPackageCache": true,
+  "privateRuntimeCopied": false,
+  "sourceFileHashesVerifiedBeforeBuild": 2963,
+  "commands": [
+    {
+      "phase": "bootstrap",
+      "command": [
+        "python3",
+        "scripts/bootstrap-sdk.py"
+      ],
+      "startedAt": "2026-10-20T04:55:05.935514+00:00",
+      "finishedAt": "2026-10-20T04:55:06.411194+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/submission20261020/bootstrap.txt",
+      "logSHA256": "ff6900507f322a2d4c7f3621d51172900cb90693365635863a47950f680c9392"
+    },
+    {
+      "phase": "install",
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "startedAt": "2026-10-20T04:56:26.010555+00:00",
+      "finishedAt": "2026-10-20T04:56:30.123934+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/submission20261020/install.txt",
+      "logSHA256": "e2ff38ba7127261ee895ac3a1c033749818aa0b2e8e02f81618411c5a6d878b4"
+    },
+    {
+      "phase": "build",
+      "command": [
+        "pnpm",
+        "sdk:build"
+      ],
+      "startedAt": "2026-10-20T04:56:30.124456+00:00",
+      "finishedAt": "2026-10-20T04:57:16.653178+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/submission20261020/build.txt",
+      "logSHA256": "c9abc460ee6025fa265316339d463e70252439b8b9550654f56a29209869a0a9"
+    },
+    {
+      "phase": "contracts",
+      "command": [
+        "pnpm",
+        "m3:test:contracts",
+        "--json"
+      ],
+      "startedAt": "2026-10-20T04:57:16.653707+00:00",
+      "finishedAt": "2026-10-20T04:57:18.688308+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/submission20261020/contracts.txt",
+      "logSHA256": "8b135362848daf4a751f809c32a0706a18573595d5fb019173c0cac50a2f632b"
+    },
+    {
+      "phase": "sdk-tests",
+      "command": [
+        "pnpm",
+        "m3:test",
+        "--reporter=json",
+        "--outputFile=artifacts/reproduction/sdk-tests.json"
+      ],
+      "startedAt": "2026-10-20T04:57:18.689262+00:00",
+      "finishedAt": "2026-10-20T04:57:20.769197+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/submission20261020/sdk-tests.txt",
+      "logSHA256": "0a842fffafd9679896f9b5bf7018e1c16360111746cea79385043b711047b042"
+    },
+    {
+      "phase": "service-tests",
+      "command": [
+        "pnpm",
+        "m4:test",
+        "--reporter=json",
+        "--outputFile=artifacts/reproduction/service-tests.json"
+      ],
+      "startedAt": "2026-10-20T04:57:20.769787+00:00",
+      "finishedAt": "2026-10-20T04:57:26.894493+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/submission20261020/service-tests.txt",
+      "logSHA256": "6b80c3cb9878aa0f3da531674f35b2062d84c1637fbdb06dcae8332c83ee1cd4"
+    },
+    {
+      "phase": "evidence-tests",
+      "command": [
+        "pnpm",
+        "m5:test",
+        "--reporter=json",
+        "--outputFile=artifacts/reproduction/evidence-tests.json"
+      ],
+      "startedAt": "2026-10-20T04:57:26.895195+00:00",
+      "finishedAt": "2026-10-20T04:57:29.723346+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/submission20261020/evidence-tests.txt",
+      "logSHA256": "34ca2fc8a82ac7b0d6f0ef246b3b86c69f72fe92987b5b322d63313c3abf4126"
+    },
+    {
+      "phase": "web-tests",
+      "command": [
+        "pnpm",
+        "m6:test",
+        "--reporter=json",
+        "--outputFile=artifacts/reproduction/web-tests.json"
+      ],
+      "startedAt": "2026-10-20T04:57:29.723952+00:00",
+      "finishedAt": "2026-10-20T04:57:34.105716+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/submission20261020/web-tests.txt",
+      "logSHA256": "d7093aead535053c167ec5a21b72f0163b4f4e2da6ee82fef7ae8edb9214eee5"
+    },
+    {
+      "phase": "operations-tests",
+      "command": [
+        "pnpm",
+        "m7:test",
+        "--reporter=json",
+        "--outputFile=artifacts/reproduction/operations-tests.json"
+      ],
+      "startedAt": "2026-10-20T04:57:34.106448+00:00",
+      "finishedAt": "2026-10-20T04:57:39.992342+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/submission20261020/operations-tests.txt",
+      "logSHA256": "a756487b533957de584cc5bb5f90d9c691eb6fb19482537617542be078d9c398"
+    },
+    {
+      "phase": "echo-bootstrap",
+      "command": [
+        "python3",
+        "scripts/bootstrap-echo-tests.py"
+      ],
+      "startedAt": "2026-10-20T04:57:39.993016+00:00",
+      "finishedAt": "2026-10-20T04:57:40.087795+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/submission20261020/echo-bootstrap.txt",
+      "logSHA256": "842d175ccfb25c07f76ab1480fe5b782bdecf501fd92ee30ab641fea3d4ffd7e"
+    },
+    {
+      "phase": "echo-contracts",
+      "command": [
+        "pnpm",
+        "m2:test:contracts",
+        "--json"
+      ],
+      "startedAt": "2026-10-20T04:57:40.088404+00:00",
+      "finishedAt": "2026-10-20T04:57:57.667861+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/submission20261020/echo-contracts.txt",
+      "logSHA256": "9a31fd70d3b29e2dcee08138a6868c2bfabad9f13aec308175e7bb3f1609aed4"
+    },
+    {
+      "phase": "echo-tests",
+      "command": [
+        "pnpm",
+        "m2:test",
+        "--reporter=json",
+        "--outputFile=artifacts/reproduction/echo-tests.json"
+      ],
+      "startedAt": "2026-10-20T04:57:57.670280+00:00",
+      "finishedAt": "2026-10-20T04:58:01.025433+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/submission20261020/echo-tests.txt",
+      "logSHA256": "ad56982e5bdddc51e6776b41a7ae773de5d75a196ebe7f33718839f68d3ac816"
+    },
+    {
+      "phase": "demo",
+      "command": [
+        "pnpm",
+        "sdk:demo",
+        "artifacts/reproduction/demo"
+      ],
+      "startedAt": "2026-10-20T04:58:01.026103+00:00",
+      "finishedAt": "2026-10-20T04:58:05.310021+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/submission20261020/demo.txt",
+      "logSHA256": "68cd616b98c35ba5d595ec604b59ccc8ea6bb30ad8468557e565d8bcf32f8495"
+    },
+    {
+      "phase": "onboarding-build",
+      "command": [
+        "pnpm",
+        "setup:build"
+      ],
+      "startedAt": "2026-10-20T04:58:05.310592+00:00",
+      "finishedAt": "2026-10-20T04:58:06.209054+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/submission20261020/onboarding-build.txt",
+      "logSHA256": "532c7d69efccb0db8ab50b002e3442c3f6e3ae8bfaebd5ccbd5dd0693c2313de"
+    },
+    {
+      "phase": "onboarding-tests",
+      "command": [
+        "pnpm",
+        "setup:test",
+        "--reporter=json",
+        "--outputFile=artifacts/reproduction/onboarding-tests.json"
+      ],
+      "startedAt": "2026-10-20T04:58:06.209630+00:00",
+      "finishedAt": "2026-10-20T04:58:12.221783+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/submission20261020/onboarding-tests.txt",
+      "logSHA256": "88f334eabbb3cd3679353de9b74d319faf30fc8007eb3241f30bc70870711db4"
+    },
+    {
+      "phase": "desktop-tests",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "--config",
+        "mandate/desktop/vitest.config.ts",
+        "--reporter=json",
+        "--outputFile=artifacts/reproduction/desktop-tests.json"
+      ],
+      "startedAt": "2026-10-20T04:58:12.222509+00:00",
+      "finishedAt": "2026-10-20T04:58:14.433731+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/submission20261020/desktop-tests.txt",
+      "logSHA256": "4a7b73fb9314a29c15333f0b7570dd5a23a46f5bde8cbb210f3906cc74b6e4fe"
+    }
+  ],
+  "newPublicTransactions": 0,
+  "allPassed": true,
+  "environmentRecovery": {
+    "reason": "Initial sandbox could not resolve the public npm registry; retry used approved network access with the same frozen lockfile and source directory.",
+    "failedAttempts": [
+      {
+        "phase": "install",
+        "command": [
+          "pnpm",
+          "install",
+          "--frozen-lockfile"
+        ],
+        "startedAt": "2026-10-20T04:55:06.411672+00:00",
+        "finishedAt": "2026-10-20T04:56:16.949032+00:00",
+        "exitCode": 1,
+        "log": "artifacts/competition/source-delivery/submission20261020/install.txt",
+        "logSHA256": "270c61201bfbb36ab91d9ccb017d57ac6ac4e876cddcbf4461842530db7d54ae",
+        "retainedLog": "artifacts/competition/source-delivery/submission20261020/install.sandbox-network.txt",
+        "retainedLogSHA256": "270c61201bfbb36ab91d9ccb017d57ac6ac4e876cddcbf4461842530db7d54ae"
+      }
+    ],
+    "privateRuntimeCopied": false
+  },
+  "finishedAt": "2026-10-20T04:58:14.438474+00:00",
+  "workspaceCorePackageResolvesInsideExtractedSource": true
+}

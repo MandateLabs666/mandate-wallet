@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "currentSourceCandidate": "artifacts/competition/source-delivery/submission20261020/reproduction.json",
+  "currentSourceCandidate": "artifacts/competition/source-delivery/submission20261020/acceptance.json",
   "kind": "20 October submission preparation; official submission not sent",
   "primary": {
     "report": "competition/TECHNICAL_REPORT.en.md",
@@ -105,11 +105,11 @@
   "latestNativeRabbyLocalFlow": "artifacts/m6/rabby-wallet/full-flow-r1/acceptance.json",
   "latestCreatedTaskFix": "artifacts/m6/created-task/r1/acceptance.json",
   "localWebPreview": {
-    "status": "implemented local UI iteration; human review pending",
+    "status": "Current local source included in accepted public code snapshot; hosted site remains an earlier revision",
     "origin": "http://127.0.0.1:18742",
     "evidence": "artifacts/m6/ui-refresh/r7-copy/acceptance.json",
     "publishedToSites": false,
-    "includedInCurrentSourceCandidate": false,
+    "includedInCurrentSourceCandidate": true,
     "currentHostedSiteUsesEarlierUI": true,
     "lastFullMaterialAuditBeforeThisIteration": "artifacts/competition/material-review/r15/acceptance.json",
     "visualReference": "Echo website; monochrome, silver and blue. Deye is guidance behavior only.",
@@ -128,9 +128,9 @@
       "manifest": "mandate/web/static/contracts-release.json",
       "license": "MIT",
       "archiveSHA256": "91dbc2d29ebaaf37985275c5dc3aeffbc84a1ff9eeb9a1f193243da06b8cb5ec",
-      "githubPublished": false,
-      "repository": null,
-      "awaiting": "User-specified GitHub repository; no remote configured",
+      "githubPublished": true,
+      "repository": "https://github.com/MandateLabs666/mandate-wallet",
+      "awaiting": null,
       "standaloneContractTestsPassed": 23
     },
     "interactiveWalkthrough": {
@@ -157,7 +157,7 @@
     },
     "previousBehaviorEvidence": "artifacts/m6/ui-refresh/r6/acceptance.json"
   },
-  "presentationAcceptance": "artifacts/competition/presentation-v4-copy/acceptance.json",
+  "presentationAcceptance": "competition/submission-2026-10-20/material-check.json",
   "editorialRevision": {
     "date": "2026-10-17",
     "evidence": "artifacts/editorial/2026-10-17/review.json",
@@ -167,8 +167,13 @@
     "fullMaterialAuditRefreshed": false,
     "finalSubmissionFrozen": false
   },
-  "sourceCandidateStatus": "public snapshot reproduction pending",
+  "sourceCandidateStatus": "16 clean-source phases passed; later material-only publication delta separately scanned",
   "currentNativeClaudeCase": "competition/video/claude-desktop-base-v1/execution-evidence/run.json",
   "videoVoiceOver": "pending user recording",
-  "currentNativeRabbyStatus": "Recorded Base Sepolia path passed; full usability/device gate remains open"
+  "currentNativeRabbyStatus": "Recorded Base Sepolia path passed; full usability/device gate remains open",
+  "sourceRepository": {
+    "url": "https://github.com/MandateLabs666/mandate-wallet",
+    "testedSourceCommit": "29d10422954d36f0e37c2d89336986d10d014aba",
+    "officialSubmissionSent": false
+  }
 }

@@ -135,4 +135,4 @@ Experiment sources: planning/M2_ACCEPTANCE.zh-CN.md, planning/M3_ACCEPTANCE.zh-C
 
 Current run: competition/video/claude-desktop-base-v1/execution-evidence/. Public standards and upstream references: https://www.x402.org/ , https://github.com/coinbase/x402 , https://eips.ethereum.org/EIPS/eip-1271 , https://eips.ethereum.org/EIPS/eip-3009 , https://eips.ethereum.org/EIPS/eip-712 .
 
-Competition requirements: https://www.ieee-cis-singapore.org/2026-fintechathon and the dated requirements records in artifacts/competition/. Testnet acceptance and the inconsistent optional/mandatory video wording remain organizer questions. The prepared package includes all requested categories, without claiming organizer approval or official submission.
+Competition requirements and remaining organizer questions are recorded in artifacts/competition/. Preparing this package does not constitute organizer approval or official submission.
