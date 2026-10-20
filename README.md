@@ -10,12 +10,30 @@ This is a testnet engineering project for the 2026 FinTechathon, Topic F: Agent 
 
 Use Node 24.x (at least 24.2), pnpm 11.25.0, Python 3.12+ and Foundry 1.5.1. Solidity is pinned to 0.8.26. No synchronized node or personal funds are needed for the local demo.
 
+Install these tools before running the project commands. If `node --version` or `npm --version` is unavailable, install [Node.js 24.x](https://nodejs.org/en/download) first and reopen the terminal. For a macOS or Linux shell without pnpm, install the pinned version into your user directory:
+
+```sh
+node --version
+npm --version
+npm install --global --prefix "$HOME/.local" pnpm@11.25.0
+export PATH="$HOME/.local/bin:$PATH"
+pnpm --version
+```
+
+The last command must print `11.25.0`. Add `export PATH="$HOME/.local/bin:$PATH"` to your shell startup file (`~/.zshrc` for zsh) to keep the command available in future terminals. This installation does not require `sudo`. npm places global executables under the selected [prefix's bin directory](https://docs.npmjs.com/cli/v11/configuring-npm/folders/#executables).
+
+Check `python3 --version`, `forge --version` and `anvil --version` as well. Install [Foundry 1.5.1](https://getfoundry.sh/introduction/installation/) if Forge or Anvil is missing; both are required to build and run the local demo. `bootstrap-sdk.py` verifies dependency source files only; it does not install Node.js, pnpm, Python or Foundry.
+
+Once the tools are available, run these commands from the repository root:
+
 ```sh
 python3 scripts/bootstrap-sdk.py
 CI=true pnpm install --frozen-lockfile
 pnpm sdk:build
 pnpm sdk:demo artifacts/reproduction/demo
 ```
+
+If bootstrap already printed the three successful source-verification records, resume at `CI=true pnpm install --frozen-lockfile`. `zsh: command not found: pnpm` means the shell cannot find the package manager; those source-verification records remain valid.
 
 To start the guided setup after building:
 

@@ -2,6 +2,18 @@
 
 环境要求为 Node 24.x（>=24.2）、pnpm 11.25.0、Python 3.12+ 和 Foundry 1.5.1，Solidity 固定为 0.8.26。在新目录中准备本仓库的完整源码和锁文件即可，无需复制 .runtime、node_modules 或私有报名材料。目前尚未发布 npm SDK，请按下方步骤从源码安装。
 
+首次使用时，先运行 `node --version` 和 `npm --version`。如果命令不存在，或 Node 版本不符合要求，请先安装 [Node.js 24.x](https://nodejs.org/en/download)，再重新打开终端。在 macOS 或 Linux 中，如果尚未安装 pnpm，可执行：
+
+```sh
+npm install --global --prefix "$HOME/.local" pnpm@11.25.0
+export PATH="$HOME/.local/bin:$PATH"
+pnpm --version
+```
+
+最后一条命令应输出 `11.25.0`。请同时将 `export PATH="$HOME/.local/bin:$PATH"` 加入终端启动文件；zsh 对应 `~/.zshrc`，否则新终端可能仍找不到 pnpm。此方式将程序安装到当前用户目录，无需 `sudo`。[npm 官方文档](https://docs.npmjs.com/cli/v11/configuring-npm/folders/#executables)说明了安装目录与 PATH 的关系。
+
+随后检查 `python3 --version`、`forge --version` 和 `anvil --version`。Python 应为 3.12 或以上；如缺少 Forge 或 Anvil，请先安装 [Foundry 1.5.1](https://getfoundry.sh/introduction/installation/)。下方的 bootstrap 命令仅下载并校验上游源码，不会安装上述开发工具。
+
 ## 从源码到有证据的采购
 
 在仓库根依次运行：
@@ -14,6 +26,8 @@ pnpm sdk:demo artifacts/sdk-demo
 ```
 
 bootstrap 下载指定版本的 x402、forge-std 和 OpenZeppelin 源码，核对源码包及逐文件 SHA，不执行上游 setup。install 按锁文件和现有供应链规则安装，不更新包版本。build 编译选定的官方 x402 包、正式合约、MCP、只读验证器和 Web 页面，不启动同步节点。
+
+如果 bootstrap 已输出三个上游项目的校验结果，随后出现 `zsh: command not found: pnpm`，请完成前面的 pnpm 安装和 PATH 设置，再从 `CI=true pnpm install --frozen-lockfile` 继续。已经通过的源码校验无需重跑。
 
 demo 会启动临时 Anvil，部署六位小数的 TestUSDC 和正式 MandateAccount，将总预算设为 0.15、单笔上限设为 0.10，并批准两个受限会话。测试商户、最小 Agent 和 CLI 分别在独立进程运行，服务收费为 0.01 测试 USDC。
 
