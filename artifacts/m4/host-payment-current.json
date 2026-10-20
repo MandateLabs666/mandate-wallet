@@ -1,0 +1,79 @@
+{
+  "observedAt": "2026-10-14T18:18:08.965Z",
+  "modelPurchases": [
+    {
+      "host": "codex",
+      "stepId": "0xad542662e39d192880a73087090e9a6a35811d34b495333ce98a5f8a0b28fd04",
+      "sessionId": "0xb96eebda3770b89e987dfc1cd73117e6f57ae9f63d1cdfa67c6c00fb0f4bbf19",
+      "nonce": "0xdb5acbf17abfbb7c93fb615a5cd306d4e7f20dd6ecd5960efa8009c4fda4d79b",
+      "valueAtomic": "10000",
+      "settlementHash": "0x4dfb872ab0b5169436074ed890b28a5a4e6728cb260905a6e75bd915bb30431f",
+      "paymentProven": true,
+      "resultSummary": {
+        "datasetId": "mandate-fixed-fixture-v2",
+        "asset": "ETH",
+        "count": 3,
+        "mean": 110
+      },
+      "modelTaskPassed": true
+    },
+    {
+      "host": "claude",
+      "stepId": "0xf7de6d99633448bc88b2524abe9433863d0ad2be6a1c2e95583c1157fc8e7aa9",
+      "sessionId": "0x319c1f48235a58cce504e15058e43fe37995d915030a840de4cf67b85b23f9ca",
+      "nonce": "0xee1d86eb26ab74528234818bd823b624456022382fccddf58ab169fcbe688e5a",
+      "valueAtomic": "10000",
+      "settlementHash": "0x5d9c651fea4673b66cb28b462c8a81be3eb45c12cd3d66a6c3ab12962053d27a",
+      "paymentProven": true,
+      "resultSummary": {
+        "datasetId": "mandate-fixed-fixture-v2",
+        "asset": "BTC",
+        "count": 3,
+        "mean": 220
+      },
+      "modelTaskPassed": true
+    }
+  ],
+  "receiptChecks": [
+    {
+      "host": "codex",
+      "hash": "0xfc1749f6bdf7291474eeb724e0bc5bcdb14db3b97d42ea63fae6fd82fe8b6163",
+      "blockHash": "0xc5ee616928d8ffa98956b7fabaf8b70e1c0f8366319565657e1e5f17ca446398",
+      "blockNumber": "48113954",
+      "status": "success",
+      "logsEqual": true
+    },
+    {
+      "host": "codex",
+      "hash": "0x4dfb872ab0b5169436074ed890b28a5a4e6728cb260905a6e75bd915bb30431f",
+      "blockHash": "0x48bdb1f2c13ff1eee6be70aa79ff026ccbbfeaabe7b8c227ce847a52296ffb9b",
+      "blockNumber": "48113961",
+      "status": "success",
+      "logsEqual": true
+    },
+    {
+      "host": "claude",
+      "hash": "0xbd0c3ef76fdd3661af655cac979623c3f9e3379946ac162b65e9c8072660f930",
+      "blockHash": "0x469f3f390b9bc50f37bd1c5f8b8ec847ae253cfe36cfed28e123f1fc140690bb",
+      "blockNumber": "48113952",
+      "status": "success",
+      "logsEqual": true
+    },
+    {
+      "host": "claude",
+      "hash": "0x5d9c651fea4673b66cb28b462c8a81be3eb45c12cd3d66a6c3ab12962053d27a",
+      "blockHash": "0x675ee21cbce6f0cecd18ffd6a170d36464429fee1e0bab14e3ab7a7ad4d04cf8",
+      "blockNumber": "48113960",
+      "status": "success",
+      "logsEqual": true
+    }
+  ],
+  "gatePassed": true,
+  "latest": {
+    "rootOccupiedAtomic": "40000",
+    "rootAvailableAtomic": "110000",
+    "walletBalanceAtomic": "10000",
+    "pipelinePaidAtomic": "20000",
+    "modelHostsPaidAtomic": "20000"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "m2.rpc-readiness.v2",
+  "recordedAt": "2026-10-14T13:03:53.345Z",
+  "route": "third-party-rpc",
+  "primaryRpc": "https://ethereum-sepolia-rpc.publicnode.com",
+  "witnessRpc": "https://sepolia.drpc.org",
+  "traceRpc": "https://sepolia.drpc.org",
+  "chainId": 11155111,
+  "syncing": false,
+  "latestFresh": true,
+  "finalizedAnchorMatches": true,
+  "providers": [
+    {
+      "rpc": "https://ethereum-sepolia-rpc.publicnode.com",
+      "chainId": 11155111,
+      "latestBlock": "11913429",
+      "latestTimestamp": "1791983028",
+      "finalizedBlock": "11913357",
+      "finalizedHash": "0x26a312547b2399f2a2289d47e3970a0a8cb5154774889a9877fa7c4bb23058c8"
+    },
+    {
+      "rpc": "https://sepolia.drpc.org",
+      "chainId": 11155111,
+      "latestBlock": "11913429",
+      "latestTimestamp": "1791983028",
+      "finalizedBlock": "11913357",
+      "finalizedHash": "0x26a312547b2399f2a2289d47e3970a0a8cb5154774889a9877fa7c4bb23058c8"
+    }
+  ],
+  "anchor": {
+    "number": "11913357",
+    "hash": "0x26a312547b2399f2a2289d47e3970a0a8cb5154774889a9877fa7c4bb23058c8"
+  },
+  "trace": {
+    "error": null,
+    "marker": "mandate-m2-js-trace",
+    "output": "0x000000000000000000000000000000000000000000000000000000000000002a"
+  },
+  "trustModel": "Provider-reported finalized blocks cross-checked at one height; no independently synced consensus client.",
+  "ready": true
+}

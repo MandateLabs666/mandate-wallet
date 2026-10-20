@@ -1,0 +1,6 @@
+{
+  "environment": "LOCAL_GETH_DEV",
+  "reason": "fresh validation failures re-added to outstanding queue; stale nonce blocked next valid session",
+  "publicGatePassed": false,
+  "fix": "explicit removeOutstanding=true on validation failure; retain strict checks"
+}

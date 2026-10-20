@@ -1,0 +1,81 @@
+{
+  "environment": "BASE_SEPOLIA_NATIVE_USDC",
+  "record": {
+    "key": "84532:0xcf818a1ec81b28826e941ca6ea800467f1398399:0xb7aa00313952bb1c356e2695708e0e46fb595c26934588c8e070b26ed303a53d:0xe0dcd06f0c96f2f1e9c736b3e4ec06ebb43b7a40982b232a77d833cf1eaf5efd",
+    "nonce": "0x25e7b03190ce88f1b9020fd1e3bb8a67e35856bd9d2dc4cad8ce98679cf1369b",
+    "digest": "0x0f12fd148dd7f919d73ed57d63852b95cfbfece0eff63986f2bedc864c2afa51",
+    "mandateId": "0xb7aa00313952bb1c356e2695708e0e46fb595c26934588c8e070b26ed303a53d",
+    "stepId": "0xe0dcd06f0c96f2f1e9c736b3e4ec06ebb43b7a40982b232a77d833cf1eaf5efd",
+    "chainId": 84532,
+    "wallet": "0xCf818a1EC81B28826E941Ca6EA800467f1398399",
+    "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+    "url": "http://127.0.0.1:9010/stats?asset=ETH",
+    "requestHash": "0xb48ff3aa780526495920e7b2c6112aa4ca5a5d29a8c23351045014e789dcd425",
+    "quoteHash": "0xa0b3f77cbda7b493dc9fb5f46e26aae26eadbe874a72a9c265df8f2eed04a1ef",
+    "requirements": {
+      "scheme": "exact",
+      "network": "eip155:84532",
+      "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+      "amount": "100000",
+      "payTo": "0x5957a844D78516d8A0Ad11C06516777Ea82917Ac",
+      "maxTimeoutSeconds": 300,
+      "extra": {
+        "name": "USDC",
+        "version": "2"
+      }
+    },
+    "payload": {
+      "x402Version": 2,
+      "resource": {
+        "url": "http://127.0.0.1:9010/stats?asset=ETH",
+        "description": "Fixed public dataset statistics; not live market data",
+        "mimeType": "application/json"
+      },
+      "accepted": {
+        "scheme": "exact",
+        "network": "eip155:84532",
+        "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+        "amount": "100000",
+        "payTo": "0x5957a844D78516d8A0Ad11C06516777Ea82917Ac",
+        "maxTimeoutSeconds": 300,
+        "extra": {
+          "name": "USDC",
+          "version": "2"
+        }
+      },
+      "payload": {
+        "authorization": {
+          "from": "0xCf818a1EC81B28826E941Ca6EA800467f1398399",
+          "to": "0x5957a844D78516d8A0Ad11C06516777Ea82917Ac",
+          "value": "100000",
+          "validAfter": "0",
+          "validBefore": "1791883752",
+          "nonce": "0x25e7b03190ce88f1b9020fd1e3bb8a67e35856bd9d2dc4cad8ce98679cf1369b"
+        },
+        "signature": "0x38c789c3ed5ddb91db49753da9b7bedcf516f77a12b5b1c8668ca3faa73907e12c55f0efb2801acc2f762b37ffc7b8f5d8e3cf24f5fab9684f799620e5f03eff1c"
+      }
+    },
+    "proof": {
+      "schemaVersion": 1,
+      "mandateId": "0xb7aa00313952bb1c356e2695708e0e46fb595c26934588c8e070b26ed303a53d",
+      "stepId": "0xe0dcd06f0c96f2f1e9c736b3e4ec06ebb43b7a40982b232a77d833cf1eaf5efd",
+      "wallet": "0xCf818a1EC81B28826E941Ca6EA800467f1398399",
+      "chainId": 84532,
+      "nonce": "0x25e7b03190ce88f1b9020fd1e3bb8a67e35856bd9d2dc4cad8ce98679cf1369b",
+      "paymentDigest": "0x0f12fd148dd7f919d73ed57d63852b95cfbfece0eff63986f2bedc864c2afa51",
+      "requestHash": "0xb48ff3aa780526495920e7b2c6112aa4ca5a5d29a8c23351045014e789dcd425",
+      "quoteHash": "0xa0b3f77cbda7b493dc9fb5f46e26aae26eadbe874a72a9c265df8f2eed04a1ef",
+      "registrationSignature": "0x3c8063bafeb1abd348093fdef294b131bfe9610de98422a081791ecf7868253b6aaf973a39503c9ef38a62ce215fe52194f2e04367c16a87f95ba9e0b7ba39d21b",
+      "evidenceSource": "local"
+    },
+    "paymentState": "reserved",
+    "serviceState": "not_requested",
+    "resultState": "unchecked",
+    "registrationTx": "0x67cc605d40c4d24832b63df9b71674211fac3f0929a6e41c85d9b3784ed8634c"
+  },
+  "verified": {
+    "isValid": true,
+    "payer": "0xCf818a1EC81B28826E941Ca6EA800467f1398399"
+  },
+  "beforeRevokeBalance": "100000"
+}

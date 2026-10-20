@@ -1,0 +1,117 @@
+{
+  "exitCode": 0,
+  "report": {
+    "schemaVersion": 2,
+    "observedAt": "2026-10-15T06:25:41.733Z",
+    "checks": [
+      {
+        "name": "checkpoint-integrity",
+        "status": "confirmed",
+        "source": "session-signatures-and-salted-Merkle",
+        "guarantee": "Disclosed fields match signed ordered checkpoints; hidden fields are not checked",
+        "facts": {
+          "checkpoints": 4
+        }
+      },
+      {
+        "name": "request",
+        "status": "incomplete",
+        "source": "hidden-request",
+        "guarantee": "Only the owner-approved request hash is checked",
+        "code": "REQUEST_BODY_NOT_DISCLOSED"
+      },
+      {
+        "name": "action-proof",
+        "status": "confirmed",
+        "source": "session-evidence-signature",
+        "guarantee": "Evidence checkpoint is cross-linked to exact registration/payment digests; it is not an on-chain session-root gate"
+      },
+      {
+        "name": "registration-and-authority",
+        "status": "confirmed",
+        "source": "canonical-registration-and-pinned-wallet-code",
+        "guarantee": "Exact transaction, session signature, owner scope, validity and budget checks at the registration block",
+        "facts": {
+          "registrationHash": "0x889854d42bdcd08f647d198d14fb9a067d5c2f99cc0fa5c660acff31781b17d6",
+          "blockHash": "0x6f449b56ead881b6e268a5ae35d4a317965ef4a84ac73b3e9ba764d56f95fa6c",
+          "providers": 1
+        }
+      },
+      {
+        "name": "budget",
+        "status": "confirmed",
+        "source": "all-root-registration-events-and-current-commitments",
+        "guarantee": "Recomputed occupied funds include paid and unresolved commitments; released commitments are excluded",
+        "facts": {
+          "occupiedAtomic": "100000",
+          "budgetAtomic": "150000",
+          "registrations": 1
+        }
+      },
+      {
+        "name": "payment",
+        "status": "confirmed",
+        "source": "canonical-token-AuthorizationUsed-and-matching-Transfer",
+        "guarantee": "Actual payer, recipient, nonce and amount agree; delivery remains a separate check",
+        "facts": {
+          "transaction": "0xaf17962243d6d0daa3ec29562c0741d701d2d65ec63087e9fe244231a98ed7e0",
+          "paidAtomic": "100000",
+          "providers": 1
+        }
+      },
+      {
+        "name": "merchant-offer",
+        "status": "confirmed",
+        "source": "owner-bound-merchant-EIP712",
+        "guarantee": "Merchant signed the disclosed payment terms; this is not a TLS transcript proof"
+      },
+      {
+        "name": "merchant-receipt",
+        "status": "confirmed",
+        "source": "owner-bound-merchant-EIP712",
+        "guarantee": "Merchant signed its receipt claim; amount/request/result-body are not covered",
+        "facts": {
+          "correlation": "merchant-claim-with-transaction",
+          "coversPaymentAmount": false,
+          "coversRequestBody": false,
+          "coversResultBody": false
+        }
+      },
+      {
+        "name": "result",
+        "status": "incomplete",
+        "source": "hidden-result",
+        "guarantee": "Hidden payload has not been checked",
+        "code": "RESULT_NOT_DISCLOSED"
+      },
+      {
+        "name": "https-source",
+        "status": "incomplete",
+        "source": "no-independent-HTTPS-witness",
+        "guarantee": "Session signatures and merchant identity configuration do not prove the TLS session",
+        "code": "HTTPS_WITNESS_NOT_PROVIDED"
+      },
+      {
+        "name": "history-completeness",
+        "status": "incomplete",
+        "source": "no-external-checkpoint-comparison",
+        "guarantee": "A valid local prefix does not prove that an unanchored tail was not suppressed",
+        "code": "EXTERNAL_ANCHOR_NOT_PROVIDED"
+      }
+    ],
+    "requiredChecksPassed": true,
+    "overall": "incomplete",
+    "limits": [
+      "RPC data is trusted; two agreeing providers are not an independent consensus proof.",
+      "Session signatures authenticate claimed observations, not HTTPS source truth or a complete history.",
+      "The deployed wallet enforces request/quote hashes and financial scope, not the entire session root.",
+      "Merchant receipts do not sign payment amount, request body or result body."
+    ]
+  },
+  "privateRuntimeInputs": [],
+  "processSeparate": true,
+  "managementIsolation": false,
+  "bytes": 20968,
+  "elapsedMs": 231.37016700000095,
+  "excludedFromPrimaryTiming": true
+}

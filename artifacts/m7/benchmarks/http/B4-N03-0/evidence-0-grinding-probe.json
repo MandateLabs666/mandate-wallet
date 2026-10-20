@@ -1,0 +1,102 @@
+{
+  "responses": [
+    {
+      "schemaVersion": 2,
+      "envelopeHash": "0xf0f5784e854bcc3bda25a493aa6dd6db5150cabb8c51eb988921477fd0e9382d",
+      "requestId": "0xf13ecad95de71b02730b6994c6065d069d7d44752c8ba33da46fbaa17f1eab90",
+      "kind": "query",
+      "outcome": "completed",
+      "code": "CONTROLLED_QUERY_COMPLETED",
+      "observedAt": 1792045524,
+      "controller": "0x976EA74026E726554dB657fA54763abd0C3a0aa9",
+      "details": {
+        "resultDigest": "0xc56d67021839607d511276b0a6f2116390715ae56332c0475cd10c53cb692ee3",
+        "charged": true
+      },
+      "signature": "0xe3d18a4293fe7da8186a9c97c515a26e73e7064403f72819d1133ec8645aee341fc90cbaa82bc54335b95157b67bb2fd2b23bd634c76ba96f2815e77f07d6fda1b"
+    },
+    {
+      "schemaVersion": 2,
+      "envelopeHash": "0xf0f5784e854bcc3bda25a493aa6dd6db5150cabb8c51eb988921477fd0e9382d",
+      "requestId": "0x4a3994af82c7f409fe6b7d7585b0207e1a4739adf125611fa0fd5782990f763f",
+      "kind": "query",
+      "outcome": "completed",
+      "code": "CONTROLLED_QUERY_COMPLETED",
+      "observedAt": 1792045524,
+      "controller": "0x976EA74026E726554dB657fA54763abd0C3a0aa9",
+      "details": {
+        "resultDigest": "0xc56d67021839607d511276b0a6f2116390715ae56332c0475cd10c53cb692ee3",
+        "charged": true
+      },
+      "signature": "0x8b73e53320a7338311e9913fb0f860ca6cbd9c05df16107c3a85197afdbca852425142aad6292284d10e32b47dd34df47e7b5ba219605ea37c233828b67e45f11c"
+    },
+    {
+      "schemaVersion": 2,
+      "envelopeHash": "0xf0f5784e854bcc3bda25a493aa6dd6db5150cabb8c51eb988921477fd0e9382d",
+      "requestId": "0xab46afdb55c821cacf904123d6bab67c6868ae9466497e119cf5c03223f49d50",
+      "kind": "query",
+      "outcome": "rejected",
+      "code": "CONTROLLER_QUERY_BUDGET_EXHAUSTED",
+      "observedAt": 1792045524,
+      "controller": "0x976EA74026E726554dB657fA54763abd0C3a0aa9",
+      "details": {},
+      "signature": "0xc91a1567aa5386ad7bb63f3f457acef72e5a8fb77bf936cc66513c83fb7f210b755ac400721ab4545d229d641ac8067794a0b9892dd025d2a2364ef628c89ca31b"
+    }
+  ],
+  "inspection": {
+    "schemaVersion": 2,
+    "envelopeHash": "0xf0f5784e854bcc3bda25a493aa6dd6db5150cabb8c51eb988921477fd0e9382d",
+    "scope": {
+      "chainId": 31337,
+      "wallet": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+      "mandateId": "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37",
+      "sessionId": "0x61f0ffa6b310744fb2869aa8b49390b907440c17341f41afc5971aac5aae9f40",
+      "policyVersion": "1",
+      "sessionEpoch": "1",
+      "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+    },
+    "mode": "live",
+    "now": 1792045524,
+    "anchors": [
+      {
+        "sequence": "0",
+        "root": "0xc117be478c10129666690da91969627e26d0518579d8b0e2519626c07215de37",
+        "stepId": "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e",
+        "kind": "pre-payment"
+      },
+      {
+        "sequence": "1",
+        "root": "0x131b83741875a15fcf55f17dde9c7bd322e5cc8fbcdfacff353c27d77f0e3256",
+        "stepId": "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e",
+        "kind": "registration"
+      },
+      {
+        "sequence": "2",
+        "root": "0xf59a121f55b951348525ab2bd39792197c9ba1fa57c296df6c9fcf4d8ef69b52",
+        "stepId": "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e",
+        "kind": "payment"
+      },
+      {
+        "sequence": "3",
+        "root": "0x0987b5f3aff5b28ac5d761ff148a1213114b6b53b85c6b3c9fa9529460b3e3eb",
+        "stepId": "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e",
+        "kind": "service"
+      },
+      {
+        "sequence": "4",
+        "root": "0x18e2c80a6e79ee07e852987c3cdf3ea81caa8bd1e81c5325407766fbea20aabd",
+        "stepId": "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e",
+        "kind": "decision"
+      }
+    ],
+    "queries": [
+      {
+        "step_id": "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e",
+        "charged": 3
+      }
+    ],
+    "alerts": []
+  },
+  "excludedFromPrimaryTiming": true,
+  "limitation": "limits this controller envelope only; out-of-band calls remain outside its guarantee"
+}

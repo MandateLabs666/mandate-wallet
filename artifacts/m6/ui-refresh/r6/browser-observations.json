@@ -1,0 +1,43 @@
+{
+  "surface": "Codex in-app browser; existing local port 18742",
+  "suppliedIssue": "Services page blocked at quote guidance and guide panel flashing.",
+  "diagnosis": "Scroll-driven automatic collapse changed the document height and fed back into the sticky/scroll-position condition. Quote/run actions were below long account explanations and service details.",
+  "beforeMeasurements": [
+    "before-scroll-flicker.json",
+    "before-tall-viewport.json"
+  ],
+  "beforeContinuousFlickerVideoRecorded": false,
+  "stableGuideHeightAcrossNativeScroll": true,
+  "nativeScrollPasses": 4,
+  "guideAnimation": "none",
+  "manualDetailsRemainExpandedDuringScroll": true,
+  "locateCollapsesDetailsExplicitly": true,
+  "unobscuredTargetCases": 8,
+  "selectedBTCTargetMatched": true,
+  "quoteRemainsOnDataRefresh": true,
+  "localActualFlow": {
+    "network": "Anvil 31337",
+    "asset": "mintable mock USDC",
+    "quotedAndPaidAtomic": "10000",
+    "service": "ETH statistics",
+    "firstDelivery": "controlled service failure after payment",
+    "recovery": "same original order, nonce and transaction; no second charge",
+    "finalDelivery": "returned",
+    "result": "valid",
+    "verification": "Required financial/record checks passed; HTTPS origin and unobserved history remain incomplete"
+  },
+  "newLocalTestPurchases": 1,
+  "additionalBTCQuoteWasUnpaid": true,
+  "testFixtureRegenerated": false,
+  "ownerAuthorizationChanged": false,
+  "externalWalletOpened": false,
+  "newPublicTransactions": 0,
+  "consolePageErrorsObserved": [],
+  "resolvedDuringQA": [
+    "Quote address widened a 320px grid; fixed intrinsic sizing and address wrapping.",
+    "Immediate target placement eliminates intermediate offscreen target positions during animated long scrolls.",
+    "Added an explicit optional-quote guard found by TypeScript."
+  ],
+  "physicalDeviceTested": false,
+  "humanUAT": false
+}

@@ -1,0 +1,19 @@
+[profile.default]
+solc_version = "0.8.26"
+evm_version = "cancun"
+optimizer = true
+optimizer_runs = 200
+via_ir = true
+src = "src"
+test = "test"
+libs = ["../../contracts/lib"]
+remappings = ["forge-std/=../../contracts/lib/forge-std/src/", "@openzeppelin/contracts/=../../contracts/lib/openzeppelin-contracts/contracts/", "m1-fixtures/=../../contracts/src/"]
+
+[profile.default.fuzz]
+runs = 10001
+seed = "0x4022028"
+
+[profile.default.invariant]
+runs = 128
+depth = 64
+fail_on_revert = true

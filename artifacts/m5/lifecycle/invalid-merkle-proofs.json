@@ -1,0 +1,16 @@
+{
+  "seed": "0x04022029",
+  "generator": "xorshift32; choose existing disclosure and one of eight mutations",
+  "samples": 10000,
+  "rejected": 10000,
+  "rules": {
+    "different-value": 1287,
+    "different-salt": 1253,
+    "different-index": 1237,
+    "different-name": 1238,
+    "different-sibling": 1244,
+    "wrong-path-length": 1205,
+    "wrong-leaf-count": 1295,
+    "unknown-schema-field": 1241
+  }
+}

@@ -1,0 +1,445 @@
+/**
+ * UserOpBuilder — assembles and submits ERC-4337 PackedUserOperations.
+ *
+ * Gas payment: Pimlico Verifying Paymaster (pm_sponsorUserOperation).
+ * Users do not need ETH on the EOA for gas when paymaster sponsors.
+ *
+ * Pipeline:
+ *   1. Wrap inner swap calldata → EchoDelegationModule.execute() outer call (ERC-7579 layout)
+ *   2. Fetch nonce from EntryPoint
+ *   3. Call pm_sponsorUserOperation → paymasterAndData + gas estimates
+ *   4. Attach signature (execute key or session key from KeyStore)
+ *   5. eth_sendUserOperation → userOpHash
+ *   6. Poll eth_getUserOperationReceipt → txHash
+ *
+ * callData layout (matches EchoPolicyValidator offsets):
+ *   [0:4]     execute() selector
+ *   [4:36]    mode = bytes32(0) = CALLTYPE_SINGLE
+ *   [36:68]   ABI offset to executionCalldata
+ *   [68:100]  length of executionCalldata
+ *   [100:120] target (20 bytes packed)
+ *   [120:152] value = 0 (uint256)
+ *   [152:...]  innerCalldata (exactInputSingle / exactOutputSingle)
+ */
+
+import {
+  createPublicClient,
+  http,
+  encodeFunctionData,
+  encodePacked,
+  numberToHex,
+  pad,
+  toHex,
+  hexToBigInt,
+} from 'viem';
+import { sepolia } from 'viem/chains';
+import type { Address, Hex, PublicClient, SignedAuthorization } from 'viem';
+
+// ── Constants ──────────────────────────────────────────────────────────────
+
+const ENTRY_POINT_V07 = '0x0000000071727De22E5E9d8BAf0edAc6f37da032' as const;
+
+/** ERC-7579 CALLTYPE_SINGLE mode = bytes32(0) */
+const CALLTYPE_SINGLE = ('0x' + '00'.repeat(32)) as Hex;
+
+/** Pad gas estimate by 20% to reduce revert risk */
+const GAS_OVERHEAD_FACTOR = 120n;
+const GAS_OVERHEAD_DENOM  = 100n;
+
+/** Polling config */
+const POLL_INITIAL_DELAY_MS = 2_000;
+const POLL_MAX_ATTEMPTS     = 10;
+const POLL_BACKOFF_FACTOR   = 1.5;
+
+// ── ABIs ───────────────────────────────────────────────────────────────────
+
+const ACCOUNT_EXECUTE_ABI = [
+  {
+    name: 'execute',
+    type: 'function',
+    stateMutability: 'payable',
+    inputs: [
+      { name: 'mode',               type: 'bytes32' },
+      { name: 'executionCalldata',  type: 'bytes'   },
+    ],
+    outputs: [],
+  },
+] as const;
+
+const ENTRY_POINT_ABI = [
+  {
+    name: 'getNonce',
+    type: 'function',
+    stateMutability: 'view',
+    inputs: [
+      { name: 'sender', type: 'address' },
+      { name: 'key',    type: 'uint192' },
+    ],
+    outputs: [{ name: '', type: 'uint256' }],
+  },
+] as const;
+
+// ── Types ──────────────────────────────────────────────────────────────────
+
+export interface UserOpBuilderConfig {
+  rpcUrl:       string;
+  pimlicoUrl:   string;  // https://api.pimlico.io/v2/sepolia/rpc?apikey=KEY
+}
+
+export interface SubmitResult {
+  userOpHash: Hex;
+  txHash:     Hex;
+}
+
+/**
+ * EIP-7702 authorization object for Pimlico `eth_sendUserOperation` / `pm_sponsorUserOperation`
+ * (field name `eip7702Auth`). See Pimlico bundler reference.
+ */
+export type BundlerEip7702Auth = {
+  address:   Address;
+  chainId:   Hex;
+  nonce:     Hex;
+  r:         Hex;
+  s:         Hex;
+  yParity:   Hex;
+  /** Some bundlers accept an additional `v`; optional when using yParity. */
+  v?:        Hex | string;
+};
+
+export interface SubmitOptions {
+  /** When sender is an EIP-7702 EOA, bundler requires the signed authorization (delegate = EchoDelegationModule). */
+  eip7702Auth?: BundlerEip7702Auth;
+}
+
+/** Serialize viem `signAuthorization` output for Pimlico JSON-RPC. */
+export function signedAuthorizationToBundlerEip7702Auth(
+  auth: SignedAuthorization,
+): BundlerEip7702Auth {
+  return {
+    address: auth.address,
+    chainId: numberToHex(auth.chainId),
+    nonce:   numberToHex(auth.nonce),
+    r: auth.r
+      ? numberToHex(BigInt(auth.r), { size: 32 })
+      : pad('0x', { size: 32 }),
+    s: auth.s
+      ? numberToHex(BigInt(auth.s), { size: 32 })
+      : pad('0x', { size: 32 }),
+    yParity: auth.yParity !== undefined && auth.yParity !== null
+      ? numberToHex(auth.yParity, { size: 1 })
+      : pad('0x', { size: 32 }),
+  };
+}
+
+/** Minimal PackedUserOperation struct (EntryPoint v0.7) */
+interface PackedUserOp {
+  sender:               Address;
+  nonce:                Hex;
+  initCode:             Hex;
+  callData:             Hex;
+  accountGasLimits:     Hex;  // abi.encodePacked(verificationGasLimit, callGasLimit)
+  preVerificationGas:   Hex;
+  gasFees:              Hex;  // abi.encodePacked(maxPriorityFeePerGas, maxFeePerGas)
+  paymaster:            Address | null;
+  paymasterData:        Hex;
+  paymasterVerificationGasLimit: Hex;
+  paymasterPostOpGasLimit:       Hex;
+  signature:            Hex;
+  eip7702Auth?:         BundlerEip7702Auth;
+}
+
+// ── UserOpBuilder ──────────────────────────────────────────────────────────
+
+export class UserOpBuilder {
+  private readonly publicClient: PublicClient;
+  private readonly pimlicoUrl:   string;
+
+  constructor(config: UserOpBuilderConfig) {
+    this.publicClient = createPublicClient({
+      chain:     sepolia,
+      transport: http(config.rpcUrl),
+    });
+    this.pimlicoUrl = config.pimlicoUrl;
+  }
+
+  // ── Public API ─────────────────────────────────────────────────────────
+
+  /**
+   * Build, sponsor, sign and submit a UserOperation.
+   *
+   * @param senderEoa    User EOA — must match UserOperation.sender (EIP-7702 delegated to EchoDelegationModule)
+   * @param target       Uniswap V3 SwapRouter address
+   * @param innerCalldata  ABI-encoded exactInputSingle / exactOutputSingle
+   * @param signature    Pre-built Echo signature ([0x03][executeKey] realtime, or [0x02][sessionId][sessionKey])
+   * @param options      Optional `eip7702Auth` for Pimlico when submitting from a 7702 EOA
+   */
+  async submit(
+    senderEoa:     Address,
+    target:        Address,
+    innerCalldata: Hex,
+    signature:     Hex,
+    options?:      SubmitOptions,
+  ): Promise<SubmitResult> {
+
+    // Step 1: Wrap innerCalldata into EchoDelegationModule.execute() calldata (ERC-7579 layout)
+    const outerCalldata = this._buildOuterCalldata(target, innerCalldata);
+
+    // Step 2: Fetch nonce from EntryPoint (sender = EOA)
+    const nonce = await this._getNonce(senderEoa);
+
+    // Step 3: Fetch recommended fees for this user operation
+    const gasPrice = await this._rpc<{
+      fast: {
+        maxFeePerGas: Hex;
+        maxPriorityFeePerGas: Hex;
+      };
+    }>('pimlico_getUserOperationGasPrice', []);
+
+    // Step 4: Build a partial UserOp (gas estimation will fill in gas limits + paymaster)
+    const partialOpGasFees = this._packUint128x2(
+      hexToBigInt(gasPrice.fast.maxPriorityFeePerGas),
+      hexToBigInt(gasPrice.fast.maxFeePerGas),
+    );
+
+    // Step 5: Build a partial UserOp (no gas fields yet, placeholder signature)
+    const partialOp: PackedUserOp = {
+      sender:             senderEoa,
+      nonce:              toHex(nonce),
+      initCode:           '0x',
+      callData:           outerCalldata,
+      accountGasLimits:   ('0x' + '00'.repeat(32)) as Hex,  // filled by sponsor
+      preVerificationGas: '0x0',                     // filled by sponsor
+      gasFees:            partialOpGasFees,          // set from pimlico_getUserOperationGasPrice
+      paymaster:          null,                     // filled by sponsor
+      paymasterData:      '0x',
+      paymasterVerificationGasLimit: '0x0',
+      paymasterPostOpGasLimit:       '0x0',
+      // Use the real signature for gas estimation so pm_sponsorUserOperation simulates
+      // the full _validateRealtime code path (all 12 policy checks). A dummy sig exits
+      // at Check 1 (invalid key), severely under-estimating verificationGasLimit → OOG.
+      // Simulation (eth_call) does not persist state, so recordSpend / anti-replay are safe.
+      signature,
+      ...(options?.eip7702Auth ? { eip7702Auth: options.eip7702Auth } : {}),
+    };
+
+    // Step 6: Call pm_sponsorUserOperation → get paymaster + gas
+    const sponsored = await this._sponsorUserOp(partialOp);
+
+    // Step 7: Attach real signature
+    const finalOp: PackedUserOp = { ...sponsored, signature };
+
+    // Step 8: Submit
+    const userOpHash = await this._sendUserOp(finalOp);
+
+    // Step 9: Poll for receipt
+    const txHash = await this._waitForReceipt(userOpHash);
+
+    return { userOpHash, txHash };
+  }
+
+  // ── Private: calldata ──────────────────────────────────────────────────
+
+  /**
+   * Wrap innerCalldata into delegation module `execute()` call.
+   *
+   * executionCalldata = abi.encodePacked(target, uint256(0), innerCalldata)
+   *
+   * This produces the outer layout that EchoPolicyValidator parses:
+   *   [100:120] target (20 bytes)
+   *   [120:152] value = 0
+   *   [152:...]  innerCalldata
+   */
+  private _buildOuterCalldata(target: Address, innerCalldata: Hex): Hex {
+    // abi.encodePacked(target, uint256(0), innerCalldata)
+    const executionCalldata = encodePacked(
+      ['address', 'uint256', 'bytes'],
+      [target, 0n, innerCalldata],
+    );
+
+    return encodeFunctionData({
+      abi:          ACCOUNT_EXECUTE_ABI,
+      functionName: 'execute',
+      args:         [CALLTYPE_SINGLE, executionCalldata],
+    });
+  }
+
+  // ── Private: nonce ─────────────────────────────────────────────────────
+
+  private async _getNonce(account: Address): Promise<bigint> {
+    return this.publicClient.readContract({
+      address:      ENTRY_POINT_V07,
+      abi:          ENTRY_POINT_ABI,
+      functionName: 'getNonce',
+      args:         [account, 0n],
+    });
+  }
+
+  // ── Private: Pimlico paymaster ─────────────────────────────────────────
+
+  /**
+   * Call pm_sponsorUserOperation to get:
+   *   - paymaster fields (paymaster, paymasterData, paymaster gas limits)
+   *   - gas estimates (verificationGasLimit, callGasLimit, preVerificationGas)
+   */
+  private async _sponsorUserOp(op: PackedUserOp): Promise<PackedUserOp> {
+    const result = await this._rpc<{
+      paymaster:            Address;
+      paymasterData:        Hex;
+      paymasterVerificationGasLimit: Hex;
+      paymasterPostOpGasLimit:       Hex;
+      preVerificationGas:   Hex;
+      verificationGasLimit: Hex;
+      callGasLimit:         Hex;
+    }>('pm_sponsorUserOperation', [
+      this._opToRpcFormat(op),
+      ENTRY_POINT_V07,
+    ]);
+
+    // Use Pimlico's gas estimates exactly — do NOT pad.
+    // The paymaster signs over getUserOpHash which includes accountGasLimits.
+    // Modifying gas limits after pm_sponsorUserOperation invalidates the signature → AA34.
+    const verGas  = hexToBigInt(result.verificationGasLimit);
+    const callGas = hexToBigInt(result.callGasLimit);
+
+    return {
+      ...op,
+      accountGasLimits:   this._packUint128x2(verGas, callGas),
+      preVerificationGas: result.preVerificationGas,
+      paymaster:                     result.paymaster,
+      paymasterData:                 result.paymasterData,
+      paymasterVerificationGasLimit: result.paymasterVerificationGasLimit,
+      paymasterPostOpGasLimit:       result.paymasterPostOpGasLimit,
+    };
+  }
+
+  // ── Private: submit ────────────────────────────────────────────────────
+
+  private async _sendUserOp(op: PackedUserOp): Promise<Hex> {
+    return this._rpc<Hex>('eth_sendUserOperation', [
+      this._opToRpcFormat(op),
+      ENTRY_POINT_V07,
+    ]);
+  }
+
+  // ── Private: receipt polling ───────────────────────────────────────────
+
+  private async _waitForReceipt(userOpHash: Hex): Promise<Hex> {
+    let delay   = POLL_INITIAL_DELAY_MS;
+    let attempt = 0;
+
+    while (attempt < POLL_MAX_ATTEMPTS) {
+      await sleep(delay);
+      attempt++;
+      delay = Math.floor(delay * POLL_BACKOFF_FACTOR);
+
+      const receipt = await this._rpc<{ receipt: { transactionHash: Hex } } | null>(
+        'eth_getUserOperationReceipt',
+        [userOpHash],
+      );
+
+      if (receipt?.receipt?.transactionHash) {
+        return receipt.receipt.transactionHash;
+      }
+    }
+
+    throw new Error(
+      `UserOp ${userOpHash} not included after ${POLL_MAX_ATTEMPTS} attempts. ` +
+      `Check Pimlico dashboard for status.`
+    );
+  }
+
+  // ── Private: RPC ───────────────────────────────────────────────────────
+
+  private async _rpc<T>(method: string, params: unknown[]): Promise<T> {
+    const res = await fetch(this.pimlicoUrl, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ jsonrpc: '2.0', id: 1, method, params }),
+    });
+
+    if (!res.ok) {
+      throw new Error(`Pimlico HTTP ${res.status}: ${await res.text()}`);
+    }
+
+    const json = await res.json() as { result?: T; error?: { message: string; code: number } };
+
+    if (json.error) {
+      throw new Error(`Pimlico RPC error ${json.error.code}: ${json.error.message}`);
+    }
+
+    return json.result as T;
+  }
+
+  // ── Private: formatting helpers ────────────────────────────────────────
+
+  /**
+   * Convert PackedUserOp to the JSON format Pimlico's RPC expects.
+   * All BigInt fields must be hex strings.
+   */
+  private _opToRpcFormat(op: PackedUserOp): Record<string, unknown> {
+    // Pimlico expects unpacked v0.7 fields (not the on-chain packed format)
+    // Unpack accountGasLimits → verificationGasLimit + callGasLimit
+    // Unpack gasFees → maxPriorityFeePerGas + maxFeePerGas
+    // initCode → factory + factoryData (empty = no deployment)
+    const [verificationGasLimit, callGasLimit] = this._unpackUint128x2(op.accountGasLimits);
+    const [maxPriorityFeePerGas, maxFeePerGas] = this._unpackUint128x2(op.gasFees);
+    const paymaster = op.paymaster;
+
+    const result: Record<string, unknown> = {
+      sender:                op.sender,
+      nonce:                 op.nonce,
+      callData:              op.callData,
+      callGasLimit:          toHex(callGasLimit),
+      verificationGasLimit:  toHex(verificationGasLimit),
+      preVerificationGas:    op.preVerificationGas,
+      maxFeePerGas:          toHex(maxFeePerGas),
+      maxPriorityFeePerGas:  toHex(maxPriorityFeePerGas),
+      signature:             op.signature,
+    };
+
+    // Only include paymaster fields if there's a paymaster
+    if (paymaster && paymaster !== '0x0000000000000000000000000000000000000000') {
+      result.paymaster = paymaster;
+      result.paymasterData = op.paymasterData;
+      result.paymasterVerificationGasLimit = op.paymasterVerificationGasLimit;
+      result.paymasterPostOpGasLimit = op.paymasterPostOpGasLimit;
+    }
+
+    // Only include factory if initCode is non-empty (7702 MVP: always empty)
+    if (op.initCode && op.initCode !== '0x') {
+      result.factory     = ('0x' + op.initCode.slice(2, 42)) as Hex;
+      result.factoryData = ('0x' + op.initCode.slice(42)) as Hex;
+    }
+
+    if (op.eip7702Auth) {
+      result.eip7702Auth = op.eip7702Auth;
+    }
+
+    return result;
+  }
+
+  private _unpackUint128x2(packed: Hex): [bigint, bigint] {
+    const n = hexToBigInt(packed);
+    const high = n >> 128n;
+    const low  = n & ((1n << 128n) - 1n);
+    return [high, low];
+  }
+
+  /**
+   * Pack two uint128 values into a bytes32 (used for accountGasLimits and gasFees).
+   * Layout: [high 16 bytes = a][low 16 bytes = b]
+   */
+  private _packUint128x2(a: bigint, b: bigint): Hex {
+    return encodePacked(['uint128', 'uint128'], [a, b]);
+  }
+
+  private _padGas(estimate: bigint): bigint {
+    return (estimate * GAS_OVERHEAD_FACTOR) / GAS_OVERHEAD_DENOM;
+  }
+}
+
+// ── Helpers ────────────────────────────────────────────────────────────────
+
+function sleep(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}

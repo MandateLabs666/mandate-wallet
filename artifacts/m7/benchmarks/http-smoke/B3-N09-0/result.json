@@ -1,0 +1,157 @@
+{
+  "baseline": "B3",
+  "caseId": "N09",
+  "repeat": 0,
+  "genesisTimestamp": 1792045099,
+  "clockMode": "wall-aligned-genesis-and-one-second-block-interval",
+  "mode": "paid-500-recover",
+  "dataset": "ETH",
+  "priceAtomic": "10000",
+  "actualPaidAtomic": "10000",
+  "merchantReceivedAtomic": "10000",
+  "occupiedAtomic": "10000",
+  "budgetAuthority": "on-chain-shared-root",
+  "payerCashAtomic": "990000",
+  "paymentCount": 1,
+  "expectedPaymentCount": 1,
+  "duplicatePayments": 0,
+  "payment": "paid",
+  "service": "returned",
+  "result": "valid",
+  "attempts": [
+    {
+      "agent": 0,
+      "stepId": "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e",
+      "elapsedMs": 69.36175000000003,
+      "payment": "paid",
+      "service": "failed",
+      "result": "unchecked",
+      "settlementHash": "0xc5e36160781c37fc855f5194f36053b49da93e5db7bea500e11bd4d42ebec5e7",
+      "errorCode": "SERVICE_HTTP_500"
+    },
+    {
+      "agent": 0,
+      "stepId": "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e",
+      "elapsedMs": 19.0747080000001,
+      "payment": "paid",
+      "service": "returned",
+      "result": "valid",
+      "settlementHash": "0xc5e36160781c37fc855f5194f36053b49da93e5db7bea500e11bd4d42ebec5e7",
+      "errorCode": null
+    }
+  ],
+  "phasesMs": {
+    "clientHTTP": 19.996791000000485,
+    "agentSigning": 3.3718760000001566,
+    "journalAppend": 21.5500409999986,
+    "actionProof": 2.7539170000000013,
+    "registrationPrepare": 6.461167000000387,
+    "registrationSubmit": 1.9657500000002983,
+    "facilitatorVerify": 1.3381250000002183,
+    "facilitatorSettle": 10.278040999999575,
+    "postChecks": 5.918124999999236,
+    "fullExport": 26.219875000000684,
+    "independentVerification": 227.04912500000046,
+    "purchase": 88.44712499999969,
+    "total": 349.83645799999977
+  },
+  "phaseCounters": {
+    "clientHTTP": 4,
+    "journalAppend": 6,
+    "agentSigning": 8,
+    "actionProof": 1,
+    "registrationPrepare": 1,
+    "registrationSubmit": 1,
+    "facilitatorVerify": 1,
+    "facilitatorSettle": 1
+  },
+  "nestedPhaseTotalsMustNotBeSummed": true,
+  "transactions": [
+    {
+      "kind": "settlement",
+      "hash": "0xc5e36160781c37fc855f5194f36053b49da93e5db7bea500e11bd4d42ebec5e7",
+      "blockNumber": "8",
+      "blockHash": "0x3a6486f777ba827973ef322f4c6bb29035b87f04c72f077d4e82b0f49de07645",
+      "gasUsed": "127332",
+      "effectiveGasPrice": "1411571576",
+      "transactionFeeWei": "179738231915232",
+      "logs": [
+        {
+          "address": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+          "topics": [
+            "0x98de503528ee59b575ef0c0a2576a82497bfc029a5685b209e9ec333479b10a5",
+            "0x000000000000000000000000e7f1725e7734ce288f8367e1bb143e90bb3f0512",
+            "0x89d5755ed1e92c946337f8178f207c5e1485461284eb34936b30873ee30c6162"
+          ],
+          "data": "0x",
+          "blockHash": "0x3a6486f777ba827973ef322f4c6bb29035b87f04c72f077d4e82b0f49de07645",
+          "blockNumber": "8",
+          "blockTimestamp": "1792045107",
+          "transactionHash": "0xc5e36160781c37fc855f5194f36053b49da93e5db7bea500e11bd4d42ebec5e7",
+          "transactionIndex": 0,
+          "logIndex": 0,
+          "removed": false
+        },
+        {
+          "address": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x000000000000000000000000e7f1725e7734ce288f8367e1bb143e90bb3f0512",
+            "0x00000000000000000000000015d34aaf54267db7d7c367839aaf71a00a2c6a65"
+          ],
+          "data": "0x0000000000000000000000000000000000000000000000000000000000002710",
+          "blockHash": "0x3a6486f777ba827973ef322f4c6bb29035b87f04c72f077d4e82b0f49de07645",
+          "blockNumber": "8",
+          "blockTimestamp": "1792045107",
+          "transactionHash": "0xc5e36160781c37fc855f5194f36053b49da93e5db7bea500e11bd4d42ebec5e7",
+          "transactionIndex": 0,
+          "logIndex": 1,
+          "removed": false
+        }
+      ]
+    },
+    {
+      "kind": "registration",
+      "hash": "0xb2df320b0dfc61a3202b6512f7db9886b9918c22a2b7651946dbd9e126cd47e5",
+      "blockNumber": "7",
+      "blockHash": "0xb4ab473155fcf2c97180518f5f6e9392ca04e91b97474c63cd759e0baacd9eb3",
+      "gasUsed": "445106",
+      "effectiveGasPrice": "1468381994",
+      "transactionFeeWei": "653585635821364",
+      "logs": [
+        {
+          "address": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+          "topics": [
+            "0x53fac4a735592149c3d4ab16f5e1d659f01ac8f1269eddcd42d263aa8d303ad3",
+            "0x6dead9a7e760184fa8a8fa46bbde049067954c8d0a77d4fdd204ef625be5621d",
+            "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37",
+            "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e"
+          ],
+          "data": "0x61f0ffa6b310744fb2869aa8b49390b907440c17341f41afc5971aac5aae9f40000000000000000000000000000000000000000000000000000000000000271089d5755ed1e92c946337f8178f207c5e1485461284eb34936b30873ee30c6162000000000000000000000000000000000000000000000000000000006ad0715daab7656204b9fdf8cebe4f23641cd8026819d8a4728b955fb27ba78a394bb3f0ded995a9916d63f64d28a09b70ff2aa422a82271b0a1e1608354bc71ad0a3a8f",
+          "blockHash": "0xb4ab473155fcf2c97180518f5f6e9392ca04e91b97474c63cd759e0baacd9eb3",
+          "blockNumber": "7",
+          "blockTimestamp": "1792045106",
+          "transactionHash": "0xb2df320b0dfc61a3202b6512f7db9886b9918c22a2b7651946dbd9e126cd47e5",
+          "transactionIndex": 0,
+          "logIndex": 0,
+          "removed": false
+        }
+      ]
+    }
+  ],
+  "totalGasUsed": "572438",
+  "totalTransactionFeeWei": "833323867736596",
+  "evidence": [
+    {
+      "prefix": "B3-N09-0/evidence-0",
+      "fullBytes": 27653,
+      "checkpointCount": 5,
+      "requiredChecksPassed": true,
+      "overall": "incomplete",
+      "controllerAnchors": 0
+    }
+  ],
+  "newPublicTransactions": 0,
+  "setupExcluded": true,
+  "unusedMandateInitializerInB1": false
+}

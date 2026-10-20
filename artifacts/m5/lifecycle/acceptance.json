@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 2,
+  "recordedAt": "2026-10-14T19:41:13.755822+00:00",
+  "sourceBaseCommit": "b3035d3154fa7f944ab388db675e6b3641339adf",
+  "publicPurchaseSourceCommit": "b3035d3154fa7f944ab388db675e6b3641339adf",
+  "sourceFingerprint": {
+    "mandate/evidence/action-proof.ts": "b8a7b5d4b59856ba628e11752cb42c9c0789ab24c0dea02fb5b4411ba35f49df",
+    "mandate/evidence/bundle.ts": "ba95202c770c22eb8f7dc4847e047f1f5a2557b77440be8f5d3b072d00a5fe2f",
+    "mandate/evidence/checkpoint.ts": "bc320adecbdd20a3747327c94d3d96ede1d7b6ff7c025fb37b2391e592d4e22b",
+    "mandate/evidence/cli.ts": "2993e01b8dd2c24f3f2502aee5da5e399a7747044995f6f8667cb562746758b5",
+    "mandate/evidence/journal.ts": "416bd3770752852dec1c49ce1d0a0f425012965e8db49419bc4e30c3930adc2a",
+    "mandate/evidence/merkle.ts": "d51c37cb66feb10283c1e53c2be3054d2ee430e2f45fb8a0894ff4d06703e300",
+    "mandate/evidence/recorder.ts": "cd4c6e7e79904cf083f4a92d129f4531de587b7f8a638d2759a37105ff43ff6d",
+    "mandate/evidence/signed-artifacts.ts": "8326f7a2c2381d356ad692f8982b1ca70e73bf5d2f4832d0fc2cf1c5d35e663c",
+    "mandate/evidence/stage-fields.ts": "86e71a8572a136171c66507e1c257ad2c5f88e8077d92b8df9c430c1ae6fba93",
+    "mandate/evidence/test/checkpoint.test.ts": "9687aedafe4819f3003c1375120a92980856581222e8fc5fd98e97e9f5a566c6",
+    "mandate/evidence/test/http-artifacts.test.ts": "16da59e8091475e097b8e085204985c8faf49216e73668c73c381906fdc28b5c",
+    "mandate/evidence/test/lifecycle.test.ts": "1df8816e7b25c3f9ecba7ae0780adb69463ce36bd9cce997cf40f22cc579ca81",
+    "mandate/evidence/test/merkle.test.ts": "2086d1f5f6a8361126f32d3ea581578eca364c7b357a1c1752482815ab9d004b",
+    "mandate/evidence/test/signed-artifacts.test.ts": "0791535aa83f2cb0749929224240de6f3116308197e4de6a4d16ca98d21561cb",
+    "mandate/evidence/verifier.ts": "b996fe95c7d99209319d042c7cea9a222a97064a30c3bdb57f2b22e0c18eb905",
+    "mandate/evidence/vitest.config.ts": "4a471b558a8cabe30aac2f05babdb68aedcfe99b5dea62ae357f6a875ab479f3",
+    "mandate/experiments/m5-public.ts": "2c2a1625ad894a4e59eeb7f6cea38c56e754e70ce1b2b9ab521b85c07653af02",
+    "mandate/gateway/runtime.ts": "e19f08c5379423b3682e48f2cf2406ee58e776fce9c2a71f0227487dbf79a29f",
+    "mandate/services/client.ts": "9887a8b441d69f66a66ca7cdb8e7bf0d1c142190dd2e47af06eb6f44d46c2b9f",
+    "mandate/services/store.ts": "b4e8968e687b63938d4077e38d355673249bc2103f7514a076b2f357da1e1f53",
+    "scripts/m5-accept-lifecycle.py": "a9daab29c09f4c91b01ac07d37bfb86d1db5e6b8326b4796528934e53f1421b5",
+    "scripts/m5-build-verifier.mjs": "1d21348e243b5f1824aad9673e7968c68ce774ab47d60fe753a6c30f6a74fbb3"
+  },
+  "acceptedTasks": [
+    "T7.01",
+    "T7.02",
+    "T7.05",
+    "T7.06"
+  ],
+  "pendingTasks": [
+    "T7.07",
+    "T7.08",
+    "T7.09"
+  ],
+  "M5": "in-progress",
+  "G3": "open",
+  "localTests": 19,
+  "latestLifecycleTests": 5,
+  "m4RegressionTests": 26,
+  "publicPaidAtomic": "10000",
+  "newPublicTransactions": 4,
+  "publicCheckpointCount": 5,
+  "secretScanPassed": true,
+  "evidenceSHA256": {
+    "artifacts/m5/lifecycle/all-tests.json": "02ab1e0644d0d7816ad36592ce885cbe2ce7d3276e9fa27b3eafa90294f9b1de",
+    "artifacts/m5/lifecycle/base-sepolia.json": "b9ab2209811412aae8b46d9bececd2658b92559348ae24cdf8e615b74e9d6ed0",
+    "artifacts/m5/lifecycle/build/gateway.json": "d983b65c3d8bedb714da9992c47da7892c4af043b1be1eeab4a6db77bd281b6e",
+    "artifacts/m5/lifecycle/clean-process-check.json": "388d24672a06717881bfe7dfff9f43d3145e24ebf69d9524d3bdbc2b51f94f4e",
+    "artifacts/m5/lifecycle/clean-public-verification.json": "10411c79f75d58f2facd73d1af2b8e9af9490b497d7a53054e23e660e6a95ad5",
+    "artifacts/m5/lifecycle/damaged-verification.json": "179b09d99cb2e5a711b54f549ddc1f1f123e606b9afaf457a2da0b08ecf6847d",
+    "artifacts/m5/lifecycle/disclosure-size.json": "8ec246b1764f0620bf00a6a45d3509cb93e4bffb8c685b3f0587ea2363f6f71c",
+    "artifacts/m5/lifecycle/invalid-merkle-proofs.json": "edd7ff4ed51aefa31dc3ed66ffdb7ed8fd1083d8700595dfb3ba6c55593a85bd",
+    "artifacts/m5/lifecycle/latest-lifecycle-tests.json": "63d354c0e1f70e3a337a82e896cfd2c92c30f070037ed30fb652aa7802557fbd",
+    "artifacts/m5/lifecycle/local-http-artifacts.json": "776c7de9ab658a26d0cc3030eaf2488bc3e9e613ffd89a154b87c5d94d4298ed",
+    "artifacts/m5/lifecycle/m4-regression.json": "d4f9143019f7f78bc5c4ca5c1eddcc3153375cd57ca9cb82bdb1e9bc69f743e6",
+    "artifacts/m5/lifecycle/public-bundle.json": "be799e8a1a5d5d612caef81d36c2c4bd4443e0552c8e0a8cd4133c3b28dd2b3a",
+    "artifacts/m5/lifecycle/public-verification.json": "1cecbadd2d5abb082ab353bab7e6dd05e6d4626ca0c2259d6b2deb1cc5d7b0cd",
+    "artifacts/m5/lifecycle/trusted-config.json": "df4a1844faa6f6ac4c816964398f73fea27eee4b31e6c2cf072463992467d83f"
+  },
+  "limits": [
+    "RPC data is trusted; two agreeing providers are not an independent consensus proof.",
+    "Session signatures authenticate claimed observations, not HTTPS source truth or a complete history.",
+    "The deployed wallet enforces request/quote hashes and financial scope, not the entire session root.",
+    "Merchant receipts do not sign payment amount, request body or result body."
+  ]
+}

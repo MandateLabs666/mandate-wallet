@@ -1,0 +1,32 @@
+{
+  "host": "codex",
+  "mode": "clarify",
+  "attempt": 1,
+  "exitCode": 0,
+  "startedAt": "2026-10-14T17:55:43.379081+00:00",
+  "finishedAt": "2026-10-14T17:56:02.981838+00:00",
+  "sourceCommit": "1c813bcf1e3abe10a11f791d9ef9307379374e02",
+  "runnerSHA256": "dd9cc85ad583f7f6c86d1a96c3474fe83b9eb131ac6872bef30b76741db2a1a3",
+  "profileSHA256": "6d9afd2a54decfb75034ea76ea4b2b22c3127e50e7040c49980a1fe1cb63edbf",
+  "skillSHA256": "a8cf81b29813797954f42d0e99740025212f3b2e7c0facbbb08676dc14338fbc",
+  "secretRedactions": false,
+  "hostApprovalMode": "read-only-tools",
+  "ownerAuthoritySource": "preexisting-chain-grant",
+  "publicTranscript": "artifacts/m4/hosts/codex-clarify-01.jsonl",
+  "trace": {
+    "attemptedTools": [
+      "mandate_get_context",
+      "mandate_search_services"
+    ],
+    "successfulTools": [
+      "mandate_get_context",
+      "mandate_search_services"
+    ],
+    "deniedTools": [],
+    "requiredToolsObserved": true,
+    "purchaseRecords": [],
+    "finalAnswer": "I read the Mandate context and found a configured ETH statistics service. No quote, purchase, signing, or authority request was made.\n\nWhich asset, metric, and time period should the statistics cover?"
+  },
+  "productResultPassed": true,
+  "modelTaskPassed": true
+}

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "protocolId": "mandate-m7-r1",
+  "seed": "0x40271015",
+  "localChainId": 31337,
+  "genesisTimestamp": 1792000000,
+  "blockTimestampIntervalSeconds": 1,
+  "procurementBudgetAtomic": "150000",
+  "maximumPaymentAtomic": "100000",
+  "initialPayerCashAtomic": "1000000",
+  "tokenDecimals": 6,
+  "normalRepetitions": 3,
+  "normalTasks": [
+    {"id":"N01","asset":"ETH","priceAtomic":"1000","mode":"single","expectedPayments":1},
+    {"id":"N02","asset":"BTC","priceAtomic":"1000","mode":"single","expectedPayments":1},
+    {"id":"N03","asset":"ETH","priceAtomic":"10000","mode":"single","expectedPayments":1},
+    {"id":"N04","asset":"BTC","priceAtomic":"10000","mode":"single","expectedPayments":1},
+    {"id":"N05","asset":"ETH","priceAtomic":"100000","mode":"single","expectedPayments":1},
+    {"id":"N06","asset":"BTC","priceAtomic":"100000","mode":"single","expectedPayments":1},
+    {"id":"N07","asset":"ETH+BTC","priceAtomic":"10000","mode":"two-agents","expectedPayments":2},
+    {"id":"N08","asset":"ETH","priceAtomic":"10000","mode":"duplicate-step","expectedPayments":1},
+    {"id":"N09","asset":"ETH","priceAtomic":"10000","mode":"paid-500-recover","expectedPayments":1},
+    {"id":"N10","asset":"ETH","priceAtomic":"10000","mode":"lost-http-recover","expectedPayments":1}
+  ],
+  "baselines": [
+    {"id":"B0","name":"Echo repaired v2","action":"controlled swap through real EntryPoint handleOps","samePaidHTTPTask":false,"signers":["execute","session"],"perRoleRepetitions":5},
+    {"id":"B1","name":"controlled ordinary x402 EOA","action":"same paid HTTP fixture","samePaidHTTPTask":true,"sdkSpendControls":true,"honestLocalAggregateBudget":true,"durableBusinessIdempotency":true,"onchainAgentPolicy":false},
+    {"id":"B2","name":"Mandate without evidence association","action":"same paid HTTP fixture","samePaidHTTPTask":true,"onchainAgentPolicy":true,"sessionCheckpointJournal":false},
+    {"id":"B3","name":"Mandate linked evidence","action":"same paid HTTP fixture","samePaidHTTPTask":true,"onchainAgentPolicy":true,"sessionCheckpointJournal":true,"independentVerifier":true,"liveController":false},
+    {"id":"B4","name":"Mandate with live reference controller","action":"same paid HTTP fixture","samePaidHTTPTask":true,"onchainAgentPolicy":true,"sessionCheckpointJournal":true,"independentVerifier":true,"liveController":true,"controllerRunsOnSameTestHost":true}
+  ],
+  "invalidCalls": {
+    "samplesPerCategory": 500,
+    "total": 10000,
+    "transportBatchSize": 50,
+    "categories": ["zero-value","above-single-cap","wrong-recipient","wrong-request-hash","wrong-merchant","unapproved-step","wrong-nonce","zero-quote-hash","nonzero-valid-after","expired-payment","overlong-payment-window","wrong-policy-version","wrong-session-epoch","missing-session","missing-mandate","wrong-registration-signer","wrong-chain-domain","wrong-wallet-domain","outside-session-step-subset","root-budget-exceeded"]
+  },
+  "statefulAttacks": ["concurrent-root-budget","session-budget-subset","same-step-replay","prevalidate-then-revoke","version-replacement","uncertain-settlement-retains-budget","checkpoint-tamper","checkpoint-tail-delete","controller-query-grinding","direct-signer-bypass"],
+  "measurements": ["payment-service-result-separate","actual-token-balance-delta","canonical-transaction-gas-and-fee","registration-extra-transactions","duplicate-payment-count","verification-status","disclosure-bytes","wall-clock-phase-latency"],
+  "quantiles": "nearest-rank: sorted[ceil(p*n)-1]; always report n; no pooling incomparable actions",
+  "limits": ["Local controlled token/merchant/facilitator; no public/mainnet transactions or external API charges.","Fixed artificial market data, not financial analysis or real market quotes.","Ordinary EOA is our specified implementation, not a claim about every commercial wallet.","Full reference controller is another role on the same host, not malicious-host isolation.","HTTPS witness is separately evaluated research and not a paid merchant provenance guarantee.","This protocol definition is not benchmark completion or an independent security audit."]
+}

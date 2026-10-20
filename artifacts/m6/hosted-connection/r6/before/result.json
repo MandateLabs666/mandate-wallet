@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "revision": "default-r4",
+  "mode": "default",
+  "browserVersion": "Chrome/151.0.7922.34",
+  "hostedOrigin": "https://mandate-wallet-fintechathon-2026.starrycoin17.chatgpt.site",
+  "hostedAsset": {
+    "path": "/app.js",
+    "status": 200,
+    "SHA256": "bc968dad37e2099b70189133c425ba481a2d35135eaf01fd4d04522efc85c4c9"
+  },
+  "browserSecurityBypassFlags": [],
+  "permissionOverrides": [],
+  "permissions": {
+    "local-network-access": "prompt",
+    "loopback-network": "prompt"
+  },
+  "connected": false,
+  "errorText": "The operation could not be confirmed. Refresh or reconcile the same request; do not create a replacement payment.",
+  "localTraffic": [
+    {
+      "method": "POST",
+      "path": "/api/workspace",
+      "origin": null,
+      "preflightPrivateNetwork": null
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/workspace",
+      "origin": "https://mandate-wallet-fintechathon-2026.starrycoin17.chatgpt.site",
+      "preflightPrivateNetwork": null
+    }
+  ],
+  "networkFailures": [
+    {
+      "errorText": "net::ERR_FAILED",
+      "blockedReason": null,
+      "corsError": "LocalNetworkAccessPermissionDenied"
+    }
+  ],
+  "ownerNonceBefore": 6,
+  "ownerNonceAfter": 6,
+  "walletCashBefore": "1000000",
+  "walletCashAfter": "1000000",
+  "occupiedBefore": "0",
+  "occupiedAfter": "0",
+  "first": null,
+  "recovered": null,
+  "nativeWallet": false,
+  "providerInjected": false,
+  "humanAcceptance": false,
+  "physicalMobile": false,
+  "siteLoginMethod": "owner-authorized dispatch header scoped only to the exact Site origin; not human login",
+  "sourceFingerprint": {
+    "mandate/web/app.ts": "df682ee2d296dbcc7f48f88b0d8a5db2ad7ec6168160ef4dcfd8936b642f7fd4",
+    "mandate/web/server.ts": "f36904da89d3a26c3a8495f06a81d9d128de6448fbd61e1e0e385f4581cb1d32",
+    "mandate/experiments/m6-hosted-connection.ts": "deea1281d3dcd35fb08fac016fc9454f9e7c6cb67575646b26f1fad9a4b0e115"
+  },
+  "newPublicTransactions": 0
+}

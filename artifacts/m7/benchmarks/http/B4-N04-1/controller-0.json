@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 2,
+  "envelopeHash": "0x52a1227bce8426fe7606772742224f3e68804d71196d4646930e4ae546549f46",
+  "scope": {
+    "chainId": 31337,
+    "wallet": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+    "mandateId": "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37",
+    "sessionId": "0x61f0ffa6b310744fb2869aa8b49390b907440c17341f41afc5971aac5aae9f40",
+    "policyVersion": "1",
+    "sessionEpoch": "1",
+    "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+  },
+  "mode": "live",
+  "now": 1792045533,
+  "anchors": [
+    {
+      "sequence": "0",
+      "root": "0x94e4c3e26561b27a84104c2e73db782c7b4b99848ac0431a3b8dfc998f569f55",
+      "stepId": "0x4cfb1c8699d277407517fe08cfe9434d6af9573d22d674332ba5a48c1bd37f65",
+      "kind": "pre-payment"
+    },
+    {
+      "sequence": "1",
+      "root": "0x1e2227da63d160a7fe7ed01456863d215627a4d0d96c4529db595f535b30fb9d",
+      "stepId": "0x4cfb1c8699d277407517fe08cfe9434d6af9573d22d674332ba5a48c1bd37f65",
+      "kind": "registration"
+    },
+    {
+      "sequence": "2",
+      "root": "0xc0e7e42b66a592ce5d3187ff4d086f8945105bc08a99f8f68afe06fc3d94f53e",
+      "stepId": "0x4cfb1c8699d277407517fe08cfe9434d6af9573d22d674332ba5a48c1bd37f65",
+      "kind": "payment"
+    },
+    {
+      "sequence": "3",
+      "root": "0xd221dc89dfa1a49d20eaa6716efd8abc446b5c6d326a210cb9cc823f678289a5",
+      "stepId": "0x4cfb1c8699d277407517fe08cfe9434d6af9573d22d674332ba5a48c1bd37f65",
+      "kind": "service"
+    }
+  ],
+  "queries": [
+    {
+      "step_id": "0x4cfb1c8699d277407517fe08cfe9434d6af9573d22d674332ba5a48c1bd37f65",
+      "charged": 1
+    }
+  ],
+  "alerts": []
+}

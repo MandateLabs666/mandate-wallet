@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "stateDatabase": "/absolute/private/monitor.sqlite",
+  "purchaseDatabase": "/absolute/private/purchases.sqlite",
+  "evidenceDatabase": "/absolute/private/evidence.sqlite",
+  "pendingAfterSeconds": 300,
+  "networks": [
+    {
+      "chainId": 84532,
+      "rpcs": [
+        "https://sepolia.base.org",
+        "https://base-sepolia-rpc.publicnode.com"
+      ],
+      "wallet": "0xE02B554a694b1857B8e89274B2F6E1eCD0C0B589",
+      "owner": "0xaA987fC286434D205669814Ba46b1d8df824fB36",
+      "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+      "runtimeHash": "0xc9221739cb1bb554b83796f1e8e8de4561ba45b7ff30e1ddffbf32af24ba4c9e",
+      "mandateId": "0x81591dc72948e8e11ae7b47983e8707d29ef9bcb6b2fc5d9eefbc8f33dc02ba4",
+      "sessionId": "0x8e86deb4566f10bba7eb8768107d7e90df08d4454ca6ca3c7b411f3e56840247"
+    }
+  ],
+  "tasks": [
+    {
+      "scope": {
+        "chainId": 84532,
+        "wallet": "0xE02B554a694b1857B8e89274B2F6E1eCD0C0B589",
+        "mandateId": "0x81591dc72948e8e11ae7b47983e8707d29ef9bcb6b2fc5d9eefbc8f33dc02ba4",
+        "sessionId": "0x8e86deb4566f10bba7eb8768107d7e90df08d4454ca6ca3c7b411f3e56840247",
+        "policyVersion": "1",
+        "sessionEpoch": "1",
+        "signer": "0xc4DA6909E60186dDcb0cAda144Ce8A3539659DC1"
+      },
+      "stepId": "0x861a3e57dd2f3fd4ed610c8c150df6219b3d0c1b2cbcfba237f42b9fde742cad",
+      "deadline": "2026-10-15T00:00:00Z",
+      "expectedKinds": [
+        "pre-payment",
+        "registration",
+        "payment",
+        "service"
+      ],
+      "trustedHead": {
+        "sequence": 4,
+        "root": "0xc39dc6246618c40e21fad852e716a5f9f47195c02c3ad0c7a1a11d3b161386fc"
+      }
+    }
+  ]
+}

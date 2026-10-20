@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "author code-and-evidence review for current material wording",
+  "thirdPartyHumanAudit": false,
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "Registered payments reserve a shared root budget and a session budget before exposing a payment signature.",
+      "reviewedAgainstCodeAndEvidence": true,
+      "sources": [
+        "mandate/contracts/src/MandateAccount.sol",
+        "mandate/services/client.ts",
+        "artifacts/m7/benchmarks/stateful-final/concurrent-root-budget.json"
+      ],
+      "limit": "Occupied authorization is not escrowed cash or actual Echo swap spend; unknown commitments remain occupied."
+    },
+    {
+      "id": "C02",
+      "claim": "Financial authorization binds exact request, quote, merchant, amount, step, version, session and chain/wallet domain.",
+      "reviewedAgainstCodeAndEvidence": true,
+      "sources": [
+        "mandate/contracts/src/MandateAccount.sol",
+        "mandate/sdk/model.ts",
+        "artifacts/m7/research/dataset-audit.json"
+      ],
+      "limit": "Binding hashes does not establish merchant HTTPS origin or usefulness of an arbitrary hidden result."
+    },
+    {
+      "id": "C03",
+      "claim": "Deterministic business-step nonces, persisted transactions and reconciliation prevent duplicate payment in the tested retries.",
+      "reviewedAgainstCodeAndEvidence": true,
+      "sources": [
+        "mandate/contracts/src/MandateAccount.sol",
+        "mandate/services/client.ts",
+        "mandate/services/store.ts",
+        "mandate/services/transactions.ts",
+        "artifacts/m7/benchmarks/audit.json"
+      ],
+      "limit": "Finite observed scenarios and configured canonical RPC assumptions; not a proof for every token, chain or external merchant."
+    },
+    {
+      "id": "C04",
+      "claim": "Settlement rechecks live authority; revocation after facilitator prevalidation can prevent payment.",
+      "reviewedAgainstCodeAndEvidence": true,
+      "sources": [
+        "mandate/contracts/src/MandateAccount.sol",
+        "artifacts/m4/base-sepolia-http.json",
+        "artifacts/m7/benchmarks/stateful-final/prevalidate-then-revoke.json"
+      ],
+      "limit": "Revocation does not refund completed transfers; reference facilitator/token compatibility has its own support matrix."
+    },
+    {
+      "id": "C05",
+      "claim": "Replacement preserves occupancy/used steps and invalidates old sessions; safe release needs strict expiry and an unused token nonce.",
+      "reviewedAgainstCodeAndEvidence": true,
+      "sources": [
+        "mandate/contracts/src/MandateAccount.sol",
+        "artifacts/m6/external-wallet/replaced.json",
+        "artifacts/m3/11155111-acceptance.json"
+      ],
+      "limit": "A paid, consumed or uncertain nonce is not automatically a refund; a valid permission can lack cash after an owner withdrawal."
+    },
+    {
+      "id": "C06",
+      "claim": "Payment, service delivery and result validation are separate observed states.",
+      "reviewedAgainstCodeAndEvidence": true,
+      "sources": [
+        "mandate/services/client.ts",
+        "mandate/sdk/reader.ts",
+        "artifacts/m5/lifecycle/base-sepolia.json",
+        "artifacts/competition/wallet-video/wallet-v3/capture.json"
+      ],
+      "limit": "A successful HTTP response, token receipt or merchant signature alone does not establish all three."
+    },
+    {
+      "id": "C07",
+      "claim": "Selective disclosure preserves disclosed commitments and financial association, while hidden results and HTTPS/history guarantees remain incomplete.",
+      "reviewedAgainstCodeAndEvidence": true,
+      "sources": [
+        "mandate/evidence/verifier.ts",
+        "mandate/evidence/merkle.ts",
+        "artifacts/m7/benchmarks/http/B3-N03-0/evidence-0-minimal-check.json",
+        "artifacts/competition/wallet-video/wallet-v3/verification.json"
+      ],
+      "limit": "The deployed account does not enforce the entire session root. A signed merchant receipt does not cover every request/result/payment field."
+    },
+    {
+      "id": "C08",
+      "claim": "A separately trusted retained latest head detects omission of its known tail; unanchored valid prefixes can hide an unknown tail.",
+      "reviewedAgainstCodeAndEvidence": true,
+      "sources": [
+        "mandate/evidence/anchors.ts",
+        "mandate/evidence/controller.ts",
+        "artifacts/m7/benchmarks/http/B3-N03-0/evidence-0-tail-probe.json",
+        "artifacts/m7/benchmarks/http/B4-N03-0/evidence-0-tail-probe.json"
+      ],
+      "limit": "Same-host controller/notary processes do not isolate a malicious administrator or account for all hidden model/network calls."
+    },
+    {
+      "id": "C09",
+      "claim": "Owner signing is separate from production Agent/MCP, and actual native MetaMask automation exercised the owner flow.",
+      "reviewedAgainstCodeAndEvidence": true,
+      "sources": [
+        "mandate/gateway/runtime.ts",
+        "mandate/sdk/owner-wallet.ts",
+        "mandate/gateway/owner-status.ts",
+        "artifacts/m6/external-wallet/automation-acceptance.json",
+        "artifacts/m6/owner-concurrency/acceptance.json",
+        "artifacts/m6/wallet-boundaries/acceptance.json",
+        "artifacts/m6/review-race/acceptance.json",
+        "artifacts/m6/owner-reconnect/acceptance.json",
+        "artifacts/m6/purchase-feedback/acceptance.json",
+        "artifacts/m6/hosted-connection/r6/acceptance.json"
+      ],
+      "limit": "Local test roles and automated narrow-screen views are not manual usability, physical-mobile acceptance or hostile-host isolation. Hosted-loopback allowance/denial is automated Chromium evidence with Site service access; human login/Owner usability and physical-mobile coverage are not accepted. The current connection-guidance amendment is outside rc6. The final r6 harness uses native Chromium HTTP with per-request CDP headers: same-origin redirects remain, cross-origin redirects are rejected before transmission; a canary destination receives zero requests."
+    },
+    {
+      "id": "C10",
+      "claim": "The independent-tool review tracks 113 initial findings and one repaired Echo GCM tag-policy defect, retaining 112 raw signals.",
+      "reviewedAgainstCodeAndEvidence": true,
+      "sources": [
+        "echo/gateway/src/signing.ts",
+        "artifacts/m7/security/acceptance.json",
+        "artifacts/m7/security/findings-triage.json",
+        "artifacts/m6/owner-concurrency/acceptance.json",
+        "artifacts/m7/security/purchase-feedback-recheck/disposition.json",
+        "artifacts/m7/security/hosted-connection-recheck/execution.json"
+      ],
+      "limit": "Author triage, static tools and finite tests do not constitute a non-author human audit, zero-findings claim or universal proof. The 113/112 counts describe the original fixed M7 review. A later purchase-feedback scan has 67 TypeScript signals plus 48 contract signals, with three additional HTML-template occurrences reviewed separately. The later TypeScript-only recheck has 67 raw signals with unchanged rule/path multiplicities; unchanged contract fingerprints reuse earlier scans."
+    },
+    {
+      "id": "C11",
+      "claim": "Public payments use actual Base native test USDC or the labeled Ethereum TestUSDC fixture; local timings are reported separately.",
+      "reviewedAgainstCodeAndEvidence": true,
+      "sources": [
+        "artifacts/competition/execution-index/index.json",
+        "artifacts/m3/84532-deployment.json",
+        "artifacts/m3/11155111-deployment.json",
+        "artifacts/m7/benchmarks/audit.json"
+      ],
+      "limit": "Controlled loopback merchant/reference facilitator, no third-party merchant purchase or mainnet spending. Two RPCs do not provide independent consensus verification."
+    },
+    {
+      "id": "C12",
+      "claim": "Echo reuse, M2 repairs, new Mandate behavior and proposal research questions have distinct implementation/evidence scopes.",
+      "reviewedAgainstCodeAndEvidence": true,
+      "sources": [
+        "planning/M2_ACCEPTANCE.zh-CN.md",
+        "planning/M7_FORMAL_BOUNDARIES.zh-CN.md",
+        "planning/M1_SPEC.zh-CN.md",
+        "competition/TECHNICAL_REPORT.en.md"
+      ],
+      "limit": "Original baseline failures are preserved. Manual formal arguments are not machine proofs; actual registration and reuse authorization require separate evidence."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "observedAt": "2026-10-14T13:00:52.680927+00:00",
+  "services": [
+    {
+      "name": "/mandate-m2-alto-1",
+      "imageId": "sha256:31d3112cfb0ee94698ecdc9b6703528e22d711d695f1b2985bc8c45a12311297",
+      "running": true,
+      "cpuNano": 1000000000,
+      "memoryBytes": 1073741824
+    },
+    {
+      "name": "/mandate-m2-local-geth-1",
+      "imageId": "sha256:abf3605177f8bdcfce436985a8054cca4ae59256323a4ffb72c56c04f3d1fadd",
+      "running": true,
+      "cpuNano": 500000000,
+      "memoryBytes": 536870912
+    },
+    {
+      "name": "/mandate-m2-local-alto-1",
+      "imageId": "sha256:31d3112cfb0ee94698ecdc9b6703528e22d711d695f1b2985bc8c45a12311297",
+      "running": true,
+      "cpuNano": 500000000,
+      "memoryBytes": 536870912
+    }
+  ],
+  "cpuMaximum": 5,
+  "cpuAllocated": 2.0,
+  "memoryMaximumGiB": 10,
+  "memoryAllocatedGiB": 2.0,
+  "withinCaps": true,
+  "strictAltoMatchesFixedImage": true
+}

@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 2,
+  "observedAt": "2026-10-14T16:19:17.496Z",
+  "transport": "actual-stdio-subprocess",
+  "modelHostTested": false,
+  "profiles": [
+    {
+      "agentId": "agent-a",
+      "wallet": "0xE02B554a694b1857B8e89274B2F6E1eCD0C0B589",
+      "sessionId": "0xb96eebda3770b89e987dfc1cd73117e6f57ae9f63d1cdfa67c6c00fb0f4bbf19",
+      "toolNames": [
+        "mandate_get_context",
+        "mandate_request_authorization",
+        "mandate_search_services",
+        "mandate_quote_service",
+        "mandate_call_service",
+        "mandate_get_task",
+        "mandate_get_receipt",
+        "mandate_request_revoke"
+      ],
+      "ownerKeyHeldByGateway": false,
+      "rootAvailable": "130000",
+      "grantAvailable": "140000",
+      "quote": {
+        "serviceId": "0xeace7510b9b450e54f1c0b8be486283300dcac70fd8d0c89a6cba0b3a2664242",
+        "amountAtomic": "10000",
+        "requestHash": "0x0c9e6145c6b0c0a2d86b5b1f6ac7d504ebe8677a84f85e4dbc51931f80399f02",
+        "readyForRegistration": false
+      },
+      "unknownWalletParameterRejected": true
+    },
+    {
+      "agentId": "agent-b",
+      "wallet": "0xE02B554a694b1857B8e89274B2F6E1eCD0C0B589",
+      "sessionId": "0x319c1f48235a58cce504e15058e43fe37995d915030a840de4cf67b85b23f9ca",
+      "toolNames": [
+        "mandate_get_context",
+        "mandate_request_authorization",
+        "mandate_search_services",
+        "mandate_quote_service",
+        "mandate_call_service",
+        "mandate_get_task",
+        "mandate_get_receipt",
+        "mandate_request_revoke"
+      ],
+      "ownerKeyHeldByGateway": false,
+      "rootAvailable": "130000",
+      "grantAvailable": "140000",
+      "quote": {
+        "serviceId": "0x4aaea4a6b1dfc7000190c1b15b90af4031e96b81a26021b81b55e804a8489261",
+        "amountAtomic": "10000",
+        "requestHash": "0xcb3cf564911bfc4e8f0a7f701e6160964070a70170b09e1308141f2c7f458807",
+        "readyForRegistration": false
+      },
+      "unknownWalletParameterRejected": true
+    }
+  ],
+  "submittedPurchases": 0
+}

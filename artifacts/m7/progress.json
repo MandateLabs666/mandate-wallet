@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-15T05:19:37.706986+00:00",
+  "sourceBaseCommit": "5dafc192e0d680716bad17b7e2f48f991b905d55",
+  "sourceFingerprint": {
+    "mandate/operations/observe.ts": "7443988eb5bfc8f118c5ad8d75abd6388d073a8ea52b4c3f0b1b61d66e88b2bb",
+    "mandate/operations/vitest.config.ts": "a517c7b65bec0e888b72f490ef71cd14222067e47d17a7016d40278f81bff4a4",
+    "mandate/operations/test/observe.test.ts": "5372d270665612ee8c04399670d83055b109bc843dab853b4585c7d04662427f",
+    "mandate/operations/test/durability.test.ts": "7d98f179095fc199e8ae6314a827567acbeec97963e4b67c7e3b2a52a8fb5c8d",
+    "mandate/operations/test/fixtures/store-worker.ts": "d9153be6aca31220e89ad52bf1dbc37bf60e21088f3e06d2aa7cd969e2936697",
+    "mandate/experiments/m6-observe-public.ts": "2b6c11ea67cd378a4e3ef9ca30c4541a8b2bac55288a30fc1b6f676f1399f34d",
+    "planning/M7_SPEC.zh-CN.md": "0f7a83f23a04c0999bef1ad0350d7689cf613ae974a4500f45232224686a339f",
+    "scripts/sync-execution-map.py": "f4719a2e9a5cd67d080f08d84f6d3eaaa4a3ca3bdc809573cd6e555ae4330010"
+  },
+  "testReportSHA256": "f4e08a2957d2c03eafda38d1270012e5d0c475d2f51aca71374df3213c855340",
+  "typecheckLogSHA256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92",
+  "tests": {
+    "OSProcessDurability": 3,
+    "RPCObservation": 4,
+    "allPassed": true
+  },
+  "transactionsSubmitted": 0,
+  "newTasksAccepted": [],
+  "taskStates": {
+    "T10": "in-progress",
+    "T11": "not-started; requirement drafts exist",
+    "M6": "in-progress",
+    "G3": "open"
+  },
+  "limits": [
+    "SQLite process crash tests do not prove network-broadcast/reorg recovery.",
+    "No long-running monitor, independent reviewer or new benchmark dataset completed in this batch.",
+    "Actual external-wallet browser acceptance remains pending."
+  ]
+}

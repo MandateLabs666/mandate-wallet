@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 2,
+  "network": "local-ephemeral-Anvil",
+  "chainId": 31337,
+  "paymentState": "paid",
+  "serviceState": "returned",
+  "resultState": "valid",
+  "offer": {
+    "format": "eip712",
+    "payload": {
+      "version": 1,
+      "resourceUrl": "http://127.0.0.1:58490/stats?asset=ETH",
+      "scheme": "exact",
+      "network": "eip155:31337",
+      "asset": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+      "payTo": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "amount": "10000",
+      "validUntil": 1792009316
+    },
+    "signature": "0xbca7a2a13f0b6239242113f86b4b2098de95f85a8d3f00c1004a9b670a7858c70e1efe2f6065fa1ef7b1cc7e51f5c67cb75e606935d2be7e8a004faa36a8975e1c",
+    "acceptIndex": 0
+  },
+  "receipt": {
+    "format": "eip712",
+    "payload": {
+      "version": 1,
+      "network": "eip155:31337",
+      "resourceUrl": "http://127.0.0.1:58490/stats?asset=ETH",
+      "payer": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+      "issuedAt": 1792009016,
+      "transaction": "0x559521ba30a716d275618b56b52ad9c017a15a67fab58135058c2e3c8a313095"
+    },
+    "signature": "0x66a5d69ccc5d965920558690e69a13f57b84f4feccae564df2c5cf45b1046d0377ff42710fe2ae0e564102b34c53eccc3956915a18b20d3666ade3bb2289ca051b"
+  },
+  "receiptEvidence": {
+    "status": "confirmed",
+    "correlation": "merchant-claim-with-transaction",
+    "coversPaymentAmount": false,
+    "coversRequestBody": false,
+    "coversResultBody": false
+  },
+  "signer": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+  "wallet": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+  "resourceUrl": "http://127.0.0.1:58490/stats?asset=ETH",
+  "settlementHash": "0x559521ba30a716d275618b56b52ad9c017a15a67fab58135058c2e3c8a313095",
+  "registrationHash": "0x9157554c136c29fb178b384c5c806c31dd6c668e2e062b59b83ed5e932b6f090",
+  "paidAtomic": "10000",
+  "duplicateAgentSamePayment": true,
+  "identitySource": "owner-configured-chain-merchant",
+  "signatureDomainChainId": 1,
+  "publicNetworkClaim": false
+}

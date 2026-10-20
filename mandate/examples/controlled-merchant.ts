@@ -1,0 +1,21 @@
+import {readFileSync,statSync} from "node:fs";
+import {resolve,dirname} from "node:path";
+import {z} from "zod";
+import {createPublicClient,createWalletClient,http,isAddressEqual,type Address,type Hex,type Chain} from "viem";
+import {privateKeyToAccount} from "viem/accounts";
+import {baseSepolia,sepolia,foundry} from "viem/chains";
+import {PurchaseStore,DurableTransactions,MandateReader,atomicAmount} from "../sdk/index.js";
+import {controlledFacilitator} from "../services/facilitator.js";
+import {startControlledMerchant} from "../services/merchant.js";
+const address=z.string().regex(/^0x[0-9a-fA-F]{40}$/).transform(v=>v as Address);
+const schema=z.object({schemaVersion:z.literal(1),chainId:z.union([z.literal(31337),z.literal(84532),z.literal(11155111)]),rpc:z.string().url(),asset:address,allowedWallets:z.array(address).min(1).max(8),quoteKeyFile:z.string(),facilitatorKeyFile:z.string(),storeFile:z.string(),facilitatorStoreFile:z.string(),evmFeeReservationCapWei:z.string(),port:z.number().int().min(1024).max(65535),confirmations:z.number().int().min(1).max(64),failAfterPayment:z.boolean().default(false)}).strict();
+process.umask(0o077);const args=process.argv.slice(2);if(args.length!==2||args[0]!=="--config")throw new Error("USAGE: --config private-merchant.json");
+const path=resolve(args[1]),config=schema.parse(JSON.parse(readFileSync(path,"utf8"))),file=(p:string)=>resolve(dirname(path),p);
+const key=(p:string)=>{const target=file(p);if((statSync(target).mode&0o077)!==0)throw new Error("KEY_FILE_PERMISSIONS");return privateKeyToAccount(JSON.parse(readFileSync(target,"utf8")).privateKey as Hex);};
+const quote=key(config.quoteKeyFile),payer=key(config.facilitatorKeyFile),chain:Chain=config.chainId===31337?foundry:config.chainId===84532?baseSepolia:sepolia,pc=createPublicClient({chain,transport:http(config.rpc,{retryCount:0,timeout:20000})});
+if(isAddressEqual(quote.address,payer.address))throw new Error("MERCHANT_SIGNER_ROLE_COLLISION");
+for(const wallet of config.allowedWallets){const reader=new MandateReader(pc,config.chainId,wallet,{name:"USDC",version:"2",chainId:config.chainId,verifyingContract:config.asset});await reader.verifyContext();const owner=await pc.readContract({address:wallet,abi:(await import("../sdk/accountAbi.js")).accountAbi,functionName:"owner"});if([quote.address,payer.address].some(a=>isAddressEqual(a,owner)))throw new Error("MERCHANT_OWNER_ROLE_COLLISION");}
+const store=new PurchaseStore(file(config.facilitatorStoreFile)),transactions=new DurableTransactions(pc,createWalletClient({chain,account:payer,transport:http(config.rpc)}),store,atomicAmount(config.evmFeeReservationCapWei),config.confirmations);
+const merchant=await startControlledMerchant({pc,facilitator:controlledFacilitator(transactions),chainId:config.chainId,asset:config.asset,payTo:quote.address,quoteSigner:quote,allowedWallets:config.allowedWallets,dbPath:file(config.storeFile),port:config.port,confirmations:config.confirmations,failAfterPayment:config.failAfterPayment,signedOffersAndReceipts:true});
+console.log(JSON.stringify({origin:merchant.origin,mode:"controlled-test-merchant",chainId:config.chainId,priceAtomic:"10000"}));
+let closing=false;const stop=async()=>{if(closing)return;closing=true;await merchant.close();store.close();};process.once("SIGINT",()=>{void stop();});process.once("SIGTERM",()=>{void stop();});

@@ -1,0 +1,229 @@
+1
+00:00:00,000 --> 00:00:05,333
+Mandate Wallet gives an AI agent a limited
+payment authority. In this
+
+2
+00:00:05,333 --> 00:00:11,556
+example, we will connect it to Claude
+Desktop and ask Claude to obtain an
+
+3
+00:00:11,556 --> 00:00:17,333
+ETH statistics sample and write a short
+brief. The owner sets the budget;
+
+4
+00:00:17,333 --> 00:00:20,000
+the agent performs only approved
+purchases.
+
+5
+00:00:20,000 --> 00:00:24,714
+We start with Claude Desktop signed in,
+Node twenty-four and Anvil
+
+6
+00:00:24,714 --> 00:00:29,429
+installed, and the Mandate source checkout
+prepared. This is the current
+
+7
+00:00:29,429 --> 00:00:33,714
+source-based setup, not a standalone
+installer. The demonstration uses a
+
+8
+00:00:33,714 --> 00:00:38,000
+local test chain, mock USDC and a
+controlled sample API.
+
+9
+00:00:38,000 --> 00:00:45,846
+Open the setup wizard and choose Local.
+Mandate starts an isolated chain,
+
+10
+00:00:45,846 --> 00:00:54,346
+deploys the smart account and prepares one
+mock USDC. The task budget is
+
+11
+00:00:54,346 --> 00:01:03,500
+zero point one five USDC, the maximum
+payment is zero point one, and the
+
+12
+00:01:03,500 --> 00:01:10,692
+session lasts one hour. These are
+permission limits, separate from the
+
+13
+00:01:10,692 --> 00:01:12,000
+wallet balance.
+
+14
+00:01:12,000 --> 00:01:20,214
+Choose Claude Desktop and download this
+account’s Guided connection package.
+
+15
+00:01:20,214 --> 00:01:28,429
+In Claude, open Settings, Extensions and
+Advanced settings, then select
+
+16
+00:01:28,429 --> 00:01:37,464
+Install extension. Review the package and
+enable it. The Guided package
+
+17
+00:01:37,464 --> 00:01:46,500
+already points to this local
+configuration, so no Agent profile or
+
+18
+00:01:46,500 --> 00:01:56,357
+Connection file needs to be selected. The
+older manual extension remains a
+
+19
+00:01:56,357 --> 00:01:58,000
+separate option.
+
+20
+00:01:58,000 --> 00:02:06,667
+Start a new conversation and ask Claude to
+read the wallet context without
+
+21
+00:02:06,667 --> 00:02:14,000
+paying. Approve the tool request for this
+demonstration. Check the network,
+
+22
+00:02:14,000 --> 00:02:20,667
+account, session, budget and balance. The
+connection makes tools available;
+
+23
+00:02:20,667 --> 00:02:26,000
+it does not increase the approved payment
+authority.
+
+24
+00:02:26,000 --> 00:02:33,429
+Next, ask Claude to find the configured
+ETH sample service and quote it
+
+25
+00:02:33,429 --> 00:02:40,286
+without purchasing. The service costs zero
+point zero one mock USDC. The
+
+26
+00:02:40,286 --> 00:02:46,000
+wallet checks the approved recipient and
+request scope. A service-directory
+
+27
+00:02:46,000 --> 00:02:50,000
+listing alone cannot authorize a new
+payment.
+
+28
+00:02:50,000 --> 00:02:58,161
+Now authorize Claude to purchase this
+approved sample. The payment settles,
+
+29
+00:02:58,161 --> 00:03:06,323
+but the controlled service deliberately
+fails its first response. Ask Claude
+
+30
+00:03:06,323 --> 00:03:15,226
+to retry the same step. Mandate reuses the
+original order and settlement
+
+31
+00:03:15,226 --> 00:03:24,871
+instead of paying again. The service then
+returns the sample, and the result
+
+32
+00:03:24,871 --> 00:03:34,516
+checker validates it. The balance is zero
+point nine nine USDC, with one
+
+33
+00:03:34,516 --> 00:03:36,000
+payment recorded.
+
+34
+00:03:36,000 --> 00:03:44,217
+Claude can now write a brief using the
+validated sample and identify it as
+
+35
+00:03:44,217 --> 00:03:50,087
+demonstration data. In the workspace,
+inspect payment, delivery and result
+
+36
+00:03:50,087 --> 00:03:55,957
+validation separately. The receipt
+provides the settlement hash and order
+
+37
+00:03:55,957 --> 00:04:01,826
+identity. A successful token transfer
+alone does not establish successful
+
+38
+00:04:01,826 --> 00:04:03,000
+service delivery.
+
+39
+00:04:03,000 --> 00:04:11,580
+End the local practice session to revoke
+its authority, then ask Claude to
+
+40
+00:04:11,580 --> 00:04:18,840
+purchase the previously unused BTC sample.
+The request is rejected before
+
+41
+00:04:18,840 --> 00:04:26,100
+another payment. The earlier ETH receipt
+remains intact. This local tutorial
+
+42
+00:04:26,100 --> 00:04:32,040
+uses its test initializer for revocation;
+public-testnet permission changes
+
+43
+00:04:32,040 --> 00:04:36,000
+require the owner’s external wallet
+confirmation.
+
+44
+00:04:36,000 --> 00:04:40,667
+The complete flow is setup, connect,
+inspect, purchase, recover and revoke.
+
+45
+00:04:40,667 --> 00:04:44,485
+These screens demonstrate a local test
+system. Public-testnet transaction
+
+46
+00:04:44,485 --> 00:04:49,152
+evidence is provided separately, and this
+recording does not represent a
+
+47
+00:04:49,152 --> 00:04:50,000
+mainnet purchase.

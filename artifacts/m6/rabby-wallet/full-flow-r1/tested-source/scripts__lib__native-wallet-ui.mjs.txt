@@ -1,0 +1,9 @@
+export async function nativeUI(context,page){
+ const cdp=await context.newCDPSession(page);await cdp.send('Accessibility.enable');
+ const nodes=async()=>{const t=await cdp.send('Accessibility.getFullAXTree');return t.nodes.filter(n=>!n.ignored&&n.backendDOMNodeId).map(n=>({role:n.role?.value,name:n.name?.value??'',id:n.backendDOMNodeId,properties:n.properties??[]}));};
+ const find=async(role,name)=>{const all=(await nodes()).filter(n=>n.role===role&&n.name===name);if(all.length!==1)throw Error('UI_CONTROL_NOT_UNIQUE:'+role+':'+name+':'+all.length);return all[0];};
+ const click=async(role,name)=>{const n=await find(role,name);if(n.properties.some(p=>p.name==='disabled'&&p.value.value===true))throw Error('UI_CONTROL_DISABLED:'+name);await cdp.send('DOM.scrollIntoViewIfNeeded',{backendNodeId:n.id});const {model}=await cdp.send('DOM.getBoxModel',{backendNodeId:n.id});const q=model.content,x=(q[0]+q[2]+q[4]+q[6])/4,y=(q[1]+q[3]+q[5]+q[7])/4;await cdp.send('Input.dispatchMouseEvent',{type:'mouseMoved',x,y});await cdp.send('Input.dispatchMouseEvent',{type:'mousePressed',x,y,button:'left',clickCount:1});await cdp.send('Input.dispatchMouseEvent',{type:'mouseReleased',x,y,button:'left',clickCount:1});};
+ const fill=async(role,name,value)=>{const n=await find(role,name);await cdp.send('DOM.focus',{backendNodeId:n.id});await cdp.send('Input.dispatchKeyEvent',{type:'keyDown',key:'a',code:'KeyA',modifiers:4});await cdp.send('Input.dispatchKeyEvent',{type:'keyUp',key:'a',code:'KeyA',modifiers:4});await cdp.send('Input.insertText',{text:value});};
+ const controls=async()=>(await nodes()).filter(n=>['button','checkbox','textbox','combobox','heading','link'].includes(n.role)).map(({properties,...n})=>({...n,disabled:properties.some(p=>p.name==='disabled'&&p.value.value===true),checked:properties.find(p=>p.name==='checked')?.value?.value}));
+ return {cdp,nodes,find,click,fill,controls};
+}

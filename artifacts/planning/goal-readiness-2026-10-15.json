@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "sourceBaseCommit": "38c83834241a9231f90ba3f40ccc9d5deecf82d6",
+  "previousGoalTurnClassification": "progress: explicit Rabby UAT launcher and evidence committed at f2fcc31",
+  "currentGoalTurnProgress": "Reproduced rc7 includes actual newer frontend repairs; 13 phases/50 Solidity/106 TypeScript cases, six published asset hashes and material r15 verified.",
+  "taskCounts": {
+    "accepted": 97,
+    "total": 105
+  },
+  "goalAchieved": false,
+  "blockingCondition": "Remaining testnet completion requires human/scoped authorization/external evidence; no known independent required implementation remains after rc7 packaging.",
+  "sameBlockingConditionObservedInConsecutiveGoalTurns": [
+    "01a13ff0-ad89-7852-9d51-f148f3842482",
+    "01a1401d-0978-7dc2-a88c-8df3768a3b33",
+    "01a14037-f3df-71c3-bb43-dfc503c7619f"
+  ],
+  "consecutiveGoalTurnsObserved": 3,
+  "goalStatusUpdateEligibleAfterCurrentWorkSaved": true,
+  "liveWorkRemaining": false,
+  "sourceExportSession": {
+    "id": 59048,
+    "terminalExitCode": 0,
+    "reproductionAllPassed": true
+  },
+  "remainingRequirements": {
+    "T8.07": {
+      "state": "pending human acceptance",
+      "existingEvidence": [
+        "artifacts/m6/rabby-wallet/full-flow-r1/acceptance.json",
+        "artifacts/m6/created-task/r1/acceptance.json"
+      ],
+      "missingEvidence": "Independent U7–U9 task purchase/recovery/revocation feedback; current automation is not human acceptance.",
+      "nextAction": "Team member follows planning/M6_MANUAL_UAT.zh-CN.md and reports actual results.",
+      "evidenceSHA256": {
+        "artifacts/m6/rabby-wallet/full-flow-r1/acceptance.json": "6c70d99192f1538e246b3647346762abbadf02c891b63ab54cf42cea3803eefc",
+        "artifacts/m6/created-task/r1/acceptance.json": "f2a100bab07b563f110396a04efaebcd5df98400d3d69bbfdc6f4a45fa46b678"
+      }
+    },
+    "T8.08": {
+      "state": "pending explicit credential-transfer authorization and human/provider scope acceptance",
+      "existingEvidence": [
+        "artifacts/m6/publication-created-task/acceptance.json",
+        "artifacts/m6/hosted-connection/r6/acceptance.json",
+        "artifacts/m6/rabby-wallet/full-flow-r1/acceptance.json"
+      ],
+      "missingEvidence": "Current hosted native-wallet confirmation/revocation, human U5–U6 and remaining declared compatibility coverage.",
+      "nextAction": "Resolve existing scoped service-access-token transfer question, then run that exact hosted test; no credential bypass.",
+      "evidenceSHA256": {
+        "artifacts/m6/publication-created-task/acceptance.json": "b58fcbfecc4a493761de7e82cf14c72231264f59cb0302b74e6ce4b097ca1ea1",
+        "artifacts/m6/hosted-connection/r6/acceptance.json": "6472484bcfbda7ec0c149e34b92e49a0f41a582544451f282f6c10d73d9e47e7",
+        "artifacts/m6/rabby-wallet/full-flow-r1/acceptance.json": "6c70d99192f1538e246b3647346762abbadf02c891b63ab54cf42cea3803eefc"
+      }
+    },
+    "T8.10": {
+      "state": "pending human/device acceptance",
+      "existingEvidence": [
+        "artifacts/m6/manual-rabby/r3/acceptance.json",
+        "artifacts/m6/external-wallet/automation-acceptance.json"
+      ],
+      "missingEvidence": "U1–U10 readability/operation feedback and separately identified actual device coverage; 390px emulation is not a phone.",
+      "nextAction": "Receive independent trial results and repair any reproduced issues; preserve unsupported cross-device limitations.",
+      "evidenceSHA256": {
+        "artifacts/m6/manual-rabby/r3/acceptance.json": "7de9ee965c41ba65259777b3864f4a817a0107897cd3baf9a6b4cf698df4533e",
+        "artifacts/m6/external-wallet/automation-acceptance.json": "3392cd26adeb9a4fe037477a2b6d0fe62823f0b6eae12da2f48159b89f70eb61"
+      }
+    },
+    "T11.01": {
+      "state": "pending external clarification",
+      "existingEvidence": [
+        "artifacts/competition/requirements-review.json",
+        "artifacts/competition/requirements-recheck-2026-10-15.json",
+        "competition/ORGANIZER_QUESTIONS.en.md"
+      ],
+      "missingEvidence": "Official clarification of public-testnet/controlled-merchant acceptance and applicable submission/update rules.",
+      "nextAction": "Team supplies official reply or separately authorizes sending the prepared inquiry; no email sent.",
+      "evidenceSHA256": {
+        "artifacts/competition/requirements-review.json": "5a116cb046be2c4aa050fe4dc59a407474455c0ed77572946f76d97348ac83d1",
+        "artifacts/competition/requirements-recheck-2026-10-15.json": "fdff6a567a459ed824c65e543247abf54c56edf7c157f1e942669cba6d7bac7b",
+        "competition/ORGANIZER_QUESTIONS.en.md": "46d897612321e764e6f9e900e43caf28da913cc5b358fed7640df4d91cebe1fb"
+      }
+    },
+    "T11.02": {
+      "state": "pending submitted-registration evidence",
+      "existingEvidence": [
+        "planning/M7_SPEC.zh-CN.md",
+        "planning/IMPLEMENTATION_TASKS.zh-CN.md"
+      ],
+      "missingEvidence": "Actual submitted attachments/registration acknowledgement. User development-reuse instruction is already received.",
+      "nextAction": "Team provides actual submission confirmation or attachment comparison; no identity documents published.",
+      "evidenceSHA256": {
+        "planning/M7_SPEC.zh-CN.md": "7f7b07c46edcc56a9eb0a0bcc092b91458e2d46c85dd0e7d29a2140945779c1b",
+        "planning/IMPLEMENTATION_TASKS.zh-CN.md": "ef684d39f66a12b97960ec6b360527be7dacef181841feecb1800f4ea01a303e"
+      }
+    },
+    "T11.09": {
+      "state": "not final frozen",
+      "existingEvidence": [
+        "artifacts/competition/source-delivery/rc7/acceptance.json",
+        "artifacts/competition/material-review/r15/acceptance.json"
+      ],
+      "missingEvidence": "Final source/dependency/deployment/material freeze after remaining acceptance.",
+      "nextAction": "Freeze final version after the dependent acceptance is resolved; rc7 remains engineering candidate.",
+      "evidenceSHA256": {
+        "artifacts/competition/source-delivery/rc7/acceptance.json": "e666335c55ad9234f7b1db25351dedfdd919f1b20f510a6e86102d709de65162",
+        "artifacts/competition/material-review/r15/acceptance.json": "7806519432e8782116abb2fa6714cd734f25851cfdcb21fdaf24766db6679c46"
+      }
+    },
+    "T4.06": {
+      "state": "mainnet boundary; outside autonomous testnet work",
+      "existingEvidence": [
+        "mandate/sdk/VERSIONS.json"
+      ],
+      "missingEvidence": "Explicit mainnet payment authorization and required prechecks.",
+      "nextAction": "No mainnet transaction; preserve prior boundary.",
+      "evidenceSHA256": {
+        "mandate/sdk/VERSIONS.json": "b63041c6a8dcf728a94433820ed7ebba494f422c4d226104d04998ea30b1be05"
+      }
+    },
+    "T4.07": {
+      "state": "testnet evidence accepted; mainnet portion unauthorized",
+      "existingEvidence": [
+        "artifacts/m3/84532-deployment.json",
+        "artifacts/m3/11155111-deployment.json",
+        "artifacts/competition/execution-index/index.json"
+      ],
+      "missingEvidence": "Authorized mainnet full-service evidence if that later scope is requested.",
+      "nextAction": "Do not expand the automatic goal to mainnet.",
+      "evidenceSHA256": {
+        "artifacts/m3/84532-deployment.json": "98bba5abeef7979b81b31e3988c5b6d998ea149da45b8a72a7235c153ca96aa0",
+        "artifacts/m3/11155111-deployment.json": "4031e4aa76c12518bca1609235d487eb7c6d34c0062e948ded55f0f6f251d19e",
+        "artifacts/competition/execution-index/index.json": "8bf877fd4f36b37495b2fb0a769b58f8b7e7bb423f5901e0c73332f96ad9f219"
+      }
+    }
+  },
+  "latestEngineeringCandidate": "artifacts/competition/source-delivery/rc7/acceptance.json",
+  "latestMaterialAudit": "artifacts/competition/material-review/r15/acceptance.json",
+  "officialPageReadThisTurn": {
+    "url": "https://www.ieee-cis-singapore.org/2026-fintechathon",
+    "testnetClarificationFound": false,
+    "scope": "IEEE page only; JS-only main-site response does not establish all official content unchanged"
+  },
+  "noMessagesSent": true,
+  "siteCredentialTransferred": false,
+  "newPublicTransactions": 0,
+  "finalVersionFrozen": false,
+  "formalSubmissionSent": false,
+  "note": "This audit does not count as task implementation or add a new gate; it records the actual remaining requirements. Goal status itself is authoritative in the goal tool."
+}

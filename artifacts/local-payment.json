@@ -1,0 +1,152 @@
+{
+  "environment": "LOCAL_ANVIL_MOCK_USDC",
+  "nodeVersion": "v24.2.0",
+  "schemaVersion": 1,
+  "policy": {
+    "schemaVersion": 1,
+    "mandateId": "0x6edf0c8139691c82f216471c10dbe35b5c28acb7ec96e0ff4bccc7b881926775",
+    "owner": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "wallet": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+    "chainId": 31337,
+    "sessionSigner": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+    "asset": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+    "payTo": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+    "budget": "150000",
+    "maxPerPayment": "100000",
+    "expiresAt": 1791887535,
+    "stepIds": [
+      "0xe0dcd06f0c96f2f1e9c736b3e4ec06ebb43b7a40982b232a77d833cf1eaf5efd",
+      "0x4d4f1621eea5d4427d70a993290e6085406ca5fff3fcb253f90995de1599e3c4"
+    ]
+  },
+  "source": "local_and_chain",
+  "guarantees": [
+    "payment field and budget constraints",
+    "receipt-linked fixture result"
+  ],
+  "limitations": [
+    "no independent HTTP provenance",
+    "no general service quality proof",
+    "test prototype"
+  ],
+  "records": [
+    {
+      "asset": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "chainId": 31337,
+      "digest": "0x238d144d85f0c4466d19597f64680a07d39aa40f5c61ffb0b992c9ffaba37885",
+      "key": "31337:0xe7f1725e7734ce288f8367e1bb143e90bb3f0512:0x6edf0c8139691c82f216471c10dbe35b5c28acb7ec96e0ff4bccc7b881926775:0xe0dcd06f0c96f2f1e9c736b3e4ec06ebb43b7a40982b232a77d833cf1eaf5efd",
+      "mandateId": "0x6edf0c8139691c82f216471c10dbe35b5c28acb7ec96e0ff4bccc7b881926775",
+      "nonce": "0x9d67503cc833a14de3760412ec388d153685f6c29bd4251f05e3175085afdd4f",
+      "payload": {
+        "accepted": {
+          "amount": "100000",
+          "asset": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+          "extra": {
+            "name": "USDC",
+            "version": "2"
+          },
+          "maxTimeoutSeconds": 300,
+          "network": "eip155:31337",
+          "payTo": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+          "scheme": "exact"
+        },
+        "payload": {
+          "authorization": {
+            "from": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+            "nonce": "0x9d67503cc833a14de3760412ec388d153685f6c29bd4251f05e3175085afdd4f",
+            "to": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+            "validAfter": "0",
+            "validBefore": "1791884235",
+            "value": "100000"
+          },
+          "signature": "0x1d0ccd579eba29adc8d202ee50b6856aae41c1c27c971917811453fce9dadc52515c8184e39ef34a8ec4c41c907cdf26526974ffca23cf74f14f304c5d0b82f51c"
+        },
+        "resource": {
+          "description": "Fixed public dataset statistics; not live market data",
+          "mimeType": "application/json",
+          "url": "http://127.0.0.1:51694/stats?asset=ETH"
+        },
+        "x402Version": 2
+      },
+      "paymentState": "settled",
+      "proof": {
+        "chainId": 31337,
+        "evidenceSource": "local",
+        "mandateId": "0x6edf0c8139691c82f216471c10dbe35b5c28acb7ec96e0ff4bccc7b881926775",
+        "nonce": "0x9d67503cc833a14de3760412ec388d153685f6c29bd4251f05e3175085afdd4f",
+        "paymentDigest": "0x238d144d85f0c4466d19597f64680a07d39aa40f5c61ffb0b992c9ffaba37885",
+        "quoteHash": "0xd79e0e803bb107d286d7688b99fa3c8f2865366f059a96e97132acbc43cf6278",
+        "registrationSignature": "0xa706e5384d36d7f33a59fd52f8b561aedad9ab04f302b7ee84efa2c59f7b72c009325f3d89414b553d1892b585ab8b519aa5eecafc9a71fc1535c511d9e052211c",
+        "requestHash": "0xdec8571d70e10e15fda4c9fd57ff136ffd375e4b9f8249898d848e35437099e0",
+        "schemaVersion": 1,
+        "stepId": "0xe0dcd06f0c96f2f1e9c736b3e4ec06ebb43b7a40982b232a77d833cf1eaf5efd",
+        "wallet": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512"
+      },
+      "quoteHash": "0xd79e0e803bb107d286d7688b99fa3c8f2865366f059a96e97132acbc43cf6278",
+      "registrationTx": "0xe1f1fca67d4b7a80c69376d7a91f5e654183659d94c5b6237f7cd85e08d79f76",
+      "requestHash": "0xdec8571d70e10e15fda4c9fd57ff136ffd375e4b9f8249898d848e35437099e0",
+      "requirements": {
+        "amount": "100000",
+        "asset": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+        "extra": {
+          "name": "USDC",
+          "version": "2"
+        },
+        "maxTimeoutSeconds": 300,
+        "network": "eip155:31337",
+        "payTo": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+        "scheme": "exact"
+      },
+      "result": {
+        "asset": "ETH",
+        "count": 3,
+        "datasetId": "mandate-public-fixture-v1",
+        "mean": 110
+      },
+      "resultState": "valid",
+      "serviceState": "returned",
+      "settlementBlockHash": "0x240851a4b8f5760c9468ce08eb6533d68a292d19036e1722a14f5291a9cf3e2d",
+      "settlementTx": "0xb073e0efcabdd04f2b84469e62b6b3ca6f47298be6e2e9e44b2b6e80932dd71a",
+      "stepId": "0xe0dcd06f0c96f2f1e9c736b3e4ec06ebb43b7a40982b232a77d833cf1eaf5efd",
+      "url": "http://127.0.0.1:51694/stats?asset=ETH",
+      "wallet": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512"
+    }
+  ],
+  "commitments": [
+    {
+      "schemaVersion": 1,
+      "mandateId": "0x6edf0c8139691c82f216471c10dbe35b5c28acb7ec96e0ff4bccc7b881926775",
+      "stepId": "0xe0dcd06f0c96f2f1e9c736b3e4ec06ebb43b7a40982b232a77d833cf1eaf5efd",
+      "wallet": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+      "chainId": 31337,
+      "asset": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "payTo": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "amount": "100000",
+      "validAfter": "0",
+      "validBefore": "1791884235",
+      "nonce": "0x9d67503cc833a14de3760412ec388d153685f6c29bd4251f05e3175085afdd4f",
+      "paymentDigest": "0x238d144d85f0c4466d19597f64680a07d39aa40f5c61ffb0b992c9ffaba37885",
+      "registrationTx": "0xe1f1fca67d4b7a80c69376d7a91f5e654183659d94c5b6237f7cd85e08d79f76"
+    }
+  ],
+  "decisions": [
+    {
+      "schemaVersion": 1,
+      "mandateId": "0x6edf0c8139691c82f216471c10dbe35b5c28acb7ec96e0ff4bccc7b881926775",
+      "stepId": "0xe0dcd06f0c96f2f1e9c736b3e4ec06ebb43b7a40982b232a77d833cf1eaf5efd",
+      "decision": "allow",
+      "code": "SETTLED",
+      "evidenceRefs": [
+        "0xe1f1fca67d4b7a80c69376d7a91f5e654183659d94c5b6237f7cd85e08d79f76",
+        "0xb073e0efcabdd04f2b84469e62b6b3ca6f47298be6e2e9e44b2b6e80932dd71a"
+      ],
+      "timestamp": 1791883936,
+      "source": "local"
+    }
+  ],
+  "checks": {
+    "repeatSameNonce": true,
+    "merchantBalance": "100000",
+    "occupied": "100000"
+  }
+}

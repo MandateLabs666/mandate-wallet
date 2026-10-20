@@ -1,0 +1,74 @@
+{
+  "initialTransactions": [
+    {
+      "kind": "account",
+      "hash": "0x2ba48a2f3197c6dfac2b3c5579b0e3e01350a2ba1290d019d044a685ed21cb26",
+      "block": "48316879",
+      "state": "confirmed",
+      "explorer": "https://sepolia.basescan.org/tx/0x2ba48a2f3197c6dfac2b3c5579b0e3e01350a2ba1290d019d044a685ed21cb26"
+    },
+    {
+      "kind": "fund-usdc",
+      "hash": "0x3bb4b38d34ddea128a261e8c5da4ca28dfd2369f8671f2b4a718ed8c25ff61e2",
+      "block": "48318779",
+      "state": "confirmed",
+      "explorer": "https://sepolia.basescan.org/tx/0x3bb4b38d34ddea128a261e8c5da4ca28dfd2369f8671f2b4a718ed8c25ff61e2"
+    },
+    {
+      "kind": "fund-gas",
+      "hash": "0x6ddf321b74a123e0ac7ee5007042c80dd667ac25a993f790622c258a91aebe2e",
+      "block": "48318701",
+      "state": "confirmed",
+      "explorer": "https://sepolia.basescan.org/tx/0x6ddf321b74a123e0ac7ee5007042c80dd667ac25a993f790622c258a91aebe2e"
+    },
+    {
+      "kind": "mandate",
+      "hash": "0x44345873ca50b068559db219cfbf4a9841db26fae00e0850c8a968c67cce54cc",
+      "block": "48319017",
+      "state": "confirmed",
+      "explorer": "https://sepolia.basescan.org/tx/0x44345873ca50b068559db219cfbf4a9841db26fae00e0850c8a968c67cce54cc"
+    },
+    {
+      "kind": "session",
+      "hash": "0xc92a516056c6e93d78b23fe331487bd0678df886fc4c12598d6479ea76d2bbae",
+      "block": "48319030",
+      "state": "confirmed",
+      "explorer": "https://sepolia.basescan.org/tx/0xc92a516056c6e93d78b23fe331487bd0678df886fc4c12598d6479ea76d2bbae"
+    },
+    {
+      "kind": "replace-policy",
+      "hash": "0x9e33ec0479db4f50914d87a87ecb326496572aae4889ca243e0cd1efb73cea88",
+      "block": "48321295",
+      "state": "confirmed",
+      "explorer": "https://sepolia.basescan.org/tx/0x9e33ec0479db4f50914d87a87ecb326496572aae4889ca243e0cd1efb73cea88"
+    },
+    {
+      "kind": "renew-session",
+      "hash": "0x805d7e45259e0186d02d0cc36e9240cfdc5cc248752423d3e9426482daa2e90d",
+      "block": "48321386",
+      "state": "confirmed",
+      "explorer": "https://sepolia.basescan.org/tx/0x805d7e45259e0186d02d0cc36e9240cfdc5cc248752423d3e9426482daa2e90d"
+    },
+    {
+      "kind": "register-eth-payment",
+      "hash": "0xea3820236898a8e343efdc9dd97e2cee34addf906763f08202cf1c36a4883409",
+      "block": "48321739",
+      "state": "confirmed",
+      "explorer": "https://sepolia.basescan.org/tx/0xea3820236898a8e343efdc9dd97e2cee34addf906763f08202cf1c36a4883409"
+    }
+  ],
+  "initialMandateId": "0x5bb90f02fd1b0ea99f3a5239499042cb612568a075327bc8f2c1989d25d4e861",
+  "initialSessionId": "0xded8e0f9407e66cbb189d07fd3385948856d749747e54ffd06d146eb1b2b43c3",
+  "successfulMandateId": "0x65a5386f35ae1dc848584bd51d1a8211110aa02b8c5264238aa4d4aa7d5a8c89",
+  "successfulSessionId": "0x0263e35063f897a6639f0272e8d6b8a3ff3d19c772f5d8b04baf05ae7c4ebd47",
+  "explanation": "Earlier registration confirmation was not recognized by the client before its immutable five-minute payment commitment expired. No USDC settled for that earlier order. Its original hash and nonce were retained. The owner explicitly approved a new ETH task and two-hour session in the same wallet. No deployment or funding was repeated.",
+  "earlierRegistrationHash": "0xea3820236898a8e343efdc9dd97e2cee34addf906763f08202cf1c36a4883409",
+  "originalCause": "The first exception was reduced to a generic transport/chain error; the exact original RPC cause cannot be recovered.",
+  "repairs": "Bounded original-hash receipt reads, read-only reconciliation, explicit expired-commitment handling, sanitized stage diagnostics and PublicNode primary RPC.",
+  "installation": "Initial 0.2.0 import was followed by a native 0.2.1 update, reload and actual model calls. The successful case uses 0.2.1.",
+  "retainedAt": [
+    "Private source UI captures",
+    "Public old transaction hashes above"
+  ],
+  "wizardIndependentCheck": "The wizard has no trusted verification profile for this connection and returned TRUSTED_VERIFICATION_PROFILE_REQUIRED. The standalone verifier was subsequently run with the explicit public verifier-trust.json; no UI success is claimed."
+}

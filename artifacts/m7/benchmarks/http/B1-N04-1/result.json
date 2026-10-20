@@ -1,0 +1,114 @@
+{
+  "baseline": "B1",
+  "caseId": "N04",
+  "repeat": 1,
+  "bindings": {
+    "payer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+    "asset": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+    "owner": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "root": "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37",
+    "merchant": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+    "registrationOperator": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+  },
+  "runtimeHashes": {
+    "token": "0xd6b40f33e860018a45e653f01c1d087b943ec8a74ed471f3400f2d689dc3a87c",
+    "mandateAccount": null
+  },
+  "genesisTimestamp": 1792045533,
+  "clockMode": "wall-aligned-genesis-and-one-second-block-interval",
+  "mode": "single",
+  "dataset": "BTC",
+  "priceAtomic": "10000",
+  "actualPaidAtomic": "10000",
+  "merchantReceivedAtomic": "10000",
+  "occupiedAtomic": "10000",
+  "budgetAuthority": "honest-local-state",
+  "payerCashAtomic": "990000",
+  "paymentCount": 1,
+  "expectedPaymentCount": 1,
+  "duplicatePayments": 0,
+  "payment": "paid",
+  "service": "returned",
+  "result": "valid",
+  "attempts": [
+    {
+      "agent": 0,
+      "stepId": "0x4cfb1c8699d277407517fe08cfe9434d6af9573d22d674332ba5a48c1bd37f65",
+      "elapsedMs": 28.20795900000303,
+      "payment": "paid",
+      "service": "returned",
+      "result": "valid",
+      "settlementHash": "0x838dbb8b745efd6781cc8d88213a987d947f960747b72f45f41729f6cb642947",
+      "errorCode": null
+    }
+  ],
+  "phasesMs": {
+    "clientHTTP": 19.522499000002426,
+    "agentSigning": 0.5489999999990687,
+    "facilitatorVerify": 4.562167000000045,
+    "facilitatorSettle": 11.569625000000087,
+    "postChecks": 1.409416999998939,
+    "fullExport": 0,
+    "independentVerification": 0,
+    "purchase": 28.219874999998865,
+    "total": 29.6317080000008
+  },
+  "phaseCounters": {
+    "clientHTTP": 2,
+    "agentSigning": 1,
+    "facilitatorVerify": 1,
+    "facilitatorSettle": 1
+  },
+  "nestedPhaseTotalsMustNotBeSummed": true,
+  "transactions": [
+    {
+      "kind": "settlement",
+      "hash": "0x838dbb8b745efd6781cc8d88213a987d947f960747b72f45f41729f6cb642947",
+      "blockNumber": "8",
+      "blockHash": "0x8194de88958d463890828f0d0932cd6c5188436d2e7197b17a3daacb99794d5b",
+      "gasUsed": "84922",
+      "effectiveGasPrice": "1410033241",
+      "transactionFeeWei": "119742842892202",
+      "logs": [
+        {
+          "address": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+          "topics": [
+            "0x98de503528ee59b575ef0c0a2576a82497bfc029a5685b209e9ec333479b10a5",
+            "0x00000000000000000000000070997970c51812dc3a010c7d01b50e0d17dc79c8",
+            "0x1c6e3b33549d393ae0bbffa66a48eec77b630e28706685cdc62760392082cbde"
+          ],
+          "data": "0x",
+          "blockHash": "0x8194de88958d463890828f0d0932cd6c5188436d2e7197b17a3daacb99794d5b",
+          "blockNumber": "8",
+          "blockTimestamp": "1792045541",
+          "transactionHash": "0x838dbb8b745efd6781cc8d88213a987d947f960747b72f45f41729f6cb642947",
+          "transactionIndex": 0,
+          "logIndex": 0,
+          "removed": false
+        },
+        {
+          "address": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x00000000000000000000000070997970c51812dc3a010c7d01b50e0d17dc79c8",
+            "0x00000000000000000000000015d34aaf54267db7d7c367839aaf71a00a2c6a65"
+          ],
+          "data": "0x0000000000000000000000000000000000000000000000000000000000002710",
+          "blockHash": "0x8194de88958d463890828f0d0932cd6c5188436d2e7197b17a3daacb99794d5b",
+          "blockNumber": "8",
+          "blockTimestamp": "1792045541",
+          "transactionHash": "0x838dbb8b745efd6781cc8d88213a987d947f960747b72f45f41729f6cb642947",
+          "transactionIndex": 0,
+          "logIndex": 1,
+          "removed": false
+        }
+      ]
+    }
+  ],
+  "totalGasUsed": "84922",
+  "totalTransactionFeeWei": "119742842892202",
+  "evidence": [],
+  "newPublicTransactions": 0,
+  "setupExcluded": true,
+  "unusedMandateInitializerInB1": true
+}

@@ -1,0 +1,235 @@
+{
+  "command": "forge test --root .runtime/ui-refresh/r4/contracts-clean/mandate-contracts-v2/mandate/contracts --json",
+  "execution": "Cleanly extracted exact downloadable archive; no project dependencies required outside the archive",
+  "exitCode": 0,
+  "archiveSHA256": "91dbc2d29ebaaf37985275c5dc3aeffbc84a1ff9eeb9a1f193243da06b8cb5ec",
+  "compiler": {
+    "solidity": "0.8.26",
+    "optimizerRuns": 200,
+    "viaIR": true,
+    "evmVersion": "cancun"
+  },
+  "passed": 23,
+  "failed": 0,
+  "rawLocalResultSHA256": "15f64eb0f5e24aeebe9aab08cae2e19233fb2cc8b00e8994809b362eb1af786c",
+  "results": [
+    {
+      "suite": "test/BudgetInvariant.t.sol:BudgetInvariantTest",
+      "name": "invariant_rootAndBothGrantsMatchIndependentReservationLedger()",
+      "status": "Success",
+      "reason": null,
+      "kind": {
+        "Invariant": {
+          "runs": 128,
+          "calls": 8192,
+          "reverts": 0,
+          "failed_corpus_replays": 0
+        }
+      }
+    },
+    {
+      "suite": "test/BudgetInvariant.t.sol:BudgetInvariantTest",
+      "name": "testHandlerSettlementMovesFundsAndCancellationRetainsReservation()",
+      "status": "Success",
+      "reason": null,
+      "kind": {
+        "Unit": {}
+      }
+    },
+    {
+      "suite": "test/MandateAccount.t.sol:MandateAccountTest",
+      "name": "testFuzz_explicitlyInvalidAmount(uint256)",
+      "status": "Success",
+      "reason": null,
+      "kind": {
+        "Fuzz": {
+          "runs": 10001,
+          "failed_corpus_replays": 0
+        }
+      }
+    },
+    {
+      "suite": "test/MandateAccount.t.sol:MandateAccountTest",
+      "name": "testFuzz_explicitlyWrongSigner(uint256)",
+      "status": "Success",
+      "reason": null,
+      "kind": {
+        "Fuzz": {
+          "runs": 10001,
+          "failed_corpus_replays": 0
+        }
+      }
+    },
+    {
+      "suite": "test/MandateAccount.t.sol:MandateAccountTest",
+      "name": "test_assetDomainChangeFailsClosedWithoutRefundingCommitment()",
+      "status": "Success",
+      "reason": null,
+      "kind": {
+        "Unit": {}
+      }
+    },
+    {
+      "suite": "test/MandateAccount.t.sol:MandateAccountTest",
+      "name": "test_budgetCannotShrinkBelowOccupancyAndReplacementIsAtomic()",
+      "status": "Success",
+      "reason": null,
+      "kind": {
+        "Unit": {}
+      }
+    },
+    {
+      "suite": "test/MandateAccount.t.sol:MandateAccountTest",
+      "name": "test_chainAccountVersionAndEpochBound()",
+      "status": "Success",
+      "reason": null,
+      "kind": {
+        "Unit": {}
+      }
+    },
+    {
+      "suite": "test/MandateAccount.t.sol:MandateAccountTest",
+      "name": "test_configuredMerchantQuoteSignerMustVerifyPaymentBoundQuote()",
+      "status": "Success",
+      "reason": null,
+      "kind": {
+        "Unit": {}
+      }
+    },
+    {
+      "suite": "test/MandateAccount.t.sol:MandateAccountTest",
+      "name": "test_duplicateAcrossAgentsVersionsAndReleaseNeverReusesStep()",
+      "status": "Success",
+      "reason": null,
+      "kind": {
+        "Unit": {}
+      }
+    },
+    {
+      "suite": "test/MandateAccount.t.sol:MandateAccountTest",
+      "name": "test_expiredRootSessionAndPaymentWindowsReject()",
+      "status": "Success",
+      "reason": null,
+      "kind": {
+        "Unit": {}
+      }
+    },
+    {
+      "suite": "test/MandateAccount.t.sol:MandateAccountTest",
+      "name": "test_expiryPaidAndCanceledNonceKeepCorrectOccupancy()",
+      "status": "Success",
+      "reason": null,
+      "kind": {
+        "Unit": {}
+      }
+    },
+    {
+      "suite": "test/MandateAccount.t.sol:MandateAccountTest",
+      "name": "test_factoryPredictionOwnershipIdempotencyAndDistinctCaller()",
+      "status": "Success",
+      "reason": null,
+      "kind": {
+        "Unit": {}
+      }
+    },
+    {
+      "suite": "test/MandateAccount.t.sol:MandateAccountTest",
+      "name": "test_normalTwoAgentsShareRootBudgetAndActualTokenTransfer()",
+      "status": "Success",
+      "reason": null,
+      "kind": {
+        "Unit": {}
+      }
+    },
+    {
+      "suite": "test/MandateAccount.t.sol:MandateAccountTest",
+      "name": "test_onlyOwnerMutationAndWithdrawalAndFailedTransferRemainReserved()",
+      "status": "Success",
+      "reason": null,
+      "kind": {
+        "Unit": {}
+      }
+    },
+    {
+      "suite": "test/MandateAccount.t.sol:MandateAccountTest",
+      "name": "test_pauseResumeAndVersionReplacementDoNotRevivePayment()",
+      "status": "Success",
+      "reason": null,
+      "kind": {
+        "Unit": {}
+      }
+    },
+    {
+      "suite": "test/MandateAccount.t.sol:MandateAccountTest",
+      "name": "test_prevalidationThenRootOrSessionRevocationRejectsSettlement()",
+      "status": "Success",
+      "reason": null,
+      "kind": {
+        "Unit": {}
+      }
+    },
+    {
+      "suite": "test/MandateAccount.t.sol:MandateAccountTest",
+      "name": "test_rootRevocationAfterValidPrecheckStopsRealTokenSettlement()",
+      "status": "Success",
+      "reason": null,
+      "kind": {
+        "Unit": {}
+      }
+    },
+    {
+      "suite": "test/MandateAccount.t.sol:MandateAccountTest",
+      "name": "test_safeReleaseRequiresStrictExpiryAndUnusedNonce()",
+      "status": "Success",
+      "reason": null,
+      "kind": {
+        "Unit": {}
+      }
+    },
+    {
+      "suite": "test/MandateAccount.t.sol:MandateAccountTest",
+      "name": "test_sameSignatureCannotRegisterAtDifferentAccount()",
+      "status": "Success",
+      "reason": null,
+      "kind": {
+        "Unit": {}
+      }
+    },
+    {
+      "suite": "test/MandateAccount.t.sol:MandateAccountTest",
+      "name": "test_sessionScopeAndLimitsCannotExpand()",
+      "status": "Success",
+      "reason": null,
+      "kind": {
+        "Unit": {}
+      }
+    },
+    {
+      "suite": "test/MandateAccount.t.sol:MandateAccountTest",
+      "name": "test_twoPointOneRequestsReserveAtMostOne()",
+      "status": "Success",
+      "reason": null,
+      "kind": {
+        "Unit": {}
+      }
+    },
+    {
+      "suite": "test/MandateAccount.t.sol:MandateAccountTest",
+      "name": "test_unapprovedRequestMerchantValueWindowAndNonceRejectEvenWithValidSessionSignature()",
+      "status": "Success",
+      "reason": null,
+      "kind": {
+        "Unit": {}
+      }
+    },
+    {
+      "suite": "test/MandateAccount.t.sol:MandateAccountTest",
+      "name": "test_wrongAndMalformedSignaturesUnregisteredDigestAndTamperReject()",
+      "status": "Success",
+      "reason": null,
+      "kind": {
+        "Unit": {}
+      }
+    }
+  ]
+}

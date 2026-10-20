@@ -1,0 +1,192 @@
+{
+  "recordedAt": "2026-10-19T13:28:42.100Z",
+  "chainId": 84532,
+  "wallet": "0xa794DAa86ff10920B75a4de3b0E752586e8703D2",
+  "mandateId": "0x65a5386f35ae1dc848584bd51d1a8211110aa02b8c5264238aa4d4aa7d5a8c89",
+  "sessionId": "0x0263e35063f897a6639f0272e8d6b8a3ff3d19c772f5d8b04baf05ae7c4ebd47",
+  "ownerKeyRead": false,
+  "privateKeysRead": false,
+  "broadcasts": 0,
+  "observations": [
+    {
+      "rpc": "https://base-sepolia-rpc.publicnode.com",
+      "transactions": [
+        {
+          "action": "create",
+          "requestId": "0xf5c3e8dbbdb7a4c6f6df229537a34f7cd0abb8eb3c6a646c7add507a4ddb5e4c",
+          "hash": "0x8336dc072584e2c29201de51e6d7ee1d44ba5c0ddf475188abcee7f0973b7505",
+          "blockNumber": "48324013",
+          "blockHash": "0xfd6ac2fcb62a6966ae1e97ade9da9b663ebd72d7d512b3bc8d0486cb5d593018",
+          "status": "success",
+          "method": "createMandate",
+          "exactUnsignedIntentMatched": true,
+          "from": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+          "to": "0xa794daa86ff10920b75a4de3b0e752586e8703d2",
+          "nonce": 33,
+          "callDigest": "0x52d751726b554aae5b22fc36e826ffd414c5c902778224b36f2f700331b481f7",
+          "events": [
+            {
+              "name": "PolicyChanged",
+              "args": {
+                "mandateId": "0x65a5386f35ae1dc848584bd51d1a8211110aa02b8c5264238aa4d4aa7d5a8c89",
+                "version": "1",
+                "taskHash": "0x7e854fdf26e4d6fae8dce8865cdd24927d481dfc8fe0be946d19d532083508fa",
+                "budget": "150000",
+                "maxPerPayment": "100000",
+                "expiresAt": "1792426952"
+              }
+            }
+          ],
+          "explorer": "https://sepolia.basescan.org/tx/0x8336dc072584e2c29201de51e6d7ee1d44ba5c0ddf475188abcee7f0973b7505"
+        },
+        {
+          "action": "grant",
+          "requestId": "0xdd3b4f7a1894341bddd59065b8ca23cb3595f570d486bc28f94e0cb11846fdb4",
+          "hash": "0x6311ac19a4b212aa656d2e8b74a631f5c99fc0a109d3bfdf273c93ab142a1180",
+          "blockNumber": "48324110",
+          "blockHash": "0x9b936ef0b4a3c3abba6f74db07fc6a0d62b63b92b2585cbfa40b4cd8360e2f48",
+          "status": "success",
+          "method": "grantSession",
+          "exactUnsignedIntentMatched": true,
+          "from": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+          "to": "0xa794daa86ff10920b75a4de3b0e752586e8703d2",
+          "nonce": 34,
+          "callDigest": "0x72d6d07ebf848be7d80bcebe0491b9e6875e5407a5d4bdd0f57637abf987a1e2",
+          "events": [
+            {
+              "name": "SessionGranted",
+              "args": {
+                "mandateId": "0x65a5386f35ae1dc848584bd51d1a8211110aa02b8c5264238aa4d4aa7d5a8c89",
+                "sessionId": "0x0263e35063f897a6639f0272e8d6b8a3ff3d19c772f5d8b04baf05ae7c4ebd47",
+                "signer": "0x818D3bd3ddf805FA9916AB50813d0EB67e40862f",
+                "version": "1",
+                "epoch": "1",
+                "budget": "150000"
+              }
+            }
+          ],
+          "explorer": "https://sepolia.basescan.org/tx/0x6311ac19a4b212aa656d2e8b74a631f5c99fc0a109d3bfdf273c93ab142a1180"
+        }
+      ],
+      "policy": {
+        "taskHash": "0x7e854fdf26e4d6fae8dce8865cdd24927d481dfc8fe0be946d19d532083508fa",
+        "budget": "150000",
+        "maxPerPayment": "100000",
+        "occupied": "0",
+        "expiresAt": "1792426952",
+        "version": "1",
+        "paused": false,
+        "revoked": false,
+        "exists": true
+      },
+      "grant": {
+        "signer": "0x818D3bd3ddf805FA9916AB50813d0EB67e40862f",
+        "budget": "150000",
+        "maxPerPayment": "100000",
+        "occupied": "0",
+        "expiresAt": "1792423622",
+        "policyVersion": "1",
+        "epoch": "1",
+        "revoked": false,
+        "exists": true
+      },
+      "usdcCashAtomic": "150000",
+      "head": {
+        "number": "48324116",
+        "hash": "0x2b8be06f3584b9c467575847f69c6e21573fad60eb97b873cb2867cab2de7ab4",
+        "timestamp": "1792416520"
+      },
+      "sessionTimeValid": true
+    },
+    {
+      "rpc": "https://sepolia.base.org",
+      "transactions": [
+        {
+          "action": "create",
+          "requestId": "0xf5c3e8dbbdb7a4c6f6df229537a34f7cd0abb8eb3c6a646c7add507a4ddb5e4c",
+          "hash": "0x8336dc072584e2c29201de51e6d7ee1d44ba5c0ddf475188abcee7f0973b7505",
+          "blockNumber": "48324013",
+          "blockHash": "0xfd6ac2fcb62a6966ae1e97ade9da9b663ebd72d7d512b3bc8d0486cb5d593018",
+          "status": "success",
+          "method": "createMandate",
+          "exactUnsignedIntentMatched": true,
+          "from": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+          "to": "0xa794daa86ff10920b75a4de3b0e752586e8703d2",
+          "nonce": 33,
+          "callDigest": "0x52d751726b554aae5b22fc36e826ffd414c5c902778224b36f2f700331b481f7",
+          "events": [
+            {
+              "name": "PolicyChanged",
+              "args": {
+                "mandateId": "0x65a5386f35ae1dc848584bd51d1a8211110aa02b8c5264238aa4d4aa7d5a8c89",
+                "version": "1",
+                "taskHash": "0x7e854fdf26e4d6fae8dce8865cdd24927d481dfc8fe0be946d19d532083508fa",
+                "budget": "150000",
+                "maxPerPayment": "100000",
+                "expiresAt": "1792426952"
+              }
+            }
+          ],
+          "explorer": "https://sepolia.basescan.org/tx/0x8336dc072584e2c29201de51e6d7ee1d44ba5c0ddf475188abcee7f0973b7505"
+        },
+        {
+          "action": "grant",
+          "requestId": "0xdd3b4f7a1894341bddd59065b8ca23cb3595f570d486bc28f94e0cb11846fdb4",
+          "hash": "0x6311ac19a4b212aa656d2e8b74a631f5c99fc0a109d3bfdf273c93ab142a1180",
+          "blockNumber": "48324110",
+          "blockHash": "0x9b936ef0b4a3c3abba6f74db07fc6a0d62b63b92b2585cbfa40b4cd8360e2f48",
+          "status": "success",
+          "method": "grantSession",
+          "exactUnsignedIntentMatched": true,
+          "from": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+          "to": "0xa794daa86ff10920b75a4de3b0e752586e8703d2",
+          "nonce": 34,
+          "callDigest": "0x72d6d07ebf848be7d80bcebe0491b9e6875e5407a5d4bdd0f57637abf987a1e2",
+          "events": [
+            {
+              "name": "SessionGranted",
+              "args": {
+                "mandateId": "0x65a5386f35ae1dc848584bd51d1a8211110aa02b8c5264238aa4d4aa7d5a8c89",
+                "sessionId": "0x0263e35063f897a6639f0272e8d6b8a3ff3d19c772f5d8b04baf05ae7c4ebd47",
+                "signer": "0x818D3bd3ddf805FA9916AB50813d0EB67e40862f",
+                "version": "1",
+                "epoch": "1",
+                "budget": "150000"
+              }
+            }
+          ],
+          "explorer": "https://sepolia.basescan.org/tx/0x6311ac19a4b212aa656d2e8b74a631f5c99fc0a109d3bfdf273c93ab142a1180"
+        }
+      ],
+      "policy": {
+        "taskHash": "0x7e854fdf26e4d6fae8dce8865cdd24927d481dfc8fe0be946d19d532083508fa",
+        "budget": "150000",
+        "maxPerPayment": "100000",
+        "occupied": "0",
+        "expiresAt": "1792426952",
+        "version": "1",
+        "paused": false,
+        "revoked": false,
+        "exists": true
+      },
+      "grant": {
+        "signer": "0x818D3bd3ddf805FA9916AB50813d0EB67e40862f",
+        "budget": "150000",
+        "maxPerPayment": "100000",
+        "occupied": "0",
+        "expiresAt": "1792423622",
+        "policyVersion": "1",
+        "epoch": "1",
+        "revoked": false,
+        "exists": true
+      },
+      "usdcCashAtomic": "150000",
+      "head": {
+        "number": "48324116",
+        "hash": "0x2b8be06f3584b9c467575847f69c6e21573fad60eb97b873cb2867cab2de7ab4",
+        "timestamp": "1792416520"
+      },
+      "sessionTimeValid": true
+    }
+  ]
+}

@@ -1,0 +1,297 @@
+{
+  "environment": "BASE_SEPOLIA_NATIVE_USDC",
+  "schemaVersion": 1,
+  "policy": {
+    "schemaVersion": 1,
+    "mandateId": "0xe6ad51a72f9610f931a2df98a6854f6852eddcdd7861df8684b14f969f63a4c4",
+    "owner": "0xaA987fC286434D205669814Ba46b1d8df824fB36",
+    "wallet": "0xCf818a1EC81B28826E941Ca6EA800467f1398399",
+    "chainId": 84532,
+    "sessionSigner": "0x2FB3A8345C3766652Be37D821093b97503580e8d",
+    "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+    "payTo": "0x5957a844D78516d8A0Ad11C06516777Ea82917Ac",
+    "budget": "150000",
+    "maxPerPayment": "100000",
+    "expiresAt": 1791969288,
+    "stepIds": [
+      "0xe0dcd06f0c96f2f1e9c736b3e4ec06ebb43b7a40982b232a77d833cf1eaf5efd",
+      "0x4d4f1621eea5d4427d70a993290e6085406ca5fff3fcb253f90995de1599e3c4"
+    ]
+  },
+  "source": "local_and_chain",
+  "guarantees": [
+    "payment field and budget constraints",
+    "receipt-linked fixture result"
+  ],
+  "limitations": [
+    "no independent HTTP provenance",
+    "no general service quality proof",
+    "test prototype"
+  ],
+  "records": [
+    {
+      "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+      "chainId": 84532,
+      "digest": "0xaf63d5c1d877ea7e2a610cc69b172d1c5ab9f5be56938b0f673b36d529093d96",
+      "errorCode": "BudgetExceeded",
+      "key": "84532:0xcf818a1ec81b28826e941ca6ea800467f1398399:0xe6ad51a72f9610f931a2df98a6854f6852eddcdd7861df8684b14f969f63a4c4:0x4d4f1621eea5d4427d70a993290e6085406ca5fff3fcb253f90995de1599e3c4",
+      "mandateId": "0xe6ad51a72f9610f931a2df98a6854f6852eddcdd7861df8684b14f969f63a4c4",
+      "nonce": "0x462b8b13c49e7f7e8fdf4404e4ae9224329faa65c27020d2690060a673ebaeb6",
+      "payload": {
+        "accepted": {
+          "amount": "100000",
+          "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+          "extra": {
+            "name": "USDC",
+            "version": "2"
+          },
+          "maxTimeoutSeconds": 300,
+          "network": "eip155:84532",
+          "payTo": "0x5957a844D78516d8A0Ad11C06516777Ea82917Ac",
+          "scheme": "exact"
+        },
+        "payload": {
+          "authorization": {
+            "from": "0xCf818a1EC81B28826E941Ca6EA800467f1398399",
+            "nonce": "0x462b8b13c49e7f7e8fdf4404e4ae9224329faa65c27020d2690060a673ebaeb6",
+            "to": "0x5957a844D78516d8A0Ad11C06516777Ea82917Ac",
+            "validAfter": "0",
+            "validBefore": "1791883750",
+            "value": "100000"
+          },
+          "signature": ""
+        },
+        "resource": {
+          "description": "Fixed public dataset statistics; not live market data",
+          "mimeType": "application/json",
+          "url": "http://127.0.0.1:9010/stats?asset=BTC"
+        },
+        "x402Version": 2
+      },
+      "paymentState": "rejected",
+      "proof": {
+        "chainId": 84532,
+        "evidenceSource": "local",
+        "mandateId": "0xe6ad51a72f9610f931a2df98a6854f6852eddcdd7861df8684b14f969f63a4c4",
+        "nonce": "0x462b8b13c49e7f7e8fdf4404e4ae9224329faa65c27020d2690060a673ebaeb6",
+        "paymentDigest": "0xaf63d5c1d877ea7e2a610cc69b172d1c5ab9f5be56938b0f673b36d529093d96",
+        "quoteHash": "0xa0b3f77cbda7b493dc9fb5f46e26aae26eadbe874a72a9c265df8f2eed04a1ef",
+        "registrationSignature": "0x2cfcdf7cf799e29a81d8692eafcf3092a352eeb68bc96bd8439650079ac83d2064905f331ee933fe72503fee78e82e0fe5e77a1af5c4de422e2e5b61bcc1553e1b",
+        "requestHash": "0x309791b611d3ebdf8b5ba1576fea82076e229d659cc1cebd3614ca062ddbbd1c",
+        "schemaVersion": 1,
+        "stepId": "0x4d4f1621eea5d4427d70a993290e6085406ca5fff3fcb253f90995de1599e3c4",
+        "wallet": "0xCf818a1EC81B28826E941Ca6EA800467f1398399"
+      },
+      "quoteHash": "0xa0b3f77cbda7b493dc9fb5f46e26aae26eadbe874a72a9c265df8f2eed04a1ef",
+      "requestHash": "0x309791b611d3ebdf8b5ba1576fea82076e229d659cc1cebd3614ca062ddbbd1c",
+      "requirements": {
+        "amount": "100000",
+        "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+        "extra": {
+          "name": "USDC",
+          "version": "2"
+        },
+        "maxTimeoutSeconds": 300,
+        "network": "eip155:84532",
+        "payTo": "0x5957a844D78516d8A0Ad11C06516777Ea82917Ac",
+        "scheme": "exact"
+      },
+      "resultState": "unchecked",
+      "serviceState": "not_requested",
+      "stepId": "0x4d4f1621eea5d4427d70a993290e6085406ca5fff3fcb253f90995de1599e3c4",
+      "url": "http://127.0.0.1:9010/stats?asset=BTC",
+      "wallet": "0xCf818a1EC81B28826E941Ca6EA800467f1398399"
+    },
+    {
+      "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+      "chainId": 84532,
+      "digest": "0x678d02cf08aa1d474ae13782b169d299ba4a87619797e68321c7d19a173af385",
+      "key": "84532:0xcf818a1ec81b28826e941ca6ea800467f1398399:0xe6ad51a72f9610f931a2df98a6854f6852eddcdd7861df8684b14f969f63a4c4:0xe0dcd06f0c96f2f1e9c736b3e4ec06ebb43b7a40982b232a77d833cf1eaf5efd",
+      "mandateId": "0xe6ad51a72f9610f931a2df98a6854f6852eddcdd7861df8684b14f969f63a4c4",
+      "nonce": "0x09680324fe20bffca0e12dafdd9f1fcabde431ca66f0e0facd50c03bff9b3104",
+      "payload": {
+        "accepted": {
+          "amount": "100000",
+          "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+          "extra": {
+            "name": "USDC",
+            "version": "2"
+          },
+          "maxTimeoutSeconds": 300,
+          "network": "eip155:84532",
+          "payTo": "0x5957a844D78516d8A0Ad11C06516777Ea82917Ac",
+          "scheme": "exact"
+        },
+        "payload": {
+          "authorization": {
+            "from": "0xCf818a1EC81B28826E941Ca6EA800467f1398399",
+            "nonce": "0x09680324fe20bffca0e12dafdd9f1fcabde431ca66f0e0facd50c03bff9b3104",
+            "to": "0x5957a844D78516d8A0Ad11C06516777Ea82917Ac",
+            "validAfter": "0",
+            "validBefore": "1791883630",
+            "value": "100000"
+          },
+          "signature": "0x38f4be1dfad2332c912980328cc8040eca47e61fc32fa1df05372b593cd17d821f4b025ccc7ac552fb3852622c3da07f217ffc381504cc153d8f7d7a5a96b1271c"
+        },
+        "resource": {
+          "description": "Fixed public dataset statistics; not live market data",
+          "mimeType": "application/json",
+          "url": "http://127.0.0.1:9010/stats?asset=ETH"
+        },
+        "x402Version": 2
+      },
+      "paymentState": "settled",
+      "proof": {
+        "chainId": 84532,
+        "evidenceSource": "local",
+        "mandateId": "0xe6ad51a72f9610f931a2df98a6854f6852eddcdd7861df8684b14f969f63a4c4",
+        "nonce": "0x09680324fe20bffca0e12dafdd9f1fcabde431ca66f0e0facd50c03bff9b3104",
+        "paymentDigest": "0x678d02cf08aa1d474ae13782b169d299ba4a87619797e68321c7d19a173af385",
+        "quoteHash": "0xa0b3f77cbda7b493dc9fb5f46e26aae26eadbe874a72a9c265df8f2eed04a1ef",
+        "registrationSignature": "0x337d869a103b69e0b7d47c9ba7455654b1c26ffcc8dbb4ce143fcca3be0c68e47b38016269be9e6178da81901a75e60e5470da163b50e1a90ff37a013bfd2c581c",
+        "requestHash": "0xb48ff3aa780526495920e7b2c6112aa4ca5a5d29a8c23351045014e789dcd425",
+        "schemaVersion": 1,
+        "stepId": "0xe0dcd06f0c96f2f1e9c736b3e4ec06ebb43b7a40982b232a77d833cf1eaf5efd",
+        "wallet": "0xCf818a1EC81B28826E941Ca6EA800467f1398399"
+      },
+      "quoteHash": "0xa0b3f77cbda7b493dc9fb5f46e26aae26eadbe874a72a9c265df8f2eed04a1ef",
+      "registrationTx": "0x2aaf5aebf34c796e9ac37a60d484e90eadaab151ef7fe4f3058e7797f297b3d8",
+      "requestHash": "0xb48ff3aa780526495920e7b2c6112aa4ca5a5d29a8c23351045014e789dcd425",
+      "requirements": {
+        "amount": "100000",
+        "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+        "extra": {
+          "name": "USDC",
+          "version": "2"
+        },
+        "maxTimeoutSeconds": 300,
+        "network": "eip155:84532",
+        "payTo": "0x5957a844D78516d8A0Ad11C06516777Ea82917Ac",
+        "scheme": "exact"
+      },
+      "result": {
+        "asset": "ETH",
+        "count": 3,
+        "datasetId": "mandate-public-fixture-v1",
+        "mean": 110
+      },
+      "resultState": "valid",
+      "serviceState": "returned",
+      "settlementBlockHash": "0xaf41e1ac21d144bed9adef25cfa32f51de4f31586d44b7033d2e2aa4100b6bb9",
+      "settlementTx": "0x3d204f3cb1a6e8d339038a4d8bfcb4dd600dd9f2e518cf16adf449a398025e91",
+      "stepId": "0xe0dcd06f0c96f2f1e9c736b3e4ec06ebb43b7a40982b232a77d833cf1eaf5efd",
+      "url": "http://127.0.0.1:9010/stats?asset=ETH",
+      "wallet": "0xCf818a1EC81B28826E941Ca6EA800467f1398399"
+    }
+  ],
+  "commitments": [
+    {
+      "schemaVersion": 1,
+      "mandateId": "0xe6ad51a72f9610f931a2df98a6854f6852eddcdd7861df8684b14f969f63a4c4",
+      "stepId": "0xe0dcd06f0c96f2f1e9c736b3e4ec06ebb43b7a40982b232a77d833cf1eaf5efd",
+      "wallet": "0xCf818a1EC81B28826E941Ca6EA800467f1398399",
+      "chainId": 84532,
+      "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+      "payTo": "0x5957a844D78516d8A0Ad11C06516777Ea82917Ac",
+      "amount": "100000",
+      "validAfter": "0",
+      "validBefore": "1791883630",
+      "nonce": "0x09680324fe20bffca0e12dafdd9f1fcabde431ca66f0e0facd50c03bff9b3104",
+      "paymentDigest": "0x678d02cf08aa1d474ae13782b169d299ba4a87619797e68321c7d19a173af385",
+      "registrationTx": "0x2aaf5aebf34c796e9ac37a60d484e90eadaab151ef7fe4f3058e7797f297b3d8"
+    }
+  ],
+  "decisions": [
+    {
+      "schemaVersion": 1,
+      "mandateId": "0xe6ad51a72f9610f931a2df98a6854f6852eddcdd7861df8684b14f969f63a4c4",
+      "stepId": "0x4d4f1621eea5d4427d70a993290e6085406ca5fff3fcb253f90995de1599e3c4",
+      "decision": "reject",
+      "code": "BudgetExceeded",
+      "evidenceRefs": [],
+      "timestamp": 1791884161,
+      "source": "local"
+    },
+    {
+      "schemaVersion": 1,
+      "mandateId": "0xe6ad51a72f9610f931a2df98a6854f6852eddcdd7861df8684b14f969f63a4c4",
+      "stepId": "0xe0dcd06f0c96f2f1e9c736b3e4ec06ebb43b7a40982b232a77d833cf1eaf5efd",
+      "decision": "allow",
+      "code": "SETTLED",
+      "evidenceRefs": [
+        "0x2aaf5aebf34c796e9ac37a60d484e90eadaab151ef7fe4f3058e7797f297b3d8",
+        "0x3d204f3cb1a6e8d339038a4d8bfcb4dd600dd9f2e518cf16adf449a398025e91"
+      ],
+      "timestamp": 1791884161,
+      "source": "local"
+    }
+  ],
+  "checks": {
+    "sameNonceOnRetry": true,
+    "budgetRejected": true
+  },
+  "balances": {
+    "walletBefore": "1000000",
+    "walletAfter": "900000",
+    "merchantBefore": "0",
+    "merchantAfter": "100000"
+  },
+  "events": {
+    "authorizationUsed": [
+      {
+        "eventName": "AuthorizationUsed",
+        "args": {
+          "authorizer": "0xCf818a1EC81B28826E941Ca6EA800467f1398399",
+          "nonce": "0x09680324fe20bffca0e12dafdd9f1fcabde431ca66f0e0facd50c03bff9b3104"
+        },
+        "address": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+        "topics": [
+          "0x98de503528ee59b575ef0c0a2576a82497bfc029a5685b209e9ec333479b10a5",
+          "0x000000000000000000000000cf818a1ec81b28826e941ca6ea800467f1398399",
+          "0x09680324fe20bffca0e12dafdd9f1fcabde431ca66f0e0facd50c03bff9b3104"
+        ],
+        "data": "0x",
+        "blockHash": "0xaf41e1ac21d144bed9adef25cfa32f51de4f31586d44b7033d2e2aa4100b6bb9",
+        "blockNumber": "48057580",
+        "blockTimestamp": "1791883448",
+        "transactionHash": "0x3d204f3cb1a6e8d339038a4d8bfcb4dd600dd9f2e518cf16adf449a398025e91",
+        "transactionIndex": 22,
+        "logIndex": 76,
+        "removed": false
+      }
+    ],
+    "transfer": [
+      {
+        "eventName": "Transfer",
+        "args": {
+          "from": "0xCf818a1EC81B28826E941Ca6EA800467f1398399",
+          "to": "0x5957a844D78516d8A0Ad11C06516777Ea82917Ac",
+          "value": "100000"
+        },
+        "address": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+        "topics": [
+          "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+          "0x000000000000000000000000cf818a1ec81b28826e941ca6ea800467f1398399",
+          "0x0000000000000000000000005957a844d78516d8a0ad11c06516777ea82917ac"
+        ],
+        "data": "0x00000000000000000000000000000000000000000000000000000000000186a0",
+        "blockHash": "0xaf41e1ac21d144bed9adef25cfa32f51de4f31586d44b7033d2e2aa4100b6bb9",
+        "blockNumber": "48057580",
+        "blockTimestamp": "1791883448",
+        "transactionHash": "0x3d204f3cb1a6e8d339038a4d8bfcb4dd600dd9f2e518cf16adf449a398025e91",
+        "transactionIndex": 22,
+        "logIndex": 77,
+        "removed": false
+      }
+    ]
+  },
+  "receipt": {
+    "transactionHash": "0x3d204f3cb1a6e8d339038a4d8bfcb4dd600dd9f2e518cf16adf449a398025e91",
+    "status": "success",
+    "blockNumber": "48057580",
+    "blockHash": "0xaf41e1ac21d144bed9adef25cfa32f51de4f31586d44b7033d2e2aa4100b6bb9",
+    "gasUsed": "120575",
+    "effectiveGasPrice": "6000000"
+  },
+  "confirmationPolicy": "2 blocks; canonical blockHash checked; reorgs remain possible"
+}

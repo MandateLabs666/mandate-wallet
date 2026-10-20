@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 2,
+  "chainId": 31337,
+  "wallet": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+  "asset": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+  "walletRuntimeHash": "0xf8c4b7928b8d66d4c25cade510b8ec35dbbe902990c3cfb91e10ce7d9124175a",
+  "owner": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "mandateId": "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37",
+  "sessionId": "0x61f0ffa6b310744fb2869aa8b49390b907440c17341f41afc5971aac5aae9f40",
+  "sessionSigner": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+  "merchantId": "0x35b7289f73333871b968eb7a0064ec7deaa432461c89f27075568d2d370c4347",
+  "merchantSigner": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+  "payTo": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+  "resourceUrl": "http://127.0.0.1:64511/stats?asset=ETH",
+  "requestHash": "0x95d410a30d227c9a25e0ac03003a8bfa91d697fafdbef535fbf300ad3b7bf897",
+  "rootBudgetAtomic": "150000",
+  "maxPerPaymentAtomic": "100000",
+  "startBlock": "3",
+  "rpcs": [
+    "http://127.0.0.1:64506"
+  ],
+  "confirmations": 1,
+  "resultChecker": "ETH-stats-v2",
+  "controllerSigner": "0x976EA74026E726554dB657fA54763abd0C3a0aa9",
+  "controllerEnvelope": {
+    "payload": {
+      "schemaVersion": 2,
+      "scope": {
+        "chainId": 31337,
+        "wallet": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+        "mandateId": "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37",
+        "sessionId": "0x61f0ffa6b310744fb2869aa8b49390b907440c17341f41afc5971aac5aae9f40",
+        "policyVersion": "1",
+        "sessionEpoch": "1",
+        "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+      },
+      "mode": "live",
+      "stepIds": [
+        "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e"
+      ],
+      "maxQueriesPerStep": 3,
+      "startsAt": 1792045409,
+      "expiresAt": 1792049010,
+      "checkpointDeadlineSeconds": 300,
+      "expectedKinds": [
+        "pre-payment",
+        "registration",
+        "payment",
+        "service"
+      ]
+    },
+    "owner": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "signature": "0x082b58e37ba8d1849ddc18403b69723945e7f10118896bc67940b42aebcb7a9b7ad91a8e2a31af319912e7d24489258015e90455688d4569f1ae86a3ddaec6771c"
+  },
+  "controllerSnapshot": {
+    "lastSequence": "3",
+    "lastRoot": "0xb681be6bce330326bb1f4c791e7e29e87e160e58b580dac9474a460e1d4d24b0"
+  }
+}

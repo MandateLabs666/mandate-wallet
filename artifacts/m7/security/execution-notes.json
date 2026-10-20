@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "toolSetupIssues": [
+    {
+      "tool": "slither",
+      "issue": "default solc-select attempted an unwritable home directory",
+      "resolution": "VIRTUAL_ENV explicitly set to the project-local isolated virtual environment; no home override"
+    },
+    {
+      "tool": "semgrep",
+      "issue": "native binary reported empty CA trust anchors",
+      "resolution": "SSL_CERT_FILE set to the installed certifi trust bundle; TLS verification retained"
+    }
+  ],
+  "testAttempts": [
+    {
+      "command": "pnpm m2:test --reporter=json --outputFile=artifacts/m7/security/echo-tests.json",
+      "environment": "workspace sandbox",
+      "result": "not completed; terminated by owner agent with SIGINT, exit 130",
+      "reason": "local EVM harness could not complete in restricted execution; no success claimed",
+      "replacement": "echo-tests-network.json, local-network-enabled execution"
+    }
+  ],
+  "slitherExitCode": 255,
+  "slitherJSONSuccess": true,
+  "slitherExitMeaning": "findings present; inspect the success field and every finding, not a zero-findings claim",
+  "sourceBaseCommit": "f1fa613",
+  "newPublicTransactions": 0,
+  "typecheck": {
+    "command": "pnpm typecheck",
+    "exitCode": 0,
+    "log": "typecheck.txt"
+  },
+  "postScanRunnerChecks": {
+    "ruleArchiveAndSelectedSourcesRechecked": true,
+    "existingOutputDirectoryRejected": true
+  }
+}

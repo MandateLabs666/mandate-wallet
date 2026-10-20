@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 2,
+  "recordedAt": "2026-10-14T13:25:51.846133+00:00",
+  "sourceCommit": "40ce924cd794660d0294b7b849fb559e3e3b4790",
+  "T3": "completed",
+  "T4": "not yet accepted",
+  "G2": "open",
+  "publicGatePassed": false,
+  "contractCases": 22,
+  "sdkCases": 5,
+  "invalidAmountCases": 10001,
+  "invalidSignerCases": 10001,
+  "fuzzSeed": "0x4022028",
+  "invariantCalls": 8192,
+  "handlerReverts": 0,
+  "runtimeBytes": {
+    "MandateAccount": 13191,
+    "MandateFactory": 15675
+  },
+  "dependencyCheck": {
+    "verifiedFiles": 1318,
+    "mismatches": []
+  },
+  "sourceSHA256": {
+    "artifacts/m3/contracts-tests.json": "fd8eff2c3a157f74254515082ed20196c9ae508339e5e33eb36dd353290a4a27",
+    "artifacts/m3/sdk-tests.json": "b71f1746d34cbe5245f5bf7b7289d36b916fa48e8f9c6a6f28e4877f6ba6f960",
+    "mandate/README.zh-CN.md": "8a4dfdbaa95eb57d280ccd362d9c175ce4028d2d84378234d3f9128eadd8fe56",
+    "mandate/contracts/foundry.toml": "39e9377b83322e655ff4fa70a35c3bc65386eb5cbbc248358bb322f9cc724f55",
+    "mandate/contracts/src/MandateAccount.sol": "c733e4568179a7a5777b1e4bc9a07607b27e2c2171cb296369617b9ac71bd6ff",
+    "mandate/contracts/src/MandateFactory.sol": "9c6575210bafc882f210aff4de0b151fe278f5ddd433016fca5bb3639d001165",
+    "mandate/contracts/src/TestUSDC.sol": "eee20be9dfe1dcecb47e9768b4cd0746293589b986740b393ff5f31b1d520b19",
+    "mandate/contracts/test/BudgetInvariant.t.sol": "f9750a13dff35dbfc9bef53350f1683685d0cc063814051b1da299eca206a436",
+    "mandate/contracts/test/MandateAccount.t.sol": "ca8fb6dd986754ba7b740490bca69062cd703987d00fd2c2720a48c3c7d7da6c",
+    "mandate/sdk/accountAbi.ts": "0e07d444875cea5202ed01ce0e666aeeb21a9cffcdf9a9bcee440ffe9ea058dd",
+    "mandate/sdk/factoryAbi.ts": "4c81dc257d4928d09295f75816edddcc0949d15fd07c184639f26123cd25997e",
+    "mandate/sdk/model.ts": "a9733a7519bfb9655952b38ffdc2d8f57fcee2a8e1a6c38b7a079369788370e3",
+    "mandate/sdk/owner.ts": "75b2bc923b45a17a37a884eef971958989f0524f0fe3f5ceee482a4cc3d9582b",
+    "mandate/sdk/reader.ts": "d09e6fe3e8fba1e9363f17d16d2aab27e418b5d3b05024ad6dfd77349056f618",
+    "mandate/sdk/test/integration.test.ts": "be3132593aea37713b6591b202483eef1f809143ab6fbf55d986095ba4751d93",
+    "mandate/sdk/test/model.test.ts": "9fcca4d3cb5b3e90d7ef70a3e70089b084be11fe956b9ccfc595e43132d31135",
+    "mandate/sdk/testTokenAbi.ts": "185dcc02b55e4c0c3fc1e72a9ebf805224e32de9c19f1fda45f1e3c728a74219",
+    "mandate/sdk/vitest.config.ts": "62df1ff50a3246ab91945a820ddd61c419e5351d8858294fab2e2d2e1707e06b",
+    "planning/M3_SPEC.zh-CN.md": "7c865e5995922727a44ff4262543f9fffef6a8ba9ed20579d5e6bad4c26c20d3",
+    "schemas/m3-payment.schema.json": "5368aaa131ca685393f25133121ed8bf21f033ef42cbd781850c56e6ffab8b6f",
+    "scripts/m3-accept-core.py": "10e68965e60f22c10c6f404e88fa84692cc89acf206bd47b9e4cb880b953ebab"
+  },
+  "limitations": [
+    "Local TestUSDC and Anvil; native-USDC and public deployment are T4.",
+    "Finite tests/invariant runs are not a formal proof.",
+    "No third-party audit, MCP/UI or merchant HTTP binding accepted by this gate."
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "preparation.rpc-trace-capabilities.v1",
+  "recordedAt": "2026-10-14T11:28:15.113Z",
+  "probe": {
+    "method": "debug_traceCall",
+    "params": [
+      {
+        "to": "0x1111111111111111111111111111111111111111",
+        "data": "0x"
+      },
+      "latest",
+      {
+        "tracer": "{fault:function(log,db){},result:function(ctx,db){return {marker:\"mandate-m2-rpc-capability-probe\",output:toHex(ctx.output),error:ctx.error||null};}}",
+        "stateOverrides": {
+          "0x1111111111111111111111111111111111111111": {
+            "code": "0x602a60005260206000f3"
+          }
+        }
+      }
+    ],
+    "expectedReturn": "0x000000000000000000000000000000000000000000000000000000000000002a"
+  },
+  "results": [
+    {
+      "rpc": "https://ethereum-sepolia-rpc.publicnode.com",
+      "transactionsSent": false,
+      "paymentsMade": false,
+      "chainId": 11155111,
+      "response": {
+        "jsonrpc": "2.0",
+        "error": {
+          "code": -32601,
+          "message": "the method debug_traceCall does not exist/is not available"
+        },
+        "id": 1
+      },
+      "customJavaScriptAndCodeOverridePassed": false,
+      "status": "basic_trace_probe_failed"
+    },
+    {
+      "rpc": "https://sepolia.drpc.org",
+      "transactionsSent": false,
+      "paymentsMade": false,
+      "chainId": 11155111,
+      "response": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": {
+          "error": null,
+          "marker": "mandate-m2-rpc-capability-probe",
+          "output": "0x000000000000000000000000000000000000000000000000000000000000002a"
+        }
+      },
+      "customJavaScriptAndCodeOverridePassed": true,
+      "status": "basic_trace_probe_passed"
+    }
+  ],
+  "actualStrictAltoAdmissionProven": false,
+  "M2PublicAcceptanceProven": false,
+  "priorAttempt": "rpc-trace-capabilities-attempt1.json",
+  "limitation": "A basic trace probe does not replace actual strict Alto acceptance; access errors do not prove unsupported tracing."
+}

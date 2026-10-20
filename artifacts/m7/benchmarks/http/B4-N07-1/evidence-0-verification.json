@@ -1,0 +1,132 @@
+{
+  "exitCode": 0,
+  "report": {
+    "schemaVersion": 2,
+    "observedAt": "2026-10-15T06:25:51.885Z",
+    "checks": [
+      {
+        "name": "checkpoint-integrity",
+        "status": "confirmed",
+        "source": "session-signatures-and-salted-Merkle",
+        "guarantee": "Disclosed fields match signed ordered checkpoints; hidden fields are not checked",
+        "facts": {
+          "checkpoints": 5
+        }
+      },
+      {
+        "name": "external-checkpoints",
+        "status": "confirmed",
+        "source": "pinned-controller-signatures-and-independent-retention",
+        "guarantee": "offered checkpoints match independently retained roots in the trusted snapshot",
+        "facts": {
+          "count": 5,
+          "lastSequence": "4",
+          "mode": "live",
+          "guarantee": "offered checkpoints match independently retained roots in the trusted snapshot",
+          "limits": [
+            "Requires honest independent retention and the pinned controller key.",
+            "Historical import does not prove that roots were captured before payment.",
+            "Unobserved tails and out-of-band model calls are not proven absent."
+          ]
+        }
+      },
+      {
+        "name": "request",
+        "status": "confirmed",
+        "source": "disclosed-request-and-owner-scope",
+        "guarantee": "Disclosed canonical request matches the approved request hash"
+      },
+      {
+        "name": "action-proof",
+        "status": "confirmed",
+        "source": "session-evidence-signature",
+        "guarantee": "Evidence checkpoint is cross-linked to exact registration/payment digests; it is not an on-chain session-root gate"
+      },
+      {
+        "name": "registration-and-authority",
+        "status": "confirmed",
+        "source": "canonical-registration-and-pinned-wallet-code",
+        "guarantee": "Exact transaction, session signature, owner scope, validity and budget checks at the registration block",
+        "facts": {
+          "registrationHash": "0x2cd2ee1df02e2d891d14c6caf893ebe7a6da666a6b34205eec8b40b40eb1e7e8",
+          "blockHash": "0x7904de6472380ec007a7a3adf5e71404137bf5b7ba64f6557442bd7297646f34",
+          "providers": 1
+        }
+      },
+      {
+        "name": "budget",
+        "status": "confirmed",
+        "source": "all-root-registration-events-and-current-commitments",
+        "guarantee": "Recomputed occupied funds include paid and unresolved commitments; released commitments are excluded",
+        "facts": {
+          "occupiedAtomic": "20000",
+          "budgetAtomic": "150000",
+          "registrations": 2
+        }
+      },
+      {
+        "name": "payment",
+        "status": "confirmed",
+        "source": "canonical-token-AuthorizationUsed-and-matching-Transfer",
+        "guarantee": "Actual payer, recipient, nonce and amount agree; delivery remains a separate check",
+        "facts": {
+          "transaction": "0x20fd7536ce1ee99f07a7bf6f9cfc19fb1ba92796acf1aee6f70dd0b5aa26df7e",
+          "paidAtomic": "10000",
+          "providers": 1
+        }
+      },
+      {
+        "name": "merchant-offer",
+        "status": "confirmed",
+        "source": "owner-bound-merchant-EIP712",
+        "guarantee": "Merchant signed the disclosed payment terms; this is not a TLS transcript proof"
+      },
+      {
+        "name": "merchant-receipt",
+        "status": "confirmed",
+        "source": "owner-bound-merchant-EIP712",
+        "guarantee": "Merchant signed its receipt claim; amount/request/result-body are not covered",
+        "facts": {
+          "correlation": "merchant-claim-with-transaction",
+          "coversPaymentAmount": false,
+          "coversRequestBody": false,
+          "coversResultBody": false
+        }
+      },
+      {
+        "name": "result",
+        "status": "confirmed",
+        "source": "disclosed-data-and-explicit-result-checker",
+        "guarantee": "Disclosed data matches its commitment and the configured checker; no proof of HTTPS provenance",
+        "facts": {
+          "checker": "ETH-stats-v2"
+        }
+      },
+      {
+        "name": "https-source",
+        "status": "incomplete",
+        "source": "no-independent-HTTPS-witness",
+        "guarantee": "Session signatures and merchant identity configuration do not prove the TLS session",
+        "code": "HTTPS_WITNESS_NOT_PROVIDED"
+      },
+      {
+        "name": "history-completeness",
+        "status": "incomplete",
+        "source": "trusted-retained-prefix",
+        "guarantee": "Retained roots match, but unobserved tails and activity before historical import are not proven absent",
+        "code": "UNOBSERVED_HISTORY_NOT_GUARANTEED"
+      }
+    ],
+    "requiredChecksPassed": true,
+    "overall": "incomplete",
+    "limits": [
+      "RPC data is trusted; two agreeing providers are not an independent consensus proof.",
+      "Session signatures authenticate claimed observations, not HTTPS source truth or a complete history.",
+      "The deployed wallet enforces request/quote hashes and financial scope, not the entire session root.",
+      "Merchant receipts do not sign payment amount, request body or result body."
+    ]
+  },
+  "privateRuntimeInputs": [],
+  "processSeparate": true,
+  "managementIsolation": false
+}

@@ -1,0 +1,107 @@
+{
+  "chainId": 84532,
+  "currency": "test ETH",
+  "excludesUSDCBudget": true,
+  "scope": "protocol experiment transactions; faucet and bridge preparation separate",
+  "serviceFeeUSDCAtomic": "100000",
+  "protocolFeeUSDCAtomic": "0",
+  "gasLedger": [
+    {
+      "purpose": "deploy",
+      "hash": "0x1d08e200ac966906269502d911315410977573053e1d3cee4d81bd28657d29d3",
+      "payer": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+      "status": "success",
+      "gasUsed": "1323094",
+      "effectiveGasPrice": "6000000",
+      "executionFeeWei": "7938564000000",
+      "l1FeeWei": "5947",
+      "operatorFeeScalar": null,
+      "operatorFeeConstant": null
+    },
+    {
+      "purpose": "create_mandate",
+      "hash": "0xef703377839c6ccd40964d8afaefffd72c0d1b4effbeebc42a4390d6dc7e8806",
+      "payer": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+      "status": "success",
+      "gasUsed": "186811",
+      "effectiveGasPrice": "6000000",
+      "executionFeeWei": "1120866000000",
+      "l1FeeWei": "366",
+      "operatorFeeScalar": null,
+      "operatorFeeConstant": null
+    },
+    {
+      "purpose": "create_mandate",
+      "hash": "0x7bfe53d567f28a18038c03935f0c4f5784107890360def1a0ce687ed5ef35d5e",
+      "payer": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+      "status": "success",
+      "gasUsed": "186799",
+      "effectiveGasPrice": "6000000",
+      "executionFeeWei": "1120794000000",
+      "l1FeeWei": "362",
+      "operatorFeeScalar": null,
+      "operatorFeeConstant": null
+    },
+    {
+      "purpose": "register_payment",
+      "hash": "0x67cc605d40c4d24832b63df9b71674211fac3f0929a6e41c85d9b3784ed8634c",
+      "payer": "0x2d256b7cf7e73f5eea0ca7f816e39893b4325bc9",
+      "status": "success",
+      "gasUsed": "245052",
+      "effectiveGasPrice": "6000000",
+      "executionFeeWei": "1470312000000",
+      "l1FeeWei": "508",
+      "operatorFeeScalar": null,
+      "operatorFeeConstant": null
+    },
+    {
+      "purpose": "register_payment",
+      "hash": "0x2aaf5aebf34c796e9ac37a60d484e90eadaab151ef7fe4f3058e7797f297b3d8",
+      "payer": "0x2d256b7cf7e73f5eea0ca7f816e39893b4325bc9",
+      "status": "success",
+      "gasUsed": "245064",
+      "effectiveGasPrice": "6019342",
+      "executionFeeWei": "1475124027888",
+      "l1FeeWei": "305",
+      "operatorFeeScalar": null,
+      "operatorFeeConstant": null
+    },
+    {
+      "purpose": "settle",
+      "hash": "0x3d204f3cb1a6e8d339038a4d8bfcb4dd600dd9f2e518cf16adf449a398025e91",
+      "payer": "0x2d256b7cf7e73f5eea0ca7f816e39893b4325bc9",
+      "status": "success",
+      "gasUsed": "120575",
+      "effectiveGasPrice": "6000000",
+      "executionFeeWei": "723450000000",
+      "l1FeeWei": "339",
+      "operatorFeeScalar": null,
+      "operatorFeeConstant": null
+    },
+    {
+      "purpose": "revoke",
+      "hash": "0xcae39a29432137b22acdca6b11a7d1dd98935a80eecdc9a92334c68155536ccf",
+      "payer": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+      "status": "success",
+      "gasUsed": "28487",
+      "effectiveGasPrice": "6000000",
+      "executionFeeWei": "170922000000",
+      "l1FeeWei": "165",
+      "operatorFeeScalar": null,
+      "operatorFeeConstant": null
+    },
+    {
+      "purpose": "negative_settlement",
+      "hash": "0x00ba553e21d409be1530f61b96954da6cc23a385a462196c3dacc9841e422e09",
+      "payer": "0x2d256b7cf7e73f5eea0ca7f816e39893b4325bc9",
+      "status": "reverted",
+      "gasUsed": "60657",
+      "effectiveGasPrice": "6000000",
+      "executionFeeWei": "363942000000",
+      "l1FeeWei": "353",
+      "operatorFeeScalar": null,
+      "operatorFeeConstant": null
+    }
+  ],
+  "limitation": "executionFeeWei is gasUsed * effectiveGasPrice; OP additional fee fields recorded separately when RPC provides them"
+}

@@ -1,0 +1,18 @@
+{
+  "observedAt": "2026-10-14T09:14:54.043433+00:00",
+  "previousPid": 59090,
+  "previousProcessMissing": true,
+  "currentPid": 59255,
+  "processAlive": true,
+  "exclusiveLockHeld": true,
+  "status": "waiting_for_sync",
+  "ready": false,
+  "duplicateLaunchTest": {
+    "command": "python3 scripts/m2-public-workflow.py while exclusive lock held",
+    "exitCode": 3,
+    "result": "already_running",
+    "statusUnchanged": true
+  },
+  "sourceSHA256": "8e08d765f3cf7b4ef7909165530b7d447570a182831ac42a686745208f27cdd5",
+  "publicDeploymentStarted": false
+}

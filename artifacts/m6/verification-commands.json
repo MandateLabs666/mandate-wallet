@@ -1,0 +1,18 @@
+{
+  "recordedAt": "2026-10-14T21:02:01.634318+00:00",
+  "sourceCommit": "ed9e76229f7fe75b7cae655cb67add1fe5ac5147",
+  "typecheckExitCode": 0,
+  "webBuildExitCode": 0,
+  "localTestCount": 5,
+  "m4RegressionCount": 26,
+  "privateSitesState": "registered-unpublished",
+  "newPublicTransactions": 0,
+  "uiProvider": "none in in-app browser; actual extension test pending",
+  "SDKProvider": "controlled local EIP-1193 fixture with actual Anvil transactions",
+  "commands": [
+    "pnpm m6:build",
+    "pnpm typecheck",
+    "pnpm m6:test --reporter=json --outputFile=artifacts/m6/tests-foundation.json",
+    "MANDATE_BUILD_REPORT_DIR=artifacts/m6/build pnpm m4:test --reporter=json --outputFile=artifacts/m6/m4-regression.json"
+  ]
+}

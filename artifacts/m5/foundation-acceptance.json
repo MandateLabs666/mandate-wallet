@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 2,
+  "recordedAt": "2026-10-14T18:49:29.655381+00:00",
+  "sourceBaseCommit": "64c23ed7530ad20fab7a45d82dfec0b2e087be8c",
+  "sourceFingerprint": {
+    "mandate/evidence/checkpoint.ts": "547e89cd8b4e45b2b3eeda36731382c10454f292a11adea905a8fe0c3cd321b1",
+    "mandate/evidence/merkle.ts": "d51c37cb66feb10283c1e53c2be3054d2ee430e2f45fb8a0894ff4d06703e300",
+    "mandate/evidence/signed-artifacts.ts": "39a3f4d0e0551dbd266eac8a6cdef4f62412f87b02c8c31e747151e52ab9fd75",
+    "mandate/evidence/test/checkpoint.test.ts": "9687aedafe4819f3003c1375120a92980856581222e8fc5fd98e97e9f5a566c6",
+    "mandate/evidence/test/http-artifacts.test.ts": "f1f6e1ca553b82825f9bed8c537628aef606818cf4c925dcde2b47e2fa5485a1",
+    "mandate/evidence/test/merkle.test.ts": "72b5642860649a89e97d3c0096ce042c6b6744f8179e02d8e89ba98d96a21bfc",
+    "mandate/evidence/test/signed-artifacts.test.ts": "39edcbb326134079774853aea37e141df9e2241ccee438b5fc6fe6509ac12475",
+    "mandate/evidence/vitest.config.ts": "4a471b558a8cabe30aac2f05babdb68aedcfe99b5dea62ae357f6a875ab479f3",
+    "mandate/services/client.ts": "6dba6f58ce48a94b6d16f927ec7e6cc0b3741b66e632ae838dc953a9eef0e1fb",
+    "mandate/services/merchant.ts": "5c411b1727b68085447a5ffc7d877f7b21de41a09a27e481ebaafc0a40836227",
+    "mandate/services/quote.ts": "42e287987f2c2871f9de3332ca6dad061e82cb0a48acb0c8f71f5d6c60553545",
+    "mandate/services/store.ts": "22f507b8726b8156ca3688c841dc6ef2cd079e09ef82ced4d6a58fbe97b6fd04",
+    "mandate/services/test/fixture.ts": "7368f6cb9fc071f126406e0f8bd2cd8c915b6dfaf44f3cbdd8dab0f2fe011f90",
+    "scripts/m4-build-gateway.mjs": "b4ce9a1f6be05d1e5af4d50ad00c0132e7041d315f3e1ff2d6b587b416941b50",
+    "scripts/m5-accept-foundation.py": "d19bda5562cc4cb166d360370eac76a2c70ed729618c4faf3c0cfdb231fd8df5"
+  },
+  "acceptedTasks": [
+    "T7.03",
+    "T7.04"
+  ],
+  "pendingTasks": [
+    "T7.01",
+    "T7.02",
+    "T7.05",
+    "T7.06",
+    "T7.07",
+    "T7.08",
+    "T7.09"
+  ],
+  "T7": "in-progress",
+  "M5": "in-progress",
+  "G3": "open",
+  "localTests": 14,
+  "m4RegressionTests": 26,
+  "invalidMerkleProofsRejected": 10000,
+  "publicTransactionsSubmitted": 0,
+  "upstream": {
+    "repository": "https://github.com/x402-foundation/x402",
+    "commit": "6c470a80c6145b27fcbb4f6359c47a6a8cfe5887",
+    "spec": "vendor/x402/specs/extensions/extension-offer-and-receipt.md",
+    "sha256": "51151bd2b7dd174bc4a44b712234c074e45ca6c752c44ce077a94a4d97596ae9",
+    "signatureFormat": "EIP-712 only; normative domain chainId=1"
+  },
+  "evidenceSHA256": {
+    "artifacts/m5/build/gateway.json": "84be02b5a9939d6fea8b1fbf1444e80b6260530f573ba8269b72571f939022a3",
+    "artifacts/m5/disclosure-size.json": "8ec246b1764f0620bf00a6a45d3509cb93e4bffb8c685b3f0587ea2363f6f71c",
+    "artifacts/m5/invalid-merkle-proofs.json": "edd7ff4ed51aefa31dc3ed66ffdb7ed8fd1083d8700595dfb3ba6c55593a85bd",
+    "artifacts/m5/local-http-artifacts.json": "c671473441dcee614aceb3e05290ff703f4866326a9fabc777a7703bfbe906e9",
+    "artifacts/m5/m4-regression.json": "81750156ba1983c90ef5b0d0000e0f488806e69d781111d6d324f5822442e644",
+    "artifacts/m5/tests-foundation.json": "d0455022a3d8baf5365232cb42aad276e7f025477cf5ca195a0f9f0a17698d16"
+  },
+  "secretScan": {
+    "passed": true,
+    "filesChecked": 8,
+    "scope": "actual configured key/token values in artifacts and compiled adapters"
+  },
+  "limits": [
+    "Local HTTP example uses ephemeral Anvil and owner-bound test merchant; it is not a new public deployment.",
+    "Merkle consistency does not prove source truth or history completeness.",
+    "Checkpoint signing is a foundation; durable purchase lifecycle and external anchoring remain pending.",
+    "The existing account does not enforce the complete session root."
+  ]
+}

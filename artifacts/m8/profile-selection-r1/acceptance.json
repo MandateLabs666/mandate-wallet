@@ -1,0 +1,78 @@
+{
+  "observedAt": "2026-10-18T10:13:11.478Z",
+  "scope": "M8 Local/Testnet choices and independent profiles",
+  "publicTransactions": 0,
+  "personalHostConfigurationChanged": false,
+  "nativeExtensionInstalled": false,
+  "tests": {
+    "setup": {
+      "command": "pnpm setup:test --reporter=json --outputFile=.runtime/profile-check/tests.json",
+      "passed": 19,
+      "total": 19,
+      "evidence": "setup-tests.json"
+    },
+    "web": {
+      "command": "pnpm m6:test --reporter=json --outputFile=.runtime/profile-check/web-tests.json",
+      "passed": 26,
+      "total": 26,
+      "evidence": "web-tests.json"
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0
+    },
+    "build": {
+      "command": "MANDATE_SETUP_SUCCESSOR=http://127.0.0.1:18744/setup.html MANDATE_BUILD_REPORT_DIR=.runtime/profile-check/build pnpm m6:build",
+      "exitCode": 0,
+      "evidence": "build.json"
+    }
+  },
+  "live": {
+    "origin": "http://127.0.0.1:18744",
+    "profileSupport": true,
+    "selectedProfileId": "190077db242a19fd4f743aff552de7a2",
+    "savedProfiles": 1,
+    "originalWallet": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+    "walletBalanceAtomic": "1000000",
+    "occupiedAtomic": "0",
+    "sessionRevoked": true,
+    "executionReady": false,
+    "profileSHA256": "6a0ff5cf5a340966a38bf758851bc5c0ecf743346b850fa042c00c207c218097",
+    "descriptorSHA256": "cdc414b7a1ed2af658fa75b4d7bc4463f5fa6971db4f41eff5907e06042b8d38",
+    "oldServerRetained": true,
+    "originalWorkspaceRetained": true
+  },
+  "browser": {
+    "oldEntryRedirectVerified": true,
+    "localAndTestnetVisible": true,
+    "baseAndEthereumSepoliaOptions": true,
+    "savedAccountVisible": true,
+    "newProfileReviewCancelled": true,
+    "existingWorkspaceLoaded": true,
+    "refreshStaysAtFirstStep": true,
+    "screenshot": "first-step.zh-CN.jpg"
+  },
+  "taskStatus": {
+    "T12": "in-progress",
+    "componentsCompleted": 6,
+    "componentsTotal": 8,
+    "G3": "open"
+  },
+  "limitations": [
+    "Public network deployment through this wizard remains unverified.",
+    "Native agent installation and model calls remain separately pending.",
+    "Local chain state is not automatically recovered after its owning process stops.",
+    "PDF manual 2.2 retains its prior release scope."
+  ],
+  "sources": {
+    "mandate/onboarding/profiles.ts": "84c02ecdae1fe2f73e5f3509a108294c8bb6c28de592ab2249711199f8130397",
+    "mandate/onboarding/profiles.test.ts": "161bf3c927d3591646c49e0b363479f1a8c2a8a01bdf6ca6a72d9f9ddc910499",
+    "mandate/onboarding/server.ts": "e2d9f4a810e7700c53d79d122c334ebef7aee456cb4080717b3ea8b84d9dc20e",
+    "mandate/onboarding/engine.ts": "d72c10f81de3a8a27006b56f8fdefe20316eadac9a03409883fb2b48dcfbfb09",
+    "mandate/onboarding/cli.ts": "caf65baa26c71a9a9c7bd4f3f46a600878033f76ce916b4795449c4db7fcefb4",
+    "mandate/onboarding/web.ts": "c73dd63e4a5558eb2a830aa0e565a2209bdc1a191a6800a7d7c554076227cdd9",
+    "mandate/web/server.ts": "0f0303437d56c9d3cab848e7edf2e5a14b06b9af042ee3fba89fcbfa76970761",
+    "mandate/web/app.ts": "ad5813bd6df214120a6ca52c02387c8e424f3bbf977bca5cadffba63703e5e08",
+    "scripts/m6-build-web.mjs": "8f12a4b0e563e73f0a1e81721ff3ad11c4e775ce617152fc84f109c219afa6a7"
+  }
+}

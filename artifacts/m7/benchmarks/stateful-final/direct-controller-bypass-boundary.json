@@ -1,0 +1,126 @@
+{
+  "id": "direct-controller-bypass-boundary",
+  "passed": true,
+  "bindings": {
+    "wallet": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+    "asset": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+    "owner": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "sessionSigners": [
+      "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
+    ]
+  },
+  "runtimeHash": "0xf8c4b7928b8d66d4c25cade510b8ec35dbbe902990c3cfb91e10ce7d9124175a",
+  "detail": {
+    "payment": "paid",
+    "service": "returned",
+    "result": "valid",
+    "settlementHash": "0xeb8a41b6b0a0675ad5d40f8d5587545f34a8c0df0563e4497e35b02aaf487fc9",
+    "inspection": {
+      "schemaVersion": 2,
+      "envelopeHash": "0xf00b354909a61a5e85170fd1d482df99de5e1823b6a58ca4583abac3660feecb",
+      "scope": {
+        "chainId": 31337,
+        "wallet": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+        "mandateId": "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37",
+        "sessionId": "0x61f0ffa6b310744fb2869aa8b49390b907440c17341f41afc5971aac5aae9f40",
+        "policyVersion": "1",
+        "sessionEpoch": "1",
+        "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+      },
+      "mode": "live",
+      "now": 1792048295,
+      "anchors": [],
+      "queries": [],
+      "alerts": [
+        {
+          "schemaVersion": 2,
+          "envelopeHash": "0xf00b354909a61a5e85170fd1d482df99de5e1823b6a58ca4583abac3660feecb",
+          "requestId": "0xb919d5ce73024fae9fab710ad703a53954f85e5b0a1827eec225b34bce671b7b",
+          "kind": "alert",
+          "outcome": "detected",
+          "code": "EXPECTED_CHECKPOINT_MISSING",
+          "observedAt": 1792048295,
+          "controller": "0x976EA74026E726554dB657fA54763abd0C3a0aa9",
+          "details": {
+            "stepId": "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e",
+            "kind": "pre-payment",
+            "deadline": 1792048293,
+            "meaning": "missing expected checkpoint; cause and intent unknown"
+          },
+          "signature": "0xfa8f03d49066180f1c8601a2c3efb3c7660cb22215858e7b8e92184d38deb3ed444a19231e68045d650877c6ffda21ad99c088b0bd774912e681c1ab4286dbca1b"
+        },
+        {
+          "schemaVersion": 2,
+          "envelopeHash": "0xf00b354909a61a5e85170fd1d482df99de5e1823b6a58ca4583abac3660feecb",
+          "requestId": "0x47e72bd878e861f3c9f984c4d1a9a4109436998f02bb77588262783ba170d661",
+          "kind": "alert",
+          "outcome": "detected",
+          "code": "EXPECTED_CHECKPOINT_MISSING",
+          "observedAt": 1792048295,
+          "controller": "0x976EA74026E726554dB657fA54763abd0C3a0aa9",
+          "details": {
+            "stepId": "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e",
+            "kind": "registration",
+            "deadline": 1792048293,
+            "meaning": "missing expected checkpoint; cause and intent unknown"
+          },
+          "signature": "0xfb2018700fc70d9460c08ae7281f517a5e263aeca8bf3e140dbdd8598ce565806a1be4e8b80947a77fb12233a088fb959bf7609dc01bdf1377eb80f2be2e55461b"
+        },
+        {
+          "schemaVersion": 2,
+          "envelopeHash": "0xf00b354909a61a5e85170fd1d482df99de5e1823b6a58ca4583abac3660feecb",
+          "requestId": "0x1125ec04cb3a702c9cb89b4a7bbf8b82e8215d27c1b07a3b90d61cbf088829e4",
+          "kind": "alert",
+          "outcome": "detected",
+          "code": "EXPECTED_CHECKPOINT_MISSING",
+          "observedAt": 1792048295,
+          "controller": "0x976EA74026E726554dB657fA54763abd0C3a0aa9",
+          "details": {
+            "stepId": "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e",
+            "kind": "payment",
+            "deadline": 1792048293,
+            "meaning": "missing expected checkpoint; cause and intent unknown"
+          },
+          "signature": "0x1bcd547f765a2814aaad71a6174f7b74ed06eb1e4ad603b0d84663dc6a0d86342a14dcfc317327e8e334890c9edac32e496c94b42f757f05609d17d521097a971c"
+        },
+        {
+          "schemaVersion": 2,
+          "envelopeHash": "0xf00b354909a61a5e85170fd1d482df99de5e1823b6a58ca4583abac3660feecb",
+          "requestId": "0xb9eb47c4fcca5ae6590bc8948e88844d365b50f31f34afe1ac76e5d6527e848e",
+          "kind": "alert",
+          "outcome": "detected",
+          "code": "EXPECTED_CHECKPOINT_MISSING",
+          "observedAt": 1792048295,
+          "controller": "0x976EA74026E726554dB657fA54763abd0C3a0aa9",
+          "details": {
+            "stepId": "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e",
+            "kind": "service",
+            "deadline": 1792048293,
+            "meaning": "missing expected checkpoint; cause and intent unknown"
+          },
+          "signature": "0x74bb2eb00bfa98f090062e1a78a6088892a8a06adbd966ca2cf94db7768541f12ddee73db85962f04c47dd0138dd8d2cb905b77a8cc244127d89a968996a15101c"
+        }
+      ]
+    },
+    "clockInjection": "controller observation clock advanced 301 seconds; no claim of 301-second real elapsed test",
+    "meaning": "A holder of a valid session key can omit the off-chain controller while staying inside financial policy. Honest retained controller detects missing expected checkpoints; cause/intent and host isolation are not proven."
+  },
+  "endingState": {
+    "policy": {
+      "taskHash": "0xaaff8db9d0075498f192ae0ec43d6fe21a69fd8e7b121b5ae8b9ec569c9fab8a",
+      "budget": "150000",
+      "maxPerPayment": "100000",
+      "occupied": "10000",
+      "expiresAt": "1792051596",
+      "version": "1",
+      "paused": false,
+      "revoked": false,
+      "exists": true
+    },
+    "cash": "990000",
+    "merchant": "10000"
+  },
+  "samples": 1,
+  "newPublicTransactions": 0
+}

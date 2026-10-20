@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 2,
+  "sources": {
+    "usdc": "https://developers.circle.com/stablecoins/usdc-contract-addresses",
+    "base": "https://docs.base.org/get-started/connect-to-base"
+  },
+  "networks": [
+    {
+      "chainId": 11155111,
+      "name": "Ethereum Sepolia",
+      "rpc": "https://ethereum-sepolia-rpc.publicnode.com",
+      "witnessRpc": "https://sepolia.drpc.org",
+      "readOnly": false,
+      "nativeUSDC": "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238",
+      "demoAssetKind": "test-fixture-until-native-funds-and-compatibility-proven",
+      "entryPoint": "0x0000000071727De22E5E9d8BAf0edAc6f37da032"
+    },
+    {
+      "chainId": 84532,
+      "name": "Base Sepolia",
+      "rpc": "https://base-sepolia-rpc.publicnode.com",
+      "witnessRpc": "https://sepolia.base.org",
+      "readOnly": false,
+      "nativeUSDC": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+      "demoAssetKind": "native-test-USDC",
+      "entryPoint": "0x0000000071727De22E5E9d8BAf0edAc6f37da032"
+    },
+    {
+      "chainId": 8453,
+      "name": "Base Mainnet",
+      "rpc": "https://mainnet.base.org",
+      "witnessRpc": "https://base-rpc.publicnode.com",
+      "readOnly": true,
+      "nativeUSDC": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+      "demoAssetKind": "read-only-no-purchase-authorization",
+      "entryPoint": "0x0000000071727De22E5E9d8BAf0edAc6f37da032"
+    }
+  ],
+  "account": {"kind":"deployed-ERC1271", "version":2, "entryPointRequiredForPurchase":false},
+  "payment": {"x402Version":2,"scheme":"exact","authorization":"EIP-3009","permit2Supported":false,"erc7710Supported":false},
+  "facilitator": {"kind":"controlled-experiment","thirdPartySupported":false,"publicURL":null,"status":"formal-M4-service-integration-pending"},
+  "m3PublicLimits": {"evmGasReservationsWeiPerChain":"1000000000000000","procurementBudgetAtomic":"150000","maxPerPaymentAtomic":"100000","cumulativeNativeUSDCPurchaseLimitAtomic":"150000","baseL1DataFee":"estimate and record separately; EVM maxFeePerGas is not an L1 data fee cap"}
+}

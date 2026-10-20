@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "scope": "design preview only",
+  "observedAt": "2026-10-14T10:05:14.095Z",
+  "browser": "Codex in-app browser",
+  "cases": [
+    {
+      "case": "normal step",
+      "passed": true,
+      "observed": [
+        "Task budget0.15USDC",
+        "Confirmed paid · sample0.10USDC",
+        "Unsettled occupied0.00USDC",
+        "Available budget0.05USDC"
+      ]
+    },
+    {
+      "case": "second 0.10 exceeds remaining 0.05",
+      "passed": true
+    },
+    {
+      "case": "retry and browser reload retain one sample order",
+      "passed": true
+    },
+    {
+      "case": "unknown settlement remains occupied",
+      "passed": true,
+      "observed": [
+        "Task budget0.15USDC",
+        "Confirmed paid · sample0.00USDC",
+        "Unsettled occupied0.10USDC",
+        "Available budget0.05USDC"
+      ]
+    },
+    {
+      "case": "version replacement retains occupancy and six-decimal amounts",
+      "passed": true,
+      "observed": [
+        "Task budget0.200001USDC",
+        "Confirmed paid · sample0.00USDC",
+        "Unsettled occupied0.10USDC",
+        "Available budget0.100001USDC"
+      ]
+    },
+    {
+      "case": "revocation retains liabilities and cannot be reversed by version replacement",
+      "passed": true
+    },
+    {
+      "case": "quote above single-payment cap requests approval",
+      "passed": true
+    },
+    {
+      "case": "paid service failure remains paid with unchecked result",
+      "passed": true
+    },
+    {
+      "case": "all seven workspace views",
+      "passed": true,
+      "observed": [
+        "Tasks",
+        "Mandates",
+        "Services",
+        "Payments",
+        "Evidence",
+        "Security & recovery",
+        "A clear view of your mandate."
+      ]
+    },
+    {
+      "case": "390px workspace has no page overflow",
+      "passed": true,
+      "observed": {
+        "scrollWidth": 390,
+        "width": 390
+      }
+    },
+    {
+      "case": "mobile owner review dialog",
+      "passed": true
+    },
+    {
+      "case": "390px landing has no page overflow",
+      "passed": true,
+      "observed": {
+        "scrollWidth": 390,
+        "width": 390
+      }
+    }
+  ],
+  "consoleErrors": [],
+  "protocolAcceptance": false,
+  "sourceSHA256": {
+    "design/mandate-preview/index.html": "6de23c19654a2750084e7e9480cba90f9429c98dc208bedbd76a7f380d89ffb1",
+    "design/mandate-preview/app.html": "c50437cb3ff92e5bc8f84a860c43b52fd68d8b5c1b156a656ef7786ae7495e83",
+    "design/mandate-preview/styles.css": "7aa329ad450247a04154724762c5a11f12773072662b63354eb4f2ea3431ce53",
+    "design/mandate-preview/app.js": "9fc270292583c4997ca4f3eac2eed1cf60d4c8bd1e0fc24aa427c8c01d322234"
+  }
+}

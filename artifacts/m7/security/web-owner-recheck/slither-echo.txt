@@ -1,0 +1,211 @@
+
+Detector: reentrancy-balance
+Reentrancy in EchoDelegationModule.execute(bytes32,bytes,EchoAuthContext) (src/EchoDelegationModule.sol#149-184):
+	External call allowing reentrancy:
+	- (success,reason) = target.call(inner) (src/EchoDelegationModule.sol#169)
+	Balance read before the call:
+	- beforeOut = output.balanceOf(address(this)) (src/EchoDelegationModule.sol#167)
+	Possible stale balance used after the call in a condition:
+	- afterIn >= beforeIn || afterOut < beforeOut (src/EchoDelegationModule.sol#174)
+		- stale variable `beforeOut`
+Reentrancy in EchoDelegationModule.execute(bytes32,bytes,EchoAuthContext) (src/EchoDelegationModule.sol#149-184):
+	External call allowing reentrancy:
+	- (success,reason) = target.call(inner) (src/EchoDelegationModule.sol#169)
+	Balance read before the call:
+	- beforeIn = input.balanceOf(address(this)) (src/EchoDelegationModule.sol#166)
+	Possible stale balance used after the call in a condition:
+	- afterIn >= beforeIn || afterOut < beforeOut (src/EchoDelegationModule.sol#174)
+		- stale variable `beforeIn`
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities
+
+Detector: incorrect-equality
+PolicyRegistry.checkExecution(EchoAuthContext,address,address,address,uint256) (src/PolicyRegistry.sol#181-209) uses a dangerous strict equality:
+	- p.lastDay == today (src/PolicyRegistry.sol#193)
+PolicyRegistry.checkExecution(EchoAuthContext,address,address,address,uint256) (src/PolicyRegistry.sol#181-209) uses a dangerous strict equality:
+	- s.lastDay == today (src/PolicyRegistry.sol#206)
+TraceRuleProbe.validateUserOp(PackedUserOperation,bytes32,uint256) (src/TraceRuleProbe.sol#13-16) uses a dangerous strict equality:
+	- block.timestamp == 0 (src/TraceRuleProbe.sol#15)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+
+Detector: locked-ether
+Contract locking ether found:
+	Contract EchoDelegationModule (src/EchoDelegationModule.sol#12-186) has payable functions:
+	 - EchoDelegationModule.execute(bytes32,bytes,EchoAuthContext) (src/EchoDelegationModule.sol#149-184)
+	 - EchoDelegationModule.receive() (src/EchoDelegationModule.sol#185)
+	But does not have a function to withdraw the ether
+Contract locking ether found:
+	Contract TraceRuleProbe (src/TraceRuleProbe.sol#6-22) has payable functions:
+	 - TraceRuleProbe.receive() (src/TraceRuleProbe.sol#21)
+	But does not have a function to withdraw the ether
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#contracts-that-lock-ether
+
+Detector: unused-return
+EchoDelegationModule.validateUserOp(PackedUserOperation,bytes32,uint256) (src/EchoDelegationModule.sol#130-147) ignores return value by (target,a,s) = decoder.decodeOuter(op.callData) (src/EchoDelegationModule.sol#136-146)
+EchoPolicyValidator.verify(address,address,address,bytes32,EchoAuthContext,address,bytes) (src/EchoPolicyValidator.sol#42-55) ignores return value by (recovered,err,None) = ECDSA.tryRecover(digest(account,entryPoint,implementation,userOpHash,a),sig) (src/EchoPolicyValidator.sol#52-53)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unused-return
+
+Detector: events-maths
+MockSwapRouter.setFault(bool,uint8,bytes) (src/MockSwapRouter.sol#27-32) should emit an event for: 
+	- attack = a (src/MockSwapRouter.sol#30) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+
+Detector: missing-zero-check
+EchoDelegationModule.execute(bytes32,bytes,EchoAuthContext).target (src/EchoDelegationModule.sol#155) lacks a zero-check on :
+		- (success,reason) = target.call(inner) (src/EchoDelegationModule.sol#169)
+MockSwapRouter.constructor(address,address).i (src/MockSwapRouter.sol#21) lacks a zero-check on :
+		- input = i (src/MockSwapRouter.sol#22)
+MockSwapRouter.constructor(address,address).o (src/MockSwapRouter.sol#21) lacks a zero-check on :
+		- output = o (src/MockSwapRouter.sol#23)
+TraceRuleProbe.constructor(address).ep (src/TraceRuleProbe.sol#9) lacks a zero-check on :
+		- entryPoint = ep (src/TraceRuleProbe.sol#10)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: reentrancy-events
+Reentrancy in PolicyRegistry._create(address,EchoPolicyInput) (src/PolicyRegistry.sol#57-97):
+	External calls:
+	- _sync(id) (src/PolicyRegistry.sol#95)
+		- IEchoSync(p.owner).syncPolicy(id,p,outputLists[id]) (src/PolicyRegistry.sol#108)
+	Event emitted after the call(s):
+	- InstanceRegistered(id,owner,p.budgetAsset,p.totalBudget) (src/PolicyRegistry.sol#96)
+Reentrancy in PolicyRegistry.createSession(bytes32,address,address,uint256,uint256,uint256,uint48) (src/PolicyRegistry.sol#148-169):
+	External calls:
+	- IEchoSync(p.owner).syncSession(sid,sessions[sid]) (src/PolicyRegistry.sol#167)
+	Event emitted after the call(s):
+	- SessionCreated(sid,id,signer) (src/PolicyRegistry.sol#168)
+Reentrancy in EchoDelegationModule.execute(bytes32,bytes,EchoAuthContext) (src/EchoDelegationModule.sol#149-184):
+	External calls:
+	- (success,reason) = target.call(inner) (src/EchoDelegationModule.sol#169)
+	- registry.recordSpend(a,s.tokenOut,spent) (src/EchoDelegationModule.sol#181)
+	Event emitted after the call(s):
+	- SwapExecuted(a.nonce,a.instanceId,a.sessionId,s.tokenIn,s.tokenOut,spent,received) (src/EchoDelegationModule.sol#183)
+Reentrancy in PolicyRegistry.pauseInstance(bytes32,bool) (src/PolicyRegistry.sol#128-135):
+	External calls:
+	- _sync(id) (src/PolicyRegistry.sol#133)
+		- IEchoSync(p.owner).syncPolicy(id,p,outputLists[id]) (src/PolicyRegistry.sol#108)
+	Event emitted after the call(s):
+	- PolicyChanged(id,p.version,p.executeEpoch,paused) (src/PolicyRegistry.sol#134)
+Reentrancy in PolicyRegistry.revokeSession(bytes32) (src/PolicyRegistry.sol#171-179):
+	External calls:
+	- IEchoSync(policies[s.instanceId].owner).syncSession(sid,s) (src/PolicyRegistry.sol#177)
+	Event emitted after the call(s):
+	- SessionRevoked(sid,s.epoch) (src/PolicyRegistry.sol#178)
+Reentrancy in PolicyRegistry.rotateExecuteSigner(bytes32,address) (src/PolicyRegistry.sol#137-146):
+	External calls:
+	- _sync(id) (src/PolicyRegistry.sol#144)
+		- IEchoSync(p.owner).syncPolicy(id,p,outputLists[id]) (src/PolicyRegistry.sol#108)
+	Event emitted after the call(s):
+	- PolicyChanged(id,p.version,p.executeEpoch,p.paused) (src/PolicyRegistry.sol#145)
+Reentrancy in PolicyRegistry.updateLimits(bytes32,uint256,uint256,uint256,uint48) (src/PolicyRegistry.sol#115-126):
+	External calls:
+	- _sync(id) (src/PolicyRegistry.sol#124)
+		- IEchoSync(p.owner).syncPolicy(id,p,outputLists[id]) (src/PolicyRegistry.sol#108)
+	Event emitted after the call(s):
+	- PolicyChanged(id,p.version,p.executeEpoch,p.paused) (src/PolicyRegistry.sol#125)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+
+Detector: timestamp
+EchoDelegationModule.execute(bytes32,bytes,EchoAuthContext) (src/EchoDelegationModule.sol#149-184) uses timestamp for comparisons
+	Dangerous comparisons:
+	- ! ok || s.deadline <= block.timestamp (src/EchoDelegationModule.sol#162)
+MockSwapRouter.exactInputSingle(EchoIntentDecoder.ExactInputSingleParams) (src/MockSwapRouter.sol#34-40) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(! fail && block.timestamp < p.deadline,fixture failed) (src/MockSwapRouter.sol#35)
+MockSwapRouter.exactOutputSingle(EchoIntentDecoder.ExactOutputSingleParams) (src/MockSwapRouter.sol#42-48) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(! fail && block.timestamp < p.deadline,fixture failed) (src/MockSwapRouter.sol#43)
+PolicyRegistry._create(address,EchoPolicyInput) (src/PolicyRegistry.sol#57-97) uses timestamp for comparisons
+	Dangerous comparisons:
+	- p.budgetAsset == address(0) || p.router == address(0) || p.executeSigner == address(0) || p.executeSigner == owner || p.maxPerOp == 0 || p.maxPerOp > p.maxPerDay || p.maxPerDay > p.totalBudget || p.expiry <= block.timestamp || p.outputs.length == 0 || p.outputs.length > 16 (src/PolicyRegistry.sol#59-62)
+PolicyRegistry._bound(address) (src/PolicyRegistry.sol#99-103) uses timestamp for comparisons
+	Dangerous comparisons:
+	- keccak256(bytes)(owner.code) != keccak256(bytes)(abi.encodePacked(bytes3(0xef0100),implementation)) (src/PolicyRegistry.sol#100)
+PolicyRegistry._owner(bytes32) (src/PolicyRegistry.sol#111-113) uses timestamp for comparisons
+	Dangerous comparisons:
+	- ! policies[id].exists || msg.sender != policies[id].owner (src/PolicyRegistry.sol#112)
+PolicyRegistry.updateLimits(bytes32,uint256,uint256,uint256,uint48) (src/PolicyRegistry.sol#115-126) uses timestamp for comparisons
+	Dangerous comparisons:
+	- perOp == 0 || perOp > perDay || perDay > total || total < p.totalSpent || expiry <= block.timestamp (src/PolicyRegistry.sol#118)
+PolicyRegistry.createSession(bytes32,address,address,uint256,uint256,uint256,uint48) (src/PolicyRegistry.sol#148-169) uses timestamp for comparisons
+	Dangerous comparisons:
+	- signer == address(0) || signer == p.owner || ! allowedOutput[id][tokenOut] || maxPerOp == 0 || maxPerOp > p.maxPerOp || maxPerOp > totalBudget || totalBudget > p.totalBudget - p.totalSpent || maxOpsPerDay == 0 || expiry <= block.timestamp || expiry > p.expiry (src/PolicyRegistry.sol#160-162)
+PolicyRegistry.checkExecution(EchoAuthContext,address,address,address,uint256) (src/PolicyRegistry.sol#181-209) uses timestamp for comparisons
+	Dangerous comparisons:
+	- ! p.exists || msg.sender != p.owner || p.paused || p.version != a.policyVersion || block.timestamp >= p.expiry || block.timestamp < a.validAfter || block.timestamp >= a.validUntil || a.validUntil > p.expiry || input != p.budgetAsset || router != p.router || ! allowedOutput[a.instanceId][output] (src/PolicyRegistry.sol#187-190)
+	- s.instanceId != a.instanceId || ! s.active || s.epoch != a.authorityEpoch || s.tokenOut != output || block.timestamp >= s.expiry || a.validUntil > s.expiry (src/PolicyRegistry.sol#203-204)
+	- p.lastDay == today (src/PolicyRegistry.sol#193)
+	- s.lastDay == today (src/PolicyRegistry.sol#206)
+PolicyRegistry.recordSpend(EchoAuthContext,address,uint256) (src/PolicyRegistry.sol#211-227) uses timestamp for comparisons
+	Dangerous comparisons:
+	- p.lastDay != today (src/PolicyRegistry.sol#215)
+	- s.lastDay != today (src/PolicyRegistry.sol#221)
+TraceRuleProbe.validateUserOp(PackedUserOperation,bytes32,uint256) (src/TraceRuleProbe.sol#13-16) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp == 0 (src/TraceRuleProbe.sol#15)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: assembly
+EchoDelegationModule._cache() (src/EchoDelegationModule.sol#65-68) uses assembly
+	- INLINE ASM (src/EchoDelegationModule.sol#67)
+EchoDelegationModule.execute(bytes32,bytes,EchoAuthContext) (src/EchoDelegationModule.sol#149-184) uses assembly
+	- INLINE ASM (src/EchoDelegationModule.sol#170)
+EchoIntentDecoder.decodeOuter(bytes) (src/EchoIntentDecoder.sol#56-78) uses assembly
+	- INLINE ASM (src/EchoIntentDecoder.sol#70)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#assembly-usage
+
+Detector: pragma
+6 different versions of Solidity are used:
+	- Version constraint >=0.7.5 is used by:
+		->=0.7.5 (lib/account-abstraction/contracts/interfaces/PackedUserOperation.sol#2)
+	- Version constraint >=0.6.2 is used by:
+		->=0.6.2 (lib/openzeppelin-contracts/contracts/interfaces/IERC1363.sol#4)
+		->=0.6.2 (lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol#4)
+	- Version constraint >=0.4.16 is used by:
+		->=0.4.16 (lib/openzeppelin-contracts/contracts/interfaces/IERC165.sol#4)
+		->=0.4.16 (lib/openzeppelin-contracts/contracts/interfaces/IERC20.sol#4)
+		->=0.4.16 (lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol#4)
+		->=0.4.16 (lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol#4)
+	- Version constraint >=0.8.4 is used by:
+		->=0.8.4 (lib/openzeppelin-contracts/contracts/interfaces/draft-IERC6093.sol#4)
+	- Version constraint ^0.8.20 is used by:
+		-^0.8.20 (lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol#4)
+		-^0.8.20 (lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol#4)
+		-^0.8.20 (lib/openzeppelin-contracts/contracts/utils/Context.sol#4)
+		-^0.8.20 (lib/openzeppelin-contracts/contracts/utils/cryptography/ECDSA.sol#4)
+	- Version constraint 0.8.26 is used by:
+		-0.8.26 (src/EchoDelegationModule.sol#2)
+		-0.8.26 (src/EchoIntentDecoder.sol#2)
+		-0.8.26 (src/EchoOnboarding.sol#2)
+		-0.8.26 (src/EchoPolicyValidator.sol#2)
+		-0.8.26 (src/EchoTypes.sol#2)
+		-0.8.26 (src/MockSwapRouter.sol#2)
+		-0.8.26 (src/MockTokens.sol#2)
+		-0.8.26 (src/PolicyRegistry.sol#2)
+		-0.8.26 (src/TraceRuleProbe.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#different-pragma-directives-are-used
+
+Detector: low-level-calls
+Low level call in EchoDelegationModule.execute(bytes32,bytes,EchoAuthContext) (src/EchoDelegationModule.sol#149-184):
+	- (success,reason) = target.call(inner) (src/EchoDelegationModule.sol#169)
+Low level call in MockSwapRouter._swap(uint256,uint256,address) (src/MockSwapRouter.sol#50-57):
+	- (entered,None) = msg.sender.call(reentrantCall) (src/MockSwapRouter.sol#52)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+
+Detector: missing-inheritance
+MockInputToken (src/MockTokens.sol#6-16) should inherit from IMintFixture (src/MockSwapRouter.sol#7-9)
+MockOutputToken (src/MockTokens.sol#18-24) should inherit from IMintFixture (src/MockSwapRouter.sol#7-9)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-inheritance
+
+Detector: redundant-statements
+Redundant expression "signer (src/EchoDelegationModule.sol#158)" inEchoDelegationModule (src/EchoDelegationModule.sol#12-186)
+Redundant expression "mode (src/EchoDelegationModule.sol#159)" inEchoDelegationModule (src/EchoDelegationModule.sol#12-186)
+Redundant expression "packed (src/EchoDelegationModule.sol#160)" inEchoDelegationModule (src/EchoDelegationModule.sol#12-186)
+Redundant expression "auth (src/EchoDelegationModule.sol#161)" inEchoDelegationModule (src/EchoDelegationModule.sol#12-186)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#redundant-statements
+
+Detector: var-read-using-this
+The function EchoIntentDecoder.decodeOuter(bytes) (src/EchoIntentDecoder.sol#56-78) reads (target,inner,a,this.decode(inner)) (src/EchoIntentDecoder.sol#77) with `this` which adds an extra STATICCALL.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-variable-read-in-external-context
+echo/contracts analyzed (22 contracts with 102 detectors), 45 result(s) found
+'forge clean' running (wd: /Users/jeff/Desktop/projects/fintech_competition/echo/contracts)
+'forge config --json' running
+'forge build --build-info --deny never --skip ./test/** ./script/** --force' running (wd: /Users/jeff/Desktop/projects/fintech_competition/echo/contracts)

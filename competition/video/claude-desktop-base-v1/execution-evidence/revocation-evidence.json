@@ -1,0 +1,113 @@
+{
+  "recordedAt": "2026-10-19T14:00:05.483Z",
+  "requestId": "0xd91ddf2e3a4e850e056f240f96cd9ef63bb21c3b5a6e18dd26b6fb4666850b42",
+  "chainId": 84532,
+  "wallet": "0xa794DAa86ff10920B75a4de3b0E752586e8703D2",
+  "mandateId": "0x65a5386f35ae1dc848584bd51d1a8211110aa02b8c5264238aa4d4aa7d5a8c89",
+  "sessionId": "0x0263e35063f897a6639f0272e8d6b8a3ff3d19c772f5d8b04baf05ae7c4ebd47",
+  "transactionHash": "0x5ba3feb1febde1fc2637c524ac031aa17e0a9f583bf39fc843bb865162d69a6e",
+  "explorer": "https://sepolia.basescan.org/tx/0x5ba3feb1febde1fc2637c524ac031aa17e0a9f583bf39fc843bb865162d69a6e",
+  "privateKeysRead": false,
+  "broadcasts": 0,
+  "signedTransactionCount": 3,
+  "observations": [
+    {
+      "rpc": "https://base-sepolia-rpc.publicnode.com",
+      "chainId": 84532,
+      "hash": "0x5ba3feb1febde1fc2637c524ac031aa17e0a9f583bf39fc843bb865162d69a6e",
+      "blockNumber": "48324929",
+      "blockHash": "0x36e10c08f4cb7062467104b9fc54bf29b74791d6c88729defbf7d3c31f7b6ea6",
+      "status": "success",
+      "canonicalAtRead": true,
+      "exactUnsignedIntentMatched": true,
+      "from": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+      "to": "0xa794daa86ff10920b75a4de3b0e752586e8703d2",
+      "nonce": 35,
+      "callDigest": "0xaad77e33bb948c9fef6fdcbeced5edac9d55377cfee5f18d5cce35a6d07d7799",
+      "method": "revokeSession",
+      "events": [
+        {
+          "name": "SessionRevoked",
+          "args": {
+            "mandateId": "0x65a5386f35ae1dc848584bd51d1a8211110aa02b8c5264238aa4d4aa7d5a8c89",
+            "sessionId": "0x0263e35063f897a6639f0272e8d6b8a3ff3d19c772f5d8b04baf05ae7c4ebd47",
+            "epoch": "2"
+          }
+        }
+      ],
+      "grant": {
+        "signer": "0x818D3bd3ddf805FA9916AB50813d0EB67e40862f",
+        "budget": "150000",
+        "maxPerPayment": "100000",
+        "occupied": "10000",
+        "expiresAt": "1792423622",
+        "policyVersion": "1",
+        "epoch": "2",
+        "revoked": true,
+        "exists": true
+      },
+      "policy": {
+        "taskHash": "0x7e854fdf26e4d6fae8dce8865cdd24927d481dfc8fe0be946d19d532083508fa",
+        "budget": "150000",
+        "maxPerPayment": "100000",
+        "occupied": "10000",
+        "expiresAt": "1792426952",
+        "version": "1",
+        "paused": false,
+        "revoked": false,
+        "exists": true
+      },
+      "walletUSDCAtomic": "140000",
+      "operatorTransactionCount": 3
+    },
+    {
+      "rpc": "https://sepolia.base.org",
+      "chainId": 84532,
+      "hash": "0x5ba3feb1febde1fc2637c524ac031aa17e0a9f583bf39fc843bb865162d69a6e",
+      "blockNumber": "48324929",
+      "blockHash": "0x36e10c08f4cb7062467104b9fc54bf29b74791d6c88729defbf7d3c31f7b6ea6",
+      "status": "success",
+      "canonicalAtRead": true,
+      "exactUnsignedIntentMatched": true,
+      "from": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+      "to": "0xa794daa86ff10920b75a4de3b0e752586e8703d2",
+      "nonce": 35,
+      "callDigest": "0xaad77e33bb948c9fef6fdcbeced5edac9d55377cfee5f18d5cce35a6d07d7799",
+      "method": "revokeSession",
+      "events": [
+        {
+          "name": "SessionRevoked",
+          "args": {
+            "mandateId": "0x65a5386f35ae1dc848584bd51d1a8211110aa02b8c5264238aa4d4aa7d5a8c89",
+            "sessionId": "0x0263e35063f897a6639f0272e8d6b8a3ff3d19c772f5d8b04baf05ae7c4ebd47",
+            "epoch": "2"
+          }
+        }
+      ],
+      "grant": {
+        "signer": "0x818D3bd3ddf805FA9916AB50813d0EB67e40862f",
+        "budget": "150000",
+        "maxPerPayment": "100000",
+        "occupied": "10000",
+        "expiresAt": "1792423622",
+        "policyVersion": "1",
+        "epoch": "2",
+        "revoked": true,
+        "exists": true
+      },
+      "policy": {
+        "taskHash": "0x7e854fdf26e4d6fae8dce8865cdd24927d481dfc8fe0be946d19d532083508fa",
+        "budget": "150000",
+        "maxPerPayment": "100000",
+        "occupied": "10000",
+        "expiresAt": "1792426952",
+        "version": "1",
+        "paused": false,
+        "revoked": false,
+        "exists": true
+      },
+      "walletUSDCAtomic": "140000",
+      "operatorTransactionCount": 3
+    }
+  ]
+}

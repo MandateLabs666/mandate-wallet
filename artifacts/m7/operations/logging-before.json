@@ -1,0 +1,26 @@
+{
+  "sourceBaseCommit": "803edc0",
+  "syntheticCanaryOnly": true,
+  "results": [
+    {
+      "entry": "web",
+      "exitCode": 1,
+      "canaryLeakedToOutput": true
+    },
+    {
+      "entry": "sdk",
+      "exitCode": 1,
+      "canaryLeakedToOutput": true
+    },
+    {
+      "entry": "gateway",
+      "exitCode": 1,
+      "canaryLeakedToOutput": false
+    },
+    {
+      "entry": "monitor",
+      "exitCode": 1,
+      "canaryLeakedToOutput": false
+    }
+  ]
+}

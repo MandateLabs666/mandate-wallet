@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-19T14:25:32.400314+00:00",
+  "singlePaymentAmountAtomic": "10000",
+  "registrationCountForSuccessfulTask": 1,
+  "settlementCountForSuccessfulTask": 1,
+  "walletBalanceDeltaAtomic": "10000",
+  "firstPaidResponseHTTP": 500,
+  "recoveredResponseHTTP": 200,
+  "sameNonceAndSettlementOnRecovery": true,
+  "resultState": "valid",
+  "resultChecker": "ETH-stats-v2",
+  "revocationConfirmedByTwoRPCs": true,
+  "refusalCode": "AGENT_GRANT_INACTIVE",
+  "BTCRegistered": false,
+  "refusalGeneratedTransactions": 0,
+  "signedTransactionCountBeforeRefusal": 3,
+  "signedTransactionCountAfterRefusal": 3,
+  "independentVerifierRequiredChecksPassed": true,
+  "independentVerifierOverall": "incomplete",
+  "unproven": [
+    "HTTPS source truth",
+    "Complete execution history"
+  ],
+  "media": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_type": "video",
+        "width": 2560,
+        "height": 1440,
+        "r_frame_rate": "30/1"
+      }
+    ],
+    "format": {
+      "duration": "290.000000"
+    }
+  },
+  "decodeCheck": "passed",
+  "visualReview": {
+    "sourceContactSheet": true,
+    "all33ShotPosters": true,
+    "actualVideoSamplesSeconds": [
+      0,
+      38.25,
+      50,
+      69,
+      76,
+      110.3,
+      116,
+      135,
+      145,
+      170,
+      191,
+      215,
+      250,
+      269,
+      286
+    ],
+    "checks": [
+      "Persistent system panel",
+      "Readable detail crops",
+      "No unrelated manual-extension warning in Claude crop",
+      "No fabricated transaction/UI state",
+      "Subtitles within canvas"
+    ]
+  },
+  "privacy": {
+    "exportMethod": "Allowlisted reviewed JSON structures only",
+    "ownerOrSessionOrOperatorKeysExported": false,
+    "connectionCredentialsExported": false,
+    "paymentAuthorizationSignatureExported": false,
+    "rawSignedTransactionsExported": false,
+    "publicEvidenceSignaturesIncluded": true
+  }
+}

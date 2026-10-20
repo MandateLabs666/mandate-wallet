@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "mode": "genuine no-extension Chrome plus separately labeled controlled-provider UI visibility probe",
+  "noWalletCase": {
+    "providerPresent": false,
+    "providerInjected": false
+  },
+  "controlledWrongOwnerCase": {
+    "providerInjected": true,
+    "presentationOnly": true,
+    "walletExtension": false,
+    "calls": [
+      "eth_requestAccounts",
+      "eth_requestAccounts"
+    ],
+    "signingCalls": 0
+  },
+  "visibility": [
+    {
+      "label": "no-wallet-desktop",
+      "rect": {
+        "x": 258,
+        "y": 152.59375,
+        "width": 984,
+        "height": 18.140625
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "text": "Install or open an EIP-1193 wallet browser. No owner key is imported here."
+    },
+    {
+      "label": "no-wallet-mobile",
+      "rect": {
+        "x": 18,
+        "y": 253.1875,
+        "width": 354,
+        "height": 36.28125
+      },
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "text": "Install or open an EIP-1193 wallet browser. No owner key is imported here."
+    },
+    {
+      "label": "controlled-wrong-owner-desktop",
+      "rect": {
+        "x": 418,
+        "y": 201.640625,
+        "width": 444,
+        "height": 18.140625
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "text": "Connect the owner address shown in this workspace."
+    },
+    {
+      "label": "controlled-wrong-owner-mobile",
+      "rect": {
+        "x": 49,
+        "y": 221.4375,
+        "width": 292,
+        "height": 18.140625
+      },
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "text": "Connect the owner address shown in this workspace."
+    }
+  ],
+  "chainId": 31337,
+  "error": "Install or open an EIP-1193 wallet browser. No owner key is imported here.",
+  "approveDisabled": true,
+  "ownerNonceBefore": 7,
+  "ownerNonceAfter": 7,
+  "policyVersionBefore": "2",
+  "policyVersionAfter": "2",
+  "walletBalanceAtomicBefore": "1000000",
+  "walletBalanceAtomicAfter": "1000000",
+  "sourceFingerprint": {
+    "mandate/web/app.ts": "b236ab6ed1587a680250e891a07c10612ecd2ed8f282843e1ab050c669a5e779",
+    "mandate/web/static/app.html": "a5c97261206fcf095a468adc0752efc245ad7fb37b2d38d24f88c4d0cc3f9e63",
+    "mandate/experiments/m6-no-wallet.ts": "48a428b699fc031d0864c593ceacaeb700edbc3b49dc60289dedd9515e855470"
+  },
+  "newPublicTransactions": 0,
+  "humanUsability": false
+}

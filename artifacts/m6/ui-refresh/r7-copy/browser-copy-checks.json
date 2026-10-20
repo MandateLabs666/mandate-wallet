@@ -1,0 +1,85 @@
+{
+  "responsive": [
+    {
+      "heading": "让 Agent 采购所需服务由你决定采购权限",
+      "lang": "zh-CN",
+      "page": "app",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "heading": "服务",
+      "lang": "zh-CN",
+      "page": "services",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "heading": "当 Agent 需要付费服务你来决定它能花多少钱",
+      "lang": "zh-CN",
+      "page": "/walkthrough.html",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "heading": "让 Agent 按你的授权采购",
+      "lang": "zh-CN",
+      "page": "/docs.html",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "heading": "让 Agent 自主采购由你掌控支出",
+      "lang": "zh-CN",
+      "page": "/index.html",
+      "scrollWidth": 390,
+      "width": 390
+    }
+  ],
+  "walkthrough": [
+    {
+      "available": "0.15",
+      "charged": "0.00 USDC",
+      "detail": "这个示例的总预算是 0.15 USDC，单笔上限是 0.10 USDC，只允许向指定商户购买一项数据服务，有效期为 15 分钟。实际使用时，策略和会话权限都需要管理钱包批准。",
+      "occupied": "0.00",
+      "title": "为这项任务设置采购权限"
+    },
+    {
+      "available": "0.15",
+      "charged": "0.00 USDC",
+      "detail": "示例中的账户所有者已批准采购。Agent 收到 x402 付款要求后，客户端先核对网络、代币、收款人、请求内容和金额，全部符合授权才能登记付款。",
+      "occupied": "0.00",
+      "title": "服务报价为 0.10 USDC"
+    },
+    {
+      "available": "0.05",
+      "charged": "0.00 USDC",
+      "detail": "先为这笔付款预留 0.10 USDC，再发出付款签名。剩余可用额度降至 0.05 USDC。付款结果确认前，预留额度不会释放。",
+      "occupied": "0.10",
+      "title": "先预留预算，再签名付款"
+    },
+    {
+      "available": "0.05",
+      "charged": "0.10 USDC",
+      "detail": "0.10 USDC 已付出，但服务返回失败。订单会分别显示“已付款”和“交付未完成”。这笔已付款仍计入预算，因此已用及预留额度保持为 0.10 USDC。",
+      "occupied": "0.10",
+      "title": "已付款，不代表已交付"
+    },
+    {
+      "available": "0.05",
+      "charged": "0.10 USDC",
+      "detail": "Agent 使用原订单 demo-order-001 和原付款重试。服务返回数据后，单独的结果检查通过，累计付款仍为 0.10 USDC。实际使用时，请查看每项证据及其可验证的范围。",
+      "occupied": "0.10",
+      "title": "重试获取服务，无需再次付款"
+    },
+    {
+      "available": "0.05",
+      "charged": "0.10 USDC",
+      "detail": "账户所有者撤销会话后，Agent 不能再通过这份会话授权付款。此前的付款、服务数据和结果记录仍可查看。撤销不会退款，已付款也仍计入预算。",
+      "occupied": "0.10",
+      "title": "撤销后续付款权限，保留已有记录"
+    }
+  ],
+  "languageTogglePreservedStageAndAmount": true,
+  "noWalletOrPaymentActionPerformed": true
+}

@@ -1,0 +1,13 @@
+import {createRequire} from "node:module";
+import {mkdirSync,writeFileSync} from "node:fs";
+import {createHash} from "node:crypto";
+import {readFileSync} from "node:fs";
+import {join} from "node:path";
+const fromTsx=createRequire(import.meta.resolve("tsx")),esbuild=fromTsx("esbuild"),version=fromTsx("esbuild/package.json").version;
+if(version!=="0.27.7")throw new Error("PINNED_GATEWAY_BUILDER_MISMATCH");
+await esbuild.build({entryPoints:["mandate/gateway/cli.ts"],outfile:"dist/mandate-mcp.js",bundle:true,platform:"node",format:"esm",target:"node24",packages:"external",sourcemap:false});
+await esbuild.build({entryPoints:["mandate/experiments/m4-host-safety.ts"],outfile:"dist/mandate-host-safety.js",bundle:true,platform:"node",format:"esm",target:"node24",packages:"external",sourcemap:false});
+const reportDirectory=process.env.MANDATE_BUILD_REPORT_DIR??"artifacts/m4/build";
+mkdirSync(reportDirectory,{recursive:true});
+const report={observedAt:new Date().toISOString(),builder:"esbuild",builderVersion:version,entry:"mandate/gateway/cli.ts",output:"dist/mandate-mcp.js",runtimeDependencies:"repository frozen pnpm installation",sha256:createHash("sha256").update(readFileSync("dist/mandate-mcp.js")).digest("hex"),privateRuntimeFilesBundled:false};
+writeFileSync(join(reportDirectory,"gateway.json"),JSON.stringify(report,null,2)+"\n");console.log(JSON.stringify(report));

@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-15T05:16:26.225Z",
+  "sourceCommit": "5dafc192e0d680716bad17b7e2f48f991b905d55",
+  "mode": "read-only-third-party-RPC",
+  "transactionsSubmitted": 0,
+  "results": [
+    {
+      "chainId": 84532,
+      "wallet": "0xE02B554a694b1857B8e89274B2F6E1eCD0C0B589",
+      "mandateId": "0x81591dc72948e8e11ae7b47983e8707d29ef9bcb6b2fc5d9eefbc8f33dc02ba4",
+      "sessionId": "0x8e86deb4566f10bba7eb8768107d7e90df08d4454ca6ca3c7b411f3e56840247",
+      "verified": true,
+      "coverage": {
+        "account": true,
+        "policy": true,
+        "session": true,
+        "merchantAndStep": false,
+        "purchaseReadiness": false
+      },
+      "observations": [
+        {
+          "rpc": "https://sepolia.base.org",
+          "blockNumber": "48135909",
+          "blockHash": "0x2e8efd8a78a98b9110f0804175a0f233b66d7cb65da2860e26d7e1f49f087fe4",
+          "timestamp": "1792040106",
+          "runtimeHash": "0xc9221739cb1bb554b83796f1e8e8de4561ba45b7ff30e1ddffbf32af24ba4c9e",
+          "owner": "0xaA987fC286434D205669814Ba46b1d8df824fB36",
+          "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+          "tokenDomain": "0x71f17a3b2ff373b803d70a5a07c046c1a2bc8e89c09ef722fcb047abe94c9818",
+          "decimals": 6,
+          "cash": "0",
+          "nativeBalance": "0",
+          "policy": {
+            "taskHash": "0x5d18b3c32ffe8ea1ef77267bb875c5c07ce031a5c9112a1f85116fca32f51fe6",
+            "budget": "10000",
+            "maxPerPayment": "10000",
+            "occupied": "10000",
+            "expiresAt": "1792009576",
+            "version": "1",
+            "paused": false,
+            "revoked": false,
+            "exists": true
+          },
+          "session": {
+            "signer": "0xc4DA6909E60186dDcb0cAda144Ce8A3539659DC1",
+            "budget": "10000",
+            "maxPerPayment": "10000",
+            "occupied": "10000",
+            "expiresAt": "1792009576",
+            "policyVersion": "1",
+            "epoch": "1",
+            "revoked": false,
+            "exists": true
+          }
+        },
+        {
+          "rpc": "https://base-sepolia-rpc.publicnode.com",
+          "blockNumber": "48135909",
+          "blockHash": "0x2e8efd8a78a98b9110f0804175a0f233b66d7cb65da2860e26d7e1f49f087fe4",
+          "timestamp": "1792040106",
+          "runtimeHash": "0xc9221739cb1bb554b83796f1e8e8de4561ba45b7ff30e1ddffbf32af24ba4c9e",
+          "owner": "0xaA987fC286434D205669814Ba46b1d8df824fB36",
+          "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+          "tokenDomain": "0x71f17a3b2ff373b803d70a5a07c046c1a2bc8e89c09ef722fcb047abe94c9818",
+          "decimals": 6,
+          "cash": "0",
+          "nativeBalance": "0",
+          "policy": {
+            "taskHash": "0x5d18b3c32ffe8ea1ef77267bb875c5c07ce031a5c9112a1f85116fca32f51fe6",
+            "budget": "10000",
+            "maxPerPayment": "10000",
+            "occupied": "10000",
+            "expiresAt": "1792009576",
+            "version": "1",
+            "paused": false,
+            "revoked": false,
+            "exists": true
+          },
+          "session": {
+            "signer": "0xc4DA6909E60186dDcb0cAda144Ce8A3539659DC1",
+            "budget": "10000",
+            "maxPerPayment": "10000",
+            "occupied": "10000",
+            "expiresAt": "1792009576",
+            "policyVersion": "1",
+            "epoch": "1",
+            "revoked": false,
+            "exists": true
+          }
+        }
+      ],
+      "issues": [
+        "WALLET_ASSET_BALANCE_ZERO",
+        "POLICY_EXPIRED",
+        "POLICY_BUDGET_EXHAUSTED",
+        "SESSION_EXPIRED",
+        "SESSION_BUDGET_EXHAUSTED"
+      ],
+      "transactionsSubmitted": 0
+    },
+    {
+      "chainId": 11155111,
+      "wallet": "0xC5f8D0ebdd2Dda218967A8978a185003a91cd020",
+      "mandateId": "0x386dbf33df0e48c38b262239a9a44c6ed16df97dacfe520470446ade109af2a5",
+      "verified": true,
+      "coverage": {
+        "account": true,
+        "policy": true,
+        "session": false,
+        "merchantAndStep": false,
+        "purchaseReadiness": false
+      },
+      "observations": [
+        {
+          "rpc": "https://ethereum-sepolia-rpc.publicnode.com",
+          "blockNumber": "11918214",
+          "blockHash": "0xd6718432ef5b931169b34052c4c19499f2d5813fc4dac1069ed6901c72ce4df3",
+          "timestamp": "1792040532",
+          "runtimeHash": "0xb02389a0cb1da5d337b8c5bed2db665fc40e4331a4d70e09e5592a74ce0e1c41",
+          "owner": "0xa6AA6EC95A06Afc137F9659ee89a674ca611cb78",
+          "asset": "0x9496608866E40E8afa51aC1B4D28BF0011414b54",
+          "tokenDomain": "0xb7ba60c5e60fc7bb28b67301716290dd2fbe1def567e86416ee110e8cef4ca3e",
+          "decimals": 6,
+          "cash": "50000",
+          "nativeBalance": "0",
+          "policy": {
+            "taskHash": "0xaf7e2f59871fb1d00e83cb1d6e8151dd1894f9bf68b371d180900e31c6f9bfd5",
+            "budget": "150000",
+            "maxPerPayment": "100000",
+            "occupied": "100000",
+            "expiresAt": "1792072380",
+            "version": "1",
+            "paused": false,
+            "revoked": false,
+            "exists": true
+          }
+        },
+        {
+          "rpc": "https://sepolia.drpc.org",
+          "blockNumber": "11918214",
+          "blockHash": "0xd6718432ef5b931169b34052c4c19499f2d5813fc4dac1069ed6901c72ce4df3",
+          "timestamp": "1792040532",
+          "runtimeHash": "0xb02389a0cb1da5d337b8c5bed2db665fc40e4331a4d70e09e5592a74ce0e1c41",
+          "owner": "0xa6AA6EC95A06Afc137F9659ee89a674ca611cb78",
+          "asset": "0x9496608866E40E8afa51aC1B4D28BF0011414b54",
+          "tokenDomain": "0xb7ba60c5e60fc7bb28b67301716290dd2fbe1def567e86416ee110e8cef4ca3e",
+          "decimals": 6,
+          "cash": "50000",
+          "nativeBalance": "0",
+          "policy": {
+            "taskHash": "0xaf7e2f59871fb1d00e83cb1d6e8151dd1894f9bf68b371d180900e31c6f9bfd5",
+            "budget": "150000",
+            "maxPerPayment": "100000",
+            "occupied": "100000",
+            "expiresAt": "1792072380",
+            "version": "1",
+            "paused": false,
+            "revoked": false,
+            "exists": true
+          }
+        }
+      ],
+      "issues": [],
+      "transactionsSubmitted": 0
+    }
+  ],
+  "limitations": [
+    "Two-provider finalized-state comparison is not independent consensus verification.",
+    "Historical policies may be expired, revoked or unfunded; this is not a new purchase acceptance.",
+    "No mainnet queries, signing keys, wallet clients or transaction broadcast."
+  ]
+}

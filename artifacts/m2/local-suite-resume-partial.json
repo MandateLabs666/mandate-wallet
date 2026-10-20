@@ -1,0 +1,53 @@
+{
+  "stage": "partial",
+  "recordedAt": "2026-10-14T13:00:43.494Z",
+  "chainId": 1337,
+  "safeMode": true,
+  "publicGatePassed": false,
+  "entryPoint": "0x6F6f570F45833E249e27022648a26F4076F48f78",
+  "policyId": "0x60a3ec7c7ec5ff83a4388f82d9e351f1882c987f19ec230ad362fa87f38e3fe4",
+  "entryPointNonce": "2",
+  "inputBalance": "950000",
+  "allowance": "0",
+  "totalSpent": "50000",
+  "failureCheckpoint": {
+    "chainId": 1337,
+    "registry": "0xCA8c8688914e0F7096c920146cd0Ad85cD7Ae8b9",
+    "account": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+    "instanceId": "0x60a3ec7c7ec5ff83a4388f82d9e351f1882c987f19ec230ad362fa87f38e3fe4",
+    "userOpHash": "0x279a0b60c2d799ac27b159ccab46a196a4137c3e95fd7c88f642794f16c84717",
+    "transactionHash": "0x2dc0ff5ee069670ac5e4cefbd5f5d192845f59bdd6b9d757ebd131ac33b9dece",
+    "blockHash": "0x441988df55c0d329ffe2a45bbb8f4facb351f85de2643f274d880baec0a669c6",
+    "blockNumber": "4853",
+    "spentAtFailure": "0",
+    "priorSpendEvents": 0,
+    "failedOperationSuccess": false,
+    "spendEventsInFailureReceipt": 0,
+    "inputTransfersInFailureReceipt": 0,
+    "source": "canonical-registry-event-prefix"
+  },
+  "records": [
+    {
+      "requestId": "m2-router-failure",
+      "state": "failed",
+      "userOpHash": "0x279a0b60c2d799ac27b159ccab46a196a4137c3e95fd7c88f642794f16c84717",
+      "transactionHash": "0x2dc0ff5ee069670ac5e4cefbd5f5d192845f59bdd6b9d757ebd131ac33b9dece",
+      "nonce": "0x0"
+    },
+    {
+      "requestId": "m2-session-exact-output",
+      "state": "succeeded",
+      "userOpHash": "0xd65c8194237dcfbe9113d2317d9e4aafd0fecc56e72f4431ccf851da2026fb64",
+      "transactionHash": "0xfc911d015e30a01a56d9ea0939e9fbeb0ba41329e8339762c0ee6c73a5e151c8",
+      "nonce": "0x1",
+      "actualInput": "50000"
+    }
+  ],
+  "sourceSHA256": {
+    "echo/experiments/run-public.ts": "231b0060441ad2ca180a656b55ada9c4a165af04cafbdd2d378685ab4bc07484",
+    "echo/experiments/failed-spend.ts": "016dc03d323e6ea1dd2ffa07647713e39bd1000276ba09176bc4acbbabe43a34",
+    "echo/experiments/resume-evidence.ts": "12eb3dc0a910f591bdbec727be4efdf7671198d8825ca6ae725e4376ec39dac6",
+    "echo/infra/local-geth.yaml": "4f6e37f82fed6cf1b042f4526caa0ee5e9bb83cd47746adc82cf7bb520556804",
+    "echo/gateway/src/client.ts": "d1e1e0e68a7548ce47e3f5024900654c21ccd87c2b6c68840b5c060fe2f874b7"
+  }
+}

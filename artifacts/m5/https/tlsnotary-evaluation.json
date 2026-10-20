@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 2,
+  "observedAt": "2026-10-14T19:59:47.857218+00:00",
+  "source": {
+    "tag": "v0.1.0-alpha.15",
+    "url": "https://codeload.github.com/tlsnotary/tlsn/tar.gz/refs/tags/v0.1.0-alpha.15",
+    "archiveSHA256": "c436c7894afeba2bb9b9816229648b43c9294fa19d2c11999e6a9994259b1cf7",
+    "sourceDirectory": ".runtime/m5/tlsnotary/tlsn-0.1.0-alpha.15"
+  },
+  "image": "rust:1.95.0-bookworm",
+  "imageDigest": "sha256:6258907abe69656e41cd992e0b705cdcfabcbbe3db374f92ed2d47121282d4a1",
+  "endpoint": "https://api.github.com/rate_limit",
+  "authentication": "none",
+  "proofType": "TLSNotary MPC-TLS attestation/presentation",
+  "presentationSHA256": "19643afa5ce1fecc7a68ec6a26cf2d41ee24d5bc39439882f4d3a803e5f12d71",
+  "presentationBytes": 15583,
+  "notaryKeySHA256": "1b926bc23ee89a94cea9b394944bffc2c8aacf0cf08acc4d37fdd566e8c35eaa",
+  "cases": [
+    {
+      "name": "prove",
+      "binary": "mandate_prove",
+      "exitCode": 0,
+      "elapsedSeconds": 1.876,
+      "outputSHA256": "44e1106107b593f19bde65d0c612d100e295c43cef830856cd0ea5bde9b262a1"
+    },
+    {
+      "name": "present",
+      "binary": "mandate_present",
+      "exitCode": 0,
+      "elapsedSeconds": 0.23,
+      "outputSHA256": "2e3152d413689bc4e8f1686947929e36b57a91f196c0f350cce08898658f622f"
+    },
+    {
+      "name": "verify",
+      "binary": "mandate_verify",
+      "exitCode": 0,
+      "elapsedSeconds": 0.235,
+      "outputSHA256": "1baa907a70b86e9256f6078076e78939e4c45fb1ce6c8cd7553fdceda75eb1e6"
+    },
+    {
+      "name": "wrong-server",
+      "binary": "mandate_verify",
+      "exitCode": 1,
+      "elapsedSeconds": 0.231,
+      "outputSHA256": "a4ec87624d03edb470a46c9ddc366ce2e7b46553d5d682f8835c3d8fcd4c6e2b"
+    },
+    {
+      "name": "tampered-response",
+      "binary": "mandate_verify",
+      "exitCode": 101,
+      "elapsedSeconds": 0.225,
+      "outputSHA256": "3141c468319e4aa845f323fb736ad2443772eaf5f4be33a395819fcd442472ad"
+    },
+    {
+      "name": "wrong-notary-key",
+      "binary": "mandate_verify",
+      "exitCode": 1,
+      "elapsedSeconds": 0.244,
+      "outputSHA256": "4fda4031c56332bf72df06dbc4fa2528f8cd61d103a39118865b0669f45c27b4"
+    }
+  ],
+  "generationAndIndependentFileVerificationPassed": true,
+  "limits": [
+    "Prover and notary ran on the same host as separate logical roles; this does not provide deployment independence against the full host.",
+    "The independent verifier pins a separate public-key file, not the key embedded in the presentation.",
+    "This public HTTPS study is separate from the loopback paid merchant and does not upgrade its HTTPS provenance."
+  ],
+  "firstVersionDecision": "Keep optional reproducible research example; do not make MPC-TLS a mandatory payment path until an independently managed notary is configured."
+}

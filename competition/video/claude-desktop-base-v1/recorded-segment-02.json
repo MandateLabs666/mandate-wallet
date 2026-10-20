@@ -1,0 +1,91 @@
+{
+  "takeId": "formal-take-01",
+  "status": "Recorded funding segment; full demo incomplete",
+  "completedDemo": false,
+  "seconds": 17,
+  "size": [
+    2560,
+    1440
+  ],
+  "fps": 30,
+  "chainId": 84532,
+  "wallet": "0xa794DAa86ff10920B75a4de3b0E752586e8703D2",
+  "transactions": [
+    {
+      "hash": "0x3bb4b38d34ddea128a261e8c5da4ca28dfd2369f8671f2b4a718ed8c25ff61e2",
+      "kind": "fund-usdc",
+      "explorer": "https://sepolia.basescan.org/tx/0x3bb4b38d34ddea128a261e8c5da4ca28dfd2369f8671f2b4a718ed8c25ff61e2"
+    },
+    {
+      "hash": "0x6ddf321b74a123e0ac7ee5007042c80dd667ac25a993f790622c258a91aebe2e",
+      "kind": "fund-gas",
+      "explorer": "https://sepolia.basescan.org/tx/0x6ddf321b74a123e0ac7ee5007042c80dd667ac25a993f790622c258a91aebe2e"
+    }
+  ],
+  "originalUIFramesOnly": true,
+  "systemViewAlwaysRetained": true,
+  "audit": [
+    {
+      "scene": 1,
+      "camera": "system",
+      "label": "gas-funding-confirmed",
+      "sourceFrames": 33,
+      "firstCapturedAt": "2026-10-19T10:30:09.312Z",
+      "lastCapturedAt": "2026-10-19T10:30:10.299Z",
+      "videoStartSeconds": 0,
+      "videoEndSeconds": 5,
+      "pacing": "Original source order at 1x, then hold the last view for narration"
+    },
+    {
+      "scene": 1,
+      "camera": "rabby",
+      "label": "gas-funding-review",
+      "sourceFrames": 15,
+      "firstCapturedAt": "2026-10-19T10:23:13.734Z",
+      "lastCapturedAt": "2026-10-19T10:23:14.878Z",
+      "videoStartSeconds": 0,
+      "videoEndSeconds": 5,
+      "pacing": "Original source order at 1x, then hold the last view for narration"
+    },
+    {
+      "scene": 2,
+      "camera": "system",
+      "label": "usdc-funding-review",
+      "sourceFrames": 68,
+      "firstCapturedAt": "2026-10-19T09:31:37.287Z",
+      "lastCapturedAt": "2026-10-19T10:30:30.552Z",
+      "videoStartSeconds": 5,
+      "videoEndSeconds": 10,
+      "pacing": "Original source order at 1x, then hold the last view for narration"
+    },
+    {
+      "scene": 3,
+      "camera": "system",
+      "label": "funding-confirmed",
+      "sourceFrames": 37,
+      "firstCapturedAt": "2026-10-19T10:31:57.754Z",
+      "lastCapturedAt": "2026-10-19T10:31:58.931Z",
+      "videoStartSeconds": 10,
+      "videoEndSeconds": 17,
+      "pacing": "Original source order at 1x, then hold the last view for narration"
+    },
+    {
+      "scene": 3,
+      "camera": "explorer",
+      "label": "funding-basescan-overview",
+      "sourceFrames": 46,
+      "firstCapturedAt": "2026-10-19T10:34:09.398Z",
+      "lastCapturedAt": "2026-10-19T10:34:10.871Z",
+      "videoStartSeconds": 10,
+      "videoEndSeconds": 17,
+      "pacing": "Original source order at 1x, then hold the last view for narration"
+    }
+  ],
+  "excludedMaterial": [
+    "Historical rehearsal screenshots",
+    "Earlier manual Claude extension settings",
+    "Explorer auto-decoded factory event labels do not match the pinned ABI",
+    "Wallet submitting frame may already show the closed notification's parent page"
+  ],
+  "evidenceSHA256": "d60dbc3153172b0117d40e9a2383e4591ccb50c3c7fa3feb49852a963de97cd8"
+}

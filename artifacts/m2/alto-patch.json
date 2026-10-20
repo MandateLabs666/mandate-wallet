@@ -1,0 +1,25 @@
+{
+  "baseCommit": "ed03b9cb6d2b6c16b3b4bd6bde13b2378db469e7",
+  "patch": "echo/infra/alto-v07-strict-geth.patch",
+  "patchSha256": "8fea698813921553c76e355430da8d47e0d1f18d0ee474a10e749e0c3f1d996d",
+  "safeMode": true,
+  "reason": "Pinned v0.7 simulation returns a tuple; root trace and Geth frame error semantics must match it. Opcode/storage/signature/validity checks retained. Fresh validation failures must be dropped after pop, not silently re-added to the outstanding queue.",
+  "files": {
+    "src/rpc/validation/BundlerCollectorTracerV07.ts": {
+      "beforeSha256": "b2122be675df3d56993dc44ee26d9cfd2cdc4cf05ea85b56e30e3214a5ee5a29",
+      "afterSha256": "6fddd62f961b0e4149f5eb726e861943dc026fdbc0f9b52a6417ae4b30803373"
+    },
+    "src/rpc/validation/SafeValidator.ts": {
+      "beforeSha256": "1f1f294f05d98422013d42bc91810b8dadfe44400e02285b530f9d5828506e30",
+      "afterSha256": "97deb0dceab74faa34cd2a8cf2529ce7b0fc86853bc190a0f8634d3b5b59ad25"
+    },
+    "src/rpc/validation/tracer.ts": {
+      "beforeSha256": "d0d8de383c458a9ba844ec02c88be8a8087a50a80fa3ee07110dc1344606f57b",
+      "afterSha256": "2d132173d18662ce34ec13ceca1f7c08ed08d029adc63668e410ee03c078d345"
+    },
+    "src/mempool/mempool.ts": {
+      "beforeSha256": "42f0ca7621d1ece7fe4b25e159d8ebe531eb98485b20b2fb744688f0070cc9e6",
+      "afterSha256": "a18cb629c7937c9eec8261ebd82375bbc8930594862f13b3da2b7e97202bfbca"
+    }
+  }
+}

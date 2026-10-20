@@ -1,0 +1,50 @@
+# Static Tool Security Review
+
+15 October 2026. This review uses independently maintained Slither and Semgrep Community Edition, followed by author triage and regression tests. It is not a non-author human review, third-party audit, formal proof or general security certification.
+
+## Scope and reproducibility
+
+The initial source baseline is `f1fa613`. Slither 0.11.6 / crytic-compile 0.4.2 compiled the Mandate and repaired Echo Foundry projects with Solidity 0.8.26, viaIR, optimizer 200 and Cancun. It analyzed 29 and 22 contracts respectively with 102 detectors; dependency-only findings were excluded, while controlled fixtures in each project's source remained visible. [Slither documents its framework compilation and detector model](https://github.com/crytic/slither).
+
+Semgrep CE 1.181.0 scanned 66 TypeScript files across evidence, SDK, services, Gateway, Web, operations and Echo Gateway. All 182 rule files under the official repository's JavaScript/TypeScript `security/` paths were selected: 188 configured rules, with applicability determined by language. The rule snapshot is `semgrep/semgrep-rules@9bbf021d0acffa3095fcffd17b2bc7787eb4796d`, archive SHA256 `dbc7d460c03f7fcc963154a9283c9202361695eec483898d2835244c0fb7c2a8`. IDs were prefixed with their source paths; patterns and metadata were not changed. Local rules, OSS mode, metrics off and disabled version checks were used; no login or upload was requested. See [Semgrep's metrics controls](https://github.com/semgrep/semgrep/blob/develop/metrics.md).
+
+Pinned tool requirements are in `security/static-analysis/`. Run `python3 scripts/m7-static-review.py bootstrap`, then `python3 scripts/m7-static-review.py run --output artifacts/m7/security/<fresh-run-name>`. The runner preserves findings, records source hashes and command exit codes, and refuses an existing output directory. Its execution requires Python 3.12, the existing Foundry/compiler setup and, for bootstrap only, access to the public package/source hosts. No source scan requires a chain connection.
+
+## Results and tracked fix
+
+| Tool target | Initial findings | Final findings | Interpretation |
+| --- | ---: | ---: | --- |
+| Mandate Solidity | 3 | 3 | Compiler-range, standard-interface naming and generated CREATE2-bytecode observations |
+| Echo Solidity | 45 | 45 | Guarded execution/callback patterns, expiry/day accounting, implementation-role limitation, informational items and intentional fixtures |
+| TypeScript | 65 | 64 | One confirmed tag-policy weakness fixed; remaining dispatch/assertion/escaped-HTML/origin patterns reviewed by source path |
+
+All **113 initial signals** have an explicit disposition in [findings-triage.json](../artifacts/m7/security/findings-triage.json). There are still 112 raw final signals; this report does not relabel the scan as clean or suppress them. The repeat run in [recheck/execution.json](../artifacts/m7/security/recheck/execution.json) records actual compilation/scan completion. Slither exits 255 when it reports findings; its JSON `success=true` confirms analysis completion, not an absence of issues. Semgrep reported zero scan/parse errors.
+
+**SR-01 — Echo encrypted signer authentication tag.** The key store wrote 16-byte AES-GCM tags but initialized decryption without fixing their expected length. A local reproducer truncated a valid stored tag to 12, 8 and 4 bytes; all three variants still decrypted and produced signatures valid for the original signer. This demonstrates weaker-than-intended integrity-format acceptance. It does not demonstrate private-key recovery or unrestricted on-chain spending; the decrypted signer-address check and wallet authorization checks are separate controls.
+
+The repair pins `authTagLength: 16` for encryption/decryption and rejects a decoded tag of any other length before decrypting. The same probe now accepts the full tag and rejects all truncated variants with `KEYSTORE_AUTH_TAG_LENGTH`. Existing full-tag keystores retain their format. No contract, ABI, deployed runtime or research protocol changed. The initial and repaired results are [keystore-before.json](../artifacts/m7/security/keystore-before.json) and [keystore-after.json](../artifacts/m7/security/keystore-after.json); no signatures or keys were exported. The GCM warning is absent from both post-fix TypeScript scans.
+
+## Context for retained signals
+
+- Echo's two High `reentrancy-balance` signals point to deliberate pre/post swap balance accounting. Execution is restricted to the immutable EntryPoint and protected by the account's `entered` guard before external calls; actual spending and output constraints are rechecked and recorded atomically. The existing reentrant-router regression passes. This conclusion assumes the approved token's stated balance semantics and the pinned EntryPoint/implementation.
+- Registry event/callback signals are constrained by owner checks, exact delegation-code binding and restricted cache synchronization. Calendar equalities select daily counters; timestamp uses implement explicit deadlines and expiry. The deliberately invalid `TraceRuleProbe` remains a test fixture, including its timestamp and payable-sink signals.
+- The standalone Echo implementation can receive ETH and has no withdrawal function in its ABI. This is an accepted address-role limitation: it is not the delegated owner EOA to fund. The owner EOA retains native transaction authority; no native-ETH recovery experiment is claimed by this review.
+- Thirty Semgrep dynamic-`require` signals resolve to the verifier's local `require(condition, errorCode)` assertion closure, rather than Node module loading. Three MCP SSRF signals identify `tools.call`, a schema-checked application dispatch. Network destinations come from trusted configuration/approved services; the Mandate HTTP layer separately validates origins, DNS/IP addresses, redirects and headers.
+- Thirty HTML/template/sink signals were reviewed at each reported source range. Untrusted leaves use escaping helpers; amounts use integer formatting and page/status/action choices are fixed. The reflected CORS origin passes an exact allowlist first. These are source-path conclusions, not a general XSS proof, arbitrary-Gateway trust guarantee or hostile-host isolation claim. Future template or routing changes require review again.
+
+## Validation and remaining boundaries
+
+The post-fix Echo Gateway suite has 20 passing tests, including full-tag signing and rejection of the three truncated tags. Echo and Mandate contract suites have 27 and 23 passing tests. The evidence and service suites are recorded separately with their actual totals in [security acceptance](../artifacts/m7/security/acceptance.json); TypeScript checking passes. An initial restricted-execution Echo test run was interrupted without a success claim; the local-network-enabled replacement completed. Tool setup and test-attempt notes remain in [execution-notes.json](../artifacts/m7/security/execution-notes.json).
+
+The established M7 specification calls for independent tools covering contracts and the evidence verifier, plus tracked findings and repairs. This delivery satisfies that tool-based T10.10 scope. Author triage remains author work; no external human audit has occurred. Static analysis has finite intraprocedural/pattern coverage and does not establish completeness, HTTPS provenance, owner/host isolation, public RPC correctness or mainnet readiness. Actual external-wallet automation is documented separately; manual wallet usability, remaining wallet paths, release freeze, final material checking and organizer confirmations retain their own task states. The later [Web/Owner concurrency recheck](../artifacts/m7/security/web-owner-recheck/execution.json) compiled/scanned the changed source and retained the same finding set, ignoring shifted line numbers, as recorded in [supplementary acceptance](../artifacts/m6/owner-concurrency/acceptance.json).
+
+
+## Subsequent purchase-feedback revision
+
+The original 113/112 figures above retain their fixed source scope. A later [purchase-feedback recheck](../artifacts/m7/security/purchase-feedback-recheck/execution.json) analyzes 67 TypeScript files and reports 67 TypeScript signals, plus the unchanged 3 Mandate / 45 Echo contract signals: 115 raw signals in total. The net three additional HTML-template occurrences are reviewed in the [supplementary disposition](../artifacts/m7/security/purchase-feedback-recheck/disposition.json). External text is encoded, action/class values are fixed, and a separately labeled hostile-response rendering probe executes its positive control while the App renders the payload only as text. No scan errors or new rule classes were reported; finite probes do not establish general XSS safety or a non-author human audit.
+
+
+The hosted-connection amendment received a [TypeScript-only recheck](../artifacts/m7/security/hosted-connection-recheck/execution.json): 67 production files, 67 raw signals, no scan errors, and identical rule/path multiplicities to the preceding purchase-feedback scan. The App change is a literal connection-recovery message and a connect-only fetch-error branch; it adds no HTML interpolation. Financial and Solidity sources match rc6; unchanged contract fingerprints reuse earlier results rather than claim a new contract scan. Test-only Site dispatch credentials enter hidden stdin, are scoped to the exact Site origin, and are absent from the exported evidence. No zero-alert or independent-human-audit claim is made.
+
+
+The [created-task handoff recheck](../artifacts/m7/security/created-task-recheck/execution.json) scans 67 production TypeScript files and retains 67 raw signals with identical rule/path counts. Contract fingerprints are unchanged and reuse previous results. This review covers the new navigation guards; it is separate from the historical connection-guidance amendment and does not claim zero alerts or an independent human audit.

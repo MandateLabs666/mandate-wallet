@@ -1,0 +1,352 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Mandate M1 version 1 objects",
+  "description": "Validate JSON Schema first, then shared cross-field uint256 and policy invariants. SessionAttestation is specification only.",
+  "$defs": {
+    "PolicySpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "mandateId",
+        "owner",
+        "wallet",
+        "chainId",
+        "sessionSigner",
+        "asset",
+        "payTo",
+        "budget",
+        "maxPerPayment",
+        "expiresAt",
+        "stepIds"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "mandateId": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{64}$"
+        },
+        "owner": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{40}$"
+        },
+        "wallet": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{40}$"
+        },
+        "chainId": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "sessionSigner": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{40}$"
+        },
+        "asset": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{40}$"
+        },
+        "payTo": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{40}$"
+        },
+        "budget": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$",
+          "maxLength": 78
+        },
+        "maxPerPayment": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$",
+          "maxLength": 78
+        },
+        "expiresAt": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "stepIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^0x[0-9a-fA-F]{64}$"
+          },
+          "minItems": 1,
+          "maxItems": 16,
+          "uniqueItems": true
+        }
+      }
+    },
+    "ActionProof": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "mandateId",
+        "stepId",
+        "wallet",
+        "chainId",
+        "nonce",
+        "paymentDigest",
+        "requestHash",
+        "quoteHash",
+        "registrationSignature",
+        "evidenceSource"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "mandateId": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{64}$"
+        },
+        "stepId": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{64}$"
+        },
+        "wallet": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{40}$"
+        },
+        "chainId": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "nonce": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{64}$"
+        },
+        "paymentDigest": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{64}$"
+        },
+        "requestHash": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{64}$"
+        },
+        "quoteHash": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{64}$"
+        },
+        "registrationSignature": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{130}$"
+        },
+        "evidenceSource": {
+          "const": "local"
+        }
+      }
+    },
+    "PaymentCommitment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "mandateId",
+        "stepId",
+        "wallet",
+        "chainId",
+        "asset",
+        "payTo",
+        "amount",
+        "validAfter",
+        "validBefore",
+        "nonce",
+        "paymentDigest",
+        "registrationTx"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "mandateId": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{64}$"
+        },
+        "stepId": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{64}$"
+        },
+        "wallet": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{40}$"
+        },
+        "chainId": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "asset": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{40}$"
+        },
+        "payTo": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{40}$"
+        },
+        "amount": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$",
+          "maxLength": 78
+        },
+        "validAfter": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$",
+          "maxLength": 78
+        },
+        "validBefore": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$",
+          "maxLength": 78
+        },
+        "nonce": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{64}$"
+        },
+        "paymentDigest": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{64}$"
+        },
+        "registrationTx": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{64}$"
+        }
+      }
+    },
+    "SessionAttestation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "sessionId",
+        "mandateId",
+        "scope",
+        "checkpointRoot",
+        "previousRoot",
+        "source",
+        "disclosure",
+        "witness",
+        "implemented"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "sessionId": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{64}$"
+        },
+        "mandateId": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{64}$"
+        },
+        "scope": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "checkpointRoot": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{64}$"
+        },
+        "previousRoot": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^0x[0-9a-fA-F]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source": {
+          "enum": [
+            "local",
+            "merchant_signed",
+            "independent_witness"
+          ]
+        },
+        "disclosure": {
+          "enum": [
+            "public_fixture",
+            "selective"
+          ]
+        },
+        "witness": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^0x[0-9a-fA-F]{40}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "implemented": {
+          "const": false
+        }
+      }
+    },
+    "ContainmentDecisionLog": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "mandateId",
+        "stepId",
+        "decision",
+        "code",
+        "evidenceRefs",
+        "timestamp",
+        "source"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "mandateId": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{64}$"
+        },
+        "stepId": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{64}$"
+        },
+        "decision": {
+          "enum": [
+            "allow",
+            "reject",
+            "pending"
+          ]
+        },
+        "code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "timestamp": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "source": {
+          "const": "local"
+        }
+      }
+    }
+  }
+}

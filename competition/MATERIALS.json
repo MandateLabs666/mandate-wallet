@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "currentSourceCandidate": "artifacts/competition/source-delivery/submission20261020/reproduction.json",
+  "kind": "20 October submission preparation; official submission not sent",
+  "primary": {
+    "report": "competition/TECHNICAL_REPORT.en.md",
+    "security": "competition/SECURITY_SELF_ASSESSMENT.en.md",
+    "toolReview": "competition/STATIC_TOOL_REVIEW.en.md",
+    "execution": "competition/EXECUTION_EVIDENCE.en.md",
+    "buildGuide": "competition/BUILD_AND_DEPLOY.en.md",
+    "sourceDelivery": "competition/SOURCE_DELIVERY.en.md",
+    "checklist": "competition/DELIVERY_CHECKLIST.en.md",
+    "deck": "competition/submission-2026-10-20/presentation/mandate-wallet-10min-final.pptx",
+    "deckSource": "competition/submission-2026-10-20/presentation/content.json",
+    "speakerScript": "competition/submission-2026-10-20/presentation/SPEAKER_NOTES.en.md",
+    "deckGuide": "competition/submission-2026-10-20/presentation/README.en.md",
+    "video": "competition/video/claude-desktop-base-v1/mandate-base-sepolia-demo.silent.mp4",
+    "videoSource": "competition/video/claude-desktop-base-v1/demo-edit.json",
+    "transcript": "competition/video/claude-desktop-base-v1/VOICEOVER.en.md",
+    "captions": "competition/video/claude-desktop-base-v1/captions.en.srt",
+    "videoGuide": "competition/video/claude-desktop-base-v1/README.zh-CN.md",
+    "deckPDF": "competition/submission-2026-10-20/presentation/mandate-wallet-10min.pdf",
+    "technicalPDF": "competition/submission-2026-10-20/documents/mandate-wallet-technical-documentation.pdf",
+    "securityPDF": "competition/submission-2026-10-20/documents/mandate-wallet-security-self-assessment.pdf",
+    "executionPackage": "competition/video/claude-desktop-base-v1/mandate-base-sepolia-execution-evidence.zip"
+  },
+  "websiteSource": [
+    "mandate/web/static/index.html",
+    "mandate/web/static/docs.html",
+    "mandate/web/static/app.html",
+    "mandate/web/app.ts"
+  ],
+  "historical": [
+    {
+      "path": "competition/presentation/mandate-wallet-v2.pptx",
+      "scope": "original accepted deck; superseded as primary by v3"
+    },
+    {
+      "path": "competition/video/mandate-wallet-demo-v1.mp4",
+      "scope": "fixture-owner recording; no native external-wallet confirmation"
+    },
+    {
+      "path": "competition/video/TRANSCRIPT.en.md",
+      "scope": "v1 transcript, not current video"
+    },
+    {
+      "path": "competition/video/mandate-wallet-demo-v1.srt",
+      "scope": "v1 stage captions"
+    },
+    {
+      "path": "competition/video/content.json",
+      "scope": "v1 narrative source"
+    },
+    {
+      "path": "artifacts/competition/source-delivery/rc2/package.json",
+      "scope": "exact older source commit; does not contain subsequent repairs"
+    },
+    {
+      "path": "artifacts/m6/publication/deployment.json",
+      "scope": "owner-private historical hosted source; not the current local Web revision"
+    },
+    {
+      "path": "artifacts/competition/source-delivery/rc4/acceptance.json",
+      "scope": "exact older reproduced source; superseded as current engineering candidate by rc5"
+    },
+    {
+      "path": "artifacts/m6/publication-refresh/acceptance.json",
+      "scope": "owner-private c9bb738 frontend superseded by purchase-feedback revision"
+    },
+    {
+      "path": "artifacts/competition/source-delivery/rc5/acceptance.json",
+      "scope": "exact older reproduced source before purchase-feedback and cash-preflight changes; superseded by rc6"
+    },
+    {
+      "path": "artifacts/m6/publication-purchase-feedback/acceptance.json",
+      "scope": "owner-private e305503 frontend before hosted connection guidance; included in rc6"
+    },
+    {
+      "path": "artifacts/m6/publication-hosted-connection/acceptance.json",
+      "scope": "owner-private bfa7fe8 frontend before the created-task handoff repair"
+    },
+    {
+      "path": "artifacts/competition/source-delivery/rc6/acceptance.json",
+      "scope": "exact earlier reproduced source before hosted connection guidance and created-task handoff repair; superseded by rc7"
+    },
+    {
+      "path": "competition/presentation/mandate-wallet-v3.pptx",
+      "scope": "previous accepted deck; superseded as primary by v4-copy editorial revision; original evidence retained"
+    }
+  ],
+  "mainnetPaymentsAuthorized": false,
+  "formalSubmissionAuthorized": false,
+  "humanWalletUsabilityAccepted": false,
+  "thirdPartyHumanAudit": false,
+  "finalVersionFrozen": false,
+  "currentHostedSite": "artifacts/m6/publication-created-task/deployment.json",
+  "currentHostedAcceptance": "artifacts/m6/publication-created-task/acceptance.json",
+  "currentHostedConnection": null,
+  "retainedHostedConnection": {
+    "acceptance": "artifacts/m6/hosted-connection/r6/acceptance.json",
+    "sourceCommit": "90062a75edd5772b2284565f380e6462b23ae3be",
+    "scope": "exact earlier connection-guidance source; does not validate the current hosted revision"
+  },
+  "currentHostedConnectionStatus": "pending authorized native-wallet/transport recheck",
+  "latestNativeRabbyLocalFlow": "artifacts/m6/rabby-wallet/full-flow-r1/acceptance.json",
+  "latestCreatedTaskFix": "artifacts/m6/created-task/r1/acceptance.json",
+  "localWebPreview": {
+    "status": "implemented local UI iteration; human review pending",
+    "origin": "http://127.0.0.1:18742",
+    "evidence": "artifacts/m6/ui-refresh/r7-copy/acceptance.json",
+    "publishedToSites": false,
+    "includedInCurrentSourceCandidate": false,
+    "currentHostedSiteUsesEarlierUI": true,
+    "lastFullMaterialAuditBeforeThisIteration": "artifacts/competition/material-review/r15/acceptance.json",
+    "visualReference": "Echo website; monochrome, silver and blue. Deye is guidance behavior only.",
+    "brandAssets": {
+      "icon": "mandate/web/brand/mark.svg",
+      "wordmark": "mandate/web/brand/wordmark.svg",
+      "lockup": "mandate/web/brand/lockup.svg"
+    },
+    "languages": [
+      "en",
+      "zh-CN"
+    ],
+    "documentationSections": 13,
+    "contractSourceDistribution": {
+      "archive": "mandate/web/static/mandate-contracts-v2.zip",
+      "manifest": "mandate/web/static/contracts-release.json",
+      "license": "MIT",
+      "archiveSHA256": "91dbc2d29ebaaf37985275c5dc3aeffbc84a1ff9eeb9a1f193243da06b8cb5ec",
+      "githubPublished": false,
+      "repository": null,
+      "awaiting": "User-specified GitHub repository; no remote configured",
+      "standaloneContractTestsPassed": 23
+    },
+    "interactiveWalkthrough": {
+      "url": "http://127.0.0.1:18742/walkthrough.html",
+      "stages": 7,
+      "mode": "illustration only; no Gateway, wallet or transaction calls",
+      "languages": [
+        "en",
+        "zh-CN"
+      ],
+      "purpose": "Explain limited agent procurement, budget reservation, payment/delivery/result separation, same-order recovery and revocation"
+    },
+    "guidanceFix": "Stable compact guide with explicit details; scroll never changes mode; immediate unobscured control placement; quote/run actions and retained quote placed at card top",
+    "latestLocalBrowserFlow": {
+      "evidence": "artifacts/m6/ui-refresh/r6/recovered-order.json",
+      "chainId": 31337,
+      "asset": "mintable mock USDC",
+      "chargedAtomic": "10000",
+      "service": "ETH statistics",
+      "sameOrderRecovery": true,
+      "result": "valid",
+      "verification": "Required financial/record checks passed; HTTPS source and unobserved history remain incomplete",
+      "publicNetworkUsed": false
+    },
+    "previousBehaviorEvidence": "artifacts/m6/ui-refresh/r6/acceptance.json"
+  },
+  "presentationAcceptance": "artifacts/competition/presentation-v4-copy/acceptance.json",
+  "editorialRevision": {
+    "date": "2026-10-17",
+    "evidence": "artifacts/editorial/2026-10-17/review.json",
+    "scope": "Chinese website copy, project-authored Chinese guides/plans, English report passages, and English presentation text/notes",
+    "recordedVideosUnchanged": true,
+    "historicalSourceArchivesUnchanged": true,
+    "fullMaterialAuditRefreshed": false,
+    "finalSubmissionFrozen": false
+  },
+  "sourceCandidateStatus": "public snapshot reproduction pending",
+  "currentNativeClaudeCase": "competition/video/claude-desktop-base-v1/execution-evidence/run.json",
+  "videoVoiceOver": "pending user recording",
+  "currentNativeRabbyStatus": "Recorded Base Sepolia path passed; full usability/device gate remains open"
+}

@@ -1,0 +1,34 @@
+{
+  "model": "synthetic deterministic pseudo-random adapter; not a real LLM benchmark",
+  "queryBudget": 3,
+  "rows": [
+    {
+      "attempted": 1,
+      "controlledAdapterCalls": 1,
+      "outOfBandSyntheticCalls": 1,
+      "controlledPath": "prevented excess queries",
+      "bypass": "not-guaranteed; not visible to controller"
+    },
+    {
+      "attempted": 5,
+      "controlledAdapterCalls": 3,
+      "outOfBandSyntheticCalls": 5,
+      "controlledPath": "prevented excess queries",
+      "bypass": "not-guaranteed; not visible to controller"
+    },
+    {
+      "attempted": 20,
+      "controlledAdapterCalls": 3,
+      "outOfBandSyntheticCalls": 20,
+      "controlledPath": "prevented excess queries",
+      "bypass": "not-guaranteed; not visible to controller"
+    },
+    {
+      "attempted": 100,
+      "controlledAdapterCalls": 3,
+      "outOfBandSyntheticCalls": 100,
+      "controlledPath": "prevented excess queries",
+      "bypass": "not-guaranteed; not visible to controller"
+    }
+  ]
+}

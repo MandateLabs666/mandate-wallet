@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-15T15:44:30.646037+00:00",
+  "acceptedTasks": [
+    "T11.06",
+    "T11.10"
+  ],
+  "candidate": "rc7",
+  "sourceCommit": "f2fcc31f86a237a82f918fbe774157cc3c1e2a21",
+  "archive": "delivery/mandate-wallet-source-rc7-f2fcc31f.zip",
+  "archiveSHA256": "8749ce16b99894811feb92b2656e22562a6d4a609569aa9adf846a51a7823351",
+  "sourceFiles": 2587,
+  "solidityCases": {
+    "contracts": 23,
+    "echo-contracts": 27
+  },
+  "typescriptCases": {
+    "sdk-tests": 5,
+    "service-tests": 27,
+    "evidence-tests": 25,
+    "web-tests": 8,
+    "operations-tests": 21,
+    "echo-tests": 20
+  },
+  "typescriptTotal": 106,
+  "cashFundingRecoveryTestIncluded": true,
+  "explicitlyInvalidFuzzRuns": {
+    "test/MandateAccount.t.sol:MandateAccountTest/testFuzz_explicitlyInvalidAmount(uint256)": 10001,
+    "test/MandateAccount.t.sol:MandateAccountTest/testFuzz_explicitlyWrongSigner(uint256)": 10001
+  },
+  "invariantCalls": 8192,
+  "invariantHandlerReverts": 0,
+  "reproductionPhases": 13,
+  "workspacePackagePathsBothInsideExtractedSource": true,
+  "privacy": {
+    "privateJSONFilesRead": 1938,
+    "privateSQLiteFilesRead": 606,
+    "temporaryVideoProfilesRead": 1,
+    "actualPrivateValueVariantsCompared": 391,
+    "scannedMembersIncludingNested": 2775,
+    "expandedMembers": 188,
+    "bytesScannedIncludingExpanded": 159246786,
+    "knownPrivateValuesExcluded": true,
+    "forbiddenPathsAndKeyBlocksExcluded": true,
+    "licenseNoticesRetained": true,
+    "pinnedPublicTestVectorClassification": [
+      {
+        "path": "vendor/x402/typescript/packages/mechanisms/evm/test/unit/batch-settlement/channelManager.test.ts",
+        "SHA256": "325069d0603b6cf8c64f3e639e42446532c55bc2e40fcfb0152e5bd044b0c7cd",
+        "reason": "well-known public local-EVM key already literal in this exact pinned upstream unit test; not an unknown runtime credential"
+      },
+      {
+        "path": "vendor/x402/typescript/packages/mechanisms/evm/test/unit/batch-settlement/client.test.ts",
+        "SHA256": "58296d4fc0284f56671eb46ae3fdf44d78fb6b60ca3ca3909b3dff8727e82a2c",
+        "reason": "well-known public local-EVM key already literal in this exact pinned upstream unit test; not an unknown runtime credential"
+      },
+      {
+        "path": "vendor/x402/typescript/packages/mechanisms/evm/test/unit/batch-settlement/facilitator.test.ts",
+        "SHA256": "913b1f1a82cbeb030c29156b4ea8e4b78916c57b223f77196ac3087625b0be8d",
+        "reason": "well-known public local-EVM key already literal in this exact pinned upstream unit test; not an unknown runtime credential"
+      },
+      {
+        "path": "vendor/x402/typescript/packages/mechanisms/evm/test/unit/batch-settlement/pendingSettlement.test.ts",
+        "SHA256": "e743f5d4e0bd8053a99f7e2ad6b5fa0033d6d97fa6247011c3a2628e8244acf5",
+        "reason": "well-known public local-EVM key already literal in this exact pinned upstream unit test; not an unknown runtime credential"
+      },
+      {
+        "path": "vendor/x402/typescript/packages/mechanisms/evm/test/unit/batch-settlement/server.test.ts",
+        "SHA256": "2f20ff32867e7e35e204e757957937ac8e2334cd6161d672688989e8cfb9742d",
+        "reason": "well-known public local-EVM key already literal in this exact pinned upstream unit test; not an unknown runtime credential"
+      }
+    ],
+    "publicVectorStillRejectedOutsideExactPinnedFiles": true
+  },
+  "currentMaterialManifestIncluded": true,
+  "privateRuntimeCopied": false,
+  "sharedHostToolchainAndPublicCaches": true,
+  "newPublicTransactions": 0,
+  "finalSubmissionFreeze": false,
+  "formalSubmissionSent": false,
+  "sourceCandidateAcceptanceScriptSHA256": "4b70683782355d59f97894f39c3d4db9b39affde42afdb9920d3df9a9bb0a723",
+  "evidenceSHA256": {
+    "artifacts/competition/source-delivery/rc7/bootstrap.txt": "ff6900507f322a2d4c7f3621d51172900cb90693365635863a47950f680c9392",
+    "artifacts/competition/source-delivery/rc7/build.txt": "6bf78b9c7ccbf6c8f3bacfad159b2740bb3cf8bea33bd59d9079769714608165",
+    "artifacts/competition/source-delivery/rc7/contracts.txt": "faf0416ff93a867c284426f8a9eb3abb50be1ca57686b09cf9691aa1109663ee",
+    "artifacts/competition/source-delivery/rc7/demo-summary.json": "5ec727a1878b416a6854321e1a7c2277262e06144e92d1760ffff1d6af556c47",
+    "artifacts/competition/source-delivery/rc7/demo-verification.json": "56164066c6823a8b02fea5f8bf3dc2a059ec3af4816f38e0d6764a7c06c10190",
+    "artifacts/competition/source-delivery/rc7/demo.txt": "2440c408fec9e66e8f65f555ce10b8976cda65a661e7cf8b572006712555535b",
+    "artifacts/competition/source-delivery/rc7/echo-bootstrap.txt": "842d175ccfb25c07f76ab1480fe5b782bdecf501fd92ee30ab641fea3d4ffd7e",
+    "artifacts/competition/source-delivery/rc7/echo-contracts.txt": "fb8be048860669c60d0a008a98d0df1a63d4a5d47be5eb28ca9fc4152f149278",
+    "artifacts/competition/source-delivery/rc7/echo-tests.json": "59a91f375c79c6add3b27ed4cd9684183814ed5fc70f843570f2c66f17fc8bfd",
+    "artifacts/competition/source-delivery/rc7/echo-tests.txt": "8d92691bf11a511755a77b80e661e56c51680afa88c4660330c24803eeeab039",
+    "artifacts/competition/source-delivery/rc7/evidence-tests.json": "3324d9a5c3bb2fdbb4e261b3d218bd89e06ca86e375f77b0cc84fac691f456de",
+    "artifacts/competition/source-delivery/rc7/evidence-tests.txt": "0696ae7acf9cb8309f1302490b287d6dcf8a3f4b9c46abfa272d2d7b9f2caf8c",
+    "artifacts/competition/source-delivery/rc7/install.txt": "fbaaacad5bce271946890be09e42b233de977fe5e96904ecaff8e753392b592b",
+    "artifacts/competition/source-delivery/rc7/operations-tests.json": "8bbff62f83788b16074ea681644d51b146726e9afd2ead0870db4bfdf8a0fc66",
+    "artifacts/competition/source-delivery/rc7/operations-tests.txt": "b7b12f39afe1f0bfe42818ffa46335c453e9fcc5d60a7231dd7a6c0e813884d1",
+    "artifacts/competition/source-delivery/rc7/package.json": "9e8393645256afc9cc1186efef5c3851ee84e76aa7f98ce198fae8e45c79681b",
+    "artifacts/competition/source-delivery/rc7/reproduction.json": "e543fae33fd3a4d4cdfa6f5bcceb9d8abd00713f9543a04a76f169dc370c290a",
+    "artifacts/competition/source-delivery/rc7/sdk-tests.json": "313d66ad71aa13e1778baa96c0a6c56ea0956a09ef4e74377dd9db50124a915c",
+    "artifacts/competition/source-delivery/rc7/sdk-tests.txt": "26e43c0fd7f375e68d500ec8e7c19a3afc254966dfcb6690ade072eb6ccf00cf",
+    "artifacts/competition/source-delivery/rc7/service-tests.json": "9f36bb451a653b2195fb010a94b70114bc7cc8af811b671c73e49670cce03334",
+    "artifacts/competition/source-delivery/rc7/service-tests.txt": "69a4fb6be566712e078cef82149033634aed11e99ebcad7a1a9b48532edab707",
+    "artifacts/competition/source-delivery/rc7/web-tests.json": "8e3e909323e4bb1feca756f094e11f13675f2067a86a0f106df74bc91840b87a",
+    "artifacts/competition/source-delivery/rc7/web-tests.txt": "077b58b123a2dbde2e68cb938f54e8f1645a7808bc351cfdce82f4a97ba4677c"
+  },
+  "remainingScope": [
+    "Actual manual wallet usability and remaining host paths retain T8 acceptance.",
+    "This exact source commit is an engineering candidate; later acceptance/docs are outside its archive.",
+    "Material changes require versioned T11.08 recheck; T11.09 final freeze remains open.",
+    "No mainnet payment, source-verifier publication, repository push or official submission."
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "networks": [
+    { "chainId": 31337, "purpose": "local T2 experiments", "asset": "deployed MockUSDC", "mock": true, "transactionsAllowed": true },
+    { "chainId": 84532, "rpc": "https://sepolia.base.org", "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e", "purpose": "T2 public testnet", "transactionsAllowed": true },
+    { "chainId": 11155111, "asset": "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238", "purpose": "future Echo regression", "transactionsAllowed": false },
+    { "chainId": 8453, "rpc": "https://mainnet.base.org", "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913", "purpose": "read-only compatibility inspection", "transactionsAllowed": false }
+  ]
+}

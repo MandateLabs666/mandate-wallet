@@ -1,0 +1,1260 @@
+[
+  {
+    "step": 1,
+    "action": "app",
+    "result": {
+      "connected": true,
+      "realRabby": true,
+      "mode": "local only; hosted not accessed"
+    }
+  },
+  {
+    "step": 2,
+    "action": "connect",
+    "result": {
+      "error": "",
+      "button": "Reconnect owner wallet"
+    }
+  },
+  {
+    "step": 3,
+    "action": "pages",
+    "result": [
+      {
+        "index": 0,
+        "url": "about:blank"
+      },
+      {
+        "index": 1,
+        "url": "chrome-extension://fmlehjgekipnmnfiejbdkcpldmlkaila/index.html#/new-user/success"
+      },
+      {
+        "index": 2,
+        "url": "chrome-extension://fmlehjgekipnmnfiejbdkcpldmlkaila/index.html#/new-user/guide"
+      },
+      {
+        "index": 3,
+        "url": "http://127.0.0.1:65361/app.html"
+      },
+      {
+        "index": 4,
+        "url": "chrome-extension://fmlehjgekipnmnfiejbdkcpldmlkaila/notification.html#/approval"
+      }
+    ]
+  },
+  {
+    "step": 4,
+    "action": "select",
+    "result": {
+      "url": "chrome-extension://fmlehjgekipnmnfiejbdkcpldmlkaila/notification.html#/approval",
+      "controls": [
+        {
+          "role": "button",
+          "name": "Connect",
+          "id": 539,
+          "disabled": true
+        },
+        {
+          "role": "button",
+          "name": "Cancel",
+          "id": 756,
+          "disabled": false
+        }
+      ]
+    }
+  },
+  {
+    "step": 5,
+    "action": "text",
+    "result": "Connect to Dapp\nEthereum\nListed by\nNone\nSite popularity\nMy mark\nConnect Address\nPrivate Key 1\nConnect\nPlease process the alert before signing\nCancel\nhttp://127.0.0.1:65361\nVery Low\nNo mark\nIgnore all"
+  },
+  {
+    "step": 6,
+    "action": "ack-local-connect",
+    "result": {
+      "currentRequestOnly": true,
+      "persistentRuleSettingsChanged": false,
+      "controls": [
+        {
+          "role": "button",
+          "name": "Connect",
+          "id": 539,
+          "disabled": false
+        },
+        {
+          "role": "button",
+          "name": "Cancel",
+          "id": 756,
+          "disabled": false
+        }
+      ]
+    }
+  },
+  {
+    "step": 7,
+    "action": "click",
+    "error": "cdpSession.send: Target page, context or browser has been closed"
+  },
+  {
+    "step": 8,
+    "action": "status",
+    "result": {
+      "error": "Your wallet is on a different network. Select the workspace testnet, then reconnect.",
+      "ownerButton": "Reconnect owner wallet",
+      "network": {},
+      "ownerNonce": 6,
+      "before": {
+        "ownerNonce": 6,
+        "block": "6",
+        "cash": "1000000"
+      }
+    }
+  },
+  {
+    "step": 9,
+    "action": "network",
+    "result": {
+      "requested": true
+    }
+  },
+  {
+    "step": 10,
+    "action": "pages",
+    "result": [
+      {
+        "index": 0,
+        "url": "about:blank"
+      },
+      {
+        "index": 1,
+        "url": "chrome-extension://fmlehjgekipnmnfiejbdkcpldmlkaila/index.html#/new-user/success"
+      },
+      {
+        "index": 2,
+        "url": "chrome-extension://fmlehjgekipnmnfiejbdkcpldmlkaila/index.html#/new-user/guide"
+      },
+      {
+        "index": 3,
+        "url": "http://127.0.0.1:65361/app.html"
+      },
+      {
+        "index": 4,
+        "url": "chrome-extension://fmlehjgekipnmnfiejbdkcpldmlkaila/notification.html#/approval"
+      }
+    ]
+  },
+  {
+    "step": 11,
+    "action": "select",
+    "result": {
+      "url": "chrome-extension://fmlehjgekipnmnfiejbdkcpldmlkaila/notification.html#/approval",
+      "controls": [
+        {
+          "role": "button",
+          "name": "Cancel",
+          "id": 1020,
+          "disabled": false
+        },
+        {
+          "role": "button",
+          "name": "Add",
+          "id": 1022,
+          "disabled": false
+        },
+        {
+          "role": "textbox",
+          "name": "Chain ID",
+          "id": 807,
+          "disabled": true
+        },
+        {
+          "role": "textbox",
+          "name": "Network name",
+          "id": 808,
+          "disabled": false
+        },
+        {
+          "role": "textbox",
+          "name": "RPC URL",
+          "id": 809,
+          "disabled": false
+        },
+        {
+          "role": "textbox",
+          "name": "Currency symbol",
+          "id": 810,
+          "disabled": false
+        },
+        {
+          "role": "textbox",
+          "name": "Block explorer URL (Optional)",
+          "id": 1017,
+          "disabled": false
+        }
+      ]
+    }
+  },
+  {
+    "step": 12,
+    "action": "text",
+    "result": "Add Custom Network to Rabby\nRabby cannot verify the security of custom networks. Please add trusted networks only.\nCancel\nAdd\nChain ID\nNetwork name\nRPC URL\nCurrency symbol\nBlock explorer URL (Optional)\n31337\nMandate Local\nhttp://127.0.0.1:65265\nETH"
+  },
+  {
+    "step": 13,
+    "action": "click",
+    "error": "cdpSession.send: Target page, context or browser has been closed"
+  },
+  {
+    "step": 14,
+    "action": "switch",
+    "result": {
+      "requested": true
+    }
+  },
+  {
+    "step": 15,
+    "action": "status",
+    "result": {
+      "error": "Your wallet is on a different network. Select the workspace testnet, then reconnect.",
+      "ownerButton": "Reconnect owner wallet",
+      "network": {
+        "network": {
+          "done": true,
+          "value": null
+        },
+        "switch": {
+          "done": true,
+          "value": null
+        }
+      },
+      "ownerNonce": 6,
+      "before": {
+        "ownerNonce": 6,
+        "block": "6",
+        "cash": "1000000"
+      }
+    }
+  },
+  {
+    "step": 16,
+    "action": "connect",
+    "result": {
+      "error": "",
+      "button": "Owner connected"
+    }
+  },
+  {
+    "step": 17,
+    "action": "draft-create",
+    "result": {
+      "taskId": "0x27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7",
+      "approveDisabled": false,
+      "draft": {
+        "action": "create",
+        "actionId": "0x0e5bc3a98198b15341ef4654e0f18761704d715a16efb36f56a861fd72c39ef8",
+        "approvalRequired": "owner-wallet",
+        "schemaVersion": 2,
+        "transaction": {
+          "chainId": 31337,
+          "data": "0xdaeeb0fc27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7d0cd7351352d6d7d9bf574957e4ba37df0e78c165c617fdeaa6f02ef1d52c83300000000000000000000000000000000000000000000000000000000000249f000000000000000000000000000000000000000000000000000000000000186a0000000000000000000000000000000000000000000000000000000006ad0f17600000000000000000000000000000000000000000000000000000000000000e00000000000000000000000000000000000000000000000000000000000000160000000000000000000000000000000000000000000000000000000000000000135b7289f73333871b968eb7a0064ec7deaa432461c89f27075568d2d370c434700000000000000000000000015d34aaf54267db7d7c367839aaf71a00a2c6a6500000000000000000000000015d34aaf54267db7d7c367839aaf71a00a2c6a65000000000000000000000000000000000000000000000000000000000000000294f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e35b7289f73333871b968eb7a0064ec7deaa432461c89f27075568d2d370c434770d94404e6f37c638ddbbd6317e0a6326b6c27b22f47dc9bac0396a99913bf704cfb1c8699d277407517fe08cfe9434d6af9573d22d674332ba5a48c1bd37f6535b7289f73333871b968eb7a0064ec7deaa432461c89f27075568d2d370c4347ef48b664dad637f10e1a8993fee790bcf1c518ec27050617a7796b26f324b0b2",
+          "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "to": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+          "value": "0"
+        }
+      }
+    }
+  },
+  {
+    "step": 18,
+    "action": "shot",
+    "result": {
+      "screenshotSaved": "create-review.png"
+    }
+  },
+  {
+    "step": 19,
+    "action": "approve",
+    "result": {
+      "requested": true
+    }
+  },
+  {
+    "step": 20,
+    "action": "pages",
+    "result": [
+      {
+        "index": 0,
+        "url": "about:blank"
+      },
+      {
+        "index": 1,
+        "url": "chrome-extension://fmlehjgekipnmnfiejbdkcpldmlkaila/index.html#/new-user/success"
+      },
+      {
+        "index": 2,
+        "url": "chrome-extension://fmlehjgekipnmnfiejbdkcpldmlkaila/index.html#/new-user/guide"
+      },
+      {
+        "index": 3,
+        "url": "http://127.0.0.1:65361/app.html#overview"
+      },
+      {
+        "index": 4,
+        "url": "chrome-extension://fmlehjgekipnmnfiejbdkcpldmlkaila/notification.html#/approval"
+      }
+    ]
+  },
+  {
+    "step": 21,
+    "action": "select",
+    "result": {
+      "url": "chrome-extension://fmlehjgekipnmnfiejbdkcpldmlkaila/notification.html#/approval",
+      "controls": [
+        {
+          "role": "button",
+          "name": "Cancel",
+          "id": 1296,
+          "disabled": false
+        },
+        {
+          "role": "button",
+          "name": "Sign",
+          "id": 1294,
+          "disabled": false
+        }
+      ]
+    }
+  },
+  {
+    "step": 22,
+    "action": "text",
+    "result": "Simulation Not Supported\nAdvanced Settings\nCustom Network\nhttp://127.0.0.1:65361\nUnknown Signature Type\nChain\nNormal\nPrivate Key 1\n0xf39fd6...b92266\nView Raw\nMandate Local\n{\n  \"chainId\": 31337,\n  \"data\": \"0xdaeeb0fc27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7d0cd7351352d6d7d9bf574957e4ba37df0e78c165c617fdeaa6f02ef1d52c83300000000000000000000000000000000000000000000000000000000000249f000000000000000000000000000000000000000000000000000000000000186a0000000000000000000000000000000000000000000000000000000006ad0f17600000000000000000000000000000000000000000000000000000000000000e00000000000000000000000000000000000000000000000000000000000000160000000000000000000000000000000000000000000000000000000000000000135b7289f73333871b968eb7a0064ec7deaa432461c89f27075568d2d370c434700000000000000000000000015d34aaf54267db7d7c367839aaf71a00a2c6a6500000000000000000000000015d34aaf54267db7d7c367839aaf71a00a2c6a65000000000000000000000000000000000000000000000000000000000000000294f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e35b7289f73333871b968eb7a0064ec7deaa432461c89f27075568d2d370c434770d94404e6f37c638ddbbd6317e0a6326b6c27b22f47dc9bac0396a99913bf704cfb1c8699d277407517fe08cfe9434d6af9573d22d674332ba5a48c1bd37f6535b7289f73333871b968eb7a0064ec7deaa432461c89f27075568d2d370c4347ef48b664dad637f10e1a8993fee790bcf1c518ec27050617a7796b26f324b0b2\",\n  \"from\": \"0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266\",\n  \"gas\": \"0x7758b\",\n  \"gasPrice\": \"0x6906e099\",\n  \"nonce\": \"0x6\",\n  \"to\": \"0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512\",\n  \"value\": \"0x0\"\n}\n~0.000574 ETH\nCancel\nTransaction Data\n<$0.0001\nSign"
+  },
+  {
+    "step": 23,
+    "action": "shot",
+    "result": {
+      "screenshotSaved": "create-rabby.png"
+    }
+  },
+  {
+    "step": 24,
+    "action": "click",
+    "result": {
+      "controls": [
+        {
+          "role": "button",
+          "name": "Cancel",
+          "id": 1296,
+          "disabled": false
+        },
+        {
+          "role": "button",
+          "name": "Confirm",
+          "id": 1320,
+          "disabled": false
+        },
+        {
+          "role": "button",
+          "name": "",
+          "id": 1321,
+          "disabled": false
+        }
+      ]
+    }
+  },
+  {
+    "step": 25,
+    "action": "click",
+    "result": {
+      "controls": [
+        {
+          "role": "button",
+          "name": "Cancel",
+          "id": 1296,
+          "disabled": false
+        },
+        {
+          "role": "button",
+          "name": "Confirm",
+          "id": 1320,
+          "disabled": false
+        },
+        {
+          "role": "button",
+          "name": "",
+          "id": 1321,
+          "disabled": false
+        }
+      ]
+    }
+  },
+  {
+    "step": 26,
+    "action": "reconcile",
+    "result": {
+      "status": {
+        "actionApplied": true,
+        "actionId": "0x0e5bc3a98198b15341ef4654e0f18761704d715a16efb36f56a861fd72c39ef8",
+        "blockHash": "0x535c9b28d105abc6ee4f1e83003a02b66bffc4ad4ed101123eb23b7101bee9c5",
+        "blockNumber": "7",
+        "broadcastSource": "external-wallet",
+        "chainActive": false,
+        "createdBlock": "6",
+        "draft": {
+          "action": "create",
+          "actionId": "0x0e5bc3a98198b15341ef4654e0f18761704d715a16efb36f56a861fd72c39ef8",
+          "approvalRequired": "owner-wallet",
+          "schemaVersion": 2,
+          "transaction": {
+            "chainId": 31337,
+            "data": "0xdaeeb0fc27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7d0cd7351352d6d7d9bf574957e4ba37df0e78c165c617fdeaa6f02ef1d52c83300000000000000000000000000000000000000000000000000000000000249f000000000000000000000000000000000000000000000000000000000000186a0000000000000000000000000000000000000000000000000000000006ad0f17600000000000000000000000000000000000000000000000000000000000000e00000000000000000000000000000000000000000000000000000000000000160000000000000000000000000000000000000000000000000000000000000000135b7289f73333871b968eb7a0064ec7deaa432461c89f27075568d2d370c434700000000000000000000000015d34aaf54267db7d7c367839aaf71a00a2c6a6500000000000000000000000015d34aaf54267db7d7c367839aaf71a00a2c6a65000000000000000000000000000000000000000000000000000000000000000294f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e35b7289f73333871b968eb7a0064ec7deaa432461c89f27075568d2d370c434770d94404e6f37c638ddbbd6317e0a6326b6c27b22f47dc9bac0396a99913bf704cfb1c8699d277407517fe08cfe9434d6af9573d22d674332ba5a48c1bd37f6535b7289f73333871b968eb7a0064ec7deaa432461c89f27075568d2d370c4347ef48b664dad637f10e1a8993fee790bcf1c518ec27050617a7796b26f324b0b2",
+            "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+            "to": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+            "value": "0"
+          }
+        },
+        "grantStatus": "missing",
+        "mandateId": "0x27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7",
+        "minimumOwnerNonce": 6,
+        "requestId": "0x4d2281b30f741b6f54d9d7f2e5b4687332c11b5e2825e40bb8de87fc38306cac",
+        "requestedBy": "owner-web-workspace",
+        "rootStatus": "active",
+        "sessionId": "0xd7b87daffb7098a209e0c258388bc942b72cb8467bcf8e2fc625c1679216ad98",
+        "status": "confirmed",
+        "transactionHash": "0x6235206b8f2a09bd201fed29da5b9ee8c8d3f836e9d845ad0321b7cdd227dab0",
+        "transactionNonce": 6,
+        "version": 5
+      },
+      "transaction": {
+        "hash": "0x6235206b8f2a09bd201fed29da5b9ee8c8d3f836e9d845ad0321b7cdd227dab0",
+        "from": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+        "to": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+        "input": "0xdaeeb0fc27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7d0cd7351352d6d7d9bf574957e4ba37df0e78c165c617fdeaa6f02ef1d52c83300000000000000000000000000000000000000000000000000000000000249f000000000000000000000000000000000000000000000000000000000000186a0000000000000000000000000000000000000000000000000000000006ad0f17600000000000000000000000000000000000000000000000000000000000000e00000000000000000000000000000000000000000000000000000000000000160000000000000000000000000000000000000000000000000000000000000000135b7289f73333871b968eb7a0064ec7deaa432461c89f27075568d2d370c434700000000000000000000000015d34aaf54267db7d7c367839aaf71a00a2c6a6500000000000000000000000015d34aaf54267db7d7c367839aaf71a00a2c6a65000000000000000000000000000000000000000000000000000000000000000294f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e35b7289f73333871b968eb7a0064ec7deaa432461c89f27075568d2d370c434770d94404e6f37c638ddbbd6317e0a6326b6c27b22f47dc9bac0396a99913bf704cfb1c8699d277407517fe08cfe9434d6af9573d22d674332ba5a48c1bd37f6535b7289f73333871b968eb7a0064ec7deaa432461c89f27075568d2d370c4347ef48b664dad637f10e1a8993fee790bcf1c518ec27050617a7796b26f324b0b2",
+        "value": "0",
+        "nonce": 6,
+        "chainId": 31337,
+        "status": "success",
+        "blockNumber": "7",
+        "blockHash": "0x535c9b28d105abc6ee4f1e83003a02b66bffc4ad4ed101123eb23b7101bee9c5",
+        "gasUsed": "325895",
+        "method": "createMandate",
+        "events": [
+          {
+            "name": "PolicyChanged",
+            "args": {
+              "mandateId": "0x27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7",
+              "version": "1",
+              "taskHash": "0xd0cd7351352d6d7d9bf574957e4ba37df0e78c165c617fdeaa6f02ef1d52c833",
+              "budget": "150000",
+              "maxPerPayment": "100000",
+              "expiresAt": "1792078198"
+            }
+          }
+        ]
+      },
+      "before": {
+        "ownerNonce": 6,
+        "block": "6",
+        "cash": "1000000"
+      },
+      "ownerNonceAfter": 7,
+      "newPublicTransactions": 0
+    }
+  },
+  {
+    "step": 27,
+    "action": "snapshot",
+    "result": {
+      "taskId": "0x27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7",
+      "policy": {
+        "taskHash": "0xd0cd7351352d6d7d9bf574957e4ba37df0e78c165c617fdeaa6f02ef1d52c833",
+        "budget": "150000",
+        "maxPerPayment": "100000",
+        "occupied": "0",
+        "expiresAt": "1792078198",
+        "version": "1",
+        "paused": false,
+        "revoked": false,
+        "exists": true
+      },
+      "grant": {
+        "signer": "0x0000000000000000000000000000000000000000",
+        "budget": "0",
+        "maxPerPayment": "0",
+        "occupied": "0",
+        "expiresAt": "0",
+        "policyVersion": "0",
+        "epoch": "0",
+        "revoked": false,
+        "exists": false
+      },
+      "cash": "1000000",
+      "records": [],
+      "approveDisabled": false,
+      "reviewOpen": false,
+      "error": "",
+      "reviewError": ""
+    }
+  },
+  {
+    "step": 28,
+    "action": "shot",
+    "result": {
+      "screenshotSaved": "created-initial-selection.png"
+    }
+  },
+  {
+    "step": 29,
+    "action": "select-created",
+    "result": {
+      "selectedTask": "0x27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7"
+    }
+  },
+  {
+    "step": 30,
+    "action": "draft-grant",
+    "result": {
+      "taskId": "0x27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7",
+      "approveDisabled": false,
+      "draft": {
+        "action": "grant",
+        "actionId": "0x5ab793d6032e87889e3523a510d9d3e84e7aa311af30eb5568dab3c086a54947",
+        "approvalRequired": "owner-wallet",
+        "schemaVersion": 2,
+        "transaction": {
+          "chainId": 31337,
+          "data": "0xd26e242a27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7d7b87daffb7098a209e0c258388bc942b72cb8467bcf8e2fc625c1679216ad9800000000000000000000000070997970c51812dc3a010c7d01b50e0d17dc79c800000000000000000000000000000000000000000000000000000000000249f000000000000000000000000000000000000000000000000000000000000186a0000000000000000000000000000000000000000000000000000000006ad0eabc00000000000000000000000000000000000000000000000000000000000000e0000000000000000000000000000000000000000000000000000000000000000294f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e4cfb1c8699d277407517fe08cfe9434d6af9573d22d674332ba5a48c1bd37f65",
+          "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "to": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+          "value": "0"
+        }
+      }
+    }
+  },
+  {
+    "step": 31,
+    "action": "shot",
+    "result": {
+      "screenshotSaved": "grant-review.png"
+    }
+  },
+  {
+    "step": 32,
+    "action": "approve",
+    "result": {
+      "requested": true
+    }
+  },
+  {
+    "step": 33,
+    "action": "pages",
+    "result": [
+      {
+        "index": 0,
+        "url": "about:blank"
+      },
+      {
+        "index": 1,
+        "url": "chrome-extension://fmlehjgekipnmnfiejbdkcpldmlkaila/index.html#/new-user/success"
+      },
+      {
+        "index": 2,
+        "url": "chrome-extension://fmlehjgekipnmnfiejbdkcpldmlkaila/index.html#/new-user/guide"
+      },
+      {
+        "index": 3,
+        "url": "http://127.0.0.1:65361/app.html#mandates"
+      },
+      {
+        "index": 4,
+        "url": "chrome-extension://fmlehjgekipnmnfiejbdkcpldmlkaila/notification.html#/approval"
+      }
+    ]
+  },
+  {
+    "step": 34,
+    "action": "select",
+    "result": {
+      "url": "chrome-extension://fmlehjgekipnmnfiejbdkcpldmlkaila/notification.html#/approval",
+      "controls": [
+        {
+          "role": "button",
+          "name": "Cancel",
+          "id": 1623,
+          "disabled": false
+        },
+        {
+          "role": "button",
+          "name": "Sign",
+          "id": 1621,
+          "disabled": false
+        }
+      ]
+    }
+  },
+  {
+    "step": 35,
+    "action": "text",
+    "result": "Simulation Not Supported\nAdvanced Settings\nCustom Network\nhttp://127.0.0.1:65361\nUnknown Signature Type\nChain\nNormal\nPrivate Key 1\n0xf39fd6...b92266\nView Raw\nMandate Local\n{\n  \"chainId\": 31337,\n  \"data\": \"0xd26e242a27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7d7b87daffb7098a209e0c258388bc942b72cb8467bcf8e2fc625c1679216ad9800000000000000000000000070997970c51812dc3a010c7d01b50e0d17dc79c800000000000000000000000000000000000000000000000000000000000249f000000000000000000000000000000000000000000000000000000000000186a0000000000000000000000000000000000000000000000000000000006ad0eabc00000000000000000000000000000000000000000000000000000000000000e0000000000000000000000000000000000000000000000000000000000000000294f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e4cfb1c8699d277407517fe08cfe9434d6af9573d22d674332ba5a48c1bd37f65\",\n  \"from\": \"0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266\",\n  \"gas\": \"0x41465\",\n  \"gasPrice\": \"0x79ef80c6\",\n  \"nonce\": \"0x7\",\n  \"to\": \"0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512\",\n  \"value\": \"0x0\"\n}\n~0.000365 ETH\nCancel\nTransaction Data\n<$0.0001\nSign"
+  },
+  {
+    "step": 36,
+    "action": "shot",
+    "result": {
+      "screenshotSaved": "grant-rabby.png"
+    }
+  },
+  {
+    "step": 37,
+    "action": "click",
+    "result": {
+      "controls": [
+        {
+          "role": "button",
+          "name": "Cancel",
+          "id": 1623,
+          "disabled": false
+        },
+        {
+          "role": "button",
+          "name": "Confirm",
+          "id": 1647,
+          "disabled": false
+        },
+        {
+          "role": "button",
+          "name": "",
+          "id": 1648,
+          "disabled": false
+        }
+      ]
+    }
+  },
+  {
+    "step": 38,
+    "action": "click",
+    "result": {
+      "controls": [
+        {
+          "role": "button",
+          "name": "Cancel",
+          "id": 1623,
+          "disabled": false
+        },
+        {
+          "role": "button",
+          "name": "Confirm",
+          "id": 1647,
+          "disabled": false
+        },
+        {
+          "role": "button",
+          "name": "",
+          "id": 1648,
+          "disabled": false
+        }
+      ]
+    }
+  },
+  {
+    "step": 39,
+    "action": "reconcile",
+    "result": {
+      "status": {
+        "actionApplied": true,
+        "actionId": "0x5ab793d6032e87889e3523a510d9d3e84e7aa311af30eb5568dab3c086a54947",
+        "blockHash": "0xca47da8a89270e2b2ca8f403d521bac5d1c7e2db53c4aa4b30d8302b42b8b421",
+        "blockNumber": "8",
+        "broadcastSource": "external-wallet",
+        "chainActive": true,
+        "createdBlock": "7",
+        "draft": {
+          "action": "grant",
+          "actionId": "0x5ab793d6032e87889e3523a510d9d3e84e7aa311af30eb5568dab3c086a54947",
+          "approvalRequired": "owner-wallet",
+          "schemaVersion": 2,
+          "transaction": {
+            "chainId": 31337,
+            "data": "0xd26e242a27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7d7b87daffb7098a209e0c258388bc942b72cb8467bcf8e2fc625c1679216ad9800000000000000000000000070997970c51812dc3a010c7d01b50e0d17dc79c800000000000000000000000000000000000000000000000000000000000249f000000000000000000000000000000000000000000000000000000000000186a0000000000000000000000000000000000000000000000000000000006ad0eabc00000000000000000000000000000000000000000000000000000000000000e0000000000000000000000000000000000000000000000000000000000000000294f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e4cfb1c8699d277407517fe08cfe9434d6af9573d22d674332ba5a48c1bd37f65",
+            "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+            "to": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+            "value": "0"
+          }
+        },
+        "grantStatus": "active",
+        "mandateId": "0x27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7",
+        "minimumOwnerNonce": 7,
+        "requestId": "0xa5909b6d1b5dc09a27e152432eae5d470747247d0e732935b7d752891568ad46",
+        "requestedBy": "owner-web-workspace",
+        "rootStatus": "active",
+        "sessionId": "0xd7b87daffb7098a209e0c258388bc942b72cb8467bcf8e2fc625c1679216ad98",
+        "status": "confirmed",
+        "transactionHash": "0x41096d1089f76364fa04f6a5b8a435715214c7165019cb14452e6307eee6872e",
+        "transactionNonce": 7,
+        "version": 8
+      },
+      "transaction": {
+        "hash": "0x41096d1089f76364fa04f6a5b8a435715214c7165019cb14452e6307eee6872e",
+        "from": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+        "to": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+        "input": "0xd26e242a27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7d7b87daffb7098a209e0c258388bc942b72cb8467bcf8e2fc625c1679216ad9800000000000000000000000070997970c51812dc3a010c7d01b50e0d17dc79c800000000000000000000000000000000000000000000000000000000000249f000000000000000000000000000000000000000000000000000000000000186a0000000000000000000000000000000000000000000000000000000006ad0eabc00000000000000000000000000000000000000000000000000000000000000e0000000000000000000000000000000000000000000000000000000000000000294f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e4cfb1c8699d277407517fe08cfe9434d6af9573d22d674332ba5a48c1bd37f65",
+        "value": "0",
+        "nonce": 7,
+        "chainId": 31337,
+        "status": "success",
+        "blockNumber": "8",
+        "blockHash": "0xca47da8a89270e2b2ca8f403d521bac5d1c7e2db53c4aa4b30d8302b42b8b421",
+        "gasUsed": "178243",
+        "method": "grantSession",
+        "events": [
+          {
+            "name": "SessionGranted",
+            "args": {
+              "mandateId": "0x27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7",
+              "sessionId": "0xd7b87daffb7098a209e0c258388bc942b72cb8467bcf8e2fc625c1679216ad98",
+              "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+              "version": "1",
+              "epoch": "1",
+              "budget": "150000"
+            }
+          }
+        ]
+      },
+      "before": {
+        "ownerNonce": 6,
+        "block": "6",
+        "cash": "1000000"
+      },
+      "ownerNonceAfter": 8,
+      "newPublicTransactions": 0
+    }
+  },
+  {
+    "step": 40,
+    "action": "snapshot",
+    "result": {
+      "taskId": "0x27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7",
+      "policy": {
+        "taskHash": "0xd0cd7351352d6d7d9bf574957e4ba37df0e78c165c617fdeaa6f02ef1d52c833",
+        "budget": "150000",
+        "maxPerPayment": "100000",
+        "occupied": "0",
+        "expiresAt": "1792078198",
+        "version": "1",
+        "paused": false,
+        "revoked": false,
+        "exists": true
+      },
+      "grant": {
+        "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+        "budget": "150000",
+        "maxPerPayment": "100000",
+        "occupied": "0",
+        "expiresAt": "1792076476",
+        "policyVersion": "1",
+        "epoch": "1",
+        "revoked": false,
+        "exists": true
+      },
+      "cash": "1000000",
+      "records": [],
+      "approveDisabled": false,
+      "reviewOpen": false,
+      "error": "",
+      "reviewError": ""
+    }
+  },
+  {
+    "step": 41,
+    "action": "run-service",
+    "result": {
+      "paymentState": "paid",
+      "serviceState": "failed",
+      "resultState": "unchecked",
+      "settlementHash": "0x57d0888711b3ad73d6b7082da5198410c82d6321fc5b01367e4818aaf91b042d",
+      "registrationHash": "0x995dc778585c0b87bd0779daf94cb73fb05827ac574f0f37d2469041ab49fd0e",
+      "errorCode": "SERVICE_HTTP_500"
+    }
+  },
+  {
+    "step": 42,
+    "action": "shot",
+    "result": {
+      "screenshotSaved": "paid-service-failed.png"
+    }
+  },
+  {
+    "step": 43,
+    "action": "run-service",
+    "result": {
+      "paymentState": "paid",
+      "serviceState": "returned",
+      "resultState": "valid",
+      "settlementHash": "0x57d0888711b3ad73d6b7082da5198410c82d6321fc5b01367e4818aaf91b042d",
+      "registrationHash": "0x995dc778585c0b87bd0779daf94cb73fb05827ac574f0f37d2469041ab49fd0e"
+    }
+  },
+  {
+    "step": 44,
+    "action": "shot",
+    "result": {
+      "screenshotSaved": "same-payment-recovered.png"
+    }
+  },
+  {
+    "step": 45,
+    "action": "draft-revoke",
+    "result": {
+      "taskId": "0x27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7",
+      "approveDisabled": false,
+      "draft": {
+        "action": "revokeSession",
+        "actionId": "0x48fc475f6ed7b92e075f6c3d2e569b8d31f94f32b43d6eacc550fab42b056c9e",
+        "approvalRequired": "owner-wallet",
+        "schemaVersion": 2,
+        "transaction": {
+          "chainId": 31337,
+          "data": "0x326963f427dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7d7b87daffb7098a209e0c258388bc942b72cb8467bcf8e2fc625c1679216ad98",
+          "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "to": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+          "value": "0"
+        }
+      }
+    }
+  },
+  {
+    "step": 46,
+    "action": "shot",
+    "result": {
+      "screenshotSaved": "revoke-review.png"
+    }
+  },
+  {
+    "step": 47,
+    "action": "approve",
+    "result": {
+      "requested": true
+    }
+  },
+  {
+    "step": 48,
+    "action": "pages",
+    "result": [
+      {
+        "index": 0,
+        "url": "about:blank"
+      },
+      {
+        "index": 1,
+        "url": "chrome-extension://fmlehjgekipnmnfiejbdkcpldmlkaila/index.html#/new-user/success"
+      },
+      {
+        "index": 2,
+        "url": "chrome-extension://fmlehjgekipnmnfiejbdkcpldmlkaila/index.html#/new-user/guide"
+      },
+      {
+        "index": 3,
+        "url": "http://127.0.0.1:65361/app.html#mandates"
+      },
+      {
+        "index": 4,
+        "url": "chrome-extension://fmlehjgekipnmnfiejbdkcpldmlkaila/notification.html#/approval"
+      }
+    ]
+  },
+  {
+    "step": 49,
+    "action": "select",
+    "result": {
+      "url": "chrome-extension://fmlehjgekipnmnfiejbdkcpldmlkaila/notification.html#/approval",
+      "controls": [
+        {
+          "role": "button",
+          "name": "Cancel",
+          "id": 1953,
+          "disabled": false
+        },
+        {
+          "role": "button",
+          "name": "Sign",
+          "id": 1951,
+          "disabled": false
+        }
+      ]
+    }
+  },
+  {
+    "step": 50,
+    "action": "text",
+    "result": "Simulation Not Supported\nAdvanced Settings\nCustom Network\nhttp://127.0.0.1:65361\nUnknown Signature Type\nChain\nView Raw\nMandate Local\n{\n  \"chainId\": 31337,\n  \"data\": \"0x326963f427dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7d7b87daffb7098a209e0c258388bc942b72cb8467bcf8e2fc625c1679216ad98\",\n  \"from\": \"0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266\",\n  \"gas\": \"0xb0f9\",\n  \"gasPrice\": \"0x88c20a39\",\n  \"nonce\": \"0x8\",\n  \"to\": \"0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512\",\n  \"value\": \"0x0\"\n}\nNormal\nPrivate Key 1\n0xf39fd6...b92266\nTransaction Data\n~0.0₄693 ETH\nCancel\n<$0.0001\nSign"
+  },
+  {
+    "step": 51,
+    "action": "shot",
+    "result": {
+      "screenshotSaved": "revoke-rabby.png"
+    }
+  },
+  {
+    "step": 52,
+    "action": "click",
+    "result": {
+      "controls": [
+        {
+          "role": "button",
+          "name": "Cancel",
+          "id": 1953,
+          "disabled": false
+        },
+        {
+          "role": "button",
+          "name": "Confirm",
+          "id": 1977,
+          "disabled": false
+        },
+        {
+          "role": "button",
+          "name": "",
+          "id": 1978,
+          "disabled": false
+        }
+      ]
+    }
+  },
+  {
+    "step": 53,
+    "action": "click",
+    "result": {
+      "controls": [
+        {
+          "role": "button",
+          "name": "Cancel",
+          "id": 1953,
+          "disabled": false
+        },
+        {
+          "role": "button",
+          "name": "Confirm",
+          "id": 1977,
+          "disabled": false
+        },
+        {
+          "role": "button",
+          "name": "",
+          "id": 1978,
+          "disabled": false
+        }
+      ]
+    }
+  },
+  {
+    "step": 54,
+    "action": "reconcile",
+    "result": {
+      "status": {
+        "actionApplied": true,
+        "actionId": "0x48fc475f6ed7b92e075f6c3d2e569b8d31f94f32b43d6eacc550fab42b056c9e",
+        "blockHash": "0x5951d6d336291173bc6e4496585b19dec4e9ee73399dc6c3e556c1707f68c54e",
+        "blockNumber": "11",
+        "broadcastSource": "external-wallet",
+        "chainActive": false,
+        "createdBlock": "10",
+        "draft": {
+          "action": "revokeSession",
+          "actionId": "0x48fc475f6ed7b92e075f6c3d2e569b8d31f94f32b43d6eacc550fab42b056c9e",
+          "approvalRequired": "owner-wallet",
+          "schemaVersion": 2,
+          "transaction": {
+            "chainId": 31337,
+            "data": "0x326963f427dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7d7b87daffb7098a209e0c258388bc942b72cb8467bcf8e2fc625c1679216ad98",
+            "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+            "to": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+            "value": "0"
+          }
+        },
+        "grantStatus": "revoked",
+        "mandateId": "0x27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7",
+        "minimumOwnerNonce": 8,
+        "requestId": "0x0348752d5f5cc33ce4a0fe9c2b96420a4ca18e181759605d8f2d5d9502aaba5d",
+        "requestedBy": "owner-web-workspace",
+        "rootStatus": "active",
+        "sessionId": "0xd7b87daffb7098a209e0c258388bc942b72cb8467bcf8e2fc625c1679216ad98",
+        "status": "confirmed",
+        "transactionHash": "0x138737084b86d79ca016f202b46ce996765c33c1deb7c0d54ee95de236771087",
+        "transactionNonce": 8,
+        "version": 8
+      },
+      "transaction": {
+        "hash": "0x138737084b86d79ca016f202b46ce996765c33c1deb7c0d54ee95de236771087",
+        "from": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+        "to": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+        "input": "0x326963f427dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7d7b87daffb7098a209e0c258388bc942b72cb8467bcf8e2fc625c1679216ad98",
+        "value": "0",
+        "nonce": 8,
+        "chainId": 31337,
+        "status": "success",
+        "blockNumber": "11",
+        "blockHash": "0x5951d6d336291173bc6e4496585b19dec4e9ee73399dc6c3e556c1707f68c54e",
+        "gasUsed": "29897",
+        "method": "revokeSession",
+        "events": [
+          {
+            "name": "SessionRevoked",
+            "args": {
+              "mandateId": "0x27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7",
+              "sessionId": "0xd7b87daffb7098a209e0c258388bc942b72cb8467bcf8e2fc625c1679216ad98",
+              "epoch": "2"
+            }
+          }
+        ]
+      },
+      "before": {
+        "ownerNonce": 6,
+        "block": "6",
+        "cash": "1000000"
+      },
+      "ownerNonceAfter": 9,
+      "newPublicTransactions": 0
+    }
+  },
+  {
+    "step": 55,
+    "action": "check-rejected",
+    "result": {
+      "uiRunAvailable": false,
+      "paymentState": "rejected",
+      "errorCode": "AGENT_GRANT_INACTIVE"
+    }
+  },
+  {
+    "step": 56,
+    "action": "shot",
+    "result": {
+      "screenshotSaved": "revoked-rejected.png"
+    }
+  },
+  {
+    "step": 57,
+    "action": "finalize",
+    "result": {
+      "schemaVersion": 1,
+      "run": "local-r1",
+      "chainId": 31337,
+      "mode": "local production App + official Rabby native UI + isolated local EVM/HTTP",
+      "officialExtensionVersion": "0.94.12",
+      "officialExtensionSHA256": "e1132d749d4f34d3c7a870dfcfc07ecfef1b6030a1c386c28747e8e16417aa39",
+      "extensionFilesMatched": 1153,
+      "headless": true,
+      "mockKeychain": true,
+      "freshProfile": true,
+      "providerInjected": false,
+      "webOwnerKeyLoaded": false,
+      "browserVersion": null,
+      "redirectControl": null,
+      "redirects": [],
+      "securityBypassFlags": null,
+      "sourceFingerprint": {
+        "mandate/experiments/m6-rabby-hosted.mjs": "0e32b4e94071fb0fe2e638cc18133d3663f698da7ec12be91de020a95aee8bd4",
+        "mandate/experiments/hosted-wallet-access.ts": "f06552e24edb5dd78275a785f9accd449b7e801f5397497021ea0d3a34596e1b",
+        "scripts/lib/native-wallet-ui.mjs": "f0bb9964fccd5033668000b12510b9e38e068a4bc195ad23d330e82e6f5ef72b",
+        "mandate/experiments/m6-wallet-fixture.ts": "a5233b8c17697bead33e4cc22943ee3771a04a221eea0811240811e221bd5dd4",
+        "mandate/web/app.ts": "1f84f2aa530a38a91c1553f779c572453801fea0dd16dc5c169b6624a424968c",
+        "mandate/web/server.ts": "f36904da89d3a26c3a8495f06a81d9d128de6448fbd61e1e0e385f4581cb1d32",
+        "mandate/sdk/owner-wallet.ts": "aa247b180cd3204d1b8be00cc05993e264363d003ac7844bd82bb617848e9e88",
+        "mandate/web/dist/app.js": "cedde4a64197e3083e2532545c41e806b23ae454d1647b76d4566c2c758fd619",
+        "mandate/web/dist/app.html": "74779d95244fb5d96487e84efd0d2caf2255d4aeaaf7e7820740cf42a9b3fe1c"
+      },
+      "ownerTransactions": [
+        {
+          "action": "create",
+          "taskId": "0x27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7",
+          "requestId": "0x4d2281b30f741b6f54d9d7f2e5b4687332c11b5e2825e40bb8de87fc38306cac",
+          "transaction": {
+            "hash": "0x6235206b8f2a09bd201fed29da5b9ee8c8d3f836e9d845ad0321b7cdd227dab0",
+            "from": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+            "to": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+            "input": "0xdaeeb0fc27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7d0cd7351352d6d7d9bf574957e4ba37df0e78c165c617fdeaa6f02ef1d52c83300000000000000000000000000000000000000000000000000000000000249f000000000000000000000000000000000000000000000000000000000000186a0000000000000000000000000000000000000000000000000000000006ad0f17600000000000000000000000000000000000000000000000000000000000000e00000000000000000000000000000000000000000000000000000000000000160000000000000000000000000000000000000000000000000000000000000000135b7289f73333871b968eb7a0064ec7deaa432461c89f27075568d2d370c434700000000000000000000000015d34aaf54267db7d7c367839aaf71a00a2c6a6500000000000000000000000015d34aaf54267db7d7c367839aaf71a00a2c6a65000000000000000000000000000000000000000000000000000000000000000294f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e35b7289f73333871b968eb7a0064ec7deaa432461c89f27075568d2d370c434770d94404e6f37c638ddbbd6317e0a6326b6c27b22f47dc9bac0396a99913bf704cfb1c8699d277407517fe08cfe9434d6af9573d22d674332ba5a48c1bd37f6535b7289f73333871b968eb7a0064ec7deaa432461c89f27075568d2d370c4347ef48b664dad637f10e1a8993fee790bcf1c518ec27050617a7796b26f324b0b2",
+            "value": "0",
+            "nonce": 6,
+            "chainId": 31337,
+            "status": "success",
+            "blockNumber": "7",
+            "blockHash": "0x535c9b28d105abc6ee4f1e83003a02b66bffc4ad4ed101123eb23b7101bee9c5",
+            "gasUsed": "325895",
+            "method": "createMandate",
+            "events": [
+              {
+                "name": "PolicyChanged",
+                "args": {
+                  "mandateId": "0x27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7",
+                  "version": "1",
+                  "taskHash": "0xd0cd7351352d6d7d9bf574957e4ba37df0e78c165c617fdeaa6f02ef1d52c833",
+                  "budget": "150000",
+                  "maxPerPayment": "100000",
+                  "expiresAt": "1792078198"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "action": "grant",
+          "taskId": "0x27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7",
+          "requestId": "0xa5909b6d1b5dc09a27e152432eae5d470747247d0e732935b7d752891568ad46",
+          "transaction": {
+            "hash": "0x41096d1089f76364fa04f6a5b8a435715214c7165019cb14452e6307eee6872e",
+            "from": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+            "to": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+            "input": "0xd26e242a27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7d7b87daffb7098a209e0c258388bc942b72cb8467bcf8e2fc625c1679216ad9800000000000000000000000070997970c51812dc3a010c7d01b50e0d17dc79c800000000000000000000000000000000000000000000000000000000000249f000000000000000000000000000000000000000000000000000000000000186a0000000000000000000000000000000000000000000000000000000006ad0eabc00000000000000000000000000000000000000000000000000000000000000e0000000000000000000000000000000000000000000000000000000000000000294f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e4cfb1c8699d277407517fe08cfe9434d6af9573d22d674332ba5a48c1bd37f65",
+            "value": "0",
+            "nonce": 7,
+            "chainId": 31337,
+            "status": "success",
+            "blockNumber": "8",
+            "blockHash": "0xca47da8a89270e2b2ca8f403d521bac5d1c7e2db53c4aa4b30d8302b42b8b421",
+            "gasUsed": "178243",
+            "method": "grantSession",
+            "events": [
+              {
+                "name": "SessionGranted",
+                "args": {
+                  "mandateId": "0x27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7",
+                  "sessionId": "0xd7b87daffb7098a209e0c258388bc942b72cb8467bcf8e2fc625c1679216ad98",
+                  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+                  "version": "1",
+                  "epoch": "1",
+                  "budget": "150000"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "action": "revokeSession",
+          "taskId": "0x27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7",
+          "requestId": "0x0348752d5f5cc33ce4a0fe9c2b96420a4ca18e181759605d8f2d5d9502aaba5d",
+          "transaction": {
+            "hash": "0x138737084b86d79ca016f202b46ce996765c33c1deb7c0d54ee95de236771087",
+            "from": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+            "to": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+            "input": "0x326963f427dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7d7b87daffb7098a209e0c258388bc942b72cb8467bcf8e2fc625c1679216ad98",
+            "value": "0",
+            "nonce": 8,
+            "chainId": 31337,
+            "status": "success",
+            "blockNumber": "11",
+            "blockHash": "0x5951d6d336291173bc6e4496585b19dec4e9ee73399dc6c3e556c1707f68c54e",
+            "gasUsed": "29897",
+            "method": "revokeSession",
+            "events": [
+              {
+                "name": "SessionRevoked",
+                "args": {
+                  "mandateId": "0x27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7",
+                  "sessionId": "0xd7b87daffb7098a209e0c258388bc942b72cb8467bcf8e2fc625c1679216ad98",
+                  "epoch": "2"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "ownerNonceBefore": 6,
+      "ownerNonceAfter": 9,
+      "chainTransactions": [
+        {
+          "hash": "0x6235206b8f2a09bd201fed29da5b9ee8c8d3f836e9d845ad0321b7cdd227dab0",
+          "from": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+          "to": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+          "nonce": 6,
+          "block": "7"
+        },
+        {
+          "hash": "0x41096d1089f76364fa04f6a5b8a435715214c7165019cb14452e6307eee6872e",
+          "from": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+          "to": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+          "nonce": 7,
+          "block": "8"
+        },
+        {
+          "hash": "0x995dc778585c0b87bd0779daf94cb73fb05827ac574f0f37d2469041ab49fd0e",
+          "from": "0x90f79bf6eb2c4f870365e785982e1f101e93b906",
+          "to": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+          "nonce": 0,
+          "block": "9"
+        },
+        {
+          "hash": "0x57d0888711b3ad73d6b7082da5198410c82d6321fc5b01367e4818aaf91b042d",
+          "from": "0x9965507d1a55bcc2695c58ba16fb37d819b0a4dc",
+          "to": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+          "nonce": 0,
+          "block": "10"
+        },
+        {
+          "hash": "0x138737084b86d79ca016f202b46ce996765c33c1deb7c0d54ee95de236771087",
+          "from": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+          "to": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+          "nonce": 8,
+          "block": "11"
+        }
+      ],
+      "services": [
+        {
+          "paymentState": "paid",
+          "serviceState": "failed",
+          "resultState": "unchecked",
+          "settlementHash": "0x57d0888711b3ad73d6b7082da5198410c82d6321fc5b01367e4818aaf91b042d",
+          "registrationHash": "0x995dc778585c0b87bd0779daf94cb73fb05827ac574f0f37d2469041ab49fd0e",
+          "errorCode": "SERVICE_HTTP_500"
+        },
+        {
+          "paymentState": "paid",
+          "serviceState": "returned",
+          "resultState": "valid",
+          "settlementHash": "0x57d0888711b3ad73d6b7082da5198410c82d6321fc5b01367e4818aaf91b042d",
+          "registrationHash": "0x995dc778585c0b87bd0779daf94cb73fb05827ac574f0f37d2469041ab49fd0e"
+        }
+      ],
+      "paymentEvents": 1,
+      "cashBefore": "1000000",
+      "cashAfter": "990000",
+      "policy": {
+        "taskHash": "0xd0cd7351352d6d7d9bf574957e4ba37df0e78c165c617fdeaa6f02ef1d52c833",
+        "budget": "150000",
+        "maxPerPayment": "100000",
+        "occupied": "10000",
+        "expiresAt": "1792078198",
+        "version": "1",
+        "paused": false,
+        "revoked": false,
+        "exists": true
+      },
+      "grant": {
+        "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+        "budget": "150000",
+        "maxPerPayment": "100000",
+        "occupied": "10000",
+        "expiresAt": "1792076476",
+        "policyVersion": "1",
+        "epoch": "2",
+        "revoked": true,
+        "exists": true
+      },
+      "revokedStep": {
+        "uiRunAvailable": false,
+        "paymentState": "rejected",
+        "errorCode": "AGENT_GRANT_INACTIVE"
+      },
+      "siteHeaderNotSentToGateway": true,
+      "hostedOwnerAcceptance": false,
+      "privateSiteLogin": "not accessed",
+      "browserLocalNetworkPermission": "not overridden",
+      "fullyUnattended": false,
+      "humanAcceptance": false,
+      "physicalMobile": false,
+      "newPublicTransactions": 0,
+      "acceptedTasks": []
+    }
+  }
+]

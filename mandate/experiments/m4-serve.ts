@@ -1,0 +1,20 @@
+import {readFileSync} from "node:fs";
+import {createPublicClient,createWalletClient,http,type Hex,type Chain} from "viem";
+import {privateKeyToAccount} from "viem/accounts";
+import {baseSepolia} from "viem/chains";
+import {MandateReader} from "../sdk/reader.js";
+import {PurchaseStore} from "../services/store.js";
+import {DurableTransactions} from "../services/transactions.js";
+import {controlledFacilitator} from "../services/facilitator.js";
+import {startControlledMerchant} from "../services/merchant.js";
+process.umask(0o077);
+const config=JSON.parse(readFileSync(".runtime/m3/84532-config.json","utf8")),report=JSON.parse(readFileSync("artifacts/m4/base-sepolia-http.json","utf8"));
+if(!report.publicGatePassed)throw new Error("PUBLIC_HTTP_ACCEPTANCE_REQUIRED");
+// Only merchant and facilitator test keys are loaded. Owner/agent keys are absent.
+const key=(p:string)=>privateKeyToAccount(JSON.parse(readFileSync(p,"utf8")).privateKey as Hex),payer=key(".runtime/keys/session.json"),merchantSigner=key(".runtime/keys/merchant.json"),chain:Chain=baseSepolia;
+const pc=createPublicClient({chain,transport:http(config.rpc,{timeout:20000,retryCount:0}),pollingInterval:1000});
+await new MandateReader(pc,84532,config.wallet,config.tokenDomain).verifyContext();
+const store=new PurchaseStore(".runtime/m4/facilitator.sqlite"),transactions=new DurableTransactions(pc,createWalletClient({chain,account:payer,transport:http(config.rpc,{timeout:20000,retryCount:0})}),store,2n*10n**13n,2);
+const merchant=await startControlledMerchant({pc,facilitator:controlledFacilitator(transactions),chainId:84532,asset:config.asset,payTo:merchantSigner.address,quoteSigner:merchantSigner,allowedWallets:[config.wallet],dbPath:".runtime/m4/merchant.sqlite",domainName:config.tokenDomain.name,domainVersion:config.tokenDomain.version,port:43402,confirmations:2});
+console.log(JSON.stringify({origin:merchant.origin,chainId:84532,wallet:config.wallet,assetKind:"native-test-USDC",ownerKeyLoaded:false}));
+let closing=false;const close=async()=>{if(closing)return;closing=true;await merchant.close();store.close();};process.once("SIGINT",()=>{void close();});process.once("SIGTERM",()=>{void close();});

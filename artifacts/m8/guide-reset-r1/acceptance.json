@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-18T08:54:07.691Z",
+  "task": "T12 UI progress and restart correction; parent task remains in progress",
+  "tests": {
+    "newGuideRegressions": {
+      "passed": 5,
+      "total": 5
+    },
+    "typecheck": "passed",
+    "browserBuild": "passed",
+    "publicFiles": 11,
+    "privateRuntimeDependency": false
+  },
+  "browser": {
+    "origin": "http://127.0.0.1:18743",
+    "languages": [
+      "zh-CN",
+      "en"
+    ],
+    "narrowViewport": 390,
+    "narrowScrollWidth": 390,
+    "observedSteps": [
+      0,
+      1,
+      2
+    ],
+    "afterCompletedIndependentMCPCheck": {
+      "stage": 2,
+      "continueDisabled": true,
+      "verificationPanelHidden": true
+    },
+    "restart": {
+      "stage": 0,
+      "afterReloadStage": 0,
+      "button": "重新开始引导"
+    },
+    "nativeHostConfirmedByAgent": false,
+    "guideLeftAt": 0,
+    "screenshots": [
+      "restarted-guide.jpg",
+      "agent-step.jpg"
+    ]
+  },
+  "scope": {
+    "reset": "browser guide only; existing account and orders retained",
+    "hostConfirmation": "user-reported setup; separate from model acceptance",
+    "unknownTransactionHashesCleared": false,
+    "backendRestarted": false,
+    "newAccountsCreated": 0,
+    "newPaymentTransactions": 0,
+    "newPermissionTransactions": 0,
+    "personalHostSettingsChanged": false
+  },
+  "originalState": {
+    "id": "e97279128fc033000f37becad0860044",
+    "chainId": 31337,
+    "wallet": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+    "mandateId": "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37",
+    "sessionId": "0x61f0ffa6b310744fb2869aa8b49390b907440c17341f41afc5971aac5aae9f40",
+    "profileUnchanged": true,
+    "descriptorUnchanged": true,
+    "walletBalanceAtomic": "1000000",
+    "occupied": "0",
+    "sessionRevoked": true
+  },
+  "sourceSHA256": {
+    "mandate/onboarding/guide-state.ts": "a3713c64dbed850757a9d744ee71e3af7669a9e4b0bbc9947acb8e7f0c9b64df",
+    "mandate/onboarding/guide-state.test.ts": "9a4dc1decf229292a05d4cd0060e3309449770516f3b2692a5d03204d59e57a2",
+    "mandate/onboarding/web.ts": "6c13ca19fc82064556803862d5db193ef439ffc1a303013d39c930b2d9de3608",
+    "mandate/web/static/setup.html": "5ad9093d4e89ac3488ec14102a58044b62c55d8031a7e94dad28e81c9edfe661",
+    "mandate/web/static/styles.css": "687cc7fdfa75dbf14978ab984ef08028da5b7ec85afd0eaf64188514d2cba37c"
+  },
+  "limits": [
+    "Restarting the guide does not restore revoked permissions or create a fresh wallet.",
+    "Native model use and public-testnet onboarding remain separate pending acceptance.",
+    "PDF 2.2 keeps its prior screenshot scope."
+  ]
+}

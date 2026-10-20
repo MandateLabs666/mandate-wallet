@@ -1,0 +1,1286 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-18",
+  "reference": "Deye manual organization only; no reference images or text included",
+  "historicalRabby": {
+    "originalAcceptance": "artifacts/m6/rabby-wallet/full-flow-r1/acceptance.json",
+    "recordedAt": "2026-10-15T14:44:32.217566+00:00",
+    "walletVersion": "0.94.12",
+    "currentUIAcceptance": false
+  },
+  "images": [
+    {
+      "path": "assets/screenshots/01-home.png",
+      "sha256": "0728f3bc12c88f3e8e620652e080ab4398e51fab92bd7f343e09f09676e5dfa8",
+      "capturedDate": "2026-10-17",
+      "kind": "current-UI-local-test-or-illustration",
+      "sourceCommit": "3c5025273f01d665fabfd3c6a037236030cd66e5",
+      "browserCapture": {
+        "name": "01-home",
+        "height": 1000,
+        "lang": "zh-CN",
+        "scrollY": 0,
+        "targets": [
+          {
+            "rect": {
+              "height": 44,
+              "width": 72,
+              "x": 679,
+              "y": 666.09375
+            },
+            "selector": "a[href=\"walkthrough.html\"]",
+            "text": " 了解工作流程"
+          },
+          {
+            "rect": {
+              "height": 39,
+              "width": 84,
+              "x": 1008,
+              "y": 37.5
+            },
+            "selector": ".landing-header > a.button",
+            "text": "进入应用 "
+          },
+          {
+            "rect": {
+              "height": 40,
+              "width": 43,
+              "x": 950,
+              "y": 37
+            },
+            "selector": "#language-toggle",
+            "text": "EN"
+          }
+        ],
+        "url": "http://127.0.0.1:18743/",
+        "width": 1280
+      },
+      "textRevision": "1.1",
+      "sourceCommitRole": "baseline before uncommitted text revision"
+    },
+    {
+      "path": "assets/screenshots/03-reservation-example.png",
+      "sha256": "512ba576629cc13c55a1c53847ce548e4356dce714a141677b7c6703689c5c2e",
+      "capturedDate": "2026-10-17",
+      "kind": "current-UI-local-test-or-illustration",
+      "sourceCommit": "3c5025273f01d665fabfd3c6a037236030cd66e5",
+      "browserCapture": {
+        "name": "03-reservation-example",
+        "height": 1000,
+        "lang": "zh-CN",
+        "scrollY": 449,
+        "targets": [
+          {
+            "rect": {
+              "height": 43.0078125,
+              "width": 345.859375,
+              "x": 69,
+              "y": 193.484375
+            },
+            "selector": "#flow-title",
+            "text": "付款签名前的预算预留"
+          },
+          {
+            "rect": {
+              "height": 633.2890625,
+              "width": 602.8046875,
+              "x": 608.1953125,
+              "y": 153.984375
+            },
+            "selector": "#flow-visual",
+            "text": "◇账户所有者设定采购权限→↗Agent请求服务→Mandate boundary monogramMandate检查授权、预留预算→▥商户返回数据预算已预留 · 原订单 demo-order-001示"
+          },
+          {
+            "rect": {
+              "height": 44,
+              "width": 135,
+              "x": 148,
+              "y": 428.1796875
+            },
+            "selector": "#flow-next",
+            "text": "演示付款后服务异常"
+          }
+        ],
+        "url": "http://127.0.0.1:18743/walkthrough.html",
+        "width": 1280
+      },
+      "textRevision": "1.1",
+      "sourceCommitRole": "baseline before uncommitted text revision"
+    },
+    {
+      "path": "assets/screenshots/04-recovery-example.png",
+      "sha256": "479118fd3925c94d3398bbee823ccf753887f5351317f2899354d5ab6853e4dc",
+      "capturedDate": "2026-10-17",
+      "kind": "current-UI-local-test-or-illustration",
+      "sourceCommit": "3c5025273f01d665fabfd3c6a037236030cd66e5",
+      "browserCapture": {
+        "name": "04-recovery-example",
+        "height": 1000,
+        "lang": "zh-CN",
+        "scrollY": 449,
+        "targets": [
+          {
+            "rect": {
+              "height": 43.0078125,
+              "width": 311.2734375,
+              "x": 69,
+              "y": 193.484375
+            },
+            "selector": "#flow-title",
+            "text": "沿用原订单恢复服务"
+          },
+          {
+            "rect": {
+              "height": 633.2890625,
+              "width": 602.8046875,
+              "x": 608.1953125,
+              "y": 153.984375
+            },
+            "selector": "#flow-visual",
+            "text": "◇账户所有者设定采购权限→↗Agent请求服务→Mandate boundary monogramMandate检查授权、预留预算→▥商户返回数据同一订单 · 无第二次付款 · 结果已检查示例任务预算"
+          },
+          {
+            "rect": {
+              "height": 44,
+              "width": 146,
+              "x": 148,
+              "y": 440.5703125
+            },
+            "selector": "#flow-next",
+            "text": "演示后续付款权限撤销"
+          }
+        ],
+        "url": "http://127.0.0.1:18743/walkthrough.html",
+        "width": 1280
+      },
+      "textRevision": "1.1",
+      "sourceCommitRole": "baseline before uncommitted text revision"
+    },
+    {
+      "path": "assets/screenshots/06-gateway-connection.png",
+      "sha256": "61d835dc738247310e9dcbb1c6591aa10711cc866693f5dcefd62227b3b27074",
+      "capturedDate": "2026-10-17",
+      "kind": "current-UI-local-test-or-illustration",
+      "sourceCommit": "3c5025273f01d665fabfd3c6a037236030cd66e5",
+      "browserCapture": {
+        "name": "06-gateway-connection",
+        "height": 1000,
+        "lang": "zh-CN",
+        "scrollY": 368.5,
+        "targets": [
+          {
+            "rect": {
+              "height": 42.796875,
+              "width": 520,
+              "x": 482,
+              "y": 504.03125
+            },
+            "selector": "#endpoint",
+            "text": ""
+          },
+          {
+            "rect": {
+              "height": 42.796875,
+              "width": 520,
+              "x": 482,
+              "y": 584.421875
+            },
+            "selector": "#credential",
+            "text": ""
+          },
+          {
+            "rect": {
+              "height": 40,
+              "width": 520,
+              "x": 482,
+              "y": 685.015625
+            },
+            "selector": "#connection-form button",
+            "text": "连接工作区 →"
+          }
+        ],
+        "url": "http://127.0.0.1:18743/app.html",
+        "width": 1280
+      },
+      "textRevision": "1.1",
+      "sourceCommitRole": "baseline before uncommitted text revision"
+    },
+    {
+      "path": "assets/screenshots/08-new-task.png",
+      "sha256": "fa858ad20c35ac526debda9768c94ad874a26188e2e6e2cc6b6fe28da3e6de58",
+      "capturedDate": "2026-10-17",
+      "kind": "current-UI-local-test-or-illustration",
+      "sourceCommit": "3c5025273f01d665fabfd3c6a037236030cd66e5",
+      "browserCapture": {
+        "name": "08-new-task",
+        "height": 1000,
+        "lang": "zh-CN",
+        "scrollY": 278,
+        "targets": [
+          {
+            "rect": {
+              "height": 42.796875,
+              "width": 448,
+              "x": 416,
+              "y": 364.3359375
+            },
+            "selector": "#task-description",
+            "text": ""
+          },
+          {
+            "rect": {
+              "height": 42.796875,
+              "width": 448,
+              "x": 416,
+              "y": 444.7265625
+            },
+            "selector": "#task-budget",
+            "text": ""
+          },
+          {
+            "rect": {
+              "height": 42.796875,
+              "width": 448,
+              "x": 416,
+              "y": 525.1171875
+            },
+            "selector": "#task-max",
+            "text": ""
+          },
+          {
+            "rect": {
+              "height": 42.796875,
+              "width": 448,
+              "x": 416,
+              "y": 605.5078125
+            },
+            "selector": "#task-ttl",
+            "text": ""
+          },
+          {
+            "rect": {
+              "height": 43.3984375,
+              "width": 448,
+              "x": 416,
+              "y": 676.1015625
+            },
+            "selector": "#policy-form button",
+            "text": "查看并确认授权 →"
+          }
+        ],
+        "url": "http://127.0.0.1:18743/app.html",
+        "width": 1280
+      },
+      "textRevision": "1.1",
+      "sourceCommitRole": "baseline before uncommitted text revision"
+    },
+    {
+      "path": "assets/screenshots/09-create-review.png",
+      "sha256": "1d7fb7f0a0fe35fc8c09805f3265bcdabd08f0796638bb75677d27a85278ce49",
+      "capturedDate": "2026-10-17",
+      "kind": "current-UI-local-test-or-illustration",
+      "sourceCommit": "3c5025273f01d665fabfd3c6a037236030cd66e5",
+      "browserCapture": {
+        "name": "09-create-review",
+        "height": 1000,
+        "lang": "zh-CN",
+        "scrollY": 278,
+        "targets": [
+          {
+            "rect": {
+              "height": 734.28125,
+              "width": 448,
+              "x": 416,
+              "y": 200.046875
+            },
+            "selector": "#review-fields",
+            "text": "操作创建授权网络31337钱包0xe7f1725e7734ce288f8367e1bb143e90bb3f0512账户所有者0xf39Fd6e51aad88F6F4ce6aB8827279cffFb9"
+          }
+        ],
+        "url": "http://127.0.0.1:18743/app.html",
+        "width": 1280
+      },
+      "textRevision": "1.1",
+      "sourceCommitRole": "baseline before uncommitted text revision"
+    },
+    {
+      "path": "assets/screenshots/10-awaiting-session.png",
+      "sha256": "f5ca45d487b5e8d77498b2e3f0412167df3f7afe52aa61e6332232dd0bef56aa",
+      "capturedDate": "2026-10-17",
+      "kind": "prior-local-recorded-state",
+      "sourceCommit": "3c5025273f01d665fabfd3c6a037236030cd66e5",
+      "browserCapture": {
+        "name": "10-awaiting-session",
+        "height": 1000,
+        "lang": "zh-CN",
+        "scrollY": 0,
+        "targets": [
+          {
+            "rect": null,
+            "selector": "[data-action=\"grant\"]"
+          },
+          {
+            "rect": {
+              "height": 119,
+              "width": 1012,
+              "x": 236,
+              "y": 140
+            },
+            "selector": "#workspace-guide",
+            "text": "✓连接2授权3执行任务4检查↗下一步 需要处理 · ETH 数据请先更新采购授权这个任务还没有会话授权。请账户所有者为已配置的步骤批准会话权限。等待会话授权前往批准会话 ↗为什么需要这一步？×选择要执"
+          }
+        ],
+        "url": "http://127.0.0.1:18743/app.html#tasks",
+        "width": 1280
+      },
+      "textRevision": "1.0",
+      "note": "Unmodified prior local state; separately labeled in the manual"
+    },
+    {
+      "path": "assets/screenshots/11-session-form.png",
+      "sha256": "4fa22c8344739cbe7deb418bf542078644177ebca97815d7f5f284cd02ecbd09",
+      "capturedDate": "2026-10-17",
+      "kind": "current-UI-local-test-or-illustration",
+      "sourceCommit": "3c5025273f01d665fabfd3c6a037236030cd66e5",
+      "browserCapture": {
+        "name": "11-session-form",
+        "height": 1000,
+        "lang": "zh-CN",
+        "scrollY": 278,
+        "targets": [
+          {
+            "rect": {
+              "height": 42.796875,
+              "width": 448,
+              "x": 416,
+              "y": 444.7265625
+            },
+            "selector": "#task-budget",
+            "text": ""
+          },
+          {
+            "rect": {
+              "height": 42.796875,
+              "width": 448,
+              "x": 416,
+              "y": 525.1171875
+            },
+            "selector": "#task-max",
+            "text": ""
+          },
+          {
+            "rect": {
+              "height": 42.796875,
+              "width": 448,
+              "x": 416,
+              "y": 605.5078125
+            },
+            "selector": "#task-ttl",
+            "text": ""
+          },
+          {
+            "rect": {
+              "height": 43.3984375,
+              "width": 448,
+              "x": 416,
+              "y": 676.1015625
+            },
+            "selector": "#policy-form button",
+            "text": "查看并确认授权 →"
+          }
+        ],
+        "url": "http://127.0.0.1:18743/app.html#overview",
+        "width": 1280
+      },
+      "textRevision": "1.1",
+      "sourceCommitRole": "baseline before uncommitted text revision"
+    },
+    {
+      "path": "assets/screenshots/13-review-confirmation.png",
+      "sha256": "dc7671f8c810ef5e44f64daa8d308b5347373bcb5025d7e885087b3af0b72b12",
+      "capturedDate": "2026-10-17",
+      "kind": "current-UI-local-test-or-illustration",
+      "sourceCommit": "3c5025273f01d665fabfd3c6a037236030cd66e5",
+      "browserCapture": {
+        "name": "13-review-confirmation",
+        "height": 1000,
+        "lang": "zh-CN",
+        "scrollY": 278,
+        "targets": [
+          {
+            "rect": {
+              "height": 43.3984375,
+              "width": 448,
+              "x": 416,
+              "y": 803
+            },
+            "selector": "#connect-review-owner",
+            "text": "连接管理钱包"
+          },
+          {
+            "rect": {
+              "height": 43.3984375,
+              "width": 448,
+              "x": 416,
+              "y": 854.3984375
+            },
+            "selector": "#approve",
+            "text": "前往管理钱包确认"
+          },
+          {
+            "rect": {
+              "height": 43.3984375,
+              "width": 448,
+              "x": 416,
+              "y": 905.796875
+            },
+            "selector": "#recover-owner",
+            "text": "核对此次交易"
+          }
+        ],
+        "url": "http://127.0.0.1:18743/app.html#overview",
+        "width": 1280
+      },
+      "textRevision": "1.1",
+      "sourceCommitRole": "baseline before uncommitted text revision"
+    },
+    {
+      "path": "assets/screenshots/14-active-overview.png",
+      "sha256": "499ebd157842977b4e3bfdac6c6b9f6f5fe696ee0f31545f6285c2948fb77180",
+      "capturedDate": "2026-10-17",
+      "kind": "current-UI-local-test-or-illustration",
+      "sourceCommit": "3c5025273f01d665fabfd3c6a037236030cd66e5",
+      "browserCapture": {
+        "name": "14-active-overview",
+        "height": 1000,
+        "lang": "zh-CN",
+        "scrollY": 0,
+        "targets": [
+          {
+            "rect": {
+              "height": 39,
+              "width": 96,
+              "x": 1152,
+              "y": 50.5
+            },
+            "selector": "#connect-owner",
+            "text": "连接管理钱包"
+          },
+          {
+            "rect": {
+              "height": 89.4453125,
+              "width": 1012,
+              "x": 236,
+              "y": 328
+            },
+            "selector": ".page-title",
+            "text": "钱包管理概览Configured agent task · 有效有效"
+          },
+          {
+            "rect": {
+              "height": 40,
+              "width": 72,
+              "x": 262,
+              "y": 911.5625
+            },
+            "selector": "[data-action=\"new\"]",
+            "text": "新建任务"
+          }
+        ],
+        "url": "http://127.0.0.1:18743/app.html#overview",
+        "width": 1280
+      },
+      "textRevision": "1.1",
+      "sourceCommitRole": "baseline before uncommitted text revision"
+    },
+    {
+      "path": "assets/screenshots/15-service-quote.png",
+      "sha256": "5fdaa64df996c28a3865a78a49d354032092d445f891e22e0d9f5cec11a61b36",
+      "capturedDate": "2026-10-17",
+      "kind": "current-UI-local-test-or-illustration",
+      "sourceCommit": "3c5025273f01d665fabfd3c6a037236030cd66e5",
+      "browserCapture": {
+        "name": "15-service-quote",
+        "height": 1000,
+        "lang": "zh-CN",
+        "scrollY": 172.5,
+        "targets": [
+          {
+            "rect": {
+              "height": 40,
+              "width": 94,
+              "x": 262,
+              "y": 593.0703125
+            },
+            "selector": "[data-action=\"quote\"]",
+            "text": "获取最新报价"
+          },
+          {
+            "rect": {
+              "height": 40,
+              "width": 116,
+              "x": 366,
+              "y": 593.0703125
+            },
+            "selector": "[data-action=\"run\"]",
+            "text": "执行已批准的服务"
+          }
+        ],
+        "url": "http://127.0.0.1:18743/app.html#services",
+        "width": 1280
+      },
+      "textRevision": "1.1",
+      "sourceCommitRole": "baseline before uncommitted text revision"
+    },
+    {
+      "path": "assets/screenshots/16-paid-service-failed.png",
+      "sha256": "40eb09f6344049e50532ff8e0518457e500f7eeee9f018781ca7d7c38d717815",
+      "capturedDate": "2026-10-17",
+      "kind": "prior-local-recorded-state",
+      "sourceCommit": "3c5025273f01d665fabfd3c6a037236030cd66e5",
+      "browserCapture": {
+        "name": "16-paid-service-failed",
+        "height": 1000,
+        "lang": "zh-CN",
+        "scrollY": 233,
+        "targets": [
+          {
+            "rect": {
+              "height": 40,
+              "width": 83,
+              "x": 262,
+              "y": 478.1796875
+            },
+            "selector": "[data-action=\"run\"]",
+            "text": "重试原订单"
+          },
+          {
+            "rect": null,
+            "selector": ".purchase-status"
+          }
+        ],
+        "url": "http://127.0.0.1:18743/app.html#services",
+        "width": 1280
+      },
+      "textRevision": "1.0",
+      "note": "Unmodified prior local state; separately labeled in the manual"
+    },
+    {
+      "path": "assets/screenshots/17-same-order-recovered.png",
+      "sha256": "816fe6c65f453fea288e8e0dfa880cdaf3ad9aa4ed1b5747102ccad319672468",
+      "capturedDate": "2026-10-17",
+      "kind": "current-UI-local-test-or-illustration",
+      "sourceCommit": "3c5025273f01d665fabfd3c6a037236030cd66e5",
+      "browserCapture": {
+        "name": "17-same-order-recovered",
+        "height": 1000,
+        "lang": "zh-CN",
+        "scrollY": 307,
+        "targets": [
+          {
+            "rect": {
+              "height": 616.484375,
+              "width": 496,
+              "x": 236,
+              "y": 340.234375
+            },
+            "selector": "article.service-card",
+            "text": "已配置的服务ETH 统计数据GET http://127.0.0.1:56673/stats?asset=ETH查看证据当前步骤已完成付款。应沿用原订单获取服务或查询记录，不得重复付款。付款已付款服务"
+          },
+          {
+            "rect": {
+              "height": 127.78125,
+              "width": 444,
+              "x": 262,
+              "y": 566.96875
+            },
+            "selector": "[data-purchase-status]",
+            "text": "付款已付款服务已返回结果有效"
+          }
+        ],
+        "url": "http://127.0.0.1:18742/app.html#services",
+        "width": 1280
+      },
+      "textRevision": "1.1",
+      "sourceCommitRole": "baseline before uncommitted text revision"
+    },
+    {
+      "path": "assets/screenshots/18-payment-record.png",
+      "sha256": "9ad233888685a7731fad8826ba30241f31b317bacf77a523e57836b402be8188",
+      "capturedDate": "2026-10-17",
+      "kind": "current-UI-local-test-or-illustration",
+      "sourceCommit": "3c5025273f01d665fabfd3c6a037236030cd66e5",
+      "browserCapture": {
+        "name": "18-payment-record",
+        "height": 1000,
+        "lang": "zh-CN",
+        "scrollY": 182,
+        "targets": [
+          {
+            "rect": {
+              "height": 116.3984375,
+              "width": 1012,
+              "x": 236,
+              "y": 330.640625
+            },
+            "selector": ".metric-grid",
+            "text": "已确认付款（本地记录）0.01USDC已用及预留额度0.01USDC未占用预算 · 当前授权无效0.14USDC钱包代币余额0.99USDC"
+          },
+          {
+            "rect": {
+              "height": 117.796875,
+              "width": 1010,
+              "x": 237,
+              "y": 476.0390625
+            },
+            "selector": "table",
+            "text": "步骤付款服务结果下一步0x94f7f6da57943e…已付款 · 0.01 USDC已返回有效查看证据"
+          },
+          {
+            "rect": {
+              "height": 127.78125,
+              "width": 960,
+              "x": 262,
+              "y": 750.1796875
+            },
+            "selector": "#content > .panel .rule-list",
+            "text": "登记交易0x40d85aa2593c26ce52d6e8d52375e8ac017f09f646ba4c8c682635fd8e3f2f10结算交易0x629066c246a234945f2ec2e7"
+          }
+        ],
+        "url": "http://127.0.0.1:18742/app.html#payments",
+        "width": 1280
+      },
+      "textRevision": "1.1",
+      "sourceCommitRole": "baseline before uncommitted text revision"
+    },
+    {
+      "path": "assets/screenshots/19-evidence-options.png",
+      "sha256": "f60e14bf27b4a0f5a116302ef8bdcdde4c558bcc041cde2bf87f981bde8eb8da",
+      "capturedDate": "2026-10-17",
+      "kind": "current-UI-local-test-or-illustration",
+      "sourceCommit": "3c5025273f01d665fabfd3c6a037236030cd66e5",
+      "browserCapture": {
+        "name": "19-evidence-options",
+        "height": 1000,
+        "lang": "zh-CN",
+        "scrollY": 119,
+        "targets": [
+          {
+            "rect": {
+              "height": 110.390625,
+              "width": 960,
+              "x": 262,
+              "y": 757.15625
+            },
+            "selector": ".disclosure-options",
+            "text": " 包含请求原文（须经管理员批准） 包含结果正文（须经管理员批准）"
+          },
+          {
+            "rect": {
+              "height": 40,
+              "width": 83,
+              "x": 262,
+              "y": 885.546875
+            },
+            "selector": "[data-action=\"evidence\"]",
+            "text": "导出证据包"
+          },
+          {
+            "rect": {
+              "height": 40,
+              "width": 94,
+              "x": 353,
+              "y": 885.546875
+            },
+            "selector": "[data-action=\"check-evidence\"]",
+            "text": "运行独立检查"
+          }
+        ],
+        "url": "http://127.0.0.1:18742/app.html#evidence",
+        "width": 1280
+      },
+      "textRevision": "1.1",
+      "sourceCommitRole": "baseline before uncommitted text revision"
+    },
+    {
+      "path": "assets/screenshots/20-private-check-report.png",
+      "sha256": "7dcf5e7affde03a057ca6d7546053faaaad11b0054dc8e9eb6fc46ca0c32cb04",
+      "capturedDate": "2026-10-17",
+      "kind": "current-UI-local-test-or-illustration",
+      "sourceCommit": "3c5025273f01d665fabfd3c6a037236030cd66e5",
+      "browserCapture": {
+        "name": "20-private-check-report",
+        "height": 1000,
+        "lang": "zh-CN",
+        "scrollY": 846.5,
+        "targets": [
+          {
+            "rect": {
+              "height": 1026.2421875,
+              "width": 960,
+              "x": 262,
+              "y": 216.046875
+            },
+            "selector": "[id^=\"evidence-report-\"]",
+            "text": "独立检查 · 不完整资金与记录检查通过：是。验证在独立进程中运行，但仍由同一系统管理员控制，不构成 HTTPS 来源或未观测历史的证明。checkpoint-integrity已确认session-s"
+          }
+        ],
+        "url": "http://127.0.0.1:18742/app.html#evidence",
+        "width": 1280
+      },
+      "textRevision": "1.1",
+      "sourceCommitRole": "baseline before uncommitted text revision"
+    },
+    {
+      "path": "assets/screenshots/21-disclosed-report.png",
+      "sha256": "1a0abe2f5ae5db0c5a8b8e3583d27db93b020a8eb2a4ef89dd1bac7bbb63bde9",
+      "capturedDate": "2026-10-17",
+      "kind": "current-UI-local-test-or-illustration",
+      "sourceCommit": "3c5025273f01d665fabfd3c6a037236030cd66e5",
+      "browserCapture": {
+        "name": "21-disclosed-report",
+        "height": 1000,
+        "lang": "zh-CN",
+        "scrollY": 1124.5,
+        "targets": [
+          {
+            "rect": {
+              "height": 1059.2421875,
+              "width": 960,
+              "x": 262,
+              "y": -61.953125
+            },
+            "selector": "[id^=\"evidence-report-\"]",
+            "text": "独立检查 · 不完整资金与记录检查通过：是。验证在独立进程中运行，但仍由同一系统管理员控制，不构成 HTTPS 来源或未观测历史的证明。checkpoint-integrity已确认session-s"
+          }
+        ],
+        "url": "http://127.0.0.1:18742/app.html#evidence",
+        "width": 1280
+      },
+      "textRevision": "1.1",
+      "sourceCommitRole": "baseline before uncommitted text revision"
+    },
+    {
+      "path": "assets/screenshots/22-revoke-review.png",
+      "sha256": "e1e1b31d2884c1e5aa41cfa6dd727fa7910bf76b715e12af347a82789491edbf",
+      "capturedDate": "2026-10-17",
+      "kind": "prior-local-recorded-state",
+      "sourceCommit": "3c5025273f01d665fabfd3c6a037236030cd66e5",
+      "browserCapture": {
+        "name": "22-revoke-review",
+        "height": 1000,
+        "lang": "zh-CN",
+        "scrollY": 641.5,
+        "targets": [
+          {
+            "rect": {
+              "height": 383.34375,
+              "width": 448,
+              "x": 416,
+              "y": 242.0546875
+            },
+            "selector": "#review-fields",
+            "text": "操作撤销会话网络31337钱包0xe7f1725e7734ce288f8367e1bb143e90bb3f0512账户所有者0xf39Fd6e51aad88F6F4ce6aB8827279cffFb9"
+          },
+          {
+            "rect": {
+              "height": 43.3984375,
+              "width": 448,
+              "x": 416,
+              "y": 812.1875
+            },
+            "selector": "#approve",
+            "text": "前往管理钱包确认"
+          },
+          {
+            "rect": {
+              "height": 43.3984375,
+              "width": 448,
+              "x": 416,
+              "y": 863.5859375
+            },
+            "selector": "#recover-owner",
+            "text": "核对此次交易"
+          }
+        ],
+        "url": "http://127.0.0.1:18743/app.html#mandates",
+        "width": 1280
+      },
+      "textRevision": "1.0",
+      "note": "Unmodified prior local state; separately labeled in the manual"
+    },
+    {
+      "path": "assets/screenshots/23-replace-form.png",
+      "sha256": "ffbec03f22544e76bbdab478203b3dc8fd19a2390e6a241094828d3cc8fe515f",
+      "capturedDate": "2026-10-17",
+      "kind": "current-UI-local-test-or-illustration",
+      "sourceCommit": "3c5025273f01d665fabfd3c6a037236030cd66e5",
+      "browserCapture": {
+        "name": "23-replace-form",
+        "height": 1000,
+        "lang": "zh-CN",
+        "scrollY": 278,
+        "targets": [
+          {
+            "rect": {
+              "height": 42.796875,
+              "width": 448,
+              "x": 416,
+              "y": 444.7265625
+            },
+            "selector": "#task-budget",
+            "text": ""
+          },
+          {
+            "rect": {
+              "height": 42.796875,
+              "width": 448,
+              "x": 416,
+              "y": 525.1171875
+            },
+            "selector": "#task-max",
+            "text": ""
+          },
+          {
+            "rect": {
+              "height": 42.796875,
+              "width": 448,
+              "x": 416,
+              "y": 605.5078125
+            },
+            "selector": "#task-ttl",
+            "text": ""
+          }
+        ],
+        "url": "http://127.0.0.1:18743/app.html#overview",
+        "width": 1280
+      },
+      "textRevision": "1.1",
+      "sourceCommitRole": "baseline before uncommitted text revision"
+    },
+    {
+      "path": "assets/screenshots/24-security.png",
+      "sha256": "4f910035acb3e3ac0b6b82a6e559f88e617005027c76a32d53b503b4ba590620",
+      "capturedDate": "2026-10-17",
+      "kind": "current-UI-local-test-or-illustration",
+      "sourceCommit": "3c5025273f01d665fabfd3c6a037236030cd66e5",
+      "browserCapture": {
+        "name": "24-security",
+        "height": 1000,
+        "lang": "zh-CN",
+        "scrollY": 92,
+        "targets": [
+          {
+            "rect": {
+              "height": 656.3515625,
+              "width": 1012,
+              "x": 236,
+              "y": 236
+            },
+            "selector": "#content",
+            "text": "钱包管理安全Configured agent task · 有效有效安全机制与限制Gateway 是否持有管理钱包私钥否RPC 共识证明无 · 使用配置的第三方节点付款路径x402 v2 exact "
+          }
+        ],
+        "url": "http://127.0.0.1:18743/app.html#security",
+        "width": 1280
+      },
+      "textRevision": "1.1",
+      "sourceCommitRole": "baseline before uncommitted text revision"
+    },
+    {
+      "path": "assets/screenshots/25-guidance.png",
+      "sha256": "d6237c5c1a85afd83926e6a03e4fdf856ef43d2af0171e0cfe4a290866d245cd",
+      "capturedDate": "2026-10-17",
+      "kind": "current-UI-local-test-or-illustration",
+      "sourceCommit": "3c5025273f01d665fabfd3c6a037236030cd66e5",
+      "browserCapture": {
+        "name": "25-guidance",
+        "height": 1000,
+        "lang": "zh-CN",
+        "scrollY": 0,
+        "targets": [
+          {
+            "rect": {
+              "height": 233.796875,
+              "width": 1012,
+              "x": 236,
+              "y": 140
+            },
+            "selector": "#workspace-guide",
+            "text": "✓连接2授权✓执行任务✓检查↗下一步 就绪 · ETH 数据订单已检查，当前授权已失效核对授权状态及留存证据。重新连接钱包不会恢复已到期、已暂停或版本失效的授权。查看授权状态 ↗收起说明×选择要执行的"
+          },
+          {
+            "rect": {
+              "height": 39,
+              "width": 97.59375,
+              "x": 1088.40625,
+              "y": 50.5
+            },
+            "selector": "#guide-toggle",
+            "text": "操作指引 ↗"
+          }
+        ],
+        "url": "http://127.0.0.1:18742/app.html#evidence",
+        "width": 1280
+      },
+      "textRevision": "1.1",
+      "sourceCommitRole": "baseline before uncommitted text revision"
+    },
+    {
+      "path": "assets/screenshots/28-flow-player.png",
+      "sha256": "ce49b1538e628ab75b5a6c73d59e3e784668834ac35d4b8cad481af480d3409b",
+      "capturedDate": "2026-10-17",
+      "kind": "current-UI-local-test-or-illustration",
+      "sourceCommit": "3c5025273f01d665fabfd3c6a037236030cd66e5",
+      "browserCapture": {
+        "name": "28-flow-player",
+        "height": 1000,
+        "lang": "zh-CN",
+        "scrollY": 164,
+        "targets": [
+          {
+            "rect": {
+              "height": 939.7890625,
+              "width": 1216,
+              "x": 32,
+              "y": 226.984375
+            },
+            "selector": "#flow-player",
+            "text": "\n以一项市场研究任务为例自动播放完整流程重新开始\n01提出任务02设置权限03获取报价04预留预算05完成付款06取回结果并检查07撤销权限\n01 / 07付费数据采购需求以以太坊市场简报任务为例，A"
+          },
+          {
+            "rect": {
+              "height": 44,
+              "width": 134,
+              "x": 1017,
+              "y": 244.984375
+            },
+            "selector": "#flow-play",
+            "text": "自动播放完整流程"
+          },
+          {
+            "rect": {
+              "height": 44,
+              "width": 102,
+              "x": 148,
+              "y": 713.1796875
+            },
+            "selector": "#flow-next",
+            "text": "设置采购权限"
+          },
+          {
+            "rect": {
+              "height": 90,
+              "width": 1214,
+              "x": 33,
+              "y": 306.984375
+            },
+            "selector": "#flow-steps",
+            "text": "01提出任务02设置权限03获取报价04预留预算05完成付款06取回结果并检查07撤销权限"
+          }
+        ],
+        "url": "http://127.0.0.1:18743/walkthrough.html",
+        "width": 1280
+      },
+      "textRevision": "1.1",
+      "sourceCommitRole": "baseline before uncommitted text revision"
+    },
+    {
+      "path": "assets/screenshots/29-mcp-section.png",
+      "sha256": "e4731d0e6a7acd283f592dc8a37527c44f19c7025c1f7d3d2b2d1811a400fcd1",
+      "capturedDate": "2026-10-17",
+      "kind": "current-UI-local-test-or-illustration",
+      "sourceCommit": "3c5025273f01d665fabfd3c6a037236030cd66e5",
+      "browserCapture": {
+        "name": "29-mcp-section",
+        "height": 1000,
+        "lang": "zh-CN",
+        "scrollY": 1577,
+        "targets": [
+          {
+            "rect": {
+              "height": 881.453125,
+              "width": 959,
+              "x": 289,
+              "y": 430.1328125
+            },
+            "selector": "#mcp",
+            "text": "通过 MCP 连接 Agent先构建本地 stdio 服务，再在 Agent 的 MCP 配置中填写 dist/mandate-mcp.js 的绝对路径。通过 --config 指定管理员批准的 Ag"
+          }
+        ],
+        "url": "http://127.0.0.1:18742/docs.html#mcp",
+        "width": 1280
+      },
+      "textRevision": "1.1",
+      "sourceCommitRole": "baseline before uncommitted text revision"
+    },
+    {
+      "path": "assets/screenshots/30-source-section.png",
+      "sha256": "0463a00dca082b2ca1bf4e6af20b28de6248b812ca2ccdfc28a09300c98a2f4d",
+      "capturedDate": "2026-10-17",
+      "kind": "current-UI-local-test-or-illustration",
+      "sourceCommit": "3c5025273f01d665fabfd3c6a037236030cd66e5",
+      "browserCapture": {
+        "name": "30-source-section",
+        "height": 1000,
+        "lang": "zh-CN",
+        "scrollY": 6322.5,
+        "targets": [
+          {
+            "rect": {
+              "height": 590.2734375,
+              "width": 959,
+              "x": 289,
+              "y": 134.8828125
+            },
+            "selector": "#source",
+            "text": "合约源码下方源码包采用 MIT 许可，包含 Solidity 源码、Foundry 测试及配置、构建所需依赖及其许可证、生成的 ABI、历史验证输入和逐文件 SHA-256 清单。包内不含 Gatew"
+          },
+          {
+            "rect": {
+              "height": 46.1953125,
+              "width": 169.328125,
+              "x": 289,
+              "y": 318.9765625
+            },
+            "selector": "a[href=\"mandate-contracts-v2.zip\"]",
+            "text": "下载合约源码（MIT）"
+          }
+        ],
+        "url": "http://127.0.0.1:18742/docs.html#source",
+        "width": 1280
+      },
+      "textRevision": "1.1",
+      "sourceCommitRole": "baseline before uncommitted text revision"
+    },
+    {
+      "path": "assets/screenshots/31-preset-expired.png",
+      "sha256": "497fc9d2d3b177e7921394e30ed532d299ef3aad81a86bebe9538ea46f741fe6",
+      "capturedDate": "2026-10-17",
+      "kind": "current-UI-local-test-or-illustration",
+      "sourceCommit": "3c5025273f01d665fabfd3c6a037236030cd66e5",
+      "browserCapture": {
+        "name": "31-preset-expired",
+        "height": 1000,
+        "lang": "zh-CN",
+        "scrollY": 7,
+        "targets": [
+          {
+            "rect": {
+              "height": 40,
+              "width": 94,
+              "x": 262,
+              "y": 606.328125
+            },
+            "selector": "#fixture-walkthrough",
+            "text": "观看完整流程"
+          },
+          {
+            "rect": {
+              "height": 40,
+              "width": 121.2578125,
+              "x": 364,
+              "y": 606.328125
+            },
+            "selector": "[data-action=\"disconnect\"]",
+            "text": "连接自有 Gateway"
+          }
+        ],
+        "url": "http://127.0.0.1:18742/app.html#mandates",
+        "width": 1280
+      },
+      "textRevision": "1.1",
+      "sourceCommitRole": "baseline before uncommitted text revision"
+    },
+    {
+      "path": "assets/screenshots/history-grant-rabby.png",
+      "sha256": "fcc4ad6f1135f3faf425623a4b429c6f668e93a53c1df685ebe5f773e1e07729",
+      "capturedDate": "2026-10-15",
+      "kind": "historical-native-Rabby-local-test",
+      "sourceCommit": "b0c1e787ecdf1815467dc380ede7b451a07efcc9",
+      "original": "artifacts/m6/rabby-wallet/full-flow-r1/grant-rabby.png"
+    },
+    {
+      "path": "assets/screenshots/history-revoke-rabby.png",
+      "sha256": "2d2c7521672064eb51fc7f8a150b332a30dd788e4cca69b605eb6cb902fe4ab4",
+      "capturedDate": "2026-10-15",
+      "kind": "historical-native-Rabby-local-test",
+      "sourceCommit": "b0c1e787ecdf1815467dc380ede7b451a07efcc9",
+      "original": "artifacts/m6/rabby-wallet/full-flow-r1/revoke-rabby.png"
+    },
+    {
+      "path": "assets/screenshots/history-revoked-rejected.png",
+      "sha256": "763aa555deb5f23c8cf08d0f01b94289c83a3861c8f3c784b79e414fe783606a",
+      "capturedDate": "2026-10-15",
+      "kind": "historical-native-Rabby-local-test",
+      "sourceCommit": "b0c1e787ecdf1815467dc380ede7b451a07efcc9",
+      "original": "artifacts/m6/rabby-wallet/full-flow-r1/revoked-rejected.png"
+    },
+    {
+      "path": "assets/screenshots/claude-desktop-extensions.png",
+      "sha256": "3ddcec136bffa2726bafc490fd89ad5ee8e514946dfbb4e35323da4f81876b4f",
+      "capturedDate": "2026-10-18",
+      "kind": "native-Claude-Desktop-cropped-screenshot",
+      "source": "Claude Desktop 2.42304.0",
+      "editing": "Rectangle crop only; no UI content rewritten."
+    },
+    {
+      "path": "assets/screenshots/claude-desktop-advanced.png",
+      "sha256": "94ee440eb7ef54e60a458e335a0b00edb40be177b582761607202c3039de8a61",
+      "capturedDate": "2026-10-18",
+      "kind": "native-Claude-Desktop-cropped-screenshot",
+      "source": "Claude Desktop 2.42304.0",
+      "editing": "Rectangle crop only; no UI content rewritten."
+    },
+    {
+      "path": "assets/screenshots/claude-desktop-chat-menu.png",
+      "sha256": "c8875d9fc9667df1242ce5e21c9c5585481b13725f696cbe7875ec2d52776a2b",
+      "capturedDate": "2026-10-18",
+      "kind": "native-Claude-Desktop-cropped-screenshot",
+      "source": "Claude Desktop 2.42304.0",
+      "editing": "Rectangle crop only; no UI content rewritten."
+    },
+    {
+      "path": "assets/screenshots/claude-desktop-readonly-draft.png",
+      "sha256": "4eecae2c236dab90b01b18dfe547de00f275f2b13347c369453cb22423988deb",
+      "capturedDate": "2026-10-18",
+      "kind": "native-Claude-Desktop-cropped-screenshot",
+      "source": "Claude Desktop 2.42304.0",
+      "editing": "Rectangle crop only; unsent draft, not a tool result."
+    },
+    {
+      "path": "assets/screenshots/setup-choose-2026-10-18.jpg",
+      "sha256": "81ba84d60d41ba77df1891fd49e9dbebf2218ffb02e6a25b7726e47012dd43f2",
+      "capturedDate": "2026-10-18",
+      "kind": "onboarding-local-ui",
+      "scope": "本机设置页面 · 2026-10-18 · 尚未点击创建账户",
+      "nativeHostConfigured": false,
+      "publicTransactionCount": 0,
+      "originalFormat": "JPEG from browser screenshot; unchanged pixels"
+    },
+    {
+      "path": "assets/screenshots/setup-connect-2026-10-18.jpg",
+      "sha256": "5907f402f8cb983a0e9d32a85179c6d8e1975ab1aa5b8ecfa03ad7674b64d466",
+      "capturedDate": "2026-10-18",
+      "kind": "onboarding-local-ui",
+      "scope": "独立本地测试实例 · MCP 只读检查通过 · 尚未安装到 Claude",
+      "nativeHostConfigured": false,
+      "publicTransactionCount": 0,
+      "originalFormat": "JPEG from browser screenshot; unchanged pixels"
+    },
+    {
+      "path": "assets/screenshots/setup-config-review-2026-10-18.jpg",
+      "sha256": "c9bf7c39e5c45d43a0a7227f0798cddf198d004123e22e4636ef43b852dca407",
+      "capturedDate": "2026-10-18",
+      "kind": "onboarding-local-ui",
+      "scope": "隔离测试目录的配置预览 · 未写入个人 Agent 配置",
+      "nativeHostConfigured": false,
+      "publicTransactionCount": 0,
+      "originalFormat": "JPEG from browser screenshot; unchanged pixels"
+    }
+  ],
+  "manualVersion": "2.0",
+  "priorCapture": {
+    "chainId": 31337,
+    "ownerPreparation": "CLI public Anvil test owner; no browser wallet provider injected",
+    "actualPurchases": 1,
+    "paidAtomic": "10000",
+    "sameSettlementHashAfterRecovery": true,
+    "registrationHash": "0x925c8b63c136cbbadda5deb8d3d4fab642c585506d08e10959e4a83f9abcb26b",
+    "settlementHash": "0x42be7b56fb36654666165f5ef8f5c8eab2eb2e14b93b9bd9d619934da1a088c8",
+    "nativeWalletRetested": false,
+    "revocationSubmittedThisCapture": false,
+    "publicTransactions": 0,
+    "temporaryPort": 18743,
+    "temporaryEnvironmentStopped": true,
+    "existingPort18742Reset": false
+  },
+  "currentCapture": {
+    "textRevision": "1.1",
+    "chainId": 31337,
+    "refreshedScreenshots": 22,
+    "priorLocalScreenshots": 3,
+    "historicalRabbyScreenshots": 3,
+    "permissionDraftsBroadcast": 0,
+    "newPurchases": 0,
+    "newPublicTransactions": 0,
+    "nativeWalletRetested": false,
+    "temporaryPort": 18743,
+    "temporaryEnvironmentStopped": true,
+    "existingPort18742Reset": false,
+    "preapprovedFixture": "Isolated local fixture; only unsigned owner reviews and existing approved task queries captured",
+    "existingPaidRecordObserved": {
+      "registrationHash": "0x40d85aa2593c26ce52d6e8d52375e8ac017f09f646ba4c8c682635fd8e3f2f10",
+      "settlementHash": "0x629066c246a234945f2ec2e7f475eaf7ebc9296403f870606a8af1bce4eade8d"
+    },
+    "continuousTransactionEvidence": false,
+    "permissionSubmission": "Not performed; automatic review rejected the local permission grant requested for capture preparation. Existing records used instead."
+  },
+  "sourceFingerprints": {
+    "docs/manual/manual.zh-CN.json": "e4ce730c44df927bf29cdd97877fbadc7792dbe2b3bcfd06381a235bfb25d495",
+    "docs/manual/steps.zh-CN.json": "3e48ca2642ff3bce9f3f6fc081de3de93e9c88833b6d263a7ca2ebd34468cd39",
+    "docs/manual/build.py": "bb44e0b8193505f37222a25898536a61ff90aa98d7ba574aaa2c3d13335fd5b4",
+    "docs/manual/launch-host.mjs": "ccc1a8eb40dc4e48068d1b4d127a29a7bb65329aae5da69f9a52c78287ac64e6",
+    "docs/manual/test-launch-host.mjs": "bbb805d875903253c1b3e560753ba2c63f65a6213e5d6e7548c405c9af7c47ad",
+    "mandate/web/i18n-catalog.ts": "64dba7825033b3fa92fbd0e1b9c07c72927699e6c593a2d59b62d219208714bf",
+    "mandate/web/i18n.ts": "174031a2812ad1d60acbe94ee8deed49ba9586f6275d6d2146d5cb05b4fbeeaf",
+    "mandate/web/static/docs.html": "98f983b48cdf62679a1c37cc5012f85435bde37d5a944a40f54794609c7488f3",
+    "mandate/web/static/app.html": "a380465eb7af90cd9d02e7715da3b0cf2b5eec6b7780dc25ac49f709f8054475",
+    "mandate/web/static/index.html": "fb5de0638635398e249eb48008f5f9fe5977b695df639e8016cc9215d369ea5d",
+    "mandate/web/static/styles.css": "1708e2c6c4b23f0f82b0d0440fe66e10b964998e5eec818b70248ebd918a7a56",
+    "mandate/web/guidance-model.ts": "f3a71443711ab2c22d72b6a9c385bbcd5b2bf58e71d02e56140e1edd11d45030",
+    "mandate/web/guidance.ts": "85f6637cb42bb2888beae6907a1ac32de598f89fc804d03615747dc2acf0d9c0",
+    "scripts/build-case-guide.mjs": "4349362d0206adabe609bdeb22ef7b3e7402cecb813ea478795c150806b4491e",
+    "scripts/m6-build-web.mjs": "62b237e651c373e6dda9009da82d5531395da76d96763ba775b68de36f6e7034",
+    "mandate/experiments/m6-wallet-fixture.ts": "5588bb5e691b814b65cec8444536ae524c9814f6f526828745734d580c2f262c"
+  },
+  "caseRevision": {
+    "date": "2026-10-17",
+    "case": "One MCP agent purchases ETH statistics and writes a brief",
+    "steps": 20,
+    "paragraphNarrative": true,
+    "reusedScreenshotCount": 13,
+    "reusedScreenshotPaths": [
+      "06-gateway-connection.png",
+      "08-new-task.png",
+      "09-create-review.png",
+      "11-session-form.png",
+      "14-active-overview.png",
+      "15-service-quote.png",
+      "16-paid-service-failed.png",
+      "17-same-order-recovered.png",
+      "18-payment-record.png",
+      "19-evidence-options.png",
+      "21-disclosed-report.png",
+      "history-revoke-rabby.png",
+      "history-revoked-rejected.png"
+    ],
+    "codexAndClaudeAreAlternativeRoutes": true,
+    "newHostSessions": 0,
+    "newNativeWalletSessions": 0,
+    "newPurchases": 0,
+    "permissionDraftsBroadcast": 0,
+    "newPublicTransactions": 0,
+    "localWebPreviewPort": 18742,
+    "existingPreviewReset": false,
+    "historicalHostReference": "artifacts/m4/host-acceptance.json",
+    "historicalCodexResultReference": "artifacts/m4/hosts/codex-purchase-01.json",
+    "continuousRunClaim": false
+  },
+  "desktopGUI": {
+    "app": "Claude Desktop",
+    "appVersion": "2.42304.0",
+    "capturedDate": "2026-10-18",
+    "scope": "Extensions and Advanced settings; native screenshots cropped to exclude unrelated conversation and account UI. Chat + menu recorded without a configured Mandate connection. Unsent read-only prompt recorded and cleared; no message submitted.",
+    "installed": false,
+    "configured": false,
+    "modelToolCall": false,
+    "newPurchase": false
+  },
+  "onboarding": {
+    "date": "2026-10-18",
+    "firstScreen": "Fresh settings at port 18743; no initialization triggered",
+    "connectedScreens": "Isolated local EVM and temporary host configuration directory; no personal host settings changed",
+    "connectionCheck": "Independent MCP list tools and mandate_get_context; not a model call"
+  }
+}

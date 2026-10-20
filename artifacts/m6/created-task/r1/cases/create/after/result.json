@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "scenario": "create",
+  "expectation": "after",
+  "baseline": null,
+  "mode": "controlled EIP-1193 delayed-wallet scheduling probe with actual local EVM transaction",
+  "nativeWallet": false,
+  "humanUsability": false,
+  "chainId": 31337,
+  "expectedUI": true,
+  "bugReproduced": false,
+  "ownerSendCalls": 1,
+  "controlledSecondPromptRejected": false,
+  "ownerNonceBefore": 6,
+  "ownerNonceAfter": 7,
+  "originalRequestId": "0x3dc275dab2b4f7c7f9b0512be53e6acd62d73ab098866dc8e683b74cbddde860",
+  "originalRequestStatus": "confirmed",
+  "originalRequestApplied": true,
+  "originalHash": "0x03b31b89339889a6150370327b0af75dabf5da84f10dc3469f41e6d523df6ee9",
+  "transactionCalldataMatchesOriginal": true,
+  "persistedOriginalHash": true,
+  "tokenPayments": 0,
+  "walletCashBefore": "1000000",
+  "walletCashAfter": "1000000",
+  "reviewOpen": true,
+  "reviewCallSHA256": "077434b035915c9b2ad0545d5030453588715ce55a8c2f1f2379d37b584c222b",
+  "selectedTaskBPreserved": false,
+  "disconnected": false,
+  "globalError": "",
+  "reviewError": "",
+  "observed": [
+    {
+      "operation": "owner-broadcast",
+      "requestId": "0x3dc275dab2b4f7c7f9b0512be53e6acd62d73ab098866dc8e683b74cbddde860",
+      "status": 200
+    }
+  ],
+  "createdTaskId": "0xd3f281851e9cd74b52ec80efeff523bf1ab0713b5470f853ebaf20ee35daeeff",
+  "createdTaskSelected": true,
+  "grantTargetsCreatedTask": true,
+  "grantDraftStatus": "draft",
+  "sourceFingerprint": {
+    "mandate/web/app.ts": "fb4b8e0f70ebde7fba15ddcaf814e04387dc88f23310646cf76887a4c4b38336",
+    "mandate/web/static/index.html": "ea623f58c0c1244558acfb03f71a2060332c1bb1a872bda4bb2613fde67443c1",
+    "mandate/web/static/app.html": "74779d95244fb5d96487e84efd0d2caf2255d4aeaaf7e7820740cf42a9b3fe1c",
+    "mandate/web/static/docs.html": "d2c7e373f4d4d94e32bb49177a88e604142857329c293da18a45208c64c271fa",
+    "mandate/web/static/styles.css": "1432855b1cd71a4c4786a7dd6ccd3cca3c40bda0d00209428b29819107d44675",
+    "mandate/web/static/favicon.svg": "f75cbb9e8fb081235588a136c31cc6b935bf887e2df5c15749ac06b1e581d2f7",
+    "mandate/experiments/m6-review-race.ts": "27c8f4d484604e81463db8d3c2fc02f51c6f299d0da3d90efa9694f39d880f5c"
+  },
+  "newPublicTransactions": 0
+}

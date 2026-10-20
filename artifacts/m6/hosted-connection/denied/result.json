@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "revision": "deny-final-r2",
+  "mode": "deny",
+  "browserVersion": "Chrome/151.0.7922.34",
+  "hostedOrigin": "https://mandate-wallet-fintechathon-2026.starrycoin17.chatgpt.site",
+  "hostedAsset": {
+    "path": "/app.js",
+    "status": 200,
+    "SHA256": "cedde4a64197e3083e2532545c41e806b23ae454d1647b76d4566c2c758fd619"
+  },
+  "hostedHTMLSHA256": "aa9c864c6ef5ce3efe4c373719d161d1deb06ecf3d425898d7423890493f92c0",
+  "uploadedHTMLSHA256": "74779d95244fb5d96487e84efd0d2caf2255d4aeaaf7e7820740cf42a9b3fe1c",
+  "platformInjection": {
+    "kind": "reviewed Cloudflare JSD template",
+    "templateSHA256": "19e0cdb4365ec315008fc3c6cbbc655f9928f879308ab095ed870999557d8e08",
+    "variableFields": [
+      "public request ray id",
+      "public challenge timestamp"
+    ],
+    "removedFromExecutedPage": false
+  },
+  "normalizationControls": {
+    "changedAppRejected": true,
+    "extraInlineScriptRejected": true,
+    "changedPlatformScriptRejected": true
+  },
+  "browserSecurityBypassFlags": [],
+  "permissionOverrides": [
+    {
+      "name": "local-network-access",
+      "setting": "denied",
+      "applied": true
+    },
+    {
+      "name": "loopback-network",
+      "setting": "denied",
+      "applied": true
+    }
+  ],
+  "permissions": {
+    "local-network-access": "denied",
+    "loopback-network": "denied"
+  },
+  "connected": false,
+  "errorText": "Start your trusted local Gateway at the address above. For the hosted App, check local or loopback network access in this site's browser settings, then retry. You can also open the Gateway's /app.html page on this computer.",
+  "errorVisibility": [
+    {
+      "width": 1280,
+      "visible": true
+    },
+    {
+      "width": 390,
+      "visible": true
+    }
+  ],
+  "localTraffic": [
+    {
+      "method": "POST",
+      "path": "/api/workspace",
+      "origin": null,
+      "preflightPrivateNetwork": null,
+      "siteAccessHeaderPresent": false
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/workspace",
+      "origin": "https://mandate-wallet-fintechathon-2026.starrycoin17.chatgpt.site",
+      "preflightPrivateNetwork": null,
+      "siteAccessHeaderPresent": false
+    }
+  ],
+  "networkFailures": [
+    {
+      "errorText": "net::ERR_FAILED",
+      "blockedReason": null,
+      "corsError": "LocalNetworkAccessPermissionDenied"
+    }
+  ],
+  "ownerNonceBefore": 6,
+  "ownerNonceAfter": 6,
+  "walletCashBefore": "1000000",
+  "walletCashAfter": "1000000",
+  "occupiedBefore": "0",
+  "occupiedAfter": "0",
+  "paymentEvents": 0,
+  "first": null,
+  "recovered": null,
+  "nativeWallet": false,
+  "providerInjected": false,
+  "humanAcceptance": false,
+  "physicalMobile": false,
+  "siteLoginMethod": "owner-authorized dispatch header scoped only to the exact Site origin; not human login",
+  "sourceFingerprint": {
+    "mandate/web/app.ts": "1f84f2aa530a38a91c1553f779c572453801fea0dd16dc5c169b6624a424968c",
+    "mandate/web/server.ts": "f36904da89d3a26c3a8495f06a81d9d128de6448fbd61e1e0e385f4581cb1d32",
+    "mandate/web/static/app.html": "74779d95244fb5d96487e84efd0d2caf2255d4aeaaf7e7820740cf42a9b3fe1c",
+    "mandate/experiments/m6-hosted-connection.ts": "e6146bafe3693e6f6ac009a801e3a833d5391ad136cd596a351d22812bb1b1b5"
+  },
+  "newPublicTransactions": 0
+}

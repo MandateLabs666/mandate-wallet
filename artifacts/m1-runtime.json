@@ -1,0 +1,100 @@
+{
+  "recordedAt": "2026-10-13T09:37:24.513211+00:00",
+  "testedCodeCommit": "943400ad7bda96a07b124272c5f0c39618786473",
+  "platform": {
+    "system": "Darwin",
+    "machine": "arm64"
+  },
+  "versions": {
+    "node": "v24.2.0",
+    "pnpm": "11.25.0",
+    "forge": "forge Version: 1.5.1-stable\nCommit SHA: b0a9dd9ceda36f63e2326ce530c10e6916f4b8a2\nBuild Timestamp: 2025-12-22T11:41:09.812070000Z (1766403669)\nBuild Profile: maxperf",
+    "anvil": "anvil Version: 1.5.1-stable\nCommit SHA: b0a9dd9ceda36f63e2326ce530c10e6916f4b8a2\nBuild Timestamp: 2025-12-22T11:41:09.812070000Z (1766403669)\nBuild Profile: maxperf",
+    "python": "3.14.4",
+    "solc": "0.8.26+commit.8a97fa7a"
+  },
+  "dependencies": {
+    "typescript": "5.9.3",
+    "viem": "2.48.11",
+    "zod": "3.24.2",
+    "vitest": "3.2.7",
+    "tsx": "4.21.0",
+    "ajv": "8.17.1",
+    "x402Core": "2.28.0",
+    "x402Evm": "2.28.0"
+  },
+  "upstreams": {
+    "echo-contracts": {
+      "repository": "https://github.com/MartX-Web3/echo-contracts",
+      "commit": "bf68bec76cb4b1394271e0d6043e6d2221d71334",
+      "archiveSha256": "07b91cc1821c149eb24533401c86d5627ce6cf4462e68528ca882d26b899f727"
+    },
+    "echo-gateway": {
+      "repository": "https://github.com/MartX-Web3/echo-gateway",
+      "commit": "21fddd41c53dc08a4b325d0bd526fbfbabdf9f22",
+      "archiveSha256": "3d2723531ec26b8165ac1766f334b392ed707cb1183100fc8ce8cba84a6183b0"
+    },
+    "x402": {
+      "repository": "https://github.com/x402-foundation/x402",
+      "commit": "6c470a80c6145b27fcbb4f6359c47a6a8cfe5887",
+      "archiveSha256": "84418779a7566d12096af742ad57423627532c12c6969ebb5e8d37eec0c8cdea"
+    },
+    "forge-std": {
+      "repository": "https://github.com/foundry-rs/forge-std",
+      "commit": "0844d7e1fc5e60d77b68e469bff60265f236c398",
+      "archiveSha256": "5b9fcf40f5df9e13c6043b280abd846d2d76b19d337e49e701f491eb68019f96"
+    },
+    "openzeppelin-contracts": {
+      "repository": "https://github.com/OpenZeppelin/openzeppelin-contracts",
+      "commit": "5fd1781b1454fd1ef8e722282f86f9293cacf256",
+      "archiveSha256": "6542272013ef3322d86f1eb6b47fc94ae1a95992169a5b3e160af189989187a4"
+    }
+  },
+  "solidity": {
+    "optimizer": true,
+    "optimizerRuns": 200,
+    "viaIR": true,
+    "evmVersion": "cancun"
+  },
+  "fuzz": {
+    "seed": "0x4022026",
+    "invalidAmountRuns": 10000,
+    "wrongSignerRuns": 10000,
+    "mixedReservationRuns": 10000,
+    "invariantRuns": 128,
+    "invariantDepth": 64
+  },
+  "checks": {
+    "typecheck": "passed",
+    "rootBuild": "passed",
+    "echoContracts": {
+      "total": 151,
+      "passed": 151
+    },
+    "echoGateway": {
+      "total": 92,
+      "passed": 90,
+      "failed": 2
+    },
+    "mandateContracts": {
+      "total": 21,
+      "passed": 21
+    },
+    "typescript": {
+      "total": 15,
+      "passed": 15
+    },
+    "sourceFilesVerified": 1318
+  },
+  "transactionNetworks": [
+    31337,
+    84532
+  ],
+  "fundingOnlyNetwork": 11155111,
+  "readOnlyNetwork": 8453,
+  "limitations": [
+    "not a production audit",
+    "public integration uses a loopback controlled merchant and self-hosted reference facilitator",
+    "receipt confirmation threshold is two blocks"
+  ]
+}

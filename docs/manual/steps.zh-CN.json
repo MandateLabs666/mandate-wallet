@@ -1,0 +1,1037 @@
+{
+  "version": "2.0",
+  "case": "ETH statistics brief through an MCP agent",
+  "steps": [
+    {
+      "id": "01",
+      "title": "准备案例所需的软件与文件",
+      "section": "完整案例：Agent 采购 ETH 数据并撰写简报",
+      "purpose": "本案例的目标是让自己的 Agent 购买一份 ETH 统计数据，并据此生成包含数据摘要、采购费用和证据限制的简报。开始前需要明确：Codex CLI、Claude Code 或 Claude Desktop 负责执行任务，Rabby 负责账户所有者的权限审批，Mandate 工作区用于配置授权及核对执行记录。",
+      "operation": [
+        "本教程提供 Codex CLI、Claude Code 和 Claude Desktop 三种接入路线，选择一种即可。需要图形界面操作时，按第 09.1 至 09.6 步在 Claude Desktop 的聊天界面接入；无需执行第 08、09 步的命令行配置。权限审批仍须在支持 Rabby 的桌面浏览器中完成。",
+        "部署人员需要准备 Node 24.x（至少 24.2）、pnpm 11.25.0、Python 3.12+ 和 Foundry 1.5.1，并提供完整项目源码。首次构建时在仓库根目录执行本步骤的命令。当前 SDK 尚未发布 npm 包，官网的合约 ZIP 也不包含完整 Gateway，因此不能用该 ZIP 代替项目源码。"
+      ],
+      "result": "继续操作前，应具备可启动的 Gateway、管理钱包，以及一份由部署人员提供的连接说明。安装软件或构建源码本身不会授予 Agent 付款权限。",
+      "code": "python3 scripts/bootstrap-sdk.py\nCI=true pnpm install --frozen-lockfile\nMANDATE_BUILD_REPORT_DIR=artifacts/sdk-build pnpm sdk:build",
+      "en": {
+        "title": "Prepare software and files",
+        "purpose": "The agent will buy one ETH statistics response and write a brief with its cost and evidence limits. Codex CLI, Claude Code or Claude Desktop runs the task; Rabby approves permissions; the workspace shows the records.",
+        "operation": "Choose one host: Codex CLI (08), Claude Code (09) or Claude Desktop Chat (09.1–09.6). The graphical route does not use the CLI setup. Use a desktop browser with Rabby for owner approval. The operator prepares the full checkout and builds the environment with the commands below.",
+        "result": "Have a running Gateway, the correct owner wallet and operator-provided connection instructions before continuing."
+      }
+    },
+    {
+      "id": "02",
+      "title": "连接运行案例的 Mandate 工作区",
+      "section": "完整案例：Agent 采购 ETH 数据并撰写简报",
+      "purpose": "这一步使浏览器连接到负责当前智能账户的 Gateway。Gateway 保存会话配置和订单记录；仅打开网站首页，还无法确定 Agent 将使用哪个账户、任务或服务。",
+      "operation": [
+        "部署人员应提供 Gateway 地址、连接凭据和网络信息。本地练习使用 Anvil 链 31337、1.00 模拟 USDC 初始余额，以及收费 0.01 模拟 USDC 的受控统计服务。此数据用于演示，不代表实时行情。预设预览中的已到期账户不能由个人钱包续期，完整操作应使用自己控制的工作区。",
+        "在 App 中选择“连接自有 Gateway”，填写部署人员提供的地址和“Gateway 连接凭据”，然后选择“连接工作区”。该凭据用于访问工作区，不是助记词或管理钱包私钥。页面刷新后可能需要重新连接。"
+      ],
+      "result": "连接成功后，页面应显示指定网络、智能账户和任务。应保留 Gateway 进程及原订单数据库，随后再连接管理钱包。",
+      "image": "06-gateway-connection.png",
+      "crop": [
+        430,
+        455,
+        620,
+        390
+      ],
+      "marks": [
+        [
+          482,
+          504,
+          520,
+          43,
+          "1"
+        ],
+        [
+          482,
+          584,
+          520,
+          43,
+          "2"
+        ],
+        [
+          482,
+          685,
+          520,
+          40,
+          "2"
+        ]
+      ],
+      "mainHeight": 405,
+      "en": {
+        "title": "Connect the workspace",
+        "purpose": "Connect the browser to the Gateway that owns the task configuration and durable order records. Opening the landing page does not select an account for the agent.",
+        "operation": "Obtain the Gateway URL, connection credential and network from the operator. For this local exercise use chain 31337, a 1.00 mock-USDC balance and a 0.01 mock-USDC controlled service. Choose Connect your own Gateway and enter those connection details. Do not enter a seed phrase.",
+        "result": "Confirm the intended network, account and task. Keep the Gateway and its original database running."
+      }
+    },
+    {
+      "id": "03",
+      "title": "连接用于审批的 Rabby 管理钱包",
+      "section": "完整案例：Agent 采购 ETH 数据并撰写简报",
+      "purpose": "这一步确认谁有权批准当前智能账户的采购权限。管理钱包与 Agent 的会话签名器承担不同职责：前者批准范围，后者只能在范围内执行采购。",
+      "operation": [
+        "在支持扩展钱包的桌面浏览器中打开工作区，选择右上角的“连接管理钱包”。在 Rabby 中核对站点地址，并选择与页面所列“账户所有者”一致的账户。连接后，将钱包切换到 Gateway 配置的网络；本地练习使用链 31337，RPC 地址由部署人员提供。",
+        "本地公开测试账户仅用于练习，不应导入个人资产。若网络或账户不匹配，页面会禁用确认入口，应修正连接后再继续。连接钱包只建立站点访问关系，不等于批准授权交易。"
+      ],
+      "result": "页面应识别正确的账户所有者和网络，并允许进入授权审核。后续的权限变更仍须逐次在 Rabby 中签署。",
+      "image": "14-active-overview.png",
+      "crop": [
+        205,
+        25,
+        1050,
+        615
+      ],
+      "marks": [
+        [
+          1152,
+          50,
+          96,
+          39,
+          "1"
+        ]
+      ],
+      "zoom": [
+        756,
+        40,
+        490,
+        60
+      ],
+      "en": {
+        "title": "Connect the Rabby owner wallet",
+        "purpose": "Identify the account that can approve purchasing permissions. The owner wallet approves scope; a separate session signer executes within it.",
+        "operation": "Open the workspace in a desktop browser with Rabby, select Connect owner wallet, verify the site and choose the owner address displayed by the workspace. Select the configured chain and the operator-provided RPC. Use public test accounts only for the local exercise.",
+        "result": "The owner and network must match. Connecting a wallet does not approve a permission transaction."
+      }
+    },
+    {
+      "id": "04",
+      "title": "为 ETH 数据简报创建采购任务",
+      "section": "完整案例：Agent 采购 ETH 数据并撰写简报",
+      "purpose": "这一步把简报需求转换为可以审核的采购任务，明确 Agent 的支出范围。任务描述说明工作目标，预算、单笔上限和期限才是实际约束采购行为的参数。",
+      "operation": [
+        "进入“授权”页面并选择“新建任务”。任务目标填写“获取 ETH 统计数据，生成包含费用与来源说明的简报”。本例将总预算设为 0.15 USDC，单笔上限设为 0.10 USDC，任务有效时长设为 60 分钟。总预算是最高授权额度，并不意味着系统会收取 0.15 USDC。",
+        "服务、收款人和请求步骤沿用部署人员预先配置的模板。案例会采购其中的 ETH 服务，BTC 服务暂不采购，留待最后核验撤销效果。完成表单后选择“查看并确认授权”。"
+      ],
+      "result": "系统应生成待审核的任务草稿，此时尚未生效。下一步应检查交易内容，不能仅凭表单已提交就认为 Agent 已获准付款。",
+      "image": "08-new-task.png",
+      "crop": [
+        385,
+        225,
+        510,
+        550
+      ],
+      "marks": [
+        [
+          416,
+          364,
+          448,
+          43,
+          "1"
+        ],
+        [
+          416,
+          445,
+          448,
+          43,
+          "2"
+        ],
+        [
+          416,
+          525,
+          448,
+          43,
+          "2"
+        ],
+        [
+          416,
+          605,
+          448,
+          43,
+          "2"
+        ]
+      ],
+      "mainHeight": 415,
+      "en": {
+        "title": "Create the ETH briefing task",
+        "purpose": "Convert the research goal into an explicit task with a spend limit and expiry. The budget is a maximum authorization, not the service price.",
+        "operation": "Create a task for an ETH statistics brief. Set total budget to 0.15 USDC, per-payment cap to 0.10 USDC and task duration to 60 minutes. The configured template includes ETH and BTC; buy ETH only and leave BTC unpurchased for the final revocation check. Select Review and confirm.",
+        "result": "A review draft should appear. No permission is active until the owner transaction is confirmed."
+      }
+    },
+    {
+      "id": "05",
+      "title": "审核并确认任务总授权",
+      "section": "完整案例：Agent 采购 ETH 数据并撰写简报",
+      "purpose": "这一步由账户所有者批准任务可使用的资金和服务范围。只有在交易内容与预期一致且链上确认后，任务总授权才成立。",
+      "operation": [
+        "在审核页逐项核对网络、智能账户、账户所有者、资产、总预算、单笔上限和到期时间，并检查 ETH/BTC 服务地址与批准收款人是否与部署说明一致。“实际合约调用”区域可以用于核对 calldata。确认无误后选择“前往管理钱包确认”。",
+        "在 Rabby 中再次核对站点、网络、from、to、value 和 calldata，然后签署。授权交易的原生币 value 为 0，Gas 单独计费；value 为 0 不代表交易不会改变权限。广播后等待 App 核对交易，出现超时则沿用原请求选择“核对此次交易”，不要重新生成授权。"
+      ],
+      "result": "原请求应显示已确认且已生效，新任务应出现在“任务”页面。任务仍需下一步的会话授权，不能用既有演示任务的会话代替。",
+      "image": "09-create-review.png",
+      "crop": [
+        385,
+        20,
+        510,
+        960
+      ],
+      "marks": [
+        [
+          416,
+          247,
+          448,
+          39,
+          "1"
+        ],
+        [
+          416,
+          413,
+          448,
+          79,
+          "2"
+        ],
+        [
+          416,
+          755,
+          448,
+          82,
+          "2"
+        ]
+      ],
+      "panels": [
+        {
+          "label": "审核页上半部：账户、网络和金额",
+          "crop": [
+            405,
+            200,
+            470,
+            380
+          ],
+          "height": 235
+        },
+        {
+          "label": "审核页下半部：资源和收款人",
+          "crop": [
+            405,
+            700,
+            470,
+            240
+          ],
+          "height": 146
+        }
+      ],
+      "mainHeight": 415,
+      "en": {
+        "title": "Approve the task policy",
+        "purpose": "The owner approves the task scope and limits. It becomes active only after the matching transaction is confirmed onchain.",
+        "operation": "Review the chain, account, owner, asset, limits, expiry, service resources and recipients. Continue to Rabby and compare from, to, value and calldata before signing. If the result is uncertain, reconcile the same request instead of creating another one.",
+        "result": "The policy request must be confirmed and applied. A separate session grant is still required."
+      }
+    },
+    {
+      "id": "06",
+      "title": "批准 Agent 使用的有限会话",
+      "section": "完整案例：Agent 采购 ETH 数据并撰写简报",
+      "purpose": "任务总授权规定任务允许采购什么；有限会话进一步指定由哪个会话签名地址执行，以及该会话可支出的金额和期限。两次审批共同构成 Agent 的付款权限。",
+      "operation": [
+        "在“任务”页面确认当前选中的是刚创建的 ETH 简报任务，再进入“授权”并选择“批准会话权限”。本例会话总预算为 0.15 USDC，单笔上限为 0.10 USDC，有效时长为 15 分钟；会话到期时间不得晚于任务到期时间。",
+        "审核页应显示当前任务 ID、会话 ID、会话签名地址及可执行步骤。核对这些字段后在 Rabby 中确认，并等待页面显示当前会话有效。后续 Agent 配置必须引用这次批准的会话，而不是截图中的示例 ID。"
+      ],
+      "result": "页面应显示有效授权及会话。应记录当前任务 ID、会话 ID 和会话签名地址，以便下一步核对 Agent 的固定配置。",
+      "image": "11-session-form.png",
+      "crop": [
+        385,
+        225,
+        510,
+        550
+      ],
+      "marks": [
+        [
+          416,
+          445,
+          448,
+          43,
+          "1"
+        ],
+        [
+          416,
+          605,
+          448,
+          43,
+          "2"
+        ],
+        [
+          416,
+          676,
+          448,
+          43,
+          "2"
+        ]
+      ],
+      "mainHeight": 415,
+      "en": {
+        "title": "Approve a finite agent session",
+        "purpose": "A policy defines allowed work; the session selects the signer and narrows the amount and duration available to that agent.",
+        "operation": "Select the newly created task and grant a 0.15-USDC session with a 0.10-USDC per-payment cap for 15 minutes, within the policy expiry. Review its task ID, session ID, signer and steps, then confirm in Rabby.",
+        "result": "The session must be active. Record its actual IDs for the MCP profile; do not copy screenshot IDs."
+      }
+    },
+    {
+      "id": "07",
+      "title": "将 Agent 配置绑定到已批准的任务",
+      "section": "完整案例：Agent 采购 ETH 数据并撰写简报",
+      "purpose": "这一步保证 Agent 使用网页中刚批准的任务和会话。Web 工作区可以切换任务，MCP 则按启动时的配置固定任务；两者不会自动同步，遗漏这一步会使 Agent 继续访问旧任务。",
+      "operation": [
+        "由部署人员使用原 Gateway 配置和凭据执行本步骤的只读命令，将 TASK_ID 替换为第 06 步确认的任务 ID。输出文件中的 task.id、task.sessionId、task.startBlock 应与网页一致。部署人员应在原配置所在目录另存 case-agent.json，并据此更新 mandateId、sessionId、startBlock 三个字段。",
+        "新配置应保留原 sessionKeyFile、operatorKeyFile、storeFile、evidenceStoreFile、服务列表及连接凭据摘要。沿用同一目录可以保持相对路径含义。会话签名地址必须与已批准地址一致；存在 controller 时还须按其审批流程重新配置，不能直接套用本例。之后重新启动 MCP，使新配置生效。"
+      ],
+      "result": "应取得 case-agent.json 的绝对路径，并确认它引用当前任务、当前会话和原订单数据库。只采用一个宿主执行本例，不将同一凭据当作两个独立 Agent 的配置。Claude Desktop 用户还应取得对应的 0600 私有连接文件路径和本项目交付的 .mcpb 扩展包；连接文件与钱包私钥文件不可混用。",
+      "code": "pnpm sdk:cli context \\\n  --config PRIVATE_GATEWAY.json \\\n  --credential-file PRIVATE_CONNECTION.json \\\n  --task TASK_ID --output CURRENT_TASK.json",
+      "en": {
+        "title": "Bind the agent profile to the approved task",
+        "purpose": "Web task selection does not update the MCP server. The server is fixed to the task and session in its startup profile.",
+        "operation": "Ask the operator to export the selected task with the read-only command below. Save case-agent.json beside the original profile and set mandateId, sessionId and startBlock from the verified snapshot. Preserve key paths, the original databases, services and credential hash. A configured controller needs its separate approval workflow. Restart MCP after changing the profile.",
+        "result": "Have the absolute profile path and verify its task, session, signer and shared order store before connecting a host."
+      }
+    },
+    {
+      "id": "08",
+      "title": "在 Codex CLI 中接入 Mandate",
+      "section": "完整案例：Agent 采购 ETH 数据并撰写简报",
+      "purpose": "这一步让 Codex 获得 Mandate 的采购工具。MCP 是 Agent 与 Gateway 之间的工具接口；它不会把管理钱包私钥交给 Codex，也不会代替前面的链上授权。",
+      "operation": [
+        "在准备执行简报任务的可信项目中，将本步骤的配置加入 .codex/config.toml，保留已有配置。将 command 替换为 Node 的绝对路径，将 args 中的仓库和 case-agent.json 路径替换为实际绝对路径。由部署人员在启动环境中设置 MANDATE_CONNECTION_TOKEN，配置只列环境变量名，不写明文凭据。",
+        "在可信项目目录运行本步骤的启动命令。启动器读取现有 0600 凭据文件，仅向所选宿主传入环境变量，不打印凭据，也不创建新权限。启动 codex 后，再用 codex mcp list 检查 mandate 是否已配置。若已有会话未加载新配置，应重新启动会话。本教程以 Codex CLI 为主要接入方式；桌面端若未继承启动环境，不能仅凭同一配置文件就推定连接成功，须再次核对实际工具调用。"
+      ],
+      "result": "应能发现 mandate MCP 服务；随后按第 10 步调用只读工具核对实际身份。选择其他宿主时，可改用第 09 步的 Claude Code，或第 09.1 至 09.6 步的 Claude Desktop 图形路线。",
+      "code": "[mcp_servers.mandate]\ncommand = \"/absolute/path/node\"\nargs = [\"/absolute/repository/dist/mandate-mcp.js\",\n        \"--config\", \"/absolute/private/case-agent.json\"]\ncwd = \"/absolute/repository\"\nenv_vars = [\"MANDATE_CONNECTION_TOKEN\"]\nstartup_timeout_sec = 60\ntool_timeout_sec = 120\ndefault_tools_approval_mode = \"writes\"",
+      "en": {
+        "title": "Connect Mandate in Codex CLI",
+        "purpose": "MCP exposes the purchasing tools to Codex without handing it the owner wallet key or replacing onchain approval.",
+        "operation": "Add the example to the trusted project’s .codex/config.toml and replace all absolute paths. The operator supplies MANDATE_CONNECTION_TOKEN in the launch environment; keep its value out of shared configuration. Start codex from that environment, inspect codex mcp list, and restart an existing session when needed. A desktop session must separately prove it inherited the credential and can call the tools. Run the included launch-host.mjs from the trusted project directory with the existing mode-0600 connection file. It forwards the credential without printing it; it does not install configuration or create permission.",
+        "result": "Codex users continue to step 10. Claude Code users skip this configuration and use step 09. Listing a server alone does not prove tool access."
+      },
+      "note": "本页为可复制的配置说明，不是 Codex 新会话已连接的截图。官方配置依据与历史宿主实测记录见手册末尾。",
+      "launch": "node /absolute/repository/docs/manual/launch-host.mjs codex \\\n  /absolute/private/PRIVATE_CONNECTION.json"
+    },
+    {
+      "id": "09",
+      "title": "使用 Claude Code 的替代接入方式",
+      "section": "完整案例：Agent 采购 ETH 数据并撰写简报",
+      "purpose": "Claude Code 与 Codex 可以使用相同的 Mandate 工具接口。本步提供另一种宿主接入方式；完成其中一种即可继续案例，不需要让两个宿主同时采购。",
+      "operation": [
+        "在 Claude Code 项目根目录，将本步骤的 mandate 条目合并到 .mcp.json 的 mcpServers 中，不覆盖其他服务。command 与 args 均使用实际绝对路径；case-agent.json 应为第 07 步核对过的配置。env 通过变量引用读取 MANDATE_CONNECTION_TOKEN，不将凭据明文写入共享文件。",
+        "在可信项目目录运行本步骤的启动命令。启动器读取现有 0600 凭据文件，仅向 claude 传入环境变量，不打印凭据，也不创建新权限。启动 claude 后，在会话中执行 /mcp 检查 mandate 的连接状态，并审核项目 MCP 提示。alwaysLoad 用于加载本案例工具；宿主若采用延迟工具发现，还须确保模型实际取得工具定义。主机的工具批准与 Rabby 的账户授权是两类不同审批。"
+      ],
+      "result": "Claude Code 应能调用 Mandate 工具。完成后直接继续第 10 步。使用 Claude Desktop 聊天界面的用户不执行本页配置，改从第 09.1 步开始。",
+      "code": "{\n  \"mcpServers\": {\n    \"mandate\": {\n      \"type\": \"stdio\",\n      \"command\": \"/absolute/path/node\",\n      \"args\": [\"/absolute/repository/dist/mandate-mcp.js\",\n               \"--config\", \"/absolute/private/case-agent.json\"],\n      \"alwaysLoad\": true,\n      \"env\": {\n        \"MANDATE_CONNECTION_TOKEN\": \"${MANDATE_CONNECTION_TOKEN}\"\n      }\n    }\n  }\n}",
+      "en": {
+        "title": "Use Claude Code instead",
+        "purpose": "Claude Code is an alternative MCP host. Choose this route or Codex; do not run both purchases for the same exercise.",
+        "operation": "Merge the mandate entry into the project .mcp.json. Use actual absolute paths and reference MANDATE_CONNECTION_TOKEN from the launch environment. Start claude, inspect /mcp and review the project-server prompt. alwaysLoad makes these tools available; deferred discovery still requires loading the definitions. Run the included launch-host.mjs from the trusted project directory with the existing mode-0600 connection file. It forwards the credential without printing it; it does not install configuration or create permission.",
+        "result": "Continue to step 10 after the tools are callable. Codex users skip this step. Host approval is separate from the owner’s chain grant."
+      },
+      "note": "本页为 Claude Code 的配置说明，不表示本次重新运行了宿主或采购。两种宿主的既有实测记录均可追溯。",
+      "launch": "node /absolute/repository/docs/manual/launch-host.mjs claude \\\n  /absolute/private/PRIVATE_CONNECTION.json"
+    },
+    {
+      "id": "09.1",
+      "title": "打开 Claude Desktop 的扩展设置",
+      "section": "Claude Desktop 图形接入：沿用 ETH 数据采购案例",
+      "purpose": "本步骤将 Mandate 加入桌面聊天软件的本地工具列表。Claude Desktop、Claude Code 与 claude.ai 网页端使用不同的接入配置，不能互相替代。",
+      "operation": [
+        "在 macOS 上打开已安装并登录的 Claude Desktop，使用聊天模式。点击屏幕顶部 Claude 菜单中的 Settings（设置），在 This computer 分组中选择 Extensions（扩展），再点击 Advanced settings（高级设置）。配图为 Claude Desktop 2.42304.0 的真实界面。",
+        "本例需要第 07 步准备好的 case-agent.json、对应的私有连接文件，以及 output/desktop/mandate-wallet-0.1.0.mcpb。当前扩展面向 macOS 测试环境；Claude 内置 Node 须为 24.2 至 24.x。扩展不是远程连接器，不应在 Connectors 的 URL 表单中填写 localhost 或 MCPB 文件路径。"
+      ],
+      "result": "应进入包含 Install extension 按钮的高级设置页面。若组织策略禁止自定义扩展，应请管理员按组织规则处理。",
+      "en": {
+        "title": "Open Claude Desktop extension settings",
+        "purpose": "Use the local extension route in Claude Desktop Chat, separately from Claude Code and remote web connectors.",
+        "operation": "Open Claude → Settings → This computer → Extensions → Advanced settings. Prepare the MCPB, fixed Agent profile and matching private connection file from step 07. This macOS test extension requires Node 24.2–24.x.",
+        "result": "Find Install extension. Follow organization policy if custom extensions are disabled."
+      },
+      "image": "claude-desktop-extensions.png",
+      "crop": [
+        0,
+        0,
+        2540,
+        1330
+      ],
+      "source": "claude-gui",
+      "marks": [
+        [
+          12,
+          1140,
+          310,
+          88,
+          "1"
+        ],
+        [
+          1320,
+          505,
+          400,
+          80,
+          "2"
+        ]
+      ]
+    },
+    {
+      "id": "09.2",
+      "title": "选择本地 Mandate 扩展包",
+      "section": "Claude Desktop 图形接入：沿用 ETH 数据采购案例",
+      "purpose": "本步骤将已经打包的 MCP 服务交给 Claude 识别，使用者无需编辑 JSON 配置或设置终端环境变量。",
+      "operation": [
+        "在高级设置页面点击 Install extension（安装扩展），在系统文件选择器中选中 mandate-wallet-0.1.0.mcpb。macOS 用户也可以将该文件拖入 Extensions 页面。请使用项目交付的原始文件，不要选择合约源码 ZIP 或手册源包。",
+        "选中文件后，Claude 应展示扩展信息及安装确认。扩展未上架官方目录；安装前应核对名称、版本、来源和交付摘要。该包包含合并后的 Gateway 服务代码，不包含任何账户配置、连接凭据、数据库或签名私钥。"
+      ],
+      "result": "应看到 Mandate Wallet 的扩展信息。选中文件或显示安装确认，均不表示已接通账户或取得付款权限。",
+      "en": {
+        "title": "Select the Mandate MCPB file",
+        "purpose": "Import the packaged local server without editing JSON or terminal environment variables.",
+        "operation": "Click Install extension and choose mandate-wallet-0.1.0.mcpb from output/desktop. Check its name, version, source and delivery hash before installing. Do not select the contract ZIP or manual source ZIP.",
+        "result": "Claude should identify Mandate Wallet. File selection alone does not connect an account."
+      },
+      "note": "界面中的开发者提示属于 Claude 本身；本教程不要求关闭更新、工具审批或其他安全设置。",
+      "image": "claude-desktop-advanced.png",
+      "crop": [
+        0,
+        0,
+        2450,
+        1345
+      ],
+      "source": "claude-gui",
+      "marks": [
+        [
+          565,
+          1100,
+          275,
+          90,
+          "1"
+        ]
+      ]
+    },
+    {
+      "id": "09.3",
+      "title": "审核扩展将提供的工具",
+      "section": "Claude Desktop 图形接入：沿用 ETH 数据采购案例",
+      "purpose": "本步骤让使用者在安装前了解扩展的能力及资金边界。安装本地扩展会允许运行 MCP 程序，但并不代替账户所有者的链上授权。",
+      "operation": [
+        "在安装确认中核对名称 Mandate Wallet、版本 0.1.0 及发布者 Mandate Labs，并阅读工具和程序说明。扩展提供查询上下文、查询服务、获取报价、执行或恢复采购、查询任务、读取回执、准备授权请求和准备撤销请求等八项工具。",
+        "需要特别区分 mandate_get_context 与 mandate_call_service：前者只读，后者可能在已批准会话中支付测试资产。只有理解并接受扩展能力后才确认安装。管理钱包继续在 Rabby 中独立审批；本教程不要求向 Claude 提供 owner 私钥。"
+      ],
+      "result": "安装后应进入扩展详情或配置页面。此时先填写连接文件，不应直接要求 Claude 采购。",
+      "en": {
+        "title": "Review the extension capabilities",
+        "purpose": "Review the local program and its eight tools before granting access.",
+        "operation": "Verify Mandate Wallet 0.1.0 by Mandate Labs and review the tools. mandate_get_context is read-only; mandate_call_service can spend test assets within the approved session. Owner approval remains in Rabby.",
+        "result": "Proceed to configuration after installation; do not purchase yet."
+      },
+      "note": "本页说明安装审核要求；没有连接状态或工具结果时，不应将其记为实际采购验收。",
+      "reference": [
+        {
+          "heading": "八项工具与本例用途"
+        },
+        {
+          "table": [
+            [
+              "工具",
+              "在本例中的用途"
+            ],
+            [
+              "mandate_get_context",
+              "付款前核对身份和额度。"
+            ],
+            [
+              "mandate_search_services",
+              "查找服务元数据。"
+            ],
+            [
+              "mandate_quote_service",
+              "获取当前付款条款。"
+            ],
+            [
+              "mandate_call_service",
+              "执行或恢复已批准采购。"
+            ],
+            [
+              "mandate_get_task",
+              "核对执行状态。"
+            ],
+            [
+              "mandate_get_receipt",
+              "读取付款和交付依据。"
+            ],
+            [
+              "mandate_request_authorization",
+              "准备请求，另由 owner 审批。"
+            ],
+            [
+              "mandate_request_revoke",
+              "准备撤销请求，另由 owner 审批。"
+            ]
+          ]
+        },
+        {
+          "p": "对照依据为随包 manifest；此表不是已安装扩展的界面截图。"
+        }
+      ]
+    },
+    {
+      "id": "09.4",
+      "title": "在配置界面选择两个连接文件",
+      "section": "Claude Desktop 图形接入：沿用 ETH 数据采购案例",
+      "purpose": "本步骤将桌面扩展绑定到第 07 步确认的固定任务。文件选择只解决接入问题，授权范围仍由原有会话决定。",
+      "operation": [
+        "在扩展配置中，将 Agent profile (case-agent.json) 设置为第 07 步的配置文件，将 Connection file (PRIVATE_CONNECTION.json) 设置为与该配置摘要匹配的私有连接文件。两个字段都选择本机文件的绝对路径；无需把文件内容复制到聊天窗口。随后保存配置并启用扩展。",
+        "私有连接文件应仅允许文件所有者读写，权限为 0600；通常由部署人员事先设置。case-agent.json 应继续引用原有会话签名器和订单数据库，不要将配置单独搬到下载目录。修改网页中的当前任务不会自动更新此文件，后续更换任务仍须按第 07 步同步并重启扩展。"
+      ],
+      "result": "扩展应启动成功且无配置错误。若提示 Node 版本、凭据权限或身份不匹配，应先修正；安装成功不代表会话仍然有效。",
+      "en": {
+        "title": "Select the two connection files",
+        "purpose": "Bind the extension to the fixed task already checked in step 07.",
+        "operation": "Select the absolute paths for Agent profile and Connection file in the extension configuration. Keep the profile beside its existing signers and order database. The connection file must be mode 0600 and match the profile hash. Save and enable the extension.",
+        "result": "Resolve startup errors before proceeding. Installation does not renew an expired session."
+      },
+      "note": "连接文件用于本机鉴权。工具结果中的任务、报价和服务数据会进入 Claude 对话；连接令牌与私钥不作为工具结果返回。",
+      "reference": [
+        {
+          "heading": "两个配置字段应选择什么"
+        },
+        {
+          "table": [
+            [
+              "扩展字段",
+              "应选择的文件"
+            ],
+            [
+              "Agent profile (case-agent.json)",
+              "第 07 步核对后的固定任务配置，继续引用原签名器与订单数据库。"
+            ],
+            [
+              "Connection file (PRIVATE_CONNECTION.json)",
+              "与该配置摘要一致的 0600 私有连接文件，其中保存 connectionToken。"
+            ]
+          ]
+        },
+        {
+          "heading": "需要保留的原始关系"
+        },
+        {
+          "p": "case-agent.json → 已批准任务和会话 → 原有签名器与数据库。连接文件的令牌必须与配置中的 credentialSHA256 匹配。"
+        },
+        {
+          "p": "扩展读取本机文件。不要把连接文件上传至对话，也不要选择 owner 私钥。此处为字段对照，尚未记录实际配置界面。"
+        }
+      ]
+    },
+    {
+      "id": "09.5",
+      "title": "在聊天界面检查 Mandate 工具",
+      "section": "Claude Desktop 图形接入：沿用 ETH 数据采购案例",
+      "purpose": "本步骤确认 Claude 的当前对话实际加载了扩展。设置页面显示已安装，只说明扩展已存在，仍须检查对话中的工具是否可用。",
+      "operation": [
+        "返回 Claude 聊天界面并新建对话，点击输入框旁的 ＋，打开 Connectors（连接器）。查找 Mandate Wallet，并确认本次对话能够使用该扩展。进入其工具列表时，应能看到 mandate_get_context、mandate_quote_service、mandate_call_service 等八项工具。不同版本也可能将此入口显示为工具或连接器管理。",
+        "初次调用时，Claude 可能要求批准具体工具。核对工具名称和参数后再确认；不需要为演示启用永久自动批准。若列表中没有 Mandate，应回到 Extensions 检查配置和启用状态，必要时完全退出并重新打开 Claude Desktop，再建立新对话。"
+      ],
+      "result": "当前对话应能发现八项 Mandate 工具。接下来先执行只读身份核对，不直接批准所有采购调用。",
+      "en": {
+        "title": "Check the tools in the chat",
+        "purpose": "Verify that the current conversation can use the installed extension.",
+        "operation": "Start a new Claude chat. Open + → Connectors and find Mandate Wallet. Inspect its eight tools. Review individual tool approvals when prompted; permanent auto-approval is not required. Restart Desktop if a newly configured server is missing.",
+        "result": "Confirm tool availability, then make a read-only call."
+      },
+      "note": "配图展示 ＋ 和 Connectors 的入口，尚未配置 Mandate，因此不展示已连接状态。",
+      "image": "claude-desktop-chat-menu.png",
+      "crop": [
+        0,
+        0,
+        1340,
+        850
+      ],
+      "source": "claude-gui",
+      "marks": [
+        [
+          30,
+          120,
+          95,
+          92,
+          "1"
+        ],
+        [
+          52,
+          460,
+          425,
+          77,
+          "2"
+        ]
+      ]
+    },
+    {
+      "id": "09.6",
+      "title": "通过 Claude 对话核对账户与任务",
+      "section": "Claude Desktop 图形接入：沿用 ETH 数据采购案例",
+      "purpose": "本步骤通过一次不付款的工具调用确认网络、智能账户和授权，随后即可在同一对话中执行 ETH 简报案例。",
+      "operation": [
+        "将右侧指令粘贴到 Claude 输入框并发送。Claude 应实际调用 mandate_get_context；如出现工具批准提示，核对名称和空参数后按本次调用批准。展开工具返回内容，将 chainId、wallet、mandateId、sessionId、预算与余额同 Mandate 工作区逐项核对。",
+        "本地主线应为 chainId 31337、有效会话和 0.15 USDC 总预算。实际可用额度随既有记录变化，初始钱包余额为 1.00 模拟 USDC，不能将余额写成授权额度。核对一致后，直接继续第 11 步，在同一 Claude 对话发送完整采购任务，并按第 12 至 20 步查看报价、恢复原订单、生成简报及撤销会话。"
+      ],
+      "result": "只有实际工具返回与工作区一致，才算完成接入。Claude 仅用文字声称已连接，或照抄手册数值，均不能作为成功依据。",
+      "en": {
+        "title": "Verify the account in a Claude chat",
+        "purpose": "Make one read-only call before using the same chat for the ETH brief case.",
+        "operation": "Send the prompt below and inspect the actual mandate_get_context result. Compare its network, wallet, task, session, budget and cash with the workspace. Approve only this call if prompted. Continue at step 11 for the purchase, recovery, brief and revocation.",
+        "result": "A matching real tool response proves connection. Plain claims or copied example values do not."
+      },
+      "prompt": "请仅调用 mandate_get_context，报告当前 chainId、wallet、mandateId、sessionId、会话状态、剩余采购预算和钱包代币余额。现在不要报价、付款或修改授权。若无法调用该工具，请明确说明接入失败。",
+      "nextId": "11",
+      "image": "claude-desktop-readonly-draft.png",
+      "crop": [
+        0,
+        0,
+        1340,
+        260
+      ],
+      "source": "claude-gui",
+      "marks": [
+        [
+          1250,
+          157,
+          70,
+          80,
+          "1"
+        ]
+      ],
+      "note": "右图为未发送的指令草稿，用于说明输入框与发送按钮的位置；没有实际工具调用或返回结果。"
+    },
+    {
+      "id": "10",
+      "title": "通过只读工具核对 Agent 身份",
+      "section": "完整案例：Agent 采购 ETH 数据并撰写简报",
+      "purpose": "这一步验证接入是否真正完成，并在付款前发现旧任务、错误网络或错误会话。服务显示 connected 只能说明进程连通，不能证明 Agent 将使用正确的采购权限。",
+      "operation": [
+        "向已接入的 Agent 发送本步骤的只读指令。Agent 应调用 mandate_get_context，并报告 chainId、wallet、mandateId、sessionId、授权状态、剩余预算及钱包余额。将这些字段与网页逐项核对，特别是第 06 步确认的任务和会话。",
+        "如果 Agent 表示工具不可用，应先检查宿主是否加载了 Mandate 工具，再检查 Node 路径、配置路径、启动环境与 Gateway 状态。如果身份不一致，应停止采购并修正第 07 步的绑定；不要通过要求 Agent 绕过检查来继续。"
+      ],
+      "result": "本例应读到指定本地链、已批准任务及有效会话。0.15 USDC 是授权预算，1.00 模拟 USDC 是初始代币余额，两者必须分别报告。",
+      "prompt": "请仅调用 mandate_get_context，报告当前 chainId、wallet、mandateId、sessionId、会话状态、剩余采购预算和钱包代币余额。现在不要报价、付款或修改授权。若无法调用该工具，请明确说明接入失败。",
+      "en": {
+        "title": "Verify agent identity with a read-only call",
+        "purpose": "Prove that the tools are callable and that the host is using the intended network, account, task and session before any purchase.",
+        "operation": "Send the read-only prompt below. Compare mandate_get_context with the workspace, including the IDs approved in step 06. Resolve missing tools, paths or launch credentials first. Stop if the profile still points to an older task.",
+        "result": "Report the 0.15-USDC authorization separately from the initial 1.00 mock-USDC balance. No purchase should occur in this step."
+      }
+    },
+    {
+      "id": "11",
+      "title": "向 Agent 下达明确的采购任务",
+      "section": "完整案例：Agent 采购 ETH 数据并撰写简报",
+      "purpose": "这一步说明 Agent 应完成的工作及本次实际付款范围。链上预算为采购设置上限，具体任务指令则限定本例只购买 ETH 服务，避免将“允许采购”误解为“应采购全部服务”。",
+      "operation": [
+        "身份核对完成后，将本步骤的完整指令发送给 Agent。本例只允许向已批准 ETH 统计服务支付最多 0.01 USDC，BTC 服务保留未购买。最终简报应说明固定数据集的样本数、均值、实际费用、订单状态和来源限制，不得将演示数据写成实时市场分析。",
+        "正常步骤应由 Agent 经 MCP 发起，使用者无需在网页中再次点击同一服务的执行按钮。Web 工作区在本案例中主要承担授权审批和结果核验；其手动执行入口可用于排障，但不应造成新订单或替代本次 Agent 路径。"
+      ],
+      "result": "Agent 应理解要采购的资源、允许支付的金额和输出内容；任何需要新增服务、收款人或额度的情况都应停止并请求账户所有者处理。",
+      "prompt": "请使用 Mandate 获取当前任务已批准的 ETH 统计数据，并撰写一份中文简报。先核对上下文和最新报价，仅允许本次 ETH 采购付款，金额不得超过 0.01 USDC；不得采购 BTC、增加预算、延长授权或更换收款人。付款后若服务失败，沿用原 serviceId 和订单恢复，付款结果未确定时先对账。完成后报告数据集、样本数、均值、实际费用、付款/服务/结果状态及回执交易 hash，并说明固定测试数据和证据限制。",
+      "en": {
+        "title": "Give the agent a specific purchase task",
+        "purpose": "The task instruction narrows this exercise to one ETH purchase; the larger chain budget remains only a cap.",
+        "operation": "Ask the agent to buy the approved ETH response for at most 0.01 USDC and write a brief with the dataset, count, mean, actual cost, receipt and evidence limits. Leave BTC unpurchased. Use MCP for execution; do not also click the workspace run button.",
+        "result": "The agent must stop if it needs a new service, recipient or larger permission. Test data must not be described as live market data."
+      }
+    },
+    {
+      "id": "12",
+      "title": "由 Agent 查询并核对服务报价",
+      "section": "完整案例：Agent 采购 ETH 数据并撰写简报",
+      "purpose": "报价说明本次请求需要支付多少、支付给谁以及使用哪条链。读取报价不会付款，因此可以在执行前检查条款是否符合账户所有者批准的范围。",
+      "operation": [
+        "Agent 应从当前上下文选择 ETH 对应的 serviceId，并调用 mandate_quote_service。应报告报价为 0.01 USDC，核对资产、网络和收款人。若使用 mandate_search_services 查看目录，目录中的描述只能作为候选信息，不能增加本任务的服务权限。",
+        "网页“服务”页也可显示该服务的报价，右图用于定位相应信息。此处的网页截图并非 Agent 调用界面；在真实操作中，应在 Codex 或 Claude Code 的工具记录中确认报价调用，并以其返回条款为准。"
+      ],
+      "result": "只有报价与授权及第 11 步的金额限制一致，Agent 才可继续执行。超出 0.01 USDC 的报价应停止，不应因为单笔上限为 0.10 USDC 而自动接受。",
+      "image": "15-service-quote.png",
+      "crop": [
+        210,
+        390,
+        1040,
+        555
+      ],
+      "marks": [
+        [
+          262,
+          593,
+          94,
+          40,
+          "1"
+        ],
+        [
+          366,
+          593,
+          116,
+          40,
+          "2"
+        ]
+      ],
+      "zoom": [
+        250,
+        530,
+        475,
+        140
+      ],
+      "en": {
+        "title": "Have the agent verify the quote",
+        "purpose": "A quote identifies the price, chain, asset and recipient without paying. Check it before executing the service.",
+        "operation": "The agent selects the ETH serviceId from context and calls mandate_quote_service. Verify 0.01 USDC and the approved recipient, chain and asset. Catalog discovery does not expand permission. The workspace image shows the corresponding service information, not a host tool-call screen.",
+        "result": "Proceed only if the quote also satisfies the stricter 0.01-USDC instruction, even though the chain per-payment cap is 0.10 USDC."
+      }
+    },
+    {
+      "id": "13",
+      "title": "由 Agent 执行采购并识别服务异常",
+      "section": "完整案例：Agent 采购 ETH 数据并撰写简报",
+      "purpose": "这一步使用已批准的会话支付服务费用，并说明付款与服务交付的区别。Agent 经 mandate_call_service 请求采购，Gateway 在付款签名发出前完成付款登记和预算预留。",
+      "operation": [
+        "条款核对通过后，Agent 对相同 ETH serviceId 调用 mandate_call_service。当前案例的受控本地商户会在首次收款后故意返回 HTTP 500，以演示异常恢复；普通商户不一定出现此错误。已获授权的逐笔采购由会话执行，不要求使用者再次批准同一笔管理钱包交易。",
+        "出现 paid / failed / unchecked 时，应解释为“付款已确认，服务暂未交付，结果尚未检查”。Agent 应保留原订单、nonce、结算交易 hash 和数据库，不能将 HTTP 错误解释为未付款，也不能立即创建替代采购。"
+      ],
+      "result": "本例首次异常后的已付款金额应为 0.01 USDC，相应预算占用保留。服务尚未返回，因此暂不能生成数据结论。",
+      "image": "16-paid-service-failed.png",
+      "crop": [
+        235,
+        342,
+        500,
+        620
+      ],
+      "marks": [
+        [
+          262,
+          478,
+          83,
+          40,
+          "2"
+        ],
+        [
+          262,
+          572,
+          446,
+          128,
+          "1"
+        ]
+      ],
+      "source": "prior-local",
+      "mainHeight": 415,
+      "en": {
+        "title": "Run the purchase and interpret the service error",
+        "purpose": "The agent calls mandate_call_service within its approved session. Registration and budget reservation precede release of the payment signature.",
+        "operation": "The controlled local merchant deliberately returns HTTP 500 after its first payment. Interpret paid / failed / unchecked as a confirmed payment with delivery outstanding. Preserve the same order, nonce, settlement hash and database; an HTTP error is not evidence of nonpayment.",
+        "result": "The 0.01-USDC payment remains recorded and occupied. Do not invent a data result or make a replacement purchase."
+      }
+    },
+    {
+      "id": "14",
+      "title": "沿用原订单恢复 ETH 数据交付",
+      "section": "完整案例：Agent 采购 ETH 数据并撰写简报",
+      "purpose": "这一步用已经支付的原订单取回服务结果，避免网络或商户异常导致重复付款。恢复的目标是完成交付，而不是重新购买相同数据。",
+      "operation": [
+        "如果 Agent 尚未自动恢复，可发送本步骤的补充指令。Agent 应在核对原付款状态后，对原 ETH serviceId 再次调用 mandate_call_service；Gateway 使用原订单记录恢复服务。若付款结果仍不确定，应先对账，并继续保留预算。",
+        "恢复后，Agent 应用 mandate_get_task 和 mandate_get_receipt 交叉核对付款、服务及结果状态，并比较恢复前后的结算交易 hash。使用者也可以在网页“服务”页查看对应订单，但不需要重新报价后创建另一笔付款。"
+      ],
+      "result": "本例应变为 paid / returned / valid，结算交易 hash 保持不变，累计费用仍为 0.01 USDC。本步骤截图为既有本地订单恢复后的状态，截图中的地址与 hash 不应照抄为本次运行结果。",
+      "image": "17-same-order-recovered.png",
+      "crop": [
+        235,
+        340,
+        500,
+        620
+      ],
+      "marks": [
+        [
+          262,
+          567,
+          444,
+          128,
+          "1"
+        ]
+      ],
+      "mainHeight": 415,
+      "prompt": "请恢复刚才已经付款的 ETH 原订单。保持原 serviceId、订单、nonce 和存储不变，先核对付款状态，再取回服务结果。请比较恢复前后的结算 hash，并确认累计付款没有增加。",
+      "en": {
+        "title": "Recover delivery using the original paid order",
+        "purpose": "Resume delivery with the existing payment instead of buying the same data again.",
+        "operation": "Reconcile first if payment is uncertain; otherwise call mandate_call_service again with the original ETH serviceId and unchanged order store. Check mandate_get_task and mandate_get_receipt, then compare settlement hashes before and after recovery.",
+        "result": "Expect paid / returned / valid, the same settlement hash and a total cost of 0.01 USDC. Screenshot hashes are historical examples, not new run results."
+      }
+    },
+    {
+      "id": "15",
+      "title": "让 Agent 根据已验证摘要撰写简报",
+      "section": "完整案例：Agent 采购 ETH 数据并撰写简报",
+      "purpose": "采购只有在结果被用于原任务时才完成其用途。这一步要求 Agent 将已验证的数据摘要写入简报，同时保留费用、订单与来源说明，使读者能够核对结论依据。",
+      "operation": [
+        "Agent 应使用工具返回的 validatedResultSummary 组织简报。当前固定测试数据集 mandate-fixed-fixture-v2 的 ETH 摘要为 3 个样本、均值 110；该数值仅用于检验流程，不能解释为 ETH 的当前价格或投资信号。若工具未返回摘要，Agent 应报告缺失，不能按本手册示例补造数据。",
+        "简报还应列明实际支付 0.01 USDC、paid / returned / valid 三种状态，以及当前运行的回执 hash。本步骤附列此前 Codex 实测记录中的摘要字段，用于说明完成结果的形式，不是本次新采购的证明。"
+      ],
+      "result": "应得到一份包含数据与采购依据的完整简报。只有文字声称成功还不够，下一步须在工作区核对同一任务的实际记录。",
+      "code": "Historical Codex result (2026-10-14)\nvalidatedResultSummary:\n  datasetId: mandate-fixed-fixture-v2\n  asset: ETH\n  count: 3\n  mean: 110\npaymentState: paid\nserviceState: returned\nresultState: valid\nvalue: 10000  (0.01 USDC)",
+      "en": {
+        "title": "Write the brief from the validated result",
+        "purpose": "Use the purchased result to finish the task, with enough cost and receipt information for another reader to check it.",
+        "operation": "Use validatedResultSummary. The fixed ETH fixture has three observations and mean 110; it is not a current ETH price. If the live tool response lacks the summary, report that gap instead of copying the example. Include the actual 0.01-USDC payment, three outcome states and current receipt hash.",
+        "result": "Produce a complete brief, then verify it against the same task in the workspace. The historical Codex excerpt below is an example format, not a newly executed purchase."
+      }
+    },
+    {
+      "id": "16",
+      "title": "在工作区核对简报对应的付款记录",
+      "section": "完整案例：Agent 采购 ETH 数据并撰写简报",
+      "purpose": "这一步将 Agent 的文字报告与实际订单和链上记录对应，避免仅根据模型叙述判断是否付款成功或是否重复扣款。",
+      "operation": [
+        "回到浏览器，选择与第 10 步 Agent 上下文一致的任务，进入“付款”页面。核对 ETH 订单的服务 ID、登记交易、结算交易及三类状态。结算 hash 应与 Agent 回执一致；本地链交易应通过本地 RPC 核对，不能在公共区块浏览器查询。",
+        "在没有其他活动、初始余额为 1.00 USDC 的本例中，一次 ETH 采购后余额应为 0.99，已确认付款和已用及预留额度均为 0.01，未占用预算为 0.14。授权到期时，这 0.14 仍不属于可立即执行的权限；Gas 与上述 USDC 金额分别记录。"
+      ],
+      "result": "Agent 报告、付款表格及交易记录应相互一致，恢复后未出现第二笔费用。BTC 步骤应仍为尚未采购。",
+      "image": "18-payment-record.png",
+      "crop": [
+        210,
+        225,
+        1040,
+        705
+      ],
+      "marks": [
+        [
+          237,
+          331,
+          1010,
+          115,
+          "1"
+        ],
+        [
+          260,
+          751,
+          965,
+          88,
+          "2"
+        ]
+      ],
+      "zoom": [
+        250,
+        740,
+        980,
+        110
+      ],
+      "en": {
+        "title": "Reconcile the brief with workspace payment records",
+        "purpose": "Match the agent’s narrative to durable order and chain records instead of treating model prose as payment evidence.",
+        "operation": "Select the same task and compare service ID, registration, settlement and outcome states with the agent receipt. In this isolated example, one 0.01-USDC purchase changes the initial balance from 1.00 to 0.99; occupied is 0.01 and unused authorization is 0.14. Gas is separate.",
+        "result": "The records must agree, recovery must not add a payment, and BTC must still be unpurchased. Expired unused authorization cannot be spent."
+      }
+    },
+    {
+      "id": "17",
+      "title": "导出可供复核的采购证据",
+      "section": "完整案例：Agent 采购 ETH 数据并撰写简报",
+      "purpose": "这一步保存任务的验证材料，供使用者在不依赖 Agent 解释的情况下检查付款和记录。证据包与简报用途不同：前者用于核验，后者用于传达结果。",
+      "operation": [
+        "在同一任务的“证据”页面选择 ETH 步骤，确认部署人员已提供独立验证配置。默认不披露请求和结果正文；只有管理员已批准且使用者确认适合公开时，才勾选相应正文。本例为固定公开测试数据，可以按批准范围展示。",
+        "选择“导出证据包”保存 JSON，再选择“运行独立检查”。Agent 的 mandate_get_receipt 返回脱敏回执，不能把该回执当作包含全部披露与信任配置的完整证据包；需要完整验证时应使用工作区或 SDK 的证据导出流程。"
+      ],
+      "result": "应保存证据 JSON，并取得独立检查报告。共享前应核对披露范围，不能把连接凭据或生产 RPC 密钥附入材料。",
+      "image": "19-evidence-options.png",
+      "crop": [
+        235,
+        400,
+        1010,
+        560
+      ],
+      "marks": [
+        [
+          263,
+          757,
+          960,
+          110,
+          "2"
+        ],
+        [
+          262,
+          886,
+          83,
+          40,
+          "2"
+        ],
+        [
+          353,
+          886,
+          94,
+          40,
+          "2"
+        ]
+      ],
+      "zoom": [
+        250,
+        748,
+        980,
+        190
+      ],
+      "en": {
+        "title": "Export evidence for review",
+        "purpose": "Preserve verification material that can be checked separately from the agent’s brief. A redacted MCP receipt is not a complete evidence bundle.",
+        "operation": "Select the ETH step on Evidence. Keep bodies hidden by default, or disclose only within the administrator-approved public-data policy. Export the JSON and run independent checks with the separately trusted verification profile.",
+        "result": "Save the evidence and report, with no connection credential or production RPC key in the shared material."
+      }
+    },
+    {
+      "id": "18",
+      "title": "解读检查报告并说明证明范围",
+      "section": "完整案例：Agent 采购 ETH 数据并撰写简报",
+      "purpose": "这一步确认哪些事项已经得到证据支持，以及哪些仍无法证明。即使付款和数据结果均已确认，也不能由此推断服务的 HTTPS 来源或全部历史活动都已验证。",
+      "operation": [
+        "阅读报告顶部的资金与记录检查结论，再核对 registration-and-authority、budget 和 payment。请求或结果正文未披露时，相应项可能显示 incomplete；在本例获准披露公开正文后，result 可得到进一步验证。",
+        "若 https-source 或 history-completeness 仍为 incomplete，应在简报的来源说明中保留这一限制。本例的独立进程与 Gateway 由同一系统管理员控制，不能据此声称已经实现恶意宿主隔离或完整外部公证。"
+      ],
+      "result": "简报应明确区分付款已确认、服务已返回、结果已检查，以及尚缺少的来源与历史证明。总体 incomplete 不应改写为全面验证通过。",
+      "image": "21-disclosed-report.png",
+      "crop": [
+        235,
+        160,
+        1010,
+        835
+      ],
+      "marks": [
+        [
+          262,
+          720,
+          960,
+          275,
+          "2"
+        ]
+      ],
+      "zoom": [
+        260,
+        724,
+        960,
+        270
+      ],
+      "en": {
+        "title": "Interpret what the report proves",
+        "purpose": "Separate verified financial and record facts from missing HTTPS-origin or complete-history guarantees.",
+        "operation": "Inspect registration-and-authority, budget and payment. Body disclosure affects request/result checks. Even when result is confirmed, https-source or history-completeness can remain incomplete. A separate process under the same OS administrator does not prove hostile-host isolation.",
+        "result": "Keep those limits in the final brief. Do not describe an overall incomplete report as fully verified."
+      }
+    },
+    {
+      "id": "19",
+      "title": "在任务结束后撤销 Agent 会话",
+      "section": "完整案例：Agent 采购 ETH 数据并撰写简报",
+      "purpose": "这一步终止该会话的后续付款权限，使采购授权不会因为 Agent 工具仍保持连接而继续有效。退出软件或删除 MCP 配置都不能替代链上撤销。",
+      "operation": [
+        "在“授权”页面确认当前任务与会话，选择“撤销会话”。也可以让 Agent 调用 mandate_request_revoke 生成未签署请求，再由账户所有者在工作区审核；Agent 不会代为完成管理钱包签名。",
+        "核对撤销对象、任务、网络及已有 0.01 USDC 占用后，在 Rabby 中确认撤销交易。本步骤的采用历史 Rabby 实测截图，用于展示签署位置；实际交易必须以本次工作区生成的参数为准。等待交易确认并刷新状态，结果不确定时核对原请求。"
+      ],
+      "result": "会话应显示已撤销，既有付款和订单仍保留。撤销不自动退款，也不会删除已经生成的简报。",
+      "image": "history-revoke-rabby.png",
+      "crop": [
+        440,
+        0,
+        400,
+        900
+      ],
+      "marks": [
+        [
+          458,
+          15,
+          364,
+          80,
+          "1"
+        ],
+        [
+          460,
+          831,
+          246,
+          50,
+          "2"
+        ]
+      ],
+      "panels": [
+        {
+          "label": "完整交易参数（原图上部）",
+          "crop": [
+            440,
+            0,
+            400,
+            510
+          ],
+          "height": 285
+        },
+        {
+          "label": "账户、Gas 与确认按钮（原图下部）",
+          "crop": [
+            440,
+            732,
+            400,
+            168
+          ],
+          "height": 97
+        }
+      ],
+      "source": "history",
+      "mainHeight": 415,
+      "en": {
+        "title": "Revoke the session when the task is complete",
+        "purpose": "Stop future payments from the session. Closing the agent or deleting its MCP entry does not revoke onchain authority.",
+        "operation": "Select Revoke session for the current task, or let mandate_request_revoke prepare the unsigned request for owner review. Confirm the exact revocation in Rabby and wait for chain reconciliation. The wallet image is a dated historical reference.",
+        "result": "The session must be revoked while existing payments and order records remain intact. Revocation does not refund the service."
+      }
+    },
+    {
+      "id": "20",
+      "title": "核验撤销结果并结束案例",
+      "section": "完整案例：Agent 采购 ETH 数据并撰写简报",
+      "purpose": "最后一步验证账户所有者能够停止后续采购，并确认任务成果与历史记录仍可查询。它检验的是权限是否终止，而不是软件连接是否断开。",
+      "operation": [
+        "让 Agent 再次调用 mandate_get_context，确认当前会话已撤销。若此前授权已到期，应按其实际状态报告，不能把自然到期当作本次撤销已确认。回到网页检查尚未采购的 BTC 服务，该会话不应再提供正常的新付款路径。无需为演示拒绝而重复提交付费请求。",
+        "已有 ETH 付款订单仍可查询；对于已付款但尚未交付的订单，恢复服务不等同于新付款，因此不能仅凭旧订单仍可读取就判断撤销失败。保存简报、回执与证据后，可断开工作区并关闭自己的临时进程，保留所需数据库和文件。"
+      ],
+      "result": "案例完成的标志是：Agent 已通过 MCP 获得 ETH 结果并生成简报，实际只支付一次 0.01 USDC，记录可核对，且该会话的后续付款权限已终止。",
+      "image": "history-revoked-rejected.png",
+      "crop": [
+        245,
+        175,
+        1005,
+        795
+      ],
+      "marks": [
+        [
+          1145,
+          200,
+          100,
+          30,
+          "1"
+        ],
+        [
+          785,
+          682,
+          431,
+          67,
+          "1"
+        ]
+      ],
+      "zoom": [
+        780,
+        680,
+        435,
+        74
+      ],
+      "source": "history",
+      "en": {
+        "title": "Verify revocation and finish the case",
+        "purpose": "Check that the owner stopped future purchasing while preserving the delivered result and historical records.",
+        "operation": "Call mandate_get_context again and distinguish revoked from expired. Inspect the unpurchased BTC step; do not submit another payment merely to demonstrate rejection. Existing paid-order reads or delivery recovery are not new payments. Save the brief, receipt and evidence before disconnecting.",
+        "result": "The finished case has an MCP-produced ETH brief, one 0.01-USDC payment, reconcilable records and a terminated session."
+      }
+    }
+  ]
+}

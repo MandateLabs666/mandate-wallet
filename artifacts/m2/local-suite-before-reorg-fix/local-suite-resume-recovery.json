@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "chainId": 1337,
+  "safeMode": true,
+  "publicGatePassed": false,
+  "entryPoint": "0x5c74c94173F05dA1720953407cbb920F3DF9f887",
+  "policyId": "0x60a3ec7c7ec5ff83a4388f82d9e351f1882c987f19ec230ad362fa87f38e3fe4",
+  "interruptedAfterSession": true,
+  "sameOperationsAfterRestart": true,
+  "completedRerunDidNotConsumeNonce": true,
+  "partialNonce": "2",
+  "finalNonce": "3",
+  "failureSpend": "0",
+  "finalSpend": "150000",
+  "finalInputBalance": "850000",
+  "finalAllowance": "0",
+  "observations": [
+    "local-suite-resume-partial.json",
+    "local-suite-resume-complete.json",
+    "local-suite-resume-rechecked.json"
+  ],
+  "sourceSHA256": {
+    "echo/experiments/run-public.ts": "231b0060441ad2ca180a656b55ada9c4a165af04cafbdd2d378685ab4bc07484",
+    "echo/experiments/failed-spend.ts": "016dc03d323e6ea1dd2ffa07647713e39bd1000276ba09176bc4acbbabe43a34",
+    "echo/experiments/resume-evidence.ts": "138a2977d674827cce9b94cee83cf2873833a219806bb025737c112568c0d3bc",
+    "echo/infra/local-geth.yaml": "4f6e37f82fed6cf1b042f4526caa0ee5e9bb83cd47746adc82cf7bb520556804"
+  },
+  "resources": "local-suite-resume-resources.json",
+  "observedAt": "2026-10-14T09:41:42.131552+00:00"
+}

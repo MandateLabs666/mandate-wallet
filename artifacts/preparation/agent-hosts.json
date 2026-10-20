@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "preparation.agent-hosts.v1",
+  "recordedAt": "2026-10-14T10:51:05.472404+00:00",
+  "kind": "read_only_cli_capability_inventory",
+  "scriptSHA256": "8e9261c4d0451f57d818b808dc07ac15f746132dc3ff9671ee17f93cc41cb807",
+  "hosts": {
+    "codex": {
+      "installed": true,
+      "executable": "/opt/homebrew/bin/codex",
+      "resolvedExecutable": "/opt/homebrew/lib/node_modules/@openai/codex/bin/codex.js",
+      "version": "codex-cli 0.162.1",
+      "helpAdvertises": {
+        "stdio": true,
+        "http": true,
+        "environmentVariables": true,
+        "explicitScopeOption": false
+      },
+      "observations": [
+        {
+          "args": [
+            "--version"
+          ],
+          "exitCode": 0,
+          "stdoutSHA256": "1df57fdc934f35bbd09e26308fbbd895698596f3be833ace1027c6bcfd2f81e2",
+          "stderrPresent": true
+        },
+        {
+          "args": [
+            "mcp",
+            "add",
+            "--help"
+          ],
+          "exitCode": 0,
+          "stdoutSHA256": "fbfb2ad6745ccda1de93b40e4aa928965fa01f2d57d191ac22ae93c526a6d96d",
+          "stderrPresent": true
+        }
+      ],
+      "mandateInstalledOrCalledByThisCheck": false
+    },
+    "claude": {
+      "installed": true,
+      "executable": "/Users/jeff/.local/bin/claude",
+      "resolvedExecutable": "/Users/jeff/.local/share/claude/versions/2.1.296",
+      "version": "2.1.296 (Claude Code)",
+      "helpAdvertises": {
+        "stdio": true,
+        "http": true,
+        "environmentVariables": true,
+        "explicitScopeOption": true
+      },
+      "observations": [
+        {
+          "args": [
+            "--version"
+          ],
+          "exitCode": 0,
+          "stdoutSHA256": "ced06c95bb4c0780504b700880ceea37cd764283d2be9d3ea2555683183207ea",
+          "stderrPresent": false
+        },
+        {
+          "args": [
+            "mcp",
+            "add",
+            "--help"
+          ],
+          "exitCode": 0,
+          "stdoutSHA256": "3809ec89e16717bc9e3f89f7df1d44b09442b156b83cf27d539b276988a0efa3",
+          "stderrPresent": false
+        }
+      ],
+      "mandateInstalledOrCalledByThisCheck": false
+    }
+  },
+  "boundaries": {
+    "configurationRead": false,
+    "configurationWritten": false,
+    "agentSessionStarted": false,
+    "credentialsRead": false,
+    "modelCallMade": false,
+    "transactionOrSignatureMade": false,
+    "T6_06Accepted": false
+  },
+  "documentation": [
+    "https://learn.chatgpt.com/docs/extend/mcp?surface=cli",
+    "https://code.claude.com/docs/en/mcp"
+  ]
+}

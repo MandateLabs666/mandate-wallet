@@ -1,0 +1,116 @@
+{
+  "cases": [
+    {
+      "revision": "created-before-r1",
+      "scenario": "create",
+      "expectation": "before",
+      "exitCode": 0,
+      "expectedUI": false,
+      "bugReproduced": true,
+      "grantTargetsCreatedTask": false,
+      "newPublicTransactions": 0
+    },
+    {
+      "revision": "created-create-r1",
+      "scenario": "create",
+      "expectation": "after",
+      "exitCode": 0,
+      "expectedUI": true,
+      "bugReproduced": false,
+      "grantTargetsCreatedTask": true,
+      "newPublicTransactions": 0
+    },
+    {
+      "revision": "created-create-task-r1",
+      "scenario": "create-task",
+      "expectation": "after",
+      "exitCode": 0,
+      "expectedUI": true,
+      "bugReproduced": false,
+      "grantTargetsCreatedTask": null,
+      "newPublicTransactions": 0
+    },
+    {
+      "revision": "created-create-return-r1",
+      "scenario": "create-return",
+      "expectation": "after",
+      "exitCode": 0,
+      "expectedUI": true,
+      "bugReproduced": false,
+      "grantTargetsCreatedTask": null,
+      "newPublicTransactions": 0
+    },
+    {
+      "revision": "created-create-review-r1",
+      "scenario": "create-review",
+      "expectation": "after",
+      "exitCode": 0,
+      "expectedUI": true,
+      "bugReproduced": false,
+      "grantTargetsCreatedTask": null,
+      "newPublicTransactions": 0
+    },
+    {
+      "revision": "created-review-r1",
+      "scenario": "review",
+      "expectation": "after",
+      "exitCode": 0,
+      "expectedUI": true,
+      "bugReproduced": false,
+      "grantTargetsCreatedTask": null,
+      "newPublicTransactions": 0
+    },
+    {
+      "revision": "created-task-r1",
+      "scenario": "task",
+      "expectation": "after",
+      "exitCode": 0,
+      "expectedUI": true,
+      "bugReproduced": false,
+      "grantTargetsCreatedTask": null,
+      "newPublicTransactions": 0
+    },
+    {
+      "revision": "created-disconnect-r1",
+      "scenario": "disconnect",
+      "expectation": "after",
+      "exitCode": 0,
+      "expectedUI": true,
+      "bugReproduced": false,
+      "grantTargetsCreatedTask": null,
+      "newPublicTransactions": 0
+    },
+    {
+      "revision": "created-recover-r1",
+      "scenario": "recover",
+      "expectation": "after",
+      "exitCode": 0,
+      "expectedUI": true,
+      "bugReproduced": false,
+      "grantTargetsCreatedTask": null,
+      "newPublicTransactions": 0
+    },
+    {
+      "revision": "created-refresh-r1",
+      "scenario": "refresh",
+      "expectation": "after",
+      "exitCode": 0,
+      "expectedUI": true,
+      "bugReproduced": false,
+      "grantTargetsCreatedTask": null,
+      "newPublicTransactions": 0
+    },
+    {
+      "revision": "created-duplicate-r1",
+      "scenario": "duplicate",
+      "expectation": "after",
+      "exitCode": 0,
+      "expectedUI": true,
+      "bugReproduced": false,
+      "grantTargetsCreatedTask": null,
+      "newPublicTransactions": 0
+    }
+  ],
+  "passed": true,
+  "newPublicTransactions": 0
+}

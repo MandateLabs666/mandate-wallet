@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "reviewKind": "author-led fault injection and regression; not independent audit",
+  "findings": [
+    {
+      "id": "M7-F01",
+      "status": "fixed",
+      "issue": "Web and SDK startup parser exceptions could print a fragment of malformed private credential JSON to stderr.",
+      "beforeEvidence": "logging-before.json",
+      "fix": "Catch startup failures and emit application-owned diagnostic codes; omit parser/RPC exception bodies.",
+      "verification": "Four separate CLI process canary tests in tests-fixed.json; service, Web and SDK success-path regressions.",
+      "realCredentialExposureObserved": false
+    },
+    {
+      "id": "M7-F02",
+      "status": "fixed",
+      "issue": "A real reorg recovered payment but deduplicated an identical service outcome against the old chain context, causing DELIVERY_BEFORE_PAYMENT_CHECKPOINT.",
+      "beforeEvidence": ["reorg-before-tests.json", "reorg-verification-before.json", "recorder-before.json"],
+      "fix": "Include registration and settlement block hashes in outcome event identity, keeping the old signed prefix and appending a fresh service observation.",
+      "verification": ["reorg-evidence.json", "reorg-verification.json", "tests-fixed.json"],
+      "verifierRulesWeakened": false,
+      "newPublicTransactions": 0
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "recordedAt": "2026-10-19T10:31:44.168Z",
+  "chainId": 84532,
+  "wallet": "0xa794DAa86ff10920B75a4de3b0E752586e8703D2",
+  "observations": [
+    {
+      "rpc": "https://sepolia.base.org",
+      "status": "verified",
+      "transactions": [
+        {
+          "kind": "fund-usdc",
+          "hash": "0x3bb4b38d34ddea128a261e8c5da4ca28dfd2369f8671f2b4a718ed8c25ff61e2",
+          "block": "48318779",
+          "status": "success",
+          "canonicalAtRead": true,
+          "intentMatches": true,
+          "from": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+          "to": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+          "valueWei": "0",
+          "gasUsed": "62159",
+          "effectiveGasPrice": "7200000",
+          "logs": [
+            {
+              "address": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+              "eventName": "Transfer",
+              "args": {
+                "from": "0xaA987fC286434D205669814Ba46b1d8df824fB36",
+                "to": "0xa794DAa86ff10920B75a4de3b0E752586e8703D2",
+                "value": "150000"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "fund-gas",
+          "hash": "0x6ddf321b74a123e0ac7ee5007042c80dd667ac25a993f790622c258a91aebe2e",
+          "block": "48318701",
+          "status": "success",
+          "canonicalAtRead": true,
+          "intentMatches": true,
+          "from": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+          "to": "0x4ab1062718e6e881070dcf48ab450d0f09b7ba67",
+          "valueWei": "1000000000000000",
+          "gasUsed": "21000",
+          "effectiveGasPrice": "7200000",
+          "logs": []
+        }
+      ],
+      "walletUSDCAtomic": "150000",
+      "operatorETHWei": "1000000000000000"
+    },
+    {
+      "rpc": "https://base-sepolia-rpc.publicnode.com",
+      "status": "verified",
+      "transactions": [
+        {
+          "kind": "fund-usdc",
+          "hash": "0x3bb4b38d34ddea128a261e8c5da4ca28dfd2369f8671f2b4a718ed8c25ff61e2",
+          "block": "48318779",
+          "status": "success",
+          "canonicalAtRead": true,
+          "intentMatches": true,
+          "from": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+          "to": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+          "valueWei": "0",
+          "gasUsed": "62159",
+          "effectiveGasPrice": "7200000",
+          "logs": [
+            {
+              "address": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+              "eventName": "Transfer",
+              "args": {
+                "from": "0xaA987fC286434D205669814Ba46b1d8df824fB36",
+                "to": "0xa794DAa86ff10920B75a4de3b0E752586e8703D2",
+                "value": "150000"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "fund-gas",
+          "hash": "0x6ddf321b74a123e0ac7ee5007042c80dd667ac25a993f790622c258a91aebe2e",
+          "block": "48318701",
+          "status": "success",
+          "canonicalAtRead": true,
+          "intentMatches": true,
+          "from": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+          "to": "0x4ab1062718e6e881070dcf48ab450d0f09b7ba67",
+          "valueWei": "1000000000000000",
+          "gasUsed": "21000",
+          "effectiveGasPrice": "7200000",
+          "logs": []
+        }
+      ],
+      "walletUSDCAtomic": "150000",
+      "operatorETHWei": "1000000000000000"
+    }
+  ]
+}

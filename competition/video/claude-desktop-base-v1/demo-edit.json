@@ -1,0 +1,844 @@
+{
+  "schemaVersion": 1,
+  "takeId": "formal-take-01",
+  "seconds": 290,
+  "captions": [
+    {
+      "start": 0,
+      "end": 6.585365853658536,
+      "text": "Mandate Wallet lets an AI agent purchase an approved API service within an owner-defined budget.",
+      "chapter": "purpose"
+    },
+    {
+      "start": 6.585365853658536,
+      "end": 14.048780487804878,
+      "text": "We will connect it to Claude Desktop, obtain an ETH statistics sample, and produce a short brief.",
+      "chapter": "purpose"
+    },
+    {
+      "start": 14.048780487804878,
+      "end": 18,
+      "text": "The transactions in this demonstration run on Base Sepolia.",
+      "chapter": "purpose"
+    },
+    {
+      "start": 18,
+      "end": 26.0,
+      "text": "Prepare Claude Desktop, Rabby and Node twenty-four, then start Mandate using the manual’s setup command.",
+      "chapter": "prerequisites"
+    },
+    {
+      "start": 26.0,
+      "end": 34,
+      "text": "The owner needs test ETH and USDC. This demo uses controlled services and fixed statistics.",
+      "chapter": "prerequisites"
+    },
+    {
+      "start": 34,
+      "end": 43.411764705882355,
+      "text": "Choose Testnet and Base Sepolia in the setup wizard. Connect the owner wallet, then review deployment,",
+      "chapter": "public-setup"
+    },
+    {
+      "start": 43.411764705882355,
+      "end": 55.1764705882353,
+      "text": "funding and permissions. We transfer zero point one five test USDC to the smart account and fund operator gas separately.",
+      "chapter": "public-setup"
+    },
+    {
+      "start": 55.1764705882353,
+      "end": 64.58823529411765,
+      "text": "The task budget is zero point one five, each payment is capped at zero point one,",
+      "chapter": "public-setup"
+    },
+    {
+      "start": 64.58823529411765,
+      "end": 74,
+      "text": "and the session expires after two hours. The owner confirms these transactions in the external wallet.",
+      "chapter": "public-setup"
+    },
+    {
+      "start": 74,
+      "end": 81.57894736842105,
+      "text": "After confirmation, open the authorization transaction in BaseScan. Check the Base Sepolia network, transaction hash and successful receipt.",
+      "chapter": "grant-explorer"
+    },
+    {
+      "start": 81.57894736842105,
+      "end": 90,
+      "text": "The contract log links the session to the approved mandate. The complete hash will also appear in our execution evidence.",
+      "chapter": "grant-explorer"
+    },
+    {
+      "start": 90,
+      "end": 100.65217391304348,
+      "text": "Download the Guided package for this Base Sepolia configuration. In Claude Desktop, open Settings,",
+      "chapter": "claude-install"
+    },
+    {
+      "start": 100.65217391304348,
+      "end": 112.82608695652175,
+      "text": "Extensions and Advanced settings, then import and enable the package. Its local connection is already configured,",
+      "chapter": "claude-install"
+    },
+    {
+      "start": 112.82608695652175,
+      "end": 125,
+      "text": "so no Agent profile or Connection file is selected. Start a new conversation using this connection.",
+      "chapter": "claude-install"
+    },
+    {
+      "start": 125,
+      "end": 132.85714285714286,
+      "text": "Ask Claude to read the account context and quote the approved ETH sample without purchasing.",
+      "chapter": "context-quote"
+    },
+    {
+      "start": 132.85714285714286,
+      "end": 142.28571428571428,
+      "text": "Check the chain, account, active session and remaining budget. The sample costs zero point zero one test USDC.",
+      "chapter": "context-quote"
+    },
+    {
+      "start": 142.28571428571428,
+      "end": 147,
+      "text": "Installing the connector does not expand the approved authority.",
+      "chapter": "context-quote"
+    },
+    {
+      "start": 147,
+      "end": 160.75,
+      "text": "Authorize the quoted purchase. Mandate registers the commitment before releasing a payment signature. The USDC transfer settles on Base Sepolia,",
+      "chapter": "purchase"
+    },
+    {
+      "start": 160.75,
+      "end": 172.4375,
+      "text": "but our controlled service deliberately fails its first response. Claude reports payment, delivery and result validation separately.",
+      "chapter": "purchase"
+    },
+    {
+      "start": 172.4375,
+      "end": 180,
+      "text": "A successful payment alone does not mean the data was delivered.",
+      "chapter": "purchase"
+    },
+    {
+      "start": 180,
+      "end": 189.56521739130434,
+      "text": "Open the settlement transaction in BaseScan. Check Success, the test USDC contract, and the ERC-twenty transfer from the smart account",
+      "chapter": "payment-explorer"
+    },
+    {
+      "start": 189.56521739130434,
+      "end": 198.65217391304347,
+      "text": "to the approved recipient for zero point zero one USDC. The transaction sender may be the facilitator paying gas;",
+      "chapter": "payment-explorer"
+    },
+    {
+      "start": 198.65217391304347,
+      "end": 202,
+      "text": "the token-transfer sender identifies the paying account.",
+      "chapter": "payment-explorer"
+    },
+    {
+      "start": 202,
+      "end": 212.08163265306123,
+      "text": "Claude resumes the same ETH step after checking its payment state. The original order and settlement hash are retained,",
+      "chapter": "recover-brief"
+    },
+    {
+      "start": 212.08163265306123,
+      "end": 221.10204081632654,
+      "text": "and there is no second payment. The service returns the sample and the result checker validates it.",
+      "chapter": "recover-brief"
+    },
+    {
+      "start": 221.10204081632654,
+      "end": 228,
+      "text": "Claude writes a brief, identifies the fixed demonstration dataset, and cites the settlement.",
+      "chapter": "recover-brief"
+    },
+    {
+      "start": 228,
+      "end": 237.15384615384616,
+      "text": "Claude prepares a revocation request. The owner reviews it in the wallet workspace and signs in Rabby.",
+      "chapter": "revoke-explorer"
+    },
+    {
+      "start": 237.15384615384616,
+      "end": 247.92307692307693,
+      "text": "The BaseScan receipt and SessionRevoked log confirm the change. Future spending by this session is blocked while the completed purchase",
+      "chapter": "revoke-explorer"
+    },
+    {
+      "start": 247.92307692307693,
+      "end": 249,
+      "text": "remains recorded.",
+      "chapter": "revoke-explorer"
+    },
+    {
+      "start": 249,
+      "end": 258.27272727272725,
+      "text": "Finally, ask Claude to attempt the unused BTC sample. The revoked session prevents a new payment registration.",
+      "chapter": "refusal"
+    },
+    {
+      "start": 258.27272727272725,
+      "end": 268.09090909090907,
+      "text": "This refusal has no new transaction hash because it is stopped before broadcast. We retain the tool result,",
+      "chapter": "refusal"
+    },
+    {
+      "start": 268.09090909090907,
+      "end": 273,
+      "text": "permission state and unchanged payment records as refusal evidence.",
+      "chapter": "refusal"
+    },
+    {
+      "start": 273,
+      "end": 280.0833333333333,
+      "text": "The evidence package connects each recorded step to its transaction, contract events and service outcome.",
+      "chapter": "close"
+    },
+    {
+      "start": 280.0833333333333,
+      "end": 289.52777777777777,
+      "text": "Payment and service delivery are documented separately. A local practice option is also available for learning the workflow without public-testnet",
+      "chapter": "close"
+    },
+    {
+      "start": 289.52777777777777,
+      "end": 290,
+      "text": "funds.",
+      "chapter": "close"
+    }
+  ],
+  "shots": [
+    {
+      "id": "purpose",
+      "mode": "workspace",
+      "seconds": 18,
+      "title": "01 / An approved task for Claude",
+      "tracks": {
+        "system": {
+          "label": "choose-base-sepolia",
+          "crop": [
+            350,
+            210,
+            1460,
+            1210
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "prerequisites",
+      "mode": "workspace",
+      "seconds": 16,
+      "title": "02 / Prepare the software and test assets",
+      "tracks": {
+        "system": {
+          "label": "review-public-setup",
+          "crop": [
+            350,
+            210,
+            1460,
+            1210
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "network",
+      "mode": "workspace",
+      "seconds": 4,
+      "title": "03 / Choose Testnet → Base Sepolia",
+      "tracks": {
+        "system": {
+          "label": "choose-base-sepolia",
+          "crop": [
+            350,
+            210,
+            1460,
+            1210
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "owner-connect",
+      "mode": "wallet",
+      "seconds": 4,
+      "title": "04 / Connect the external owner wallet",
+      "tracks": {
+        "rabby": {
+          "label": "connect-review"
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "account-review",
+      "mode": "workspace",
+      "seconds": 4,
+      "title": "05 / Prepare the smart account",
+      "tracks": {
+        "system": {
+          "label": "review-public-setup",
+          "crop": [
+            350,
+            210,
+            1460,
+            1210
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "deploy",
+      "mode": "wallet",
+      "seconds": 6,
+      "title": "06 / Review and sign the deployment",
+      "tracks": {
+        "system": {
+          "label": "deploy-transaction-review"
+        },
+        "rabby": {
+          "label": "deploy-signing-review"
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "deployment-proof",
+      "mode": "proof",
+      "seconds": 4,
+      "title": "07 / Confirm the deployment receipt",
+      "tracks": {
+        "explorer": {
+          "label": "deployment-basescan-overview"
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "gas",
+      "mode": "wallet",
+      "seconds": 4,
+      "title": "08 / Fund network gas separately",
+      "tracks": {
+        "system": {
+          "label": "gas-funding-confirmed",
+          "crop": [
+            350,
+            210,
+            1460,
+            1210
+          ]
+        },
+        "rabby": {
+          "label": "gas-funding-review"
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "usdc",
+      "mode": "workspace",
+      "seconds": 4,
+      "title": "09 / Transfer 0.15 test USDC to the account",
+      "tracks": {
+        "system": {
+          "label": "usdc-funding-review",
+          "crop": [
+            350,
+            210,
+            1460,
+            1210
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "funding-proof",
+      "mode": "proof",
+      "seconds": 3,
+      "title": "10 / Verify the USDC funding",
+      "tracks": {
+        "system": {
+          "label": "funding-confirmed",
+          "crop": [
+            350,
+            210,
+            1460,
+            1210
+          ]
+        },
+        "explorer": {
+          "label": "funding-basescan-overview"
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "task-permission",
+      "mode": "workspace",
+      "seconds": 7,
+      "title": "11 / Review the approved task and spending limits",
+      "tracks": {
+        "system": {
+          "file": "new-eth-owner-review.png",
+          "capturedAt": "2026-10-19T13:24:00.291289+00:00",
+          "crop": [
+            640,
+            20,
+            1150,
+            680
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "session-review",
+      "mode": "workspace",
+      "seconds": 5,
+      "title": "12 / Approve a finite two-hour session",
+      "tracks": {
+        "system": {
+          "label": "confirmed-two-hour-grant-review-revisited",
+          "crop": [
+            630,
+            0,
+            1160,
+            550
+          ]
+        }
+      },
+      "note": "Confirmed grant review revisited; no new transaction is submitted in this shot."
+    },
+    {
+      "id": "grant-proof",
+      "mode": "proof",
+      "seconds": 5,
+      "title": "13 / Verify the same authorization transaction",
+      "tracks": {
+        "explorer": {
+          "label": "new-eth-session-basescan-overview",
+          "crop": [
+            210,
+            110,
+            1580,
+            905
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "grant-log",
+      "mode": "proof",
+      "seconds": 6,
+      "title": "14 / Match the session and mandate in the event log",
+      "tracks": {
+        "explorer": {
+          "label": "new-eth-session-basescan-event",
+          "crop": [
+            210,
+            110,
+            1580,
+            905
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "download",
+      "mode": "workspace",
+      "seconds": 7,
+      "title": "15 / Download the configured Guided connector",
+      "tracks": {
+        "system": {
+          "label": "claude-guided-download-page",
+          "crop": [
+            350,
+            210,
+            1460,
+            1210
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "extensions",
+      "mode": "agent",
+      "seconds": 6,
+      "title": "16 / Open Claude Desktop → Settings → Extensions",
+      "tracks": {
+        "claude": {
+          "label": "claude-extensions-before-import",
+          "crop": [
+            550,
+            90,
+            2940,
+            2010
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "import",
+      "mode": "agent",
+      "seconds": 8,
+      "title": "17 / Use Advanced settings → Install extension",
+      "tracks": {
+        "claude": {
+          "label": "claude-advanced-install-entry",
+          "crop": [
+            550,
+            90,
+            2940,
+            2010
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "enabled",
+      "mode": "agent",
+      "seconds": 14,
+      "title": "18 / Enable Guided ec0539 and start a conversation",
+      "tracks": {
+        "claude": {
+          "file": "claude-repair-021-enabled.png",
+          "capturedAt": "2026-10-19T13:21:19.413539+00:00",
+          "crop": [
+            960,
+            90,
+            2760,
+            1980
+          ]
+        }
+      },
+      "note": "Recorded connector was updated to 0.2.1 and reloaded to the approved task; no file fields are required."
+    },
+    {
+      "id": "context",
+      "mode": "agent",
+      "seconds": 12,
+      "title": "19 / Read the account context before spending",
+      "tracks": {
+        "claude": {
+          "label": "new-eth-context-confirmed",
+          "crop": [
+            1100,
+            55,
+            2680,
+            1510
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "quote",
+      "mode": "agent",
+      "seconds": 10,
+      "title": "20 / Quote ETH statistics for 0.01 test USDC",
+      "tracks": {
+        "claude": {
+          "label": "new-eth-quote-confirmed",
+          "crop": [
+            1100,
+            100,
+            2680,
+            1080
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "purchase",
+      "mode": "agent",
+      "seconds": 10,
+      "title": "21 / Register the commitment before payment",
+      "tracks": {
+        "claude": {
+          "label": "new-eth-purchase-running",
+          "crop": [
+            1100,
+            55,
+            2680,
+            1510
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "delivery-failure",
+      "mode": "agent",
+      "seconds": 23,
+      "title": "22 / Payment succeeds; the controlled first response fails",
+      "tracks": {
+        "claude": {
+          "label": "new-eth-paid-service-failure",
+          "crop": [
+            1100,
+            40,
+            2680,
+            1260
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "payment-receipt",
+      "mode": "proof",
+      "seconds": 12,
+      "title": "23 / Verify the 0.01-USDC transfer on BaseScan",
+      "tracks": {
+        "explorer": {
+          "label": "new-eth-usdc-settlement-overview",
+          "crop": [
+            210,
+            110,
+            1580,
+            905
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "payment-events",
+      "mode": "proof",
+      "seconds": 10,
+      "title": "24 / Match AuthorizationUsed and Transfer",
+      "tracks": {
+        "explorer": {
+          "label": "new-eth-usdc-authorization-and-transfer-events",
+          "crop": [
+            210,
+            110,
+            1580,
+            905
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "recovery",
+      "mode": "agent",
+      "seconds": 16,
+      "title": "25 / Recover the original order without another payment",
+      "tracks": {
+        "claude": {
+          "label": "new-eth-recovered-brief",
+          "crop": [
+            1100,
+            0,
+            2680,
+            1450
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "brief",
+      "mode": "agent",
+      "seconds": 10,
+      "title": "26 / Produce a brief from the validated demonstration sample",
+      "tracks": {
+        "claude": {
+          "label": "new-eth-recovered-brief",
+          "crop": [
+            1100,
+            660,
+            2680,
+            1770
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "revoke-request",
+      "mode": "agent",
+      "seconds": 9,
+      "title": "27 / Prepare the owner’s session revocation request",
+      "tracks": {
+        "claude": {
+          "label": "new-eth-agent-revocation-request",
+          "crop": [
+            1100,
+            55,
+            2680,
+            1510
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "revoke-receipt",
+      "mode": "proof",
+      "seconds": 6,
+      "title": "28 / Confirm the owner-signed revocation",
+      "tracks": {
+        "explorer": {
+          "label": "session-revoked-basescan-overview",
+          "crop": [
+            210,
+            110,
+            1580,
+            905
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "revoke-log",
+      "mode": "proof",
+      "seconds": 6,
+      "title": "29 / Inspect the SessionRevoked event",
+      "tracks": {
+        "explorer": {
+          "label": "session-revoked-basescan-event",
+          "crop": [
+            210,
+            110,
+            1580,
+            905
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "refusal",
+      "mode": "agent",
+      "seconds": 14,
+      "title": "30 / A revoked session cannot buy the unused BTC sample",
+      "tracks": {
+        "claude": {
+          "label": "revoked-btc-refusal-confirmed",
+          "crop": [
+            1100,
+            55,
+            2680,
+            1510
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "ledger",
+      "mode": "workspace",
+      "seconds": 10,
+      "title": "31 / Confirm the rejected call produced no new payment",
+      "tracks": {
+        "system": {
+          "label": "final-paid-and-refusal-ledger",
+          "crop": [
+            325,
+            145,
+            1670,
+            865
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "evidence",
+      "mode": "workspace",
+      "seconds": 8,
+      "title": "32 / Keep payment, delivery and result evidence separate",
+      "tracks": {
+        "system": {
+          "label": "final-evidence-overview",
+          "crop": [
+            325,
+            145,
+            1670,
+            865
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "close",
+      "mode": "workspace",
+      "seconds": 9,
+      "title": "33 / Owner-defined spending with a verifiable outcome",
+      "tracks": {
+        "system": {
+          "label": "final-paid-and-refusal-ledger",
+          "crop": [
+            325,
+            145,
+            1670,
+            865
+          ]
+        }
+      },
+      "note": ""
+    }
+  ],
+  "composition": {
+    "size": [
+      2560,
+      1440
+    ],
+    "badge": "DEMO / PICTURE EDIT",
+    "footnote": "Actual UI captures · Held views are not live · Waiting and debugging cut · Test assets / controlled services",
+    "cameras": {
+      "system": {
+        "title": "Mandate | Owner workspace",
+        "shortTitle": "Mandate"
+      },
+      "claude": {
+        "title": "Claude Desktop | Agent task",
+        "shortTitle": "Claude"
+      },
+      "rabby": {
+        "title": "Rabby | Captured owner review",
+        "shortTitle": "Rabby"
+      },
+      "explorer": {
+        "title": "BaseScan | Public testnet receipt",
+        "shortTitle": "BaseScan"
+      }
+    }
+  },
+  "editingDisclosures": [
+    "Actual application captures are cropped and scaled; application text and values are not redrawn.",
+    "Idle time, wallet handoffs, failed preliminary task and debugging are cut. The full transaction history is retained in the evidence.",
+    "The same deployed wallet and funding are reused. The successful case uses a new explicitly owner-approved task and a two-hour session.",
+    "The grant-review shot revisits its confirmed draft after execution. It does not create or renew permission.",
+    "The original connector installation was followed by the recorded 0.2.1 update and reload to the successful task.",
+    "Views are retained between actions and are not synchronized live feeds. Explorer views are arranged next to the event being explained.",
+    "The first paid HTTP response deliberately fails. Recovery uses the same order, nonce and settlement.",
+    "An unrelated disabled manual-extension notification is excluded by cropping the Claude content area.",
+    "The quote tool’s ambiguous readyForRegistration wording is excluded; existing authorization was active and no extra grant was required.",
+    "The video has no voice-over yet. Subtitle timings are provisional until the user recording is supplied."
+  ]
+}

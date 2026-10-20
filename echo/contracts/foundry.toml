@@ -1,0 +1,18 @@
+[profile.default]
+solc_version = "0.8.26"
+evm_version = "cancun"
+optimizer = true
+optimizer_runs = 200
+via_ir = true
+src = "src"
+test = "test"
+libs = ["lib"]
+fs_permissions = [{ access = "read", path = "../../artifacts/m2/EntryPoint.v0.7.json" }]
+remappings = ["forge-std/=lib/forge-std/src/", "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/", "account-abstraction/=lib/account-abstraction/contracts/"]
+[profile.default.fuzz]
+runs = 10000
+seed = "0x4022027"
+[profile.default.invariant]
+runs = 128
+depth = 64
+fail_on_revert = true

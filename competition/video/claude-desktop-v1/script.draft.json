@@ -1,0 +1,89 @@
+{
+  "status": "planned; not a completed recording",
+  "targetSeconds": 290,
+  "voice": "human voice-over to be supplied by the user",
+  "language": "English",
+  "capture": "Actual application UI; waiting periods may be cut and labelled. No fabricated model responses.",
+  "scenes": [
+    {
+      "id": "purpose",
+      "start": 0,
+      "end": 20,
+      "purpose": "目标与案例",
+      "screen": "首页与案例标题",
+      "narration": "Mandate Wallet gives an AI agent a limited payment authority. In this example, we will connect it to Claude Desktop and ask Claude to obtain an ETH statistics sample and write a short brief. The owner sets the budget; the agent performs only approved purchases."
+    },
+    {
+      "id": "prerequisites",
+      "start": 20,
+      "end": 38,
+      "purpose": "开始前需要的软件",
+      "screen": "Claude Desktop、Node 24、Anvil 与源码版启动入口",
+      "narration": "We start with Claude Desktop signed in, Node twenty-four and Anvil installed, and the Mandate source checkout prepared. This is the current source-based setup, not a standalone installer. The demonstration uses a local test chain, mock USDC and a controlled sample API."
+    },
+    {
+      "id": "local-setup",
+      "start": 38,
+      "end": 72,
+      "purpose": "创建本地体验账户",
+      "screen": "空白向导 → Local → 准备账户与权限",
+      "narration": "Open the setup wizard and choose Local. Mandate starts an isolated chain, deploys the smart account and prepares one mock USDC. The task budget is zero point one five USDC, the maximum payment is zero point one, and the session lasts one hour. These are permission limits, separate from the wallet balance."
+    },
+    {
+      "id": "claude-install",
+      "start": 72,
+      "end": 118,
+      "purpose": "将钱包接入 Claude",
+      "screen": "接入 Agent → 下载接入包 → Claude Settings → Extensions → Install → Enable",
+      "narration": "Choose Claude Desktop and download this account’s Guided connection package. In Claude, open Settings, Extensions and Advanced settings, then select Install extension. Review the package and enable it. The Guided package already points to this local configuration, so no Agent profile or Connection file needs to be selected. The older manual extension remains a separate option."
+    },
+    {
+      "id": "read-context",
+      "start": 118,
+      "end": 146,
+      "purpose": "在 Agent 中核对连接",
+      "screen": "新建 Claude 对话 → 只读指令 → mandate_get_context",
+      "narration": "Start a new conversation and ask Claude to read the wallet context without paying. Approve the tool request for this demonstration. Check the network, account, session, budget and balance. The connection makes tools available; it does not increase the approved payment authority."
+    },
+    {
+      "id": "quote",
+      "start": 146,
+      "end": 170,
+      "purpose": "查询已批准服务的报价",
+      "screen": "Claude 查询已配置的 ETH 服务及报价",
+      "narration": "Next, ask Claude to find the configured ETH sample service and quote it without purchasing. The service costs zero point zero one mock USDC. The wallet checks the approved recipient and request scope. A service-directory listing alone cannot authorize a new payment."
+    },
+    {
+      "id": "purchase-recover",
+      "start": 170,
+      "end": 216,
+      "purpose": "采购及服务失败后的恢复",
+      "screen": "Claude 首次采购 → 已付款但服务失败 → 同一服务重试",
+      "narration": "Now authorize Claude to purchase this approved sample. The payment settles, but the controlled service deliberately fails its first response. Ask Claude to retry the same step. Mandate reuses the original order and settlement instead of paying again. The service then returns the sample, and the result checker validates it. The balance is zero point nine nine USDC, with one payment recorded."
+    },
+    {
+      "id": "brief-receipt",
+      "start": 216,
+      "end": 243,
+      "purpose": "查看采购结果及证据",
+      "screen": "Claude 完成简报 → 工作区核对付款、服务、结果与 hash",
+      "narration": "Claude can now write a brief using the validated sample and identify it as demonstration data. In the workspace, inspect payment, delivery and result validation separately. The receipt provides the settlement hash and order identity. A successful token transfer alone does not establish successful service delivery."
+    },
+    {
+      "id": "revoke-reject",
+      "start": 243,
+      "end": 276,
+      "purpose": "撤销会话并拒绝新采购",
+      "screen": "向导撤销本地体验会话 → Claude 尝试未购买的 BTC 步骤",
+      "narration": "End the local practice session to revoke its authority, then ask Claude to purchase the previously unused BTC sample. The request is rejected before another payment. The earlier ETH receipt remains intact. This local tutorial uses its test initializer for revocation; public-testnet permission changes require the owner’s external wallet confirmation."
+    },
+    {
+      "id": "close",
+      "start": 276,
+      "end": 290,
+      "purpose": "结束与范围说明",
+      "screen": "结束画面与明确的本地测试标注",
+      "narration": "The complete flow is setup, connect, inspect, purchase, recover and revoke. These screens demonstrate a local test system. Public-testnet transaction evidence is provided separately, and this recording does not represent a mainnet purchase."
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "baseline": "B4",
+  "extraRoot": "0x18e2c80a6e79ee07e852987c3cdf3ea81caa8bd1e81c5325407766fbea20aabd",
+  "fullAccepted": true,
+  "omittedTailAccepted": false,
+  "expected": "pinned retained head detects omitted tail",
+  "report": {
+    "exitCode": 2,
+    "report": {
+      "schemaVersion": 2,
+      "observedAt": "2026-10-15T06:25:24.568Z",
+      "checks": [
+        {
+          "name": "checkpoint-integrity",
+          "status": "confirmed",
+          "source": "session-signatures-and-salted-Merkle",
+          "guarantee": "Disclosed fields match signed ordered checkpoints; hidden fields are not checked",
+          "facts": {
+            "checkpoints": 4
+          }
+        },
+        {
+          "name": "evidence-validation",
+          "status": "contradicted",
+          "source": "input-and-cryptographic-checks",
+          "guarantee": "Malformed, tampered or insufficient disclosed data is not accepted",
+          "code": "ANCHORED_CHECKPOINT_OMITTED"
+        }
+      ],
+      "requiredChecksPassed": false,
+      "overall": "contradicted",
+      "limits": [
+        "RPC data is trusted; two agreeing providers are not an independent consensus proof.",
+        "Session signatures authenticate claimed observations, not HTTPS source truth or a complete history.",
+        "The deployed wallet enforces request/quote hashes and financial scope, not the entire session root.",
+        "Merchant receipts do not sign payment amount, request body or result body."
+      ]
+    },
+    "privateRuntimeInputs": [],
+    "processSeparate": true,
+    "managementIsolation": false
+  },
+  "excludedFromPrimaryTiming": true
+}

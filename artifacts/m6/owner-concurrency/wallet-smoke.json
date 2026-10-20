@@ -1,0 +1,68 @@
+{
+  "smoke": true,
+  "allStagesPassed": true,
+  "paymentTransactions": 1,
+  "ownerWalletTransactions": 3,
+  "sameHashOnRecovery": true,
+  "independentChecksPassed": true,
+  "overall": "incomplete",
+  "revocationConfirmed": true,
+  "laterStepRejected": true,
+  "providerInjected": false,
+  "actualMetaMask": true,
+  "humanRehearsal": false,
+  "physicalMobileDevice": false,
+  "newPublicTransactions": 0,
+  "durationSeconds": 33.94869408299999,
+  "capturedFrames": 67,
+  "output": null,
+  "outputSHA256": null,
+  "taskId": "0x1139f7dc85574bffdccdd325be9b625410d7905c10c752b3ebc1c4e620d22ad1",
+  "ownerTransactions": [
+    {
+      "action": "create",
+      "requestId": "0x5c468e9415689c6599083366027e72557a511a08b69b98698a2668a3c44c4015",
+      "transactionHash": "0xd436886baf08603147f24667183823f2d65ba13f2e7919376cfbb1185c2aeedf",
+      "blockNumber": "7",
+      "status": "confirmed",
+      "actionApplied": true
+    },
+    {
+      "action": "grant",
+      "requestId": "0xe4d9e7b7bca72e9b4688be6826225f3dbdc839d4cea20f597737cfd06f2d3285",
+      "transactionHash": "0x534a72d3e1868aa829d89ddd84a9ec57908f3cf0909c4d39aa3138fdee6a2639",
+      "blockNumber": "8",
+      "status": "confirmed",
+      "actionApplied": true
+    },
+    {
+      "action": "revokeSession",
+      "requestId": "0x883502c4cfa0a024f6c017c762091460c16b926eb1c2d0c60ea33170a50999b8",
+      "transactionHash": "0x7f9895746f35eba02f37d282d6146b502ff092c60f1e326e2905f2fe270cb6d6",
+      "blockNumber": "11",
+      "status": "confirmed",
+      "actionApplied": true
+    }
+  ],
+  "observations": [
+    {
+      "stage": "paid-failed",
+      "payment": "paid",
+      "service": "failed",
+      "result": "unchecked",
+      "settlementHash": "0x6b23f141b5635aef02ac1946eb98ebfa2d1eecc729c4216a1592e773f7552e9f"
+    },
+    {
+      "stage": "recovery",
+      "payment": "paid",
+      "service": "returned",
+      "result": "valid",
+      "settlementHash": "0x6b23f141b5635aef02ac1946eb98ebfa2d1eecc729c4216a1592e773f7552e9f"
+    },
+    {
+      "stage": "rejected",
+      "payment": "rejected",
+      "errorCode": "AGENT_GRANT_INACTIVE"
+    }
+  ]
+}

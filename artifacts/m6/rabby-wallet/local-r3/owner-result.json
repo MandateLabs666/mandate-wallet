@@ -1,0 +1,64 @@
+{
+  "status": {
+    "actionApplied": true,
+    "actionId": "0xd543f49e54ae06ce4891430cb62ffd8ba5ea20edfd73d5ca249f245ca46a151a",
+    "blockHash": "0x7af4ce6cd6302b498348c03f8c6b3efcac191cfbdda498e394c8c25e64a5ef54",
+    "blockNumber": "7",
+    "broadcastSource": "external-wallet",
+    "chainActive": false,
+    "createdBlock": "6",
+    "draft": {
+      "action": "pause",
+      "actionId": "0xd543f49e54ae06ce4891430cb62ffd8ba5ea20edfd73d5ca249f245ca46a151a",
+      "approvalRequired": "owner-wallet",
+      "schemaVersion": 2,
+      "transaction": {
+        "chainId": 31337,
+        "data": "0x8ea9db9eb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e370000000000000000000000000000000000000000000000000000000000000001",
+        "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+        "to": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+        "value": "0"
+      }
+    },
+    "grantStatus": "stale",
+    "mandateId": "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37",
+    "minimumOwnerNonce": 6,
+    "requestId": "0x61f476c349b8fe3372098708294474990b7f4e0a29cbc90033d1c9b616edfd2d",
+    "requestedBy": "owner-web-workspace",
+    "rootStatus": "paused",
+    "sessionId": "0x61f0ffa6b310744fb2869aa8b49390b907440c17341f41afc5971aac5aae9f40",
+    "status": "confirmed",
+    "transactionHash": "0x17a9784c3bba2a6de2e659975b42d0a6cf3be716012dacd1bb97af4b9dd36b36",
+    "transactionNonce": 6,
+    "version": 9
+  },
+  "transaction": {
+    "hash": "0x17a9784c3bba2a6de2e659975b42d0a6cf3be716012dacd1bb97af4b9dd36b36",
+    "from": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+    "to": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+    "input": "0x8ea9db9eb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e370000000000000000000000000000000000000000000000000000000000000001",
+    "value": "0",
+    "nonce": 6,
+    "chainId": 31337,
+    "status": "success",
+    "blockNumber": "7",
+    "blockHash": "0x7af4ce6cd6302b498348c03f8c6b3efcac191cfbdda498e394c8c25e64a5ef54",
+    "gasUsed": "29900",
+    "method": "setPaused",
+    "events": [
+      {
+        "name": "PauseChanged",
+        "args": {
+          "mandateId": "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37",
+          "paused": true,
+          "version": "2"
+        }
+      }
+    ]
+  },
+  "before": {
+    "ownerNonce": 6
+  },
+  "ownerNonceAfter": 7,
+  "newPublicTransactions": 0
+}

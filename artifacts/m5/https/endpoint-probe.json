@@ -1,0 +1,27 @@
+{
+  "endpoint": "https://api.github.com/rate_limit",
+  "authentication": "none",
+  "requests": [
+    {
+      "requestedVersion": "TLSv1_2",
+      "negotiatedVersion": "TLSv1.2",
+      "cipher": "ECDHE-ECDSA-AES128-GCM-SHA256",
+      "httpStatusLine": "HTTP/1.1 200 OK",
+      "responseBytes": 1362,
+      "responseSHA256": "e31fa61739b3fe0d712a759052fb0e94fd96acefc8bcc8fc8ab9ec4db892a06d",
+      "certificateVerified": true,
+      "elapsedSeconds": 0.034
+    },
+    {
+      "requestedVersion": "TLSv1_3",
+      "negotiatedVersion": "TLSv1.3",
+      "cipher": "TLS_AES_128_GCM_SHA256",
+      "httpStatusLine": "HTTP/1.1 200 OK",
+      "responseBytes": 1362,
+      "responseSHA256": "5f3bf85a673211d6039cf9a7deb3699e18d29d04a8bac29219f71a73703d5181",
+      "certificateVerified": true,
+      "elapsedSeconds": 0.025
+    }
+  ],
+  "proofType": "ordinary HTTPS probe; not TLSNotary proof"
+}

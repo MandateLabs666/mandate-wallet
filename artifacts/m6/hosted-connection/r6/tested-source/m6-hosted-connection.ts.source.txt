@@ -1,0 +1,117 @@
+// Isolated browser checks of the real owner-private HTTPS frontend -> loopback API.
+// Site dispatch credential enters hidden stdin only; never serialize headers/cookies.
+import {createRequire} from "node:module";
+import {spawn} from "node:child_process";
+import {readFileSync,writeFileSync,mkdirSync,existsSync} from "node:fs";
+import {resolve,join} from "node:path";
+import {createHash} from "node:crypto";
+import {createServer} from "node:http";
+import {createPublicClient,http} from "viem";
+import {testTokenAbi} from "../sdk/testTokenAbi.js";
+process.umask(0o077);
+const [revision,mode]=process.argv.slice(2);
+if(!revision||!/^[a-z0-9-]+$/.test(revision)||!["default","deny","allow"].includes(mode))throw Error("FRESH_REVISION_AND_PERMISSION_MODE_REQUIRED");
+const out=resolve(".runtime/hosted-connection",revision);if(existsSync(out))throw Error("REVISION_EXISTS");mkdirSync(out,{recursive:true,mode:0o700});
+const save=(n:string,v:unknown)=>writeFileSync(join(out,n),JSON.stringify(v,(_,x)=>typeof x==="bigint"?String(x):x,2)+"\n",{mode:0o600});
+const sourceFingerprint=Object.fromEntries(["mandate/web/app.ts","mandate/web/server.ts","mandate/web/static/app.html","mandate/experiments/m6-hosted-connection.ts"].map(p=>{const data=readFileSync(p);writeFileSync(join(out,p.split('/').at(-1)+'.source.txt'),data);return[p,createHash("sha256").update(data).digest("hex")];}));
+const expectedHTMLSHA256=createHash("sha256").update(readFileSync("mandate/web/dist/app.html")).digest("hex");
+if(!process.stdin.isTTY)throw Error("HIDDEN_INPUT_TERMINAL_REQUIRED");
+process.stdin.setRawMode(true);process.stdin.resume();console.log("Ready for Site dispatch JSON on stdin (input is hidden).");
+const input=await new Promise<{siteOrigin:string;dispatchToken:string;appSHA256:string}>((yes,no)=>{
+ let text="";const onData=(chunk:Buffer)=>{text+=chunk.toString();if(text.length>20000){cleanup();return no(Error("INPUT_TOO_LARGE"));}if(text.includes("\n")){cleanup();try{yes(JSON.parse(text.trim()));}catch{no(Error("INVALID_PRIVATE_INPUT"));}}};
+ const cleanup=()=>{process.stdin.off("data",onData);process.stdin.setRawMode(false);process.stdin.pause();};process.stdin.on("data",onData);
+});
+const publication=JSON.parse(readFileSync("mandate/web/publication.json","utf8"));
+if(input.siteOrigin!==publication.expectedOrigin||!input.siteOrigin.startsWith("https://")||!input.dispatchToken||!/^[0-9a-f]{64}$/.test(input.appSHA256))throw Error("SITE_SCOPE_MISMATCH");
+const runtime=process.env.RUNTIME_NODE_MODULES;if(!runtime)throw Error("OPTIONAL_BROWSER_RUNTIME_REQUIRED");const {chromium}=createRequire(join(runtime,"x.cjs"))("playwright");
+const fixtureDir=join(out,"fixture");let child:ReturnType<typeof spawn>|undefined,ctx:any;
+let phase="fixture";
+const stage=(name:string)=>{phase=name;save("progress.json",{phase,at:new Date().toISOString(),newPublicTransactions:0});};
+async function bounded<T>(work:Promise<T>,label:string,ms=10000){let timer:ReturnType<typeof setTimeout>|undefined;try{return await Promise.race([work,new Promise<never>((_,no)=>{timer=setTimeout(()=>no(Error("DIAGNOSTIC_TIMEOUT:"+label)),ms);})]);}finally{clearTimeout(timer);}}
+try{
+ stage("fixture");
+ child=spawn(process.execPath,["--import","tsx","mandate/experiments/m6-wallet-fixture.ts"],{env:{PATH:process.env.PATH??"",MANDATE_WALLET_FIXTURE_DIR:fixtureDir},stdio:["pipe","pipe","pipe"]});
+ let privateErrors="";child.stderr!.on("data",d=>{privateErrors+=d.toString();});
+ await new Promise<void>((yes,no)=>{let text="";const timer=setTimeout(()=>no(Error("FIXTURE_START_TIMEOUT")),30000);child!.stdout!.on("data",d=>{text+=d.toString();for(const line of text.split("\n")){try{if(JSON.parse(line).ready){clearTimeout(timer);yes();}}catch{}}});child!.once("exit",()=>{clearTimeout(timer);writeFileSync(join(out,"fixture-private-error.txt"),privateErrors,{mode:0o600});no(Error("FIXTURE_EXITED"));});});
+ const config=JSON.parse(readFileSync(join(fixtureDir,"fixture.json"),"utf8"));if(config.chainId!==31337)throw Error("LOCAL_TEST_CHAIN_REQUIRED");
+ const direct=async(operation="connect",args:Record<string,unknown>={})=>{const r=await fetch(config.origin+"/api/workspace",{method:"POST",headers:{"content-type":"application/json",authorization:"Bearer "+config.connectionToken},body:JSON.stringify({operation,...args}),signal:AbortSignal.timeout(10000)});if(!r.ok)throw Error("FIXTURE_API_FAILED");return r.json() as Promise<any>;};
+ const before=await direct(),pc=createPublicClient({transport:http(config.rpc,{retryCount:0})}),ownerNonceBefore=await pc.getTransactionCount({address:config.owner});
+ stage("browser-launch");ctx=await chromium.launchPersistentContext(join(out,"profile"),{channel:"chromium",headless:true,args:["--enable-automation"],timeout:30000,viewport:{width:1280,height:900}});
+ stage("browser-protocol");const page=ctx.pages()[0]??await ctx.newPage(),cdp=await bounded(ctx.newCDPSession(page),"create-CDP-session") as any,protocol=(method:string,params:Record<string,unknown>={})=>bounded<any>(cdp.send(method,params),method),browserVersion=await protocol("Browser.getVersion");
+ const command=await protocol("Browser.getBrowserCommandLine");const securityFlags=command.arguments.filter((x:string)=>/disable-web-security|allow-running-insecure-content|LocalNetworkAccess|loopback|private-network|PrivateNetworkAccess/i.test(x));
+ if(securityFlags.length)throw Error("BROWSER_SECURITY_BYPASS_NOT_ALLOWED");
+ const permissionOverrides:unknown[]=[];
+ stage("permission-override");if(mode!=="default")for(const name of ["local-network-access","loopback-network"]){try{await protocol("Browser.setPermission",{permission:{name},setting:mode==="allow"?"granted":"denied",origin:input.siteOrigin});permissionOverrides.push({name,setting:mode==="allow"?"granted":"denied",applied:true});}catch{permissionOverrides.push({name,applied:false});}}
+ if(mode!=="default"&&!permissionOverrides.some((v:any)=>v.applied))throw Error("NO_PERMISSION_OVERRIDE_APPLIED");
+ const credentials=new Map<string,string>([[input.siteOrigin,input.dispatchToken]]),interceptionErrors:string[]=[],requestOrigins=new Map<string,string>(),redirectObservations:unknown[]=[];let blockedRedirects=0;
+ cdp.on("Fetch.requestPaused",async(v:any)=>{
+  try{
+   const origin=new URL(v.request.url).origin;requestOrigins.set(v.requestId,origin);
+   if(v.redirectedRequestId){const from=requestOrigins.get(v.redirectedRequestId),blocked=from!==origin;redirectObservations.push({from:from??null,to:origin,blocked});save("redirect-observations.json",redirectObservations);if(blocked){blockedRedirects++;await protocol("Fetch.failRequest",{requestId:v.requestId,errorReason:"BlockedByClient"});return;}}
+   const credential=credentials.get(origin),headers=Object.entries(v.request.headers).filter(([k])=>k.toLowerCase()!=="oai-sites-authorization").map(([name,value])=>({name,value:String(value)}));
+   if(credential){headers.push({name:"OAI-Sites-Authorization",value:"Bearer "+credential});await protocol("Fetch.continueRequest",{requestId:v.requestId,headers});}
+   else{if(Object.keys(v.request.headers).some(k=>k.toLowerCase()==="oai-sites-authorization"))throw Error("UNSCOPED_SITE_HEADER");await protocol("Fetch.continueRequest",{requestId:v.requestId});}
+  }catch(error){interceptionErrors.push("FETCH_INTERCEPTION_FAILED");save("interception-private-error.json",{code:(error as Error).message.replaceAll(input.dispatchToken,"[REDACTED]").replaceAll(config.connectionToken,"[REDACTED]").split('\n')[0]});await protocol("Fetch.failRequest",{requestId:v.requestId,errorReason:"BlockedByClient"}).catch(()=>{});}
+ });
+ await protocol("Fetch.enable",{patterns:[{urlPattern:"*",requestStage:"Request"}]});
+ // The same native-browser interception must block a canary-only cross-origin
+ // redirect before its destination is contacted. No Site credential is used.
+ let destinationHits=0,sourceHeaderMatched=false;const canary="redirect-control-canary";
+ const destination=createServer((_q,r)=>{destinationHits++;r.end("unexpected");}),sourceServer=createServer((q,r)=>{sourceHeaderMatched=q.headers['oai-sites-authorization']==="Bearer "+canary;r.writeHead(302,{location:"http://127.0.0.1:"+(destination.address() as any).port+"/destination"});r.end();});
+ const listen=(s:ReturnType<typeof createServer>)=>new Promise<void>(yes=>s.listen(0,"127.0.0.1",yes));let redirectRejected=false,canaryOrigin="";
+ try{await listen(destination);await listen(sourceServer);canaryOrigin="http://127.0.0.1:"+(sourceServer.address() as any).port;credentials.set(canaryOrigin,canary);try{await page.goto(canaryOrigin+"/redirect",{timeout:15000});}catch{redirectRejected=blockedRedirects===1;}}
+ finally{credentials.delete(canaryOrigin);sourceServer.closeAllConnections();destination.closeAllConnections();await Promise.all([new Promise(yes=>sourceServer.close(yes)),new Promise(yes=>destination.close(yes))]);}
+ const redirectControl={sourceHeaderMatched,redirectRejected,destinationHits,realSiteCredentialUsed:false};if(!sourceHeaderMatched||!redirectRejected||destinationHits!==0||interceptionErrors.length)throw Error("SITE_REDIRECT_CONTROL_FAILED");
+ const localTraffic:any[]=[],networkFailures:any[]=[];await protocol("Network.enable");const localRequestIds=new Set<string>();
+ cdp.on("Network.requestWillBeSent",(v:any)=>{if(v.request.url.startsWith(config.origin+"/")){localRequestIds.add(v.requestId);localTraffic.push({method:v.request.method,path:new URL(v.request.url).pathname,origin:v.request.headers.Origin??v.request.headers.origin??null,preflightPrivateNetwork:v.request.headers['Access-Control-Request-Private-Network']??null,siteAccessHeaderPresent:Object.keys(v.request.headers).some(k=>k.toLowerCase()==="oai-sites-authorization")});}});
+ cdp.on("Network.loadingFailed",(v:any)=>{if(localRequestIds.has(v.requestId))networkFailures.push({errorText:v.errorText,blockedReason:v.blockedReason??null,corsError:v.corsErrorStatus?.corsError??null});});
+ const assets:any[]=[];page.on("response",async(r:any)=>{if(new URL(r.url()).origin===input.siteOrigin&&new URL(r.url()).pathname==="/app.js"){try{const data=await bounded<Buffer>(r.body(),"app-response-body");assets.push({path:"/app.js",status:r.status(),SHA256:createHash("sha256").update(data).digest("hex")});}catch{assets.push({path:"/app.js",bodyReadFailed:true});}}});
+ stage("hosted-page");const main=await page.goto(input.siteOrigin+"/app.html",{waitUntil:"networkidle",timeout:45000});
+ if(main.status()!==200||new URL(page.url()).origin!==input.siteOrigin){save("hosted-response.json",{status:main.status(),origin:new URL(page.url()).origin,path:new URL(page.url()).pathname,contentType:main.headers()["content-type"]??null});throw Error("HOSTED_PAGE_NOT_AVAILABLE");}
+ const hostedHTML=await bounded<Buffer>(main.body(),"HTML-response-body"),hostedHTMLSHA256=createHash("sha256").update(hostedHTML).digest("hex");
+ // Comparison only: the browser still executes the unmodified hosted response.
+ // Accept exactly the reviewed Cloudflare JSD template, with only its public
+ // per-request ray/time fields variable. No other insertion or edit is ignored.
+ const htmlIdentity=(html:string)=>{
+  const sha=(text:string)=>createHash("sha256").update(text).digest("hex");if(sha(html)===expectedHTMLSHA256)return {uploadedHTMLSHA256:expectedHTMLSHA256,platformInjection:null};
+  const scripts=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)];if(scripts.length!==1)return null;
+  const tag=scripts[0][0],body=scripts[0][1],fields=body.match(/r:'[0-9a-f]{16}',t:'[A-Za-z0-9+/=]{12,40}'/g);if(fields?.length!==1)return null;
+  const templateSHA256=sha(body.replace(fields[0],"r:'[RAY]',t:'[TIME]'"));if(templateSHA256!=="19e0cdb4365ec315008fc3c6cbbc655f9928f879308ab095ed870999557d8e08"||sha(html.replace(tag,""))!==expectedHTMLSHA256)return null;
+  return {uploadedHTMLSHA256:expectedHTMLSHA256,platformInjection:{kind:"reviewed Cloudflare JSD template",templateSHA256,variableFields:["public request ray id","public challenge timestamp"],removedFromExecutedPage:false}};
+ };
+ const identity=htmlIdentity(hostedHTML.toString());if(!identity){writeFileSync(join(out,"hosted-private.html"),hostedHTML,{mode:0o600});save("html-hashes.json",{expectedHTMLSHA256,hostedHTMLSHA256});throw Error("HOSTED_HTML_ASSET_MISMATCH");}
+ const normalizationControls={changedAppRejected:!htmlIdentity(hostedHTML.toString().replace('id="connection-form"','id="changed-form"')),extraInlineScriptRejected:!htmlIdentity(hostedHTML.toString()+'<script>unapproved()</script>'),changedPlatformScriptRejected:identity.platformInjection?!htmlIdentity(hostedHTML.toString().replace('function c()','function changed()')):null};
+ if(!normalizationControls.changedAppRejected||!normalizationControls.extraInlineScriptRejected||normalizationControls.changedPlatformScriptRejected===false)throw Error("HTML_NORMALIZATION_CONTROL_FAILED");
+ await page.locator("#connection-form").waitFor();await page.waitForTimeout(200);
+ if(assets.length!==1||assets[0].SHA256!==input.appSHA256)throw Error("HOSTED_APP_ASSET_MISMATCH");
+ if(await page.evaluate(()=>Boolean((window as any).ethereum)))throw Error("UNEXPECTED_BROWSER_PROVIDER");
+ const permissions=await page.evaluate(async()=>{const result:any={};for(const name of ["local-network-access","loopback-network"]){try{result[name]=(await navigator.permissions.query({name} as any)).state;}catch{result[name]="unsupported";}}return result;});
+ stage("connect");await page.locator("#endpoint").fill(config.origin);await page.locator("#credential").fill(config.connectionToken);await page.locator("#connection-form button").click();
+ await page.waitForFunction(()=>Boolean(document.querySelector("#content .metric-grid"))||Boolean(document.querySelector("#error")?.textContent),{},{timeout:15000});
+ const connected=await page.locator("#content .metric-grid").count()>0,errorText=await page.locator("#error").innerText();
+ const errorVisibility:any[]=[];
+ const checkError=async()=>{if(!errorText)return;const box=await page.locator("#error").boundingBox(),viewport=page.viewportSize();if(!box||box.x<0||box.y<0||box.x+box.width>viewport.width+1||box.y+box.height>viewport.height+1)throw Error("CONNECTION_GUIDANCE_OUTSIDE_VIEWPORT");errorVisibility.push({width:viewport.width,visible:true});};
+ if(connected){if(await page.locator("#credential").inputValue()!=="")throw Error("CONNECTED_CREDENTIAL_NOT_CLEARED");}else await page.locator("#credential").fill("");await checkError();await page.screenshot({path:join(out,"connection-desktop.png"),fullPage:true});
+ if(!connected){await page.setViewportSize({width:390,height:900});await checkError();await page.screenshot({path:join(out,"connection-mobile.png"),fullPage:true});}
+ let first:any,recovered:any;
+ if(mode==="allow"&&connected){
+  stage("purchase");await page.locator('[data-page="services"]').click();
+  const run=async()=>{const record=page.waitForResponse((r:any)=>r.url()===config.origin+"/api/workspace"&&r.request().postDataJSON()?.operation==="call");await page.locator('[data-action="run"]').first().click();const result=await record;if(result.status()!==200)throw Error("BROWSER_PURCHASE_FAILED");const data=await result.json();await page.waitForFunction(()=>Boolean(document.querySelector('[data-purchase-guidance]')));return data;};
+  first=await run();if(first.paymentState!=="paid"||first.serviceState!=="failed")throw Error("EXPECTED_PAID_SERVICE_FAILURE");
+  await page.setViewportSize({width:390,height:900});await page.locator(".service-card").first().scrollIntoViewIfNeeded();await page.screenshot({path:join(out,"paid-failed-mobile.png")});
+  await page.waitForTimeout(200);recovered=await run();await page.waitForTimeout(200);
+  if(recovered.settlementHash!==first.settlementHash||recovered.resultState!=="valid")throw Error("SAME_PAYMENT_RECOVERY_FAILED");
+  await page.locator(".service-card").first().scrollIntoViewIfNeeded();await page.screenshot({path:join(out,"recovered-mobile.png")});
+ }
+ const after=await direct(),ownerNonceAfter=await pc.getTransactionCount({address:config.owner});
+ const used=await pc.getLogs({address:config.asset,event:testTokenAbi.find(x=>x.type==="event"&&x.name==="AuthorizationUsed") as any,fromBlock:0n,toBlock:"latest"}),payments=used.filter((x:any)=>x.args.authorizer.toLowerCase()===config.wallet.toLowerCase());
+ if(localTraffic.some(x=>x.siteAccessHeaderPresent)||interceptionErrors.length)throw Error("SITE_ACCESS_HEADER_BOUNDARY_FAILED");
+ if(ownerNonceAfter!==ownerNonceBefore)throw Error("UNEXPECTED_OWNER_TRANSACTION");
+ if(mode!=="allow"&&(after.context.policy.occupied!==before.context.policy.occupied||after.context.walletBalanceAtomic!==before.context.walletBalanceAtomic||after.state.records.length!==before.state.records.length))throw Error("READ_ONLY_CHECK_CHANGED_FINANCES");
+ if(mode!=="allow"&&payments.length!==0)throw Error("UNEXPECTED_PAYMENT");
+ if(mode==="allow"&&connected){if(payments.length!==1||payments[0].transactionHash!==first.settlementHash||BigInt(before.context.walletBalanceAtomic)-BigInt(after.context.walletBalanceAtomic)!==10000n||BigInt(after.context.policy.occupied)-BigInt(before.context.policy.occupied)!==10000n||(await pc.getTransactionReceipt({hash:first.settlementHash})).status!=="success")throw Error("PAYMENT_EVENT_OR_BALANCE_MISMATCH");}
+ const project=(r:any)=>r?{paymentState:r.paymentState,serviceState:r.serviceState,resultState:r.resultState,settlementHash:r.settlementHash}:null;
+ const result={schemaVersion:1,revision,mode,browserVersion:browserVersion.product,hostedOrigin:input.siteOrigin,hostedAsset:assets[0],hostedHTMLSHA256,...identity,normalizationControls,authenticatedTransport:"native Chromium HTTP; per-request CDP Site header; cross-origin redirects rejected before transmission",redirectControl,redirectObservations,browserSecurityBypassFlags:securityFlags,permissionOverrides,permissions,connected,errorText,errorVisibility,localTraffic,networkFailures,ownerNonceBefore,ownerNonceAfter,walletCashBefore:before.context.walletBalanceAtomic,walletCashAfter:after.context.walletBalanceAtomic,occupiedBefore:before.context.policy.occupied,occupiedAfter:after.context.policy.occupied,paymentEvents:payments.length,first:project(first),recovered:project(recovered),nativeWallet:false,providerInjected:false,humanAcceptance:false,physicalMobile:false,siteLoginMethod:"owner-authorized dispatch header scoped only to the exact Site origin; not human login",sourceFingerprint,newPublicTransactions:0};save("result.json",result);
+ console.log(JSON.stringify({revision,mode,connected,browser:result.browserVersion,purchasePaid:!!first,recoveredValid:recovered?.resultState==="valid",newPublicTransactions:0}));
+}catch(error){save("failure.json",{phase,code:(error as Error).message.replaceAll(input.dispatchToken,"[REDACTED]"),newPublicTransactions:0});console.log(JSON.stringify({failed:true,phase,detailsInPrivateRuntime:true,newPublicTransactions:0}));process.exitCode=1;}
+finally{if(ctx)await bounded(ctx.close(),"browser-close").catch(()=>save("browser-close-timeout.json",{phase,newPublicTransactions:0}));if(child&&child.exitCode===null){child.stdin!.end("stop\n");await Promise.race([new Promise(yes=>child!.once("exit",yes)),new Promise(yes=>setTimeout(yes,5000))]);if(child.exitCode===null)child.kill("SIGTERM");}}

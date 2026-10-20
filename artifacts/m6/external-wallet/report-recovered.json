@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 1,
+  "phase": "report-recovered",
+  "environment": "local-EVM-31337-mock-USDC",
+  "provider": "official-unmodified-MetaMask-13.52.0-unpacked",
+  "automatedNativeUI": true,
+  "humanRehearsal": false,
+  "physicalMobileDevice": false,
+  "ownerKeyInWeb": false,
+  "providerInjected": false,
+  "newPublicTransactions": 0,
+  "wallet": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+  "asset": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+  "owner": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "walletCashAtomic": "990000",
+  "tasks": [
+    {
+      "id": "0x4f86397c98b194e2cda24ab24f5457a65703351850983524279c6d461a651436",
+      "sessionId": "0x0dfacc04689bdc80cad964c54ce31c210dae52d4dbc7e67c43126c34cf3b4267",
+      "description": "Actual wallet acceptance · statistics",
+      "policy": {
+        "taskHash": "0x142d55657a851abbc578446485e89cb6354355fbb075720e6098292872e62423",
+        "budget": "150000",
+        "maxPerPayment": "100000",
+        "occupied": "10000",
+        "expiresAt": "1792056428",
+        "version": "3",
+        "paused": true,
+        "revoked": false,
+        "exists": true
+      },
+      "session": {
+        "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+        "budget": "150000",
+        "maxPerPayment": "100000",
+        "occupied": "0",
+        "expiresAt": "1792054709",
+        "policyVersion": "2",
+        "epoch": "2",
+        "revoked": true,
+        "exists": true
+      },
+      "observedBlock": "14",
+      "records": [
+        {
+          "stepId": "0x4cfb1c8699d277407517fe08cfe9434d6af9573d22d674332ba5a48c1bd37f65",
+          "paymentState": "rejected",
+          "serviceState": "not_requested",
+          "resultState": "unchecked",
+          "errorCode": "AGENT_GRANT_INACTIVE"
+        },
+        {
+          "stepId": "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e",
+          "paymentState": "paid",
+          "serviceState": "returned",
+          "resultState": "valid",
+          "registrationHash": "0x9ac3c07e9442c174c434d4e73fda89df825c332c82b2d7d036ef7f73ccaaa7e5",
+          "settlementHash": "0xcd9954f5cbbaf99bb4528e7e4114aa3e75c5017ff9d8285e9eeb525b0ec1b613"
+        }
+      ],
+      "ownerRequests": [
+        {
+          "requestId": "0x0b3a633eb454319a36ff7350e86e36256233ed71954bb1df325a2538d4824056",
+          "action": "create",
+          "status": "confirmed",
+          "actionApplied": true,
+          "chainActive": false,
+          "grantStatus": "stale",
+          "transactionHash": "0x0fe3e70ff5295ff3f88c5a2c043d622f7136895f8b06944a940326a2d8e82250",
+          "blockNumber": "7"
+        },
+        {
+          "requestId": "0x480fbc5418b6f9bc1b417aea7282b1189e5f1ead2d278acc588431b903959d0b",
+          "action": "grant",
+          "status": "confirmed",
+          "actionApplied": true,
+          "chainActive": false,
+          "grantStatus": "revoked",
+          "transactionHash": "0x935aefaf604be8a5c1003fcb5f8530b73d06ef80babc434216aaddddc5257e10",
+          "blockNumber": "12"
+        },
+        {
+          "requestId": "0x61be2cdd79ace9869c57c1ffe93165a8fde10fd92e9bf7b82d23f388da20959a",
+          "action": "revokeSession",
+          "status": "confirmed",
+          "actionApplied": true,
+          "chainActive": false,
+          "grantStatus": "revoked",
+          "transactionHash": "0x3eb82a42c55825c65b586092c6925cc7a8af400b262a93102956b86ee8090a83",
+          "blockNumber": "13"
+        },
+        {
+          "requestId": "0x73e5a1d988df067928c605d46f1df659ce4274dfa95267929f86cabddd5936a8",
+          "action": "pause",
+          "status": "confirmed",
+          "actionApplied": true,
+          "chainActive": false,
+          "grantStatus": "revoked",
+          "transactionHash": "0xada95145a1c017e342f1e98c4e75a4b4a86fde68e12f9e66f75ed7fc42b5a701",
+          "blockNumber": "14"
+        },
+        {
+          "requestId": "0xd4d31d9f4bb2348533a7ef63f5bbb20d4b170d6b55c88c2d6873788c9b08642d",
+          "action": "replace",
+          "status": "confirmed",
+          "actionApplied": true,
+          "chainActive": false,
+          "grantStatus": "stale",
+          "transactionHash": "0x974c27aaeb59c920b922c42d16f38ebd59dd4c2eda22a5f3aec95673e3347ad6",
+          "blockNumber": "11"
+        },
+        {
+          "requestId": "0xf380f15439962e64d69a0dd9c04406379710c277b4f4399182f2989346cff924",
+          "action": "grant",
+          "status": "confirmed",
+          "actionApplied": true,
+          "chainActive": false,
+          "grantStatus": "stale",
+          "transactionHash": "0x53bf4faf23384bec0a402e3a0d2e427d73dfffcc332b8c35322453e810337b5f",
+          "blockNumber": "8"
+        }
+      ]
+    },
+    {
+      "id": "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37",
+      "sessionId": "0x61f0ffa6b310744fb2869aa8b49390b907440c17341f41afc5971aac5aae9f40",
+      "description": "Configured agent task",
+      "policy": {
+        "taskHash": "0xaaff8db9d0075498f192ae0ec43d6fe21a69fd8e7b121b5ae8b9ec569c9fab8a",
+        "budget": "150000",
+        "maxPerPayment": "100000",
+        "occupied": "0",
+        "expiresAt": "1792056077",
+        "version": "1",
+        "paused": false,
+        "revoked": false,
+        "exists": true
+      },
+      "session": {
+        "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+        "budget": "150000",
+        "maxPerPayment": "100000",
+        "occupied": "0",
+        "expiresAt": "1792056077",
+        "policyVersion": "1",
+        "epoch": "1",
+        "revoked": false,
+        "exists": true
+      },
+      "observedBlock": "14",
+      "records": [],
+      "ownerRequests": []
+    }
+  ],
+  "transactions": [
+    {
+      "hash": "0x0fe3e70ff5295ff3f88c5a2c043d622f7136895f8b06944a940326a2d8e82250",
+      "from": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+      "to": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+      "nonce": 6,
+      "method": "createMandate",
+      "status": "success",
+      "blockNumber": "7",
+      "blockHash": "0xcedcb30a6607578306f736e6f6bbef59388a29cbb81191b7e00559eabd3e7770",
+      "gasUsed": "325883"
+    },
+    {
+      "hash": "0x53bf4faf23384bec0a402e3a0d2e427d73dfffcc332b8c35322453e810337b5f",
+      "from": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+      "to": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+      "nonce": 7,
+      "method": "grantSession",
+      "status": "success",
+      "blockNumber": "8",
+      "blockHash": "0x3c491a51d6895922f0ebe6ff49ab93a5262f2d390ed27bc763a7c9b1e05e2b61",
+      "gasUsed": "178243"
+    },
+    {
+      "hash": "0x9ac3c07e9442c174c434d4e73fda89df825c332c82b2d7d036ef7f73ccaaa7e5",
+      "from": "0x90f79bf6eb2c4f870365e785982e1f101e93b906",
+      "to": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+      "nonce": 0,
+      "method": "registerPayment",
+      "status": "success",
+      "blockNumber": "9",
+      "blockHash": "0xd9019f100ebd46a8e21c57c925e0fc77d116ff9d688f00943b5c296fe6805ad7",
+      "gasUsed": "445106"
+    },
+    {
+      "hash": "0xcd9954f5cbbaf99bb4528e7e4114aa3e75c5017ff9d8285e9eeb525b0ec1b613",
+      "from": "0x9965507d1a55bcc2695c58ba16fb37d819b0a4dc",
+      "to": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+      "nonce": 0,
+      "method": "transferWithAuthorization",
+      "status": "success",
+      "blockNumber": "10",
+      "blockHash": "0x30ab7a35301c1caa9f18e4ec697351ec4ae530538157ba9b7a8216dd7ac2879a",
+      "gasUsed": "127320"
+    },
+    {
+      "hash": "0x974c27aaeb59c920b922c42d16f38ebd59dd4c2eda22a5f3aec95673e3347ad6",
+      "from": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+      "to": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+      "nonce": 8,
+      "method": "replacePolicy",
+      "status": "success",
+      "blockNumber": "11",
+      "blockHash": "0x7676f81acb1730a5dfaef6c41f176232b6e92d0d0c0a84aca61998afa1343ad5",
+      "gasUsed": "247528"
+    },
+    {
+      "hash": "0x935aefaf604be8a5c1003fcb5f8530b73d06ef80babc434216aaddddc5257e10",
+      "from": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+      "to": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+      "nonce": 9,
+      "method": "grantSession",
+      "status": "success",
+      "blockNumber": "12",
+      "blockHash": "0xe43f48d3e8c088a8802929b782b55082525dfa10d5d73c65653104ba3b25b981",
+      "gasUsed": "178243"
+    },
+    {
+      "hash": "0x3eb82a42c55825c65b586092c6925cc7a8af400b262a93102956b86ee8090a83",
+      "from": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+      "to": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+      "nonce": 10,
+      "method": "revokeSession",
+      "status": "success",
+      "blockNumber": "13",
+      "blockHash": "0xb39762457868b55fdadc8390c6282823e3e93921ccbb9b4ed3e3955feedece26",
+      "gasUsed": "29897"
+    },
+    {
+      "hash": "0xada95145a1c017e342f1e98c4e75a4b4a86fde68e12f9e66f75ed7fc42b5a701",
+      "from": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+      "to": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+      "nonce": 11,
+      "method": "setPaused",
+      "status": "success",
+      "blockNumber": "14",
+      "blockHash": "0x90838b76fa3af615ce0e6c4f5b1f518e2bdb24f45177fe3d9b7b81e733eaac06",
+      "gasUsed": "29900"
+    }
+  ]
+}

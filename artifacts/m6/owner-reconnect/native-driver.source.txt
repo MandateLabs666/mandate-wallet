@@ -1,0 +1,151 @@
+// Real MetaMask boundary tests. Commands operate native UI, never replace provider state.
+import {mkdirSync,readFileSync,writeFileSync,existsSync,appendFileSync} from "node:fs";
+import {resolve,join} from "node:path";
+import {spawn} from "node:child_process";
+import {createRequire} from "node:module";
+import {createInterface} from "node:readline";
+import {randomBytes,createHash} from "node:crypto";
+import {keccak256,toHex} from "viem";
+import {localEnvironment} from "../examples/local-environment.js";
+import {TEST_MNEMONIC} from "../examples/local-node.js";
+import {testTokenAbi} from "../sdk/testTokenAbi.js";
+// @ts-expect-error Optional native-browser helper, outside product TypeScript runtime.
+import {nativeUI} from "../../scripts/lib/native-wallet-ui.mjs";
+process.umask(0o077);
+const revision=process.argv[2];if(!revision||!/^[a-z0-9-]+$/.test(revision))throw Error("FRESH_REVISION_REQUIRED");
+if(!process.stdin.isTTY)throw Error("INTERACTIVE_TTY_REQUIRED");
+const reuse=process.argv.slice(3).find(v=>!v.startsWith("--")),initializeConnection=process.argv.includes("--connect");if(reuse&&!/^[a-z0-9-]+$/.test(reuse))throw Error("INVALID_TEST_PROFILE_SOURCE");
+const output=resolve(".runtime/wallet-boundaries",revision);if(existsSync(output))throw Error("REVISION_EXISTS");mkdirSync(output,{recursive:true,mode:0o700});
+const json=(v:unknown)=>JSON.stringify(v,(_,x)=>typeof x==="bigint"?String(x):x,2)+"\n",save=(n:string,v:unknown)=>writeFileSync(join(output,n),json(v),{mode:0o600});
+save("run-manifest.json",{schemaVersion:1,revision,recordedAt:new Date().toISOString(),driverSHA256:createHash("sha256").update(readFileSync(new URL(import.meta.url))).digest("hex"),sourceFingerprint:Object.fromEntries(["mandate/web/app.ts","mandate/sdk/owner-wallet.ts","scripts/lib/native-wallet-ui.mjs"].map(p=>[p,createHash("sha256").update(readFileSync(p)).digest("hex")])),newPublicTransactions:0});
+const modules=process.env.RUNTIME_NODE_MODULES;if(!modules)throw Error("OPTIONAL_BROWSER_RUNTIME_REQUIRED");const r=createRequire(join(modules,"x.cjs")),{chromium}=r("playwright");
+const extension=resolve(".runtime/browser-wallet/metamask-13.52.0"),zip=resolve(".runtime/browser-wallet/metamask-chrome-13.52.0.zip");
+if(createHash("sha256").update(readFileSync(zip)).digest("hex")!=="8ea87cd478abde80ead7bd78bf71a05062fd1f260dfdb53de624865d460c5e4a")throw Error("EXTENSION_HASH_MISMATCH");
+const e=await localEnvironment({standaloneMerchant:true,failAfterPayment:true,signedOffersAndReceipts:true});
+let ctx:any,page:any,wallet:any,ui:any,child:ReturnType<typeof spawn>|undefined,privateWalletEntry=false;
+const input=createInterface({input:process.stdin,crlfDelay:Infinity}),wait=(ms:number)=>new Promise(yes=>setTimeout(yes,ms));
+for(const name of ["SIGINT","SIGTERM"] as const)process.once(name,()=>{input.close();void ctx?.close().catch(()=>{});});
+const token=randomBytes(32).toString("hex"),password=reuse?JSON.parse(readFileSync(resolve(".runtime/wallet-boundaries",reuse,"private-inputs.json"),"utf8")).password:randomBytes(16).toString("hex");if(typeof password!=="string"||password.length<32)throw Error("TEST_PROFILE_PASSWORD_INVALID");save("private-inputs.json",{connectionToken:token,password});
+const say=(v:unknown)=>{const safe=json(v).replaceAll(token,"[redacted]").replaceAll(password,"[redacted]");appendFileSync(join(output,"observations.jsonl"),JSON.stringify(JSON.parse(safe))+"\n");console.log(safe.trim());};
+let lastReview:any;
+try{
+  const config=join(e.directory,"boundary-gateway.json"),credentials=join(e.directory,"boundary-credentials.json"),verification=join(e.directory,"boundary-verification.json");
+  const privateSave=(p:string,v:unknown)=>writeFileSync(p,json(v),{mode:0o600});privateSave(credentials,{connectionToken:token});
+  for(const[name,a]of [["session",e.agentA],["operator",e.operator]] as const)privateSave(join(e.directory,name+".json"),{privateKey:toHex(a.getHdKey().privateKey!)});
+  privateSave(config,{schemaVersion:2,chainId:31337,rpc:e.node.rpc,wallet:e.wallet,asset:e.asset,tokenName:"USDC",tokenVersion:"2",agentId:"agent-a",mandateId:e.root,sessionId:e.sessions[0],startBlock:String(e.context(0).startBlock),sessionKeyFile:"session.json",operatorKeyFile:"operator.json",storeFile:"purchases.sqlite",credentialSHA256:createHash("sha256").update(token).digest("hex"),evmFeeReservationCapWei:"1000000000000000",confirmations:1,services:e.services.map((s,i)=>({serviceId:s.serviceId,stepId:s.stepId,method:s.method,url:s.url,body:null,resultChecker:i===0?"ETH-stats-v2":"BTC-stats-v2"})),testLoopbackOrigins:[e.merchant.origin],evidenceStoreFile:"boundary.evidence.sqlite"});
+  privateSave(verification,{schemaVersion:1,chainId:31337,wallet:e.wallet,asset:e.asset,owner:e.owner.address,walletRuntimeHash:keccak256((await e.pc.getCode({address:e.wallet}))!),rpcs:[e.node.rpc],disclosurePolicy:{request:true,result:true}});
+  child=spawn(process.execPath,["--import","tsx","mandate/web/cli.ts","--config",config,"--credential-file",credentials,"--verification-file",verification],{env:{PATH:process.env.PATH??"",MANDATE_WEB_PORT:"0"},stdio:["ignore","pipe","pipe"]});
+  const origin=await new Promise<string>((yes,no)=>{let out="";const timer=setTimeout(()=>no(Error("WEB_TIMEOUT")),15000);child!.stdout!.on("data",d=>{out+=d;for(const line of out.split("\n")){try{const v=JSON.parse(line);if(v.origin&&v.ownerKeyLoaded===false){clearTimeout(timer);yes(v.origin);}}catch{}}});child!.once("exit",()=>{clearTimeout(timer);no(Error("WEB_EXITED"));});});
+  save("private-connection.json",{origin,connectionToken:token,rpc:e.node.rpc});
+  const api=async(operation:string,args:any={})=>{const response=await fetch(origin+"/api/workspace",{method:"POST",headers:{"content-type":"application/json",authorization:"Bearer "+token},body:json({operation,...args}),signal:AbortSignal.timeout(15000)});const value=await response.json() as any;if(!response.ok)throw Error(String(value.code));return value;};
+  ctx=await chromium.launchPersistentContext(reuse?resolve(".runtime/wallet-boundaries",reuse,"profile"):join(output,"profile"),{channel:"chromium",headless:true,args:["--disable-extensions-except="+extension,"--load-extension="+extension],viewport:{width:1280,height:900}});ctx.setDefaultTimeout(15000);
+  const worker=ctx.serviceWorkers()[0]??await ctx.waitForEvent("serviceworker"),ext=new URL(worker.url()).host;
+  wallet=ctx.pages().find((p:any)=>p.url().startsWith("chrome-extension://"))??await ctx.newPage();await wallet.goto(`chrome-extension://${ext}/home.html`);ui=await nativeUI(ctx,wallet);
+  async function native(role:string,name:string){for(let i=0;i<200;i++){const found=(await ui.controls()).filter((c:any)=>c.role===role&&c.name===name&&!c.disabled);if(found.length===1)return found[0];await wait(150);}save("private-native-timeout.json",{role,name,url:wallet.url(),controls:privateWalletEntry?(await ui.controls()).filter((c:any)=>c.role==="button").map((c:any)=>({role:c.role,name:c.name,disabled:c.disabled})):await ui.controls()});throw Error("NATIVE_CONTROL_TIMEOUT");}
+  async function click(role:string,name:string){await native(role,name);await ui.click(role,name);await wait(300);}
+  privateWalletEntry=true;
+  if(!reuse){
+  // Retry only welcome-screen navigation if the old control is still present;
+  // confirmation/broadcast actions never use this setup-only retry.
+  await native("button","I have an existing wallet");
+  for(let attempt=0;attempt<3;attempt++){
+    const controls=await ui.controls();if(controls.some((c:any)=>c.role==="button"&&c.name==="Import using Secret Recovery Phrase"&&!c.disabled))break;
+    if(controls.some((c:any)=>c.role==="button"&&c.name==="I have an existing wallet"&&!c.disabled))await click("button","I have an existing wallet");
+    await wait(1000);
+  }
+  await click("button","Import using Secret Recovery Phrase");
+  const box=await native("textbox","Add a space between each word and make sure no one is watching.");await ui.cdp.send("DOM.focus",{backendNodeId:box.id});
+  for(const letter of TEST_MNEMONIC){await ui.cdp.send("Input.dispatchKeyEvent",{type:"keyDown",key:letter,text:letter,unmodifiedText:letter});await ui.cdp.send("Input.dispatchKeyEvent",{type:"keyUp",key:letter});}
+  await ui.cdp.send("Input.dispatchKeyEvent",{type:"keyDown",key:"Tab",code:"Tab"});await ui.cdp.send("Input.dispatchKeyEvent",{type:"keyUp",key:"Tab",code:"Tab"});await click("button","Continue");
+  await native("textbox","Create new password");await ui.fill("textbox","Create new password",password);await ui.fill("textbox","Confirm password",password);await click("checkbox","If I lose this password, MetaMask can’t reset it. Learn more");await click("button","Create password");await click("button","Maybe later");
+  await native("checkbox","Gather basic usage data");if((await ui.controls()).find((c:any)=>c.name==="Gather basic usage data"&&c.role==="checkbox")?.checked==="true")await click("checkbox","Gather basic usage data");await click("button","Continue");await click("button","Open wallet");
+  }else{
+    for(let i=0;i<100;i++){
+      const controls=await ui.controls(),box=controls.find((c:any)=>c.role==="textbox"&&/password/i.test(c.name));
+      if(box){await ui.fill("textbox",box.name,password);const unlock=controls.find((c:any)=>c.role==="button"&&/unlock/i.test(c.name));if(unlock)await click("button",unlock.name);break;}
+      if(controls.some((c:any)=>c.role==="button"&&/account|wallet/i.test(c.name))&&!/unlock/.test(wallet.url()))break;
+      await wait(150);
+    }
+    for(let i=0;i<100&&/unlock/.test(wallet.url());i++)await wait(150);
+    if(/unlock|onboarding/.test(wallet.url()))throw Error("REUSED_TEST_WALLET_NOT_UNLOCKED");
+  }
+  privateWalletEntry=false;
+  page=await ctx.newPage();await page.goto(origin+"/app.html");await page.locator("#credential").fill(token);await page.locator("#connection-form button").click();await page.locator("#content .metric-grid").waitFor();
+  if(!await page.evaluate(()=>Boolean((window as any).ethereum?.isMetaMask))||await page.locator("#credential").inputValue()!=="")throw Error("ACTUAL_PROVIDER_OR_CLEARING_FAILED");
+  let connectionInitialized=false;
+  if(initializeConnection)try{
+    async function prompt(name:string){
+      const existing=ctx.pages().filter((p:any)=>!p.isClosed()&&p.url().includes(`chrome-extension://${ext}/notification.html`)).at(-1);
+      if(existing)wallet=existing;else{if(wallet.isClosed())wallet=await ctx.newPage();await wallet.goto(`chrome-extension://${ext}/notification.html`);}ui=await nativeUI(ctx,wallet);await native("button",name);
+    }
+    await page.locator("#connect-owner").click();await prompt("Connect");await click("button","Connect");await page.locator("#error").filter({hasText:"different network"}).waitFor();
+    await page.evaluate(({rpc}:any)=>{const w=window as any;w.__boundaryNetwork={pending:true};w.ethereum.request({method:"wallet_addEthereumChain",params:[{chainId:"0x7a69",chainName:"Mandate local acceptance",rpcUrls:[rpc],nativeCurrency:{name:"Local Ether",symbol:"ETH",decimals:18}}]}).then(()=>w.__boundaryNetwork={done:true},(error:any)=>w.__boundaryNetwork={code:error.code});},{rpc:e.node.rpc});
+    await prompt("Confirm");await click("button","Confirm");await page.waitForFunction(()=>(window as any).__boundaryNetwork.done||(window as any).__boundaryNetwork.code!==undefined,null,{timeout:45000});
+    const network=await page.evaluate(()=>(window as any).__boundaryNetwork);if(!network.done){save("network-rejection.json",network);throw Error("LOCAL_NETWORK_NOT_APPROVED");}
+    await page.locator("#connect-owner").click();await page.locator("#connect-owner").filter({hasText:"Owner connected"}).waitFor({timeout:45000});
+    connectionInitialized=true;
+  }catch(error){save("private-initialization-error.json",{message:String(error),accepted:false});say({initializationIncomplete:true,accepted:false,manualNativeRecoveryRequired:true});}
+  const observe=async(label:string)=>{
+    const state=await api("snapshot",{taskId:e.root}),provider=await Promise.race([page.evaluate(async()=>{const p=(window as any).ethereum;return {isMetaMask:p.isMetaMask,chainId:await p.request({method:"eth_chainId"}),accounts:await p.request({method:"eth_accounts"})};}),wait(12000).then(()=>({observationUnavailable:true,reason:"EIP1193_READ_TIMEOUT"}))]);
+    const payments=await e.pc.getLogs({address:e.asset,event:testTokenAbi.find(a=>a.type==="event"&&a.name==="AuthorizationUsed") as any,fromBlock:0n,toBlock:"latest"});
+    const result={label,chainId:31337,owner:e.owner.address,wallet:e.wallet,ownerNonce:await e.pc.getTransactionCount({address:e.owner.address,blockTag:"latest"}),walletCashAtomic:String(await e.pc.readContract({address:e.asset,abi:testTokenAbi,functionName:"balanceOf",args:[e.wallet]})),paymentCount:payments.filter((l:any)=>l.args.authorizer.toLowerCase()===e.wallet.toLowerCase()).length,policy:state.context.policy,requests:state.ownerRequests,provider,app:{error:await page.locator("#error").innerText(),reviewError:await page.locator("#review-error").innerText(),reviewOpen:await page.locator("#review").isVisible(),approveDisabled:await page.locator("#approve").isDisabled(),ownerButton:await page.locator("#connect-owner").innerText(),submissions:await page.evaluate(()=>Object.keys(localStorage).filter(k=>k.startsWith("mandate-owner-v2/")).map(k=>JSON.parse(localStorage.getItem(k)!)))},newPublicTransactions:0,providerInjected:false};
+    save(label+".json",result);say(result);
+  };
+  say({ready:true,revision,reusedIsolatedProfile:reuse??null,connectionInitialized,mode:"actual MetaMask native UI; local EVM",providerInjected:false,ownerKeyInWeb:false,newPublicTransactions:0});
+  for await(const line of input){let command:any;try{command=JSON.parse(line);const op=command.op;
+    if(op==="stop")break;
+    if(op==="controls"){if(privateWalletEntry)throw Error("PRIVATE_ENTRY");say({controls:await ui.controls(),url:wallet.url()});}
+    else if(op==="nodes"){if(privateWalletEntry||/unlock|onboarding|recovery|import-srp/.test(wallet.url()))throw Error("PRIVATE_ENTRY");say({nodes:(await ui.nodes()).map((n:any)=>({role:n.role,name:n.name,id:n.id}))});}
+    else if(op==="click-id"){
+      if(privateWalletEntry)throw Error("PRIVATE_ENTRY");const node=(await ui.nodes()).find((n:any)=>n.id===command.id);if(!node||!["button","radio","option","menuitem","tab","generic","link","StaticText"].includes(node.role)||node.properties.some((p:any)=>p.name==="disabled"&&p.value.value===true))throw Error("OBSERVED_CONTROL_REQUIRED");
+      await ui.cdp.send("DOM.scrollIntoViewIfNeeded",{backendNodeId:node.id});const {model}=await ui.cdp.send("DOM.getBoxModel",{backendNodeId:node.id}),q=model.content,x=(q[0]+q[2]+q[4]+q[6])/4,y=(q[1]+q[3]+q[5]+q[7])/4;
+      await ui.cdp.send("Input.dispatchMouseEvent",{type:"mouseMoved",x,y});await ui.cdp.send("Input.dispatchMouseEvent",{type:"mousePressed",x,y,button:"left",clickCount:1});await ui.cdp.send("Input.dispatchMouseEvent",{type:"mouseReleased",x,y,button:"left",clickCount:1});await wait(300);say({clickedObservedControl:node.id,role:node.role,name:node.name});
+    }
+    else if(op==="fill-local-rpc"){
+      if(privateWalletEntry||/unlock|onboarding|recovery|import-srp/.test(wallet.url()))throw Error("PRIVATE_ENTRY");
+      await ui.find("textbox","Enter RPC URL");await ui.find("textbox","Enter a name to identify the URL");
+      await ui.fill("textbox","Enter RPC URL",e.node.rpc);await ui.fill("textbox","Enter a name to identify the URL","Mandate local acceptance");await wait(500);say({localFixtureRPCFilled:true,chainId:31337,secretInput:false});
+    }
+    else if(op==="fill-public"){
+      if(privateWalletEntry||/unlock|onboarding|recovery|import-srp/.test(wallet.url()))throw Error("PRIVATE_ENTRY");
+      if(command.role!=="searchbox"||command.name!=="Search your accounts"||typeof command.value!=="string"||!(command.value.toLowerCase()===e.owner.address.toLowerCase()||["Account 1","Account 824"].includes(command.value)))throw Error("PUBLIC_ACCOUNT_SEARCH_ONLY");
+      await ui.find(command.role,command.name);await ui.fill(command.role,command.name,command.value);await wait(600);say({publicAccountSearchFilled:true,secretInput:false,nodes:(await ui.nodes()).map((n:any)=>({role:n.role,name:n.name,id:n.id}))});
+    }
+    else if(op==="key"){
+      if(!["Tab","Enter","Escape","ArrowDown","ArrowUp","ArrowLeft","ArrowRight"].includes(command.key))throw Error("NAVIGATION_KEY_REQUIRED");await ui.cdp.send("Input.dispatchKeyEvent",{type:"keyDown",key:command.key,code:command.key});await ui.cdp.send("Input.dispatchKeyEvent",{type:"keyUp",key:command.key,code:command.key});say({navigationKey:command.key});
+    }
+    else if(op==="scroll-id"){
+      if(privateWalletEntry||!Number.isFinite(command.deltaY)||Math.abs(command.deltaY)>100000)throw Error("OBSERVED_SCROLL_REQUIRED");const node=(await ui.nodes()).find((n:any)=>n.id===command.id);if(!node)throw Error("OBSERVED_SCROLL_REQUIRED");
+      const {model}=await ui.cdp.send("DOM.getBoxModel",{backendNodeId:node.id}),q=model.content,x=(q[0]+q[2]+q[4]+q[6])/4,y=(q[1]+q[3]+q[5]+q[7])/4;await ui.cdp.send("Input.dispatchMouseEvent",{type:"mouseWheel",x,y,deltaX:0,deltaY:command.deltaY});await wait(600);say({scrolledAtObservedControl:node.id,deltaY:command.deltaY});
+    }
+    else if(op==="click"){await click(command.role,command.name);say({clicked:command.name,controls:privateWalletEntry?[]:await ui.controls()});}
+    else if(op==="notification"){
+      let popup:any;for(let i=0;i<30;i++){popup=ctx.pages().filter((p:any)=>!p.isClosed()&&p.url().includes(`chrome-extension://${ext}/notification.html`)).at(-1);if(popup)break;await wait(150);}
+      if(popup)wallet=popup;else{wallet=await ctx.newPage();await wallet.goto(`chrome-extension://${ext}/notification.html`);}
+      ui=await nativeUI(ctx,wallet);await wait(600);say({controls:await ui.controls(),selectedExistingPopup:!!popup});
+    }
+    else if(op==="home"){if(wallet.isClosed())wallet=await ctx.newPage();await wallet.goto(`chrome-extension://${ext}/home.html`);ui=await nativeUI(ctx,wallet);await wait(600);say({controls:await ui.controls()});}
+    else if(op==="pages"){say({pages:ctx.pages().map((p:any)=>p.url())});}
+    else if(op==="wallet-page"){
+      const selected=ctx.pages()[command.index];if(!selected||!selected.url().startsWith(`chrome-extension://${ext}/`))throw Error("EXTENSION_PAGE_REQUIRED");wallet=selected;ui=await nativeUI(ctx,wallet);privateWalletEntry=/unlock|onboarding/.test(wallet.url());say({url:wallet.url(),controls:privateWalletEntry?(await ui.controls()).filter((c:any)=>c.role==="button"):await ui.controls()});
+    }
+    else if(op==="unlock"){
+      const selected=ctx.pages().filter((p:any)=>p.url().startsWith(`chrome-extension://${ext}/`)&&p.url().includes("/unlock")).at(-1);if(!selected)throw Error("ACTUAL_UNLOCK_PAGE_REQUIRED");wallet=selected;ui=await nativeUI(ctx,wallet);privateWalletEntry=true;
+      let box:any;for(let i=0;i<100&&!box;i++){box=(await ui.controls()).find((c:any)=>c.role==="textbox"&&/password/i.test(c.name));if(!box)await wait(150);}if(!box)throw Error("PASSWORD_CONTROL_NOT_PRESENT");
+      await ui.fill("textbox",box.name,password);await click("button","Unlock");for(let i=0;i<100&&wallet.url().includes("/unlock");i++)await wait(150);if(wallet.url().includes("/unlock"))throw Error("WALLET_NOT_UNLOCKED");privateWalletEntry=false;say({nativeUnlockCompleted:true,secretExported:false});
+    }
+    else if(op==="app-state"){say({url:page.url(),error:await page.locator("#error").innerText(),reviewError:await page.locator("#review-error").innerText(),approveDisabled:await page.locator("#approve").isDisabled(),ownerButton:await page.locator("#connect-owner").innerText()});}
+    else if(op==="connect"){await page.locator(command.review?"#connect-review-owner":"#connect-owner").click();say({connectRequested:true});}
+    else if(op==="network"){await page.evaluate(({rpc}:any)=>{const w=window as any;w.__boundaryNetwork={pending:true};w.ethereum.request({method:"wallet_addEthereumChain",params:[{chainId:"0x7a69",chainName:"Mandate local acceptance",rpcUrls:[rpc],nativeCurrency:{name:"Local Ether",symbol:"ETH",decimals:18}}]}).then(()=>w.__boundaryNetwork={done:true},(error:any)=>w.__boundaryNetwork={code:error.code});},{rpc:e.node.rpc});say({networkRequested:true});}
+    else if(op==="switch-network"){if(command.chainId!=="0x1"&&command.chainId!=="0x7a69")throw Error("CHAIN_NOT_ALLOWED");await page.evaluate((chainId:string)=>{const w=window as any;w.__boundaryNetwork={pending:true};w.ethereum.request({method:"wallet_switchEthereumChain",params:[{chainId}]}).then(()=>w.__boundaryNetwork={done:true},(error:any)=>w.__boundaryNetwork={code:error.code});},command.chainId);say({switchRequested:command.chainId,readOnly:true});}
+    else if(op==="draft"){if(await page.locator("#review").isVisible())await page.locator("#close-review").click();const response=page.waitForResponse((r:any)=>r.url().endsWith("/api/workspace")&&r.request().postDataJSON()?.operation==="owner-action");await page.locator('[data-action="pause"]').first().click();const r=await response;if(r.status()!==200)throw Error("DRAFT_FAILED");lastReview=await r.json();await page.locator("#review").waitFor();say({draft:lastReview.request.requestId,action:lastReview.request.draft.action});}
+    else if(op==="approve"){await page.locator("#approve").click({timeout:1500});say({approvalRequested:true});}
+    else if(op==="close-review"){await page.locator("#close-review").click();say({reviewClosed:true});}
+    else if(op==="refresh"){await page.locator("#refresh").click();await wait(500);say({refreshed:true});}
+    else if(op==="observe"){if(!/^[a-z0-9-]+$/.test(command.label)||existsSync(join(output,command.label+".json")))throw Error("FRESH_OBSERVATION_REQUIRED");await wait(500);await observe(command.label);}
+    else if(op==="shot"){if(privateWalletEntry||/unlock|onboarding|recovery|import-srp/.test(wallet.url()))throw Error("PRIVATE_SCREENSHOT_DISABLED");if(!/^[a-z0-9-]+$/.test(command.label))throw Error("INVALID_LABEL");await (command.wallet?wallet:page).screenshot({path:join(output,command.label+".png"),fullPage:true});say({screenshot:command.label});}
+    else if(op==="viewport"){if(![390,1280].includes(command.width))throw Error("INVALID_WIDTH");await page.setViewportSize({width:command.width,height:900});say({width:command.width});}
+    else throw Error("UNSUPPORTED_COMMAND");
+  }catch(error){save("private-command-error.json",{op:command?.op,message:String(error)});say({commandFailed:command?.op,code:"BOUNDARY_COMMAND_FAILED"});}}
+}catch(error){save("private-error.json",{message:String(error),privateWalletEntry});throw Error("WALLET_BOUNDARIES_FAILED");}
+finally{input.close();await ctx?.close().catch(()=>{});if(child&&child.exitCode===null){child.kill("SIGTERM");await Promise.race([new Promise(yes=>child!.once("exit",yes)),wait(3000)]);if(child.exitCode===null)child.kill("SIGKILL");}await e.close();}

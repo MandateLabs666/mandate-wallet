@@ -1,0 +1,29 @@
+Paths that match both --include and --exclude will be skipped by Semgrep.
+               
+               
+┌─────────────┐
+│ Scan Status │
+└─────────────┘
+  Scanning 66 files tracked by git with 188 Code rules:
+                                                                                                                        
+  Language      Rules   Files          Origin   Rules                                                                   
+ ─────────────────────────────        ────────────────                                                                  
+  ts              176      66          Custom     188                                                                   
+  <multilang>       1      66                                                                                           
+                                                                                                                        
+                
+                
+┌──────────────┐
+│ Scan Summary │
+└──────────────┘
+✅ Scan completed successfully.
+ • Findings: 65 (65 blocking)
+ • Rules run: 177
+ • Targets scanned: 66
+ • Parsed lines: ~100.0%
+ • Scan skipped: 
+   ◦ Not matching --include patterns: 16
+   ◦ Files matching .semgrepignore patterns: 31
+ • Scan was limited to files tracked by git
+ • For a detailed list of skipped files and lines, run semgrep with the --verbose flag
+Ran 177 rules on 66 files: 65 findings.

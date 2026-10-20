@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-15T07:13:24.311359+00:00",
+  "sourceCommit": "5d665146a1b57b604bd2a27bb79228c4de3102d4",
+  "acceptedTasks": [
+    "T10.09"
+  ],
+  "proofStatus": "manual arguments with finite supporting experiments and explicit counterexamples",
+  "machineCheckedProof": false,
+  "independentSecurityReview": false,
+  "document": {
+    "path": "planning/M7_FORMAL_BOUNDARIES.zh-CN.md",
+    "SHA256": "f9c861971af19b045fbc691ed673cd0b10f7501e70ee786f6850e605d8aadd44"
+  },
+  "sourceSHA256": {
+    "mandate/contracts/src/MandateAccount.sol": "c733e4568179a7a5777b1e4bc9a07607b27e2c2171cb296369617b9ac71bd6ff",
+    "mandate/sdk/model.ts": "a9733a7519bfb9655952b38ffdc2d8f57fcee2a8e1a6c38b7a079369788370e3",
+    "mandate/sdk/reader.ts": "16a1acbc465b3077d07033c163d97893a18b424b3e5da9195d03e19d3a8f1336",
+    "mandate/services/client.ts": "a3ec15756edc2537a8afc92d491201da58b4c8457514d1c7e069fdb65a3764bc",
+    "mandate/services/store.ts": "b4e8968e687b63938d4077e38d355673249bc2103f7514a076b2f357da1e1f53",
+    "mandate/services/transactions.ts": "4c94db8fc7d3a1bac29955966a043ac5ed8e116401bf0ae5554fac38c569b6e8",
+    "mandate/evidence/checkpoint.ts": "bc320adecbdd20a3747327c94d3d96ede1d7b6ff7c025fb37b2391e592d4e22b",
+    "mandate/evidence/action-proof.ts": "b8a7b5d4b59856ba628e11752cb42c9c0789ab24c0dea02fb5b4411ba35f49df",
+    "mandate/evidence/bundle.ts": "456a5baa62206e83130594a4c353bee61c5917d9d51439753e0ef4252ebd0cb8",
+    "mandate/evidence/verifier.ts": "4f2f0109297dc588c901af057263996bcfd384eb6faf96bb1565ced4dc9d3b9a",
+    "mandate/evidence/controller.ts": "77592243a202df6b2ca1c6fa1bc1f9ad2e8c5cb9fc17d71f6303ff84c1c1df73",
+    "mandate/contracts/test/BudgetInvariant.t.sol": "0a32410b52de9d4005a99a89a62353b415a7f6c008d8c43ef0c2f19d61a5ed3e",
+    "mandate/contracts/test/MandateAccount.t.sol": "ca8fb6dd986754ba7b740490bca69062cd703987d00fd2c2720a48c3c7d7da6c"
+  },
+  "acceptanceScriptSHA256": "f001865e383e9ee4efed370c7b096e769e2678c7c8704c94a763f8844d6ac5a8",
+  "properties": {
+    "P1": {
+      "name": "root/session reservation conservation and budget bound",
+      "source": "mandate/contracts/src/MandateAccount.sol",
+      "anchors": [
+        "registerPayment",
+        "releaseExpired",
+        "replacePolicy"
+      ],
+      "evidence": [
+        {
+          "path": "artifacts/m7/benchmarks/stateful-final/concurrent-root-budget.json",
+          "SHA256": "f9e84124dc75e31c77e30dd6a44b75300c3bcfdb45ed182a9a958c91d07ea52b"
+        },
+        {
+          "path": "artifacts/m7/benchmarks/stateful-final/uncertain-settlement-retains-budget.json",
+          "SHA256": "8502ce73bfe72332206777a15f21df66a32a785a1f6f798209233e1cd4698cee"
+        }
+      ]
+    },
+    "P2": {
+      "name": "shared-root concurrency bound",
+      "source": "mandate/contracts/src/MandateAccount.sol",
+      "anchors": [
+        "p.budget - p.occupied"
+      ],
+      "evidence": [
+        {
+          "path": "artifacts/m7/benchmarks/stateful-final/concurrent-root-budget.json",
+          "SHA256": "f9e84124dc75e31c77e30dd6a44b75300c3bcfdb45ed182a9a958c91d07ea52b"
+        }
+      ]
+    },
+    "P3": {
+      "name": "session scope and limits subset",
+      "source": "mandate/contracts/src/MandateAccount.sol",
+      "anchors": [
+        "grantSession",
+        "sessionStep"
+      ],
+      "evidence": [
+        {
+          "path": "artifacts/m7/benchmarks/stateful-final/session-budget-subset.json",
+          "SHA256": "8710f3537bde803c6ba929450d3af600a911d515e1da206d99947a642eec90ed"
+        }
+      ]
+    },
+    "P4": {
+      "name": "at most one registration/payment per approved business step",
+      "source": "mandate/contracts/src/MandateAccount.sol",
+      "anchors": [
+        "paymentNonce",
+        "StepAlreadyUsed"
+      ],
+      "evidence": [
+        {
+          "path": "artifacts/m7/benchmarks/stateful-final/same-step-replay.json",
+          "SHA256": "52f51521b131f3b13944a9e40e2551950679cb9e62597c1f78f0be58c41482f9"
+        },
+        {
+          "path": "artifacts/m7/benchmarks/stateful-final/version-replacement.json",
+          "SHA256": "63f94731344c5f3be786df65e80ec1e608b457574bfedf65a5a7623f25227ebc"
+        }
+      ]
+    },
+    "P5": {
+      "name": "concrete authorization/payment binding",
+      "source": "mandate/contracts/src/MandateAccount.sol",
+      "anchors": [
+        "registrationDigest",
+        "quoteDigest",
+        "paymentDigest",
+        "isValidSignature"
+      ],
+      "evidence": [
+        {
+          "path": "artifacts/m7/benchmarks/stateful-final/direct-signer-bypass.json",
+          "SHA256": "475f728c1743b643faf85c8a2cfcb1cfe5eade0c5aafe81a0de899932b0d0b71"
+        },
+        {
+          "path": "artifacts/m7/research/dataset-audit.json",
+          "SHA256": "89de82cc2c201a36a66e78c4e7ae30a5fe4c1aebff97e213f5b6417449d1a027"
+        }
+      ]
+    },
+    "P6": {
+      "name": "revocation checked at settlement; no retroactive refund",
+      "source": "mandate/contracts/src/MandateAccount.sol",
+      "anchors": [
+        "_live",
+        "revokeSession"
+      ],
+      "evidence": [
+        {
+          "path": "artifacts/m7/benchmarks/stateful-final/prevalidate-then-revoke.json",
+          "SHA256": "0055e58b404296622c250ae70002e5b7a4d2fe556b836cb53f85297310fd7db9"
+        },
+        {
+          "path": "artifacts/m7/benchmarks/stateful-final/version-replacement.json",
+          "SHA256": "63f94731344c5f3be786df65e80ec1e608b457574bfedf65a5a7623f25227ebc"
+        }
+      ]
+    },
+    "P7": {
+      "name": "strict expiry and unused nonce for conservative release",
+      "source": "mandate/contracts/src/MandateAccount.sol",
+      "anchors": [
+        "block.timestamp <= c.payment.validBefore",
+        "authorizationState"
+      ],
+      "evidence": [
+        {
+          "path": "artifacts/m7/benchmarks/stateful-final/uncertain-settlement-retains-budget.json",
+          "SHA256": "8502ce73bfe72332206777a15f21df66a32a785a1f6f798209233e1cd4698cee"
+        }
+      ]
+    },
+    "P8": {
+      "name": "separate payment/delivery/result and canonical receipt",
+      "source": "mandate/sdk/reader.ts",
+      "anchors": [
+        "reconcilePayment",
+        "consumed_unknown",
+        "AuthorizationUsed"
+      ],
+      "evidence": [
+        {
+          "path": "artifacts/m7/benchmarks/echo-final/samples.json",
+          "SHA256": "661f038bcee5a2eafe34282494c247aba4e43bbfc3334dde919c27958c55b7aa"
+        },
+        {
+          "path": "artifacts/m7/benchmarks/http/B2-N09-0/result.json",
+          "SHA256": "d2989e2ade397f6adf068e0caae1b145632fd35df73c12f8a79106f72c099c82"
+        },
+        {
+          "path": "artifacts/m7/benchmarks/http/B2-N10-0/result.json",
+          "SHA256": "b172333d62dbe6bafa11443042f5905a60915fb8a6e020645b46196ab65c1cd4"
+        }
+      ]
+    },
+    "P9": {
+      "name": "selective disclosure integrity with source truth limits",
+      "source": "mandate/evidence/verifier.ts",
+      "anchors": [
+        "action-proof",
+        "hidden-result",
+        "https-source"
+      ],
+      "evidence": [
+        {
+          "path": "artifacts/m7/benchmarks/http/B3-N03-0/evidence-0-minimal-check.json",
+          "SHA256": "0044e0e2f70b1134ed92b3908036b3eeb2a8e004d172079731ef7f0b08f0300c"
+        },
+        {
+          "path": "artifacts/m7/benchmarks/http/B3-N03-0/evidence-0-tamper-check.json",
+          "SHA256": "2279068ee23f7622af9040cfa56aa7a39c4951be770527b0b1b358cd18e5a156"
+        }
+      ]
+    },
+    "P10": {
+      "name": "unknown-tail impossibility and pinned retained-head detection",
+      "source": "mandate/evidence/verifier.ts",
+      "anchors": [
+        "history-completeness",
+        "trusted-retained-prefix"
+      ],
+      "evidence": [
+        {
+          "path": "artifacts/m7/benchmarks/http/B3-N03-0/evidence-0-tail-probe.json",
+          "SHA256": "0b90dda9f4d1e24544faf65290cc82c46ee40be397bb99c4c80dddb2bc36d685"
+        },
+        {
+          "path": "artifacts/m7/benchmarks/http/B4-N03-0/evidence-0-tail-probe.json",
+          "SHA256": "949d14fe9d86ebcbcd4094d1505e89b0c9bee03055fc9e41010654684361134d"
+        }
+      ]
+    },
+    "P11": {
+      "name": "controller-local query cap; off-chain bypass boundary",
+      "source": "mandate/evidence/controller.ts",
+      "anchors": [
+        "CONTROLLER_QUERY_BUDGET_EXHAUSTED",
+        "EXPECTED_CHECKPOINT_MISSING"
+      ],
+      "evidence": [
+        {
+          "path": "artifacts/m7/benchmarks/http/B4-N03-0/evidence-0-grinding-probe.json",
+          "SHA256": "0cd59c9d85ebf05e34df14c7f7bb5367870506f130b69f3ae906a6a3d7fce3bc"
+        },
+        {
+          "path": "artifacts/m7/benchmarks/stateful-final/direct-controller-bypass-boundary.json",
+          "SHA256": "44d131f7cc2167016d14b3f44f2233d699708b5daed78bc0183d9b6826dfcbd7"
+        }
+      ]
+    }
+  },
+  "remainingT10": [
+    "T10.10"
+  ],
+  "T10": "in-progress",
+  "G3": "open; real external wallet and complete mobile owner flow pending",
+  "G4": "open; independent security review pending",
+  "newPublicTransactions": 0
+}

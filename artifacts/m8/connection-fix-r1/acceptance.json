@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-18T08:33:00.063645+00:00",
+  "status": "code-and-local-entry-fixed; user-installation-pending",
+  "cause": {
+    "desktop": "Installed generic manifest and downloaded bound manifest shared identity/version; installed manifest retained manual fields.",
+    "workspace": "Static route lookup included ?onboarding=1 and returned WEB_ROUTE_NOT_FOUND."
+  },
+  "fix": {
+    "extensionIdentity": "connection-specific Guided manifest distinct from generic manual manifest",
+    "liveCompatibility": "Existing server reads refreshed generated template; no process or chain restart.",
+    "workspace": "Hash bootstrap for live legacy server; new server explicitly supports onboarding query and rejects arbitrary file queries."
+  },
+  "tests": {
+    "onboarding": {
+      "passed": 10,
+      "total": 10
+    },
+    "web": {
+      "passed": 26,
+      "total": 26
+    },
+    "typecheck": "passed",
+    "officialMcpbSchema": "passed"
+  },
+  "initialRegression": {
+    "passed": 25,
+    "total": 26,
+    "cause": "Broad query acceptance broke the existing unknown-file-parameter rejection.",
+    "resolution": "Explicit supported parameter only; 26/26 after repair."
+  },
+  "live": {
+    "livePackage": {
+      "name": "mandate-wallet-guided-639657f6d296",
+      "displayName": "Mandate Wallet · Guided 639657",
+      "fields": [],
+      "fixedDescriptor": true
+    },
+    "connectionReady": true,
+    "executionReady": false,
+    "sessionRevoked": true,
+    "walletBalanceAtomic": "1000000",
+    "occupied": "0",
+    "originalProfileUnchanged": true,
+    "originalDescriptorUnchanged": true,
+    "personalClaudeModified": false
+  },
+  "independentMCP": {
+    "passed": true,
+    "toolCount": 8,
+    "checkedAt": "2026-10-18T08:24:24.628Z",
+    "scope": "independent-stdio-process",
+    "modelToolCallVerified": false
+  },
+  "userInstallationChoice": "User chose to install the prepared package manually. No personal extension configuration changed.",
+  "newPublicTransactions": 0,
+  "accountReset": false,
+  "existingProcessRestarted": false,
+  "sourceSHA256": {
+    "mandate/onboarding/hosts.ts": "57b2a7dff7ec134489716f323a0f3f7ebd76377f02d6dd8d21fa1a4a9d065931",
+    "mandate/onboarding/setup.test.ts": "9b0bd37a623c26e063db7448e9536497d2a7c7a078f612e8ab142f5ff02b360e",
+    "mandate/onboarding/web.ts": "c96a419d65125f15f163717a66b9e7c6e88061de5e393389294f9616373a9e17",
+    "mandate/web/app.ts": "25b0880399c939f78824046956e6b083e3b505d302f148692fdd9e3224648b9b",
+    "mandate/web/server.ts": "c25f51e301aca0d1b3374cb6f2b4a28decc929a46fdd0d772fd4df32f856b347"
+  },
+  "localBoundPackage": {
+    "path": "output/desktop/local-connection/mandate-wallet-guided-639657f6d296.mcpb",
+    "sha256": "aa06ff0b4013c4ff73c04ca19896b8e4731eb42668e86817c524abc652811ce0",
+    "localMachineOnly": true
+  },
+  "browserProof": "workspace-restored.jpg",
+  "limits": [
+    "Current session is revoked; connection repair does not renew authority.",
+    "Claude Guided installation and model-driven tool use remain unverified.",
+    "Original broken browser tab could not be rebound due to browser policy; it was left unchanged. The already-open workspace was verified.",
+    "Existing PDF 2.2 retains its original screenshot scope."
+  ]
+}

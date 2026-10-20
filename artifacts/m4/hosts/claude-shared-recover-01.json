@@ -1,0 +1,121 @@
+{
+  "host": "claude",
+  "mode": "shared-recover",
+  "attempt": 1,
+  "exitCode": 0,
+  "startedAt": "2026-10-14T17:58:01.559061+00:00",
+  "finishedAt": "2026-10-14T17:58:45.817262+00:00",
+  "sourceCommit": "1c813bcf1e3abe10a11f791d9ef9307379374e02",
+  "runnerSHA256": "d0d6af38f39395424567ae8d9bad1c433f86dd1363ed7001048d5c041fab480f",
+  "profileSHA256": "f57e71d2828a56c4c4f7154f0c2db5bdbce3210f5107d70c5139d58580a4fc05",
+  "skillSHA256": "a8cf81b29813797954f42d0e99740025212f3b2e7c0facbbb08676dc14338fbc",
+  "secretRedactions": false,
+  "hostApprovalMode": "explicit-single-tool-preapproval",
+  "ownerAuthoritySource": "preexisting-chain-grant",
+  "publicTranscript": "artifacts/m4/hosts/claude-shared-recover-01.jsonl",
+  "trace": {
+    "attemptedTools": [
+      "mandate_get_context",
+      "mandate_get_task",
+      "mandate_get_receipt",
+      "mandate_call_service",
+      "mandate_call_service"
+    ],
+    "successfulTools": [
+      "mandate_get_context",
+      "mandate_get_receipt",
+      "mandate_get_task",
+      "mandate_call_service",
+      "mandate_call_service"
+    ],
+    "deniedTools": [],
+    "requiredToolsObserved": true,
+    "purchaseRecords": [
+      {
+        "agentId": "agent-a",
+        "chainId": 84532,
+        "createdAt": "2026-10-14T16:43:09.615Z",
+        "key": "84532:0xe02b554a694b1857b8e89274b2f6e1ecd0c0b589:0xdd5f1d05ab7d028d11dfed287980a124a0d673f48ecc3af872a18e4d5f0d15d3:0xad542662e39d192880a73087090e9a6a35811d34b495333ce98a5f8a0b28fd04",
+        "mandateId": "0xdd5f1d05ab7d028d11dfed287980a124a0d673f48ecc3af872a18e4d5f0d15d3",
+        "payment": {
+          "mandateId": "0xdd5f1d05ab7d028d11dfed287980a124a0d673f48ecc3af872a18e4d5f0d15d3",
+          "merchantId": "0x0317ce286a4cdc66c72fb90608785737d90dbc2745723b066c4279e7de4ccbad",
+          "nonce": "0xdb5acbf17abfbb7c93fb615a5cd306d4e7f20dd6ecd5960efa8009c4fda4d79b",
+          "policyVersion": "1",
+          "quoteHash": "0xf5d5d8880a8205e18809d4dce216b4789ef84dfc397df707f953ee0c0064a5d3",
+          "requestHash": "0x0c9e6145c6b0c0a2d86b5b1f6ac7d504ebe8677a84f85e4dbc51931f80399f02",
+          "sessionEpoch": "1",
+          "sessionId": "0xb96eebda3770b89e987dfc1cd73117e6f57ae9f63d1cdfa67c6c00fb0f4bbf19",
+          "stepId": "0xad542662e39d192880a73087090e9a6a35811d34b495333ce98a5f8a0b28fd04",
+          "to": "0x5957a844D78516d8A0Ad11C06516777Ea82917Ac",
+          "validAfter": "0",
+          "validBefore": "1791996490",
+          "value": "10000"
+        },
+        "paymentState": "paid",
+        "registrationBlock": "48113954",
+        "registrationHash": "0xfc1749f6bdf7291474eeb724e0bc5bcdb14db3b97d42ea63fae6fd82fe8b6163",
+        "requestHash": "0x0c9e6145c6b0c0a2d86b5b1f6ac7d504ebe8677a84f85e4dbc51931f80399f02",
+        "resultState": "valid",
+        "serviceState": "returned",
+        "settlementBlockHash": "0x48bdb1f2c13ff1eee6be70aa79ff026ccbbfeaabe7b8c227ce847a52296ffb9b",
+        "settlementHash": "0x4dfb872ab0b5169436074ed890b28a5a4e6728cb260905a6e75bd915bb30431f",
+        "stepId": "0xad542662e39d192880a73087090e9a6a35811d34b495333ce98a5f8a0b28fd04",
+        "updatedAt": "2026-10-14T17:58:25.374Z",
+        "version": 17,
+        "wallet": "0xE02B554a694b1857B8e89274B2F6E1eCD0C0B589",
+        "resultDigest": "0xc56d67021839607d511276b0a6f2116390715ae56332c0475cd10c53cb692ee3",
+        "validatedResultSummary": {
+          "datasetId": "mandate-fixed-fixture-v2",
+          "asset": "ETH",
+          "count": 3,
+          "mean": 110
+        }
+      },
+      {
+        "agentId": "agent-a",
+        "chainId": 84532,
+        "createdAt": "2026-10-14T16:43:09.615Z",
+        "key": "84532:0xe02b554a694b1857b8e89274b2f6e1ecd0c0b589:0xdd5f1d05ab7d028d11dfed287980a124a0d673f48ecc3af872a18e4d5f0d15d3:0xad542662e39d192880a73087090e9a6a35811d34b495333ce98a5f8a0b28fd04",
+        "mandateId": "0xdd5f1d05ab7d028d11dfed287980a124a0d673f48ecc3af872a18e4d5f0d15d3",
+        "payment": {
+          "mandateId": "0xdd5f1d05ab7d028d11dfed287980a124a0d673f48ecc3af872a18e4d5f0d15d3",
+          "merchantId": "0x0317ce286a4cdc66c72fb90608785737d90dbc2745723b066c4279e7de4ccbad",
+          "nonce": "0xdb5acbf17abfbb7c93fb615a5cd306d4e7f20dd6ecd5960efa8009c4fda4d79b",
+          "policyVersion": "1",
+          "quoteHash": "0xf5d5d8880a8205e18809d4dce216b4789ef84dfc397df707f953ee0c0064a5d3",
+          "requestHash": "0x0c9e6145c6b0c0a2d86b5b1f6ac7d504ebe8677a84f85e4dbc51931f80399f02",
+          "sessionEpoch": "1",
+          "sessionId": "0xb96eebda3770b89e987dfc1cd73117e6f57ae9f63d1cdfa67c6c00fb0f4bbf19",
+          "stepId": "0xad542662e39d192880a73087090e9a6a35811d34b495333ce98a5f8a0b28fd04",
+          "to": "0x5957a844D78516d8A0Ad11C06516777Ea82917Ac",
+          "validAfter": "0",
+          "validBefore": "1791996490",
+          "value": "10000"
+        },
+        "paymentState": "paid",
+        "registrationBlock": "48113954",
+        "registrationHash": "0xfc1749f6bdf7291474eeb724e0bc5bcdb14db3b97d42ea63fae6fd82fe8b6163",
+        "requestHash": "0x0c9e6145c6b0c0a2d86b5b1f6ac7d504ebe8677a84f85e4dbc51931f80399f02",
+        "resultState": "valid",
+        "serviceState": "returned",
+        "settlementBlockHash": "0x48bdb1f2c13ff1eee6be70aa79ff026ccbbfeaabe7b8c227ce847a52296ffb9b",
+        "settlementHash": "0x4dfb872ab0b5169436074ed890b28a5a4e6728cb260905a6e75bd915bb30431f",
+        "stepId": "0xad542662e39d192880a73087090e9a6a35811d34b495333ce98a5f8a0b28fd04",
+        "updatedAt": "2026-10-14T17:58:32.059Z",
+        "version": 19,
+        "wallet": "0xE02B554a694b1857B8e89274B2F6E1eCD0C0B589",
+        "resultDigest": "0xc56d67021839607d511276b0a6f2116390715ae56332c0475cd10c53cb692ee3",
+        "validatedResultSummary": {
+          "datasetId": "mandate-fixed-fixture-v2",
+          "asset": "ETH",
+          "count": 3,
+          "mean": 110
+        }
+      }
+    ],
+    "finalAnswer": "Recovery succeeded with no new payment: both retry calls resumed the identical existing order, and the settlement hash and nonce match exactly across the receipt and both calls.\n\n**Comparison of the two retries (and the pre-retry receipt):**\n\n| Field | Call 1 | Call 2 | Match |\n|---|---|---|---|\n| settlementHash | `0x4dfb872ab0b5169436074ed890b28a5a4e6728cb260905a6e75bd915bb30431f` | same | \u2705 |\n| nonce | `0xdb5acbf17abfbb7c93fb615a5cd306d4e7f20dd6ecd5960efa8009c4fda4d79b` | same | \u2705 |\n| stepId | `0xad542662e39d192880a73087090e9a6a35811d34b495333ce98a5f8a0b28fd04` | same | \u2705 |\n| value | 10000 (USDC 0.01) | same | \u2705 |\n\n**Final state:** paymentState `paid`, serviceState `returned`, resultState `valid` \u2014 all three conditions for success are met. The registration transaction hash is `0xfc1749f6bdf7291474eeb724e0bc5bcdb14db3b97d42ea63fae6fd82fe8b6163` (block 48113954), settled in block `0x48bdb1...6ffb9b`. Only the local record version/timestamp advanced between calls (17 \u2192 19), which reflects chain-reconciled reads, not new transfers.\n\n**Result:** the validated summary for the fixed public demo dataset (`mandate-fixed-fixture-v2`) is asset ETH, count 3, mean 110, with result digest `0xc56d67...92ee3` matching the original receipt.\n\nThe grant remains active (budget 150000, root available 110000, not paused or revoked). The restart caused no duplicate step, nonce, or transfer \u2014 the order was recovered idempotently."
+  },
+  "productResultPassed": true,
+  "modelTaskPassed": true
+}

@@ -1,0 +1,54 @@
+{
+  "stage": "complete",
+  "recordedAt": "2026-10-14T09:40:20.644Z",
+  "chainId": 1337,
+  "safeMode": true,
+  "publicGatePassed": false,
+  "entryPoint": "0x5c74c94173F05dA1720953407cbb920F3DF9f887",
+  "policyId": "0x60a3ec7c7ec5ff83a4388f82d9e351f1882c987f19ec230ad362fa87f38e3fe4",
+  "entryPointNonce": "3",
+  "inputBalance": "850000",
+  "allowance": "0",
+  "totalSpent": "150000",
+  "failureCheckpoint": {
+    "chainId": 1337,
+    "registry": "0x720472c8ce72c2A2D711333e064ABD3E6BbEAdd3",
+    "account": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+    "instanceId": "0x60a3ec7c7ec5ff83a4388f82d9e351f1882c987f19ec230ad362fa87f38e3fe4",
+    "userOpHash": "0xc549cba7c52355fba978c2e3ab6c7b9f87410c9b8725f254f5b3eab5f85cb98d",
+    "transactionHash": "0x7df3bbd01e66ebedb2da6fd601d61d915bc2b0c18b3b3e5ebe883ca888667072",
+    "blockHash": "0x3cae5b975f4316b993e124f681a228b28c4bc29b4898e47c6471f0a349316084",
+    "blockNumber": "4401",
+    "spentAtFailure": "0",
+    "priorSpendEvents": 0,
+    "failedOperationSuccess": false,
+    "spendEventsInFailureReceipt": 0,
+    "inputTransfersInFailureReceipt": 0,
+    "source": "canonical-registry-event-prefix"
+  },
+  "records": [
+    {
+      "requestId": "m2-realtime-exact-input",
+      "state": "succeeded",
+      "userOpHash": "0xa6dea671e371a3ae34f1628ebc044d9662580d3c9bf59078113cf03f5b284a23",
+      "transactionHash": "0x7b20d90e5b0c84de807b44aaf5bd2a3b6efe68ec97295d89d7667ebb00dd01cc",
+      "nonce": "0x2",
+      "actualInput": "100000"
+    },
+    {
+      "requestId": "m2-router-failure",
+      "state": "failed",
+      "userOpHash": "0xc549cba7c52355fba978c2e3ab6c7b9f87410c9b8725f254f5b3eab5f85cb98d",
+      "transactionHash": "0x7df3bbd01e66ebedb2da6fd601d61d915bc2b0c18b3b3e5ebe883ca888667072",
+      "nonce": "0x0"
+    },
+    {
+      "requestId": "m2-session-exact-output",
+      "state": "succeeded",
+      "userOpHash": "0x18fd428ea78bc0f15337b0729de0b1c7ac4bb644dc22c00cf6fb128f41873c6a",
+      "transactionHash": "0x2b3a5b33245234f26f086bd92346880beaac5aa72fec0cab429fdcfabec342ee",
+      "nonce": "0x1",
+      "actualInput": "50000"
+    }
+  ]
+}

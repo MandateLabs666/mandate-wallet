@@ -1,0 +1,82 @@
+{
+  "host": "codex",
+  "mode": "purchase",
+  "attempt": 1,
+  "exitCode": 0,
+  "startedAt": "2026-10-14T16:42:37.730215+00:00",
+  "finishedAt": "2026-10-14T16:43:48.757956+00:00",
+  "sourceCommit": "621be0f529c8ee0ce96fefa89adb599dda360d8e",
+  "runnerSHA256": "0a092cb24a837e8d8133e246f9bd79a6858829b903fda441c20121d96cee6c5a",
+  "profileSHA256": "6d9afd2a54decfb75034ea76ea4b2b22c3127e50e7040c49980a1fe1cb63edbf",
+  "skillSHA256": "a8cf81b29813797954f42d0e99740025212f3b2e7c0facbbb08676dc14338fbc",
+  "secretRedactions": false,
+  "hostApprovalMode": "explicit-single-tool-preapproval",
+  "ownerAuthoritySource": "preexisting-chain-grant",
+  "publicTranscript": "artifacts/m4/hosts/codex-purchase-01.jsonl",
+  "trace": {
+    "attemptedTools": [
+      "mandate_get_context",
+      "mandate_search_services",
+      "mandate_quote_service",
+      "mandate_call_service",
+      "mandate_get_task",
+      "mandate_get_receipt"
+    ],
+    "successfulTools": [
+      "mandate_get_context",
+      "mandate_search_services",
+      "mandate_quote_service",
+      "mandate_call_service",
+      "mandate_get_task",
+      "mandate_get_receipt"
+    ],
+    "deniedTools": [],
+    "requiredToolsObserved": true,
+    "purchaseRecords": [
+      {
+        "agentId": "agent-a",
+        "chainId": 84532,
+        "createdAt": "2026-10-14T16:43:09.615Z",
+        "key": "84532:0xe02b554a694b1857b8e89274b2f6e1ecd0c0b589:0xdd5f1d05ab7d028d11dfed287980a124a0d673f48ecc3af872a18e4d5f0d15d3:0xad542662e39d192880a73087090e9a6a35811d34b495333ce98a5f8a0b28fd04",
+        "mandateId": "0xdd5f1d05ab7d028d11dfed287980a124a0d673f48ecc3af872a18e4d5f0d15d3",
+        "paymentState": "paid",
+        "requestHash": "0x0c9e6145c6b0c0a2d86b5b1f6ac7d504ebe8677a84f85e4dbc51931f80399f02",
+        "resultState": "valid",
+        "serviceState": "returned",
+        "stepId": "0xad542662e39d192880a73087090e9a6a35811d34b495333ce98a5f8a0b28fd04",
+        "updatedAt": "2026-10-14T16:43:36.638Z",
+        "version": 6,
+        "wallet": "0xE02B554a694b1857B8e89274B2F6E1eCD0C0B589",
+        "payment": {
+          "mandateId": "0xdd5f1d05ab7d028d11dfed287980a124a0d673f48ecc3af872a18e4d5f0d15d3",
+          "policyVersion": "1",
+          "sessionId": "0xb96eebda3770b89e987dfc1cd73117e6f57ae9f63d1cdfa67c6c00fb0f4bbf19",
+          "sessionEpoch": "1",
+          "stepId": "0xad542662e39d192880a73087090e9a6a35811d34b495333ce98a5f8a0b28fd04",
+          "merchantId": "0x0317ce286a4cdc66c72fb90608785737d90dbc2745723b066c4279e7de4ccbad",
+          "requestHash": "0x0c9e6145c6b0c0a2d86b5b1f6ac7d504ebe8677a84f85e4dbc51931f80399f02",
+          "quoteHash": "0xf5d5d8880a8205e18809d4dce216b4789ef84dfc397df707f953ee0c0064a5d3",
+          "to": "0x5957a844D78516d8A0Ad11C06516777Ea82917Ac",
+          "value": "10000",
+          "validAfter": "0",
+          "validBefore": "1791996490",
+          "nonce": "0xdb5acbf17abfbb7c93fb615a5cd306d4e7f20dd6ecd5960efa8009c4fda4d79b"
+        },
+        "registrationHash": "0xfc1749f6bdf7291474eeb724e0bc5bcdb14db3b97d42ea63fae6fd82fe8b6163",
+        "registrationBlock": "48113954",
+        "settlementHash": "0x4dfb872ab0b5169436074ed890b28a5a4e6728cb260905a6e75bd915bb30431f",
+        "settlementBlockHash": "0x48bdb1f2c13ff1eee6be70aa79ff026ccbbfeaabe7b8c227ce847a52296ffb9b",
+        "resultDigest": "0xc56d67021839607d511276b0a6f2116390715ae56332c0475cd10c53cb692ee3",
+        "validatedResultSummary": {
+          "datasetId": "mandate-fixed-fixture-v2",
+          "asset": "ETH",
+          "count": 3,
+          "mean": 110
+        }
+      }
+    ],
+    "finalAnswer": "Validated the Mandate purchase flow for the specified service using the supplied skill guidance.\n\n- Paid **0.01 test USDC** (`10000` atomic units), chain ID `84532`.\n- Payment: **paid**; service: **returned**; result: **valid**.\n- Validated mean: **110** \u2014 ETH, 3 observations, dataset `mandate-fixed-fixture-v2`.\n- Receipt transaction hash: `0x4dfb872ab0b5169436074ed890b28a5a4e6728cb260905a6e75bd915bb30431f`\n\nTask and receipt agree. No tool errors or timeout occurred, so timeout recovery was not exercised."
+  },
+  "productResultPassed": true,
+  "modelTaskPassed": true
+}

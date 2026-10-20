@@ -1,0 +1,30 @@
+Scope: all 3 workspace projects
+✓ Lockfile passes supply-chain policies (verified 1d ago)
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +460
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Packages are cloned from the content-addressable store to the virtual store.
+  Content-addressable store is at: /Users/jeff/Library/pnpm/store/v11
+  Virtual store is at:             node_modules/.pnpm
+Progress: resolved 460, reused 457, downloaded 0, added 271
+Progress: resolved 460, reused 457, downloaded 0, added 454
+Progress: resolved 460, reused 457, downloaded 0, added 458
+Progress: resolved 460, reused 457, downloaded 0, added 459
+Progress: resolved 460, reused 457, downloaded 0, added 460, done
+
+dependencies:
++ @modelcontextprotocol/sdk 1.27.1
++ @x402/core 2.28.0 <- vendor/x402/typescript/packages/core
++ @x402/evm 2.28.0 <- vendor/x402/typescript/packages/mechanisms/evm
++ viem 2.48.11
++ zod 3.25.76
+
+devDependencies:
++ @types/node 22.13.4
++ ajv 8.17.1
++ tsx 4.21.0
++ typescript 5.9.3
++ vitest 3.2.7
+
+Done in 4.9s using pnpm v11.25.0

@@ -1,0 +1,28 @@
+{
+  "environment": "LOCAL_ANVIL_MOCK_USDC",
+  "echoCommit": "bf68bec76cb4b1394271e0d6043e6d2221d71334",
+  "plainEOA": {
+    "verify": true
+  },
+  "echo7702": {
+    "delegate": "0xa513e6e4b8f2a923d98304ec87f64353c4d5c853",
+    "registry": "0xdc64a140aa3e981100a9beca4e685f962f0cf6c9",
+    "validator": "0x0165878a594ca255338adfa4d48449f69242eb8f",
+    "attachmentTx": "0xea966f3b19e214118a6c867254dd3a8e9adb4d82097129df4ba7242b9cf16602",
+    "delegationCode": "0xef0100a513e6e4b8f2a923d98304ec87f64353c4d5c853",
+    "verify": false,
+    "reason": "invalid_exact_evm_signature",
+    "tokenSimulationRejected": true,
+    "policyInitialization": "not required for absent isValidSignature selector; no swap/EntryPoint compatibility claim"
+  },
+  "mandate1271": {
+    "verify": true,
+    "settled": true,
+    "transaction": "0x828e2e8037b341ca7487d0b6e213655a7cdf0e2a8586a3d3b7fbfe8a23325331",
+    "signatureFormat": "65-byte ECDSA from policy sessionSigner; digest must already be registered"
+  },
+  "limitations": [
+    "mock asset; public native USDC evidence is separate",
+    "comparison does not repair Echo or verify ERC4337 bundling"
+  ]
+}

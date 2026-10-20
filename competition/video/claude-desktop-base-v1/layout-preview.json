@@ -1,0 +1,87 @@
+{
+  "purpose": "layout-preview",
+  "completedDemo": false,
+  "newPublicTransactions": 0,
+  "systemViewVisibleInEveryLayout": true,
+  "systemOnTopDuringTransitions": true,
+  "transitionSeconds": 0.65,
+  "applicationPixels": "Unaltered genuine screenshots, scaled to fit each panel",
+  "captureSynchronization": "Source screenshots were captured at different times",
+  "sources": {
+    "system": {
+      "title": "Mandate | Setup wizard",
+      "shortTitle": "Mandate setup",
+      "file": "/Users/jeff/Desktop/projects/fintech_competition/.runtime/claude-video-base-v1/capture/01-choose-path-00000.jpg",
+      "capturedAt": "2026-10-19T08:27:36.858Z",
+      "sha256": "561d5a81ac45183ef688ffea40b03b9a627960e4094cb1b1f40173327d0081df"
+    },
+    "rabby": {
+      "title": "Rabby | Owner wallet",
+      "shortTitle": "Rabby wallet",
+      "file": "/Users/jeff/Desktop/projects/fintech_competition/.runtime/claude-video-base-v1/capture/02-rabby-base-network-00024.jpg",
+      "capturedAt": "2026-10-19T08:28:48.280Z",
+      "sha256": "a915dd7c7c49960de285f9125aaf27a22d49bea65818f2e4dbd3e05ce451af39"
+    },
+    "claude": {
+      "title": "Claude Desktop | Connection settings",
+      "shortTitle": "Claude Desktop",
+      "file": "/Users/jeff/Desktop/projects/fintech_competition/.runtime/claude-video-base-v1/readiness/claude-old-manual-extension.jpg",
+      "note": "Earlier manual-extension settings; no new Base Guided installation is represented",
+      "sha256": "308f4b788fb8fa95827b06e3c3677a29c623b186826b9f4a9ca26e431b309989"
+    },
+    "explorer": {
+      "title": "BaseScan | Current-run evidence",
+      "shortTitle": "BaseScan",
+      "note": "No current-run public transaction exists; no historical transaction is substituted",
+      "placeholder": true
+    }
+  },
+  "scenes": [
+    {
+      "mode": "workspace",
+      "seconds": 3.5,
+      "title": "01 / Main system view",
+      "caption": "Start in Mandate. Keep the agent, owner wallet and transaction evidence available as supporting views."
+    },
+    {
+      "mode": "wallet",
+      "seconds": 4,
+      "title": "02 / Rabby focus",
+      "caption": "For owner signatures, reduce the Mandate view and enlarge Rabby. The main system remains visible on the left."
+    },
+    {
+      "mode": "agent",
+      "seconds": 4,
+      "title": "03 / Claude Desktop focus",
+      "caption": "Bring Claude Desktop forward for agent setup and tool use. Keep the Mandate page visible beside it."
+    },
+    {
+      "mode": "proof",
+      "seconds": 4,
+      "title": "04 / Side-by-side evidence view",
+      "caption": "Compare the system record with the same transaction on BaseScan. This layout preview has no current-run transaction."
+    },
+    {
+      "mode": "workspace",
+      "seconds": 3,
+      "title": "05 / Return to the main system",
+      "caption": "Return to Mandate for the next step. Keep the other application views available throughout the demonstration."
+    }
+  ],
+  "renderedFrames": 555,
+  "media": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_type": "video",
+        "width": 2560,
+        "height": 1440,
+        "r_frame_rate": "30/1"
+      }
+    ],
+    "format": {
+      "duration": "18.500000"
+    }
+  }
+}

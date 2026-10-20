@@ -1,0 +1,103 @@
+{
+  "id": "session-budget-subset",
+  "passed": true,
+  "bindings": {
+    "wallet": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+    "asset": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+    "owner": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "sessionSigners": [
+      "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
+    ]
+  },
+  "runtimeHash": "0xf8c4b7928b8d66d4c25cade510b8ec35dbbe902990c3cfb91e10ce7d9124175a",
+  "detail": {
+    "budget": {
+      "expected": "BudgetExceeded",
+      "actual": "BudgetExceeded",
+      "accepted": false
+    },
+    "scope": {
+      "expected": "InvalidPayment",
+      "actual": "InvalidPayment",
+      "accepted": false
+    },
+    "narrowOccupied": "30000",
+    "rootRemainingBeforeDenial": 120000,
+    "legalRegistrations": [
+      {
+        "hash": "0x8805fc6728cd11d64ae2cc198a2bccf89aa3000b156181bae2d4236e5ebdd318",
+        "status": "success",
+        "blockNumber": "8",
+        "blockHash": "0x147ca9ee15f166f87fa4d8a5e35371fe95d2bcd7b517a7d3b611a9dcfcd131b4",
+        "gasUsed": "445094",
+        "effectiveGasPrice": "1410529867",
+        "feeWei": "627818380622498",
+        "logs": [
+          {
+            "address": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+            "topics": [
+              "0x53fac4a735592149c3d4ab16f5e1d659f01ac8f1269eddcd42d263aa8d303ad3",
+              "0x13caf3db55a65ac130697ce56ea704a81c9a28c31d232ea4226a50e0c3ca5656",
+              "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37",
+              "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e"
+            ],
+            "data": "0x4e6a35c232cea8fe3919de92dc12bc3cc155ae9cc2bfa2fdac3247aec682c801000000000000000000000000000000000000000000000000000000000000753089d5755ed1e92c946337f8178f207c5e1485461284eb34936b30873ee30c6162000000000000000000000000000000000000000000000000000000006ad07c868c8a2e7d6361564a26758b968c3e72695ea2c48c8169e44ce895111088558de70b18e9860089bd7439add4c314a50394d8bddf4000854a1824436f2901fe0ce5",
+            "blockHash": "0x147ca9ee15f166f87fa4d8a5e35371fe95d2bcd7b517a7d3b611a9dcfcd131b4",
+            "blockNumber": "8",
+            "blockTimestamp": "1792047963",
+            "transactionHash": "0x8805fc6728cd11d64ae2cc198a2bccf89aa3000b156181bae2d4236e5ebdd318",
+            "transactionIndex": 0,
+            "logIndex": 0,
+            "removed": false
+          }
+        ]
+      },
+      {
+        "hash": "0xccefe345d42eaad1f433c97d9428c92311bd3f6f0ece3580fafbe389dac34ba0",
+        "status": "success",
+        "blockNumber": "10",
+        "blockHash": "0xc8c3a710c5bfdf734f360d055acf9a04467669890c2aa2d5c495893f3a1ee735",
+        "gasUsed": "428006",
+        "effectiveGasPrice": "1316102367",
+        "feeWei": "563299709690202",
+        "logs": [
+          {
+            "address": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+            "topics": [
+              "0x53fac4a735592149c3d4ab16f5e1d659f01ac8f1269eddcd42d263aa8d303ad3",
+              "0x91326c595a25badad70a76176a8f63d43eea7777eb76ccadb5fb88c6c10de87a",
+              "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37",
+              "0x4cfb1c8699d277407517fe08cfe9434d6af9573d22d674332ba5a48c1bd37f65"
+            ],
+            "data": "0xa2faf6b08bba11a93beb07658ac68fe8df088dae5da5f2783488103412e1fd350000000000000000000000000000000000000000000000000000000000002710cb7a4c8d31cccc1bf50815a706a43af300e0d048cb352daded3394a924a14453000000000000000000000000000000000000000000000000000000006ad07c888cc5e02063ae4b8345973948d2a20353ffe96fe27a80fb43ce385a6990d3698d9c8d788961e6a9435fdf66bc1a1865a820cbc89877b6de883260b6eac03f1910",
+            "blockHash": "0xc8c3a710c5bfdf734f360d055acf9a04467669890c2aa2d5c495893f3a1ee735",
+            "blockNumber": "10",
+            "blockTimestamp": "1792047965",
+            "transactionHash": "0xccefe345d42eaad1f433c97d9428c92311bd3f6f0ece3580fafbe389dac34ba0",
+            "transactionIndex": 0,
+            "logIndex": 0,
+            "removed": false
+          }
+        ]
+      }
+    ]
+  },
+  "endingState": {
+    "policy": {
+      "taskHash": "0xaaff8db9d0075498f192ae0ec43d6fe21a69fd8e7b121b5ae8b9ec569c9fab8a",
+      "budget": "150000",
+      "maxPerPayment": "100000",
+      "occupied": "40000",
+      "expiresAt": "1792051557",
+      "version": "1",
+      "paused": false,
+      "revoked": false,
+      "exists": true
+    },
+    "cash": "1000000",
+    "merchant": "0"
+  },
+  "samples": 1,
+  "newPublicTransactions": 0
+}

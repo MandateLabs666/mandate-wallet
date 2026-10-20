@@ -1,0 +1,8 @@
+Verifying presentation with k256 key: 02d328b698def1f1115a5f5aaacdea0e710ca0f4281a699f323c4adadb1a45af07
+
+**Ask yourself, do you trust this key?**
+
+
+thread 'main' (1) panicked at crates/examples/attestation/mandate_verify.rs:72:47:
+called `Result::unwrap()` on an `Err` value: PresentationError { kind: Transcript, source: Some(TranscriptProofError { kind: Hash, source: Some("hash opening does not match any commitment") }) }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

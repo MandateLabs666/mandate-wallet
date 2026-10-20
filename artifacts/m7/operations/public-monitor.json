@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-10-15T05:33:11.748Z",
+  "mode": "single-run-local-operations-monitor",
+  "transactionsSubmitted": 0,
+  "coverage": [
+    {
+      "domain": "network:84532:0xe02b554a694b1857b8e89274b2f6e1ecd0c0b589",
+      "complete": true,
+      "source": "two-provider-finalized-state"
+    },
+    {
+      "domain": "task:84532:0xe02b554a694b1857b8e89274b2f6e1ecd0c0b589:0x81591dc72948e8e11ae7b47983e8707d29ef9bcb6b2fc5d9eefbc8f33dc02ba4:0x861a3e57dd2f3fd4ed610c8c150df6219b3d0c1b2cbcfba237f42b9fde742cad",
+      "complete": true,
+      "source": "local-read-only-SQL-projection-and-checkpoint-signatures"
+    }
+  ],
+  "taskStatus": [
+    {
+      "key": "84532:0xe02b554a694b1857b8e89274b2f6e1ecd0c0b589:0x81591dc72948e8e11ae7b47983e8707d29ef9bcb6b2fc5d9eefbc8f33dc02ba4:0x861a3e57dd2f3fd4ed610c8c150df6219b3d0c1b2cbcfba237f42b9fde742cad",
+      "payment": "paid",
+      "service": "returned",
+      "result": "valid"
+    }
+  ],
+  "networkStatus": [
+    {
+      "chainId": 84532,
+      "wallet": "0xE02B554a694b1857B8e89274B2F6E1eCD0C0B589",
+      "blockNumber": "48136465",
+      "blockHash": "0xbb544c7413ace9ed8cf41e607ca1305af2cd4fb5545b70230fb17290325d813a",
+      "assetCashAtomic": "0",
+      "rootBudgetAtomic": "10000",
+      "rootOccupiedAtomic": "10000",
+      "grantBudgetAtomic": "10000",
+      "grantOccupiedAtomic": "10000",
+      "issues": [
+        "WALLET_ASSET_BALANCE_ZERO",
+        "POLICY_EXPIRED",
+        "POLICY_BUDGET_EXHAUSTED",
+        "SESSION_EXPIRED",
+        "SESSION_BUDGET_EXHAUSTED"
+      ]
+    }
+  ],
+  "checkpointHeads": [
+    {
+      "scope": "84532:0xe02b554a694b1857b8e89274b2f6e1ecd0c0b589:0x81591dc72948e8e11ae7b47983e8707d29ef9bcb6b2fc5d9eefbc8f33dc02ba4:0x8e86deb4566f10bba7eb8768107d7e90df08d4454ca6ca3c7b411f3e56840247:1:1:0xc4da6909e60186ddcb0cada144ce8a3539659dc1",
+      "sequence": 4,
+      "root": "0xc39dc6246618c40e21fad852e716a5f9f47195c02c3ad0c7a1a11d3b161386fc",
+      "source": "retained-observation"
+    }
+  ],
+  "active": [
+    {
+      "id": "0x27be2c903dd5f5dc73d4b8ff06d30950b4fbe2bdd19c99efb16f341d4ee2bad4",
+      "domain": "network:84532:0xe02b554a694b1857b8e89274b2f6e1ecd0c0b589",
+      "code": "SESSION_EXPIRED",
+      "severity": "warning",
+      "subject": "0xE02B554a694b1857B8e89274B2F6E1eCD0C0B589",
+      "firstAt": "2026-10-15T05:27:04.337Z",
+      "lastAt": "2026-10-15T05:33:11.748Z",
+      "resolvedAt": null
+    },
+    {
+      "id": "0x5684b814eb8359e6a678c5a19eb74e85d912e4e2998ce1f81159f4d340534751",
+      "domain": "network:84532:0xe02b554a694b1857b8e89274b2f6e1ecd0c0b589",
+      "code": "POLICY_BUDGET_EXHAUSTED",
+      "severity": "warning",
+      "subject": "0xE02B554a694b1857B8e89274B2F6E1eCD0C0B589",
+      "firstAt": "2026-10-15T05:27:04.337Z",
+      "lastAt": "2026-10-15T05:33:11.748Z",
+      "resolvedAt": null
+    },
+    {
+      "id": "0x56e0bd6ad8798681b63ad2e906d6fa64cdbce0140e7a291bc4a8bd66d7be1af4",
+      "domain": "network:84532:0xe02b554a694b1857b8e89274b2f6e1ecd0c0b589",
+      "code": "WALLET_ASSET_BALANCE_ZERO",
+      "severity": "warning",
+      "subject": "0xE02B554a694b1857B8e89274B2F6E1eCD0C0B589",
+      "firstAt": "2026-10-15T05:27:04.337Z",
+      "lastAt": "2026-10-15T05:33:11.748Z",
+      "resolvedAt": null
+    },
+    {
+      "id": "0xb1dfd8707b1c63c47968124acfab138a537721b36cb6919968899b00fa238d13",
+      "domain": "network:84532:0xe02b554a694b1857b8e89274b2f6e1ecd0c0b589",
+      "code": "SESSION_BUDGET_EXHAUSTED",
+      "severity": "warning",
+      "subject": "0xE02B554a694b1857B8e89274B2F6E1eCD0C0B589",
+      "firstAt": "2026-10-15T05:27:04.337Z",
+      "lastAt": "2026-10-15T05:33:11.748Z",
+      "resolvedAt": null
+    },
+    {
+      "id": "0xcce6bf057d9c7e7065bfe3f604e2e74b31bea08f76d1ba13a6366d16ee6db23c",
+      "domain": "network:84532:0xe02b554a694b1857b8e89274b2f6e1ecd0c0b589",
+      "code": "POLICY_EXPIRED",
+      "severity": "warning",
+      "subject": "0xE02B554a694b1857B8e89274B2F6E1eCD0C0B589",
+      "firstAt": "2026-10-15T05:27:04.337Z",
+      "lastAt": "2026-10-15T05:33:11.748Z",
+      "resolvedAt": null
+    }
+  ],
+  "events": [
+    {
+      "seq": 1,
+      "alertId": "0x56e0bd6ad8798681b63ad2e906d6fa64cdbce0140e7a291bc4a8bd66d7be1af4",
+      "event": "opened",
+      "observedAt": "2026-10-15T05:27:04.337Z"
+    },
+    {
+      "seq": 2,
+      "alertId": "0xcce6bf057d9c7e7065bfe3f604e2e74b31bea08f76d1ba13a6366d16ee6db23c",
+      "event": "opened",
+      "observedAt": "2026-10-15T05:27:04.337Z"
+    },
+    {
+      "seq": 3,
+      "alertId": "0x5684b814eb8359e6a678c5a19eb74e85d912e4e2998ce1f81159f4d340534751",
+      "event": "opened",
+      "observedAt": "2026-10-15T05:27:04.337Z"
+    },
+    {
+      "seq": 4,
+      "alertId": "0x27be2c903dd5f5dc73d4b8ff06d30950b4fbe2bdd19c99efb16f341d4ee2bad4",
+      "event": "opened",
+      "observedAt": "2026-10-15T05:27:04.337Z"
+    },
+    {
+      "seq": 5,
+      "alertId": "0xb1dfd8707b1c63c47968124acfab138a537721b36cb6919968899b00fa238d13",
+      "event": "opened",
+      "observedAt": "2026-10-15T05:27:04.337Z"
+    }
+  ],
+  "limits": [
+    "Local monitor state is controlled by this host; it is not an independent witness.",
+    "Without a pre-existing trusted head, a tail omitted before first observation may be undetectable.",
+    "Task status is locally reported; network observations and signature checks do not prove HTTP delivery."
+  ]
+}

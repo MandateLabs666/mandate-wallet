@@ -1,0 +1,82 @@
+// Real local EVM/HTTP + browser presentation probe; no owner/browser-wallet claim.
+import {createRequire} from "node:module";
+import {execFileSync} from "node:child_process";
+import {mkdirSync,readFileSync,writeFileSync,existsSync} from "node:fs";
+import {resolve,join} from "node:path";
+import {createHash,randomBytes} from "node:crypto";
+import {encodeFunctionData,type Hex} from "viem";
+import {localEnvironment} from "../examples/local-environment.js";
+import {GatewayTools} from "../gateway/tools.js";
+import {MandateWorkspace} from "../sdk/workspace.js";
+import {PurchaseClient} from "../services/client.js";
+import {serveWorkspace} from "../web/server.js";
+import {accountAbi} from "../sdk/accountAbi.js";
+import {testTokenAbi} from "../sdk/testTokenAbi.js";
+process.umask(0o077);
+const [revision,scenario,expectation,baseline]=process.argv.slice(2);
+const cases=["paid-failed","paused","expired","stale","revoked","network","asset","scheme","permit2","amount","cash","invalid-result"];
+if(!revision||!/^[a-z0-9-]+$/.test(revision)||!cases.includes(scenario)||!["before","after"].includes(expectation)||baseline&&!/^[0-9a-f]{7,40}$/.test(baseline))throw Error("FRESH_REVISION_SCENARIO_EXPECTATION_REQUIRED");
+const out=resolve(".runtime/purchase-feedback",revision);if(existsSync(out))throw Error("REVISION_EXISTS");mkdirSync(out,{recursive:true,mode:0o700});
+const save=(n:string,v:unknown)=>writeFileSync(join(out,n),JSON.stringify(v,(_,x)=>typeof x==="bigint"?String(x):x,2)+"\n");
+const source=(p:string)=>baseline?execFileSync("git",["show",`${baseline}:${p}`]):readFileSync(p),web=join(out,"web");mkdirSync(web);
+for(const n of ["index.html","app.html","docs.html","styles.css","favicon.svg"])writeFileSync(join(web,n),source("mandate/web/static/"+n));
+const fromTsx=createRequire(import.meta.resolve("tsx")),esbuild=fromTsx("esbuild");if(fromTsx("esbuild/package.json").version!=="0.27.7")throw Error("PINNED_BUILDER_MISMATCH");
+await esbuild.build({stdin:{contents:source("mandate/web/app.ts").toString(),resolveDir:resolve("mandate/web"),sourcefile:"app.ts",loader:"ts"},outfile:join(web,"app.js"),bundle:true,platform:"browser",format:"esm",target:"es2022",minify:true});
+const sourceFingerprint=Object.fromEntries(["mandate/web/app.ts","mandate/web/static/styles.css","mandate/web/static/app.html"].map(p=>[p,createHash("sha256").update(source(p)).digest("hex")]));
+for(const p of ["mandate/services/client.ts","mandate/examples/local-environment.ts","mandate/experiments/m6-purchase-feedback.ts"])sourceFingerprint[p]=createHash("sha256").update(readFileSync(p)).digest("hex");
+if(!baseline)sourceFingerprint['mandate/web/purchase-presentation.ts']=createHash('sha256').update(readFileSync('mandate/web/purchase-presentation.ts')).digest('hex');
+save("source.json",{baseline:baseline??null,sourceFingerprint,browserBundleSHA256:createHash("sha256").update(readFileSync(join(web,"app.js"))).digest("hex")});
+for(const [name,p]of [["app","mandate/web/app.ts"],["client","mandate/services/client.ts"],["driver","mandate/experiments/m6-purchase-feedback.ts"]])writeFileSync(join(out,name+".source.txt"),name==="app"?source(p):readFileSync(p));
+const runtime=process.env.RUNTIME_NODE_MODULES;if(!runtime)throw Error("OPTIONAL_BROWSER_RUNTIME_REQUIRED");const {chromium}=createRequire(join(runtime,"x.cjs"))("playwright");
+const e=await localEnvironment({failAfterPayment:scenario==="paid-failed",...(scenario==="cash"?{initialWalletCashAtomic:5000n}:{})});
+let signerCalls=0;const context={...e.context(0),signer:{address:e.agentA.address,signTypedData:async(data:any)=>{signerCalls++;return e.agentA.signTypedData(data);}}};
+const workspace=await MandateWorkspace.create(new GatewayTools(new PurchaseClient(context,e.reader,e.transactions,e.http,e.store)));
+let browser:any,server:Awaited<ReturnType<typeof serveWorkspace>>|undefined;
+try{
+  const credential=randomBytes(32).toString("hex");server=await serveWorkspace(workspace,{staticDirectory:web,authenticate:t=>{if(t!==credential)throw Error("AUTH_REQUIRED");}});
+  browser=await chromium.launch({channel:"chromium",headless:true});const page=await browser.newPage({viewport:{width:1280,height:900}});
+  await page.goto(server.origin+"/app.html");await page.locator("#credential").fill(credential);await page.locator("#connection-form button").click();await page.locator("#content .metric-grid").waitFor();
+  if(await page.evaluate(()=>Boolean((window as any).ethereum)))throw Error("UNEXPECTED_BROWSER_WALLET");
+  await page.locator('[data-page="services"]').click();await page.locator(".service-card").first().waitFor();
+  // Trusted fixture-only faults after the UI has read an initially active policy.
+  if(scenario==="paused")await e.send(e.wallet,encodeFunctionData({abi:accountAbi,functionName:"setPaused",args:[e.root,true]}));
+  if(scenario==="revoked")await e.send(e.wallet,encodeFunctionData({abi:accountAbi,functionName:"revokeSession",args:[e.root,e.sessions[0]]}));
+  if(scenario==="expired"){await e.pc.request({method:"evm_increaseTime" as never,params:[3601] as never});await e.pc.request({method:"evm_mine" as never});}
+  if(scenario==="stale"){const v=await workspace.draftAction({action:"replace",taskId:e.root,budgetAtomic:"150000",maxPerPaymentAtomic:"100000",ttlSeconds:3600});await e.send(e.wallet,v.request.draft.transaction.data);}
+  const requirements=(e.merchant as any).requirements;
+  if(scenario==="network")requirements.network="eip155:1";
+  if(scenario==="asset")requirements.asset="0x0000000000000000000000000000000000000001";
+  if(scenario==="scheme")requirements.scheme="upto";
+  if(scenario==="permit2")requirements.extra.assetTransferMethod="permit2";
+  if(scenario==="amount")requirements.amount="200000";
+  if(scenario==="invalid-result")e.services[0].checkResult=()=>false;
+  const operatorNonceBefore=await e.pc.getTransactionCount({address:e.operator.address}),snapBefore=await workspace.snapshot(e.root);
+  const firstCard=page.locator(".service-card").first();
+  const run=async()=>{const response=page.waitForResponse((r:any)=>r.url().endsWith("/api/workspace")&&r.request().postDataJSON()?.operation==="call"),snapshot=page.waitForResponse((r:any)=>r.url().endsWith("/api/workspace")&&r.request().postDataJSON()?.operation==="snapshot");await page.locator('[data-action="run"]').first().click();const r=await response;if(r.status()!==200)throw Error("EXPECTED_RECORD_RESPONSE");const value=await r.json();await snapshot;await page.waitForTimeout(120);return value;};
+  const first=await run(),text=await firstCard.innerText();
+  const expectedCode=["network","asset","scheme","permit2","amount"].includes(scenario)?"QUOTE_OUTSIDE_AUTHORIZATION":scenario==="expired"?"BUDGET_OR_EXPIRY_APPROVAL_REQUIRED":scenario==="cash"?"WALLET_CASH_INSUFFICIENT":["paused","stale","revoked"].includes(scenario)?"AGENT_GRANT_INACTIVE":undefined;
+  if(expectedCode&&first.errorCode!==expectedCode)throw Error("UNEXPECTED_REJECTION_CODE:"+String(first.errorCode));
+  const expectedPayment=["paid-failed","invalid-result"].includes(scenario)?"paid":scenario==="cash"?"draft":"rejected";
+  if(first.paymentState!==expectedPayment)throw Error("PAYMENT_STATE_MISMATCH");
+  const displayTuple=(body:string,value:any)=>["paymentState","serviceState","resultState"].every((key,i)=>new RegExp("\\b"+["Payment","Service","Result"][i]+"\\s+"+value[key]+"\\b").test(body));
+  const visibleFeedback=displayTuple(text,first),hasGuidance=await firstCard.locator('[data-purchase-guidance]').count()>0;
+  if(expectation==="before"&&visibleFeedback)throw Error("BEFORE_GAP_NOT_REPRODUCED");
+  if(expectation==="after"&&(!visibleFeedback||!hasGuidance))throw Error("PURCHASE_FEEDBACK_NOT_RENDERED");
+  const signerCallsAtFirst=signerCalls,operatorNonceAtFirst=await e.pc.getTransactionCount({address:e.operator.address}),firstSnapshot=await workspace.snapshot(e.root);
+  const events=()=>e.pc.getLogs({address:e.asset,event:testTokenAbi.find(x=>x.type==="event"&&x.name==="AuthorizationUsed") as any,fromBlock:0n,toBlock:"latest"});
+  if(expectedCode&&(signerCallsAtFirst!==0||operatorNonceAtFirst!==operatorNonceBefore||(await events()).length!==0||firstSnapshot.context.policy.occupied!==0n))throw Error("REJECTED_REQUEST_CHANGED_FINANCES");
+  await firstCard.scrollIntoViewIfNeeded();await page.screenshot({path:join(out,"first-desktop.png")});await page.setViewportSize({width:390,height:900});await firstCard.scrollIntoViewIfNeeded();await page.screenshot({path:join(out,"first-mobile.png")});
+  let recovered:any,finalText=text;
+  if(expectation==="after"&&["paid-failed","cash"].includes(scenario)){
+    if(scenario==="cash")await e.send(e.asset,encodeFunctionData({abi:testTokenAbi,functionName:"mint",args:[e.wallet,5000n]}));
+    recovered=await run();finalText=await firstCard.innerText();if(recovered.paymentState!=="paid"||recovered.serviceState!=="returned"||recovered.resultState!=="valid"||!displayTuple(finalText,recovered))throw Error("RECOVERY_NOT_VALID");
+    if(scenario==="paid-failed"&&recovered.settlementHash!==first.settlementHash)throw Error("RECOVERY_HASH_CHANGED");
+    await firstCard.scrollIntoViewIfNeeded();await page.screenshot({path:join(out,"recovered-mobile.png")});
+  }
+  const final=await workspace.snapshot(e.root),used=await events(),expectedPayments=["paid-failed","invalid-result","cash"].includes(scenario)?1:0;
+  if(expectation==="after"&&used.length!==expectedPayments||expectation==="before"&&used.length!==1)throw Error("PAYMENT_COUNT_MISMATCH");
+  if(expectedPayments&&final.context.policy.occupied!==10000n)throw Error("OCCUPANCY_MISMATCH");
+  const result={schemaVersion:1,scenario,expectation,mode:"no-wallet browser + real local Anvil/HTTP; trusted fixture injects faults",baselineFrontend:baseline??null,chainId:31337,providerInjected:false,nativeWallet:false,humanAcceptance:false,visibleFeedback,hasGuidance,first:{paymentState:first.paymentState,serviceState:first.serviceState,resultState:first.resultState,errorCode:first.errorCode,settlementHash:first.settlementHash},firstText:text,finalText,firstCashAtomic:firstSnapshot.context.walletBalanceAtomic,firstOccupiedAtomic:firstSnapshot.context.policy.occupied,finalCashAtomic:final.context.walletBalanceAtomic,finalOccupiedAtomic:final.context.policy.occupied,policyVersionBefore:snapBefore.context.policy.version,policyVersionAfter:final.context.policy.version,signerCallsAtFirst,signerCallsFinal:signerCalls,operatorNonceBefore,operatorNonceAtFirst,paymentEvents:used.length,recovered:recovered?{paymentState:recovered.paymentState,serviceState:recovered.serviceState,resultState:recovered.resultState,settlementHash:recovered.settlementHash}:null,sourceFingerprint,newPublicTransactions:0};
+  save("result.json",result);console.log(JSON.stringify({scenario,expectation,visibleFeedback,firstError:first.errorCode,paymentEvents:used.length,newPublicTransactions:0}));
+}catch(error){save("failure.json",{code:(error as Error).message,newPublicTransactions:0});throw error;}
+finally{await browser?.close();await server?.close();await e.close();}

@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-16T08:53:47.973285+00:00",
+  "sourceBaseCommit": "6aa9424166433c23db2a180bad248bc50de7d854",
+  "kind": "local visual refinement; not release freeze or human UAT",
+  "localOrigin": "http://127.0.0.1:18742",
+  "visualReference": "Echo website",
+  "deyeReferenceScope": "state-based user guidance only; not page design",
+  "sourceFingerprint": {
+    "mandate/web/static/index.html": "c487ceedc3ba310c35c5299aafdc9527fa4d5b31120eefe88b977e7e4d265c57",
+    "mandate/web/static/app.html": "658afaeeb52c7ab2bee1711b158b67fb78903cd4a769f33dbceb768e6f4b49cf",
+    "mandate/web/static/styles.css": "51aa10a101e136bf90db94ce748f85aae965b74bc9294a19dc772ab80b3f967b",
+    "mandate/web/landing.ts": "b2a14b7b91edf9853a18af0c2e0877d9893db06db7845fbac49db3b9580caf78",
+    "mandate/web/app.ts": "a9c11cbcb61001af262030600fed62ec587878e2ec04420817ee403623e092f8",
+    "mandate/web/guidance.ts": "4ffa37fd3bfe8b62da4d0e0b0a605f119751a0a68acc95eda6baa9a5c077f0ff",
+    "mandate/web/guidance-model.ts": "62790b1cf47b0af1d09c4eefe653812cbc0048f1d018fa5a558d41a911ca6dc6",
+    "mandate/web/purchase-presentation.ts": "dcbac4d020eaf7a74861be5638af7692a57d653bb526be1ef4ecb1df420470bf",
+    "mandate/web/test/guidance.test.ts": "e6ae249e29b3e1afb16e14ff2845bc9d42ea5465068dd2a592e8da3fa01021ac",
+    "mandate/experiments/m6-preview.ts": "f546806d49e78617673db7aff8ab3928ff178d64f6e04b32ffde91767569cce8"
+  },
+  "buildAssetSHA256": {
+    "app.html": "658afaeeb52c7ab2bee1711b158b67fb78903cd4a769f33dbceb768e6f4b49cf",
+    "app.js": "d2c07ec61cfeb8d441741e268bcab28f8bf6d9c3a174c2054a39126261b9aa2e",
+    "docs.html": "d2c7e373f4d4d94e32bb49177a88e604142857329c293da18a45208c64c271fa",
+    "favicon.svg": "f75cbb9e8fb081235588a136c31cc6b935bf887e2df5c15749ac06b1e581d2f7",
+    "index.html": "c487ceedc3ba310c35c5299aafdc9527fa4d5b31120eefe88b977e7e4d265c57",
+    "styles.css": "51aa10a101e136bf90db94ce748f85aae965b74bc9294a19dc772ab80b3f967b"
+  },
+  "typecheckPassed": true,
+  "webTestsPassed": 18,
+  "responsiveWidthCasesPassed": 8,
+  "workspaceViewsPassed": 7,
+  "businessAndGuidanceSourcesUnchanged": [
+    "mandate/web/app.ts",
+    "mandate/web/guidance.ts",
+    "mandate/web/guidance-model.ts",
+    "mandate/web/purchase-presentation.ts",
+    "mandate/web/test/guidance.test.ts"
+  ],
+  "newPublicTransactions": 0,
+  "humanAcceptance": false,
+  "physicalMobile": false,
+  "publishedToSites": false,
+  "includedInRC7": false,
+  "newAcceptedTaskIDs": [],
+  "acceptedTaskCount": 97,
+  "totalTaskCount": 105,
+  "evidenceSHA256": {
+    "artifacts/m6/ui-refresh/r2/browser-observations.json": "9082aadfcad708765f7454952a5d387496d91100db5804c3d54e9611b9674485",
+    "artifacts/m6/ui-refresh/r2/build.json": "eee854d1ee99abc877d521fab278c828830ca96131baba1116eb87b5e9dd3a18",
+    "artifacts/m6/ui-refresh/r2/fresh-demo-handoff.json": "b9f299f5eba63ad2ea63732bd74b12885ad218797a5a048de8492c37772f1695",
+    "artifacts/m6/ui-refresh/r2/home-desktop.jpg": "9a0fea790dca010aaba6fc5f22438380bd2b640c41a3c208739658846a6c78e6",
+    "artifacts/m6/ui-refresh/r2/home-full-desktop.jpg": "b5b6df17d66e5df726848b5fed47108f8d2afa114fb007861e7434b8013f6ec1",
+    "artifacts/m6/ui-refresh/r2/home-mobile.jpg": "22ed1b506fed160550e6808191f93d142e863c86854fc38f084c57e833da739c",
+    "artifacts/m6/ui-refresh/r2/layout-home.json": "ba392457c9b59e174bdca349f6b8cb9ef6d4597523f4b984869be10c57eeb1e4",
+    "artifacts/m6/ui-refresh/r2/layout-workspace.json": "8885d1fedbb56552565f7b36cb15bca3de522d2cb0fc1c49a05b1db8ef14bede",
+    "artifacts/m6/ui-refresh/r2/navigation.json": "27dbcd06bd411cba62f93f66a5a1c596364fc0c26990e43572bf629ad406dfcb",
+    "artifacts/m6/ui-refresh/r2/task-dialog-mobile.jpg": "96ce0d8fd8876ca4942a8459a641940add92654881361f46df1363290983c9c7",
+    "artifacts/m6/ui-refresh/r2/web-tests.json": "a09a2d6ac5ed1b4da2498fb98fe7646fd1862194771e81db09581da3886c90a0",
+    "artifacts/m6/ui-refresh/r2/workspace-desktop.jpg": "6f60c3a65c01b626f956e4845b4426fcad4e82e070fd7ed0bde1fbff1ba1bac9",
+    "artifacts/m6/ui-refresh/r2/workspace-mobile.jpg": "22cda68250ea5f421a468577e2aebdeb011a6bcb8fcc0b6552f9254be2805ecf"
+  },
+  "limitations": [
+    "Browser checks are author-operated; mobile checks use desktop viewport emulation.",
+    "This is the local port 18742 design iteration; hosted Sites, rc7 and historical material audits retain their earlier scope.",
+    "The mock preview has a finite one-hour policy; no automatic renewal or increase in budget.",
+    "No native wallet, public payment or new owner signature was tested in this visual iteration."
+  ]
+}

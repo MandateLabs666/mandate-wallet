@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-15T09:44:02.228780+00:00",
+  "sourceBaseCommit": "95ec37c3b386866583c9690600068b3c805a8672",
+  "acceptedTasks": [],
+  "changes": [
+    "Keep modal review open until newly created task has refreshed.",
+    "Re-read and revalidate frozen owner intent on bounded status-store CAS conflicts; never retry signing/broadcast."
+  ],
+  "beforeTests": {
+    "passed": 7,
+    "failed": 1
+  },
+  "afterTests": {
+    "passed": 8,
+    "failed": 0
+  },
+  "ownerStatusRegressionPassed": 3,
+  "actualMetaMaskSmoke": true,
+  "staticSignalsUnchangedIgnoringLineShift": true,
+  "staticRecheck": "artifacts/m7/security/web-owner-recheck/execution.json",
+  "sourceFingerprint": {
+    "mandate/web/app.ts": "10f2935b683187068537f91188098872b81ebe050f388d6b844d60e43802db40",
+    "mandate/gateway/owner-status.ts": "7144ca55b5f2e634ef4586ba55614a75450974b94fac931a0e932fa325b9bf60",
+    "mandate/web/test/workspace.test.ts": "79611cfe380cbbb73315461f774ab4e4dd02ceb0b9e268ed677fc27cd1822fa3",
+    "mandate/experiments/competition-wallet-video.ts": "150e4e5e1b60dd6eb2eb1d693002944137ebab3e3be4d95437762198ad4a9c79"
+  },
+  "evidenceSHA256": {
+    "artifacts/m6/owner-concurrency/concurrent-after.json": "b20fb357b3cee53f9fe7e60c58a3611629af2a6b4ceffe2bdab6aad271e07583",
+    "artifacts/m6/owner-concurrency/concurrent-before.json": "e4c4fccf44cbbdd67e0c37a0f199780ba1b47610b8cc8d407052fea7ba38ccef",
+    "artifacts/m6/owner-concurrency/owner-status-tests.json": "f9d93cbb2a3f5af1ef1b10bc0a24668af29594c24f99b2d75fa56518bc4beea2",
+    "artifacts/m6/owner-concurrency/wallet-smoke.json": "23d0bb573faa7377c36310d95c6a3d0684f08c5f0f763cedab39dbd2d3c05024",
+    "artifacts/m6/owner-concurrency/execution.json": "fa31da0df0f0e420d328277ed4f75000a1732688b8de6db7e1f7e1e9383d50ba"
+  },
+  "humanUsabilityAccepted": false,
+  "G3": "open; remaining T8 acceptance",
+  "newPublicTransactions": 0,
+  "failedRehearsals": [
+    {
+      "revision": "wallet-smoke3",
+      "reason": "new task panel was not selected before the next grant; fixed refresh/modal order"
+    },
+    {
+      "revision": "wallet-smoke4/5",
+      "reason": "snapshot/status observer CAS conflict surfaced as HTTP400; fixed bounded re-observation"
+    },
+    {
+      "revision": "wallet-smoke1/2/6",
+      "reason": "native wallet connection prompt required state-driven waiting in recording driver; no disabled-button bypass"
+    }
+  ]
+}

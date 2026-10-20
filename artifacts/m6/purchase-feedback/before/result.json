@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "scenario": "paid-failed",
+  "expectation": "before",
+  "mode": "no-wallet browser + real local Anvil/HTTP; trusted fixture injects faults",
+  "baselineFrontend": "f554395",
+  "chainId": 31337,
+  "providerInjected": false,
+  "nativeWallet": false,
+  "humanAcceptance": false,
+  "visibleFeedback": false,
+  "hasGuidance": false,
+  "first": {
+    "paymentState": "paid",
+    "serviceState": "failed",
+    "resultState": "unchecked",
+    "errorCode": "SERVICE_HTTP_500",
+    "settlementHash": "0xf1a5a8f361709fb0c88ebbed8736a5cd9f1deedd7138bd1e899f6360c071bdaf"
+  },
+  "firstText": "OWNER-CONFIGURED SERVICE\n\nETH statistics\n\nGET http://127.0.0.1:53011/stats?asset=ETH\n\nFetch the latest 402 terms before registration.\nCheck latest quote\nRun approved step",
+  "finalText": "OWNER-CONFIGURED SERVICE\n\nETH statistics\n\nGET http://127.0.0.1:53011/stats?asset=ETH\n\nFetch the latest 402 terms before registration.\nCheck latest quote\nRun approved step",
+  "firstCashAtomic": "990000",
+  "firstOccupiedAtomic": "10000",
+  "finalCashAtomic": "990000",
+  "finalOccupiedAtomic": "10000",
+  "policyVersionBefore": "1",
+  "policyVersionAfter": "1",
+  "signerCallsAtFirst": 2,
+  "signerCallsFinal": 2,
+  "operatorNonceBefore": 0,
+  "operatorNonceAtFirst": 1,
+  "paymentEvents": 1,
+  "recovered": null,
+  "sourceFingerprint": {
+    "mandate/web/app.ts": "1417660f9de66666c6d732d2a8107dfc65c4f9dc68cb22a62b1c7836ed7b9c97",
+    "mandate/web/static/styles.css": "1432855b1cd71a4c4786a7dd6ccd3cca3c40bda0d00209428b29819107d44675",
+    "mandate/web/static/app.html": "a5c97261206fcf095a468adc0752efc245ad7fb37b2d38d24f88c4d0cc3f9e63",
+    "mandate/services/client.ts": "a3ec15756edc2537a8afc92d491201da58b4c8457514d1c7e069fdb65a3764bc",
+    "mandate/examples/local-environment.ts": "64adbe25977b0591d0a564fa3d8c6dd0f11a56eb29c58114ddf0b702d078c318",
+    "mandate/experiments/m6-purchase-feedback.ts": "06bf761102a6b01d8dbc3a2403a25415688e7c7000321b0728a59e5a264b37fd"
+  },
+  "newPublicTransactions": 0
+}

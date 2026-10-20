@@ -1,0 +1,51 @@
+[
+  {
+    "revision": "allow-final-r1",
+    "phase": "hosted-page",
+    "code": "page.goto: Timeout 45000ms exceeded.",
+    "originalRetainedInIgnoredRuntime": true,
+    "businessAcceptance": false
+  },
+  {
+    "revision": "allow-r1",
+    "phase": "connect",
+    "code": "locator.fill: Timeout 30000ms exceeded.",
+    "originalRetainedInIgnoredRuntime": true,
+    "businessAcceptance": false
+  },
+  {
+    "revision": "default-r1",
+    "phase": "browser",
+    "code": "cdpSession.send: Protocol error (Browser.getBrowserCommandLine): Command line not returned because --enable-automation not set.",
+    "originalRetainedInIgnoredRuntime": true,
+    "businessAcceptance": false
+  },
+  {
+    "revision": "default-r2",
+    "phase": "hosted-page",
+    "code": "HOSTED_PAGE_NOT_AVAILABLE",
+    "originalRetainedInIgnoredRuntime": true,
+    "businessAcceptance": false
+  },
+  {
+    "revision": "deny-final-r1",
+    "phase": "hosted-page",
+    "code": "HOSTED_HTML_ASSET_MISMATCH",
+    "originalRetainedInIgnoredRuntime": true,
+    "businessAcceptance": false
+  },
+  {
+    "revision": "html-diagnostic-r1",
+    "phase": "browser",
+    "code": "browserType.launchPersistentContext: Timeout 180000ms exceeded.",
+    "originalRetainedInIgnoredRuntime": true,
+    "businessAcceptance": false
+  },
+  {
+    "revision": "html-diagnostic-r2",
+    "phase": "hosted-page",
+    "code": "HOSTED_HTML_ASSET_MISMATCH",
+    "originalRetainedInIgnoredRuntime": true,
+    "businessAcceptance": false
+  }
+]

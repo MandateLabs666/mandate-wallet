@@ -1,0 +1,44 @@
+{
+  "operator": "Codex in-app browser; not human UAT",
+  "visualReference": {
+    "homepage": "https://www.echopay.ai/",
+    "principles": [
+      "monochrome contrast",
+      "centered oversized typography",
+      "floating capsule navigation",
+      "immersive motion and metallic/glass surfaces"
+    ],
+    "copiedRobotOrAssets": false,
+    "deye": "guidance behavior only; not page styling"
+  },
+  "checks": {
+    "homepagePauseObserved": true,
+    "mobileMenuOpenAndClose": true,
+    "expiredPermissionGuideObserved": true,
+    "freshActivePermissionGuideObserved": true,
+    "locateOnlyFocusedTarget": true,
+    "spotlightColor": "rgb(142, 196, 255)",
+    "taskDialogOpenedAndClosedWithoutSubmitting": true,
+    "consoleErrorsAtFinalInspection": 0,
+    "nativeWalletOpened": false
+  },
+  "attempts": [
+    {
+      "scope": "test infrastructure",
+      "outcome": "initial sandbox test run canceled after local EVM could not start; permitted local rerun passed all 18 tests"
+    },
+    {
+      "scope": "process guard",
+      "outcome": "first restart guard rejected different Node executable spelling; exact absolute path checked before restarting own unused expired mock fixture"
+    },
+    {
+      "scope": "screenshot",
+      "outcome": "initial immediate resize capture was transient; mobile screenshot replaced after AX settled"
+    },
+    {
+      "scope": "browser navigation",
+      "outcome": "hash-only navigation preserved connected view; explicit reload used before fresh demo reconnection"
+    }
+  ],
+  "newPublicTransactions": 0
+}

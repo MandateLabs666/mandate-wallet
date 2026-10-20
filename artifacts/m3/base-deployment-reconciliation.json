@@ -1,0 +1,22 @@
+{
+  "recordedAt": "2026-10-14T13:46:02.284762+00:00",
+  "chainId": 84532,
+  "firstAttempt": "RECEIPT_NOT_CANONICAL; workflow stopped, original signed transaction preserved",
+  "reconciliation": {
+    "transactionHash": "0xe4bcd2e851e9e3c216caa3fc112492d22aca31b95b743436e7f3a1d96d59d246",
+    "nonce": 6,
+    "contract": "0xb0d87821ed0075a8e37c6c4ed90edda66c4f9c55",
+    "status": "success",
+    "block": "48108431",
+    "blockHash": "0x359e70d8dcd78328142ce58cdc742928e2d36a5e789488352b83d0a03e2cac16",
+    "rpcs": [
+      "https://sepolia.base.org",
+      "https://base-sepolia-rpc.publicnode.com"
+    ],
+    "bothReceiptsAndCanonicalHeadersMatched": true
+  },
+  "limitations": [
+    "Initial conflicting header was not recorded; this does not identify whether a reorg or provider lag caused the inconsistency."
+  ],
+  "recovery": "reuse journal; do not create a new factory transaction"
+}

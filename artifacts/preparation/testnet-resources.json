@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-10-14T10:27:28.930Z",
+  "scope": "read-only preparation; not deployment or payment acceptance",
+  "transactionsSubmitted": 0,
+  "assetAddressSource": "https://developers.circle.com/stablecoins/usdc-contract-addresses",
+  "observations": [
+    {
+      "chainId": 11155111,
+      "network": "Sepolia",
+      "rpc": "https://ethereum-sepolia-rpc.publicnode.com",
+      "status": "observed",
+      "blockNumber": "11912653",
+      "blockHash": "0x29d7c838ccbcddc29e1c35a8be5553563514d4a0261ab13f8e355a97388557a5",
+      "blockTimestamp": "1791973644",
+      "asset": {
+        "address": "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238",
+        "name": "USDC",
+        "version": "2",
+        "decimals": 6,
+        "domainSeparator": "0xb90e5057db141a932946e64d09ccb7ffc9b00bd79fec26f698d29af0c83320a6",
+        "proxyCodeHash": "0xcd3f29e2ea9c61dadd48bfeaf8b2884b6de9dfee7bf45329452c4c33d0868ceb",
+        "implementation": "0xDa317C1d3E835dD5F1BE459006471aCAA1289068",
+        "implementationCodeHash": "0xf4898b096a273d86cda13cce6503404da4005565fae6026a94919b231229d85b",
+        "paymentCompatibilityProvenByInventory": false
+      },
+      "roles": [
+        {
+          "role": "originalFunder",
+          "address": "0xaA987fC286434D205669814Ba46b1d8df824fB36",
+          "nativeBalanceWei": "25998545824824284",
+          "usdcBalanceAtomic": "0"
+        },
+        {
+          "role": "deployer",
+          "address": "0xdB72485601AA87D492D00E2DEb804913Cb43db19",
+          "nativeBalanceWei": "14000000000000000",
+          "usdcBalanceAtomic": "0"
+        },
+        {
+          "role": "owner",
+          "address": "0xa6AA6EC95A06Afc137F9659ee89a674ca611cb78",
+          "nativeBalanceWei": "3000000000000000",
+          "usdcBalanceAtomic": "0"
+        },
+        {
+          "role": "realtime",
+          "address": "0x93db582449d753E32A45812B1a7aFC7Cea18aAe6",
+          "nativeBalanceWei": "0",
+          "usdcBalanceAtomic": "0"
+        },
+        {
+          "role": "session",
+          "address": "0x35A89e527503AE8F609E294C0774b7dC59879989",
+          "nativeBalanceWei": "0",
+          "usdcBalanceAtomic": "0"
+        },
+        {
+          "role": "executor",
+          "address": "0x93fB57A5FB46543986FCcC86AF7B50dB2e507A24",
+          "nativeBalanceWei": "1500000000000000",
+          "usdcBalanceAtomic": "0"
+        },
+        {
+          "role": "utility",
+          "address": "0x1a20684d695ED2aBF6D1d986AE3fF9C7470d6669",
+          "nativeBalanceWei": "500000000000000",
+          "usdcBalanceAtomic": "0"
+        }
+      ]
+    },
+    {
+      "chainId": 84532,
+      "network": "Base Sepolia",
+      "rpc": "https://sepolia.base.org",
+      "status": "observed",
+      "blockNumber": "48102679",
+      "blockHash": "0xe3a874f57b86e5e1e14c2be676648f7efd2e644683417bac37cba33ec8360dd7",
+      "blockTimestamp": "1791973646",
+      "asset": {
+        "address": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+        "name": "USDC",
+        "version": "2",
+        "decimals": 6,
+        "domainSeparator": "0x71f17a3b2ff373b803d70a5a07c046c1a2bc8e89c09ef722fcb047abe94c9818",
+        "proxyCodeHash": "0xedc5281a85c0efecd49999a1ef668390c59b88702f2d4a07029d7f5d63059d6c",
+        "implementation": "0xd74cc5d436923b8ba2c179b4bCA2841D8A52C5B5",
+        "implementationCodeHash": "0x1254951e5483b882fd5def9452f58fe786eb3380c0bf9bb2744fa21a0a97a16c",
+        "paymentCompatibilityProvenByInventory": false
+      },
+      "roles": [
+        {
+          "role": "owner",
+          "address": "0xaA987fC286434D205669814Ba46b1d8df824fB36",
+          "nativeBalanceWei": "4789149899992826",
+          "usdcBalanceAtomic": "19000000"
+        },
+        {
+          "role": "session",
+          "address": "0x2FB3A8345C3766652Be37D821093b97503580e8d",
+          "nativeBalanceWei": "0",
+          "usdcBalanceAtomic": "0"
+        },
+        {
+          "role": "operator",
+          "address": "0x2d256b7CF7e73F5EeA0Ca7F816E39893b4325Bc9",
+          "nativeBalanceWei": "195967171970607",
+          "usdcBalanceAtomic": "0"
+        },
+        {
+          "role": "merchant",
+          "address": "0x5957a844D78516d8A0Ad11C06516777Ea82917Ac",
+          "nativeBalanceWei": "0",
+          "usdcBalanceAtomic": "100000"
+        },
+        {
+          "role": "m1ProcurementWallet",
+          "address": "0xCf818a1EC81B28826E941Ca6EA800467f1398399",
+          "nativeBalanceWei": "0",
+          "usdcBalanceAtomic": "900000"
+        }
+      ],
+      "m1Grant": {
+        "mandateId": "0xe6ad51a72f9610f931a2df98a6854f6852eddcdd7861df8684b14f969f63a4c4",
+        "exists": true,
+        "revoked": false,
+        "expiresAt": "1791969288",
+        "expiredAtObservation": true,
+        "occupiedAtomic": "100000",
+        "historicalExperimentOnly": true
+      }
+    }
+  ],
+  "constraints": {
+    "m2ResourceAllocationCapWei": "20000000000000000",
+    "m2EntryPointDepositCapWei": "2000000000000000",
+    "mandateBudgetAtomic": "150000",
+    "singlePaymentCapAtomic": "100000",
+    "noAdditionalFundingAuthorizedByInventory": true
+  },
+  "limitations": [
+    "Balances are snapshots, not additional spending authorization",
+    "USDC domain/code metadata is not ERC-1271 compatibility or settlement evidence",
+    "Existing M1 wallet and grants are historical experimental resources",
+    "This public RPC observation does not replace the self-hosted M2 node readiness gate"
+  ],
+  "sourceSHA256": "ae734b67e88e0433c9e7791ddd5cd3459e46dbdfd9e58f0862cae564700b83ab"
+}

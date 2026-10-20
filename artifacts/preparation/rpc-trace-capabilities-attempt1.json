@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "preparation.rpc-trace-capabilities.v1",
+  "recordedAt": "2026-10-14T11:27:11.014936+00:00",
+  "probe": {
+    "method": "debug_traceCall",
+    "params": [
+      {
+        "to": "0x1111111111111111111111111111111111111111",
+        "data": "0x"
+      },
+      "latest",
+      {
+        "tracer": "{fault:function(log,db){},result:function(ctx,db){return {marker:\"mandate-m2-rpc-capability-probe\",output:toHex(ctx.output),error:ctx.error||null};}}",
+        "stateOverrides": {
+          "0x1111111111111111111111111111111111111111": {
+            "code": "0x602a60005260206000f3"
+          }
+        }
+      }
+    ],
+    "expectedReturn": "0x000000000000000000000000000000000000000000000000000000000000002a"
+  },
+  "results": [
+    {
+      "rpc": "https://ethereum-sepolia-rpc.publicnode.com",
+      "transactionsSent": false,
+      "paymentsMade": false,
+      "customJavaScriptAndCodeOverridePassed": false,
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "rpc": "https://sepolia.drpc.org",
+      "transactionsSent": false,
+      "paymentsMade": false,
+      "customJavaScriptAndCodeOverridePassed": false,
+      "error": "HTTP Error 403: Forbidden"
+    }
+  ],
+  "actualStrictAltoAdmissionProven": false,
+  "M2PublicAcceptanceProven": false,
+  "limitation": "Access failed at eth_chainId; tracing capability remains unverified"
+}

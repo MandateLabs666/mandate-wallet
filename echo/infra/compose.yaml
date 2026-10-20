@@ -1,0 +1,13 @@
+name: mandate-m2
+services:
+  alto:
+    user: "${M2_UID}:${M2_GID}"
+    image: mandate-m2-alto:ed03b9c
+    command: ["node", "src/esm/cli/alto.js", "run", "--config", "/secrets/alto.json"]
+    volumes:
+      - ../../.runtime/m2/alto-config.json:/secrets/alto.json:ro
+    ports: ["127.0.0.1:24337:14337"]
+    mem_limit: 1g
+    cpus: 1
+    profiles: ["bundler"]
+    restart: unless-stopped

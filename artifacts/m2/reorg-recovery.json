@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "m2.reorg-recovery.v1",
+  "recordedAt": "2026-10-14T12:58:28.130997+00:00",
+  "passed": true,
+  "chainId": 31337,
+  "entryPoint": "fixed official v0.7 artifact, deployed locally",
+  "bundlerIsTestAdapter": true,
+  "publicGatePassed": false,
+  "case": "recovers the same operation after reorg and inclusion in a different transaction",
+  "beforeClientCommit": "6cf15bf",
+  "before": "same operation re-included but client remains pending on old transaction",
+  "after": {
+    "rpcTimeoutPreservesOriginalTransactionHint": true,
+    "confirmedOrphanReceiptClearsCurrentAssetAndGasProof": true,
+    "staleBundlerHintRecoveredFromCanonicalEntryPointLogs": true,
+    "restartPreservesUserOpHashNonceAndSignature": true,
+    "noNewClientSignatureOrSubmission": true,
+    "canonicalNonce": "1",
+    "canonicalPolicySpend": "100000"
+  },
+  "sourceSHA256": {
+    "echo/gateway/src/client.ts": "d1e1e0e68a7548ce47e3f5024900654c21ccd87c2b6c68840b5c060fe2f874b7",
+    "echo/gateway/test/execution.test.ts": "8f8b3a3c58e0caff1915a13a2de912590a397ccf40bfb66262fcbcb4d8657f7a",
+    "artifacts/m2/typescript-tests.json": "df04fafb89c1fea9badd279ac98bd4676659cd9fcbcb50ff57182000a9ee4cf5",
+    "artifacts/m2/reorg-recovery-before-fix.json": "9bc13be8f9bff556be9d8b644bb0bf3def0b0f658447485c6ee7a2737a5fefc0",
+    "scripts/m2-reorg-evidence.py": "802601071cc914c2318ccfde048a075272d22ddba5849cec01d04060dccaee28"
+  },
+  "limitations": [
+    "Anvil snapshot/revert",
+    "bundler test adapter; separate strict Alto evidence required"
+  ]
+}

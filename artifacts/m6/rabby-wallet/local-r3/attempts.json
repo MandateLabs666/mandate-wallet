@@ -1,0 +1,39 @@
+{
+  "attempts": [
+    {
+      "run": "local-r1",
+      "accepted": false,
+      "reason": "cancelled connection after automatic approval rejected Ignore all; no owner test accepted"
+    },
+    {
+      "run": "local-r2",
+      "accepted": false,
+      "reason": "driver readiness helper initially omitted StaticText role; stopped and fixed"
+    },
+    {
+      "run": "local-r3",
+      "accepted": true,
+      "scope": "interactive native UI commands; one pause transaction; separate read-only RPC proof"
+    },
+    {
+      "run": "automated-r1",
+      "accepted": false,
+      "phase": "headless-browser",
+      "reason": "experimental fully scripted playback did not pass; original private diagnostics and source snapshots preserved"
+    },
+    {
+      "run": "automated-r2",
+      "accepted": false,
+      "phase": "app-connect",
+      "reason": "experimental fully scripted playback did not pass; original private diagnostics and source snapshots preserved"
+    },
+    {
+      "run": "automated-r3",
+      "accepted": false,
+      "phase": "app-connect",
+      "reason": "experimental fully scripted playback did not pass; original private diagnostics and source snapshots preserved"
+    }
+  ],
+  "fullyScriptedPlaybackAccepted": false,
+  "failedExperimentsPreservedInIgnoredRuntime": true
+}

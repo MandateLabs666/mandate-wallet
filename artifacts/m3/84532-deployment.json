@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 2,
+  "chainId": 84532,
+  "sourceCommit": "361a9acf9c8af244119bd675e047bc56f69f4e81",
+  "contracts": {
+    "MandateFactory": {
+      "address": "0xb0d87821ed0075a8e37c6c4ed90edda66c4f9c55",
+      "hash": "0xe4bcd2e851e9e3c216caa3fc112492d22aca31b95b743436e7f3a1d96d59d246",
+      "block": "48108431"
+    },
+    "MandateAccount": {
+      "address": "0xE02B554a694b1857B8e89274B2F6E1eCD0C0B589",
+      "hash": "0x2d19954da49d42580af532f80cd39da74657d0d3afee2ff5bd3c9408f670dc84",
+      "block": "48108653",
+      "factory": "0xb0d87821ed0075a8e37c6c4ed90edda66c4f9c55",
+      "owner": "0xaA987fC286434D205669814Ba46b1d8df824fB36",
+      "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+      "salt": "0x85c5e56634bb13c7558d0c737a75b947a38f3baf1da293623b996ec66279faee"
+    }
+  },
+  "transactions": [
+    {
+      "id": "deploy-MandateFactory",
+      "intentHash": "0x33e5149f774af7b51355874442f749005f3c79d48b9a17ff7b6de4b7729eab49",
+      "chainId": 84532,
+      "sender": "0xaA987fC286434D205669814Ba46b1d8df824fB36",
+      "nonce": 6,
+      "hash": "0xe4bcd2e851e9e3c216caa3fc112492d22aca31b95b743436e7f3a1d96d59d246",
+      "gas": "3458187",
+      "feeCap": "7937606",
+      "receipt": {
+        "type": "eip1559",
+        "status": "success",
+        "cumulativeGasUsed": "20367057",
+        "logs": [],
+        "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "transactionHash": "0xe4bcd2e851e9e3c216caa3fc112492d22aca31b95b743436e7f3a1d96d59d246",
+        "transactionIndex": 121,
+        "blockHash": "0x359e70d8dcd78328142ce58cdc742928e2d36a5e789488352b83d0a03e2cac16",
+        "blockNumber": "48108431",
+        "gasUsed": "3429799",
+        "effectiveGasPrice": "6743568",
+        "blobGasUsed": "3772268",
+        "from": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+        "to": null,
+        "contractAddress": "0xb0d87821ed0075a8e37c6c4ed90edda66c4f9c55",
+        "l1GasPrice": "50",
+        "l1GasUsed": "135340",
+        "l1Fee": "24195",
+        "l1BaseFeeScalar": "0x44d",
+        "l1BlobBaseFee": "0x3",
+        "l1BlobBaseFeeScalar": "0xa118b",
+        "daFootprintGasScalar": "0x1be",
+        "l1FeeScalar": null
+      }
+    },
+    {
+      "id": "create-account",
+      "intentHash": "0x11556c9c10cc7c74768e22ad02134aa0d4b5c72e2eb30faca53ef26b9c72f439",
+      "chainId": 84532,
+      "sender": "0xaA987fC286434D205669814Ba46b1d8df824fB36",
+      "nonce": 7,
+      "hash": "0x2d19954da49d42580af532f80cd39da74657d0d3afee2ff5bd3c9408f670dc84",
+      "gas": "2807916",
+      "feeCap": "7000000",
+      "receipt": {
+        "type": "eip1559",
+        "status": "success",
+        "cumulativeGasUsed": "4316670",
+        "logs": [
+          {
+            "address": "0xb0d87821ed0075a8e37c6c4ed90edda66c4f9c55",
+            "topics": [
+              "0xf547c891abd3e41b631fc9414272f0e63c11387821f03dbb7cb49c75fadf4710",
+              "0x000000000000000000000000aa987fc286434d205669814ba46b1d8df824fb36",
+              "0x000000000000000000000000036cbd53842c5426634e7929541ec2318f3dcf7e"
+            ],
+            "data": "0x000000000000000000000000e02b554a694b1857b8e89274b2f6e1ecd0c0b58985c5e56634bb13c7558d0c737a75b947a38f3baf1da293623b996ec66279faee",
+            "blockHash": "0xc773b65ed5e0e490269d0afd8120e646e4cd5e90dd62cf39c54573df74ddf9bc",
+            "blockNumber": "48108653",
+            "blockTimestamp": "1791985594",
+            "transactionHash": "0x2d19954da49d42580af532f80cd39da74657d0d3afee2ff5bd3c9408f670dc84",
+            "transactionIndex": 8,
+            "logIndex": 58,
+            "removed": false
+          }
+        ],
+        "logsBloom": "0x00000000000000000000400000000000000000000000000000000000000000000000800000020000000000000000000000000000080000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100800000000000000000000000000000000000000000000020000000000001000000000000000000000000000000000000400000040000000000000000000000000000000000000",
+        "transactionHash": "0x2d19954da49d42580af532f80cd39da74657d0d3afee2ff5bd3c9408f670dc84",
+        "transactionIndex": 8,
+        "blockHash": "0xc773b65ed5e0e490269d0afd8120e646e4cd5e90dd62cf39c54573df74ddf9bc",
+        "blockNumber": "48108653",
+        "gasUsed": "2761743",
+        "effectiveGasPrice": "6000000",
+        "blobGasUsed": "47276",
+        "from": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+        "to": "0xb0d87821ed0075a8e37c6c4ed90edda66c4f9c55",
+        "contractAddress": null,
+        "l1GasPrice": "28",
+        "l1GasUsed": "1700",
+        "l1Fee": "262",
+        "l1BaseFeeScalar": "0x44d",
+        "l1BlobBaseFee": "0x3",
+        "l1BlobBaseFeeScalar": "0xa118b",
+        "daFootprintGasScalar": "0x1be",
+        "l1FeeScalar": null
+      }
+    }
+  ],
+  "roles": {
+    "deployer": "0xaA987fC286434D205669814Ba46b1d8df824fB36",
+    "owner": "0xaA987fC286434D205669814Ba46b1d8df824fB36",
+    "agents": [
+      "0xc4DA6909E60186dDcb0cAda144Ce8A3539659DC1",
+      "0x9a528E81020b32f397FAB3f55E859ca949A55d1b"
+    ],
+    "merchant": "0x5957a844D78516d8A0Ad11C06516777Ea82917Ac"
+  },
+  "limitations": [
+    "Public RPC trust; cross-provider deployment/runtime and source verification pending.",
+    "Ethereum Sepolia uses labelled TestUSDC fixture; Base Sepolia uses native test USDC.",
+    "No EntryPoint required for ERC-1271/EIP-3009 purchase; M2 evidence is independent."
+  ]
+}

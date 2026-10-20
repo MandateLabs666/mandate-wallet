@@ -1,0 +1,159 @@
+{
+  "baseline": "B3",
+  "caseId": "N03",
+  "repeat": 2,
+  "bindings": {
+    "payer": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+    "asset": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+    "owner": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "root": "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37",
+    "merchant": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+    "registrationOperator": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+  },
+  "runtimeHashes": {
+    "token": "0xd6b40f33e860018a45e653f01c1d087b943ec8a74ed471f3400f2d689dc3a87c",
+    "mandateAccount": "0xf8c4b7928b8d66d4c25cade510b8ec35dbbe902990c3cfb91e10ce7d9124175a"
+  },
+  "genesisTimestamp": 1792045528,
+  "clockMode": "wall-aligned-genesis-and-one-second-block-interval",
+  "mode": "single",
+  "dataset": "ETH",
+  "priceAtomic": "10000",
+  "actualPaidAtomic": "10000",
+  "merchantReceivedAtomic": "10000",
+  "occupiedAtomic": "10000",
+  "budgetAuthority": "on-chain-shared-root",
+  "payerCashAtomic": "990000",
+  "paymentCount": 1,
+  "expectedPaymentCount": 1,
+  "duplicatePayments": 0,
+  "payment": "paid",
+  "service": "returned",
+  "result": "valid",
+  "attempts": [
+    {
+      "agent": 0,
+      "stepId": "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e",
+      "elapsedMs": 65.36704100000134,
+      "payment": "paid",
+      "service": "returned",
+      "result": "valid",
+      "settlementHash": "0x62aa2f1ba3fd95134dd8786fe1ade406efa8c8bdef9e469697b6ffdef45fdec5",
+      "errorCode": null
+    }
+  ],
+  "phasesMs": {
+    "clientHTTP": 13.895083999996132,
+    "agentSigning": 2.708748999997624,
+    "journalAppend": 13.744457000000693,
+    "actionProof": 2.524915999998484,
+    "registrationPrepare": 6.0416670000013255,
+    "registrationSubmit": 2.524208999999246,
+    "facilitatorVerify": 1.0876660000030824,
+    "facilitatorSettle": 7.733083999999508,
+    "postChecks": 4.8602499999979045,
+    "fullExport": 22.49279100000058,
+    "independentVerification": 204.04120800000237,
+    "purchase": 65.37516699999833,
+    "total": 298.79833399999916
+  },
+  "phaseCounters": {
+    "clientHTTP": 3,
+    "journalAppend": 4,
+    "agentSigning": 7,
+    "actionProof": 1,
+    "registrationPrepare": 1,
+    "registrationSubmit": 1,
+    "facilitatorVerify": 1,
+    "facilitatorSettle": 1
+  },
+  "nestedPhaseTotalsMustNotBeSummed": true,
+  "transactions": [
+    {
+      "kind": "settlement",
+      "hash": "0x62aa2f1ba3fd95134dd8786fe1ade406efa8c8bdef9e469697b6ffdef45fdec5",
+      "blockNumber": "8",
+      "blockHash": "0xf1abe97bd9b1143f803556fb91c01f5cc7de037586da85212256e88ac1f52ce6",
+      "gasUsed": "127332",
+      "effectiveGasPrice": "1411571482",
+      "transactionFeeWei": "179738219946024",
+      "logs": [
+        {
+          "address": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+          "topics": [
+            "0x98de503528ee59b575ef0c0a2576a82497bfc029a5685b209e9ec333479b10a5",
+            "0x000000000000000000000000e7f1725e7734ce288f8367e1bb143e90bb3f0512",
+            "0x89d5755ed1e92c946337f8178f207c5e1485461284eb34936b30873ee30c6162"
+          ],
+          "data": "0x",
+          "blockHash": "0xf1abe97bd9b1143f803556fb91c01f5cc7de037586da85212256e88ac1f52ce6",
+          "blockNumber": "8",
+          "blockTimestamp": "1792045536",
+          "transactionHash": "0x62aa2f1ba3fd95134dd8786fe1ade406efa8c8bdef9e469697b6ffdef45fdec5",
+          "transactionIndex": 0,
+          "logIndex": 0,
+          "removed": false
+        },
+        {
+          "address": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x000000000000000000000000e7f1725e7734ce288f8367e1bb143e90bb3f0512",
+            "0x00000000000000000000000015d34aaf54267db7d7c367839aaf71a00a2c6a65"
+          ],
+          "data": "0x0000000000000000000000000000000000000000000000000000000000002710",
+          "blockHash": "0xf1abe97bd9b1143f803556fb91c01f5cc7de037586da85212256e88ac1f52ce6",
+          "blockNumber": "8",
+          "blockTimestamp": "1792045536",
+          "transactionHash": "0x62aa2f1ba3fd95134dd8786fe1ade406efa8c8bdef9e469697b6ffdef45fdec5",
+          "transactionIndex": 0,
+          "logIndex": 1,
+          "removed": false
+        }
+      ]
+    },
+    {
+      "kind": "registration",
+      "hash": "0x5bcc85f513b6615fccd8e8192d6d291ca6e8f0679ba9fb7941d4a37f3b60feab",
+      "blockNumber": "7",
+      "blockHash": "0x60ea6a275c14d1eb9287d7c7e67e87949246f664ad5b7910285be7635602ca6e",
+      "gasUsed": "445082",
+      "effectiveGasPrice": "1468381994",
+      "transactionFeeWei": "653550394653508",
+      "logs": [
+        {
+          "address": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+          "topics": [
+            "0x53fac4a735592149c3d4ab16f5e1d659f01ac8f1269eddcd42d263aa8d303ad3",
+            "0x2d5834f5e0423cb419c8ca8ac38b240362837d0893d5f7fc31d58dc0ff76c5dc",
+            "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37",
+            "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e"
+          ],
+          "data": "0x61f0ffa6b310744fb2869aa8b49390b907440c17341f41afc5971aac5aae9f40000000000000000000000000000000000000000000000000000000000000271089d5755ed1e92c946337f8178f207c5e1485461284eb34936b30873ee30c6162000000000000000000000000000000000000000000000000000000006ad0730aa5e0ae430a07080d713198cc6fee78bcb2f128fb247d8e2be2ae826d0fadb015ded995a9916d63f64d28a09b70ff2aa422a82271b0a1e1608354bc71ad0a3a8f",
+          "blockHash": "0x60ea6a275c14d1eb9287d7c7e67e87949246f664ad5b7910285be7635602ca6e",
+          "blockNumber": "7",
+          "blockTimestamp": "1792045535",
+          "transactionHash": "0x5bcc85f513b6615fccd8e8192d6d291ca6e8f0679ba9fb7941d4a37f3b60feab",
+          "transactionIndex": 0,
+          "logIndex": 0,
+          "removed": false
+        }
+      ]
+    }
+  ],
+  "totalGasUsed": "572414",
+  "totalTransactionFeeWei": "833288614599532",
+  "evidence": [
+    {
+      "prefix": "B3-N03-2/evidence-0",
+      "fullBytes": 22574,
+      "checkpointCount": 4,
+      "requiredChecksPassed": true,
+      "overall": "incomplete",
+      "controllerAnchors": 0
+    }
+  ],
+  "newPublicTransactions": 0,
+  "setupExcluded": true,
+  "unusedMandateInitializerInB1": false
+}

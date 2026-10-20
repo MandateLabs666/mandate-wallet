@@ -1,0 +1,96 @@
+// Controlled EIP-1193 scheduling probe, never native-wallet compatibility evidence.
+// Only the isolated Node driver holds the public Anvil fixture signer.
+import {execFileSync} from "node:child_process";
+import {createRequire} from "node:module";
+import {mkdirSync,writeFileSync,readFileSync,existsSync} from "node:fs";
+import {join,resolve} from "node:path";
+import {createHash,randomBytes} from "node:crypto";
+import {createWalletClient,http,type Hex} from "viem";
+import {localEnvironment} from "../examples/local-environment.js";
+import {GatewayTools} from "../gateway/tools.js";
+import {MandateWorkspace} from "../sdk/workspace.js";
+import {serveWorkspace} from "../web/server.js";
+import {testTokenAbi} from "../sdk/testTokenAbi.js";
+
+process.umask(0o077);
+const [revision,scenario,expectation,baseline]=process.argv.slice(2);
+if(baseline&&!/^[0-9a-f]{7,40}$/.test(baseline))throw Error("BASELINE_COMMIT_INVALID");
+if(!revision||!/^[a-z0-9-]+$/.test(revision)||!["review","task","disconnect","recover"].includes(scenario)||!["before","after"].includes(expectation))throw Error("FRESH_REVISION_SCENARIO_EXPECTATION_REQUIRED");
+const out=resolve(".runtime/review-race",revision);if(existsSync(out))throw Error("REVISION_EXISTS");mkdirSync(out,{recursive:true,mode:0o700});
+const save=(name:string,value:unknown)=>writeFileSync(join(out,name),JSON.stringify(value,(_,v)=>typeof v==="bigint"?String(v):v,2)+"\n");
+const source=(p:string)=>baseline&&p!=="mandate/experiments/m6-review-race.ts"?execFileSync("git",["show",`${baseline}:${p}`]):readFileSync(p);
+const staticFiles=["index.html","app.html","docs.html","styles.css","favicon.svg"],web=join(out,"web");mkdirSync(web);
+const files=["mandate/web/app.ts",...staticFiles.map(p=>"mandate/web/static/"+p),"mandate/experiments/m6-review-race.ts"];
+const fingerprint=Object.fromEntries(files.map(p=>[p,createHash("sha256").update(source(p)).digest("hex")]));
+for(const name of staticFiles)writeFileSync(join(web,name),source("mandate/web/static/"+name));
+const fromTsx=createRequire(import.meta.resolve("tsx")),esbuild=fromTsx("esbuild");if(fromTsx("esbuild/package.json").version!=="0.27.7")throw Error("PINNED_BROWSER_BUILDER_MISMATCH");
+await esbuild.build({stdin:{contents:source("mandate/web/app.ts").toString(),resolveDir:resolve("mandate/web"),sourcefile:"app.ts",loader:"ts"},outfile:join(web,"app.js"),bundle:true,platform:"browser",format:"esm",target:"es2022",minify:true});
+save("source.json",{baseline:baseline??null,sourceFingerprint:fingerprint,browserBundleSHA256:createHash("sha256").update(readFileSync(join(web,"app.js"))).digest("hex")});
+writeFileSync(join(out,"app.source.txt"),source("mandate/web/app.ts"));writeFileSync(join(out,"driver.source.txt"),readFileSync("mandate/experiments/m6-review-race.ts"));
+const runtime=process.env.RUNTIME_NODE_MODULES;if(!runtime)throw Error("OPTIONAL_BROWSER_RUNTIME_REQUIRED");
+const {chromium}=createRequire(join(runtime,"x.cjs"))("playwright");
+const e=await localEnvironment(),workspace=await MandateWorkspace.create(new GatewayTools(e.clients[0]));
+let browser:any,server:Awaited<ReturnType<typeof serveWorkspace>>|undefined,release:(()=>void)|undefined;
+try{
+  const token=randomBytes(32).toString("hex"),wallet=createWalletClient({chain:e.chain,account:e.owner,transport:http(e.node.rpc)});
+  const other=await workspace.draftCreate({description:"Separate task B: keep this selected",budgetAtomic:"150000",maxPerPaymentAtomic:"100000",ttlSeconds:3600});
+  server=await serveWorkspace(workspace,{staticDirectory:web,authenticate:t=>{if(t!==token)throw Error("TEST_AUTH_REQUIRED");}});
+  browser=await chromium.launch({channel:"chromium",headless:true});const page=await browser.newPage({viewport:{width:1280,height:900}});
+  let sendCalls=0,hash:Hex|undefined,blocked=false;
+  const gate=new Promise<void>(yes=>{release=yes;});
+  await page.exposeFunction("controlledOwnerRequest",async(args:{method:string;params?:any[]})=>{
+    if(args.method==="eth_chainId")return "0x7a69";
+    if(["eth_accounts","eth_requestAccounts"].includes(args.method))return [e.owner.address];
+    if(args.method!=="eth_sendTransaction")throw Error("CONTROLLED_METHOD_UNSUPPORTED");
+    sendCalls++;blocked=true;await gate;const tx=args.params![0];
+    if(tx.from.toLowerCase()!==e.owner.address.toLowerCase()||tx.to.toLowerCase()!==e.wallet.toLowerCase()||tx.chainId!=="0x7a69"||tx.value!=="0x0")throw Error("LOCAL_FIXTURE_SCOPE_MISMATCH");
+    hash=await wallet.sendTransaction({to:e.wallet,data:tx.data,value:0n});await e.pc.waitForTransactionReceipt({hash});return hash;
+  });
+  await page.addInitScript('window.ethereum={request:(args)=>window.controlledOwnerRequest(args)};');
+  const observed:any[]=[];
+  page.on("response",async(r:any)=>{if(r.url().endsWith("/api/workspace")){const b=r.request().postDataJSON();if(["owner-broadcast","owner-request"].includes(b?.operation))observed.push({operation:b.operation,requestId:b.requestId,status:r.status()});}});
+  await page.goto(server.origin+"/app.html");await page.locator("#credential").fill(token);await page.locator("#connection-form button").click();await page.locator("#content .metric-grid").waitFor();await page.locator("#connect-owner").click();await page.locator("#connect-owner").filter({hasText:"Owner connected"}).waitFor();
+  const uiOperation=async(operation:string,selector:string)=>{const response=page.waitForResponse((r:any)=>r.url().endsWith("/api/workspace")&&r.request().postDataJSON()?.operation===operation);await page.locator(selector).first().click();const r=await response;if(r.status()!==200)throw Error("UI_OPERATION_FAILED");return r.json();};
+  const nonceBefore=await e.pc.getTransactionCount({address:e.owner.address}),cashBefore=await e.pc.readContract({address:e.asset,abi:testTokenAbi,functionName:"balanceOf",args:[e.wallet]});
+  const a=await uiOperation("owner-action",'[data-action="pause"]');await page.locator("#review").waitFor();
+  const broadcast=page.waitForResponse((r:any)=>r.url().endsWith("/api/workspace")&&r.request().postDataJSON()?.operation==="owner-broadcast");
+  await page.locator("#approve").click();for(let i=0;i<100&&!blocked;i++)await page.waitForTimeout(20);if(!blocked)throw Error("WALLET_NOT_PENDING");
+  // The first request is frozen and awaiting the controlled wallet, while the UI changes.
+  await page.locator("#close-review").click();let b:any,heldResponse:any,releaseResponse:(()=>void)|undefined;
+  if(scenario==="review"||scenario==="recover"){
+    b=await uiOperation("owner-action",'[data-action="revokeSession"]');await page.locator("#review").waitFor();
+  }else if(scenario==="task"){
+    await page.locator('[data-page="tasks"]').click();await uiOperation("snapshot",`[data-action="select"][data-id="${other.task.id}"]`);await page.locator("#content").filter({hasText:other.task.description}).waitFor();
+  }else{
+    await page.locator('[data-page="security"]').click();await page.locator('[data-action="disconnect"]').click();await page.locator("#connection-panel").waitFor();
+  }
+  release!();const reported=await broadcast;await reported.finished();
+  // Wait for the original handler's snapshot/render after the HTTP report, bounded.
+  await page.waitForTimeout(500);
+  let recoveryResult:any;
+  if(scenario==="recover"){
+    // Reopen A, then hold its status response while the user opens B again.
+    if(await page.locator("#review").isVisible())await page.locator("#close-review").click();
+    await page.locator('[data-page="mandates"]').click();await uiOperation("owner-request",`[data-action="review-request"][data-id="${a.request.requestId}"]`);await page.locator("#review").waitFor();
+    const responseGate=new Promise<void>(yes=>{releaseResponse=yes;});
+    await page.route("**/api/workspace",async(route:any)=>{const body=route.request().postDataJSON();if(body.operation==="owner-request"&&body.requestId===a.request.requestId){heldResponse=await route.fetch();await responseGate;await route.fulfill({response:heldResponse});}else await route.continue();});
+    await page.locator("#recover-owner").click();for(let i=0;i<100&&!heldResponse;i++)await page.waitForTimeout(20);if(!heldResponse)throw Error("RECOVERY_NOT_PENDING");
+    await page.locator("#close-review").click();await uiOperation("owner-request",`[data-action="review-request"][data-id="${b.request.requestId}"]`);await page.locator("#review").waitFor();releaseResponse!();await page.waitForTimeout(500);
+    recoveryResult={newerReviewOpen:await page.locator("#review").isVisible(),reviewError:await page.locator("#review-error").innerText(),newerCallUnchanged:await page.locator("#review-call").textContent()===b.request.draft.transaction.data};
+  }
+  const finalA=await workspace.ownerRequest(a.request.requestId),finalB=b?await workspace.ownerRequest(b.request.requestId):undefined;
+  const nonceAfter=await e.pc.getTransactionCount({address:e.owner.address}),cashAfter=await e.pc.readContract({address:e.asset,abi:testTokenAbi,functionName:"balanceOf",args:[e.wallet]});
+  const selectedTaskDescription=scenario==="task"?await page.locator("#content .service-grid article").filter({has:page.locator("p.eyebrow").filter({hasText:"SELECTED TASK"})}).locator("h2").innerText():undefined;
+  const state={selectedTaskDescription,reviewOpen:await page.locator("#review").isVisible(),reviewCall:await page.locator("#review-call").textContent(),currentContent:await page.locator("#content").innerText(),disconnected:await page.locator("#connection-panel").isVisible(),globalError:await page.locator("#error").innerText(),reviewError:await page.locator("#review-error").innerText()};
+  const expectedUI=scenario==="review"?state.reviewOpen&&state.reviewCall===b.request.draft.transaction.data:scenario==="task"?state.selectedTaskDescription===other.task.description:scenario==="disconnect"?state.disconnected&&state.currentContent==="":Boolean(recoveryResult?.newerReviewOpen&&recoveryResult.newerCallUnchanged&&recoveryResult.reviewError==="");
+  const records=await page.evaluate(()=>Object.entries(localStorage).filter(([k])=>k.startsWith("mandate-owner-v2/")).map(([,v])=>JSON.parse(v)));
+  const frozen=records.find((r:any)=>r.requestId===a.request.requestId);
+  const transaction=await e.pc.getTransaction({hash:hash!}),payments=await e.pc.getLogs({address:e.asset,event:testTokenAbi.find(a=>a.type==="event"&&a.name==="AuthorizationUsed") as any,fromBlock:0n,toBlock:"latest"});
+  if(sendCalls!==1||nonceAfter!==nonceBefore+1||cashBefore!==cashAfter||finalA.status!=="confirmed"||!finalA.actionApplied||finalA.transactionHash!==hash||transaction.input!==a.request.draft.transaction.data||frozen?.transactionHash!==hash||finalB&&finalB.status!=="draft"||payments.length!==0)throw Error("FINANCIAL_OR_REQUEST_ASSOCIATION_FAILED");
+  await page.screenshot({path:join(out,"result.png")});
+  const result={schemaVersion:1,scenario,expectation,baseline:baseline??null,mode:"controlled EIP-1193 delayed-wallet scheduling probe with actual local EVM transaction",nativeWallet:false,humanUsability:false,chainId:31337,expectedUI,bugReproduced:!expectedUI,ownerSendCalls:sendCalls,ownerNonceBefore:nonceBefore,ownerNonceAfter:nonceAfter,originalRequestId:a.request.requestId,originalRequestStatus:finalA.status,originalRequestApplied:finalA.actionApplied,originalHash:hash,newerRequestId:b?.request.requestId,newerRequestStatus:finalB?.status,transactionCalldataMatchesOriginal:true,persistedOriginalHash:true,tokenPayments:payments.length,walletCashBefore:cashBefore,walletCashAfter:cashAfter,reviewOpen:state.reviewOpen,newerCallUnchanged:b?state.reviewCall===b.request.draft.transaction.data:undefined,reviewCallSHA256:createHash("sha256").update(state.reviewCall??"").digest("hex"),selectedTaskBPreserved:state.selectedTaskDescription===other.task.description,disconnected:state.disconnected,globalError:state.globalError,reviewError:state.reviewError,recoveryResult,observed,sourceFingerprint:fingerprint,newPublicTransactions:0};
+  save("result.json",result);
+  if(expectation==="after"&&!expectedUI)throw Error("UI_CONTEXT_NOT_PRESERVED");if(expectation==="before"&&expectedUI)throw Error("EXPECTED_REGRESSION_NOT_REPRODUCED");
+  console.log(JSON.stringify({scenario,expectation,expectedUI,bugReproduced:!expectedUI,ownerTransactions:1,newPublicTransactions:0}));
+}catch(error){save("failure.json",{code:(error as Error).message,newPublicTransactions:0});throw error;}
+finally{release?.();await browser?.close();await server?.close();await e.close();}

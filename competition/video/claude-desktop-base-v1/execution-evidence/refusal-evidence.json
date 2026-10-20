@@ -1,0 +1,107 @@
+{
+  "recordedAt": "2026-10-19T14:04:27.167Z",
+  "privateKeysRead": false,
+  "broadcasts": 0,
+  "record": {
+    "key": "84532:0xa794daa86ff10920b75a4de3b0e752586e8703d2:0x65a5386f35ae1dc848584bd51d1a8211110aa02b8c5264238aa4d4aa7d5a8c89:0xbf46fe0fc0152b547ff5dd9d9e37f90998ca33786fcab768a73d66ac087c0514",
+    "agentId": "setup-agent",
+    "chainId": 84532,
+    "wallet": "0xa794DAa86ff10920B75a4de3b0E752586e8703D2",
+    "mandateId": "0x65a5386f35ae1dc848584bd51d1a8211110aa02b8c5264238aa4d4aa7d5a8c89",
+    "stepId": "0xbf46fe0fc0152b547ff5dd9d9e37f90998ca33786fcab768a73d66ac087c0514",
+    "createdAt": "2026-10-19T14:01:51.352Z",
+    "updatedAt": "2026-10-19T14:01:53.633Z",
+    "paymentState": "rejected",
+    "serviceState": "not_requested",
+    "resultState": "unchecked",
+    "errorCode": "AGENT_GRANT_INACTIVE",
+    "errorDiagnostic": {
+      "causes": [
+        {
+          "code": "AGENT_GRANT_INACTIVE",
+          "name": "MandateError"
+        }
+      ],
+      "observedAt": "2026-10-19T14:01:52.078Z",
+      "stage": "quote"
+    },
+    "rejectedPolicyVersion": "1",
+    "rejectedSessionId": "0x0263e35063f897a6639f0272e8d6b8a3ff3d19c772f5d8b04baf05ae7c4ebd47",
+    "evidenceStatus": "recorded"
+  },
+  "newPaymentAuthorization": false,
+  "newRegistration": false,
+  "newSettlement": false,
+  "signedTransactionCountBefore": 3,
+  "signedTransactionCountAfter": 3,
+  "signedTransactionMetadata": [
+    {
+      "id": "register:84532:0xa794daa86ff10920b75a4de3b0e752586e8703d2:0x5bb90f02fd1b0ea99f3a5239499042cb612568a075327bc8f2c1989d25d4e861:0xb6432c72007249702b3b947f3a1a6c2392408f73ee6f2a66165fe4d6df33adef",
+      "hash": "0xea3820236898a8e343efdc9dd97e2cee34addf906763f08202cf1c36a4883409",
+      "nonce": 0,
+      "status": "confirmed",
+      "sender": "0x4ab1062718e6e881070dcf48ab450d0f09b7ba67",
+      "chain_id": 84532
+    },
+    {
+      "id": "register:84532:0xa794daa86ff10920b75a4de3b0e752586e8703d2:0x65a5386f35ae1dc848584bd51d1a8211110aa02b8c5264238aa4d4aa7d5a8c89:0xb6432c72007249702b3b947f3a1a6c2392408f73ee6f2a66165fe4d6df33adef",
+      "hash": "0xdad95b5ada48d537a8fcd117be8ebab442d2032b4c1ac18810d5dd9d77d8b1e1",
+      "nonce": 1,
+      "status": "confirmed",
+      "sender": "0x4ab1062718e6e881070dcf48ab450d0f09b7ba67",
+      "chain_id": 84532
+    },
+    {
+      "id": "settle:0xb593e68bb46ab7d698945119694b46934ad4c025cf28cb8a986da6e502943b61",
+      "hash": "0xc23d943b69c94a5a8468ab32ee9b454ab6b57f7681ba4b93f16e4d58ae840c5d",
+      "nonce": 2,
+      "status": "confirmed",
+      "sender": "0x4ab1062718e6e881070dcf48ab450d0f09b7ba67",
+      "chain_id": 84532
+    }
+  ],
+  "audit": [
+    {
+      "event": "state",
+      "state": {
+        "error": "AGENT_GRANT_INACTIVE",
+        "payment": "rejected",
+        "result": "unchecked",
+        "service": "not_requested",
+        "version": 1
+      },
+      "createdAt": "2026-10-19T14:01:52.921Z"
+    },
+    {
+      "event": "state",
+      "state": {
+        "error": "AGENT_GRANT_INACTIVE",
+        "payment": "rejected",
+        "result": "unchecked",
+        "service": "not_requested",
+        "version": 2
+      },
+      "createdAt": "2026-10-19T14:01:53.633Z"
+    }
+  ],
+  "observations": [
+    {
+      "rpc": "https://base-sepolia-rpc.publicnode.com",
+      "chainId": 84532,
+      "grantRevoked": true,
+      "sessionEpoch": "2",
+      "walletUSDCAtomic": "140000",
+      "unusedBTCStepRegistered": false,
+      "operatorTransactionCount": 3
+    },
+    {
+      "rpc": "https://sepolia.base.org",
+      "chainId": 84532,
+      "grantRevoked": true,
+      "sessionEpoch": "2",
+      "walletUSDCAtomic": "140000",
+      "unusedBTCStepRegistered": false,
+      "operatorTransactionCount": 3
+    }
+  ]
+}

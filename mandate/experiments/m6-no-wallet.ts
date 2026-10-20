@@ -1,0 +1,34 @@
+// Genuine Chrome without extensions: no injected or simulated provider.
+import {createRequire} from "node:module";
+import {readFileSync,writeFileSync,mkdirSync,existsSync} from "node:fs";
+import {resolve,join} from "node:path";
+import {createHash} from "node:crypto";
+import {createPublicClient,http} from "viem";
+process.umask(0o077);
+const [configuration,revision]=process.argv.slice(2);if(!configuration||!revision||!/^[a-z0-9-]+$/.test(revision))throw Error("TEST_CONFIGURATION_AND_FRESH_REVISION_REQUIRED");
+const config=JSON.parse(readFileSync(configuration,"utf8"));
+for(const value of [config.origin,config.rpc]){const url=new URL(value);if(url.protocol!=="http:"||url.hostname!=="127.0.0.1"||url.username||url.password)throw Error("LOCAL_TEST_ONLY");}
+const out=resolve(".runtime/no-wallet",revision);if(existsSync(out))throw Error("REVISION_EXISTS");mkdirSync(out,{recursive:true,mode:0o700});
+const modules=process.env.RUNTIME_NODE_MODULES;if(!modules)throw Error("OPTIONAL_BROWSER_RUNTIME_REQUIRED");const r=createRequire(join(modules,"x.cjs")),{chromium}=r("playwright");
+const pc=createPublicClient({transport:http(config.rpc,{retryCount:0,timeout:5000})});if(await pc.getChainId()!==31337)throw Error("LOCAL_CHAIN_REQUIRED");
+const api=async()=>{const response=await fetch(config.origin+"/api/workspace",{method:"POST",headers:{authorization:"Bearer "+config.connectionToken,"content-type":"application/json"},body:JSON.stringify({operation:"connect"}),signal:AbortSignal.timeout(10000)});if(!response.ok)throw Error("TEST_WORKSPACE_UNAVAILABLE");return response.json() as Promise<any>;};
+const before=await api(),nonce=await pc.getTransactionCount({address:before.owner}),browser=await chromium.launch({channel:"chromium",headless:true});
+try{
+ const page=await browser.newPage({viewport:{width:1280,height:900}});await page.goto(config.origin+"/app.html");await page.locator("#credential").fill(config.connectionToken);await page.locator("#connection-form button").click();await page.locator("#content .metric-grid").waitFor();
+ if(await page.evaluate(()=>Boolean((window as any).ethereum))||await page.locator("#credential").inputValue()!=="")throw Error("PROVIDER_NOT_ABSENT_OR_CREDENTIAL_NOT_CLEARED");
+ await page.locator("#connect-owner").click();await page.locator("#error").filter({hasText:"EIP-1193 wallet"}).waitFor();
+ const visibility:any[]=[];
+ const visibleFeedback=async(p:any,id:string,label:string)=>{const rect=await p.locator(id).boundingBox(),viewport=p.viewportSize();if(!rect||rect.y<0||rect.y+rect.height>viewport.height||rect.x<0||rect.x+rect.width>viewport.width)throw Error("FEEDBACK_OUTSIDE_VIEWPORT:"+label);visibility.push({label,rect,viewport,text:await p.locator(id).innerText()});};
+ await visibleFeedback(page,"#error","no-wallet-desktop");await page.screenshot({path:join(out,"no-wallet-desktop.png")});await page.setViewportSize({width:390,height:900});await page.locator("#connect-owner").click();await visibleFeedback(page,"#error","no-wallet-mobile");await page.screenshot({path:join(out,"no-wallet-mobile.png")});
+ const controlled=await browser.newPage({viewport:{width:1280,height:900}});
+ // Literal probe code avoids capturing tsx's function-name helper in the browser.
+ // This isolated context has no wallet extension and tests presentation only.
+ await controlled.addInitScript('window.__uiProbeCalls=[];window.ethereum={request:async({method})=>{window.__uiProbeCalls.push(method);if(method==="eth_requestAccounts"||method==="eth_accounts")return ["0x0000000000000000000000000000000000000001"];if(method==="eth_chainId")return "0x7a69";throw Error("UI_PROBE_MUST_NEVER_SIGN");}};');
+ await controlled.goto(config.origin+"/app.html");await controlled.locator("#credential").fill(config.connectionToken);await controlled.locator("#connection-form button").click();await controlled.locator("#content .metric-grid").waitFor();await controlled.locator('[data-action="pause"]').first().click();await controlled.locator("#review").waitFor();await controlled.locator("#connect-review-owner").click();try{await controlled.locator("#review-error").filter({hasText:"owner address"}).waitFor();}catch(error){writeFileSync(join(out,"private-ui-diagnostic.json"),JSON.stringify({probe:await controlled.evaluate(()=>({present:Boolean((window as any).ethereum),calls:(window as any).__uiProbeCalls})),globalError:await controlled.locator("#error").innerText(),reviewError:await controlled.locator("#review-error").innerText(),reviewVisible:await controlled.locator("#review").isVisible()},null,2));throw error;}
+ await visibleFeedback(controlled,"#review-error","controlled-wrong-owner-desktop");await controlled.screenshot({path:join(out,"controlled-wrong-owner-desktop.png")});await controlled.setViewportSize({width:390,height:900});await controlled.locator("#connect-review-owner").click();await controlled.locator("#review-error").filter({hasText:"owner address"}).waitFor();await visibleFeedback(controlled,"#review-error","controlled-wrong-owner-mobile");await controlled.screenshot({path:join(out,"controlled-wrong-owner-mobile.png")});
+ const calls=await controlled.evaluate(()=>(window as any).__uiProbeCalls);if(calls.some((m:string)=>m!=="eth_requestAccounts"&&m!=="eth_accounts"&&m!=="eth_chainId")||!await controlled.locator("#approve").isDisabled())throw Error("UI_PROBE_ATTEMPTED_AUTHORITY");
+ const after=await api(),afterNonce=await pc.getTransactionCount({address:before.owner});
+ if(nonce!==afterNonce||before.context.policy.version!==after.context.policy.version||before.context.walletBalanceAtomic!==after.context.walletBalanceAtomic||!await page.locator("#approve").isDisabled())throw Error("UNSUPPORTED_HOST_CHANGED_AUTHORITY");
+ const result={schemaVersion:1,mode:"genuine no-extension Chrome plus separately labeled controlled-provider UI visibility probe",noWalletCase:{providerPresent:false,providerInjected:false},controlledWrongOwnerCase:{providerInjected:true,presentationOnly:true,walletExtension:false,calls,signingCalls:0},visibility,chainId:31337,error:await page.locator("#error").innerText(),approveDisabled:true,ownerNonceBefore:nonce,ownerNonceAfter:afterNonce,policyVersionBefore:before.context.policy.version,policyVersionAfter:after.context.policy.version,walletBalanceAtomicBefore:before.context.walletBalanceAtomic,walletBalanceAtomicAfter:after.context.walletBalanceAtomic,sourceFingerprint:Object.fromEntries(["mandate/web/app.ts","mandate/web/static/app.html","mandate/experiments/m6-no-wallet.ts"].map(p=>[p,createHash("sha256").update(readFileSync(p)).digest("hex")])),newPublicTransactions:0,humanUsability:false};
+ writeFileSync(join(out,"result.json"),JSON.stringify(result,null,2)+"\n",{mode:0o600});console.log(JSON.stringify({noProviderGuidancePassed:true,authorityUnchanged:true,newPublicTransactions:0}));
+}finally{await browser.close();}

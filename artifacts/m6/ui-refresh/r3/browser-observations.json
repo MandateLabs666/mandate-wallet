@@ -1,0 +1,39 @@
+{
+  "operator": "Codex in-app browser; author QA, not human UAT",
+  "pointerChecks": [
+    "real native click at left side",
+    "real native drag to right side",
+    "opposite signed yaw and transformed card",
+    "background click pulse and decaying trail visible",
+    "pause blocks further pointer tracking",
+    "paused hero pixels stable; native scrollbar fade excluded"
+  ],
+  "brandingChecks": [
+    "canonical mark, wordmark and lockup SVGs parsed",
+    "lettering is paths; no external font or raster dependencies",
+    "home/app/docs inline branding observed",
+    "favicon uses matching mark",
+    "Launch app and Developer guide links navigated normally"
+  ],
+  "responsiveChecks": 8,
+  "finalConsoleErrors": 0,
+  "browserWalletOpened": false,
+  "browserOwnerSigningAttempts": 0,
+  "newPublicTransactions": 0,
+  "reducedMotionBrowserEmulated": false,
+  "touchHardwareTested": false,
+  "attempts": [
+    {
+      "scope": "brand-only preview",
+      "outcome": "file protocol preview blocked by browser policy; unused preview removed; actual same-site home/app/docs branding inspected normally"
+    },
+    {
+      "scope": "responsive capture",
+      "outcome": "first resize targeted selected browser tab rather than older QA tab; discarded those measurements, bound current same-origin tab and verified requested width equals observed width for all eight cases"
+    },
+    {
+      "scope": "pause screenshot comparison",
+      "outcome": "JPEG bytes differ only in browser scrollbar region; hero content pixels unchanged across pointer moves"
+    }
+  ]
+}

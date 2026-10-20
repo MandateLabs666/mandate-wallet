@@ -1,0 +1,17 @@
+# Mandate Wallet presentation
+
+The current editable 12-slide deck is [mandate-wallet-v3.pptx](mandate-wallet-v3.pptx). Its [speaker script](SPEAKER_NOTES.en.md) contains 964 spoken words, with repository-relative source citations also embedded in each slide's notes. At 115 words/minute plus 50 seconds for pauses/transitions, the estimated duration is 553 seconds (9 minutes 13 seconds). This is a script estimate, not a recorded human rehearsal. The allocated slide slots total 560 seconds; the competition presentation budget is 600 seconds. The v2 deck and its acceptance record remain historical evidence.
+
+The deck covers the bounded purchase, owner scope, registered-payment flow, paid/service-failed recovery, actual public-testnet evidence, financial attack results, disclosure/retention limits, measured cost, Echo reuse and remaining acceptance. The owner-view image comes from the actual official MetaMask automation on local Anvil. Manual usability and remaining wallet paths retain separate acceptance. The independent-tool review and its repaired tag-policy finding are now reflected in the slides. Six native tables and two editable charts retain their values; the original chart parts and embedded workbook bytes were preserved exactly. Those workbooks are snapshots of literal audit data, not source-data formulas. Helvetica Neue is the chosen installed font; no font file is redistributed.
+
+The final file passed package/layout/font/native-table/chart/import checks and all twelve rendered slides were inspected. These checks use Artifact Tool, not a claim of opening the file in Microsoft PowerPoint or Google Slides. The raw draft and renderings remain in the private build directory. The public acceptance record is [presentation-v3/acceptance.json](../../artifacts/competition/presentation-v3/acceptance.json), alongside the validation receipt and exact workbook-preservation hashes.
+
+`content.json` is the narrative source. The builder reads the actual benchmark audit and public payment bundle for chart values and the example transaction hash. To rebuild with the Codex bundled presentation runtime, obtain the runtime paths using `load_workspace_dependencies`, read the Presentations skill, and run its required authoring marker before the first creation command. Set `RUNTIME_NODE_MODULES`, `PRESENTATIONS_SKILL_DIR` and `RUNTIME_PYTHON` to the supplied paths, then run the supplied Node executable against:
+
+```text
+scripts/competition-update-deck.mjs NEW_REVISION
+```
+
+Use a new revision so existing output is preserved. The updater imports the v2 deck, changes slides 3/7/11, restores the original chart/workbook parts using `preserve-deck-chart-parts.py`, finalizes into `competition/presentation/mandate-wallet-NEW_REVISION.pptx`, renders every final slide into `.runtime/presentation-build/NEW_REVISION/`, and updates the speaker-script export. `competition-build-deck.mjs` is the historical full-deck builder. Neither script installs packages, calls a paid service, spends funds or publishes the deck. The optional deck-authoring runtime is separate from the documented SDK build prerequisites.
+
+This engineering snapshot is not the final competition version freeze. T11.04 covers the deck/script; T11.05 video, T11.08 all-material claim review, T11.09 final freeze and other task gates retain their own requirements. Actual MetaMask automation and T10.10 independent-tool review are documented; manual wallet/mobile usability and remaining host paths remain open. No third-party human audit is claimed.

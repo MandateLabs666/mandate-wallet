@@ -1,0 +1,18 @@
+{
+  "recordedAt": "2026-10-14T13:01:41.139694+00:00",
+  "route": "third-party-rpc",
+  "containersConfirmedStopped": [
+    "mandate-m2-geth-1",
+    "mandate-m2-lighthouse-1"
+  ],
+  "removedRegenerableChainDirectories": [
+    ".runtime/m2/node/geth/geth/chaindata",
+    ".runtime/m2/node/geth/geth/nodes",
+    ".runtime/m2/node/geth/geth/triedb",
+    ".runtime/m2/node/geth/geth/blobpool",
+    ".runtime/m2/node/lighthouse/beacon/freezer_db",
+    ".runtime/m2/node/lighthouse/beacon/chain_db",
+    ".runtime/m2/node/lighthouse/beacon/blobs_db"
+  ],
+  "retained": "All .runtime/m2/keys, journals, artifacts, node identity and logs; unrelated containers untouched."
+}

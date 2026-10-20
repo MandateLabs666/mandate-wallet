@@ -1,0 +1,149 @@
+import {x402Client} from "@x402/core/client";
+import {encodePaymentSignatureHeader,decodePaymentResponseHeader} from "@x402/core/http";
+import type {Network,PaymentPayload,PaymentRequirements} from "@x402/core/types";
+import {encodeFunctionData,hashTypedData,getAbiItem,TransactionReceiptNotFoundError,isAddressEqual,type Address,type Hex,type LocalAccount} from "viem";
+import {accountAbi} from "../sdk/accountAbi.js";
+import {MandateReader,reconcilePayment,tokenReadAbi} from "../sdk/reader.js";
+import {nonceFor,requestHash,encodePayment,decodePayment,canonicalJson,MandateError,type Payment} from "../sdk/model.js";
+import {fetchQuote,type QuotePolicy} from "./quote.js";
+import {SafeHttp} from "./http.js";
+import {PurchaseStore,businessKey,type PurchaseRecord,type Lease} from "./store.js";
+import {DurableTransactions} from "./transactions.js";
+import {verifyReceipt} from "../evidence/signed-artifacts.js";
+import type {PurchaseEvidenceRecorder} from "../evidence/recorder.js";
+export type ApprovedService={stepId:Hex;serviceId:Hex;method:"GET"|"POST";url:string;body:unknown;checkResult:(result:unknown)=>boolean};
+export type AgentContext={agentId:string;mandateId:Hex;sessionId:Hex;signer:Pick<LocalAccount,"address"|"signTypedData">;services:ApprovedService[];startBlock:bigint};
+type Quote=Awaited<ReturnType<typeof fetchQuote>>;
+export class PurchaseClient {
+  constructor(readonly context:AgentContext,readonly reader:MandateReader,readonly transactions:DurableTransactions,readonly http:SafeHttp,readonly store:PurchaseStore,readonly evidence?:PurchaseEvidenceRecorder) {}
+  private async recordOutcome(record:PurchaseRecord,p:Payment,lease:Lease){
+    if(!this.evidence)return;
+    if(!record.preCheckpointRoot){record.evidenceStatus=record.registrationSignature?"legacy-no-precheckpoint":"incomplete";if(!record.registrationSignature)record.evidenceErrorCode="PRE_CHECKPOINT_PENDING";this.save(record,lease);return;}
+    try{await this.evidence.outcome(record,p,record.lastHttpStatus);record.evidenceStatus="recorded";delete record.evidenceErrorCode;}
+    catch(error){record.evidenceStatus="incomplete";record.evidenceErrorCode=error instanceof MandateError?error.code:"EVIDENCE_STORAGE_UNAVAILABLE";}
+    this.save(record,lease);
+  }
+  private service(id:Hex){const s=this.context.services.find(s=>s.serviceId===id);if(!s)throw new MandateError("SERVICE_SCOPE_APPROVAL_REQUIRED");return s;}
+  async quote(id:Hex) {
+    const service=this.service(id),budget=await this.reader.readBudget(this.context.mandateId,this.context.sessionId),pc=this.reader.pc,c=this.context;
+    if(!budget.policy.exists || budget.policy.revoked || budget.policy.paused || !budget.session.exists || budget.session.revoked || budget.session.policyVersion!==budget.policy.version || !isAddressEqual(budget.session.signer,c.signer.address))throw new MandateError("AGENT_GRANT_INACTIVE");
+    const step=await pc.readContract({address:this.reader.wallet,abi:accountAbi,functionName:"getStep",args:[c.mandateId,budget.policy.version,service.stepId]});
+    const merchant=await pc.readContract({address:this.reader.wallet,abi:accountAbi,functionName:"getMerchant",args:[c.mandateId,budget.policy.version,step.merchantId]});
+    if(step.requestHash!==requestHash(service))throw new MandateError("OWNER_REQUEST_APPROVAL_REQUIRED");
+    const policy:QuotePolicy={chainId:this.reader.chainId,asset:this.reader.tokenDomain.verifyingContract,payTo:merchant.payTo,domainName:this.reader.tokenDomain.name,domainVersion:this.reader.tokenDomain.version,maxAmount:budget.policy.maxPerPayment<budget.session.maxPerPayment?budget.policy.maxPerPayment:budget.session.maxPerPayment,approvedRequestHash:step.requestHash,quoteSigner:merchant.quoteSigner};
+    const quote=await fetchQuote(this.http,{method:service.method,url:service.url,body:service.body},policy,{discoveryOnly:true});
+    this.store.pinQuote(businessKey(this.reader.chainId,this.reader.wallet,c.mandateId,service.stepId),budget.policy.version,quote.quoteHash,quote.requestHash);
+    return {service,budget,step,merchant,policy,quote};
+  }
+  private save(record:PurchaseRecord,lease:Lease){this.store.renew(lease);this.store.save(record,lease);}
+  private async reconcile(record:PurchaseRecord,lease:Lease) {
+    if(!record.payment)return record;
+    const p=decodePayment(record.payment),pc=this.reader.pc,token=this.reader.tokenDomain.verifyingContract;
+    if(record.settlementHash) {
+      try {
+        const r=await pc.getTransactionReceipt({hash:record.settlementHash}),b=await pc.getBlock({blockNumber:r.blockNumber});
+        if(b.hash!==r.blockHash){delete record.settlementHash;delete record.settlementBlockHash;record.paymentState="pending";}
+      }catch(e){if(e instanceof TransactionReceiptNotFoundError){delete record.settlementHash;delete record.settlementBlockHash;record.paymentState="pending";}else throw e;}
+    }
+    if(!record.settlementHash && await pc.readContract({address:token,abi:tokenReadAbi,functionName:"authorizationState",args:[this.reader.wallet,p.nonce]})) {
+      const head=await pc.getBlockNumber({cacheTime:0});
+      for(let from=BigInt(record.registrationBlock??this.context.startBlock);from<=head;from+=200n) {
+        const logs=await pc.getLogs({address:token,event:getAbiItem({abi:tokenReadAbi,name:"AuthorizationUsed"}),args:{authorizer:this.reader.wallet,nonce:p.nonce},fromBlock:from,toBlock:from+199n<head?from+199n:head,strict:true});
+        if(logs[0]?.transactionHash){record.settlementHash=logs[0].transactionHash;break;}
+      }
+    }
+    const proof=await reconcilePayment(pc,this.reader.wallet,token,p,record.settlementHash,this.transactions.confirmations);
+    if(proof.state==="paid"){record.paymentState="paid";record.settlementHash=proof.transactionHash;record.settlementBlockHash=proof.blockHash;}
+    else if(proof.state==="consumed_unknown" || proof.state==="canceled")record.paymentState=proof.state;
+    else {
+      const commitment=await pc.readContract({address:this.reader.wallet,abi:accountAbi,functionName:"getCommitment",args:[hashTypedData(this.paymentData(p))]});
+      if(commitment.released)record.paymentState="released";
+      else if(record.registrationHash && !commitment.exists)record.paymentState="registering";
+      else if(record.paymentState!=="rejected" && record.paymentState!=="draft")record.paymentState=record.payload?"reserved":"registering";
+    }
+    this.save(record,lease);return record;
+  }
+  private paymentData(p:Payment){return {domain:this.reader.tokenDomain,types:authorizationTypes,primaryType:"TransferWithAuthorization" as const,message:{from:this.reader.wallet,to:p.to,value:p.value,validAfter:p.validAfter,validBefore:p.validBefore,nonce:p.nonce}};}
+  async readRecord(key:string) {
+    const record=this.store.get(key);
+    if(!record||record.chainId!==this.reader.chainId||!isAddressEqual(record.wallet,this.reader.wallet)||record.mandateId!==this.context.mandateId)throw new MandateError("RECORD_SCOPE_MISMATCH");
+    if(!record.payment)return {record,refresh:"unregistered" as const};
+    const lease=this.store.claim(key,120000);
+    if(!lease)return {record,refresh:"cached-worker-busy" as const};
+    try{return {record:await this.reconcile(record,lease),refresh:"chain-reconciled" as const};}
+    finally{this.store.release(lease);}
+  }
+  async call(id:Hex):Promise<PurchaseRecord> {
+    const s=this.service(id),c=this.context,key=businessKey(this.reader.chainId,this.reader.wallet,c.mandateId,s.stepId);
+    let record=this.store.create({key,requestHash:requestHash(s),agentId:c.agentId,chainId:this.reader.chainId,wallet:this.reader.wallet,mandateId:c.mandateId,stepId:s.stepId,paymentState:"draft",serviceState:"not_requested",resultState:"unchecked"});
+    if(record.agentId!==c.agentId)return (await this.readRecord(key)).record;
+    const lease=this.store.claim(key,120000);if(!lease)return record;
+    let lost=false;const heartbeat=setInterval(()=>{try{this.store.renew(lease);}catch{lost=true;}},20000);
+    const ensure=()=>{if(lost)throw new MandateError("LEASE_LOST");this.store.renew(lease);};
+    try {
+      if(record.payment)record=await this.reconcile(record,lease);
+      if(record.paymentState==="rejected"&&!record.payment&&record.rejectedPolicyVersion) {
+        const current=await this.reader.readBudget(c.mandateId,c.sessionId);
+        if(current.policy.version>BigInt(record.rejectedPolicyVersion)||record.rejectedSessionId!==c.sessionId){record.paymentState="draft";delete record.errorCode;this.save(record,lease);}
+      }
+      if(["rejected","released","consumed_unknown","canceled"].includes(record.paymentState))return record;
+      if(record.paymentState==="paid" && record.serviceState==="returned"){await this.recordOutcome(record,decodePayment(record.payment!),lease);return record;}
+      if(!record.payment) {
+        const {quote:first,budget,step,policy}=await this.quote(id),now=(await this.reader.pc.getBlock()).timestamp;
+        const until=[now+BigInt(first.requirements.maxTimeoutSeconds),budget.policy.expiresAt,budget.session.expiresAt].reduce((a,b)=>a<b?a:b);
+        const amount=BigInt(first.requirements.amount);
+        if(until<=now || amount>budget.rootAvailable || amount>budget.grantAvailable)throw new MandateError("BUDGET_OR_EXPIRY_APPROVAL_REQUIRED");
+        const p:Payment={mandateId:c.mandateId,policyVersion:budget.policy.version,sessionId:c.sessionId,sessionEpoch:budget.session.epoch,stepId:s.stepId,merchantId:step.merchantId,requestHash:record.requestHash,quoteHash:first.quoteHash,to:policy.payTo,value:amount,validAfter:0n,validBefore:until,nonce:nonceFor(this.reader.chainId,this.reader.wallet,c.mandateId,s.stepId)};
+        const quote=await fetchQuote(this.http,{method:s.method,url:s.url,body:s.body},policy,{previousRequirementsHash:first.quoteHash,payment:p,wallet:this.reader.wallet,chainTimestamp:now});
+        if(!quote.readyForRegistration)throw new MandateError("QUOTE_NOT_READY");
+        ensure();record.payment=encodePayment(p);record.quote=JSON.parse(JSON.stringify(quote));record.paymentState="registering";this.save(record,lease);
+      }
+      const p=decodePayment(record.payment),quote=record.quote as Quote;
+      if(!record.registrationSignature){
+        if(this.evidence){const pre=await this.evidence.pre(record,p,quote,s);record.preCheckpointRoot=pre.checkpointRoot;record.actionProof=pre.actionProof;record.evidenceStatus="recorded";this.save(record,lease);}
+        record.registrationSignature=await c.signer.signTypedData(await this.reader.checkedRegistrationData(p));this.save(record,lease);
+      }
+      if(!record.payload || record.paymentState==="registering") {
+        const data=encodeFunctionData({abi:accountAbi,functionName:"registerPayment",args:[p,record.registrationSignature!,quote.merchantSignature??"0x"]});
+        const tx=await this.transactions.prepare("register:"+key,this.reader.wallet,data);record.registrationHash=tx.hash;this.save(record,lease);
+        const receipt=await this.transactions.send(tx.id,ensure);
+        if(receipt.status!=="success"){record.paymentState="rejected";record.errorCode="REGISTRATION_REVERTED";this.save(record,lease);await this.recordOutcome(record,p,lease);return record;}
+        record.registrationBlock=receipt.blockNumber.toString();record.registrationBlockHash=receipt.blockHash;this.save(record,lease);ensure();
+        if(this.evidence&&record.preCheckpointRoot)await this.evidence.registered(record,p);
+        if(!record.payload) {
+        const signature=await c.signer.signTypedData(await this.reader.approvedPaymentData(p));
+        const core=new x402Client().setSpendControls({allowedAssets:[{network:`eip155:${this.reader.chainId}`,asset:this.reader.tokenDomain.verifyingContract,maxAmountPerPayment:quote.requirements.amount}]}).register(`eip155:${this.reader.chainId}` as Network,{scheme:"exact",createPaymentPayload:async()=>({x402Version:2,payload:{signature,authorization:{from:this.reader.wallet,to:p.to,value:p.value.toString(),validAfter:"0",validBefore:p.validBefore.toString(),nonce:p.nonce}}})});
+        record.payload=JSON.parse(JSON.stringify(await core.createPaymentPayload({x402Version:2,resource:quote.resource,accepts:[quote.requirements as PaymentRequirements]})));
+        }
+        record.paymentState="reserved";this.save(record,lease);
+      }
+      if(record.paymentState!=="paid")await this.reader.approvedPaymentData(p);
+      ensure();record.paymentState=record.paymentState==="paid"?"paid":"pending";this.save(record,lease);
+      const response=await this.http.request(s.url,{method:s.method,headers:{"PAYMENT-SIGNATURE":encodePaymentSignatureHeader(record.payload as PaymentPayload),...(s.method==="POST"?{"content-type":"application/json"}:{})},body:s.body===null?undefined:Buffer.from(canonicalJson(s.body))});
+      record.lastHttpStatus=response.status;
+      const settlement=response.headers["payment-response"];
+      let signedReceipt:unknown;
+      if(typeof settlement==="string") {const decoded=decodePaymentResponseHeader(settlement);if(/^0x[0-9a-fA-F]{64}$/.test(decoded.transaction))record.settlementHash=decoded.transaction as Hex;const extension=decoded.extensions?.["offer-receipt"];if(extension&&typeof extension==="object"&&"info" in extension){const info=extension.info;if(info&&typeof info==="object"&&"receipt" in info)signedReceipt=info.receipt;}}
+      if(response.status>=200 && response.status<300){record.result=JSON.parse(response.body.toString("utf8"));record.serviceState="returned";record.resultState=s.checkResult(record.result)?"valid":"invalid";delete record.errorCode;}
+      else{record.serviceState="failed";record.errorCode="SERVICE_HTTP_"+response.status;}
+      this.save(record,lease);record=await this.reconcile(record,lease);
+      if(signedReceipt!==undefined||quote.standardOffer){
+        const coverage={coversPaymentAmount:false,coversRequestBody:false,coversResultBody:false} as const;
+        if(signedReceipt===undefined)record.receiptEvidence={status:"incomplete",code:"MERCHANT_RECEIPT_NOT_PROVIDED",...coverage};
+        else try{
+          const merchant=await this.reader.pc.readContract({address:this.reader.wallet,abi:accountAbi,functionName:"getMerchant",args:[p.mandateId,p.policyVersion,p.merchantId]});
+          const registeredAt=Number((await this.reader.pc.getBlock({blockNumber:BigInt(record.registrationBlock??this.context.startBlock)})).timestamp);
+          const verified=await verifyReceipt(signedReceipt,{network:`eip155:${this.reader.chainId}`,resourceUrl:s.url,payer:this.reader.wallet,transaction:record.settlementHash,observedAt:Number((await this.reader.pc.getBlock()).timestamp),minIssuedAt:registeredAt,binding:{resourceUrl:s.url,signer:merchant.quoteSigner,validFrom:0,source:"owner-chain-merchant"}});
+          record.merchantReceipt=verified.artifact;record.receiptEvidence={status:"confirmed",correlation:verified.correlation,...coverage};
+        }catch(error){const code=error instanceof MandateError?error.code:"MERCHANT_RECEIPT_VERIFICATION_UNAVAILABLE";record.receiptEvidence={status:!(error instanceof MandateError)?"incomplete":code.includes("UNSUPPORTED")?"unsupported":"contradicted",code,...coverage};}
+        this.save(record,lease);
+      }
+      await this.recordOutcome(record,p,lease);return record;
+    }catch(error) {
+      if(error instanceof MandateError && !record.payment){record.paymentState="rejected";record.errorCode=error.code;const observed=await this.reader.readBudget(c.mandateId,c.sessionId);record.rejectedPolicyVersion=observed.policy.version.toString();record.rejectedSessionId=c.sessionId;}
+      else{record.errorCode=error instanceof MandateError?error.code:"TRANSPORT_OR_CHAIN_UNKNOWN";if(record.payload)record.serviceState="unknown";}
+      if(!lost){this.save(record,lease);if(record.payment)await this.recordOutcome(record,decodePayment(record.payment),lease);else if(this.evidence){try{await this.evidence.rejected(record);record.evidenceStatus="recorded";}catch{record.evidenceStatus="incomplete";record.evidenceErrorCode="REJECTION_EVIDENCE_UNAVAILABLE";}this.save(record,lease);}}return record;
+    }finally{clearInterval(heartbeat);this.store.release(lease);}
+  }
+}
+import {authorizationTypes} from "../sdk/model.js";

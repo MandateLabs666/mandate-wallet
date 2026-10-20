@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 2,
+  "observedAt": "2026-10-14T17:00:51.723Z",
+  "transport": "actual-stdio-subprocess",
+  "modelHostTested": false,
+  "profiles": [
+    {
+      "agentId": "agent-a",
+      "wallet": "0xE02B554a694b1857B8e89274B2F6E1eCD0C0B589",
+      "sessionId": "0xb96eebda3770b89e987dfc1cd73117e6f57ae9f63d1cdfa67c6c00fb0f4bbf19",
+      "toolNames": [
+        "mandate_get_context",
+        "mandate_request_authorization",
+        "mandate_search_services",
+        "mandate_quote_service",
+        "mandate_call_service",
+        "mandate_get_task",
+        "mandate_get_receipt",
+        "mandate_request_revoke"
+      ],
+      "ownerKeyHeldByGateway": false,
+      "rootAvailable": "110000",
+      "grantAvailable": "130000",
+      "walletBalanceAtomic": "10000",
+      "quote": {
+        "serviceId": "0xeace7510b9b450e54f1c0b8be486283300dcac70fd8d0c89a6cba0b3a2664242",
+        "amountAtomic": "10000",
+        "requestHash": "0x0c9e6145c6b0c0a2d86b5b1f6ac7d504ebe8677a84f85e4dbc51931f80399f02",
+        "readyForRegistration": false
+      },
+      "taskRecords": [
+        {
+          "stepId": "0x173c810af0b382aa350fb013a040ec7cc2db7eb96236a52d940381aa26682cad",
+          "paymentState": "paid",
+          "refresh": "chain-reconciled"
+        },
+        {
+          "stepId": "0x19d134b34395fc6b4f0d3d57ed5beeeb4e666211cd65e5cadc0dc3d79e543537",
+          "paymentState": "released",
+          "refresh": "chain-reconciled"
+        },
+        {
+          "stepId": "0x366a7331d5e47747005dd528d6cff83ad944c80a4e7a032bb6f5218dca7f87ff",
+          "paymentState": "paid",
+          "refresh": "chain-reconciled"
+        },
+        {
+          "stepId": "0xad542662e39d192880a73087090e9a6a35811d34b495333ce98a5f8a0b28fd04",
+          "paymentState": "paid",
+          "refresh": "chain-reconciled"
+        },
+        {
+          "stepId": "0xf7de6d99633448bc88b2524abe9433863d0ad2be6a1c2e95583c1157fc8e7aa9",
+          "paymentState": "paid",
+          "refresh": "chain-reconciled"
+        }
+      ],
+      "unknownWalletParameterRejected": true
+    },
+    {
+      "agentId": "agent-b",
+      "wallet": "0xE02B554a694b1857B8e89274B2F6E1eCD0C0B589",
+      "sessionId": "0x319c1f48235a58cce504e15058e43fe37995d915030a840de4cf67b85b23f9ca",
+      "toolNames": [
+        "mandate_get_context",
+        "mandate_request_authorization",
+        "mandate_search_services",
+        "mandate_quote_service",
+        "mandate_call_service",
+        "mandate_get_task",
+        "mandate_get_receipt",
+        "mandate_request_revoke"
+      ],
+      "ownerKeyHeldByGateway": false,
+      "rootAvailable": "110000",
+      "grantAvailable": "130000",
+      "walletBalanceAtomic": "10000",
+      "quote": {
+        "serviceId": "0x4aaea4a6b1dfc7000190c1b15b90af4031e96b81a26021b81b55e804a8489261",
+        "amountAtomic": "10000",
+        "requestHash": "0xcb3cf564911bfc4e8f0a7f701e6160964070a70170b09e1308141f2c7f458807",
+        "readyForRegistration": false
+      },
+      "taskRecords": [
+        {
+          "stepId": "0x173c810af0b382aa350fb013a040ec7cc2db7eb96236a52d940381aa26682cad",
+          "paymentState": "paid",
+          "refresh": "chain-reconciled"
+        },
+        {
+          "stepId": "0x19d134b34395fc6b4f0d3d57ed5beeeb4e666211cd65e5cadc0dc3d79e543537",
+          "paymentState": "released",
+          "refresh": "chain-reconciled"
+        },
+        {
+          "stepId": "0x366a7331d5e47747005dd528d6cff83ad944c80a4e7a032bb6f5218dca7f87ff",
+          "paymentState": "paid",
+          "refresh": "chain-reconciled"
+        },
+        {
+          "stepId": "0xad542662e39d192880a73087090e9a6a35811d34b495333ce98a5f8a0b28fd04",
+          "paymentState": "paid",
+          "refresh": "chain-reconciled"
+        },
+        {
+          "stepId": "0xf7de6d99633448bc88b2524abe9433863d0ad2be6a1c2e95583c1157fc8e7aa9",
+          "paymentState": "paid",
+          "refresh": "chain-reconciled"
+        }
+      ],
+      "unknownWalletParameterRejected": true
+    }
+  ],
+  "submittedPurchases": 0
+}

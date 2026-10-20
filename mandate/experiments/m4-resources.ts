@@ -1,0 +1,10 @@
+import {readFileSync,writeFileSync} from "node:fs";
+import {createPublicClient,http,type Address} from "viem";
+import {baseSepolia} from "viem/chains";
+import {tokenReadAbi} from "../sdk/reader.js";
+const accounts=JSON.parse(readFileSync("artifacts/test-accounts.json","utf8")),config=JSON.parse(readFileSync(".runtime/m3/84532-config.json","utf8"));
+const pc=createPublicClient({chain:baseSepolia,transport:http(config.rpc,{timeout:20000,retryCount:0}),batch:{multicall:false}});
+const block=await pc.getBlock();
+const roles=await Promise.all(Object.entries({...accounts.addresses,formalWallet:config.wallet}).map(async([role,address])=>({role,address,nativeBalanceWei:(await pc.getBalance({address:address as Address,blockNumber:block.number!})).toString(),usdcBalanceAtomic:(await pc.readContract({address:config.asset,abi:tokenReadAbi,functionName:"balanceOf",args:[address as Address],blockNumber:block.number!})).toString()})));
+const result={observedAt:new Date().toISOString(),chainId:await pc.getChainId(),block:block.number?.toString(),blockHash:block.hash,roles,submittedTransactions:0};
+writeFileSync("artifacts/m4/resources.json",JSON.stringify(result,null,2)+"\n");console.log(JSON.stringify(result));

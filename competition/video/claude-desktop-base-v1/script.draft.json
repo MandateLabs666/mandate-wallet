@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "status": "planned; not a completed recording",
+  "supersedes": "../claude-desktop-v1/script.draft.json (Local draft only)",
+  "targetSeconds": 290,
+  "chainId": 84532,
+  "voice": "user-provided English voice-over",
+  "capture": "Actual UI and the same fresh Base Sepolia run; waiting periods may be cut and labelled. Historical transactions are not substituted for fresh actions.",
+  "scenes": [
+    {
+      "id": "purpose",
+      "start": 0,
+      "end": 18,
+      "purpose": "说明任务及网络",
+      "screen": "首页与案例目标；Base Sepolia 测试网标记",
+      "narration": "Mandate Wallet lets an AI agent purchase an approved API service within an owner-defined budget. We will connect it to Claude Desktop, obtain an ETH statistics sample, and produce a short brief. The transactions in this demonstration run on Base Sepolia.",
+      "viewSequence": [
+        "workspace"
+      ]
+    },
+    {
+      "id": "prerequisites",
+      "start": 18,
+      "end": 34,
+      "purpose": "说明操作起点",
+      "screen": "Claude Desktop、Node 24、外部 owner 钱包、Base Sepolia 测试资金",
+      "narration": "Claude Desktop is signed in, the Mandate source component is running, and the owner wallet has test ETH and test USDC. These are testnet assets. The API and payment facilitator are controlled demonstration services, and the statistics are fixed samples.",
+      "viewSequence": [
+        "workspace"
+      ]
+    },
+    {
+      "id": "public-setup",
+      "start": 34,
+      "end": 74,
+      "purpose": "创建账户并批准有限权限",
+      "screen": "Testnet → Base Sepolia → 外部钱包逐项审核账户部署、资金和授权",
+      "narration": "Choose Testnet and Base Sepolia in the setup wizard. Connect the owner wallet, then review deployment, funding and permissions. We transfer zero point one five test USDC to the smart account and fund operator gas separately. The task budget is zero point one five, each payment is capped at zero point one, and the session expires after one hour. The owner confirms these transactions in the external wallet.",
+      "viewSequence": [
+        "workspace",
+        "wallet",
+        "workspace"
+      ]
+    },
+    {
+      "id": "grant-explorer",
+      "start": 74,
+      "end": 90,
+      "purpose": "核对链上的授权结果",
+      "screen": "向导确认交易 → BaseScan 交易详情及 SessionGranted 日志",
+      "narration": "After confirmation, open the authorization transaction in BaseScan. Check the Base Sepolia network, transaction hash and successful receipt. The contract log links the session to the approved mandate. The complete hash will also appear in our execution evidence.",
+      "viewSequence": [
+        "workspace",
+        "proof"
+      ]
+    },
+    {
+      "id": "claude-install",
+      "start": 90,
+      "end": 125,
+      "purpose": "接入 Claude Desktop",
+      "screen": "下载当前 Base 配置的 Guided 包 → Claude Settings → Extensions → 安装并启用",
+      "narration": "Download the Guided package for this Base Sepolia configuration. In Claude Desktop, open Settings, Extensions and Advanced settings, then import and enable the package. Its local connection is already configured, so no Agent profile or Connection file is selected. Start a new conversation using this connection.",
+      "viewSequence": [
+        "workspace",
+        "agent"
+      ]
+    },
+    {
+      "id": "context-quote",
+      "start": 125,
+      "end": 147,
+      "purpose": "只读核对身份并获取报价",
+      "screen": "Claude 调用 context、search 及 quote；尚不付款",
+      "narration": "Ask Claude to read the account context and quote the approved ETH sample without purchasing. Check the chain, account, active session and remaining budget. The sample costs zero point zero one test USDC. Installing the connector does not expand the approved authority.",
+      "viewSequence": [
+        "agent"
+      ]
+    },
+    {
+      "id": "purchase",
+      "start": 147,
+      "end": 180,
+      "purpose": "完成一次真实测试网付款",
+      "screen": "Claude 调用采购工具 → 已付款、服务失败、结果未检查",
+      "narration": "Authorize the quoted purchase. Mandate registers the commitment before releasing a payment signature. The USDC transfer settles on Base Sepolia, but our controlled service deliberately fails its first response. Claude reports payment, delivery and result validation separately. A successful payment alone does not mean the data was delivered.",
+      "viewSequence": [
+        "agent",
+        "workspace"
+      ]
+    },
+    {
+      "id": "payment-explorer",
+      "start": 180,
+      "end": 202,
+      "purpose": "核对实际资金转移",
+      "screen": "工作区 Settlement 链接 → BaseScan Overview 与 ERC-20 Transfers",
+      "narration": "Open the settlement transaction in BaseScan. Check Success, the test USDC contract, and the ERC-twenty transfer from the smart account to the approved recipient for zero point zero one USDC. The transaction sender may be the facilitator paying gas; the token-transfer sender identifies the paying account.",
+      "viewSequence": [
+        "workspace",
+        "proof"
+      ]
+    },
+    {
+      "id": "recover-brief",
+      "start": 202,
+      "end": 228,
+      "purpose": "恢复原订单并生成简报",
+      "screen": "Claude 重试同一 ETH 步骤 → 相同 hash 与 nonce → 返回样本与简报",
+      "narration": "Ask Claude to retry the same ETH step. The original order and settlement hash are retained, and there is no second payment. The service returns the sample and the result checker validates it. Claude then writes a brief, labels the data as a demonstration sample, and cites the receipt.",
+      "viewSequence": [
+        "agent",
+        "workspace"
+      ]
+    },
+    {
+      "id": "revoke-explorer",
+      "start": 228,
+      "end": 249,
+      "purpose": "由 owner 撤销会话并核对链上事件",
+      "screen": "工作区撤销会话 → 外部钱包确认 → BaseScan SessionRevoked 日志",
+      "narration": "The owner now revokes this session through the wallet workspace and confirms the transaction in the external wallet. Open the resulting BaseScan page and inspect the SessionRevoked log. This changes future spending authority while preserving the completed purchase.",
+      "viewSequence": [
+        "workspace",
+        "wallet",
+        "proof"
+      ]
+    },
+    {
+      "id": "refusal",
+      "start": 249,
+      "end": 273,
+      "purpose": "证明撤销后的新采购被拒绝",
+      "screen": "Claude 尝试尚未购买的 BTC 步骤 → 拒绝状态；无新登记交易",
+      "narration": "Finally, ask Claude to attempt the unused BTC sample. The revoked session prevents a new payment registration. This refusal has no new transaction hash because it is stopped before broadcast. We retain the tool result, permission state and unchanged payment records as refusal evidence.",
+      "viewSequence": [
+        "agent",
+        "workspace"
+      ]
+    },
+    {
+      "id": "close",
+      "start": 273,
+      "end": 290,
+      "purpose": "结束并简述本地体验选项",
+      "screen": "执行证据目录与结束画面；不展开 Local 教程",
+      "narration": "The evidence package connects each recorded step to its transaction, contract events and service outcome. Payment and service delivery are documented separately. A local practice option is also available for learning the workflow without public-testnet funds.",
+      "viewSequence": [
+        "workspace"
+      ]
+    }
+  ],
+  "composition": {
+    "style": "Persistent Mandate view with animated multi-camera layouts",
+    "size": [
+      2560,
+      1440
+    ],
+    "fps": 30,
+    "transitionSeconds": 0.65,
+    "cameras": [
+      "system",
+      "rabby",
+      "claude",
+      "explorer"
+    ],
+    "systemAlwaysVisible": true,
+    "fullScreenWallet": false,
+    "proofSource": "Same fresh run only; no historical substitution",
+    "claudeSource": "Actual native Claude Desktop captures",
+    "signatureScope": "Rabby appears for owner deployment and permissions; session-authorized purchases do not imply a new owner signature"
+  }
+}

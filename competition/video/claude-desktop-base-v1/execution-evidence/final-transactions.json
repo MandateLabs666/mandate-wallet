@@ -1,0 +1,511 @@
+{
+  "recordedAt": "2026-10-19T14:18:47.323Z",
+  "chainId": 84532,
+  "privateKeysRead": false,
+  "broadcasts": 0,
+  "commonFinalizedHeight": "48325041",
+  "allTransactionsAtOrBeforeCommonFinalizedHeight": true,
+  "limits": "Two RPC providers are trusted sources, not an independent consensus proof. Finality flags describe this observation only.",
+  "observations": [
+    {
+      "rpc": "https://base-sepolia-rpc.publicnode.com",
+      "chainId": 84532,
+      "providerFinalizedHead": {
+        "number": "48325041",
+        "hash": "0xf633782531bc7ca0149360d1f51067ddcaf93f6bd757ba32cf193caf7eb01e42",
+        "timestamp": "1792418370"
+      },
+      "receipts": [
+        {
+          "kind": "account",
+          "hash": "0x2ba48a2f3197c6dfac2b3c5579b0e3e01350a2ba1290d019d044a685ed21cb26",
+          "explorer": "https://sepolia.basescan.org/tx/0x2ba48a2f3197c6dfac2b3c5579b0e3e01350a2ba1290d019d044a685ed21cb26",
+          "status": "success",
+          "from": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+          "to": "0xb0d87821ed0075a8e37c6c4ed90edda66c4f9c55",
+          "blockNumber": "48316879",
+          "blockHash": "0xe3c9f5f5d65d81e00c6d084c80134770fdce7f1140a52ed216936c4272babb73",
+          "timestamp": "1792402046",
+          "canonicalAtRead": true,
+          "atOrBeforeProviderFinalizedHead": true,
+          "gasUsed": "2761743",
+          "effectiveGasPrice": "7200000",
+          "executionFeeWei": "19884549600000",
+          "l1FeeWei": "94",
+          "totalNetworkFeeWei": "19884549600094",
+          "logs": [
+            {
+              "address": "0xb0d87821ed0075a8e37c6c4ed90edda66c4f9c55",
+              "topics": [
+                "0xf547c891abd3e41b631fc9414272f0e63c11387821f03dbb7cb49c75fadf4710",
+                "0x000000000000000000000000aa987fc286434d205669814ba46b1d8df824fb36",
+                "0x000000000000000000000000036cbd53842c5426634e7929541ec2318f3dcf7e"
+              ],
+              "data": "0x000000000000000000000000a794daa86ff10920b75a4de3b0e752586e8703d2a5bae927a5c0cee2e03ee3fdbf9b61987788761127df7d517771c6d90f686df3",
+              "logIndex": 113
+            }
+          ]
+        },
+        {
+          "kind": "fund-gas",
+          "hash": "0x6ddf321b74a123e0ac7ee5007042c80dd667ac25a993f790622c258a91aebe2e",
+          "explorer": "https://sepolia.basescan.org/tx/0x6ddf321b74a123e0ac7ee5007042c80dd667ac25a993f790622c258a91aebe2e",
+          "status": "success",
+          "from": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+          "to": "0x4ab1062718e6e881070dcf48ab450d0f09b7ba67",
+          "blockNumber": "48318701",
+          "blockHash": "0x400ed588aee15782521472862a9a66dee279ca0a695ac5e1a96af66b94fcfc76",
+          "timestamp": "1792405690",
+          "canonicalAtRead": true,
+          "atOrBeforeProviderFinalizedHead": true,
+          "gasUsed": "21000",
+          "effectiveGasPrice": "7200000",
+          "executionFeeWei": "151200000000",
+          "l1FeeWei": "92",
+          "totalNetworkFeeWei": "151200000092",
+          "logs": []
+        },
+        {
+          "kind": "fund-usdc",
+          "hash": "0x3bb4b38d34ddea128a261e8c5da4ca28dfd2369f8671f2b4a718ed8c25ff61e2",
+          "explorer": "https://sepolia.basescan.org/tx/0x3bb4b38d34ddea128a261e8c5da4ca28dfd2369f8671f2b4a718ed8c25ff61e2",
+          "status": "success",
+          "from": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+          "to": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+          "blockNumber": "48318779",
+          "blockHash": "0x5ca6ff4a3eb1412b5ae46f42851587ee7bcda311c5f8e0c2d79c5412973288cf",
+          "timestamp": "1792405846",
+          "canonicalAtRead": true,
+          "atOrBeforeProviderFinalizedHead": true,
+          "gasUsed": "62159",
+          "effectiveGasPrice": "7200000",
+          "executionFeeWei": "447544800000",
+          "l1FeeWei": "94",
+          "totalNetworkFeeWei": "447544800094",
+          "logs": [
+            {
+              "address": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+              "topics": [
+                "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+                "0x000000000000000000000000aa987fc286434d205669814ba46b1d8df824fb36",
+                "0x000000000000000000000000a794daa86ff10920b75a4de3b0e752586e8703d2"
+              ],
+              "data": "0x00000000000000000000000000000000000000000000000000000000000249f0",
+              "logIndex": 1
+            }
+          ]
+        },
+        {
+          "kind": "task",
+          "hash": "0x8336dc072584e2c29201de51e6d7ee1d44ba5c0ddf475188abcee7f0973b7505",
+          "explorer": "https://sepolia.basescan.org/tx/0x8336dc072584e2c29201de51e6d7ee1d44ba5c0ddf475188abcee7f0973b7505",
+          "status": "success",
+          "from": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+          "to": "0xa794daa86ff10920b75a4de3b0e752586e8703d2",
+          "blockNumber": "48324013",
+          "blockHash": "0xfd6ac2fcb62a6966ae1e97ade9da9b663ebd72d7d512b3bc8d0486cb5d593018",
+          "timestamp": "1792416314",
+          "canonicalAtRead": true,
+          "atOrBeforeProviderFinalizedHead": true,
+          "gasUsed": "325919",
+          "effectiveGasPrice": "7200000",
+          "executionFeeWei": "2346616800000",
+          "l1FeeWei": "304",
+          "totalNetworkFeeWei": "2346616800304",
+          "logs": [
+            {
+              "address": "0xa794daa86ff10920b75a4de3b0e752586e8703d2",
+              "topics": [
+                "0x0b4dcdcadd8d6fb38aa1f89fefee52bbc0b9bbc527639dd3f8c54b6964ba362f",
+                "0x65a5386f35ae1dc848584bd51d1a8211110aa02b8c5264238aa4d4aa7d5a8c89"
+              ],
+              "data": "0x00000000000000000000000000000000000000000000000000000000000000017e854fdf26e4d6fae8dce8865cdd24927d481dfc8fe0be946d19d532083508fa00000000000000000000000000000000000000000000000000000000000249f000000000000000000000000000000000000000000000000000000000000186a0000000000000000000000000000000000000000000000000000000006ad643c8",
+              "logIndex": 48
+            }
+          ]
+        },
+        {
+          "kind": "session",
+          "hash": "0x6311ac19a4b212aa656d2e8b74a631f5c99fc0a109d3bfdf273c93ab142a1180",
+          "explorer": "https://sepolia.basescan.org/tx/0x6311ac19a4b212aa656d2e8b74a631f5c99fc0a109d3bfdf273c93ab142a1180",
+          "status": "success",
+          "from": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+          "to": "0xa794daa86ff10920b75a4de3b0e752586e8703d2",
+          "blockNumber": "48324110",
+          "blockHash": "0x9b936ef0b4a3c3abba6f74db07fc6a0d62b63b92b2585cbfa40b4cd8360e2f48",
+          "timestamp": "1792416508",
+          "canonicalAtRead": true,
+          "atOrBeforeProviderFinalizedHead": true,
+          "gasUsed": "178231",
+          "effectiveGasPrice": "7200000",
+          "executionFeeWei": "1283263200000",
+          "l1FeeWei": "211",
+          "totalNetworkFeeWei": "1283263200211",
+          "logs": [
+            {
+              "address": "0xa794daa86ff10920b75a4de3b0e752586e8703d2",
+              "topics": [
+                "0x74ad7a6fc4a8b0d0af366eed21e93ffee1f3faf0a92a2297d8ba9681c6557a78",
+                "0x65a5386f35ae1dc848584bd51d1a8211110aa02b8c5264238aa4d4aa7d5a8c89",
+                "0x0263e35063f897a6639f0272e8d6b8a3ff3d19c772f5d8b04baf05ae7c4ebd47"
+              ],
+              "data": "0x000000000000000000000000818d3bd3ddf805fa9916ab50813d0eb67e40862f0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000249f0",
+              "logIndex": 181
+            }
+          ]
+        },
+        {
+          "kind": "registration",
+          "hash": "0xdad95b5ada48d537a8fcd117be8ebab442d2032b4c1ac18810d5dd9d77d8b1e1",
+          "explorer": "https://sepolia.basescan.org/tx/0xdad95b5ada48d537a8fcd117be8ebab442d2032b4c1ac18810d5dd9d77d8b1e1",
+          "status": "success",
+          "from": "0x4ab1062718e6e881070dcf48ab450d0f09b7ba67",
+          "to": "0xa794daa86ff10920b75a4de3b0e752586e8703d2",
+          "blockNumber": "48324434",
+          "blockHash": "0x12127d7be1c4b6c2e5a51ff7a31ac1c641b71f2877ec71e1e831efc0cf55a2b3",
+          "timestamp": "1792417156",
+          "canonicalAtRead": true,
+          "atOrBeforeProviderFinalizedHead": true,
+          "gasUsed": "455865",
+          "effectiveGasPrice": "6000000",
+          "executionFeeWei": "2735190000000",
+          "l1FeeWei": "418",
+          "totalNetworkFeeWei": "2735190000418",
+          "logs": [
+            {
+              "address": "0xa794daa86ff10920b75a4de3b0e752586e8703d2",
+              "topics": [
+                "0x53fac4a735592149c3d4ab16f5e1d659f01ac8f1269eddcd42d263aa8d303ad3",
+                "0xc5fa71bae6af88d4c836d8da47a37fa0f3c71220c6cbd20e2e5592d1176ee120",
+                "0x65a5386f35ae1dc848584bd51d1a8211110aa02b8c5264238aa4d4aa7d5a8c89",
+                "0xb6432c72007249702b3b947f3a1a6c2392408f73ee6f2a66165fe4d6df33adef"
+              ],
+              "data": "0x0263e35063f897a6639f0272e8d6b8a3ff3d19c772f5d8b04baf05ae7c4ebd470000000000000000000000000000000000000000000000000000000000002710a65dbb50c51b68982cb7c19d440efad2bf574303856b0bb48a949f82f7cedddb000000000000000000000000000000000000000000000000000000006ad61eaab2f40f13d43a278f0326c37879666fc1e04da15a620291dba829775bb36d6229a82f95561adfbdb8e732294e33ee2875ff712d8db881601448f1f29ff6096140",
+              "logIndex": 155
+            }
+          ]
+        },
+        {
+          "kind": "settlement",
+          "hash": "0xc23d943b69c94a5a8468ab32ee9b454ab6b57f7681ba4b93f16e4d58ae840c5d",
+          "explorer": "https://sepolia.basescan.org/tx/0xc23d943b69c94a5a8468ab32ee9b454ab6b57f7681ba4b93f16e4d58ae840c5d",
+          "status": "success",
+          "from": "0x4ab1062718e6e881070dcf48ab450d0f09b7ba67",
+          "to": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+          "blockNumber": "48324438",
+          "blockHash": "0x189f7f5d040669dec891a0d464ff3fb6ad1fe33d0ba64db99dea9889e7c0a289",
+          "timestamp": "1792417164",
+          "canonicalAtRead": true,
+          "atOrBeforeProviderFinalizedHead": true,
+          "gasUsed": "148551",
+          "effectiveGasPrice": "6000000",
+          "executionFeeWei": "891306000000",
+          "l1FeeWei": "192",
+          "totalNetworkFeeWei": "891306000192",
+          "logs": [
+            {
+              "address": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+              "topics": [
+                "0x98de503528ee59b575ef0c0a2576a82497bfc029a5685b209e9ec333479b10a5",
+                "0x000000000000000000000000a794daa86ff10920b75a4de3b0e752586e8703d2",
+                "0xa65dbb50c51b68982cb7c19d440efad2bf574303856b0bb48a949f82f7cedddb"
+              ],
+              "data": "0x",
+              "logIndex": 35
+            },
+            {
+              "address": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+              "topics": [
+                "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+                "0x000000000000000000000000a794daa86ff10920b75a4de3b0e752586e8703d2",
+                "0x0000000000000000000000005b608ea8219185dc5c971d2924913bf1e60fcec1"
+              ],
+              "data": "0x0000000000000000000000000000000000000000000000000000000000002710",
+              "logIndex": 36
+            }
+          ]
+        },
+        {
+          "kind": "revocation",
+          "hash": "0x5ba3feb1febde1fc2637c524ac031aa17e0a9f583bf39fc843bb865162d69a6e",
+          "explorer": "https://sepolia.basescan.org/tx/0x5ba3feb1febde1fc2637c524ac031aa17e0a9f583bf39fc843bb865162d69a6e",
+          "status": "success",
+          "from": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+          "to": "0xa794daa86ff10920b75a4de3b0e752586e8703d2",
+          "blockNumber": "48324929",
+          "blockHash": "0x36e10c08f4cb7062467104b9fc54bf29b74791d6c88729defbf7d3c31f7b6ea6",
+          "timestamp": "1792418146",
+          "canonicalAtRead": true,
+          "atOrBeforeProviderFinalizedHead": true,
+          "gasUsed": "29897",
+          "effectiveGasPrice": "7200000",
+          "executionFeeWei": "215258400000",
+          "l1FeeWei": "98",
+          "totalNetworkFeeWei": "215258400098",
+          "logs": [
+            {
+              "address": "0xa794daa86ff10920b75a4de3b0e752586e8703d2",
+              "topics": [
+                "0xa14faaf8331d313ee28460ed327b23e4f91aad6b61bd9143bdddd7017a4bf074",
+                "0x65a5386f35ae1dc848584bd51d1a8211110aa02b8c5264238aa4d4aa7d5a8c89",
+                "0x0263e35063f897a6639f0272e8d6b8a3ff3d19c772f5d8b04baf05ae7c4ebd47"
+              ],
+              "data": "0x0000000000000000000000000000000000000000000000000000000000000002",
+              "logIndex": 24
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rpc": "https://sepolia.base.org",
+      "chainId": 84532,
+      "providerFinalizedHead": {
+        "number": "48325041",
+        "hash": "0xf633782531bc7ca0149360d1f51067ddcaf93f6bd757ba32cf193caf7eb01e42",
+        "timestamp": "1792418370"
+      },
+      "receipts": [
+        {
+          "kind": "account",
+          "hash": "0x2ba48a2f3197c6dfac2b3c5579b0e3e01350a2ba1290d019d044a685ed21cb26",
+          "explorer": "https://sepolia.basescan.org/tx/0x2ba48a2f3197c6dfac2b3c5579b0e3e01350a2ba1290d019d044a685ed21cb26",
+          "status": "success",
+          "from": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+          "to": "0xb0d87821ed0075a8e37c6c4ed90edda66c4f9c55",
+          "blockNumber": "48316879",
+          "blockHash": "0xe3c9f5f5d65d81e00c6d084c80134770fdce7f1140a52ed216936c4272babb73",
+          "timestamp": "1792402046",
+          "canonicalAtRead": true,
+          "atOrBeforeProviderFinalizedHead": true,
+          "gasUsed": "2761743",
+          "effectiveGasPrice": "7200000",
+          "executionFeeWei": "19884549600000",
+          "l1FeeWei": "94",
+          "totalNetworkFeeWei": "19884549600094",
+          "logs": [
+            {
+              "address": "0xb0d87821ed0075a8e37c6c4ed90edda66c4f9c55",
+              "topics": [
+                "0xf547c891abd3e41b631fc9414272f0e63c11387821f03dbb7cb49c75fadf4710",
+                "0x000000000000000000000000aa987fc286434d205669814ba46b1d8df824fb36",
+                "0x000000000000000000000000036cbd53842c5426634e7929541ec2318f3dcf7e"
+              ],
+              "data": "0x000000000000000000000000a794daa86ff10920b75a4de3b0e752586e8703d2a5bae927a5c0cee2e03ee3fdbf9b61987788761127df7d517771c6d90f686df3",
+              "logIndex": 113
+            }
+          ]
+        },
+        {
+          "kind": "fund-gas",
+          "hash": "0x6ddf321b74a123e0ac7ee5007042c80dd667ac25a993f790622c258a91aebe2e",
+          "explorer": "https://sepolia.basescan.org/tx/0x6ddf321b74a123e0ac7ee5007042c80dd667ac25a993f790622c258a91aebe2e",
+          "status": "success",
+          "from": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+          "to": "0x4ab1062718e6e881070dcf48ab450d0f09b7ba67",
+          "blockNumber": "48318701",
+          "blockHash": "0x400ed588aee15782521472862a9a66dee279ca0a695ac5e1a96af66b94fcfc76",
+          "timestamp": "1792405690",
+          "canonicalAtRead": true,
+          "atOrBeforeProviderFinalizedHead": true,
+          "gasUsed": "21000",
+          "effectiveGasPrice": "7200000",
+          "executionFeeWei": "151200000000",
+          "l1FeeWei": "92",
+          "totalNetworkFeeWei": "151200000092",
+          "logs": []
+        },
+        {
+          "kind": "fund-usdc",
+          "hash": "0x3bb4b38d34ddea128a261e8c5da4ca28dfd2369f8671f2b4a718ed8c25ff61e2",
+          "explorer": "https://sepolia.basescan.org/tx/0x3bb4b38d34ddea128a261e8c5da4ca28dfd2369f8671f2b4a718ed8c25ff61e2",
+          "status": "success",
+          "from": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+          "to": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+          "blockNumber": "48318779",
+          "blockHash": "0x5ca6ff4a3eb1412b5ae46f42851587ee7bcda311c5f8e0c2d79c5412973288cf",
+          "timestamp": "1792405846",
+          "canonicalAtRead": true,
+          "atOrBeforeProviderFinalizedHead": true,
+          "gasUsed": "62159",
+          "effectiveGasPrice": "7200000",
+          "executionFeeWei": "447544800000",
+          "l1FeeWei": "94",
+          "totalNetworkFeeWei": "447544800094",
+          "logs": [
+            {
+              "address": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+              "topics": [
+                "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+                "0x000000000000000000000000aa987fc286434d205669814ba46b1d8df824fb36",
+                "0x000000000000000000000000a794daa86ff10920b75a4de3b0e752586e8703d2"
+              ],
+              "data": "0x00000000000000000000000000000000000000000000000000000000000249f0",
+              "logIndex": 1
+            }
+          ]
+        },
+        {
+          "kind": "task",
+          "hash": "0x8336dc072584e2c29201de51e6d7ee1d44ba5c0ddf475188abcee7f0973b7505",
+          "explorer": "https://sepolia.basescan.org/tx/0x8336dc072584e2c29201de51e6d7ee1d44ba5c0ddf475188abcee7f0973b7505",
+          "status": "success",
+          "from": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+          "to": "0xa794daa86ff10920b75a4de3b0e752586e8703d2",
+          "blockNumber": "48324013",
+          "blockHash": "0xfd6ac2fcb62a6966ae1e97ade9da9b663ebd72d7d512b3bc8d0486cb5d593018",
+          "timestamp": "1792416314",
+          "canonicalAtRead": true,
+          "atOrBeforeProviderFinalizedHead": true,
+          "gasUsed": "325919",
+          "effectiveGasPrice": "7200000",
+          "executionFeeWei": "2346616800000",
+          "l1FeeWei": "304",
+          "totalNetworkFeeWei": "2346616800304",
+          "logs": [
+            {
+              "address": "0xa794daa86ff10920b75a4de3b0e752586e8703d2",
+              "topics": [
+                "0x0b4dcdcadd8d6fb38aa1f89fefee52bbc0b9bbc527639dd3f8c54b6964ba362f",
+                "0x65a5386f35ae1dc848584bd51d1a8211110aa02b8c5264238aa4d4aa7d5a8c89"
+              ],
+              "data": "0x00000000000000000000000000000000000000000000000000000000000000017e854fdf26e4d6fae8dce8865cdd24927d481dfc8fe0be946d19d532083508fa00000000000000000000000000000000000000000000000000000000000249f000000000000000000000000000000000000000000000000000000000000186a0000000000000000000000000000000000000000000000000000000006ad643c8",
+              "logIndex": 48
+            }
+          ]
+        },
+        {
+          "kind": "session",
+          "hash": "0x6311ac19a4b212aa656d2e8b74a631f5c99fc0a109d3bfdf273c93ab142a1180",
+          "explorer": "https://sepolia.basescan.org/tx/0x6311ac19a4b212aa656d2e8b74a631f5c99fc0a109d3bfdf273c93ab142a1180",
+          "status": "success",
+          "from": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+          "to": "0xa794daa86ff10920b75a4de3b0e752586e8703d2",
+          "blockNumber": "48324110",
+          "blockHash": "0x9b936ef0b4a3c3abba6f74db07fc6a0d62b63b92b2585cbfa40b4cd8360e2f48",
+          "timestamp": "1792416508",
+          "canonicalAtRead": true,
+          "atOrBeforeProviderFinalizedHead": true,
+          "gasUsed": "178231",
+          "effectiveGasPrice": "7200000",
+          "executionFeeWei": "1283263200000",
+          "l1FeeWei": "211",
+          "totalNetworkFeeWei": "1283263200211",
+          "logs": [
+            {
+              "address": "0xa794daa86ff10920b75a4de3b0e752586e8703d2",
+              "topics": [
+                "0x74ad7a6fc4a8b0d0af366eed21e93ffee1f3faf0a92a2297d8ba9681c6557a78",
+                "0x65a5386f35ae1dc848584bd51d1a8211110aa02b8c5264238aa4d4aa7d5a8c89",
+                "0x0263e35063f897a6639f0272e8d6b8a3ff3d19c772f5d8b04baf05ae7c4ebd47"
+              ],
+              "data": "0x000000000000000000000000818d3bd3ddf805fa9916ab50813d0eb67e40862f0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000249f0",
+              "logIndex": 181
+            }
+          ]
+        },
+        {
+          "kind": "registration",
+          "hash": "0xdad95b5ada48d537a8fcd117be8ebab442d2032b4c1ac18810d5dd9d77d8b1e1",
+          "explorer": "https://sepolia.basescan.org/tx/0xdad95b5ada48d537a8fcd117be8ebab442d2032b4c1ac18810d5dd9d77d8b1e1",
+          "status": "success",
+          "from": "0x4ab1062718e6e881070dcf48ab450d0f09b7ba67",
+          "to": "0xa794daa86ff10920b75a4de3b0e752586e8703d2",
+          "blockNumber": "48324434",
+          "blockHash": "0x12127d7be1c4b6c2e5a51ff7a31ac1c641b71f2877ec71e1e831efc0cf55a2b3",
+          "timestamp": "1792417156",
+          "canonicalAtRead": true,
+          "atOrBeforeProviderFinalizedHead": true,
+          "gasUsed": "455865",
+          "effectiveGasPrice": "6000000",
+          "executionFeeWei": "2735190000000",
+          "l1FeeWei": "418",
+          "totalNetworkFeeWei": "2735190000418",
+          "logs": [
+            {
+              "address": "0xa794daa86ff10920b75a4de3b0e752586e8703d2",
+              "topics": [
+                "0x53fac4a735592149c3d4ab16f5e1d659f01ac8f1269eddcd42d263aa8d303ad3",
+                "0xc5fa71bae6af88d4c836d8da47a37fa0f3c71220c6cbd20e2e5592d1176ee120",
+                "0x65a5386f35ae1dc848584bd51d1a8211110aa02b8c5264238aa4d4aa7d5a8c89",
+                "0xb6432c72007249702b3b947f3a1a6c2392408f73ee6f2a66165fe4d6df33adef"
+              ],
+              "data": "0x0263e35063f897a6639f0272e8d6b8a3ff3d19c772f5d8b04baf05ae7c4ebd470000000000000000000000000000000000000000000000000000000000002710a65dbb50c51b68982cb7c19d440efad2bf574303856b0bb48a949f82f7cedddb000000000000000000000000000000000000000000000000000000006ad61eaab2f40f13d43a278f0326c37879666fc1e04da15a620291dba829775bb36d6229a82f95561adfbdb8e732294e33ee2875ff712d8db881601448f1f29ff6096140",
+              "logIndex": 155
+            }
+          ]
+        },
+        {
+          "kind": "settlement",
+          "hash": "0xc23d943b69c94a5a8468ab32ee9b454ab6b57f7681ba4b93f16e4d58ae840c5d",
+          "explorer": "https://sepolia.basescan.org/tx/0xc23d943b69c94a5a8468ab32ee9b454ab6b57f7681ba4b93f16e4d58ae840c5d",
+          "status": "success",
+          "from": "0x4ab1062718e6e881070dcf48ab450d0f09b7ba67",
+          "to": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+          "blockNumber": "48324438",
+          "blockHash": "0x189f7f5d040669dec891a0d464ff3fb6ad1fe33d0ba64db99dea9889e7c0a289",
+          "timestamp": "1792417164",
+          "canonicalAtRead": true,
+          "atOrBeforeProviderFinalizedHead": true,
+          "gasUsed": "148551",
+          "effectiveGasPrice": "6000000",
+          "executionFeeWei": "891306000000",
+          "l1FeeWei": "192",
+          "totalNetworkFeeWei": "891306000192",
+          "logs": [
+            {
+              "address": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+              "topics": [
+                "0x98de503528ee59b575ef0c0a2576a82497bfc029a5685b209e9ec333479b10a5",
+                "0x000000000000000000000000a794daa86ff10920b75a4de3b0e752586e8703d2",
+                "0xa65dbb50c51b68982cb7c19d440efad2bf574303856b0bb48a949f82f7cedddb"
+              ],
+              "data": "0x",
+              "logIndex": 35
+            },
+            {
+              "address": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+              "topics": [
+                "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+                "0x000000000000000000000000a794daa86ff10920b75a4de3b0e752586e8703d2",
+                "0x0000000000000000000000005b608ea8219185dc5c971d2924913bf1e60fcec1"
+              ],
+              "data": "0x0000000000000000000000000000000000000000000000000000000000002710",
+              "logIndex": 36
+            }
+          ]
+        },
+        {
+          "kind": "revocation",
+          "hash": "0x5ba3feb1febde1fc2637c524ac031aa17e0a9f583bf39fc843bb865162d69a6e",
+          "explorer": "https://sepolia.basescan.org/tx/0x5ba3feb1febde1fc2637c524ac031aa17e0a9f583bf39fc843bb865162d69a6e",
+          "status": "success",
+          "from": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+          "to": "0xa794daa86ff10920b75a4de3b0e752586e8703d2",
+          "blockNumber": "48324929",
+          "blockHash": "0x36e10c08f4cb7062467104b9fc54bf29b74791d6c88729defbf7d3c31f7b6ea6",
+          "timestamp": "1792418146",
+          "canonicalAtRead": true,
+          "atOrBeforeProviderFinalizedHead": true,
+          "gasUsed": "29897",
+          "effectiveGasPrice": "7200000",
+          "executionFeeWei": "215258400000",
+          "l1FeeWei": "98",
+          "totalNetworkFeeWei": "215258400098",
+          "logs": [
+            {
+              "address": "0xa794daa86ff10920b75a4de3b0e752586e8703d2",
+              "topics": [
+                "0xa14faaf8331d313ee28460ed327b23e4f91aad6b61bd9143bdddd7017a4bf074",
+                "0x65a5386f35ae1dc848584bd51d1a8211110aa02b8c5264238aa4d4aa7d5a8c89",
+                "0x0263e35063f897a6639f0272e8d6b8a3ff3d19c772f5d8b04baf05ae7c4ebd47"
+              ],
+              "data": "0x0000000000000000000000000000000000000000000000000000000000000002",
+              "logIndex": 24
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

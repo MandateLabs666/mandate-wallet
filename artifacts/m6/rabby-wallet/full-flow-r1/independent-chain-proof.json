@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "chainId": 31337,
+  "readOnlyIndependentProcess": true,
+  "ownerProofs": [
+    {
+      "hash": "0x6235206b8f2a09bd201fed29da5b9ee8c8d3f836e9d845ad0321b7cdd227dab0",
+      "method": "createMandate",
+      "nonce": 6,
+      "status": "success",
+      "blockHash": "0x535c9b28d105abc6ee4f1e83003a02b66bffc4ad4ed101123eb23b7101bee9c5",
+      "gasUsed": "325895",
+      "events": [
+        {
+          "name": "PolicyChanged",
+          "args": {
+            "mandateId": "0x27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7",
+            "version": "1",
+            "taskHash": "0xd0cd7351352d6d7d9bf574957e4ba37df0e78c165c617fdeaa6f02ef1d52c833",
+            "budget": "150000",
+            "maxPerPayment": "100000",
+            "expiresAt": "1792078198"
+          }
+        }
+      ]
+    },
+    {
+      "hash": "0x41096d1089f76364fa04f6a5b8a435715214c7165019cb14452e6307eee6872e",
+      "method": "grantSession",
+      "nonce": 7,
+      "status": "success",
+      "blockHash": "0xca47da8a89270e2b2ca8f403d521bac5d1c7e2db53c4aa4b30d8302b42b8b421",
+      "gasUsed": "178243",
+      "events": [
+        {
+          "name": "SessionGranted",
+          "args": {
+            "mandateId": "0x27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7",
+            "sessionId": "0xd7b87daffb7098a209e0c258388bc942b72cb8467bcf8e2fc625c1679216ad98",
+            "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+            "version": "1",
+            "epoch": "1",
+            "budget": "150000"
+          }
+        }
+      ]
+    },
+    {
+      "hash": "0x138737084b86d79ca016f202b46ce996765c33c1deb7c0d54ee95de236771087",
+      "method": "revokeSession",
+      "nonce": 8,
+      "status": "success",
+      "blockHash": "0x5951d6d336291173bc6e4496585b19dec4e9ee73399dc6c3e556c1707f68c54e",
+      "gasUsed": "29897",
+      "events": [
+        {
+          "name": "SessionRevoked",
+          "args": {
+            "mandateId": "0x27dbfc2b19acad77fe10303cc8976a3524f353800572b1a6739583beebc38ce7",
+            "sessionId": "0xd7b87daffb7098a209e0c258388bc942b72cb8467bcf8e2fc625c1679216ad98",
+            "epoch": "2"
+          }
+        }
+      ]
+    }
+  ],
+  "paymentEvents": [
+    {
+      "hash": "0x57d0888711b3ad73d6b7082da5198410c82d6321fc5b01367e4818aaf91b042d",
+      "args": {
+        "authorizer": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+        "nonce": "0x26e6d22fe0cc8c3d17ecbf6d0be1caabfc80a33fdec54cbda91addce2575c122"
+      }
+    }
+  ],
+  "paymentReceipt": {
+    "hash": "0x57d0888711b3ad73d6b7082da5198410c82d6321fc5b01367e4818aaf91b042d",
+    "status": "success",
+    "blockHash": "0x70090ea91c438404c0eb8ccc1c1777237cf7ba2c48ea9270b63c1fd7e089bf28",
+    "gasUsed": "127332"
+  },
+  "cashBefore": "1000000",
+  "cashAfter": "990000",
+  "ownerNonceAfter": 9,
+  "newPublicTransactions": 0
+}

@@ -1,0 +1,125 @@
+{
+  "id": "version-replacement",
+  "passed": true,
+  "bindings": {
+    "wallet": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+    "asset": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+    "owner": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "sessionSigners": [
+      "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
+    ]
+  },
+  "runtimeHash": "0xf8c4b7928b8d66d4c25cade510b8ec35dbbe902990c3cfb91e10ce7d9124175a",
+  "detail": {
+    "oldSignatureBefore": "0x1626ba7e",
+    "oldSignatureAfter": "0xffffffff",
+    "oldReservationRetainedAtomic": "50000",
+    "denied": {
+      "expected": "StepAlreadyUsed",
+      "actual": "StepAlreadyUsed",
+      "accepted": false
+    },
+    "receipts": [
+      {
+        "hash": "0x7312da8c25d0f08ffefd82d644691cbb2c5f4396881a1202719dae3308107ddd",
+        "status": "success",
+        "blockNumber": "7",
+        "blockHash": "0x421a4addd3b8fae0e9d29307f266590c2fdccdbe8e73556bb466e7dacb816a36",
+        "gasUsed": "445118",
+        "effectiveGasPrice": "1468381994",
+        "feeWei": "653603256405292",
+        "logs": [
+          {
+            "address": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+            "topics": [
+              "0x53fac4a735592149c3d4ab16f5e1d659f01ac8f1269eddcd42d263aa8d303ad3",
+              "0x30d9eb0ce65aabedbecc9e468eca29d63735772e58e25bb2ff96b8f20c94226a",
+              "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37",
+              "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e"
+            ],
+            "data": "0x61f0ffa6b310744fb2869aa8b49390b907440c17341f41afc5971aac5aae9f40000000000000000000000000000000000000000000000000000000000000c35089d5755ed1e92c946337f8178f207c5e1485461284eb34936b30873ee30c6162000000000000000000000000000000000000000000000000000000006ad07c86898f2a70d5fb089542cd2dd2bbe3cb08626ea7f3f6dc88a0ef353265ceeaa86cff765ec85bb79a5c472cab5d60b12dfe4a299c7f0fb734a1da7df34e82745235",
+            "blockHash": "0x421a4addd3b8fae0e9d29307f266590c2fdccdbe8e73556bb466e7dacb816a36",
+            "blockNumber": "7",
+            "blockTimestamp": "1792047963",
+            "transactionHash": "0x7312da8c25d0f08ffefd82d644691cbb2c5f4396881a1202719dae3308107ddd",
+            "transactionIndex": 0,
+            "logIndex": 0,
+            "removed": false
+          }
+        ]
+      },
+      {
+        "hash": "0x1f0dbeba3e58049d9c77969464f5b54104780dee2787b20d7981e4ff3556a5fa",
+        "status": "success",
+        "blockNumber": "8",
+        "blockHash": "0x7cbb46578295edfbbf20bf3a248f67f420f2ea22a076058854176d8dcb3ca26d",
+        "gasUsed": "247540",
+        "effectiveGasPrice": "1411571622",
+        "feeWei": "349420439309880",
+        "logs": [
+          {
+            "address": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+            "topics": [
+              "0x0b4dcdcadd8d6fb38aa1f89fefee52bbc0b9bbc527639dd3f8c54b6964ba362f",
+              "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37"
+            ],
+            "data": "0x0000000000000000000000000000000000000000000000000000000000000002aaff8db9d0075498f192ae0ec43d6fe21a69fd8e7b121b5ae8b9ec569c9fab8a00000000000000000000000000000000000000000000000000000000000249f000000000000000000000000000000000000000000000000000000000000186a0000000000000000000000000000000000000000000000000000000006ad08966",
+            "blockHash": "0x7cbb46578295edfbbf20bf3a248f67f420f2ea22a076058854176d8dcb3ca26d",
+            "blockNumber": "8",
+            "blockTimestamp": "1792047964",
+            "transactionHash": "0x1f0dbeba3e58049d9c77969464f5b54104780dee2787b20d7981e4ff3556a5fa",
+            "transactionIndex": 0,
+            "logIndex": 0,
+            "removed": false
+          }
+        ]
+      },
+      {
+        "hash": "0x0c9d6d6e6ef38087dd4c6d0e3613af6e06bdebe18534dbe711d71f0cdf5fd5c1",
+        "status": "success",
+        "blockNumber": "10",
+        "blockHash": "0xdc1d9e324ac4ae81bc48c1642f1d13fcb5860423519fe13c115b9a6657fbe7a3",
+        "gasUsed": "427982",
+        "effectiveGasPrice": "1316388542",
+        "feeWei": "563390600982244",
+        "logs": [
+          {
+            "address": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+            "topics": [
+              "0x53fac4a735592149c3d4ab16f5e1d659f01ac8f1269eddcd42d263aa8d303ad3",
+              "0x5b90cda6659eafcbd49b6235fcf3c965043ab28d9cd9f65692cf68da47edc254",
+              "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37",
+              "0x4cfb1c8699d277407517fe08cfe9434d6af9573d22d674332ba5a48c1bd37f65"
+            ],
+            "data": "0x39f4fddfc16be45054d2a87843e2219b7286d2b46040110396ab1000fe1ffa2b000000000000000000000000000000000000000000000000000000000000c350cb7a4c8d31cccc1bf50815a706a43af300e0d048cb352daded3394a924a14453000000000000000000000000000000000000000000000000000000006ad07c8964ec7f65fd954ab08d0fcefeb5b776144f478f2ecf1697e1eb9740b091d480138eac5becd2509b6288a65b6cfd8f9822e0dd141e6e65dc2caa8efc9445fb1ea9",
+            "blockHash": "0xdc1d9e324ac4ae81bc48c1642f1d13fcb5860423519fe13c115b9a6657fbe7a3",
+            "blockNumber": "10",
+            "blockTimestamp": "1792047966",
+            "transactionHash": "0x0c9d6d6e6ef38087dd4c6d0e3613af6e06bdebe18534dbe711d71f0cdf5fd5c1",
+            "transactionIndex": 0,
+            "logIndex": 0,
+            "removed": false
+          }
+        ]
+      }
+    ]
+  },
+  "endingState": {
+    "policy": {
+      "taskHash": "0xaaff8db9d0075498f192ae0ec43d6fe21a69fd8e7b121b5ae8b9ec569c9fab8a",
+      "budget": "150000",
+      "maxPerPayment": "100000",
+      "occupied": "100000",
+      "expiresAt": "1792051558",
+      "version": "2",
+      "paused": false,
+      "revoked": false,
+      "exists": true
+    },
+    "cash": "1000000",
+    "merchant": "0"
+  },
+  "samples": 1,
+  "newPublicTransactions": 0
+}

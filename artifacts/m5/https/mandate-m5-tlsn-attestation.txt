@@ -1,0 +1,38 @@
+   Compiling tlsn-examples v0.0.0 (/work/crates/examples)
+warning: unused import: `CertificateDer`
+  --> crates/examples/attestation/mandate_verify.rs:16:14
+   |
+16 |     webpki::{CertificateDer, RootCertStore},
+   |              ^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `tlsn_server_fixture_certs::CA_CERT_DER`
+  --> crates/examples/attestation/mandate_verify.rs:19:5
+   |
+19 | use tlsn_server_fixture_certs::CA_CERT_DER;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `tlsn-examples` (example "mandate_verify") generated 2 warnings (run `cargo fix --example "mandate_verify" -p tlsn-examples` to apply 2 suggestions)
+warning: unused import: `env`
+ --> crates/examples/attestation/mandate_prove.rs:5:11
+  |
+5 | use std::{env, future::IntoFuture};
+  |           ^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused imports: `CertificateDer` and `PrivateKeyDer`
+  --> crates/examples/attestation/mandate_prove.rs:32:14
+   |
+32 |     webpki::{CertificateDer, PrivateKeyDer, RootCertStore},
+   |              ^^^^^^^^^^^^^^  ^^^^^^^^^^^^^
+
+warning: unused import: `tlsn_server_fixture::DEFAULT_FIXTURE_PORT`
+  --> crates/examples/attestation/mandate_prove.rs:36:5
+   |
+36 | use tlsn_server_fixture::DEFAULT_FIXTURE_PORT;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `tlsn-examples` (example "mandate_prove") generated 3 warnings (run `cargo fix --example "mandate_prove" -p tlsn-examples` to apply 3 suggestions)
+    Finished `release` profile [optimized] target(s) in 22.36s

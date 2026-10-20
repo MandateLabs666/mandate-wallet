@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-15T10:57:34.269798+00:00",
+  "acceptedTasks": [],
+  "status": "additional automated boundary cases passed; full T8 acceptance pending",
+  "nativeUIBaselineCommit": "5873841",
+  "runs": [
+    "r10",
+    "r12"
+  ],
+  "nativeProviderInjected": false,
+  "extensionFilesReverified": 680,
+  "nativeCases": [
+    "global wallet selection differs from site account authorization",
+    "wrong network disables/refuses; local network restored",
+    "site disconnect disables confirmation",
+    "actual non-owner site connection refused",
+    "owner cancellation retains draft/nonce; same request confirmed once"
+  ],
+  "ownerTransactionsAfterStartup": {
+    "r10": 0,
+    "r12": 1
+  },
+  "tokenPayments": 0,
+  "feedbackFix": "error regions precede content/fields and are scrolled into view on failure",
+  "feedbackViewsVisible": 4,
+  "controlledProviderUsedOnlyForDisplayProbe": true,
+  "webTestsPassed": 8,
+  "staticSignalsUnchanged": true,
+  "privateValueVariantsCompared": 273,
+  "knownPrivateValuesExcluded": true,
+  "sourceFingerprint": {
+    "mandate/experiments/m6-wallet-boundaries.ts": "3303c930228583846c7f470c9c26136f9f8e02063520bb7ef20cb66a531e0c68",
+    "mandate/experiments/m6-no-wallet.ts": "48a428b699fc031d0864c593ceacaeb700edbc3b49dc60289dedd9515e855470",
+    "mandate/web/app.ts": "b236ab6ed1587a680250e891a07c10612ecd2ed8f282843e1ab050c669a5e779",
+    "mandate/web/static/app.html": "a5c97261206fcf095a468adc0752efc245ad7fb37b2d38d24f88c4d0cc3f9e63",
+    "scripts/accept-wallet-boundaries.py": "2c06b02f6254687286b55fbdd724413e36566b88ac1c31fbe3e0e3be4f6ceb80",
+    "planning/M6_WALLET_BOUNDARIES.zh-CN.md": "c291025c7666a38dcbac6f1f363af02a2afae2a33b5220c015ccc6df84b8e8ad",
+    "planning/M6_SPEC.zh-CN.md": "94258e81b5e8932ae6761126d3324ea4c05874cdd41ad7bce57355207f5a2163"
+  },
+  "evidenceSHA256": {
+    "artifacts/m6/wallet-boundaries/driver-r10.source.txt": "95d597b37f66e9a54133a552e2516825a88a5b537887a32e1177ef03bb18beb7",
+    "artifacts/m6/wallet-boundaries/driver-r12.source.txt": "3303c930228583846c7f470c9c26136f9f8e02063520bb7ef20cb66a531e0c68",
+    "artifacts/m6/wallet-boundaries/execution.json": "c1aa45f8fdff168e2509c48a519f3cdac17219fe5048f128161b70b2a048739e",
+    "artifacts/m6/wallet-boundaries/feedback-after.json": "a23b96260e852506a2062858b7205ff5e3b9fc913fd14222e3b125e748bb8c20",
+    "artifacts/m6/wallet-boundaries/no-wallet-before.json": "a6101a6420405befdfabb94b3ab5786ed19365e11df3f89323ff78f7bea29e0a",
+    "artifacts/m6/wallet-boundaries/no-wallet-before.source.txt": "997d4b794b3eeb157073347654a3edf30aff228a87e0d62441d12a858ca22264",
+    "artifacts/m6/wallet-boundaries/r10-different-account-selected.json": "e958be07c170582d47f90728320a8baea20767441ba260e54bc6183454142ac9",
+    "artifacts/m6/wallet-boundaries/r10-network-restored.json": "c904ca9169bcc6f3685c21f6d00d17f02af7c5863bd15dd2574627923ce782ff",
+    "artifacts/m6/wallet-boundaries/r10-site-disconnected.json": "abccc5ee05ccf0edbd1bbfab79024ed9572869bd0ad7f7ff6e7681ad0a35b69b",
+    "artifacts/m6/wallet-boundaries/r10-source.json": "8259fc118e228a444b9901d5d5c731aac3473aa37c9c5f10d560a8fe694b47ce",
+    "artifacts/m6/wallet-boundaries/r10-wrong-network-disabled.json": "f2a341c5dac77c7b940646ce00073565b9ef9b159556af278777652c05fd9f78",
+    "artifacts/m6/wallet-boundaries/r10-wrong-network-refused.json": "47abac068ea6c2d3081b8a858ca7fb722f0052952033bffa616c89ffc93c3ecc",
+    "artifacts/m6/wallet-boundaries/r10-wrong-owner-refused.json": "a4fe01d7708aca5a5e6c8da49ae23465446680051f48ae7c5f20160f63a5703c",
+    "artifacts/m6/wallet-boundaries/r12-owner-cancelled.json": "d6aa573b8a3f132421e802d16c6df260e4bb5d6fa0e7ac1dbf653d19dfe33369",
+    "artifacts/m6/wallet-boundaries/r12-same-request-confirmed.json": "0c5d129cf75992363a0c03054d53ec946d8bcfb61d2fb1a9eab33f0600b283ff",
+    "artifacts/m6/wallet-boundaries/r12-source.json": "88adbc72c5eebc4146f40d35c5e5c1eb3a61f8b7648e972f29dd089bb18bbaec",
+    "artifacts/m6/wallet-boundaries/screenshots/after-controlled-wrong-owner-desktop.png": "f4721b8af9d0609c85762638175afb1e2e6f99c939c73d2f8c51e9fced20508a",
+    "artifacts/m6/wallet-boundaries/screenshots/after-controlled-wrong-owner-mobile.png": "493b09f6042cad8849fff85aee66db8ff357fb53f9d33f42595d89a68c346576",
+    "artifacts/m6/wallet-boundaries/screenshots/after-no-wallet-desktop.png": "b5eb95e4f3c917baa05fb7f55a69126250267debdd72cd87c85b2ca7bf9f5816",
+    "artifacts/m6/wallet-boundaries/screenshots/after-no-wallet-mobile.png": "f2f1493fba22495957258c15e3c2a391250e9c063ebf8303c5acd418738fd4dc",
+    "artifacts/m6/wallet-boundaries/screenshots/before-no-wallet-desktop.png": "b524ddb73a79eccc8c43386dd4c8d40895036e359df3ec328c702c32109657bf",
+    "artifacts/m6/wallet-boundaries/screenshots/before-no-wallet-mobile.png": "6fe859d52cba3638f889fd4eb46dcaaad37f5d15a7fe33150d3001eff8589fa6",
+    "artifacts/m6/wallet-boundaries/screenshots/r10-wrong-network-app.png": "172d4aa73d8a53537b3afd002186b7069bb37e6db015ec7b3c544c6d2b872fa1",
+    "artifacts/m6/wallet-boundaries/screenshots/r10-wrong-owner-app.png": "e2c6da7fb8977b8cf76f49b9de327b16bd56485a980f16692a50a354f012c89a",
+    "artifacts/m6/wallet-boundaries/screenshots/r10-wrong-owner-connection.png": "461baa6d438c7061ce71c620ec8005130645221c6f05c5fad364982445ca2368",
+    "artifacts/m6/wallet-boundaries/screenshots/r10-wrong-owner-mobile.png": "8b2a0ce7b1b7c37989d093d8d596f6243e64a1b271cc9a325afffcf6821e5c51",
+    "artifacts/m6/wallet-boundaries/screenshots/r12-cancelled-app.png": "83f3c89077cc8bdfd83611b010632290b7615ad7b79ce462d298abe22ee6fef0",
+    "artifacts/m6/wallet-boundaries/screenshots/r12-same-request-confirmed-app.png": "99810e4078d95687f5df68f22a4ebd58c5d4a29b443a62cb1c867646aec3ec5e",
+    "artifacts/m6/wallet-boundaries/web-tests.json": "d13a1acdab8ab803f8b7ba67eebc0153699c8e2d555b49e66b580ac4346f67c7"
+  },
+  "newPublicTransactions": 0,
+  "humanUsability": false,
+  "physicalMobileDevice": false,
+  "G3": "open",
+  "remaining": [
+    "Manual external-wallet usability and complete T8 scope.",
+    "Full native non-owner-to-owner site reconnection is not covered by these cases.",
+    "Additional wallet products and remaining provider error paths.",
+    "Hosted site and rc4 source archive retain their earlier revisions; new feedback fix needs future publication/export."
+  ],
+  "limits": [
+    "Native boundary observations precede the display-only feedback fix; signer/authority logic is unchanged.",
+    "The controlled-provider probe tests error visibility only and is not MetaMask security acceptance.",
+    "Native runs use local chain 31337 and a public test seed; wallet-side account metadata/sync is not controlled by the app.",
+    "Finite cases do not establish general wallet compatibility or hostile-host isolation."
+  ]
+}

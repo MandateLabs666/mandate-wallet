@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "acceptedNativeRuns": [
+    "r10",
+    "r12"
+  ],
+  "priorAttempts": [
+    {
+      "runs": [
+        "r1"
+      ],
+      "result": "native onboarding navigation timeout; no boundary success claimed"
+    },
+    {
+      "runs": [
+        "r2",
+        "r3"
+      ],
+      "result": "driver stdin/unbounded observation failures; only identity-checked dedicated processes cleaned, r3 forced after grace"
+    },
+    {
+      "runs": [
+        "r4"
+      ],
+      "result": "native extension startup error recorded; error-report checkbox disabled before attempted native restart"
+    },
+    {
+      "runs": [
+        "r5",
+        "r6",
+        "r7"
+      ],
+      "result": "reused-profile connection/unlock paths incomplete; excluded from accepted boundary cases"
+    },
+    {
+      "runs": [
+        "r8"
+      ],
+      "result": "preliminary cancel/retry succeeded; lacked startup source hash, superseded by r12"
+    },
+    {
+      "runs": [
+        "r9"
+      ],
+      "result": "bounded network-switch initialization timeout; no transaction accepted"
+    },
+    {
+      "runs": [
+        "r11"
+      ],
+      "result": "incorrect optional runtime path; failed before browser/chain startup"
+    }
+  ],
+  "displayProbeAttempts": [
+    {
+      "run": "r1",
+      "result": "genuine no-provider behavior before feedback fix"
+    },
+    {
+      "runs": [
+        "r2",
+        "r3"
+      ],
+      "result": "controlled provider not installed; diagnostic recorded no provider, not a wallet failure; no success claimed"
+    },
+    {
+      "run": "r4",
+      "result": "four current visibility checks passed with no signing; genuine no-provider and controlled provider cases separated"
+    }
+  ],
+  "commands": [
+    {
+      "command": "pnpm m6:test --reporter=json --outputFile=.runtime/wallet-boundaries/web-tests.json",
+      "exitCode": 0,
+      "passed": 8
+    },
+    {
+      "command": "pnpm typecheck",
+      "exitCode": 0
+    },
+    {
+      "command": "python3 scripts/m7-static-review.py run --output artifacts/m7/security/wallet-boundary-recheck",
+      "exitCode": 0,
+      "analysisCompleted": true
+    }
+  ],
+  "ownedDriversStopped": true,
+  "newPublicTransactions": 0
+}

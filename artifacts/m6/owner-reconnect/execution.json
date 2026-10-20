@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "nativeRun": "r14",
+  "sourceCommit": "c9bb7383d1bdb4777a8a6cdeac8103bf0cf07207",
+  "profileReuse": "isolated r12 public-Anvil profile only",
+  "sequence": [
+    "native localhost RPC update",
+    "show hidden owner through Manage accounts",
+    "owner site connection",
+    "disconnect only this origin",
+    "native non-owner connection and refusal",
+    "disconnect only this origin",
+    "native owner restoration",
+    "native confirmation of original pause request",
+    "separate read-only RPC proof"
+  ],
+  "otherSitePermissionsModified": false,
+  "providerInjected": false,
+  "newPublicTransactions": 0,
+  "developmentAttempts": [
+    {
+      "run": "r13",
+      "accepted": false,
+      "reason": "stale local RPC and connection preparation; stopped normally before adding a narrowly scoped native RPC-input command"
+    },
+    {
+      "run": "r14",
+      "accepted": false,
+      "snapshot": "initial-owner-connected",
+      "reason": "label was premature; actual accounts empty and confirmation disabled, so excluded from passing case set"
+    },
+    {
+      "run": "r14",
+      "accepted": false,
+      "reason": "native UI rerender changed Update RPC capitalization and node IDs; reobserved current controls"
+    },
+    {
+      "run": "r14",
+      "accepted": false,
+      "reason": "public account search replacement appended until native Clear was used; Manage accounts revealed hidden Owner"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "id": "uncertain-settlement-retains-budget",
+  "passed": true,
+  "bindings": {
+    "wallet": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+    "asset": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+    "owner": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "sessionSigners": [
+      "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
+    ]
+  },
+  "runtimeHash": "0xf8c4b7928b8d66d4c25cade510b8ec35dbbe902990c3cfb91e10ce7d9124175a",
+  "detail": {
+    "beforeDeadline": {
+      "expected": "UnsafeRelease",
+      "actual": "UnsafeRelease",
+      "accepted": false
+    },
+    "atDeadline": {
+      "expected": "UnsafeRelease",
+      "actual": "UnsafeRelease",
+      "accepted": false
+    },
+    "releasedUnused": {
+      "hash": "0x4c090989dc2be8f3d557255767f99aa779e1e3305de96f5bf57ec6d37d3dd415",
+      "status": "success",
+      "blockNumber": "9",
+      "blockHash": "0x2385b6803d6d5e4bbc1a430e844f7a6f039dd2400e1aaf534903a0f310ef38f1",
+      "gasUsed": "49379",
+      "effectiveGasPrice": "1360125087",
+      "feeWei": "67161616670973",
+      "logs": [
+        {
+          "address": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+          "topics": [
+            "0x392d79d1a78c9f85e01b8842263b2fa03de01ecf5ccef527e91f46664f72c2d1",
+            "0x38e347b102ab463e5cf02d4c06dca36d07e127ae90bc6e8dc1210a00259b0e20",
+            "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37"
+          ],
+          "data": "0x61f0ffa6b310744fb2869aa8b49390b907440c17341f41afc5971aac5aae9f400000000000000000000000000000000000000000000000000000000000002710",
+          "blockHash": "0x2385b6803d6d5e4bbc1a430e844f7a6f039dd2400e1aaf534903a0f310ef38f1",
+          "blockNumber": "9",
+          "blockTimestamp": "1792048301",
+          "transactionHash": "0x4c090989dc2be8f3d557255767f99aa779e1e3305de96f5bf57ec6d37d3dd415",
+          "transactionIndex": 0,
+          "logIndex": 0,
+          "removed": false
+        }
+      ]
+    },
+    "reusedStep": {
+      "expected": "StepAlreadyUsed",
+      "actual": "StepAlreadyUsed",
+      "accepted": false
+    },
+    "usedNonceRelease": {
+      "expected": "UnsafeRelease",
+      "actual": "UnsafeRelease",
+      "accepted": false
+    },
+    "nonceStateInjection": "unrestricted local TestUSDC.cancelForTest; not native USDC authorization",
+    "knownFinancialResult": "no merchant payment; used nonce remains conservatively occupied"
+  },
+  "endingState": {
+    "policy": {
+      "taskHash": "0xaaff8db9d0075498f192ae0ec43d6fe21a69fd8e7b121b5ae8b9ec569c9fab8a",
+      "budget": "150000",
+      "maxPerPayment": "100000",
+      "occupied": "10000",
+      "expiresAt": "1792051596",
+      "version": "1",
+      "paused": false,
+      "revoked": false,
+      "exists": true
+    },
+    "cash": "1000000",
+    "merchant": "0"
+  },
+  "samples": 1,
+  "newPublicTransactions": 0
+}

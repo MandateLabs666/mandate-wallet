@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-14T20:18:29.957625+00:00",
+  "sourceCommit": "63e765ab46d34a6df58880e85f4dee73283432da",
+  "commands": [
+    {
+      "command": "MANDATE_M5_ARTIFACT_DIR=artifacts/m5/interference/regression pnpm m5:test --reporter=json --outputFile=artifacts/m5/interference/all-tests.json",
+      "exitCode": 0,
+      "testsPassed": 25
+    },
+    {
+      "command": "MANDATE_BUILD_REPORT_DIR=artifacts/m5/interference/build pnpm m4:test --reporter=json --outputFile=artifacts/m5/interference/m4-regression.json",
+      "exitCode": 0,
+      "testsPassed": 26
+    },
+    {
+      "command": "pnpm typecheck",
+      "exitCode": 0
+    },
+    {
+      "command": "MANDATE_BUILD_REPORT_DIR=artifacts/m5/interference/build pnpm m4:build",
+      "exitCode": 0
+    },
+    {
+      "command": "pnpm m5:build:verifier",
+      "exitCode": 0
+    },
+    {
+      "command": "python3 scripts/m5-tlsnotary-bootstrap.py",
+      "exitCode": 0
+    },
+    {
+      "command": "python3 scripts/m5-tlsnotary-run.py",
+      "exitCode": 0,
+      "note": "Proof generation plus three expected rejection cases; output carries per-case actual exit codes."
+    }
+  ],
+  "limits": [
+    "M4 default-route regression predates the final controller-only hardening; controller integrations are covered by the final 25-test M5 suite.",
+    "TLSNotary proof was generated before source checkpoint; its exact adaptation hashes are preserved separately."
+  ]
+}

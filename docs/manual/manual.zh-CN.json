@@ -1,0 +1,374 @@
+{
+  "title": "Mandate Wallet 操作手册",
+  "subtitle": "通过自己的 Agent 完成首次服务采购",
+  "version": "2.2",
+  "date": "2026-10-18",
+  "sourceCommit": "3c5025273f01d665fabfd3c6a037236030cd66e5",
+  "front": [
+    {
+      "title": "本案例要完成什么",
+      "section": "案例目标",
+      "columns": [
+        [
+          {
+            "heading": "从真实使用目标开始"
+          },
+          {
+            "p": "本教程演示如何将 Mandate Wallet 接入自己的 Codex CLI、Claude Code 或 Claude Desktop，让 Agent 购买一份 ETH 统计数据，并撰写包含数据摘要、采购费用与来源说明的中文简报。使用者负责批准采购范围，Agent 负责在该范围内执行任务。"
+          },
+          {
+            "p": "本例运行在本地测试链，智能账户初始持有 1.00 模拟 USDC。任务总预算为 0.15 USDC，单笔上限为 0.10 USDC；本次任务指令进一步限定只向已批准的 ETH 服务支付最多 0.01 USDC。BTC 服务暂不采购，用于最后检查撤销后的付款限制。"
+          },
+          {
+            "heading": "为什么需要 Mandate"
+          },
+          {
+            "p": "Agent 需要使用收费 API 时，使用者可以批准特定服务、收款人、金额与期限，无需提供管理钱包私钥。Mandate 将这些批准内容与采购和付款记录关联，使使用者能够检查费用、处理服务异常，并终止后续权限。"
+          }
+        ],
+        [
+          {
+            "heading": "完成后应得到什么"
+          },
+          {
+            "p": "最终应得到一份由 Agent 生成的简报、一笔可核对的 0.01 USDC 采购付款，以及对应回执和证据。当前固定测试数据集的 ETH 摘要为 3 个样本、均值 110；这些数据用于演示流程，不能作为实时行情或投资判断。"
+          },
+          {
+            "p": "受控商户会在首次付款后故意返回一次 HTTP 500。教程将展示 Agent 如何沿用原订单恢复交付，并保持累计费用与结算 hash 不变。最后由账户所有者撤销会话，确认尚未采购的 BTC 步骤不再具备新付款权限。"
+          },
+          {
+            "heading": "如何阅读本教程"
+          },
+          {
+            "p": "建议先按后面的三页图解使用自动向导，准备本地体验账户并接入一种 Agent。连接核对后，从第 11 步继续 ETH 采购案例。需要自行管理 Gateway 或保留原配置时，采用第 01 至 20 步的手动路线；第 09.1 至 09.6 步说明兼容旧版的 Claude Desktop 双文件接入。每步均说明目的、操作和完成标志。"
+          }
+        ]
+      ]
+    },
+    {
+      "title": "需要使用哪些软件",
+      "section": "开始之前",
+      "columns": [
+        [
+          {
+            "heading": "使用者需要的软件"
+          },
+          {
+            "table": [
+              [
+                "软件或页面",
+                "在本案例中的用途"
+              ],
+              [
+                "Codex CLI、Claude Code 或 Claude Desktop",
+                "执行简报任务，经 MCP 调用 Mandate 工具；选择一种即可。"
+              ],
+              [
+                "支持 Rabby 的桌面浏览器",
+                "公共测试网或手动流程中审核授权及撤销；自动本地体验无需钱包扩展。"
+              ],
+              [
+                "Mandate Web 工作区",
+                "连接 Gateway，创建任务、批准会话、核对付款及导出证据。"
+              ],
+              [
+                "本地 Gateway 与 MCP 服务",
+                "提供固定工具与持久化订单；可由自动向导准备，也可由部署人员手动配置。"
+              ]
+            ]
+          },
+          {
+            "p": "使用者应已完成所选 Agent 软件的正常安装和登录。本教程不要求把 Codex、Claude 或钱包密码交给 Gateway，也不要求提供管理钱包私钥。"
+          }
+        ],
+        [
+          {
+            "heading": "源码组件的运行要求"
+          },
+          {
+            "p": "当前源码版自动向导需要完整项目、Node 24.x（至少 24.2）和已安装的项目依赖。本地体验还需 Anvil。首次启动可双击项目根目录的 Start Mandate Setup.command；已有构建也可运行 pnpm setup:start。Python 和 Foundry 的其余工具用于开发、构建与文档维护，不是 Claude Desktop 扩展的配置字段。"
+          },
+          {
+            "p": "交接给使用者的连接说明应列明 Gateway 地址、网络、账户所有者、智能账户、允许的服务与收款人，以及配置文件和连接凭据的交付方式。连接凭据用于访问固定工作区，管理钱包仍独立审批链上权限。"
+          },
+          {
+            "p": "本版本已提供账户准备、自动部署及 Agent 接入向导。向导能消除手工编辑 JSON、复制令牌和查找隐藏文件的步骤；面向普通用户的签名独立安装包尚未发行，源码运行环境仍需事先具备。公共测试网的部署与授权由外部钱包逐笔签署。"
+          },
+          {
+            "heading": "本地练习与公共测试网的区别"
+          },
+          {
+            "p": "本地主线使用链 31337 和模拟 USDC，无需领取公共测试资金。Base Sepolia 等公共测试网需要各自的测试资产、Gas 与有效授权，不能复用本地交易 hash 或将历史已到期权限视为可用权限。"
+          },
+          {
+            "heading": "软件的官方入口"
+          },
+          {
+            "p": "Codex CLI 见 https://learn.chatgpt.com/docs/codex/cli；Claude Code 见 https://code.claude.com/docs/en/quickstart；Claude Desktop 见 https://claude.com/download；Rabby 见 https://rabby.io。请按官方说明自行完成安装和登录。Claude Desktop 图形路线无需安装 Codex CLI 或 Claude Code。"
+          }
+        ]
+      ]
+    },
+    {
+      "title": "通过自动向导准备体验账户",
+      "section": "推荐路线 · 自动向导",
+      "kind": "setup",
+      "image": "setup-choose-2026-10-18.jpg",
+      "crop": [
+        104,
+        348,
+        1070,
+        606
+      ],
+      "caption": "本机设置页面 · 2026-10-18 · 尚未点击创建账户",
+      "blocks": [
+        {
+          "heading": "本步骤的目的"
+        },
+        {
+          "p": "为同一个 ETH 采购案例准备独立智能账户、模拟 USDC 和有限会话，无需逐项配置签名器与数据库。原有手动工作区继续保留。"
+        },
+        {
+          "heading": "操作方法"
+        },
+        {
+          "p": "启动本地组件后，打开 http://127.0.0.1:18743/setup.html，选择“自动准备体验账户”。系统将启动独立 Anvil、部署账户、准备 1.00 模拟 USDC，并设置总预算 0.15、单笔上限 0.10 USDC、有效期一小时的测试权限。"
+        },
+        {
+          "p": "若选择自己的测试网钱包，向导将依次准备部署、转入 0.15 测试 USDC、另行转入 0.001 测试 ETH 作为执行 Gas、批准任务及会话。请逐项审核钱包中的网络、目标、金额与期限；资金不足时须先领取测试资产。"
+        },
+        {
+          "heading": "完成标志"
+        },
+        {
+          "p": "页面显示智能账户和 Agent 应用选择。原交易结果未知时，保留原 hash 并核对，不重复创建账户。关闭本地节点后，原文件仍保留，但必须先恢复服务才能继续。"
+        }
+      ]
+    },
+    {
+      "title": "将体验账户接入 Claude Desktop",
+      "section": "推荐路线 · 自动向导",
+      "kind": "setup",
+      "image": "setup-connect-2026-10-18.jpg",
+      "crop": [
+        104,
+        464,
+        1070,
+        620
+      ],
+      "caption": "独立本地测试实例 · MCP 只读检查通过 · 尚未安装到 Claude",
+      "blocks": [
+        {
+          "heading": "本步骤的目的"
+        },
+        {
+          "p": "让 Claude Desktop 使用刚准备的固定任务，避免再次选择 Agent profile 与 Connection file。Codex 或 Claude Code 用户可采用下一页的配置方式。"
+        },
+        {
+          "heading": "操作方法"
+        },
+        {
+          "p": "在向导中选择 Claude Desktop，点击“下载 Claude Desktop 接入包”。请使用此处下载的已绑定版本；通用扩展包和旧版 0.1.0 仍支持手动方式，不能视为已绑定本次任务。"
+        },
+        {
+          "p": "进入 Claude Desktop 的 Settings → Extensions → Advanced settings → Install extension，选择下载的 .mcpb 文件，审核后安装并启用。该包无需填写两个文件路径，必要时完全退出并重开 Claude。"
+        },
+        {
+          "p": "返回向导执行只读连接检查。随后在 Claude 新对话中要求仅调用 mandate_get_context，核对网络、钱包、任务与会话。连接器可见或向导检查通过，都不等于模型已经成功调用。"
+        },
+        {
+          "heading": "完成标志"
+        },
+        {
+          "p": "Claude 返回的身份与向导一致，且没有发起付款。随后从第 11 步继续一次 ETH 服务采购，并按第 14 步沿用原订单恢复。结束本地体验时，可在向导撤销该测试会话。"
+        }
+      ]
+    },
+    {
+      "title": "自动配置 Codex 或 Claude Code",
+      "section": "推荐路线 · 自动向导",
+      "kind": "setup",
+      "image": "setup-config-review-2026-10-18.jpg",
+      "crop": [
+        294,
+        42,
+        693,
+        632
+      ],
+      "caption": "隔离测试目录的配置预览 · 未写入个人 Agent 配置",
+      "blocks": [
+        {
+          "heading": "本步骤的目的"
+        },
+        {
+          "p": "生成并安装 MCP 配置，同时保留已配置的其他服务。无需复制连接令牌或手动编辑 TOML、JSON 文件。"
+        },
+        {
+          "heading": "操作方法"
+        },
+        {
+          "p": "在向导选择 Codex 或 Claude Code，再选择“当前项目”或“当前用户的所有项目”。Codex 桌面端、CLI 与 IDE 可使用共享 MCP 配置；Claude Code 采用相应的用户或项目配置。"
+        },
+        {
+          "p": "点击“预览配置”，核对显示的文件位置及新增条目。确认后勾选审核框并应用。若目标文件已存在，系统先保存备份；若检测到已有 Mandate 条目或预览后文件发生变化，则拒绝覆盖。"
+        },
+        {
+          "p": "按宿主要求重启应用、信任项目并批准工具。向导可检查独立 MCP 连接；仍需在宿主中发送上一页的只读指令，确认实际加载的任务。"
+        },
+        {
+          "heading": "完成标志"
+        },
+        {
+          "p": "宿主返回正确的 mandate_get_context 后，从第 11 步继续 ETH 案例。应用成功后，当前设置页面提供“恢复修改前的配置”；文件已被其他程序改动时不会强行回退。刷新页面或重启后，请使用保存的备份人工恢复。"
+        }
+      ]
+    },
+    {
+      "title": "各软件如何完成同一个任务",
+      "section": "案例流程",
+      "kind": "workflow"
+    },
+    {
+      "title": "按照同一案例逐步操作",
+      "section": "步骤索引",
+      "kind": "contents"
+    }
+  ],
+  "appendix": [
+    {
+      "title": "遇到问题时如何继续",
+      "section": "异常处理",
+      "columns": [
+        [
+          {
+            "heading": "Agent 未发现 Mandate 工具"
+          },
+          {
+            "p": "CLI 用户先检查项目 MCP 配置、Node 和服务路径以及启动环境。Claude Desktop 用户先在 Extensions 检查扩展是否已启用，再检查 Developer 日志。向导包应绑定同一任务，手动包还须核对两个文件路径；新安装的扩展必要时须完全退出并重开 Claude。任何路线都应先调用 mandate_get_context，不能仅根据 connected 字样推定任务正确。"
+          },
+          {
+            "heading": "Agent 仍连接旧任务"
+          },
+          {
+            "p": "对比网页和 mandate_get_context 中的 mandateId、sessionId 与 signer。网页切换任务不会改写 MCP 固定配置，重新批准会话也可能产生新的 sessionId。应由部署人员按第 07 步更新配置并重启，而不是让模型猜测任务或直接编辑权限。"
+          },
+          {
+            "heading": "钱包按钮无法确认"
+          },
+          {
+            "p": "检查当前站点是否已连接正确 owner、钱包网络是否与工作区一致，以及原请求是否仍在等待钱包。交易结果未知时应核对原请求，不应重复签署。钱包提示未知调用或无法仿真时，须核对实际参数，无法确认则取消。"
+          }
+        ],
+        [
+          {
+            "heading": "付款成功但服务失败"
+          },
+          {
+            "p": "保留原 serviceId、订单、nonce、结算 hash 和数据库，按第 14 步恢复。服务失败不会自动清除已经支付的金额。付款结果未确定时，应先核对链上状态，相应预算继续保留；不得因 RPC 超时创建新付款。"
+          },
+          {
+            "heading": "报告显示 incomplete"
+          },
+          {
+            "p": "检查具体缺失项。正文未披露可能限制 request 或 result 核验；缺少 HTTPS 来源或外部历史检查点会限制更广的证明。应分别报告已经确认和仍未证明的事项，不把局部成功概括为全部验证通过。"
+          },
+          {
+            "heading": "授权到期或已被撤销"
+          },
+          {
+            "p": "连接钱包或重新安装 MCP 不会恢复付款权限。账户所有者需要审核当前任务与版本，必要时批准新会话，并同步固定 Agent 配置。撤销同一授权不可逆；已有付款仍须按原订单处理。"
+          }
+        ]
+      ]
+    },
+    {
+      "title": "部署人员如何准备本地练习",
+      "section": "环境准备",
+      "columns": [
+        [
+          {
+            "heading": "使用现有本地练习入口"
+          },
+          {
+            "p": "在第 01 步构建完成后，可按 planning/M6_MANUAL_UAT.zh-CN.md 准备隔离的本地钱包练习环境。该环境使用公开测试账户和本地链，不需要公共测试 ETH 或 USDC。以下进程需要在教程执行期间保持运行。"
+          },
+          {
+            "code": "MANDATE_WALLET_FIXTURE_DIR=.runtime/manual-uat-fixture \\\n  node --import tsx mandate/experiments/m6-wallet-fixture.ts"
+          },
+          {
+            "p": "ready:true 表示服务已就绪，终端和 fixture.json 中的 configFile、credentialFile、verificationFile 分别给出 Gateway 配置、连接凭据文件与验证配置的实际路径。使用这些字段准备第 02、07、08 步；fixture.json 本身不是合法的 MCP --config 文件。创建新任务后仍须按第 07 步更新任务绑定，并沿用原数据库。"
+          },
+          {
+            "p": "使用 Rabby 时应由使用者自行初始化测试钱包，使用项目公开 TEST_MNEMONIC，且不得接入真实资产。当前截图环境并未重新执行这些授权。"
+          }
+        ],
+        [
+          {
+            "heading": "启动已有自有 Gateway"
+          },
+          {
+            "code": "pnpm m6:serve --config PRIVATE_GATEWAY.json \\\n  --credential-file PRIVATE_CONNECTION.json \\\n  --verification-file VERIFY_PROFILE.json"
+          },
+          {
+            "p": "此命令使用已准备的账户和配置，不会自动部署账户、补充余额或授予新权限。验证 profile 应独立指定可信的网络、账户、资产、owner、runtimeHash、RPC 和允许披露范围，不能直接信任证据包自报的配置。"
+          },
+          {
+            "heading": "向宿主传入连接环境"
+          },
+          {
+            "p": "第 08、09 步提供 launch-host.mjs 的启动命令。启动器检查现有连接文件的 0600 权限，读取 connectionToken 后通过环境变量传给所选宿主，不打印其值；使用时须从可信项目目录启动，以加载该项目的 MCP 配置。它不安装配置、不保存新凭据，也不签署交易。"
+          },
+          {
+            "p": "自动向导及恢复要求见 mandate/onboarding/README.zh-CN.md；手动参数见 mandate/gateway/README.zh-CN.md 和 mandate/sdk/QUICKSTART.zh-CN.md。当前 stdio 进程与宿主由同一 OS 用户控制，不构成对恶意宿主的密钥隔离。"
+          }
+        ]
+      ]
+    },
+    {
+      "title": "截图来源、扩展案例与参考资料",
+      "section": "版本与资料",
+      "columns": [
+        [
+          {
+            "heading": "本教程的证据来源"
+          },
+          {
+            "p": "版本 2.2，2026-10-18。新增三页自动向导图解，保留 ETH 采购案例和手动接入分支。向导截图来自独立本地测试，不代表公共测试网或宿主内的模型验收。扩展设置配图取自本机 Claude Desktop 2.42304.0；本地 Mandate 与 Rabby 配图仍沿用已有记录并分别标注。不同运行的图像与交易不构成连续录制。"
+          },
+          {
+            "p": "Codex 与 Claude Code 的既有 MCP 采购记录位于 artifacts/m4/host-acceptance.json 及 artifacts/m4/hosts/。第 15 步摘要来自 codex-purchase-01.json，原记录使用 Base Sepolia；本地主线的 31337 操作示例与其独立。本文不声称本次重新登录宿主、批准授权或支付采购费用。"
+          },
+          {
+            "p": "当前扩展通过 MCPB 官方格式校验和独立进程测试，验证了工具发现、固定身份、模拟采购及原订单恢复。它们不等于 Claude Desktop 内的模型调用和采购验收。具体截图范围和人工安装状态见 capture-manifest.json 与 validation.json。"
+          }
+        ],
+        [
+          {
+            "heading": "完成主线后的扩展"
+          },
+          {
+            "p": "需要比较 ETH 与 BTC 时，应在撤销前明确授权第二笔 BTC 采购，并要求 Agent 先核对该服务报价。按当前固定单价，两种服务各采购一次的合计费用为 0.02 USDC，初始余额 1.00 时余 0.98。此为扩展案例预期值，不是本教程主线已执行的第二笔付款。"
+          },
+          {
+            "heading": "宿主配置依据"
+          },
+          {
+            "p": "OpenAI 官方 MCP 文档：https://learn.chatgpt.com/docs/extend/mcp"
+          },
+          {
+            "p": "Claude Code 官方 MCP 文档：https://code.claude.com/docs/en/mcp"
+          },
+          {
+            "p": "Claude Desktop 官方本地 MCP 说明：https://support.claude.com/en/articles/10949351-getting-started-with-local-mcp-servers-on-claude-desktop"
+          },
+          {
+            "heading": "项目内的进一步说明"
+          },
+          {
+            "p": "接入配置见 mandate/gateway/README.zh-CN.md；SDK 命令见 mandate/sdk/QUICKSTART.zh-CN.md；人工钱包入口见 planning/M6_MANUAL_UAT.zh-CN.md；总进度见 planning/IMPLEMENTATION_TASKS.zh-CN.md。当前不支持主网付款、任意执行、自动 swap、Permit2 或 ERC-7710。"
+          }
+        ]
+      ]
+    }
+  ]
+}

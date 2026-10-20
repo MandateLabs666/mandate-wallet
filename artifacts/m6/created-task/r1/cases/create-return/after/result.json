@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "scenario": "create-return",
+  "expectation": "after",
+  "baseline": null,
+  "mode": "controlled EIP-1193 delayed-wallet scheduling probe with actual local EVM transaction",
+  "nativeWallet": false,
+  "humanUsability": false,
+  "chainId": 31337,
+  "expectedUI": true,
+  "bugReproduced": false,
+  "ownerSendCalls": 1,
+  "controlledSecondPromptRejected": false,
+  "ownerNonceBefore": 6,
+  "ownerNonceAfter": 7,
+  "originalRequestId": "0x69e60eb6544b6af33c566be1604cb061b18b8e035282b6fb3c7afa6e423794e1",
+  "originalRequestStatus": "confirmed",
+  "originalRequestApplied": true,
+  "originalHash": "0xcaad96f58a39b91049c5b3c19250afeee610fc2f6adcf4e1f5e8b78a1ac5348c",
+  "transactionCalldataMatchesOriginal": true,
+  "persistedOriginalHash": true,
+  "tokenPayments": 0,
+  "walletCashBefore": "1000000",
+  "walletCashAfter": "1000000",
+  "reviewOpen": false,
+  "reviewCallSHA256": "37510c55c6f36b58b0b17577d0ceb7d041663610b57bda7b7b1800ee9fae2181",
+  "selectedTaskBPreserved": false,
+  "disconnected": false,
+  "globalError": "",
+  "reviewError": "",
+  "observed": [
+    {
+      "operation": "owner-broadcast",
+      "requestId": "0x69e60eb6544b6af33c566be1604cb061b18b8e035282b6fb3c7afa6e423794e1",
+      "status": 200
+    }
+  ],
+  "createdTaskId": "0x9272e1a948dbfcba69d5ea2075d76abb9cfe4889e1bab2a13f1448142ad40147",
+  "sourceFingerprint": {
+    "mandate/web/app.ts": "fb4b8e0f70ebde7fba15ddcaf814e04387dc88f23310646cf76887a4c4b38336",
+    "mandate/web/static/index.html": "ea623f58c0c1244558acfb03f71a2060332c1bb1a872bda4bb2613fde67443c1",
+    "mandate/web/static/app.html": "74779d95244fb5d96487e84efd0d2caf2255d4aeaaf7e7820740cf42a9b3fe1c",
+    "mandate/web/static/docs.html": "d2c7e373f4d4d94e32bb49177a88e604142857329c293da18a45208c64c271fa",
+    "mandate/web/static/styles.css": "1432855b1cd71a4c4786a7dd6ccd3cca3c40bda0d00209428b29819107d44675",
+    "mandate/web/static/favicon.svg": "f75cbb9e8fb081235588a136c31cc6b935bf887e2df5c15749ac06b1e581d2f7",
+    "mandate/experiments/m6-review-race.ts": "27c8f4d484604e81463db8d3c2fc02f51c6f299d0da3d90efa9694f39d880f5c"
+  },
+  "newPublicTransactions": 0
+}

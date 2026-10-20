@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-15T07:51:46.233174+00:00",
+  "sourceBaseCommit": "43355af00efff8c48fcc2e6461d5c54a3b91f56c",
+  "acceptedTasks": [
+    "T11.05"
+  ],
+  "videoDurationSeconds": 172.05,
+  "maximumSeconds": 300,
+  "videoFormat": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1280,
+        "height": 900,
+        "r_frame_rate": "20/1"
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio",
+        "sample_rate": "22050",
+        "channels": 1,
+        "r_frame_rate": "0/0"
+      }
+    ],
+    "format": {
+      "duration": "172.050000",
+      "size": "4007087"
+    }
+  },
+  "captureMethod": "actual Chrome CDP screencast frames with observed frame intervals; no cuts or speed changes",
+  "capturedFrames": 232,
+  "stages": 10,
+  "everyStageFrameVisuallyInspected": true,
+  "decodedFinalFramesInspectedSeconds": [
+    2,
+    84,
+    138
+  ],
+  "fullVideoAudioDecodePassed": true,
+  "audio": {
+    "source": "offline macOS Samantha computer narration; not participant voice",
+    "voiceRateWordsPerMinute": 165,
+    "narrationDurationSeconds": 153.216508,
+    "stageClipsDoNotOverlap": true,
+    "observedMeanVolumeDb": -16.3,
+    "observedMaxVolumeDb": -1.6
+  },
+  "actualLocalTokenPayments": 1,
+  "paidAtomic": "10000",
+  "sameHashOnRecovery": true,
+  "ownerRevocationApplied": true,
+  "laterStepRejected": true,
+  "financialChecksPassed": true,
+  "overall": "incomplete",
+  "browserProviderInjected": false,
+  "externalWalletOrMobileAcceptance": false,
+  "fixtureOwnerInSeparateDriverProcess": true,
+  "webServerOwnerKeyLoaded": false,
+  "newPublicTransactions": 0,
+  "privacy": {
+    "knownPrivateValueVariantsCompared": 7,
+    "actualStoredPaymentSignaturesCompared": 3,
+    "rawTransactionsCompared": 6,
+    "exportedFilesContainNoneOfTheseValues": true,
+    "connectionEstablishedBeforeCapture": true,
+    "everyStageInspectedForVisiblePrivateData": true,
+    "notFinalPackagePrivacyAcceptance": true
+  },
+  "filesSHA256": {
+    "competition/video/README.en.md": "501be4453c42cd578b67aecdd613c19d6f56ef0e77206f8971a29d797b46de40",
+    "competition/video/mandate-wallet-demo-v1.mp4": "5d12f1dff1e54377f29bdf2ee74cee7631a4d0f87bfa348cbd9ea86e06d26638",
+    "competition/video/content.json": "c9d85c32dfcbdc0d02da2a1ad72af2f1eeb4840d8696047d7d5c1c855adcdf2e",
+    "competition/video/TRANSCRIPT.en.md": "7461835d66a3f4c89ae42d360b0e55ceca8b7dad5d1be75ce9cb3499fb52d4e4",
+    "competition/video/mandate-wallet-demo-v1.srt": "81e4bf15171322e8a01a55dba566089028997814a83a9da71b7146075d324b67",
+    "mandate/experiments/competition-video.ts": "0b07ed592638c0c73b0dc43d34f7194dc1eeaba0f23313ce31ac547476cabc3c",
+    "artifacts/competition/video/capture.json": "f801ede0a911e3ecc868e124fb5ab8306bdd6749b3f51eca564f908a06ea1965",
+    "artifacts/competition/video/verification.json": "8d01935e14c1ae4ec6ba2a2ef9e8adc878d8c36269946414e1249086fea6e7e7",
+    "artifacts/competition/video/typecheck.txt": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+  },
+  "sourcesSHA256": {
+    "mandate/experiments/competition-video.ts": "0b07ed592638c0c73b0dc43d34f7194dc1eeaba0f23313ce31ac547476cabc3c",
+    "competition/video/content.json": "c9d85c32dfcbdc0d02da2a1ad72af2f1eeb4840d8696047d7d5c1c855adcdf2e",
+    "mandate/examples/local-environment.ts": "64adbe25977b0591d0a564fa3d8c6dd0f11a56eb29c58114ddf0b702d078c318",
+    "mandate/examples/local-node.ts": "e700e4716e423f0ff0baf5e5fd861d51cdb4437470ab8875de789a6bfa5949ed",
+    "mandate/web/app.ts": "883d60d1e98e05caf9577a10bc731d481b2b1f8d0e8a807a604952503df48158",
+    "mandate/web/server.ts": "f36904da89d3a26c3a8495f06a81d9d128de6448fbd61e1e0e385f4581cb1d32",
+    "mandate/web/cli.ts": "7ae174574a378bcaf36e493cad10803cd5b31c0d3ba5091610b25e43bb148cdd",
+    "mandate/web/dist/app.js": "5bc7809c6653355a6987815fa36cadf0dfc2f6d013301b806cb552f5b3ec865e",
+    "mandate/sdk/workspace.ts": "1cd2d00fed8a6e854a72da069cb63550cde2e54c42628530c1b4133764b1d3f2",
+    "mandate/contracts/src/MandateAccount.sol": "c733e4568179a7a5777b1e4bc9a07607b27e2c2171cb296369617b9ac71bd6ff",
+    "mandate/contracts/out/MandateAccount.sol/MandateAccount.json": "b2adf984ef856542dad7d648b014a307b2f47728234550780bb5404d7b756e92",
+    "dist/mandate-evidence-verifier.js": "392576b1b9efc0e0ca535aef3a8e6819a972fd382d2c1579ab8f80d95d6c29ab",
+    "pnpm-lock.yaml": "936f07634d924400cd1a98bf2dc21c0b542155271cc144320fa1f42108fdbfb7"
+  },
+  "limits": [
+    "Actual local EVM/mock funds, controlled merchant/reference facilitator; public evidence is supplied separately.",
+    "Initial owner grant and final revocation use a trusted test owner, not a browser extension.",
+    "Same-host processes are not malicious administrator isolation.",
+    "Independent review, official confirmation and final release/privacy/claim checks remain open."
+  ],
+  "formalSubmissionSent": false
+}

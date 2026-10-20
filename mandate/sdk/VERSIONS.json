@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": 2,
+  "SDKDistribution": "repository-local; not npm published",
+  "nodeEntry": "mandate/sdk/index.ts",
+  "browserEntry": "mandate/sdk/browser.ts",
+  "schemas": {
+    "payment": 2,
+    "ownerRequest": 2,
+    "evidenceBundle": 2,
+    "sessionAttestation": 2,
+    "actionProof": 2,
+    "verificationProfile": 1
+  },
+  "compiler": {
+    "solidity": "0.8.26",
+    "optimizerRuns": 200,
+    "viaIR": true,
+    "evmVersion": "cancun"
+  },
+  "networks": [
+    {
+      "chainId": 84532,
+      "contracts": {
+        "MandateFactory": {
+          "address": "0xb0d87821ed0075a8e37c6c4ed90edda66c4f9c55",
+          "runtimeHash": "0xda46abc54518aa5f619d9f63ada3464ffc99cf9ea5e9b180683354782a4662f4",
+          "sourceCommit": "361a9acf9c8af244119bd675e047bc56f69f4e81"
+        },
+        "MandateAccount": {
+          "address": "0xE02B554a694b1857B8e89274B2F6E1eCD0C0B589",
+          "runtimeHash": "0xc9221739cb1bb554b83796f1e8e8de4561ba45b7ff30e1ddffbf32af24ba4c9e",
+          "sourceCommit": "361a9acf9c8af244119bd675e047bc56f69f4e81"
+        }
+      },
+      "evidence": "artifacts/m3/84532-deployment.json",
+      "payments": "controlled native-test-USDC"
+    },
+    {
+      "chainId": 11155111,
+      "contracts": {
+        "MandateFactory": {
+          "address": "0xdba0418cdf512d76e2de6fa83e0ee92b2de51cba",
+          "runtimeHash": "0xda46abc54518aa5f619d9f63ada3464ffc99cf9ea5e9b180683354782a4662f4",
+          "sourceCommit": "361a9acf9c8af244119bd675e047bc56f69f4e81"
+        },
+        "TestUSDC": {
+          "address": "0x9496608866e40e8afa51ac1b4d28bf0011414b54",
+          "runtimeHash": "0xbee9ddb2519066ab03b116b999bfba6cec685c90bfa042f2317ec20d0c42e725",
+          "sourceCommit": "361a9acf9c8af244119bd675e047bc56f69f4e81"
+        },
+        "MandateAccount": {
+          "address": "0xC5f8D0ebdd2Dda218967A8978a185003a91cd020",
+          "runtimeHash": "0xb02389a0cb1da5d337b8c5bed2db665fc40e4331a4d70e09e5592a74ce0e1c41",
+          "sourceCommit": "361a9acf9c8af244119bd675e047bc56f69f4e81"
+        }
+      },
+      "evidence": "artifacts/m3/11155111-deployment.json",
+      "payments": "controlled test token"
+    }
+  ],
+  "mainnetWriteEnabled": false,
+  "sourcePublication": "local exact runtime verification; Sourcify not claimed"
+}

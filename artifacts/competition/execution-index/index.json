@@ -1,0 +1,777 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-15T07:31:19.106Z",
+  "sourceBaseCommit": "0d19c16938a2441382db6a28f2a7c06efadcb132",
+  "scope": "read-only consolidation of historical public executions plus current local replay instructions",
+  "publicNetworks": [
+    {
+      "chainId": 84532,
+      "providers": [
+        "https://sepolia.base.org",
+        "https://base-sepolia-rpc.publicnode.com"
+      ],
+      "commonFinalized": {
+        "blockNumber": "48139895",
+        "blockHash": "0x7a8374260aca7e8c837eff91495c937c6da954666a27a2c6bad78f0dc37540b4"
+      },
+      "transactions": [
+        {
+          "id": "base-m5:M5:create-root",
+          "chainId": 84532,
+          "hash": "0xac97651f35ee1cddcdb1f20e7bb38e0303c0b89f31189e9bcdefff729bb80e7a",
+          "wallet": "0xE02B554a694b1857B8e89274B2F6E1eCD0C0B589",
+          "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+          "kind": "owner",
+          "expectedStatus": "success",
+          "functionName": "createMandate",
+          "source": "artifacts/m5/lifecycle/base-sepolia.json",
+          "transactionHash": "0xac97651f35ee1cddcdb1f20e7bb38e0303c0b89f31189e9bcdefff729bb80e7a",
+          "blockHash": "0xcb8af354e7ec837ed16b4f243d778fc69b274972db71cfdb0e818d67021b4009",
+          "blockNumber": "48118847",
+          "status": "success",
+          "gasUsed": "257062",
+          "effectiveGasPrice": "6000000",
+          "logs": [
+            {
+              "address": "0xe02b554a694b1857b8e89274b2f6e1ecd0c0b589",
+              "topics": [
+                "0x0b4dcdcadd8d6fb38aa1f89fefee52bbc0b9bbc527639dd3f8c54b6964ba362f",
+                "0x81591dc72948e8e11ae7b47983e8707d29ef9bcb6b2fc5d9eefbc8f33dc02ba4"
+              ],
+              "data": "0x00000000000000000000000000000000000000000000000000000000000000015d18b3c32ffe8ea1ef77267bb875c5c07ce031a5c9112a1f85116fca32f51fe600000000000000000000000000000000000000000000000000000000000027100000000000000000000000000000000000000000000000000000000000002710000000000000000000000000000000000000000000000000000000006acfe568",
+              "blockHash": "0xcb8af354e7ec837ed16b4f243d778fc69b274972db71cfdb0e818d67021b4009",
+              "transactionHash": "0xac97651f35ee1cddcdb1f20e7bb38e0303c0b89f31189e9bcdefff729bb80e7a",
+              "transactionIndex": 1,
+              "logIndex": 0,
+              "removed": false
+            }
+          ],
+          "sender": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+          "to": "0xe02b554a694b1857b8e89274b2f6e1ecd0c0b589",
+          "nonce": 24,
+          "inputHash": "0x6c6b199efc43961e1a1d45c246f7a3000d3153b6f5ea9fafd666911551fd8b88",
+          "evmGasFeeWei": "1542372000000",
+          "finalizedAtObservation": true,
+          "providersAgree": true
+        },
+        {
+          "id": "base-m5:M5:grant-session",
+          "chainId": 84532,
+          "hash": "0x74f89654b29343e05965dcf7ff51205f6b18c6cea27428610291165ff4dd8640",
+          "wallet": "0xE02B554a694b1857B8e89274B2F6E1eCD0C0B589",
+          "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+          "kind": "owner",
+          "expectedStatus": "success",
+          "functionName": "grantSession",
+          "source": "artifacts/m5/lifecycle/base-sepolia.json",
+          "transactionHash": "0x74f89654b29343e05965dcf7ff51205f6b18c6cea27428610291165ff4dd8640",
+          "blockHash": "0x75eb4f13c6bc187a874910041a206217194f79338f456a74c7ff872b690f6090",
+          "blockNumber": "48118853",
+          "status": "success",
+          "gasUsed": "152379",
+          "effectiveGasPrice": "6000000",
+          "logs": [
+            {
+              "address": "0xe02b554a694b1857b8e89274b2f6e1ecd0c0b589",
+              "topics": [
+                "0x74ad7a6fc4a8b0d0af366eed21e93ffee1f3faf0a92a2297d8ba9681c6557a78",
+                "0x81591dc72948e8e11ae7b47983e8707d29ef9bcb6b2fc5d9eefbc8f33dc02ba4",
+                "0x8e86deb4566f10bba7eb8768107d7e90df08d4454ca6ca3c7b411f3e56840247"
+              ],
+              "data": "0x000000000000000000000000c4da6909e60186ddcb0cada144ce8a3539659dc1000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000002710",
+              "blockHash": "0x75eb4f13c6bc187a874910041a206217194f79338f456a74c7ff872b690f6090",
+              "transactionHash": "0x74f89654b29343e05965dcf7ff51205f6b18c6cea27428610291165ff4dd8640",
+              "transactionIndex": 11,
+              "logIndex": 62,
+              "removed": false
+            }
+          ],
+          "sender": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+          "to": "0xe02b554a694b1857b8e89274b2f6e1ecd0c0b589",
+          "nonce": 25,
+          "inputHash": "0x368fe363d4d592d3ce15818ab5b884b89c22375242e712ba159cad771be6886a",
+          "evmGasFeeWei": "914274000000",
+          "finalizedAtObservation": true,
+          "providersAgree": true
+        },
+        {
+          "id": "base-m5:register",
+          "chainId": 84532,
+          "hash": "0x30484d1a33acbdde9150148350862be3b12b9776610bb8c4015ef9998c445409",
+          "wallet": "0xE02B554a694b1857B8e89274B2F6E1eCD0C0B589",
+          "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+          "kind": "registration",
+          "expectedStatus": "success",
+          "functionName": "registerPayment",
+          "source": "artifacts/m5/lifecycle/public-bundle.json",
+          "transactionHash": "0x30484d1a33acbdde9150148350862be3b12b9776610bb8c4015ef9998c445409",
+          "blockHash": "0xdc4946188aef194dc1b263e042d41cba8fa5f4b20af2c16c9c26378996637caf",
+          "blockNumber": "48118861",
+          "status": "success",
+          "gasUsed": "455865",
+          "effectiveGasPrice": "6000000",
+          "logs": [
+            {
+              "address": "0xe02b554a694b1857b8e89274b2f6e1ecd0c0b589",
+              "topics": [
+                "0x53fac4a735592149c3d4ab16f5e1d659f01ac8f1269eddcd42d263aa8d303ad3",
+                "0xc29890f8e1d824ff80ae21b2a716766bcd5a82ce59567132d3b0f004f4e624bd",
+                "0x81591dc72948e8e11ae7b47983e8707d29ef9bcb6b2fc5d9eefbc8f33dc02ba4",
+                "0x861a3e57dd2f3fd4ed610c8c150df6219b3d0c1b2cbcfba237f42b9fde742cad"
+              ],
+              "data": "0x8e86deb4566f10bba7eb8768107d7e90df08d4454ca6ca3c7b411f3e568402470000000000000000000000000000000000000000000000000000000000002710b904d821ea7bd5b15f4acd96dabfae848053378b4bb1954903df0341df538f28000000000000000000000000000000000000000000000000000000006acfd89e969b732b14ce01799c73d8cc283b4989a18cb554a96092f575494cbb94be9fa6f5d5d8880a8205e18809d4dce216b4789ef84dfc397df707f953ee0c0064a5d3",
+              "blockHash": "0xdc4946188aef194dc1b263e042d41cba8fa5f4b20af2c16c9c26378996637caf",
+              "transactionHash": "0x30484d1a33acbdde9150148350862be3b12b9776610bb8c4015ef9998c445409",
+              "transactionIndex": 30,
+              "logIndex": 70,
+              "removed": false
+            }
+          ],
+          "sender": "0x2d256b7cf7e73f5eea0ca7f816e39893b4325bc9",
+          "to": "0xe02b554a694b1857b8e89274b2f6e1ecd0c0b589",
+          "nonce": 18,
+          "inputHash": "0xd21e0926f58e13be741818d728b02152aa50a2f2d627a835d22f8d46dac7ad66",
+          "evmGasFeeWei": "2735190000000",
+          "finalizedAtObservation": true,
+          "providersAgree": true
+        },
+        {
+          "id": "base-m5:settle",
+          "chainId": 84532,
+          "hash": "0x519b51e275cca09b9fe3c65e88810530fe7592551bcc783f30d3327f43d5cfc7",
+          "wallet": "0xE02B554a694b1857B8e89274B2F6E1eCD0C0B589",
+          "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+          "kind": "settlement",
+          "expectedStatus": "success",
+          "functionName": "transferWithAuthorization",
+          "source": "artifacts/m5/lifecycle/public-bundle.json",
+          "transactionHash": "0x519b51e275cca09b9fe3c65e88810530fe7592551bcc783f30d3327f43d5cfc7",
+          "blockHash": "0xa13e71912c326a594698a67ee195d1fda4edb01af8c117c4849a09b4d50ce42f",
+          "blockNumber": "48118868",
+          "status": "success",
+          "gasUsed": "126651",
+          "effectiveGasPrice": "6000000",
+          "logs": [
+            {
+              "address": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+              "topics": [
+                "0x98de503528ee59b575ef0c0a2576a82497bfc029a5685b209e9ec333479b10a5",
+                "0x000000000000000000000000e02b554a694b1857b8e89274b2f6e1ecd0c0b589",
+                "0xb904d821ea7bd5b15f4acd96dabfae848053378b4bb1954903df0341df538f28"
+              ],
+              "data": "0x",
+              "blockHash": "0xa13e71912c326a594698a67ee195d1fda4edb01af8c117c4849a09b4d50ce42f",
+              "transactionHash": "0x519b51e275cca09b9fe3c65e88810530fe7592551bcc783f30d3327f43d5cfc7",
+              "transactionIndex": 8,
+              "logIndex": 15,
+              "removed": false
+            },
+            {
+              "address": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+              "topics": [
+                "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+                "0x000000000000000000000000e02b554a694b1857b8e89274b2f6e1ecd0c0b589",
+                "0x0000000000000000000000005957a844d78516d8a0ad11c06516777ea82917ac"
+              ],
+              "data": "0x0000000000000000000000000000000000000000000000000000000000002710",
+              "blockHash": "0xa13e71912c326a594698a67ee195d1fda4edb01af8c117c4849a09b4d50ce42f",
+              "transactionHash": "0x519b51e275cca09b9fe3c65e88810530fe7592551bcc783f30d3327f43d5cfc7",
+              "transactionIndex": 8,
+              "logIndex": 16,
+              "removed": false
+            }
+          ],
+          "sender": "0x2fb3a8345c3766652be37d821093b97503580e8d",
+          "to": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+          "nonce": 4,
+          "inputHash": "0xf4537856dacb873c33f7e0100effd0b7d6d9d8870356d97fd84d0d7800c71ba1",
+          "evmGasFeeWei": "759906000000",
+          "paymentFacts": {
+            "from": "0xE02B554a694b1857B8e89274B2F6E1eCD0C0B589",
+            "to": "0x5957a844D78516d8A0Ad11C06516777Ea82917Ac",
+            "valueAtomic": "10000",
+            "nonce": "0xb904d821ea7bd5b15f4acd96dabfae848053378b4bb1954903df0341df538f28",
+            "validAfter": "0",
+            "validBefore": "1792006302",
+            "signatureExported": false
+          },
+          "finalizedAtObservation": true,
+          "providersAgree": true
+        },
+        {
+          "id": "base-m4:revoke-probe",
+          "chainId": 84532,
+          "hash": "0x7598bbdc11c4bb1d1ab01a2a4bf3337cdc40c7a01f0a04a80063d05275d41bac",
+          "wallet": "0xE02B554a694b1857B8e89274B2F6E1eCD0C0B589",
+          "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+          "kind": "owner",
+          "expectedStatus": "success",
+          "functionName": "revokeSession",
+          "source": "artifacts/m4/base-sepolia-http.json",
+          "transactionHash": "0x7598bbdc11c4bb1d1ab01a2a4bf3337cdc40c7a01f0a04a80063d05275d41bac",
+          "blockHash": "0x5a4ed59d2df7da16fae6fc42692330fe4d4f94b09f8a88a1071639f6471669dc",
+          "blockNumber": "48112928",
+          "status": "success",
+          "gasUsed": "29897",
+          "effectiveGasPrice": "6000000",
+          "logs": [
+            {
+              "address": "0xe02b554a694b1857b8e89274b2f6e1ecd0c0b589",
+              "topics": [
+                "0xa14faaf8331d313ee28460ed327b23e4f91aad6b61bd9143bdddd7017a4bf074",
+                "0xdd5f1d05ab7d028d11dfed287980a124a0d673f48ecc3af872a18e4d5f0d15d3",
+                "0x10f5ea23724907f3aee0dc12f1a418df49ee1ca0ee46fa04e1ebae9b82b598d3"
+              ],
+              "data": "0x0000000000000000000000000000000000000000000000000000000000000002",
+              "blockHash": "0x5a4ed59d2df7da16fae6fc42692330fe4d4f94b09f8a88a1071639f6471669dc",
+              "transactionHash": "0x7598bbdc11c4bb1d1ab01a2a4bf3337cdc40c7a01f0a04a80063d05275d41bac",
+              "transactionIndex": 69,
+              "logIndex": 182,
+              "removed": false
+            }
+          ],
+          "sender": "0xaa987fc286434d205669814ba46b1d8df824fb36",
+          "to": "0xe02b554a694b1857b8e89274b2f6e1ecd0c0b589",
+          "nonce": 22,
+          "inputHash": "0xbf26e38f3fae7e0b14f599286fed43f31829880bc4fbb8a65e782817e2a8cf67",
+          "evmGasFeeWei": "179382000000",
+          "finalizedAtObservation": true,
+          "providersAgree": true
+        }
+      ]
+    },
+    {
+      "chainId": 11155111,
+      "providers": [
+        "https://ethereum-sepolia-rpc.publicnode.com",
+        "https://sepolia.drpc.org"
+      ],
+      "commonFinalized": {
+        "blockNumber": "11918882",
+        "blockHash": "0xf996f213429751b94350ee6affb2dcb3139d5db1ba5653153ad01ea1223280fe"
+      },
+      "transactions": [
+        {
+          "id": "ethereum-m3:create-mandate",
+          "chainId": 11155111,
+          "hash": "0x5c92a59c4cf82460ca6836c4bbf2206bf6393a43896e375f1e1c6318149a963b",
+          "wallet": "0xC5f8D0ebdd2Dda218967A8978a185003a91cd020",
+          "asset": "0x9496608866e40e8afa51ac1b4d28bf0011414b54",
+          "kind": "owner",
+          "expectedStatus": "success",
+          "functionName": "createMandate",
+          "source": "artifacts/m3/11155111-acceptance.json",
+          "transactionHash": "0x5c92a59c4cf82460ca6836c4bbf2206bf6393a43896e375f1e1c6318149a963b",
+          "blockHash": "0xb1388ccad8f9a0e8df024fdaf63d329e726e488ccfd0b13485626c6a6b43408e",
+          "blockNumber": "11913678",
+          "status": "success",
+          "gasUsed": "1687900",
+          "effectiveGasPrice": "1000021",
+          "logs": [
+            {
+              "address": "0xc5f8d0ebdd2dda218967a8978a185003a91cd020",
+              "topics": [
+                "0x0b4dcdcadd8d6fb38aa1f89fefee52bbc0b9bbc527639dd3f8c54b6964ba362f",
+                "0x386dbf33df0e48c38b262239a9a44c6ed16df97dacfe520470446ade109af2a5"
+              ],
+              "data": "0x0000000000000000000000000000000000000000000000000000000000000001af7e2f59871fb1d00e83cb1d6e8151dd1894f9bf68b371d180900e31c6f9bfd500000000000000000000000000000000000000000000000000000000000249f000000000000000000000000000000000000000000000000000000000000186a0000000000000000000000000000000000000000000000000000000006ad0dabc",
+              "blockHash": "0xb1388ccad8f9a0e8df024fdaf63d329e726e488ccfd0b13485626c6a6b43408e",
+              "transactionHash": "0x5c92a59c4cf82460ca6836c4bbf2206bf6393a43896e375f1e1c6318149a963b",
+              "transactionIndex": 112,
+              "logIndex": 175,
+              "removed": false
+            }
+          ],
+          "sender": "0xa6aa6ec95a06afc137f9659ee89a674ca611cb78",
+          "to": "0xc5f8d0ebdd2dda218967a8978a185003a91cd020",
+          "nonce": 8,
+          "inputHash": "0x223c76f0d23c47eb150212936f114014c17cc8c883c2be117034a5546f713e63",
+          "evmGasFeeWei": "1687935445900",
+          "finalizedAtObservation": true,
+          "providersAgree": true
+        },
+        {
+          "id": "ethereum-m3:grant-0",
+          "chainId": 11155111,
+          "hash": "0x377f3013069dd932885f88a8feed63344ec7a1f42dfbc404f3e32ac32356c74f",
+          "wallet": "0xC5f8D0ebdd2Dda218967A8978a185003a91cd020",
+          "asset": "0x9496608866e40e8afa51ac1b4d28bf0011414b54",
+          "kind": "owner",
+          "expectedStatus": "success",
+          "functionName": "grantSession",
+          "source": "artifacts/m3/11155111-acceptance.json",
+          "transactionHash": "0x377f3013069dd932885f88a8feed63344ec7a1f42dfbc404f3e32ac32356c74f",
+          "blockHash": "0xb68c0e8a4c851845092ac6b310c63d601c65b8c890da10c0694f91bab4c803fe",
+          "blockNumber": "11913680",
+          "status": "success",
+          "gasUsed": "813911",
+          "effectiveGasPrice": "1000021",
+          "logs": [
+            {
+              "address": "0xc5f8d0ebdd2dda218967a8978a185003a91cd020",
+              "topics": [
+                "0x74ad7a6fc4a8b0d0af366eed21e93ffee1f3faf0a92a2297d8ba9681c6557a78",
+                "0x386dbf33df0e48c38b262239a9a44c6ed16df97dacfe520470446ade109af2a5",
+                "0x61f0ffa6b310744fb2869aa8b49390b907440c17341f41afc5971aac5aae9f40"
+              ],
+              "data": "0x000000000000000000000000c4da6909e60186ddcb0cada144ce8a3539659dc10000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000249f0",
+              "blockHash": "0xb68c0e8a4c851845092ac6b310c63d601c65b8c890da10c0694f91bab4c803fe",
+              "transactionHash": "0x377f3013069dd932885f88a8feed63344ec7a1f42dfbc404f3e32ac32356c74f",
+              "transactionIndex": 65,
+              "logIndex": 70,
+              "removed": false
+            }
+          ],
+          "sender": "0xa6aa6ec95a06afc137f9659ee89a674ca611cb78",
+          "to": "0xc5f8d0ebdd2dda218967a8978a185003a91cd020",
+          "nonce": 9,
+          "inputHash": "0x1c64f9ac950961173853a9dc6efe4e9879b2efcce2ccefd662effc4a30d3b436",
+          "evmGasFeeWei": "813928092131",
+          "finalizedAtObservation": true,
+          "providersAgree": true
+        },
+        {
+          "id": "ethereum-m3:register-alpha",
+          "chainId": 11155111,
+          "hash": "0xcba7a67417194fc159907d148795725477161d5ce96cdbd0c9a98790accc60a6",
+          "wallet": "0xC5f8D0ebdd2Dda218967A8978a185003a91cd020",
+          "asset": "0x9496608866e40e8afa51ac1b4d28bf0011414b54",
+          "kind": "registration",
+          "expectedStatus": "success",
+          "functionName": "registerPayment",
+          "source": "artifacts/m3/11155111-acceptance.json",
+          "transactionHash": "0xcba7a67417194fc159907d148795725477161d5ce96cdbd0c9a98790accc60a6",
+          "blockHash": "0x512c71a0d994d718d9d474008aca3e6401ffed4698c658ed6f2554e5facbe41d",
+          "blockNumber": "11913684",
+          "status": "success",
+          "gasUsed": "1841006",
+          "effectiveGasPrice": "1000020",
+          "logs": [
+            {
+              "address": "0xc5f8d0ebdd2dda218967a8978a185003a91cd020",
+              "topics": [
+                "0x53fac4a735592149c3d4ab16f5e1d659f01ac8f1269eddcd42d263aa8d303ad3",
+                "0x35d279328e8056effe4a6bbacfc809ef235bca38c9b36e41a767f2ef3f51f2b6",
+                "0x386dbf33df0e48c38b262239a9a44c6ed16df97dacfe520470446ade109af2a5",
+                "0x6dfc21ac0c8c2db036305d8bc6f887630d35e156f37d5a7e2275bc05bc004846"
+              ],
+              "data": "0x61f0ffa6b310744fb2869aa8b49390b907440c17341f41afc5971aac5aae9f4000000000000000000000000000000000000000000000000000000000000186a017e9f1bce636924903b2e86bb36c0cb65c9742975b58f8e24aa8e0778c873eb7000000000000000000000000000000000000000000000000000000006acf8ac8eccc2b0ef9f80bd7754f0351ca5bef6c02e4575ad7d37abf3112f173572a4cc4832ebd7888ea01eb038bf2e635dba830f893dd2eec87cb0abbdc2947b2b615ef",
+              "blockHash": "0x512c71a0d994d718d9d474008aca3e6401ffed4698c658ed6f2554e5facbe41d",
+              "transactionHash": "0xcba7a67417194fc159907d148795725477161d5ce96cdbd0c9a98790accc60a6",
+              "transactionIndex": 93,
+              "logIndex": 186,
+              "removed": false
+            }
+          ],
+          "sender": "0x1a20684d695ed2abf6d1d986ae3ff9c7470d6669",
+          "to": "0xc5f8d0ebdd2dda218967a8978a185003a91cd020",
+          "nonce": 0,
+          "inputHash": "0x4e6cc82a14871dd682b67e57d54d1905ed53f9ddaf7a8f561513e0817fd04a16",
+          "evmGasFeeWei": "1841042820120",
+          "finalizedAtObservation": true,
+          "providersAgree": true
+        },
+        {
+          "id": "ethereum-m3:reject-over-budget",
+          "chainId": 11155111,
+          "hash": "0xc3036954766e67b10a8727a448b9e1fac20bb14088892619e1d66c568b16fe0d",
+          "wallet": "0xC5f8D0ebdd2Dda218967A8978a185003a91cd020",
+          "asset": "0x9496608866e40e8afa51ac1b4d28bf0011414b54",
+          "kind": "registration",
+          "expectedStatus": "reverted",
+          "functionName": "registerPayment",
+          "source": "artifacts/m3/11155111-acceptance.json",
+          "transactionHash": "0xc3036954766e67b10a8727a448b9e1fac20bb14088892619e1d66c568b16fe0d",
+          "blockHash": "0x5568a12f9c209a40832eb646595b96050969fc271b95c8ec3d46709d02938a9d",
+          "blockNumber": "11913686",
+          "status": "reverted",
+          "gasUsed": "74190",
+          "effectiveGasPrice": "1000020",
+          "logs": [],
+          "sender": "0x1a20684d695ed2abf6d1d986ae3ff9c7470d6669",
+          "to": "0xc5f8d0ebdd2dda218967a8978a185003a91cd020",
+          "nonce": 1,
+          "inputHash": "0xcb078a4f43bd27bfb3a1249836096671d63c7eb93f969496712c09f672e4761e",
+          "evmGasFeeWei": "74191483800",
+          "finalizedAtObservation": true,
+          "providersAgree": true
+        },
+        {
+          "id": "ethereum-m3:settle-alpha",
+          "chainId": 11155111,
+          "hash": "0xaece5e259b09c811ecf26f5c11e825a9e5d19ef1140bd92c47f3085925f0ce7b",
+          "wallet": "0xC5f8D0ebdd2Dda218967A8978a185003a91cd020",
+          "asset": "0x9496608866e40e8afa51ac1b4d28bf0011414b54",
+          "kind": "settlement",
+          "expectedStatus": "success",
+          "functionName": "transferWithAuthorization",
+          "source": "artifacts/m3/11155111-acceptance.json",
+          "transactionHash": "0xaece5e259b09c811ecf26f5c11e825a9e5d19ef1140bd92c47f3085925f0ce7b",
+          "blockHash": "0x1bb2671046c092b8fa3d31d3e793d97bc747a13289275908255fb41fad408f56",
+          "blockNumber": "11913688",
+          "status": "success",
+          "gasUsed": "305413",
+          "effectiveGasPrice": "1000019",
+          "logs": [
+            {
+              "address": "0x9496608866e40e8afa51ac1b4d28bf0011414b54",
+              "topics": [
+                "0x98de503528ee59b575ef0c0a2576a82497bfc029a5685b209e9ec333479b10a5",
+                "0x000000000000000000000000c5f8d0ebdd2dda218967a8978a185003a91cd020",
+                "0x17e9f1bce636924903b2e86bb36c0cb65c9742975b58f8e24aa8e0778c873eb7"
+              ],
+              "data": "0x",
+              "blockHash": "0x1bb2671046c092b8fa3d31d3e793d97bc747a13289275908255fb41fad408f56",
+              "transactionHash": "0xaece5e259b09c811ecf26f5c11e825a9e5d19ef1140bd92c47f3085925f0ce7b",
+              "transactionIndex": 78,
+              "logIndex": 170,
+              "removed": false
+            },
+            {
+              "address": "0x9496608866e40e8afa51ac1b4d28bf0011414b54",
+              "topics": [
+                "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+                "0x000000000000000000000000c5f8d0ebdd2dda218967a8978a185003a91cd020",
+                "0x0000000000000000000000005957a844d78516d8a0ad11c06516777ea82917ac"
+              ],
+              "data": "0x00000000000000000000000000000000000000000000000000000000000186a0",
+              "blockHash": "0x1bb2671046c092b8fa3d31d3e793d97bc747a13289275908255fb41fad408f56",
+              "transactionHash": "0xaece5e259b09c811ecf26f5c11e825a9e5d19ef1140bd92c47f3085925f0ce7b",
+              "transactionIndex": 78,
+              "logIndex": 171,
+              "removed": false
+            }
+          ],
+          "sender": "0x1a20684d695ed2abf6d1d986ae3ff9c7470d6669",
+          "to": "0x9496608866e40e8afa51ac1b4d28bf0011414b54",
+          "nonce": 2,
+          "inputHash": "0xcb5361f11599157587603c36cc2456fedac947b41a8650618c9ce764f3f1cef3",
+          "evmGasFeeWei": "305418802847",
+          "paymentFacts": {
+            "from": "0xC5f8D0ebdd2Dda218967A8978a185003a91cd020",
+            "to": "0x5957a844D78516d8A0Ad11C06516777Ea82917Ac",
+            "valueAtomic": "100000",
+            "nonce": "0x17e9f1bce636924903b2e86bb36c0cb65c9742975b58f8e24aa8e0778c873eb7",
+            "validAfter": "0",
+            "validBefore": "1791986376",
+            "signatureExported": false
+          },
+          "finalizedAtObservation": true,
+          "providersAgree": true
+        },
+        {
+          "id": "ethereum-m3:register-gamma",
+          "chainId": 11155111,
+          "hash": "0xf352e7ce7a66dc9a6a27dc65867b7263406036442e9f05736e767a158008fee4",
+          "wallet": "0xC5f8D0ebdd2Dda218967A8978a185003a91cd020",
+          "asset": "0x9496608866e40e8afa51ac1b4d28bf0011414b54",
+          "kind": "registration",
+          "expectedStatus": "success",
+          "functionName": "registerPayment",
+          "source": "artifacts/m3/11155111-acceptance.json",
+          "transactionHash": "0xf352e7ce7a66dc9a6a27dc65867b7263406036442e9f05736e767a158008fee4",
+          "blockHash": "0x389ff8911b793412b7165e5d1f1b4a692ddf9f9fbff56049fd79dd16a692a005",
+          "blockNumber": "11913690",
+          "status": "success",
+          "gasUsed": "1743074",
+          "effectiveGasPrice": "1000019",
+          "logs": [
+            {
+              "address": "0xc5f8d0ebdd2dda218967a8978a185003a91cd020",
+              "topics": [
+                "0x53fac4a735592149c3d4ab16f5e1d659f01ac8f1269eddcd42d263aa8d303ad3",
+                "0xe99fb62c0aced82d279cf251c583e6a31ac4f6d5f6875b4a1498f318013da2b3",
+                "0x386dbf33df0e48c38b262239a9a44c6ed16df97dacfe520470446ade109af2a5",
+                "0xe6e0e8660f5c7824067af2fd2eb7c2f56a72234a531aa2d7ea4c2150738b1cfc"
+              ],
+              "data": "0xa2faf6b08bba11a93beb07658ac68fe8df088dae5da5f2783488103412e1fd35000000000000000000000000000000000000000000000000000000000000c350f59bbb41b9eb337152f0d36c5fe009f61ec4c3911bda8e4833bc7834a9785c87000000000000000000000000000000000000000000000000000000006acf8b10eccc2b0ef9f80bd7754f0351ca5bef6c02e4575ad7d37abf3112f173572a4cc4832ebd7888ea01eb038bf2e635dba830f893dd2eec87cb0abbdc2947b2b615ef",
+              "blockHash": "0x389ff8911b793412b7165e5d1f1b4a692ddf9f9fbff56049fd79dd16a692a005",
+              "transactionHash": "0xf352e7ce7a66dc9a6a27dc65867b7263406036442e9f05736e767a158008fee4",
+              "transactionIndex": 114,
+              "logIndex": 247,
+              "removed": false
+            }
+          ],
+          "sender": "0x1a20684d695ed2abf6d1d986ae3ff9c7470d6669",
+          "to": "0xc5f8d0ebdd2dda218967a8978a185003a91cd020",
+          "nonce": 3,
+          "inputHash": "0x19da37f55ef2b2dec64d94e90f7a375d376dd1a1a668245630d3737e2de50fd0",
+          "evmGasFeeWei": "1743107118406",
+          "finalizedAtObservation": true,
+          "providersAgree": true
+        },
+        {
+          "id": "ethereum-m3:revoke-agent-b",
+          "chainId": 11155111,
+          "hash": "0x0f93ad936a7059b5f200b1996aea2312bb7f7b7d2f73dbc22e677d8cce7edc9f",
+          "wallet": "0xC5f8D0ebdd2Dda218967A8978a185003a91cd020",
+          "asset": "0x9496608866e40e8afa51ac1b4d28bf0011414b54",
+          "kind": "owner",
+          "expectedStatus": "success",
+          "functionName": "revokeSession",
+          "source": "artifacts/m3/11155111-acceptance.json",
+          "transactionHash": "0x0f93ad936a7059b5f200b1996aea2312bb7f7b7d2f73dbc22e677d8cce7edc9f",
+          "blockHash": "0xf31f1c2b1b282beec8cdc902c285c7592e0e78acd6e57077cc2688e3e3cb0b0c",
+          "blockNumber": "11913692",
+          "status": "success",
+          "gasUsed": "31097",
+          "effectiveGasPrice": "1000019",
+          "logs": [
+            {
+              "address": "0xc5f8d0ebdd2dda218967a8978a185003a91cd020",
+              "topics": [
+                "0xa14faaf8331d313ee28460ed327b23e4f91aad6b61bd9143bdddd7017a4bf074",
+                "0x386dbf33df0e48c38b262239a9a44c6ed16df97dacfe520470446ade109af2a5",
+                "0xa2faf6b08bba11a93beb07658ac68fe8df088dae5da5f2783488103412e1fd35"
+              ],
+              "data": "0x0000000000000000000000000000000000000000000000000000000000000002",
+              "blockHash": "0xf31f1c2b1b282beec8cdc902c285c7592e0e78acd6e57077cc2688e3e3cb0b0c",
+              "transactionHash": "0x0f93ad936a7059b5f200b1996aea2312bb7f7b7d2f73dbc22e677d8cce7edc9f",
+              "transactionIndex": 119,
+              "logIndex": 280,
+              "removed": false
+            }
+          ],
+          "sender": "0xa6aa6ec95a06afc137f9659ee89a674ca611cb78",
+          "to": "0xc5f8d0ebdd2dda218967a8978a185003a91cd020",
+          "nonce": 11,
+          "inputHash": "0x39a39fcacf267204d8962f589a3edfa211813016eed36a116d9f472e25792f63",
+          "evmGasFeeWei": "31097590843",
+          "finalizedAtObservation": true,
+          "providersAgree": true
+        },
+        {
+          "id": "ethereum-m3:revoked-settlement",
+          "chainId": 11155111,
+          "hash": "0xe8143ad371f42fb2661c52510d0d3f7f6da947ebc8202a07a16970eab7acd48e",
+          "wallet": "0xC5f8D0ebdd2Dda218967A8978a185003a91cd020",
+          "asset": "0x9496608866e40e8afa51ac1b4d28bf0011414b54",
+          "kind": "settlement",
+          "expectedStatus": "reverted",
+          "functionName": "transferWithAuthorization",
+          "source": "artifacts/m3/11155111-acceptance.json",
+          "transactionHash": "0xe8143ad371f42fb2661c52510d0d3f7f6da947ebc8202a07a16970eab7acd48e",
+          "blockHash": "0xed78837a4230ab349f0ac23a871ff438aa0bb2a19e9abc5918f487cee14248c4",
+          "blockNumber": "11913694",
+          "status": "reverted",
+          "gasUsed": "62014",
+          "effectiveGasPrice": "1000019",
+          "logs": [],
+          "sender": "0x1a20684d695ed2abf6d1d986ae3ff9c7470d6669",
+          "to": "0x9496608866e40e8afa51ac1b4d28bf0011414b54",
+          "nonce": 4,
+          "inputHash": "0x4ea61fbe1304c2e6723972cb96cd0d38ef8530dac0cb3437156e98aeea564381",
+          "evmGasFeeWei": "62015178266",
+          "paymentFacts": {
+            "from": "0xC5f8D0ebdd2Dda218967A8978a185003a91cd020",
+            "to": "0x5957a844D78516d8A0Ad11C06516777Ea82917Ac",
+            "valueAtomic": "50000",
+            "nonce": "0xf59bbb41b9eb337152f0d36c5fe009f61ec4c3911bda8e4833bc7834a9785c87",
+            "validAfter": "0",
+            "validBefore": "1791986448",
+            "signatureExported": false
+          },
+          "finalizedAtObservation": true,
+          "providersAgree": true
+        },
+        {
+          "id": "ethereum-m3:release-gamma",
+          "chainId": 11155111,
+          "hash": "0x027e4c3be6eb1fa6ef79880b09ce377ae8b8de15d1920149fde12457502b1903",
+          "wallet": "0xC5f8D0ebdd2Dda218967A8978a185003a91cd020",
+          "asset": "0x9496608866e40e8afa51ac1b4d28bf0011414b54",
+          "kind": "owner",
+          "expectedStatus": "success",
+          "functionName": "releaseExpired",
+          "source": "artifacts/m3/11155111-acceptance.json",
+          "transactionHash": "0x027e4c3be6eb1fa6ef79880b09ce377ae8b8de15d1920149fde12457502b1903",
+          "blockHash": "0x46fed7486023e375cf15d8a6dc82d70ee2bc47d86bda11586f640bda5de03e60",
+          "blockNumber": "11913717",
+          "status": "success",
+          "gasUsed": "67948",
+          "effectiveGasPrice": "1000019",
+          "logs": [
+            {
+              "address": "0xc5f8d0ebdd2dda218967a8978a185003a91cd020",
+              "topics": [
+                "0x392d79d1a78c9f85e01b8842263b2fa03de01ecf5ccef527e91f46664f72c2d1",
+                "0xe99fb62c0aced82d279cf251c583e6a31ac4f6d5f6875b4a1498f318013da2b3",
+                "0x386dbf33df0e48c38b262239a9a44c6ed16df97dacfe520470446ade109af2a5"
+              ],
+              "data": "0xa2faf6b08bba11a93beb07658ac68fe8df088dae5da5f2783488103412e1fd35000000000000000000000000000000000000000000000000000000000000c350",
+              "blockHash": "0x46fed7486023e375cf15d8a6dc82d70ee2bc47d86bda11586f640bda5de03e60",
+              "transactionHash": "0x027e4c3be6eb1fa6ef79880b09ce377ae8b8de15d1920149fde12457502b1903",
+              "transactionIndex": 89,
+              "logIndex": 180,
+              "removed": false
+            }
+          ],
+          "sender": "0x1a20684d695ed2abf6d1d986ae3ff9c7470d6669",
+          "to": "0xc5f8d0ebdd2dda218967a8978a185003a91cd020",
+          "nonce": 5,
+          "inputHash": "0xa7a8b93ed5463f4926e2a0f692fce9f687340d23445d1a9cd84279bf872a6f1e",
+          "evmGasFeeWei": "67949291012",
+          "finalizedAtObservation": true,
+          "providersAgree": true
+        }
+      ]
+    }
+  ],
+  "selectedPublicTransactions": 14,
+  "newPublicTransactions": 0,
+  "privateRuntimeRead": false,
+  "signersCreated": false,
+  "sourcesSHA256": {
+    "mandate/experiments/competition-evidence.ts": "baae3829afaebe758c9390933152fc59fbbb4cd9669fffefe639ed3259dd3a7b",
+    "mandate/networks/networks.json": "2cd4aaeebbcecb988c6b6a2843fad46f7dd73e4945fc5d328d8aaf5483f9c972",
+    "artifacts/m3/84532-deployment.json": "98bba5abeef7979b81b31e3988c5b6d998ea149da45b8a72a7235c153ca96aa0",
+    "artifacts/m3/11155111-deployment.json": "4031e4aa76c12518bca1609235d487eb7c6d34c0062e948ded55f0f6f251d19e",
+    "artifacts/m3/11155111-acceptance.json": "9193d58d123bf56fa0602291458c014c6386a2edf8b719126df71604c62d1298",
+    "artifacts/m3/public-evidence.json": "cd8cbcdcb6feac2ca8574e23272614e77c3d84e75a8dc257084789708cb6eae7",
+    "artifacts/m4/base-sepolia-http.json": "a67b3d53d9632c0d0763028953b9bdfb7d3fb5507f2860911c160e8f4af32726",
+    "artifacts/m4/host-acceptance.json": "078d96fd143535e55ebc801b78d1b3135b5ce19897118166270b48e78c234276",
+    "artifacts/m5/lifecycle/base-sepolia.json": "b9ab2209811412aae8b46d9bececd2658b92559348ae24cdf8e615b74e9d6ed0",
+    "artifacts/m5/lifecycle/public-bundle.json": "be799e8a1a5d5d612caef81d36c2c4bd4443e0552c8e0a8cd4133c3b28dd2b3a",
+    "artifacts/m5/lifecycle/trusted-config.json": "df4a1844faa6f6ac4c816964398f73fea27eee4b31e6c2cf072463992467d83f",
+    "artifacts/m5/lifecycle/clean-public-verification.json": "10411c79f75d58f2facd73d1af2b8e9af9490b497d7a53054e23e660e6a95ad5",
+    "artifacts/m6/sdk/clean-environment/summary.json": "5ec727a1878b416a6854321e1a7c2277262e06144e92d1760ffff1d6af556c47"
+  },
+  "demoSteps": [
+    {
+      "id": "D01",
+      "step": "Owner approves scope and session",
+      "slides": [
+        2,
+        3,
+        4
+      ],
+      "publicEvidence": [
+        "base-m5:M5:create-root",
+        "base-m5:M5:grant-session"
+      ],
+      "localReplay": "SDK demo uses trusted local owner fixture; actual external-wallet/mobile approval remains unverified."
+    },
+    {
+      "id": "D02",
+      "step": "Register exact payment and reserve budget",
+      "slides": [
+        4
+      ],
+      "publicEvidence": [
+        "base-m5:register"
+      ],
+      "requestHash": "0x969b732b14ce01799c73d8cc283b4989a18cb554a96092f575494cbb94be9fa6",
+      "quoteHash": "0xf5d5d8880a8205e18809d4dce216b4789ef84dfc397df707f953ee0c0064a5d3",
+      "amountAtomic": "10000"
+    },
+    {
+      "id": "D03",
+      "step": "Actual settlement; service fails separately",
+      "slides": [
+        5,
+        6
+      ],
+      "publicEvidence": [
+        "base-m5:settle"
+      ],
+      "firstResponse": {
+        "payment": "paid",
+        "service": "failed",
+        "result": "unchecked",
+        "receipt": "incomplete",
+        "hash": "0x519b51e275cca09b9fe3c65e88810530fe7592551bcc783f30d3327f43d5cfc7"
+      },
+      "resourceUrl": "http://127.0.0.1:43403/stats?asset=ETH",
+      "merchant": "0x5957a844D78516d8A0Ad11C06516777Ea82917Ac",
+      "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+      "serviceEnvironment": "controlled loopback HTTP; historical origin may no longer be running"
+    },
+    {
+      "id": "D04",
+      "step": "Recover original order and validate result",
+      "slides": [
+        5
+      ],
+      "publicEvidence": [
+        "base-m5:settle"
+      ],
+      "sameHashOnRecovery": true,
+      "payment": "paid",
+      "service": "returned",
+      "result": "valid",
+      "receipt": {
+        "status": "confirmed",
+        "correlation": "merchant-claim-with-transaction",
+        "coversPaymentAmount": false,
+        "coversRequestBody": false,
+        "coversResultBody": false
+      },
+      "evidenceBundle": "artifacts/m5/lifecycle/public-bundle.json"
+    },
+    {
+      "id": "D05",
+      "step": "Independent public evidence checks",
+      "slides": [
+        8
+      ],
+      "bundle": "artifacts/m5/lifecycle/public-bundle.json",
+      "trust": "artifacts/m5/lifecycle/trusted-config.json",
+      "report": "artifacts/m5/lifecycle/clean-public-verification.json",
+      "requiredChecksPassed": true,
+      "overall": "incomplete"
+    },
+    {
+      "id": "D06",
+      "step": "Revoke after prevalidation and reject settlement",
+      "slides": [
+        7
+      ],
+      "publicEvidence": [
+        "base-m4:revoke-probe",
+        "ethereum-m3:revoke-agent-b",
+        "ethereum-m3:revoked-settlement"
+      ],
+      "httpRefusal": {
+        "prevalidationPassed": true,
+        "settlementAccepted": false,
+        "httpStatus": 402,
+        "errorReason": "invalid_exact_evm_signature",
+        "nonceUsed": false,
+        "occupiedBeforeRelease": "30000"
+      },
+      "scopeDifference": "Base M4 HTTP refusal and Ethereum M3 reverted token transaction are different experiments, not one fabricated combined run."
+    },
+    {
+      "id": "D07",
+      "step": "Budget rejection and safe release",
+      "slides": [
+        7
+      ],
+      "publicEvidence": [
+        "ethereum-m3:reject-over-budget",
+        "ethereum-m3:release-gamma"
+      ],
+      "occupiedAfterRelease": "100000",
+      "releasedStepStillUsed": true
+    },
+    {
+      "id": "D08",
+      "step": "Replay purchase/recovery/evidence/revoke locally",
+      "slides": [
+        12
+      ],
+      "command": "pnpm sdk:demo /absolute/new-output-directory",
+      "script": "mandate/examples/local-demo.ts",
+      "historicalCleanDemo": "artifacts/m6/sdk/clean-environment/summary.json",
+      "label": "real local EVM/HTTP execution with mock token; no new public payment; trusted fixture owner"
+    }
+  ],
+  "limitations": [
+    "Third-party RPC agreement/finalized tags are observations, not independent consensus verification.",
+    "Historical grants/funds may be expired/revoked/exhausted. A past successful purchase is not an active new authorization.",
+    "Controlled merchant/reference facilitator and fixture token on Ethereum are explicit; no third-party production merchant or mainnet claim.",
+    "Source paths preserve the historical versions of each experiment; this consolidation does not rewrite execution history.",
+    "Payment calldata/signatures and raw signed transactions are not exported; only input hashes and necessary public fields are retained.",
+    "This evidence index is not a recorded demo video, a final release freeze, an organizer confirmation or an independent audit."
+  ]
+}

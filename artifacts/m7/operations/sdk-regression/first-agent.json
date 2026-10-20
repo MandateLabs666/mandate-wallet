@@ -1,0 +1,288 @@
+{
+  "quote": {
+    "schemaVersion": 2,
+    "serviceId": "0xaaaebeba3810b1e6b70781f14b2d72c1cb89c0b2b320c43bb67ff79f562f5ff4",
+    "requirements": {
+      "scheme": "exact",
+      "network": "eip155:31337",
+      "asset": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+      "amount": "10000",
+      "payTo": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "maxTimeoutSeconds": 300,
+      "extra": {
+        "name": "USDC",
+        "version": "2",
+        "assetTransferMethod": "eip3009"
+      }
+    },
+    "requestHash": "0x3fa674511ee15aba3fc7bc98d58fe1ff258c8adb9ab8039f5719c8d45fd56682",
+    "quoteHash": "0xded995a9916d63f64d28a09b70ff2aa422a82271b0a1e1608354bc71ad0a3a8f",
+    "evidenceLevel": "standard-signed-offer",
+    "readyForRegistration": false,
+    "rootAvailable": "150000",
+    "grantAvailable": "150000"
+  },
+  "purchase": {
+    "agentId": "agent-a",
+    "chainId": 31337,
+    "createdAt": "2026-10-15T05:31:14.078Z",
+    "key": "31337:0xe7f1725e7734ce288f8367e1bb143e90bb3f0512:0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37:0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e",
+    "mandateId": "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37",
+    "paymentState": "paid",
+    "requestHash": "0x3fa674511ee15aba3fc7bc98d58fe1ff258c8adb9ab8039f5719c8d45fd56682",
+    "resultState": "unchecked",
+    "serviceState": "failed",
+    "stepId": "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e",
+    "updatedAt": "2026-10-15T05:31:14.185Z",
+    "version": 11,
+    "wallet": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+    "payment": {
+      "mandateId": "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37",
+      "policyVersion": "1",
+      "sessionId": "0x61f0ffa6b310744fb2869aa8b49390b907440c17341f41afc5971aac5aae9f40",
+      "sessionEpoch": "1",
+      "stepId": "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e",
+      "merchantId": "0x35b7289f73333871b968eb7a0064ec7deaa432461c89f27075568d2d370c4347",
+      "requestHash": "0x3fa674511ee15aba3fc7bc98d58fe1ff258c8adb9ab8039f5719c8d45fd56682",
+      "quoteHash": "0xded995a9916d63f64d28a09b70ff2aa422a82271b0a1e1608354bc71ad0a3a8f",
+      "to": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "value": "10000",
+      "validAfter": "0",
+      "validBefore": "1792042573",
+      "nonce": "0x89d5755ed1e92c946337f8178f207c5e1485461284eb34936b30873ee30c6162"
+    },
+    "preCheckpointRoot": "0x0f43a4f159aad0c7b2afe45f29dca10eab3e575ac2a8ca8d0f4bbabd31555f48",
+    "actionProof": {
+      "chainId": 31337,
+      "wallet": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+      "mandateId": "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37",
+      "sessionId": "0x61f0ffa6b310744fb2869aa8b49390b907440c17341f41afc5971aac5aae9f40",
+      "policyVersion": "1",
+      "sessionEpoch": "1",
+      "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "schemaVersion": 2,
+      "stepId": "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e",
+      "checkpointRoot": "0x0f43a4f159aad0c7b2afe45f29dca10eab3e575ac2a8ca8d0f4bbabd31555f48",
+      "registrationDigest": "0x177c153c23429c532a2c74f4e60b93cedcbd90fa9b5fc9207d7eb736b2bcecec",
+      "paymentDigest": "0xba9e5a9bdc526ccb2135b2091128726cc01d3cbeac14b4c586cd4ce1773c94f3",
+      "signature": "0x6a12018dbd7ef53eeeefc898a4d0b406de66fb2d225533609101fd1d0b1ef4f726d3171a9dd7fd868796e1cf60d9c6255e59f798001683cc5945007517fed7491c"
+    },
+    "evidenceStatus": "recorded",
+    "registrationHash": "0xe4fd9cd9089836e9cdfe865803208dc3534d09d194480d64b996585ac01f55b1",
+    "registrationBlock": "7",
+    "registrationBlockHash": "0x3e2a3815ef2a7e09278241a3176455f20d70ad76b96c796743fdea405ad9d286",
+    "lastHttpStatus": 500,
+    "settlementHash": "0x54aa21c927ef11a61e8ed88f84502aac960499f1e86e417c882a25ca68d07d46",
+    "errorCode": "SERVICE_HTTP_500",
+    "settlementBlockHash": "0xcfc2b2bc3532ca4b600b072110bfd535fb6b28023c9dbcb143513e94989089cd",
+    "receiptEvidence": {
+      "status": "incomplete",
+      "code": "MERCHANT_RECEIPT_NOT_PROVIDED",
+      "coversPaymentAmount": false,
+      "coversRequestBody": false,
+      "coversResultBody": false
+    }
+  },
+  "state": {
+    "schemaVersion": 2,
+    "task": {
+      "description": "Configured agent task",
+      "id": "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37",
+      "sessionId": "0x61f0ffa6b310744fb2869aa8b49390b907440c17341f41afc5971aac5aae9f40",
+      "startBlock": "3",
+      "template": {
+        "merchants": [
+          {
+            "id": "0x35b7289f73333871b968eb7a0064ec7deaa432461c89f27075568d2d370c4347",
+            "payTo": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+            "quoteSigner": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65"
+          }
+        ],
+        "steps": [
+          {
+            "id": "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e",
+            "merchantId": "0x35b7289f73333871b968eb7a0064ec7deaa432461c89f27075568d2d370c4347",
+            "requestHash": "0x3fa674511ee15aba3fc7bc98d58fe1ff258c8adb9ab8039f5719c8d45fd56682"
+          },
+          {
+            "id": "0x4cfb1c8699d277407517fe08cfe9434d6af9573d22d674332ba5a48c1bd37f65",
+            "merchantId": "0x35b7289f73333871b968eb7a0064ec7deaa432461c89f27075568d2d370c4347",
+            "requestHash": "0x8257e643d2b978833085b825849a8a1b0fd91601a760608c06d0bceec2a7bc78"
+          }
+        ]
+      }
+    },
+    "tasks": [
+      {
+        "description": "Configured agent task",
+        "id": "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37",
+        "sessionId": "0x61f0ffa6b310744fb2869aa8b49390b907440c17341f41afc5971aac5aae9f40",
+        "startBlock": "3",
+        "template": {
+          "merchants": [
+            {
+              "id": "0x35b7289f73333871b968eb7a0064ec7deaa432461c89f27075568d2d370c4347",
+              "payTo": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+              "quoteSigner": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65"
+            }
+          ],
+          "steps": [
+            {
+              "id": "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e",
+              "merchantId": "0x35b7289f73333871b968eb7a0064ec7deaa432461c89f27075568d2d370c4347",
+              "requestHash": "0x3fa674511ee15aba3fc7bc98d58fe1ff258c8adb9ab8039f5719c8d45fd56682"
+            },
+            {
+              "id": "0x4cfb1c8699d277407517fe08cfe9434d6af9573d22d674332ba5a48c1bd37f65",
+              "merchantId": "0x35b7289f73333871b968eb7a0064ec7deaa432461c89f27075568d2d370c4347",
+              "requestHash": "0x8257e643d2b978833085b825849a8a1b0fd91601a760608c06d0bceec2a7bc78"
+            }
+          ]
+        }
+      }
+    ],
+    "context": {
+      "schemaVersion": 2,
+      "agentId": "agent-a",
+      "wallet": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+      "chainId": 31337,
+      "asset": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+      "mandateId": "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37",
+      "sessionId": "0x61f0ffa6b310744fb2869aa8b49390b907440c17341f41afc5971aac5aae9f40",
+      "policy": {
+        "taskHash": "0xaaff8db9d0075498f192ae0ec43d6fe21a69fd8e7b121b5ae8b9ec569c9fab8a",
+        "budget": "150000",
+        "maxPerPayment": "100000",
+        "occupied": "10000",
+        "expiresAt": "1792045872",
+        "version": "1",
+        "paused": false,
+        "revoked": false,
+        "exists": true
+      },
+      "grant": {
+        "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+        "budget": "150000",
+        "maxPerPayment": "100000",
+        "occupied": "10000",
+        "expiresAt": "1792045872",
+        "policyVersion": "1",
+        "epoch": "1",
+        "revoked": false,
+        "exists": true
+      },
+      "rootAvailable": "140000",
+      "grantAvailable": "140000",
+      "walletBalanceAtomic": "990000",
+      "configuredServiceIds": [
+        "0xaaaebeba3810b1e6b70781f14b2d72c1cb89c0b2b320c43bb67ff79f562f5ff4",
+        "0xe98e2830be1a7e4156d656a7505e65d08c67660dc618072422e9c78053c261e9"
+      ],
+      "scopeNote": "Configured services are this Gateway's allowlist, not an enumeration of all on-chain grant steps. A purchase must satisfy both scopes. Available budget is a limit, not a funded balance.",
+      "identitySource": "gateway-configuration",
+      "fundAuthoritySource": "chain",
+      "ownerKeyHeldByGateway": false
+    },
+    "state": {
+      "schemaVersion": 2,
+      "mandateId": "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37",
+      "records": [
+        {
+          "actionProof": {
+            "chainId": 31337,
+            "checkpointRoot": "0x0f43a4f159aad0c7b2afe45f29dca10eab3e575ac2a8ca8d0f4bbabd31555f48",
+            "mandateId": "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37",
+            "paymentDigest": "0xba9e5a9bdc526ccb2135b2091128726cc01d3cbeac14b4c586cd4ce1773c94f3",
+            "policyVersion": "1",
+            "registrationDigest": "0x177c153c23429c532a2c74f4e60b93cedcbd90fa9b5fc9207d7eb736b2bcecec",
+            "schemaVersion": 2,
+            "sessionEpoch": "1",
+            "sessionId": "0x61f0ffa6b310744fb2869aa8b49390b907440c17341f41afc5971aac5aae9f40",
+            "signature": "0x6a12018dbd7ef53eeeefc898a4d0b406de66fb2d225533609101fd1d0b1ef4f726d3171a9dd7fd868796e1cf60d9c6255e59f798001683cc5945007517fed7491c",
+            "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+            "stepId": "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e",
+            "wallet": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512"
+          },
+          "agentId": "agent-a",
+          "chainId": 31337,
+          "createdAt": "2026-10-15T05:31:14.078Z",
+          "errorCode": "SERVICE_HTTP_500",
+          "evidenceStatus": "recorded",
+          "key": "31337:0xe7f1725e7734ce288f8367e1bb143e90bb3f0512:0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37:0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e",
+          "lastHttpStatus": 500,
+          "mandateId": "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37",
+          "payment": {
+            "mandateId": "0xb0a2c0aa9845b462abddc5cc570969902d447001f4b5be8e9004336a80e28e37",
+            "merchantId": "0x35b7289f73333871b968eb7a0064ec7deaa432461c89f27075568d2d370c4347",
+            "nonce": "0x89d5755ed1e92c946337f8178f207c5e1485461284eb34936b30873ee30c6162",
+            "policyVersion": "1",
+            "quoteHash": "0xded995a9916d63f64d28a09b70ff2aa422a82271b0a1e1608354bc71ad0a3a8f",
+            "requestHash": "0x3fa674511ee15aba3fc7bc98d58fe1ff258c8adb9ab8039f5719c8d45fd56682",
+            "sessionEpoch": "1",
+            "sessionId": "0x61f0ffa6b310744fb2869aa8b49390b907440c17341f41afc5971aac5aae9f40",
+            "stepId": "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e",
+            "to": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+            "validAfter": "0",
+            "validBefore": "1792042573",
+            "value": "10000"
+          },
+          "paymentState": "paid",
+          "preCheckpointRoot": "0x0f43a4f159aad0c7b2afe45f29dca10eab3e575ac2a8ca8d0f4bbabd31555f48",
+          "receiptEvidence": {
+            "code": "MERCHANT_RECEIPT_NOT_PROVIDED",
+            "coversPaymentAmount": false,
+            "coversRequestBody": false,
+            "coversResultBody": false,
+            "status": "incomplete"
+          },
+          "registrationBlock": "7",
+          "registrationBlockHash": "0x3e2a3815ef2a7e09278241a3176455f20d70ad76b96c796743fdea405ad9d286",
+          "registrationHash": "0xe4fd9cd9089836e9cdfe865803208dc3534d09d194480d64b996585ac01f55b1",
+          "requestHash": "0x3fa674511ee15aba3fc7bc98d58fe1ff258c8adb9ab8039f5719c8d45fd56682",
+          "resultState": "unchecked",
+          "serviceState": "failed",
+          "settlementBlockHash": "0xcfc2b2bc3532ca4b600b072110bfd535fb6b28023c9dbcb143513e94989089cd",
+          "settlementHash": "0x54aa21c927ef11a61e8ed88f84502aac960499f1e86e417c882a25ca68d07d46",
+          "stepId": "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e",
+          "updatedAt": "2026-10-15T05:31:14.193Z",
+          "version": 12,
+          "wallet": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+          "refresh": "chain-reconciled"
+        }
+      ],
+      "ownerRequests": []
+    },
+    "ownerRequests": [],
+    "owner": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "observedBlock": "8",
+    "observedAt": "1792042274",
+    "evidenceCapabilities": {
+      "verificationConfigured": true,
+      "disclosurePolicy": {
+        "request": true,
+        "result": true
+      }
+    },
+    "dataMode": "local-EVM-test",
+    "tokenDecimals": 6,
+    "services": [
+      {
+        "serviceId": "0xaaaebeba3810b1e6b70781f14b2d72c1cb89c0b2b320c43bb67ff79f562f5ff4",
+        "stepId": "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e",
+        "url": "http://127.0.0.1:61916/stats?asset=ETH",
+        "method": "GET"
+      },
+      {
+        "serviceId": "0xe98e2830be1a7e4156d656a7505e65d08c67660dc618072422e9c78053c261e9",
+        "stepId": "0x4cfb1c8699d277407517fe08cfe9434d6af9573d22d674332ba5a48c1bd37f65",
+        "url": "http://127.0.0.1:61916/stats?asset=BTC",
+        "method": "GET"
+      }
+    ],
+    "limits": [
+      "Gateway service allowlist is not the full chain grant scope.",
+      "Budget availability is not token cash.",
+      "Owner signing requires an external wallet; the server holds no owner key."
+    ]
+  }
+}

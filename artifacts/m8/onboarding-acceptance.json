@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-18T08:00:39.050385+00:00",
+  "baselineCommit": "3c5025273f01d665fabfd3c6a037236030cd66e5",
+  "sourceState": "Uncommitted workspace implementation; fingerprints below identify this iteration",
+  "status": "local-components-verified; public-native-and-consumer-release-pending",
+  "taskMapping": {
+    "T12": "in-progress",
+    "componentPassed": [
+      "T12.01",
+      "T12.02",
+      "T12.04",
+      "T12.05",
+      "T12.06",
+      "T12.07"
+    ],
+    "pending": [
+      "T12.03",
+      "T12.08"
+    ],
+    "baselineT0ToT11": "97/105 unchanged"
+  },
+  "tests": {
+    "onboarding": {
+      "passed": 10,
+      "total": 10,
+      "record": "tests.json"
+    },
+    "legacyDesktop": {
+      "passed": 4,
+      "total": 4,
+      "record": "desktop-regression.json"
+    },
+    "web": {
+      "passed": 26,
+      "total": 26,
+      "record": "web-regression.json"
+    },
+    "typecheck": "passed",
+    "officialMCPBValidation": {
+      "tool": "@anthropic-ai/mcpb@2.1.2",
+      "genericManifest": "passed",
+      "boundManifest": "passed",
+      "boundPackageFiles": 6,
+      "boundRequiredFileFields": 0
+    }
+  },
+  "browser": {
+    "languages": [
+      "zh-CN",
+      "en"
+    ],
+    "desktopWidth": 1280,
+    "narrowWidth": 390,
+    "narrowScrollWidth": 390,
+    "readonlyCheck": {
+      "passed": true,
+      "tools": 8,
+      "identityMatched": true,
+      "modelToolCalled": false
+    },
+    "hostPreview": "isolated temporary project; no personal configuration applied",
+    "screenshots": "../../docs/manual/capture-manifest.json"
+  },
+  "manual": {
+    "version": "2.2",
+    "pages": 37,
+    "mainSteps": 20,
+    "desktopManualSubsteps": 6,
+    "automaticGuidePages": 3,
+    "sourceImages": 35,
+    "usedImages": 20,
+    "minimumTextBottom": 68.61,
+    "layoutOverflow": false,
+    "allPagesRendered": true,
+    "allPagesVisuallyReviewed": true,
+    "sourceRebuild": "manual-verification.json"
+  },
+  "externalEffects": {
+    "newPublicTransactions": 0,
+    "mainnetTransactions": 0,
+    "personalHostConfigurationWrites": 0,
+    "personalClaudeExtensionChanges": 0,
+    "originalPort18742Reset": false,
+    "originalOrdersReplaced": false,
+    "localIsolatedTransactions": "test fixtures only; not public acceptance"
+  },
+  "limits": [
+    "New wizard public-testnet wallet deployment remains unverified.",
+    "Version 0.2 native host installation, enablement and model-driven purchase remain unverified.",
+    "Source prerequisites remain; no signed standalone installer or updater.",
+    "Stopping the local Anvil does not automatically restore its chain state.",
+    "Host configuration undo is retained only within the current page/process; backups support manual restore.",
+    "Local same-OS-user signers are not isolated from a malicious host.",
+    "Existing Sites, rc7 and competition media are unchanged."
+  ],
+  "sourceFingerprints": {
+    "Start Mandate Setup.command": "42b7ca40303a0e0be94c559e47a5f3ccd125fbac0ac485a9e42a265f4eec3214",
+    "mandate/desktop/cli.ts": "4815ff06490df048ea5e8b466334d87970caf3cc131b780338ff51ced6e07f58",
+    "mandate/desktop/connection.ts": "d5ff8633a561b28cc2a2f5248987a9b65695ff6bc341377cb990a1b3d679743a",
+    "mandate/desktop/manifest.json": "cd85ef916311428361a0388bab85794b3e5f96c61b2a21c4ed857cf6d2ee0b8e",
+    "mandate/onboarding/README.zh-CN.md": "016a85f07cb3b8cc02646a4ed8b3770a760331ff123e3305912ef632ff472ae7",
+    "mandate/onboarding/cli.ts": "c87b98ce4c1bfa2af8f8bce3094cd06ec33c385eacb29876a2b86f1f5767c3d4",
+    "mandate/onboarding/engine.ts": "bd36054ac043f8b2bbec03f31d6521e98a30efff4399bb20c7f7b19320aed8e9",
+    "mandate/onboarding/files.ts": "9b99f735f3b733c4e78f86e70ed96c4fe045a8a72ac12496dff7cb6f468c2e11",
+    "mandate/onboarding/hosts.ts": "828525c4c6afe8fc1a6ab3fdb7fa62c1870ac8db950185683e98aeb6679e1d14",
+    "mandate/onboarding/server.ts": "af4bf9ad876ca54b09c8e72af44a3062115ac6051df3f8ecfc2ba29ad1a62d04",
+    "mandate/onboarding/setup.test.ts": "6f5f88533d9fa0026138fb8cbae7287945cb2b1b94ce412d195b50f7687e7732",
+    "mandate/onboarding/vitest.config.ts": "f09d5c66b08368acd4e2610ebd819b1824427a5f0b5c456b80ac7f34a178d8c3",
+    "mandate/onboarding/web.ts": "f70a670022c258b219934db092f9d449f8df8e8ec252de947fb52ea97b2cfbfa",
+    "mandate/web/app.ts": "1d4b8809b6420e59c7676c6050067e09bc143df754e59c60d1920567a1421c10",
+    "mandate/web/server.ts": "fcead1f89d6dd987362cae5abeaefdfb2252173f0b44e5cae9ae7a50e7da3be3",
+    "mandate/web/static/app.html": "dcdb7450371e3775a3cd56a5441bc3812eaa55af18ea65855277caf0e468b5b6",
+    "mandate/web/static/index.html": "36719887fff2d57638f7dcb114ea5eefa58ce316cb7da4c6eba6015fa1f8b4c9",
+    "mandate/web/static/setup.html": "bfb9a9f6996008647e96157fcb2f86692d58943ed164a6c110e339971a561d36",
+    "mandate/web/static/styles.css": "0788dbf8e86f47eb3ba3bf056e80e1d588f96c1c1cf2d3c9791439f02fc1e990",
+    "package.json": "b64f0c867552fc854398ef2b3e3a478e47ef5aea274d03cad10ba63feecbbbf2",
+    "pnpm-lock.yaml": "c3195c8bc5b34464b774f1e8344ee58e8927ba6321511da811286cf0153c8d9b",
+    "scripts/build-case-guide.mjs": "a55faeac5bc7880a09b15ea2d731b7d17f843336bfe76843da7071b948ac4320",
+    "scripts/build-desktop-extension.mjs": "1c9d3df1071beae44a33cca44168dae591b9a9d5456feb0f419b9ab89e810dc4",
+    "scripts/m6-build-web.mjs": "59dd314e8b3e905110945b67e7642d22a121f06f0a70fed16a65190b34e7c52f"
+  },
+  "deliverables": {
+    "output/desktop/mandate-wallet-0.2.0.mcpb": {
+      "sha256": "f0b3f98f06f822699b332974099d582644729bc922e2456918da069dbd2d65dc",
+      "bytes": 351010
+    },
+    "output/pdf/mandate-wallet-manual.zh-CN.pdf": {
+      "sha256": "aa737472f232a3018c9fc5ca2e05b66b6790ab0df629890898f15d53840d647d",
+      "bytes": 3185868
+    },
+    "output/pdf/mandate-wallet-manual-source.zh-CN.zip": {
+      "sha256": "82c95964d864bf2c2a043febb475e4a2b6e12744873eda277f05f20a090ce448",
+      "bytes": 3193414
+    },
+    "docs/manual/capture-manifest.json": {
+      "sha256": "01dd6466168b42336c1bc73e2e07fd9281096b220a36ca6cde7d715e26e035d4",
+      "bytes": 45116
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 2,
+  "recordedAt": "2026-10-14T16:22:19.420117+00:00",
+  "T5": "completed",
+  "T6": "in-progress",
+  "M4": "in-progress",
+  "G3": "open",
+  "acceptedTasks": [
+    "T5.01",
+    "T5.02",
+    "T5.03",
+    "T5.04",
+    "T5.05",
+    "T5.06",
+    "T5.07",
+    "T5.08",
+    "T6.01",
+    "T6.02",
+    "T6.03",
+    "T6.05",
+    "T6.08"
+  ],
+  "pendingTasks": [
+    "T6.04",
+    "T6.06",
+    "T6.07"
+  ],
+  "publicRuntimeSourceCommits": [
+    "1e21136499977f0650e3f8f7891be34e9c535fcd",
+    "ba53e1d1f973426751b695900db490d93655b3e1"
+  ],
+  "localTests": 21,
+  "publicReceipts": 12,
+  "paidAtomic": "20000",
+  "actualModelHostTested": false,
+  "profileReadOnlyChecks": 2,
+  "evidenceSecretScan": "passed",
+  "evidenceSHA256": {
+    "artifacts/m4/base-sepolia-http.json": "a67b3d53d9632c0d0763028953b9bdfb7d3fb5507f2860911c160e8f4af32726",
+    "artifacts/m4/tests.json": "5016be025e99c227aafea470944f3a36746ab23ca2637932b8b5c4ff44bc9537",
+    "artifacts/m4/profile-readiness.json": "3bc6b9dcb523f847e7ab24185e5b8e6d37ab756c043db2e7e1bde33b03a06d08",
+    "artifacts/m4/bazaar-probe.json": "45e7e7cecd2123c1c1a3cc4e1abdb43c371573377f1a430ac3c675e8b7dfcc45",
+    "planning/M4_COMPATIBILITY.zh-CN.md": "c633097228f270c16eafa94008bd8d8d24be42d4a4e0807c8e182e3e80a57a10",
+    "mandate/gateway/README.zh-CN.md": "68074d64a4baa0606f3768f82e274797d2ea1feab430c8f1cc264b5d363b6e24",
+    "mandate/skills/mandate-purchase/SKILL.md": "a8cf81b29813797954f42d0e99740025212f3b2e7c0facbbb08676dc14338fbc",
+    "mandate/experiments/m4-profile-check.ts": "731014dff6479427992c008018716d69b9e92a174cbc3d91adc0a2826d39387c"
+  },
+  "limitations": [
+    "Controlled merchant HTTP runs on explicit loopback test origin; not a public HTTPS merchant.",
+    "Self-hosted fixed x402 reference facilitator; third-party facilitator not yet verified.",
+    "Third-party RPC response trust; two-provider consistency is not independent consensus verification.",
+    "MCP SDK/stdio tests are separate from Codex/Claude model task approval acceptance."
+  ]
+}

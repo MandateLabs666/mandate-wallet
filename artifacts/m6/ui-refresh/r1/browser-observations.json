@@ -1,0 +1,73 @@
+{
+  "source": "author-operated Codex in-app browser checks; not human UAT",
+  "homepage": {
+    "mobileMenuOpenedAndClosed": true,
+    "pauseAndResumeObserved": true,
+    "recoveryIllustration": {
+      "payment": "Paid · 0.01",
+      "service": "Failed · HTTP 500"
+    },
+    "revocationIllustration": {
+      "payment": "Rejected",
+      "service": "Not requested",
+      "availableAuthorization": "0.15"
+    },
+    "keyboardArrowLeftFromRevocationSelected": "recovery",
+    "fullPageScreenshotCapturedWithMotionPaused": true,
+    "reducedMotionBrowserEmulation": false
+  },
+  "workspace": {
+    "oneClickPublicLocalFixture": true,
+    "locateOnlyFocusedControlBeforePurchase": true,
+    "samePageLocatePreservedFetchedQuote": true,
+    "recoveredOriginalPaidOrderAfterPageReload": true,
+    "perServiceSelectionObserved": true,
+    "incompleteVerifierNotPromotedToComplete": true,
+    "stickyGuideObserved": true,
+    "nativeWalletOpened": false,
+    "browserConsoleErrorsAtFinalInspection": 0
+  },
+  "attempts": [
+    {
+      "kind": "local preview quote",
+      "result": "SIGNED_OFFER_EXPIRED",
+      "resolution": "restart own unused fixture and add preview-only empty-block clock; no policy renewal"
+    },
+    {
+      "kind": "same-page locate",
+      "result": "initial render cleared the visible fetched quote",
+      "resolution": "same-page locate no longer re-renders the workspace"
+    },
+    {
+      "kind": "full-page screenshot",
+      "result": "initial capture caught section-entry transitions",
+      "resolution": "retained initial capture privately; final full-page capture uses user-facing Pause motion, with readable static sections"
+    },
+    {
+      "kind": "scope test locator",
+      "result": "role locator did not find toggle controls in compact/expanded guide",
+      "resolution": "inspected actual DOM/native AX; returned to full guide and selected visible data-guide-service controls"
+    }
+  ],
+  "regressions": [
+    {
+      "scenario": "create",
+      "expectedUI": true,
+      "controlledProvider": true,
+      "nativeWallet": false,
+      "localOwnerTransactions": 1,
+      "tokenPayments": 0
+    },
+    {
+      "scenario": "review",
+      "expectedUI": true,
+      "controlledProvider": true,
+      "nativeWallet": false,
+      "localOwnerTransactions": 1,
+      "tokenPayments": 0
+    }
+  ],
+  "newPublicTransactions": 0,
+  "humanAcceptance": false,
+  "physicalMobile": false
+}

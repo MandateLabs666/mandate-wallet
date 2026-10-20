@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 2,
+  "recordedAt": "2026-10-14T13:52:57.066Z",
+  "transactionsSubmitted": 0,
+  "observations": [
+    {
+      "chainId": 11155111,
+      "readOnly": false,
+      "rpc": "https://ethereum-sepolia-rpc.publicnode.com",
+      "witnessRpc": "https://sepolia.drpc.org",
+      "anchor": {
+        "block": "11913581",
+        "hash": "0x26d85632bfa37d389a71a9508ef632ae0a3b0c995d48f3af5ba5ef504b0a769e"
+      },
+      "stateObservation": "common-finalized-block",
+      "asset": {
+        "address": "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238",
+        "decimals": 6,
+        "name": "USDC",
+        "version": "2",
+        "DOMAIN_SEPARATOR": "0xb90e5057db141a932946e64d09ccb7ffc9b00bd79fec26f698d29af0c83320a6",
+        "proxyCodeHash": "0xcd3f29e2ea9c61dadd48bfeaf8b2884b6de9dfee7bf45329452c4c33d0868ceb",
+        "implementation": "0xDa317C1d3E835dD5F1BE459006471aCAA1289068",
+        "implementationCodeHash": "0xf4898b096a273d86cda13cce6503404da4005565fae6026a94919b231229d85b"
+      },
+      "entryPoint": {
+        "address": "0x0000000071727De22E5E9d8BAf0edAc6f37da032",
+        "codeHash": "0x8db5ff695839d655407cc8490bb7a5d82337a86a6b39c3f0258aa6c3b582fc58",
+        "requiredForPurchase": false
+      },
+      "compatibilityProven": false
+    },
+    {
+      "chainId": 84532,
+      "readOnly": false,
+      "rpc": "https://sepolia.base.org",
+      "witnessRpc": "https://base-sepolia-rpc.publicnode.com",
+      "anchor": {
+        "block": "48108239",
+        "hash": "0x11386e7168ca8205df66abb8b15a939dc64f7b2189f9417ba0d1351ca5f2603d"
+      },
+      "stateObservation": "common-finalized-block",
+      "asset": {
+        "address": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+        "decimals": 6,
+        "name": "USDC",
+        "version": "2",
+        "DOMAIN_SEPARATOR": "0x71f17a3b2ff373b803d70a5a07c046c1a2bc8e89c09ef722fcb047abe94c9818",
+        "proxyCodeHash": "0xedc5281a85c0efecd49999a1ef668390c59b88702f2d4a07029d7f5d63059d6c",
+        "implementation": "0xd74cc5d436923b8ba2c179b4bCA2841D8A52C5B5",
+        "implementationCodeHash": "0x1254951e5483b882fd5def9452f58fe786eb3380c0bf9bb2744fa21a0a97a16c"
+      },
+      "entryPoint": {
+        "address": "0x0000000071727De22E5E9d8BAf0edAc6f37da032",
+        "codeHash": "0x8db5ff695839d655407cc8490bb7a5d82337a86a6b39c3f0258aa6c3b582fc58",
+        "requiredForPurchase": false
+      },
+      "compatibilityProven": false
+    },
+    {
+      "chainId": 8453,
+      "readOnly": true,
+      "rpc": "https://mainnet.base.org",
+      "witnessRpc": "https://base-rpc.publicnode.com",
+      "anchor": {
+        "block": "52597807",
+        "hash": "0xf04c263be90b34549b8030655b843ec154ec95b2eca382663d14dccb9c301f5c"
+      },
+      "stateObservation": "latest-per-provider (archive unavailable)",
+      "asset": {
+        "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        "decimals": 6,
+        "name": "USD Coin",
+        "version": "2",
+        "DOMAIN_SEPARATOR": "0x02fa7265e7c5d81118673727957699e4d68f74cd74b7db77da710fe8a2c7834f",
+        "proxyCodeHash": "0xa6705a10bb756b5dea144591118be77d7af0c3eee3bf2dfe2583dcb0364fefab",
+        "implementation": "0x2Ce6311ddAE708829bc0784C967b7d77D19FD779",
+        "implementationCodeHash": "0x11b75a237997ab8328f65b2d5a55c10f0346d0a175741ed42ddf4f2c66b9e873"
+      },
+      "entryPoint": {
+        "address": "0x0000000071727De22E5E9d8BAf0edAc6f37da032",
+        "codeHash": "0x8db5ff695839d655407cc8490bb7a5d82337a86a6b39c3f0258aa6c3b582fc58",
+        "requiredForPurchase": false
+      },
+      "compatibilityProven": false
+    }
+  ],
+  "limitations": [
+    "Third-party RPC observations; no independent consensus verification.",
+    "Metadata is not ERC-1271 or facilitator settlement proof.",
+    "Mainnet remains read-only."
+  ]
+}
