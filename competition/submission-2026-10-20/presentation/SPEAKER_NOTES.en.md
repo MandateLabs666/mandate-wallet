@@ -2,7 +2,7 @@
 
 Mandate Labs. Technical-documentation revision, 20 October 2026. The English narration below is the spoken script. Chinese directions and source lists are presenter references and are not read aloud. The 14 slide windows total 600 seconds. Timing is planned rather than measured from a live rehearsal.
 
-The script contains 1075 English words. Per-slide pacing includes pauses for diagrams, transitions and emphasis. The timing table in TIMING.zh-CN.md gives cumulative checkpoints.
+The script contains 1072 English words. Per-slide pacing includes pauses for diagrams, transitions and emphasis. The timing table in TIMING.zh-CN.md gives cumulative checkpoints.
 
 ## 01. Mandate Wallet (00:00-00:20)
 
@@ -93,9 +93,9 @@ Sources:
 
 ## 09. Research questions and implemented mechanisms (05:05-06:00)
 
-The earlier proposal asks how approved intent binds to an action, what evidence supports delegated-session accountability, and what remains observable when a host interferes. Mandate answers the first question with typed payment registration and shared reservations. Signed checkpoints, selective disclosures and ActionProof address the second. A reference controller and retained-head comparisons test a bounded part of the third. Echo supplies a separate repaired UserOperation and swap reference. The contribution is this implemented combination and its failure analysis. Scoped wallets already exist, and the current release covers only part of the proposal’s broader research agenda.
+The earlier proposal asks how approved intent binds to an action, what evidence supports delegated-session accountability, and what remains observable when a host interferes. Mandate answers the first question with typed payment registration and shared reservations. Signed checkpoints, selective disclosures and ActionProof address the second. A reference controller and retained-head comparisons test a bounded part of the third. The research contribution connects finite on-chain permissions to purchase evidence and tests the limits under concurrent requests, failed delivery and hostile host behavior. Scoped wallets already exist, and the current release covers only part of the proposal’s broader research agenda.
 
-讲解提示：三项研究问题分别对应授权约束、会话证据和宿主干预。说明 Echo 的基础作用与 Mandate 的新增实现，不把整个 proposal 的研究目标表述为既有成果。
+讲解提示：三项研究问题分别对应授权约束、会话证据和宿主干预。结合实现说明研究贡献，并区分已验证的机制与尚待完成的研究目标。
 
 Sources:
 - competition/submission-2026-10-20/documents/latex/sections/introduction.tex

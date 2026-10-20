@@ -1,8 +1,8 @@
 \section{Evaluation design and measured results}\label{sec:evaluation}
 \subsection{Questions, configurations and trial controls}
-The evaluation asks whether the implementation preserves financial limits when clients compete or bypass safeguards, recovers uncertain service outcomes without duplicate settlement, correctly grades disclosed evidence, and exposes the cost and limits of the reference controller. The frozen M7 protocol is \code{mandate-m7-r2} with seed \code{0x40271015}. Local trials use chain 31337, a controlled token, merchant and facilitator, and fresh storage/chain state. Baseline order rotates by case and repetition.\citep{eval}
+The evaluation asks whether the implementation preserves financial limits when clients compete or bypass safeguards, recovers uncertain service outcomes without duplicate settlement, correctly grades disclosed evidence, and exposes the cost and limits of the reference controller. The product-scoped protocol is \code{mandate-http-r3} with seed \code{0x40271015}. Local trials use chain 31337, a controlled token, merchant and facilitator, and fresh storage/chain state. Baseline order rotates by case and repetition.\citep{eval}
 
-B1 is the project's ordinary EOA x402 reference, including honest local aggregate spend controls and durable business idempotency. B2 uses Mandate financial constraints without session-evidence association. B3 adds linked checkpoints and separate-process verification. B4 adds the live same-host reference controller. B0 is repaired Echo performing a controlled swap through real EntryPoint handleOps. Because B0 performs a different task, its swap costs are not pooled with the HTTP baselines.
+B1 is the project's ordinary EOA x402 reference, including honest local aggregate spend controls and durable business idempotency. B2 uses Mandate financial constraints without session-evidence association. B3 adds linked checkpoints and separate-process verification. B4 adds the live same-host reference controller.
 
 \begin{table}[htbp]\centering\small
 \begin{tabularx}{\linewidth}{L{1.4cm}L{3.8cm}Y}\toprule
@@ -20,15 +20,15 @@ All four HTTP groups contain 30 tasks. The 120 tasks eventually reached paid/ret
 \begin{table}[htbp]\centering\small
 \begin{tabular}{lrrr}\toprule
 Group ($n=30$) & Gas/task P50 / P95 & Purchase ms P50 / P95 & Full-task ms P50 / P95\\\midrule
-B1 EOA & 84922 / 152732 & 25.49 / 46.16 & 27.33 / 48.03\\
-B2 Mandate & 572438 / 1110664 & 51.46 / 95.25 & 55.72 / 99.89\\
-B3 evidence & 572438 / 1110664 & 72.86 / 131.56 & 317.94 / 619.94\\
-B4 controller & 572438 / 1110664 & 115.82 / 213.08 & 399.33 / 752.50\\\bottomrule
+B1 EOA & 84922 / 152732 & 26.81 / 45.58 & 28.02 / 47.46\\
+B2 Mandate & 572438 / 1110640 & 54.84 / 101.12 & 59.36 / 108.12\\
+B3 evidence & 572438 / 1110640 & 80.06 / 137.53 & 337.25 / 625.65\\
+B4 controller & 572438 / 1110664 & 125.49 / 229.98 & 416.55 / 775.76\\\bottomrule
 \end{tabular}\caption{Recorded local HTTP results. Mixed P95 includes multi-payment tasks. Source: the frozen arithmetic/data audit.}\label{tab:performance}\end{table}
 
 For sorted measurements $x_{(1)},\ldots,x_{(n)}$, the audit uses nearest-rank $q_p=x_{(\lceil pn\rceil)}$. Per-case samples have $n=3$, so no stable population tail-latency inference follows. Full-task time includes post-checks and, where applicable, full export and a separate verifier process. Setup and secondary probes are excluded. Nested phase timings are not additive. These local times are not Base Sepolia latency, throughput or a production SLA.
 
-The reservation transaction increases cost relative to the EOA reference. B2--B4 have equal on-chain gas within this experiment because evidence/controller additions run off chain. Their larger full-task latency measures additional record and verification work. The result is a costed safety/evidence tradeoff, not a gas-saving claim.
+The reservation transaction increases cost relative to the EOA reference. B2--B4 have the same account execution path and median gas in this experiment because evidence/controller additions run off chain. Small per-trial differences reflect calldata byte costs. Their larger full-task latency measures additional record and verification work. The result is a costed safety/evidence tradeoff, not a gas-saving claim.
 
 B3 and B4 each produced 33 payment evidence bundles. Full/minimal byte medians were 22574/20962 for B3 and 29489/27877 for B4. Minimal disclosure retained required financial checks while leaving hidden result checks incomplete. The byte decrease measures serialization disclosure, not anonymity or a universal privacy score.
 
@@ -40,8 +40,8 @@ The audit verifies distinct calldata, an explicit invalidity predicate, expected
 Eight core/boundary stateful cases cover shared-budget competition, session subsets, same-step replay, preverify/revoke ordering, version replacement, uncertain occupancy and direct/bypass boundaries. Evidence tampering, retained-tail omission, unknown-tail omission and the controller cap have separate observations. Protocol categories and executed core cases are counted separately rather than labeling the same financial scenario three times as independent coverage.
 
 \subsection{Clean reproduction and review scope}
-The published initial source snapshot passed 16 phases in a new source directory outside the original project: pinned-source bootstrap, frozen dependency install, build/typecheck, formal contracts, SDK, services, evidence, Web, operations, Echo bootstrap/contracts/client, local end-to-end demo, onboarding build/tests and desktop tests. It passed 50 Solidity cases and 153 TypeScript tests. Two contract fuzz suites ran 10001 cases each, and the independent reservation invariant performed 8192 calls without a handler revert.\citep{repro}
+The current product regression covers the Mandate account, procurement prototype, SDK, services, evidence verifier, Web, operations, onboarding and desktop integration. The 23 account cases, 21 prototype cases and 148 TypeScript tests passed, along with build/typecheck and the local paid-failure/recovery/revocation demo. Two account fuzz suites ran 10001 cases each, and the account reservation invariant performed 8192 calls without a handler revert. The source reproduction record identifies the exact committed snapshot and independent checkout used for verification.\citep{repro}
 
 The reproduction used declared host toolchains and public caches. It did not copy personal runtime, keys or databases. An initial sandbox npm-resolution failure is retained separately from the successful same-lockfile network-enabled retry. Later document refinements are separately hashed and do not retroactively change the recorded video source.
 
-The original M7 static review triaged 113 initial signals and retained 112 after one Echo GCM-tag-policy repair. Later Web revisions retained their own dated rechecks, including 115 raw signals in the purchase-feedback scope. None is a zero-alert certification. New onboarding and recording changes have their stated regression scope; older static scans are not relabeled as a full scan of every subsequent line. External human audit and theorem-prover verification remain incomplete.
+The automated regression and source-verification results apply to the tested snapshot. They do not constitute a zero-alert security certification. External human audit and theorem-prover verification remain incomplete.

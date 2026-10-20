@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "envelopeHash": "0x27b389901d1848ed5f265bfe93ba8255a5ffb473a095179ba9b24c7c8bce07cb",
+  "envelopeHash": "0xf548ce503f0750794210eb6e833c746c1e4fbada243fbdbec258762a2901b22e",
   "scope": {
     "chainId": 31337,
     "wallet": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
@@ -11,29 +11,35 @@
     "signer": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
   },
   "mode": "live",
-  "now": 1792045555,
+  "now": 1792483414,
   "anchors": [
     {
       "sequence": "0",
-      "root": "0x97c90ddbbfc48d209aac2795ead75a3e2125cdc9983cfc6c65db583fb3167882",
+      "root": "0x65fa9c0069d26c72b6cc93f4b9aeb35a9753da03afa03a9ee823002845eda080",
       "stepId": "0x4cfb1c8699d277407517fe08cfe9434d6af9573d22d674332ba5a48c1bd37f65",
       "kind": "pre-payment"
     },
     {
       "sequence": "1",
-      "root": "0xef6439f7fdd38e6b42fe9a525bd78d792c58c117da19ccb980eca6acb8053a85",
+      "root": "0x1564761ea73ca3f5403a53624b40e3611b9ced5026ee5d47d13b993efa193f6c",
+      "stepId": "0x4cfb1c8699d277407517fe08cfe9434d6af9573d22d674332ba5a48c1bd37f65",
+      "kind": "decision"
+    },
+    {
+      "sequence": "2",
+      "root": "0x74e1b487d65b1f1fa9e474cb7dca0eb8385e519652971330c847dc63fd48ba4a",
       "stepId": "0x4cfb1c8699d277407517fe08cfe9434d6af9573d22d674332ba5a48c1bd37f65",
       "kind": "registration"
     },
     {
-      "sequence": "2",
-      "root": "0x1a411d71b664df6d5f9696741006a26c577e531412c451653a46e533ee5eda41",
+      "sequence": "3",
+      "root": "0x3554e070984ffbed8f1a5810dbedc3d316493ccb91d8c6887b678c95a102758c",
       "stepId": "0x4cfb1c8699d277407517fe08cfe9434d6af9573d22d674332ba5a48c1bd37f65",
       "kind": "payment"
     },
     {
-      "sequence": "3",
-      "root": "0xf565ce410218ad8476fd86dc76dac404a44397ed7b3f3f16590d25d7b4b7130a",
+      "sequence": "4",
+      "root": "0xaff152c092b41dc165a2fde233f9867002fe768e3260f9ad33bcdf2e9d618181",
       "stepId": "0x4cfb1c8699d277407517fe08cfe9434d6af9573d22d674332ba5a48c1bd37f65",
       "kind": "service"
     }

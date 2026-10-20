@@ -2,10 +2,9 @@
   "title": "Mandate Wallet",
   "team": "Mandate Labs",
   "date": "20 October 2026",
-  "revision": "technical-documentation-r2",
+  "revision": "mandate-product-scope-r4",
   "track": "Topic F: Agent Wallet",
-  "technicalDocumentationCommit": "3c34dd9d7e6ac73e9ccf1a85174399ca9d9de5ff",
-  "technicalDocumentationSHA256": "290591e9db34a54536f81c0085dffdd7159d267dc89732f5c32c3b6738a31b48",
+  "technicalDocumentationSHA256": "81d44f0b06d1b01a52da489ca6b90363dcb615c90f251b6085927be8f71bcb66",
   "slides": [
     {
       "id": "cover",
@@ -102,8 +101,8 @@
           "price of the ETH sample"
         ]
       ],
-      "wordCount": 46,
-      "impliedWordsPerMinute": 110.4,
+      "wordCount": 43,
+      "impliedWordsPerMinute": 103.2,
       "startSeconds": 100,
       "endSeconds": 125
     },
@@ -318,8 +317,8 @@
           "Strict expiry and unused token nonce"
         ]
       ],
-      "wordCount": 82,
-      "impliedWordsPerMinute": 123.0,
+      "wordCount": 80,
+      "impliedWordsPerMinute": 120.0,
       "startSeconds": 225,
       "endSeconds": 265
     },
@@ -366,8 +365,8 @@
       "id": "research",
       "title": "Research questions and implemented mechanisms",
       "seconds": 55,
-      "narration": "The earlier proposal asks how approved intent binds to an action, what evidence supports delegated-session accountability, and what remains observable when a host interferes. Mandate answers the first question with typed payment registration and shared reservations. Signed checkpoints, selective disclosures and ActionProof address the second. A reference controller and retained-head comparisons test a bounded part of the third. Echo supplies a separate repaired UserOperation and swap reference. The contribution is this implemented combination and its failure analysis. Scoped wallets already exist, and the current release covers only part of the proposal’s broader research agenda.",
-      "zhHint": "三项研究问题分别对应授权约束、会话证据和宿主干预。说明 Echo 的基础作用与 Mandate 的新增实现，不把整个 proposal 的研究目标表述为既有成果。",
+      "narration": "The earlier proposal asks how approved intent binds to an action, what evidence supports delegated-session accountability, and what remains observable when a host interferes. Mandate answers the first question with typed payment registration and shared reservations. Signed checkpoints, selective disclosures and ActionProof address the second. A reference controller and retained-head comparisons test a bounded part of the third. The research contribution connects finite on-chain permissions to purchase evidence and tests the limits under concurrent requests, failed delivery and hostile host behavior. Scoped wallets already exist, and the current release covers only part of the proposal’s broader research agenda.",
+      "zhHint": "三项研究问题分别对应授权约束、会话证据和宿主干预。结合实现说明研究贡献，并区分已验证的机制与尚待完成的研究目标。",
       "technicalSections": [
         "introduction",
         "analysis"
@@ -394,8 +393,8 @@
           "Reference controller and retained-head checks"
         ]
       ],
-      "wordCount": 94,
-      "impliedWordsPerMinute": 102.5,
+      "wordCount": 98,
+      "impliedWordsPerMinute": 106.9,
       "startSeconds": 305,
       "endSeconds": 360
     },
@@ -456,10 +455,10 @@
         "+ controller"
       ],
       "chartValues": [
-        27.33,
-        55.72,
-        317.94,
-        399.33
+        28.02,
+        59.36,
+        337.25,
+        416.55
       ],
       "wordCount": 90,
       "impliedWordsPerMinute": 98.2,
@@ -480,8 +479,8 @@
       ],
       "settlement": "https://sepolia.basescan.org/tx/0xc23d943b69c94a5a8468ab32ee9b454ab6b57f7681ba4b93f16e4d58ae840c5d",
       "revocation": "https://sepolia.basescan.org/tx/0x5ba3feb1febde1fc2637c524ac031aa17e0a9f583bf39fc843bb865162d69a6e",
-      "wordCount": 79,
-      "impliedWordsPerMinute": 105.3,
+      "wordCount": 77,
+      "impliedWordsPerMinute": 102.7,
       "startSeconds": 510,
       "endSeconds": 555
     },
@@ -507,5 +506,5 @@
     }
   ],
   "totalSeconds": 600,
-  "spokenWords": 1075
+  "spokenWords": 1072
 }

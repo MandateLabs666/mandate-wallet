@@ -10,7 +10,6 @@ N01—N06 是 ETH/BTC 分别按 1000、10000、100000 报价采购；N07 两个 
 
 | 基线 | 固定范围及公平条件 |
 | --- | --- |
-| B0 Echo repaired v2 | 真实 EntryPoint v0.7 handleOps+受控 swap，execute/session 各 5 次，输入 10000；总预算 150000。输出资产 18 位，按 fixture 价格兑换。只比较操作签名/限额/资金结果及单独 gas，不将其视为同一类付费 HTTP 任务 |
 | B1 普通 x402 EOA（本项目实现） | 同商户数据、价格、余额；开启 SDK 资产/单笔 spend controls，另有诚实客户端的本地累计预算与持久业务幂等。恶意宿主拥有 EOA key 时可绕过本地策略，须单独测直接签名；不推广为所有竞品性质 |
 | B2 Mandate 无证据关联 | 同一个正式合约/owner 范围/受限会话/共享预算/持久采购，关闭 checkpoint/ActionProof/controller；不删除链上约束 |
 | B3 Mandate 关联证据 | B2 加签名检查点、ActionProof、受控商户 offer/receipt 及独立 verifier；明确 HTTP 来源/无外部留存缺口 |

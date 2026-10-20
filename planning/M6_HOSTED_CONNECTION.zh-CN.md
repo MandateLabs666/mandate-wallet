@@ -1,6 +1,6 @@
 # M6 实际托管页面连接本机 Gateway
 
-2026-10-15（SG）。本批归属 T8.07/08/10 的集成证据；正式完成数仍 97/105，G3 开放。见[机器验收](../artifacts/m6/hosted-connection/r6/acceptance.json)和[当前发布](../artifacts/m6/publication-hosted-connection/acceptance.json)。
+2026-10-15（SG）。本批归属 T8.07/08/10 的集成证据；正式完成数仍 97/105，G3 开放。见机器验收（历史记录已归档；当前验收见源码交付说明）和[当前发布](../artifacts/m6/publication-hosted-connection/acceptance.json)。
 
 ## 实际问题和修复
 
@@ -31,7 +31,7 @@
 
 初始诊断有协议启动标识、访问头 Bearer 格式、清空隐藏输入框及未考虑平台脚本等实验器问题；一个独立浏览器初始化停滞，经进程树/网络状态检查后主动停止。原始记录保存在忽略的运行目录，脱敏[尝试索引](../artifacts/m6/hosted-connection/attempts.json)明确不计为通过；后续增加阶段记录和超时。最终源码快照、截图和结果独立保存。首批 r2 检查 334 个实际私有值变体；补强后的 r6 检查 339 个变体（含本次 Site 访问值），均通过。r2 验收器原始源码已按原指纹精确保留，未改写旧验收。
 
-补充 Semgrep 只复扫 67 个生产 TypeScript 文件，仍 67 个原始提示，按规则/路径计数无新增；合约源码 SHA 未变，复用此前 3/45 个合约提示结果，此次未重新扫描合约，也不代表没有告警。见[补充扫描](../artifacts/m7/security/hosted-connection-recheck/execution.json)。
+补充 Semgrep 只复扫 67 个生产 TypeScript 文件，仍 67 个原始提示，按规则/路径计数无新增；合约源码 SHA 未变，复用此前 3/45 个合约提示结果，此次未重新扫描合约，也不代表没有告警。见补充扫描（历史记录已归档；当前验收见源码交付说明）。
 
 ## 人工与版本边界
 

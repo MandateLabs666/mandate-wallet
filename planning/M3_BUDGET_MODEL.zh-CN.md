@@ -68,4 +68,4 @@ T3.01/04/06/08 验证转移及旧占用/step 不重置；T3.02/05 验证 chain/a
 
 前置资源快照见 [只读测试资源](../artifacts/preparation/testnet-resources.json)：它不授权追加资金、不证明支付兼容，也不替代自建节点 gate。Ethereum Sepolia 原生测试 USDC 目前没有余额；若选择该路线，另准备免费测试币与兼容性实测，不能把 MockUSDC 描述为原生 USDC。
 
-依据：[EIP-3009 标准](https://eips.ethereum.org/EIPS/eip-3009)、[固定 x402 EVM exact 规范](../vendor/x402/specs/schemes/exact/scheme_exact_evm.md)、[M1 支付兼容性](M1_COMPATIBILITY.zh-CN.md)。EIP-3009 中的付款字段与 x402 资源元数据分离，是请求用途边界的依据；本项目额外的注册和验证能力必须另行实现及实测。
+依据：[EIP-3009 标准](https://eips.ethereum.org/EIPS/eip-3009)、[固定 x402 EVM exact 规范](../vendor/x402/specs/schemes/exact/scheme_exact_evm.md)、[付款支持矩阵](../mandate/sdk/SUPPORT.zh-CN.md)。EIP-3009 中的付款字段与 x402 资源元数据分离，是请求用途边界的依据；本项目额外的注册和验证能力必须另行实现及实测。

@@ -38,7 +38,7 @@ security=root/'artifacts/m7/security/hosted-connection-recheck';scan=read(securi
 for p,h in scan['sourceFingerprint'].items():require(sha(root/p)==h,'SCANNED_SOURCE_CHANGED:'+p)
 rc6=read(root/'artifacts/competition/source-delivery/rc6/package.json');unchanged={}
 for p,item in rc6['fileManifest'].items():
-    if (p.endswith('.ts') and any(p.startswith(t+'/') for t in ['mandate/sdk','mandate/services','mandate/gateway','mandate/evidence','mandate/operations','echo/gateway']) and '/test/' not in p and '/dist/' not in p) or (p.endswith('.sol') and '/contracts/src/' in p):
+    if (p.endswith('.ts') and any(p.startswith(t+'/') for t in ['mandate/sdk','mandate/services','mandate/gateway','mandate/evidence','mandate/operations']) and '/test/' not in p and '/dist/' not in p) or (p.endswith('.sol') and '/contracts/src/' in p):
         require(sha(root/p)==item['SHA256'],'FINANCIAL_SOURCE_CHANGED_SINCE_RC6:'+p);unchanged[p]=item['SHA256']
 app=(root/'mandate/web/app.ts').read_text();reconstructed,n=re.subn(r',WEB_GATEWAY_CONNECTION_UNAVAILABLE:"[^"\n]*"','',app);require(n==1,'UNEXPECTED_GUIDANCE_CHANGE')
 reconstructed=reconstructed.replace('catch{throw new Error(operation==="connect"?"WEB_GATEWAY_CONNECTION_UNAVAILABLE":"WEB_OPERATION_UNAVAILABLE");}','catch{throw new Error("WEB_OPERATION_UNAVAILABLE");}')

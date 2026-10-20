@@ -12,7 +12,7 @@
 
 - [修复前后及实际钱包验收](../artifacts/m6/owner-concurrency/acceptance.json)，含源码指纹、测试结果与失败摘要。
 - [实际钱包快速演练](../artifacts/m6/owner-concurrency/wallet-smoke.json)，含确认后的 Owner 交易和采购状态。
-- [补充静态扫描](../artifacts/m7/security/web-owner-recheck/execution.json)：Slither 仍为 3/45 个信号；Semgrep 仍为 66 个文件、64 个信号、零解析错误；忽略行号变化后与原已处置信号集合完全一致。
+- 补充静态扫描（历史记录已归档；当前验收见源码交付说明）：Slither 仍为 3/45 个信号；Semgrep 仍为 66 个文件、64 个信号、零解析错误；忽略行号变化后与原已处置信号集合完全一致。
 
 复验命令：
 

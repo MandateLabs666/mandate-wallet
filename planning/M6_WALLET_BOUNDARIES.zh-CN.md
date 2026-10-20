@@ -27,7 +27,7 @@ EIP-1193 以 provider 可用账户及`accountsChanged`描述站点观察；本�
 
 早期无扩展截图处于 v1，后续 v2 由独立 r12 原生 Owner 暂停交易产生；各次显示探针自身均未改变状态。不能把两次 fixture 状态的差别归因于显示修复。
 
-8 项 Web 回归、TypeScript 和补充静态扫描通过；Slither 仍 3/45 个信号，Semgrep 仍 66 个文件/64 个信号且无解析错误，与既有处置集合一致。[扫描记录](../artifacts/m7/security/wallet-boundary-recheck/execution.json)。本次修复尚未进入 rc4 源码包或旧 private 托管部署，后续需更新交付候选及发布记录。
+8 项 Web 回归、TypeScript 和补充静态扫描通过；Slither 仍 3/45 个信号，Semgrep 仍 66 个文件/64 个信号且无解析错误，与既有处置集合一致。扫描记录（历史记录已归档；当前验收见源码交付说明）。本次修复尚未进入 rc4 源码包或旧 private 托管部署，后续需更新交付候选及发布记录。
 
 ## 保留的尝试与限制
 

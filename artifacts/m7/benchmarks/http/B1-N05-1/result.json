@@ -14,7 +14,7 @@
     "token": "0xd6b40f33e860018a45e653f01c1d087b943ec8a74ed471f3400f2d689dc3a87c",
     "mandateAccount": null
   },
-  "genesisTimestamp": 1792045538,
+  "genesisTimestamp": 1792483397,
   "clockMode": "wall-aligned-genesis-and-one-second-block-interval",
   "mode": "single",
   "dataset": "ETH",
@@ -34,24 +34,24 @@
     {
       "agent": 0,
       "stepId": "0x94f7f6da57943e98c53ab4d16894f1256f63e887d4a13ae2d6c4d3b447eddb3e",
-      "elapsedMs": 21.801166999997804,
+      "elapsedMs": 26.19895799999722,
       "payment": "paid",
       "service": "returned",
       "result": "valid",
-      "settlementHash": "0x59f11be89b3f7e2769f30477d50a910911497d5c6247278b10e2bb30c9240b8c",
+      "settlementHash": "0x977d1e915eb401b994023f6cc2420734808bb7a2d15cadaf8d55a7b3298884bc",
       "errorCode": null
     }
   ],
   "phasesMs": {
-    "clientHTTP": 14.49554199999693,
-    "agentSigning": 0.40470799999820883,
-    "facilitatorVerify": 2.71954199999891,
-    "facilitatorSettle": 8.926625000000058,
-    "postChecks": 1.115458000000217,
+    "clientHTTP": 17.87262499999997,
+    "agentSigning": 0.4398750000000291,
+    "facilitatorVerify": 3.075749999999971,
+    "facilitatorSettle": 10.786749999999302,
+    "postChecks": 1.657166999997571,
     "fullExport": 0,
     "independentVerification": 0,
-    "purchase": 21.809124999999767,
-    "total": 22.925875000000815
+    "purchase": 26.211999999999534,
+    "total": 27.87133299999914
   },
   "phaseCounters": {
     "clientHTTP": 2,
@@ -63,12 +63,12 @@
   "transactions": [
     {
       "kind": "settlement",
-      "hash": "0x59f11be89b3f7e2769f30477d50a910911497d5c6247278b10e2bb30c9240b8c",
+      "hash": "0x977d1e915eb401b994023f6cc2420734808bb7a2d15cadaf8d55a7b3298884bc",
       "blockNumber": "8",
-      "blockHash": "0x5d467d3ae40ef43b1d8522aa660d2594fbd60ac8bf8d9a512fd45fdf15cbc1d1",
-      "gasUsed": "84922",
-      "effectiveGasPrice": "1410033241",
-      "transactionFeeWei": "119742842892202",
+      "blockHash": "0xb0d819691a958baa65da6d540a8383677e1feac9026e746ff7467c7947a5cf00",
+      "gasUsed": "84934",
+      "effectiveGasPrice": "1410033194",
+      "transactionFeeWei": "119759759299196",
       "logs": [
         {
           "address": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
@@ -78,10 +78,10 @@
             "0x246eac08ff55730baca78b63d820f2bc3dcc7a096973b4785c57a748e63c74c1"
           ],
           "data": "0x",
-          "blockHash": "0x5d467d3ae40ef43b1d8522aa660d2594fbd60ac8bf8d9a512fd45fdf15cbc1d1",
+          "blockHash": "0xb0d819691a958baa65da6d540a8383677e1feac9026e746ff7467c7947a5cf00",
           "blockNumber": "8",
-          "blockTimestamp": "1792045546",
-          "transactionHash": "0x59f11be89b3f7e2769f30477d50a910911497d5c6247278b10e2bb30c9240b8c",
+          "blockTimestamp": "1792483405",
+          "transactionHash": "0x977d1e915eb401b994023f6cc2420734808bb7a2d15cadaf8d55a7b3298884bc",
           "transactionIndex": 0,
           "logIndex": 0,
           "removed": false
@@ -94,10 +94,10 @@
             "0x00000000000000000000000015d34aaf54267db7d7c367839aaf71a00a2c6a65"
           ],
           "data": "0x00000000000000000000000000000000000000000000000000000000000186a0",
-          "blockHash": "0x5d467d3ae40ef43b1d8522aa660d2594fbd60ac8bf8d9a512fd45fdf15cbc1d1",
+          "blockHash": "0xb0d819691a958baa65da6d540a8383677e1feac9026e746ff7467c7947a5cf00",
           "blockNumber": "8",
-          "blockTimestamp": "1792045546",
-          "transactionHash": "0x59f11be89b3f7e2769f30477d50a910911497d5c6247278b10e2bb30c9240b8c",
+          "blockTimestamp": "1792483405",
+          "transactionHash": "0x977d1e915eb401b994023f6cc2420734808bb7a2d15cadaf8d55a7b3298884bc",
           "transactionIndex": 0,
           "logIndex": 1,
           "removed": false
@@ -105,8 +105,8 @@
       ]
     }
   ],
-  "totalGasUsed": "84922",
-  "totalTransactionFeeWei": "119742842892202",
+  "totalGasUsed": "84934",
+  "totalTransactionFeeWei": "119759759299196",
   "evidence": [],
   "newPublicTransactions": 0,
   "setupExcluded": true,

@@ -41,7 +41,7 @@ export function bootLanding(){
     const box=canvas.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,1.75),w=box.width,h=box.height;if(!w||!h)return;
     if(canvas.width!==Math.round(w*dpr)||canvas.height!==Math.round(h*dpr)){canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);}
     ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);
-    const scale=Math.min(w/540,h/550,1.25),centerY=h*(w<600?.32:.48),mouseX=look.px*w,mouseY=look.py*h,points:{x:number;y:number;z:number;r:number;a:number;hot:number}[]=[],count=w<450?100:160;
+    const scale=Math.min(w/540,h/550,1.25),centerY=h*(w < 600 ? 0.32 : 0.48),mouseX=look.px*w,mouseY=look.py*h,points:{x:number;y:number;z:number;r:number;a:number;hot:number}[]=[],count=w<450?100:160;
     for(let layer=0;layer<3;layer++)for(let band=0;band<3;band++)for(let i=0;i<count;i++){
       const u=i/count*Math.PI*2+time*(layer===1?-.13:.1),radius=180+band*3,ax=.58+layer*.93+look.y*.35,ay=-.42+Math.sin(time*.16)*.14+look.x*.5;
       let x=Math.cos(u)*radius,y=Math.sin(u)*radius,z=Math.sin(u*4+band)*2;

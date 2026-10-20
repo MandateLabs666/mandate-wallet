@@ -43,7 +43,7 @@ MANDATE_BUILD_REPORT_DIR=.runtime/manual-build/web pnpm m6:build
 
 ## Claude Desktop 手动图形接入
 
-[本地扩展说明](../../mandate/desktop/README.zh-CN.md)及[可导入扩展包](../../output/desktop/mandate-wallet-0.1.0.mcpb)随项目交付。使用者在 Settings → Extensions → Advanced settings → Install extension 中选择文件，审核后安装，再选择既有 Agent 配置与匹配的私有连接文件；无需编辑 JSON 或复制令牌。扩展不会创建钱包或批准任务。
+[本地扩展说明](../../mandate/desktop/README.zh-CN.md)及`pnpm setup:build` 生成的本机桌面扩展随项目交付。使用者在 Settings → Extensions → Advanced settings → Install extension 中选择文件，审核后安装，再选择既有 Agent 配置与匹配的私有连接文件；无需编辑 JSON 或复制令牌。扩展不会创建钱包或批准任务。
 
 扩展通过官方 MCPB 2.1.2 格式校验，四项独立测试覆盖参数及凭据拒绝、工具列表、固定配置、模拟采购和原订单恢复。Claude Desktop 原生截图记录扩展入口、安装入口、聊天连接器入口和未发送的只读指令。该历史截图采集阶段没有执行安装。用户随后反馈已安装旧版 0.1.0 并选择文件，但截图显示尚未启用；新版 0.2.0 仍未在个人宿主中安装或完成模型调用验收。配置字段表明确标为对照说明，不伪装成界面截图。
 

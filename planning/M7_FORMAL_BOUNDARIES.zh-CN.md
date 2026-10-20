@@ -41,7 +41,7 @@ Agent 宿主可以掌握 session 私钥、绕开 SDK、并发请求、修改或�
 
 ## 3 状态、证据与最低披露
 
-**P8 付款、交付和结果检查相互独立。** SDK 付款确认要求 canonical 成功 receipt、足够确认数、目标 token 的匹配 AuthorizationUsed 及对应顺序内的 Transfer(from,to,value)，并读取 nonce。交易 hash 或 HTTP 200 本身不满足付款证明；token nonce 已用且找不到完整转账证据时为 consumed_unknown。服务 returned 表示观察到返回，result valid 仅表示已披露 payload 通过指定确定性 checker。N09 实际付款后 500，N10 服务处理后丢响应：均不生成新业务 nonce，重试对账原付款。Echo 另有实际外层成功/UserOperation 失败反例，不能用外层 receipt 成功替代 UserOp success。重组后原观察可能失效，须重新核对 canonical hash 并保留历史；M7 运维修复为新 canonical 付款之后重新记录 service 观察。
+**P8 付款、交付和结果检查相互独立。** SDK 付款确认要求 canonical 成功 receipt、足够确认数、目标 token 的匹配 AuthorizationUsed 及对应顺序内的 Transfer(from,to,value)，并读取 nonce。交易 hash 或 HTTP 200 本身不满足付款证明；token nonce 已用且找不到完整转账证据时为 consumed_unknown。服务 returned 表示观察到返回，result valid 仅表示已披露 payload 通过指定确定性 checker。N09 实际付款后 500，N10 服务处理后丢响应：均不生成新业务 nonce，重试对账原付款。重组后原观察可能失效，须重新核对 canonical hash 并保留历史；M7 运维修复为新 canonical 付款之后重新记录 service 观察。
 
 **P9 选择性披露完整性不等于来源真实性。** salt+Merkle 证明绑定披露字段与签名 checkpoint root，scope/序号/前根绑定有序前缀；ActionProof 关联 pre-payment root 与具体 R/D 及链上登记。验证器将 session 签名、owner scope、runtime、登记、预算、付款、商户声明及披露结果分别检查。修改已披露字段会使完整性验证失败；隐藏 request/result 只能确认被批准的 hash/财务关系，不能确认隐藏内容或 result valid。B3/B4 各 33 份付款证据全/最小披露实测、篡改探测均见 http 目录。ActionProof 是证据关联签名，没有被合约验证为整个 session-root gate。
 
@@ -57,7 +57,7 @@ B4 若审计者另外信任并固定独立留存头(sequence=n+1,root=hn+1)，�
 
 P1—P7 为授权安全论证，不保证任务一定完成。资金不足、owner 提款、并发签名器暂时 nonce 冲突、故障 RPC、facilitator 拒绝 ERC-1271、报价过期、商户不交付、审查交易、长时间重组都可以阻止完成。当前客户端保留确定业务 nonce 及已签交易，先对账再重试；不能从本地最终 120/120 成功推出所有网络条件下的 liveness 或有界完成时间。
 
-链 ID 及 EIP-712 域隔离不等于跨链共享预算。Base 和 Ethereum 各有账户状态及独立分配预算；没有桥接总预算协调器。对已部署 runtime 和资产 domain 的核查是必要前提，USDC 代理/实现升级可能改变验签行为，需要重新兼容性核查。Registry/Echo v2 swap 预算为实际输入支出，Mandate occupied 为保守付款承诺，两者不能混用会计意义。
+链 ID 及 EIP-712 域隔离不等于跨链共享预算。Base 和 Ethereum 各有账户状态及独立分配预算；没有桥接总预算协调器。对已部署 runtime 和资产 domain 的核查是必要前提，USDC 代理/实现升级可能改变验签行为，需要重新兼容性核查。Mandate occupied 表示保守保留的付款承诺，不能与已结算采购支出混用。
 
 签名不可伪造前提不保护被盗 owner。Owner 能够撤销/替换合法授权并提款；恶意宿主若能控制账户所有者批准界面、诱导签任意 owner 交易或读取同机管理钱包私钥，信任前提已被破坏。实际浏览器钱包与移动端完整管理流程仍待 T8.07/08/10，不能用测试 provider 关闭。网站 private 静态部署和 loopback 访问控制不等同于完成这些用户授权边界。
 
@@ -65,7 +65,7 @@ P1—P7 为授权安全论证，不保证任务一定完成。资金不足、own
 
 代码依据：mandate/contracts/src/MandateAccount.sol；mandate/sdk/{model,reader}.ts；mandate/services/{client,store,transactions}.ts；mandate/evidence/{checkpoint,action-proof,bundle,verifier,controller}.ts。
 
-可复核结果：artifacts/m7/benchmarks/{audit,acceptance}.json，stateful-final 的 8 个案例，http/B3-N03-0 及 B4-N03-0 的 tamper/tail/grinding，echo-final/samples.json；artifacts/m7/research/dataset-audit.json 及 10000 不同无效 calldata；artifacts/m7/operations 的 canonical reorg/真实 RPC/OS 恢复证据。性质与证据映射及源码 SHA 见 artifacts/m7/formal/acceptance.json。
+可复核结果：artifacts/m7/benchmarks/audit.json，stateful-final 的 8 个案例，http/B3-N03-0 及 B4-N03-0 的 tamper/tail/grinding；artifacts/m7/research/dataset-audit.json 及 10000 不同无效 calldata；artifacts/m7/operations 的 canonical reorg/真实 RPC/OS 恢复证据。当前实验记录及源码 SHA 分别列于各实验目录的 manifest.json。
 
 现有合约测试包括独立 reservation ledger invariant、actual transfer/cancellation、暂停/撤销/版本/严格到期/owner-only/domain 变化和跨账户域。有限随机/状态测试能发现反例、支持实现检查，不能代替对任意输入/执行序列的证明；本批不把 10000 个 eth_call 说成 10000 笔已挖出交易，也不把重跑同 seed 算成新增独立样本。
 

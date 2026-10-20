@@ -17,7 +17,7 @@
 | 源码/安全/执行证据 | 国际网页整体列为可选；附件清单列源码、README、仓库链接、部署/测试、安全自评和执行证据 | 完整交付这些资料；“整体可选”不解释为 Topic F 可以缺少链上证据。[附件](https://fintechathon.g-ican.com/templates/international-topics-rules-en.docx) |
 | 更新 | 附件明确截止前以最新收到版本为准，截止后不接受修改 | 截止前冻结提交 commit/依赖/部署/证据；入围后的展示更新规则须取得答复。[附件第 5 节](https://fintechathon.g-ican.com/templates/international-topics-rules-en.docx) |
 | 参赛资料 | 2—5 位成员、全日制境外院校、至少 60%非中国籍、每人仅一个队；主网页说明人数向上取整 | 4 人队伍需要至少 3 位符合该国籍条件的成员。实际报名及确认邮件是私有验收事项，不能根据本地文件认定外部提交无误。[国际规则](https://fintechathon.g-ican.com/#/en/rule) |
-| 复用/许可 | 国际规则要求第三方材料有使用授权，保持独立完成及真实信息 | 说明 Echo 复用、M2 修复、Mandate 新增及 proposal 研究方向；保留固定源码与许可，不声称提案中的全部成果已实现。[规则页](https://fintechathon.g-ican.com/#/en/rule) |
+| 复用/许可 | 国际规则要求第三方材料有使用授权，保持独立完成及真实信息 | 说明 Mandate 的实现范围和研究方向，保留上游依赖的源码及许可，不声称提案中的全部成果已实现。[规则页](https://fintechathon.g-ican.com/#/en/rule) |
 
 附件本地时间 23:59 与其括号内 16:00 UTC 有一分钟不一致；23:59 UTC+8 实际对应 15:59 UTC。以明确的 UTC+8 时间为准备基准，不使用错误的跨时区换算。该复查不安排个人工期，也不改变用户“只规划任务”的偏好。
 

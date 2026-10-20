@@ -9,7 +9,6 @@
 | Ethereum Sepolia TestUSDC＋正式钱包 | M3 链上结算已验收；M4 HTTP 采购本轮未单独实测，不能声称双链 HTTP 均通过 |
 | Base 主网/Bazaar 外部候选 | 可以只读展示/筛选；没有本轮主网付款授权，不自动付款 |
 | 第三方 facilitator | 未取得指定服务的认证/实际结算证据，标记待验证；不把参考实现成功外推 |
-| Echo 7702 作为此次原生 USDC x402 付款账户 | M1/T2 不兼容结果保持，Echo 修复的 4337 swap 与本路线独立 |
 | Permit2、ERC-7710、ERC-6492/wrapped signature、auth-capture/upto、未知 chain/asset/domain | 本轮首版不支持；筛选/签名/广播入口明确拒绝 |
 | 标准 Signed Offers & Receipts | 留待 M5/T7；本轮内部 MandateQuote 不冒充该标准 |
 | 通用私有服务结果输出 | 保留结果摘要；需要用户批准的数据投影。固定公开 ETH/BTC fixture 通过检查后提供四字段 validatedResultSummary |

@@ -1,7 +1,5 @@
 {
   "schemaVersion": 1,
-  "currentSourceCandidate": "artifacts/competition/source-delivery/submission20261020/acceptance.json",
-  "kind": "20 October submission preparation; official submission not sent",
   "primary": {
     "report": "competition/submission-2026-10-20/documents/latex/main.tex",
     "security": "competition/submission-2026-10-20/documents/latex/security.tex",
@@ -14,10 +12,10 @@
     "deckSource": "competition/submission-2026-10-20/presentation/content.json",
     "speakerScript": "competition/submission-2026-10-20/presentation/SPEAKER_NOTES.en.md",
     "deckGuide": "competition/submission-2026-10-20/presentation/README.en.md",
-    "video": "competition/video/claude-desktop-base-v1/mandate-base-sepolia-demo.silent.mp4",
-    "videoSource": "competition/video/claude-desktop-base-v1/demo-edit.json",
-    "transcript": "competition/video/claude-desktop-base-v1/VOICEOVER.en.md",
-    "captions": "competition/video/claude-desktop-base-v1/captions.en.srt",
+    "video": "competition/video/claude-desktop-base-v1/mandate-base-sepolia-demo.mp4",
+    "videoSource": "competition/video/claude-desktop-base-v1/demo-edit.voiced.json",
+    "transcript": "competition/video/claude-desktop-base-v1/VOICEOVER.voiced.en.md",
+    "captions": "competition/video/claude-desktop-base-v1/captions.voiced.en.srt",
     "videoGuide": "competition/video/claude-desktop-base-v1/README.zh-CN.md",
     "deckPDF": "competition/submission-2026-10-20/presentation/mandate-wallet-10min.pdf",
     "technicalPDF": "competition/submission-2026-10-20/documents/mandate-wallet-technical-documentation.pdf",
@@ -29,7 +27,10 @@
     "latexSourcePackage": "competition/submission-2026-10-20/documents/mandate-wallet-latex-sources.zip",
     "documentationValidation": "competition/submission-2026-10-20/documents/latex-validation.json",
     "presentationTiming": "competition/submission-2026-10-20/presentation/TIMING.zh-CN.md",
-    "presentationRevision": "competition/submission-2026-10-20/presentation/revision.json"
+    "presentationRevision": "competition/submission-2026-10-20/presentation/revision.json",
+    "videoAcceptance": "competition/video/claude-desktop-base-v1/delivery-check.json",
+    "videoAudioEdit": "competition/video/claude-desktop-base-v1/voiceover-edit.json",
+    "videoSourceMap": "competition/video/claude-desktop-base-v1/video-source-map.voiced.json"
   },
   "websiteSource": [
     "mandate/web/static/index.html",
@@ -37,170 +38,25 @@
     "mandate/web/static/app.html",
     "mandate/web/app.ts"
   ],
-  "historical": [
-    {
-      "path": "competition/presentation/mandate-wallet-v2.pptx",
-      "scope": "original accepted deck; superseded as primary by v3"
-    },
-    {
-      "path": "competition/video/mandate-wallet-demo-v1.mp4",
-      "scope": "fixture-owner recording; no native external-wallet confirmation"
-    },
-    {
-      "path": "competition/video/TRANSCRIPT.en.md",
-      "scope": "v1 transcript, not current video"
-    },
-    {
-      "path": "competition/video/mandate-wallet-demo-v1.srt",
-      "scope": "v1 stage captions"
-    },
-    {
-      "path": "competition/video/content.json",
-      "scope": "v1 narrative source"
-    },
-    {
-      "path": "artifacts/competition/source-delivery/rc2/package.json",
-      "scope": "exact older source commit; does not contain subsequent repairs"
-    },
-    {
-      "path": "artifacts/m6/publication/deployment.json",
-      "scope": "owner-private historical hosted source; not the current local Web revision"
-    },
-    {
-      "path": "artifacts/competition/source-delivery/rc4/acceptance.json",
-      "scope": "exact older reproduced source; superseded as current engineering candidate by rc5"
-    },
-    {
-      "path": "artifacts/m6/publication-refresh/acceptance.json",
-      "scope": "owner-private c9bb738 frontend superseded by purchase-feedback revision"
-    },
-    {
-      "path": "artifacts/competition/source-delivery/rc5/acceptance.json",
-      "scope": "exact older reproduced source before purchase-feedback and cash-preflight changes; superseded by rc6"
-    },
-    {
-      "path": "artifacts/m6/publication-purchase-feedback/acceptance.json",
-      "scope": "owner-private e305503 frontend before hosted connection guidance; included in rc6"
-    },
-    {
-      "path": "artifacts/m6/publication-hosted-connection/acceptance.json",
-      "scope": "owner-private bfa7fe8 frontend before the created-task handoff repair"
-    },
-    {
-      "path": "artifacts/competition/source-delivery/rc6/acceptance.json",
-      "scope": "exact earlier reproduced source before hosted connection guidance and created-task handoff repair; superseded by rc7"
-    },
-    {
-      "path": "competition/presentation/mandate-wallet-v3.pptx",
-      "scope": "previous accepted deck; superseded as primary by v4-copy editorial revision; original evidence retained"
-    },
-    {
-      "path": "competition/submission-2026-10-20/material-check.json",
-      "scope": "Validation of the earlier deck and materials before technical-documentation-r2; current authoring diagnostics retained privately."
-    }
-  ],
   "mainnetPaymentsAuthorized": false,
   "formalSubmissionAuthorized": false,
   "humanWalletUsabilityAccepted": false,
   "thirdPartyHumanAudit": false,
   "finalVersionFrozen": false,
-  "currentHostedSite": "artifacts/m6/publication-created-task/deployment.json",
-  "currentHostedAcceptance": "artifacts/m6/publication-created-task/acceptance.json",
-  "currentHostedConnection": null,
-  "retainedHostedConnection": {
-    "acceptance": "artifacts/m6/hosted-connection/r6/acceptance.json",
-    "sourceCommit": "90062a75edd5772b2284565f380e6462b23ae3be",
-    "scope": "exact earlier connection-guidance source; does not validate the current hosted revision"
-  },
-  "currentHostedConnectionStatus": "pending authorized native-wallet/transport recheck",
-  "latestNativeRabbyLocalFlow": "artifacts/m6/rabby-wallet/full-flow-r1/acceptance.json",
-  "latestCreatedTaskFix": "artifacts/m6/created-task/r1/acceptance.json",
-  "localWebPreview": {
-    "status": "Current local source included in accepted public code snapshot; hosted site remains an earlier revision",
-    "origin": "http://127.0.0.1:18742",
-    "evidence": "artifacts/m6/ui-refresh/r7-copy/acceptance.json",
-    "publishedToSites": false,
-    "includedInCurrentSourceCandidate": true,
-    "currentHostedSiteUsesEarlierUI": true,
-    "lastFullMaterialAuditBeforeThisIteration": "artifacts/competition/material-review/r15/acceptance.json",
-    "visualReference": "Echo website; monochrome, silver and blue. Deye is guidance behavior only.",
-    "brandAssets": {
-      "icon": "mandate/web/brand/mark.svg",
-      "wordmark": "mandate/web/brand/wordmark.svg",
-      "lockup": "mandate/web/brand/lockup.svg"
-    },
-    "languages": [
-      "en",
-      "zh-CN"
-    ],
-    "documentationSections": 13,
-    "contractSourceDistribution": {
-      "archive": "mandate/web/static/mandate-contracts-v2.zip",
-      "manifest": "mandate/web/static/contracts-release.json",
-      "license": "MIT",
-      "archiveSHA256": "91dbc2d29ebaaf37985275c5dc3aeffbc84a1ff9eeb9a1f193243da06b8cb5ec",
-      "githubPublished": true,
-      "repository": "https://github.com/MandateLabs666/mandate-wallet",
-      "awaiting": null,
-      "standaloneContractTestsPassed": 23
-    },
-    "interactiveWalkthrough": {
-      "url": "http://127.0.0.1:18742/walkthrough.html",
-      "stages": 7,
-      "mode": "illustration only; no Gateway, wallet or transaction calls",
-      "languages": [
-        "en",
-        "zh-CN"
-      ],
-      "purpose": "Explain limited agent procurement, budget reservation, payment/delivery/result separation, same-order recovery and revocation"
-    },
-    "guidanceFix": "Stable compact guide with explicit details; scroll never changes mode; immediate unobscured control placement; quote/run actions and retained quote placed at card top",
-    "latestLocalBrowserFlow": {
-      "evidence": "artifacts/m6/ui-refresh/r6/recovered-order.json",
-      "chainId": 31337,
-      "asset": "mintable mock USDC",
-      "chargedAtomic": "10000",
-      "service": "ETH statistics",
-      "sameOrderRecovery": true,
-      "result": "valid",
-      "verification": "Required financial/record checks passed; HTTPS source and unobserved history remain incomplete",
-      "publicNetworkUsed": false
-    },
-    "previousBehaviorEvidence": "artifacts/m6/ui-refresh/r6/acceptance.json"
-  },
-  "editorialRevision": {
-    "date": "2026-10-17",
-    "evidence": "artifacts/editorial/2026-10-17/review.json",
-    "scope": "Chinese website copy, project-authored Chinese guides/plans, English report passages, and English presentation text/notes",
-    "recordedVideosUnchanged": true,
-    "historicalSourceArchivesUnchanged": true,
-    "fullMaterialAuditRefreshed": false,
-    "finalSubmissionFrozen": false
-  },
-  "sourceCandidateStatus": "16 clean-source phases passed; later material-only publication delta separately scanned",
-  "currentNativeClaudeCase": "competition/video/claude-desktop-base-v1/execution-evidence/run.json",
-  "videoVoiceOver": "pending user recording",
-  "currentNativeRabbyStatus": "Recorded Base Sepolia path passed; full usability/device gate remains open",
+  "project": "Mandate Wallet",
   "sourceRepository": {
     "url": "https://github.com/MandateLabs666/mandate-wallet",
-    "testedSourceCommit": "29d10422954d36f0e37c2d89336986d10d014aba",
-    "officialSubmissionSent": false,
-    "documentationCommit": "3c34dd9d7e6ac73e9ccf1a85174399ca9d9de5ff"
+    "testedSourceCommit": null
   },
+  "currentSourceCandidate": "artifacts/competition/source-delivery/mandate-only-20261020/acceptance.json",
+  "currentNativeClaudeCase": "competition/video/claude-desktop-base-v1/execution-evidence/run.json",
+  "videoVoiceOver": "completed; user narration denoised and mixed, 263.4-second final video",
   "documentationRevision": {
     "date": "2026-10-20",
-    "format": "LaTeX and BibTeX; native TikZ diagrams",
-    "technicalPages": 28,
-    "technicalFigures": 7,
-    "teamInformation": "all four members, advisor and academic contact details from registration",
-    "sourceCommit": "29d10422954d36f0e37c2d89336986d10d014aba",
-    "historicalMarkdownReportsRetained": true,
-    "officialSubmissionSent": false,
-    "publication": {
-      "status": "published and remote verified",
-      "commit": "3c34dd9d7e6ac73e9ccf1a85174399ca9d9de5ff",
-      "record": "artifacts/competition/documentation-latex-r1/publication-status.json"
-    }
+    "format": "LaTeX, BibTeX and native TikZ diagrams",
+    "scope": "Mandate account, service procurement, agent integration, evidence and evaluation"
   },
-  "presentationRevision": "competition/submission-2026-10-20/presentation/revision.json"
+  "presentationRevision": "competition/submission-2026-10-20/presentation/revision.json",
+  "submissionDownload": "https://github.com/MandateLabs666/mandate-wallet/releases/download/submission-2026-10-20/Mandate_Labs_FinTechathon_2026_Submission.zip",
+  "officialSubmissionSent": false
 }

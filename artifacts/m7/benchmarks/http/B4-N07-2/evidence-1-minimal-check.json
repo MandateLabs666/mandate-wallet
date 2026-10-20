@@ -2,7 +2,7 @@
   "exitCode": 0,
   "report": {
     "schemaVersion": 2,
-    "observedAt": "2026-10-15T06:25:55.575Z",
+    "observedAt": "2026-10-20T08:03:35.242Z",
     "checks": [
       {
         "name": "checkpoint-integrity",
@@ -10,7 +10,7 @@
         "source": "session-signatures-and-salted-Merkle",
         "guarantee": "Disclosed fields match signed ordered checkpoints; hidden fields are not checked",
         "facts": {
-          "checkpoints": 4
+          "checkpoints": 5
         }
       },
       {
@@ -19,8 +19,8 @@
         "source": "pinned-controller-signatures-and-independent-retention",
         "guarantee": "offered checkpoints match independently retained roots in the trusted snapshot",
         "facts": {
-          "count": 4,
-          "lastSequence": "3",
+          "count": 5,
+          "lastSequence": "4",
           "mode": "live",
           "guarantee": "offered checkpoints match independently retained roots in the trusted snapshot",
           "limits": [
@@ -49,8 +49,8 @@
         "source": "canonical-registration-and-pinned-wallet-code",
         "guarantee": "Exact transaction, session signature, owner scope, validity and budget checks at the registration block",
         "facts": {
-          "registrationHash": "0xdd57b182f7e2aeb2cfce70bd4b03e2fd4b1e3686e495a5eaa843c81af6a434a9",
-          "blockHash": "0x99973f6eec52b42db7071b392347aa22f649cb3b29779bae2597b3c562d945d2",
+          "registrationHash": "0xc958ae618061e6aff559c9ecdb27950380d4db1bb2d7a9dac6137c9e06c20488",
+          "blockHash": "0xdb3c5d7f4667afd0707c12ba1feac825499a09d84de503d4bc4cae91c2289449",
           "providers": 1
         }
       },
@@ -71,7 +71,7 @@
         "source": "canonical-token-AuthorizationUsed-and-matching-Transfer",
         "guarantee": "Actual payer, recipient, nonce and amount agree; delivery remains a separate check",
         "facts": {
-          "transaction": "0x73bc7407cd0b272f233b6928d3377166ce7bcef6f4441708e890de9163852d1d",
+          "transaction": "0x0b3e5ed3a10bb04d5308da4d72a8dc7fa0f78f85f52ffa972a0982173a31205d",
           "paidAtomic": "10000",
           "providers": 1
         }
@@ -128,7 +128,7 @@
   "privateRuntimeInputs": [],
   "processSeparate": true,
   "managementIsolation": false,
-  "bytes": 27877,
-  "elapsedMs": 257.09737499999756,
+  "bytes": 33687,
+  "elapsedMs": 283.1004999999932,
   "excludedFromPrimaryTiming": true
 }

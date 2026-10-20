@@ -1,6 +1,6 @@
 # Mandate 正式协议
 
-本目录属于 M3 及后续正式实现；T2 原型保留在根目录 contracts/packages，Echo 修复保留在 echo。实现规格见[正式 M3 规格](../planning/M3_SPEC.zh-CN.md)，验收见[M3 记录](../planning/M3_ACCEPTANCE.zh-CN.md)。
+本目录属于 M3 及后续正式实现；T2 原型保留在根目录 contracts/packages。实现规格见[正式 M3 规格](../planning/M3_SPEC.zh-CN.md)，验收见[M3 记录](../planning/M3_ACCEPTANCE.zh-CN.md)。
 
 `contracts/`提供固定 owner、asset、chain 的 MandateAccount 与无升级管理权限的 MandateFactory。`sdk/`提供统一 ABI、付款/报价 typed data、nonce、owner 待签动作、预算查询、登记后付款数据与真实转账对账。标准 65 字节付款签名仅在已有链上预算承诺和最新权限均满足时有效。完整 Agent 入口、商户客户端和 Web App 由后续阶段验收。
 

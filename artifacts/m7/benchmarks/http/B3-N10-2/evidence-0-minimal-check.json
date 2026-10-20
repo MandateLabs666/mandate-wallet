@@ -2,7 +2,7 @@
   "exitCode": 0,
   "report": {
     "schemaVersion": 2,
-    "observedAt": "2026-10-15T06:26:12.893Z",
+    "observedAt": "2026-10-20T08:03:51.843Z",
     "checks": [
       {
         "name": "checkpoint-integrity",
@@ -32,8 +32,8 @@
         "source": "canonical-registration-and-pinned-wallet-code",
         "guarantee": "Exact transaction, session signature, owner scope, validity and budget checks at the registration block",
         "facts": {
-          "registrationHash": "0x98f27483732c3a777bd71dd312775683c36d9922b59242278e57f9670c8d102c",
-          "blockHash": "0xe58edc0b3ca4ccd1d2e68981be1d20e6c11e6b1cc3523c5a856f008c0632a905",
+          "registrationHash": "0xbee7f975c06534e29db7d462a8e4aedb2ad835c2c4323bcd5677c103591ed7a4",
+          "blockHash": "0x24dc061d61a83bae0f61977c6c8c03ff62f8c970b8799bc8492ef9e218f07c68",
           "providers": 1
         }
       },
@@ -54,7 +54,7 @@
         "source": "canonical-token-AuthorizationUsed-and-matching-Transfer",
         "guarantee": "Actual payer, recipient, nonce and amount agree; delivery remains a separate check",
         "facts": {
-          "transaction": "0x7f9423166d9bb016da89fb956a06d06bfa1bf0afe0e519f8447cffc7aeca9d65",
+          "transaction": "0x0a19b52f6702810de1b4c64109a50a91318822629a944b679fcc7c8f32c102a3",
           "paidAtomic": "10000",
           "providers": 1
         }
@@ -112,6 +112,6 @@
   "processSeparate": true,
   "managementIsolation": false,
   "bytes": 25059,
-  "elapsedMs": 242.63670799999818,
+  "elapsedMs": 245.01375000000553,
   "excludedFromPrimaryTiming": true
 }

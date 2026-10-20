@@ -1,0 +1,1180 @@
+{
+  "schemaVersion": 1,
+  "scope": "Mandate account and current TypeScript application targets, including onboarding and desktop integration",
+  "tools": {
+    "Slither": {
+      "analysisCompleted": true,
+      "rawFindings": 3
+    },
+    "Semgrep": {
+      "analysisCompleted": true,
+      "rawFindings": 131,
+      "filesScanned": 81,
+      "parseErrors": 0
+    }
+  },
+  "reviews": [
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 26,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 29,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 31,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 33,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 34,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 36,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 38,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 39,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 42,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 46,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 47,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 49,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 51,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 53,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 54,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 57,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 58,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 59,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 60,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 61,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 64,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 65,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 67,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 68,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 71,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 72,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 77,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 79,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 80,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.audit.detect-non-literal-require.detect-non-literal-require",
+      "path": "mandate/evidence/verifier.ts",
+      "line": 82,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The verifier uses a local assertion helper named require. These calls check predicates and do not invoke Node module loading."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.typescript.mcp.security.mcp-ssrf-typescript.mcp-ssrf-typescript",
+      "path": "mandate/gateway/mcp.ts",
+      "line": 10,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The MCP registration dispatches to GatewayTools.call, which parses the fixed tool schema and resolves requests through the owner-configured purchase profile and service network policy. The Agent cannot supply an arbitrary destination URL through this handler."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 46,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 47,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 47,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-document-method.insecure-document-method",
+      "path": "mandate/onboarding/web.ts",
+      "line": 50,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-innerhtml.insecure-innerhtml",
+      "path": "mandate/onboarding/web.ts",
+      "line": 50,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-document-method.insecure-document-method",
+      "path": "mandate/onboarding/web.ts",
+      "line": 56,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-innerhtml.insecure-innerhtml",
+      "path": "mandate/onboarding/web.ts",
+      "line": 56,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 56,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 57,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 58,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 58,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 62,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 62,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 62,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-document-method.insecure-document-method",
+      "path": "mandate/onboarding/web.ts",
+      "line": 63,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-innerhtml.insecure-innerhtml",
+      "path": "mandate/onboarding/web.ts",
+      "line": 63,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 63,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 63,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-document-method.insecure-document-method",
+      "path": "mandate/onboarding/web.ts",
+      "line": 66,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-innerhtml.insecure-innerhtml",
+      "path": "mandate/onboarding/web.ts",
+      "line": 66,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 66,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-document-method.insecure-document-method",
+      "path": "mandate/onboarding/web.ts",
+      "line": 68,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-innerhtml.insecure-innerhtml",
+      "path": "mandate/onboarding/web.ts",
+      "line": 68,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 68,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-document-method.insecure-document-method",
+      "path": "mandate/onboarding/web.ts",
+      "line": 69,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-innerhtml.insecure-innerhtml",
+      "path": "mandate/onboarding/web.ts",
+      "line": 69,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 69,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 69,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 69,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 69,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-document-method.insecure-document-method",
+      "path": "mandate/onboarding/web.ts",
+      "line": 72,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-innerhtml.insecure-innerhtml",
+      "path": "mandate/onboarding/web.ts",
+      "line": 72,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 72,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 72,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 72,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 72,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 72,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 72,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-document-method.insecure-document-method",
+      "path": "mandate/onboarding/web.ts",
+      "line": 74,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-innerhtml.insecure-innerhtml",
+      "path": "mandate/onboarding/web.ts",
+      "line": 74,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 74,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 74,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.jquery.security.audit.jquery-insecure-method.jquery-insecure-method",
+      "path": "mandate/onboarding/web.ts",
+      "line": 74,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "This is a template/DOM rendering pattern warning. Dynamic display data is escaped; the reviewed source does not establish a blanket safe-HTML guarantee for arbitrary future code."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.jquery.security.audit.jquery-insecure-method.jquery-insecure-method",
+      "path": "mandate/onboarding/web.ts",
+      "line": 76,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "This is a template/DOM rendering pattern warning. Dynamic display data is escaped; the reviewed source does not establish a blanket safe-HTML guarantee for arbitrary future code."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-document-method.insecure-document-method",
+      "path": "mandate/onboarding/web.ts",
+      "line": 77,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-innerhtml.insecure-innerhtml",
+      "path": "mandate/onboarding/web.ts",
+      "line": 77,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 77,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 77,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.jquery.security.audit.jquery-insecure-method.jquery-insecure-method",
+      "path": "mandate/onboarding/web.ts",
+      "line": 77,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "This is a template/DOM rendering pattern warning. Dynamic display data is escaped; the reviewed source does not establish a blanket safe-HTML guarantee for arbitrary future code."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 82,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 82,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 82,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 100,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 112,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 113,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/onboarding/web.ts",
+      "line": 114,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 19,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 20,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 21,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 54,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 56,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 56,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 64,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 66,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 68,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 68,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 77,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 79,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 80,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 81,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 81,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 82,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 83,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 83,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 84,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 84,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 84,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 85,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 86,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 87,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 88,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-document-method.insecure-document-method",
+      "path": "mandate/web/app.ts",
+      "line": 89,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-innerhtml.insecure-innerhtml",
+      "path": "mandate/web/app.ts",
+      "line": 89,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-document-method.insecure-document-method",
+      "path": "mandate/web/app.ts",
+      "line": 108,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-innerhtml.insecure-innerhtml",
+      "path": "mandate/web/app.ts",
+      "line": 108,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-document-method.insecure-document-method",
+      "path": "mandate/web/app.ts",
+      "line": 130,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-innerhtml.insecure-innerhtml",
+      "path": "mandate/web/app.ts",
+      "line": 130,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 130,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 130,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-document-method.insecure-document-method",
+      "path": "mandate/web/app.ts",
+      "line": 141,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-innerhtml.insecure-innerhtml",
+      "path": "mandate/web/app.ts",
+      "line": 141,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/app.ts",
+      "line": 141,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-document-method.insecure-document-method",
+      "path": "mandate/web/guidance.ts",
+      "line": 27,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.browser.security.insecure-innerhtml.insecure-innerhtml",
+      "path": "mandate/web/guidance.ts",
+      "line": 27,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "These DOM rendering sinks use the UI template and escaping convention. This pattern review is not a general proof against every future XSS path."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/guidance.ts",
+      "line": 27,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/guidance.ts",
+      "line": 27,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/guidance.ts",
+      "line": 27,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/guidance.ts",
+      "line": 27,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.lang.security.html-in-template-string.html-in-template-string",
+      "path": "mandate/web/guidance.ts",
+      "line": 27,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The UI constructs templates from fixed markup and typed state. Dynamic display values use the module escaping helper. Same-host script/extension compromise and future additions remain outside this finite review."
+    },
+    {
+      "tool": "Semgrep",
+      "rule": "runtime.security-review.javascript.express.security.cors-misconfiguration.cors-misconfiguration",
+      "path": "mandate/web/server.ts",
+      "line": 40,
+      "classification": "reviewed pattern with stated trust boundary",
+      "review": "The loopback workspace checks Host and rejects an Origin outside its own origin and explicitly configured allowedOrigins before reflecting that accepted origin. Correct configured origins and local-owner trust remain assumptions."
+    },
+    {
+      "tool": "Slither",
+      "rule": "pragma",
+      "impact": "Informational",
+      "classification": "informational",
+      "review": "Compiler pragma, naming or numeric-literal style information. Compiler 0.8.26 is pinned by the build configuration."
+    },
+    {
+      "tool": "Slither",
+      "rule": "naming-convention",
+      "impact": "Informational",
+      "classification": "informational",
+      "review": "Compiler pragma, naming or numeric-literal style information. Compiler 0.8.26 is pinned by the build configuration."
+    },
+    {
+      "tool": "Slither",
+      "rule": "too-many-digits",
+      "impact": "Informational",
+      "classification": "informational",
+      "review": "Compiler pragma, naming or numeric-literal style information. Compiler 0.8.26 is pinned by the build configuration."
+    }
+  ],
+  "sourceFingerprint": {
+    "mandate/contracts/src/MandateAccount.sol": "c733e4568179a7a5777b1e4bc9a07607b27e2c2171cb296369617b9ac71bd6ff",
+    "mandate/contracts/src/MandateFactory.sol": "9c6575210bafc882f210aff4de0b151fe278f5ddd433016fca5bb3639d001165",
+    "mandate/contracts/src/TestUSDC.sol": "eee20be9dfe1dcecb47e9768b4cd0746293589b986740b393ff5f31b1d520b19",
+    "mandate/desktop/cli.ts": "4815ff06490df048ea5e8b466334d87970caf3cc131b780338ff51ced6e07f58",
+    "mandate/desktop/connection.ts": "d5ff8633a561b28cc2a2f5248987a9b65695ff6bc341377cb990a1b3d679743a",
+    "mandate/desktop/desktop.test.ts": "b1f11dcf00a04e0ded61bf23e65f1ef86c6fe958edc107cdfa39d8756724b779",
+    "mandate/desktop/vitest.config.ts": "c93960cb6a39174293a14e9b1362576d1b97e518e7c154702b48da70f644146c",
+    "mandate/evidence/action-proof.ts": "b8a7b5d4b59856ba628e11752cb42c9c0789ab24c0dea02fb5b4411ba35f49df",
+    "mandate/evidence/anchors.ts": "b9e559bf937990ddb6e43274aa5381dae82748aabcc71e7ec5813c1b506804be",
+    "mandate/evidence/bundle.ts": "456a5baa62206e83130594a4c353bee61c5917d9d51439753e0ef4252ebd0cb8",
+    "mandate/evidence/checkpoint.ts": "bc320adecbdd20a3747327c94d3d96ede1d7b6ff7c025fb37b2391e592d4e22b",
+    "mandate/evidence/cli.ts": "2993e01b8dd2c24f3f2502aee5da5e399a7747044995f6f8667cb562746758b5",
+    "mandate/evidence/controller-cli.ts": "2c3cf149e0f2df5d90f21a86fa617532160b301aee02b44424c9f46e54940326",
+    "mandate/evidence/controller-http.ts": "a4cc2cd3c5cd1eae694ab6648cd32bf5346d89eff187281e64c3bbf5065cebd5",
+    "mandate/evidence/controller-model.ts": "f772a00c387f60772798aa8b6ade03283671a89f71c80d06bf92f8fda9e265d0",
+    "mandate/evidence/controller.ts": "77592243a202df6b2ca1c6fa1bc1f9ad2e8c5cb9fc17d71f6303ff84c1c1df73",
+    "mandate/evidence/journal.ts": "930816ff09d235ddc3b3591cfb9a0788e41e420bf15cfde10d9e070db06562bf",
+    "mandate/evidence/merkle.ts": "d51c37cb66feb10283c1e53c2be3054d2ee430e2f45fb8a0894ff4d06703e300",
+    "mandate/evidence/recorder.ts": "04f310d7a3b32bb74c79eee62e65e5654824c5e788162a401c512014a63a676a",
+    "mandate/evidence/signed-artifacts.ts": "8326f7a2c2381d356ad692f8982b1ca70e73bf5d2f4832d0fc2cf1c5d35e663c",
+    "mandate/evidence/stage-fields.ts": "86e71a8572a136171c66507e1c257ad2c5f88e8077d92b8df9c430c1ae6fba93",
+    "mandate/evidence/verifier.ts": "4f2f0109297dc588c901af057263996bcfd384eb6faf96bb1565ced4dc9d3b9a",
+    "mandate/evidence/vitest.config.ts": "4a471b558a8cabe30aac2f05babdb68aedcfe99b5dea62ae357f6a875ab479f3",
+    "mandate/gateway/cli.ts": "4602a6cf6fe2c7849009249e745073fcf1f012a9b3d10f088a22b80e4ba2299e",
+    "mandate/gateway/mcp.ts": "5c3911a1920450bde315e90c6b2672171a5d606308aac9963f19393523424840",
+    "mandate/gateway/owner-status.ts": "7144ca55b5f2e634ef4586ba55614a75450974b94fac931a0e932fa325b9bf60",
+    "mandate/gateway/runtime.ts": "ce6dd2d4af6a30f5aeb992c58ce882784ce3e17d6a0ca82816b562549774995d",
+    "mandate/gateway/tools.ts": "41e04d99c4d1ece75747b8371031ce8b529e0b0d1efd99b4eaf80328ce00d506",
+    "mandate/onboarding/cli.ts": "caf65baa26c71a9a9c7bd4f3f46a600878033f76ce916b4795449c4db7fcefb4",
+    "mandate/onboarding/engine.ts": "d72c10f81de3a8a27006b56f8fdefe20316eadac9a03409883fb2b48dcfbfb09",
+    "mandate/onboarding/files.ts": "9b99f735f3b733c4e78f86e70ed96c4fe045a8a72ac12496dff7cb6f468c2e11",
+    "mandate/onboarding/guide-state.test.ts": "9a4dc1decf229292a05d4cd0060e3309449770516f3b2692a5d03204d59e57a2",
+    "mandate/onboarding/guide-state.ts": "a3713c64dbed850757a9d744ee71e3af7669a9e4b0bbc9947acb8e7f0c9b64df",
+    "mandate/onboarding/hosts.ts": "719a583d5f510da651312263973b724ca069312453aef0d6a42917eab18680df",
+    "mandate/onboarding/profiles.test.ts": "161bf3c927d3591646c49e0b363479f1a8c2a8a01bdf6ca6a72d9f9ddc910499",
+    "mandate/onboarding/profiles.ts": "84c02ecdae1fe2f73e5f3509a108294c8bb6c28de592ab2249711199f8130397",
+    "mandate/onboarding/server.ts": "70032ad86fafce7b079eb5000d2dfd91db0588f26db7a6cb8865a71c542f32f2",
+    "mandate/onboarding/setup.test.ts": "75bd2fc127cf846b7ec55c713045a856bcade126f6dd5ad13a518081f9a01f34",
+    "mandate/onboarding/vitest.config.ts": "f09d5c66b08368acd4e2610ebd819b1824427a5f0b5c456b80ac7f34a178d8c3",
+    "mandate/onboarding/web.ts": "c52cc318c35401acaccf94012efa78a200fedae800922715971338217163afd8",
+    "mandate/operations/cli.ts": "d7ceaf726cd100cbe7b202db6ea5981a8a12c71d344c200926e2a679e6ffa16c",
+    "mandate/operations/monitor.ts": "e60c8991b2d4f8c2bdb0a32d500e6ff19e4ef449739d9df5835bcdb40a37b9ed",
+    "mandate/operations/observe.ts": "7443988eb5bfc8f118c5ad8d75abd6388d073a8ea52b4c3f0b1b61d66e88b2bb",
+    "mandate/operations/vitest.config.ts": "c8febfbfbd378a9dbb08f806a4269aa31641baf96e613a20b88a8321ae9fbbdb",
+    "mandate/sdk/accountAbi.ts": "0e07d444875cea5202ed01ce0e666aeeb21a9cffcdf9a9bcee440ffe9ea058dd",
+    "mandate/sdk/browser.ts": "319dcc5efc5bf1d4d008cf248dc2235d2c0152a4adc507dd873cd2897953ee31",
+    "mandate/sdk/cli.ts": "7c569c68672791f75b22b109089388972749187aa0a8f42c35d267865aca1fcb",
+    "mandate/sdk/diagnostics.ts": "788f750bb188631a5555230424d3c419cdebf1a08a40b21b6a281c3023852329",
+    "mandate/sdk/factoryAbi.ts": "4c81dc257d4928d09295f75816edddcc0949d15fd07c184639f26123cd25997e",
+    "mandate/sdk/independent-verification.ts": "58f38296fcd09a7b8d19c21f463deccb16e346266fe7cbebf6200990ffdc5411",
+    "mandate/sdk/index.ts": "25e11beab7ba2799a68e33818bbe493c3556c331ea1da60d9d5974875513a833",
+    "mandate/sdk/model.ts": "a9733a7519bfb9655952b38ffdc2d8f57fcee2a8e1a6c38b7a079369788370e3",
+    "mandate/sdk/owner-wallet.ts": "aa247b180cd3204d1b8be00cc05993e264363d003ac7844bd82bb617848e9e88",
+    "mandate/sdk/owner.ts": "75b2bc923b45a17a37a884eef971958989f0524f0fe3f5ceee482a4cc3d9582b",
+    "mandate/sdk/presentation.ts": "be5c39b1938c75a65aaa418ddf1dffabaf1041e18797b738d3821aaa36b71524",
+    "mandate/sdk/reader.ts": "16a1acbc465b3077d07033c163d97893a18b424b3e5da9195d03e19d3a8f1336",
+    "mandate/sdk/testTokenAbi.ts": "185dcc02b55e4c0c3fc1e72a9ebf805224e32de9c19f1fda45f1e3c728a74219",
+    "mandate/sdk/verification-profile.ts": "4d5ff3fb49ebf3c811134fafb5280f76bde32e5da8d07714b388ebc8829ece0e",
+    "mandate/sdk/vitest.config.ts": "62df1ff50a3246ab91945a820ddd61c419e5351d8858294fab2e2d2e1707e06b",
+    "mandate/sdk/workspace.ts": "1cd2d00fed8a6e854a72da069cb63550cde2e54c42628530c1b4133764b1d3f2",
+    "mandate/services/catalog.ts": "9d5b950cf4c027c065eb470fdb9f1dcbcd7ae550c4c5744b16f3b0ec635b76ef",
+    "mandate/services/client.ts": "12fe74f21913c9700fd051f8a6e9578f2f34c87aaf2c6281b2498720fe00fd15",
+    "mandate/services/datasets.ts": "61f01d1751f08019e8f214ddca60e524d6855e8c1cb82b9f89ee84cac00f0b9e",
+    "mandate/services/diagnostics.ts": "71cac1e546b7ac45b8385c060194e6f61b7b09f9494e3ce367d91f2f49ab2644",
+    "mandate/services/facilitator.ts": "aae38e03ef898e96b41349f84bb3a8bd9b9eef1231246117101f4f2748592463",
+    "mandate/services/http.ts": "7dc5772b6121761f4b368100640b4546c8cc80a122f1c7132eef848b7387b14f",
+    "mandate/services/merchant.ts": "5c411b1727b68085447a5ffc7d877f7b21de41a09a27e481ebaafc0a40836227",
+    "mandate/services/quote.ts": "ec239c7563207d365e9cb57eebfaf74150227a855151723498aa9842de3ee58d",
+    "mandate/services/receipt.ts": "acdcf7c729e2eae451c6dd65e9129c4bfc7e035615f0db6d1b1a7cc53a8df72e",
+    "mandate/services/store.ts": "8eb628225bc2b708f68e93e44c6263b0116089d849644123150aba326babca87",
+    "mandate/services/transactions.ts": "7c275002d0a6eca893f66bfa0ea92f4d6939940d817ebff50fb945d082ee6c61",
+    "mandate/services/vitest.config.ts": "4c8ba5f55bda6288f0fd1e97faf2dd47882ecdc2e57fff1d8b42467ad746fc4f",
+    "mandate/web/app.ts": "7def289029f914e3ad70660e6d5835be5c28e08cbff7d377633d06fba615c9a4",
+    "mandate/web/cli.ts": "7ae174574a378bcaf36e493cad10803cd5b31c0d3ba5091610b25e43bb148cdd",
+    "mandate/web/explorer.ts": "667a6a4213129762db4048edd67529e0cd749acb9b241556c08c8d7b2a0568e1",
+    "mandate/web/guidance-model.ts": "f3a71443711ab2c22d72b6a9c385bbcd5b2bf58e71d02e56140e1edd11d45030",
+    "mandate/web/guidance.ts": "85f6637cb42bb2888beae6907a1ac32de598f89fc804d03615747dc2acf0d9c0",
+    "mandate/web/i18n-catalog.ts": "8421df542a623325b32676a2940cfabca1e05ec916b750e76373f337fdc70d0b",
+    "mandate/web/i18n.ts": "174031a2812ad1d60acbe94ee8deed49ba9586f6275d6d2146d5cb05b4fbeeaf",
+    "mandate/web/landing.ts": "d1824e921d8cce74c46d3933388187ca2efdad65b559e21f196eb6f6e9c660b5",
+    "mandate/web/purchase-presentation.ts": "bc19057ecb451307bdb0eb6310509719f49f36035b38cf2eb77c9c2c45d9e2d4",
+    "mandate/web/server.ts": "0f0303437d56c9d3cab848e7edf2e5a14b06b9af042ee3fba89fcbfa76970761",
+    "mandate/web/vitest.config.ts": "8f0753705a089d02494ea3f15a47252b0570948353797b816257fc8ac5aa7b72",
+    "mandate/web/walkthrough.ts": "7d15db0d6a44d27db86a76eb2771039be722430e31e9386e4d070b2f123d7a9b"
+  },
+  "externalHumanAudit": false,
+  "zeroAlertClaim": false,
+  "limits": [
+    "Finite author review and automated patterns do not establish universal exploit resistance.",
+    "Configured origin and service allowlists, trusted owner review and same-host administration remain explicit boundaries.",
+    "Recorded deployed-code and public payment compatibility evidence has its own fixed scope."
+  ]
+}

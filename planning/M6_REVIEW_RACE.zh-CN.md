@@ -27,7 +27,7 @@ App 在异步操作开始时捕获审阅、task、连接及存储 key。广播�
 
 显示探针覆盖 5 类错误×1280/390px 共 10 种组合；提示均在 900px 高视口内，连接失败后确认禁用，UI 签署请求 0。暂停与恢复摘要分别为 Unpaused→Paused、Paused→Unpaused，版本 1→2 及 2→3。为检查恢复摘要，可信 Node fixture 单独发送 1 笔暂停设置交易，与 UI 签署计数分开记录。4 张最终显示截图已检查。
 
-8 项 Web 回归及 TypeScript 通过；补充 Slither/Semgrep 结果见[扫描记录](../artifacts/m7/security/review-race-recheck/execution.json)。原合约和 SDK 签名协议保持不变。实际钱包 provider、原生钱包兼容性及实体手机交互不能由受控时序探针推定。
+8 项 Web 回归及 TypeScript 通过；补充 Slither/Semgrep 结果见扫描记录（历史记录已归档；当前验收见源码交付说明）。原合约和 SDK 签名协议保持不变。实际钱包 provider、原生钱包兼容性及实体手机交互不能由受控时序探针推定。
 
 保留的开发尝试包括：首个任务检查只匹配页面出现 B 描述，不能判断 B 是否选中；已改为检查 SELECTED TASK。首个修复后审阅检查读取折叠 details 的 innerText，出现显示断言误报；已改为检查原始 textContent，并保留失败。正式证据引用修正后的运行，未把这些尝试算作通过。
 

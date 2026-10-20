@@ -59,7 +59,7 @@ export async function author({presentation:p}){
  const data=JSON.parse(await fs.readFile(ROOT+'/competition/submission-2026-10-20/presentation/content.json','utf8'));
  const original=p.slides.items.slice(),snapshot=await p.inspect({kind:'slide,textbox,shape,image,table,chart',maxChars:200000});
  const records=snapshot.ndjson.split('\n').filter(Boolean).map(x=>JSON.parse(x)),slideIds=records.filter(x=>x.kind==='slide');
- const order=[0,1,2,3,4,5,6,7,11,9,8,10,12,13];p.slides.reorder(order.map(i=>slideIds.find(x=>x.slideIndex===i).id));
+ const order=[0,1,2,3,4,5,6,7,8,9,10,11,12,13];p.slides.reorder(order.map(i=>slideIds.find(x=>x.slideIndex===i).id));
  const logo=(await fs.readFile(ROOT+'/mandate/web/brand/lockup.svg','utf8')).replaceAll('currentColor',C.white);
  for(let i=0;i<14;i++){
   const info=data.slides[i],old=order[i],s=p.slides.items[i];notes(s,info);
@@ -86,6 +86,7 @@ export async function author({presentation:p}){
    case 'evidence':evidence(s);break;
    case 'host':host(s);break;
    case 'evaluation':
+    s.charts.items[0].series.getItemAt(0).values=info.chartValues;
     text(s,'120 tasks',64,207,430,64,48,C.blue,true);text(s,'132 settlements\n0 duplicate payments',66,282,426,90,29);
     text(s,'10,000 invalid calls',64,414,447,60,40,C.white,true);text(s,'20 explicit categories\n6 legal controls',66,484,440,85,26,C.muted);
     text(s,'Local full-task median (ms)',562,203,650,44,27,C.blue,true);

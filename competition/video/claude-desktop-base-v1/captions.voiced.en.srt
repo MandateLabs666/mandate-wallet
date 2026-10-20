@@ -1,0 +1,245 @@
+1
+00:00:00,000 --> 00:00:08,180
+Mandate Wallet lets an AI agent purchase an approved API service
+within an owner-defined budget.
+
+2
+00:00:09,020 --> 00:00:12,800
+We will connect it to Claude Desktop,
+
+3
+00:00:13,180 --> 00:00:17,400
+obtain an ETH statistics sample, and produce a short brief.
+
+4
+00:00:18,180 --> 00:00:21,860
+The transactions in this demonstration run on Base Sepolia.
+
+5
+00:00:22,367 --> 00:00:26,620
+Prepare Claude Desktop, Rabby and Node twenty-four,
+
+6
+00:00:27,000 --> 00:00:30,000
+then start Mandate using the manual’s setup command.
+
+7
+00:00:30,820 --> 00:00:34,080
+The owner needs test ETH and USDC.
+
+8
+00:00:34,380 --> 00:00:39,140
+This demo uses controlled services and fixed statistics.
+
+9
+00:00:39,627 --> 00:00:43,887
+Choose Testnet and Base Sepolia in the setup wizard.
+
+10
+00:00:44,427 --> 00:00:49,027
+Connect the owner wallet, then review deployment, funding and
+permissions.
+
+11
+00:00:49,867 --> 00:00:53,687
+We transfer zero point one five test USDC to the smart account
+
+12
+00:00:53,707 --> 00:00:56,267
+and fund operator gas separately.
+
+13
+00:00:56,527 --> 00:01:00,007
+The task budget is zero point one five,
+
+14
+00:01:00,287 --> 00:01:03,267
+each payment is capped at zero point one,
+
+15
+00:01:03,407 --> 00:01:06,647
+and the session expires after two hours.
+
+16
+00:01:07,167 --> 00:01:10,267
+The owner confirms these transactions in the external wallet.
+
+17
+00:01:10,840 --> 00:01:15,320
+After confirmation, open the authorization transaction in BaseScan.
+
+18
+00:01:15,760 --> 00:01:19,920
+Check the Base Sepolia network, transaction hash and successful
+receipt.
+
+19
+00:01:20,760 --> 00:01:24,040
+The contract log links the session to the approved mandate.
+
+20
+00:01:24,780 --> 00:01:28,280
+The complete hash will also appear in our execution evidence.
+
+21
+00:01:28,730 --> 00:01:32,790
+Download the Guided package for this Base Sepolia configuration.
+
+22
+00:01:34,010 --> 00:01:38,410
+In Claude Desktop, open Settings, Extensions and Advanced settings,
+
+23
+00:01:39,130 --> 00:01:41,410
+then import and enable the package.
+
+24
+00:01:42,110 --> 00:01:48,270
+Its local connection is already configured, so no Agent profile or
+Connection file is selected.
+
+25
+00:01:49,050 --> 00:01:51,950
+Start a new conversation using this connection.
+
+26
+00:01:52,333 --> 00:01:55,497
+Ask Claude to read the account context
+
+27
+00:01:55,517 --> 00:01:59,437
+and quote the approved ETH sample without purchasing.
+
+28
+00:02:00,157 --> 00:02:03,737
+Check the chain, account, active session and remaining budget.
+
+29
+00:02:04,297 --> 00:02:08,657
+The sample costs zero point zero one test USDC.
+
+30
+00:02:09,117 --> 00:02:12,277
+Installing the connector does not expand the approved authority.
+
+31
+00:02:12,800 --> 00:02:14,923
+Authorize the quoted purchase.
+
+32
+00:02:15,583 --> 00:02:21,063
+Mandate registers the commitment before releasing a payment signature.
+
+33
+00:02:21,523 --> 00:02:24,343
+The USDC transfer settles on Base Sepolia,
+
+34
+00:02:24,863 --> 00:02:28,723
+but our controlled service deliberately fails its first response.
+
+35
+00:02:29,583 --> 00:02:34,303
+Claude reports payment, delivery and result validation separately.
+
+36
+00:02:35,063 --> 00:02:39,043
+A successful payment alone does not mean the data was delivered.
+
+37
+00:02:39,433 --> 00:02:42,747
+Open the settlement transaction in BaseScan.
+
+38
+00:02:43,187 --> 00:02:46,827
+Check Success, the test USDC contract,
+
+39
+00:02:47,067 --> 00:02:51,167
+and the ERC-twenty transfer from the smart account to the approved
+recipient
+
+40
+00:02:51,187 --> 00:02:54,827
+for zero point zero one USDC.
+
+41
+00:02:55,467 --> 00:02:58,867
+The transaction sender may be the facilitator paying gas;
+
+42
+00:02:59,407 --> 00:03:04,467
+the token-transfer sender identifies the paying account.
+
+43
+00:03:04,867 --> 00:03:09,710
+Claude resumes the same ETH step after checking its payment state.
+
+44
+00:03:10,210 --> 00:03:14,670
+The original order and settlement hash are retained, and there is no
+second payment.
+
+45
+00:03:15,070 --> 00:03:19,310
+The service returns the sample and the result checker validates it.
+
+46
+00:03:19,690 --> 00:03:23,750
+Claude writes a brief, identifies the fixed demonstration dataset,
+
+47
+00:03:24,170 --> 00:03:25,390
+and cites the settlement.
+
+48
+00:03:26,007 --> 00:03:28,667
+Claude prepares a revocation request.
+
+49
+00:03:29,427 --> 00:03:33,707
+The owner reviews it in the wallet workspace and signs in Rabby.
+
+50
+00:03:34,607 --> 00:03:39,587
+The BaseScan receipt and SessionRevoked log confirm the change.
+
+51
+00:03:40,107 --> 00:03:45,407
+Future spending by this session is blocked while the completed
+purchase remains recorded.
+
+52
+00:03:45,973 --> 00:03:50,173
+Finally, ask Claude to attempt the unused BTC sample.
+
+53
+00:03:50,693 --> 00:03:53,253
+The revoked session prevents a new payment registration.
+
+54
+00:03:54,253 --> 00:03:59,413
+This refusal has no new transaction hash because it is stopped before
+broadcast.
+
+55
+00:04:00,173 --> 00:04:06,373
+We retain the tool result, permission state and unchanged payment
+records as refusal evidence.
+
+56
+00:04:06,940 --> 00:04:13,040
+The evidence package connects each recorded step to its transaction,
+contract events and service outcome.
+
+57
+00:04:13,680 --> 00:04:16,600
+Payment and service delivery are documented separately.
+
+58
+00:04:17,240 --> 00:04:19,380
+A local practice option is also available
+
+59
+00:04:19,400 --> 00:04:22,940
+for learning the workflow without public-testnet funds.

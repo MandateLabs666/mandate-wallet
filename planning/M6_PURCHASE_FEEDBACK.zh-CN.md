@@ -38,7 +38,6 @@ PurchaseClient 在付款参数/签名/链上登记前读取批准资产的当前
 
 27 项服务/网关、8 项 Web 回归及 TypeScript 通过；浏览器与 MCP 构建不含私有运行文件。所有 token 付款均为独立 fixture 中的 mock USDC；公共交易 0。
 
-补充静态复核：Slither 仍 3 个 Mandate/45 个 Echo 信号；Semgrep 扫描 67 个 TS 文件、67 个原始信号、解析错误 0。相对上次 64 个 TS 信号增加 3 处 HTML 模板插值提示。逐项检查新增模板的`esc`、固定 action/class 和属性编码；独立恶意文本显示探针使用可执行正向对照，确认 payload 在 App 中仅作文字显示，真实链占用与记录不变。[处置记录](../artifacts/m7/security/purchase-feedback-recheck/disposition.json)。原 M7 工具报告的 113/112 数字保留其原始源码范围，不冒称新扫描仍为 112 或零告警。
 
 ## 限制与复验
 

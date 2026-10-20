@@ -8,8 +8,6 @@ import urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SOURCES = {
-    "echo-contracts": ("MartX-Web3/echo-contracts", "bf68bec76cb4b1394271e0d6043e6d2221d71334"),
-    "echo-gateway": ("MartX-Web3/echo-gateway", "21fddd41c53dc08a4b325d0bd526fbfbabdf9f22"),
     "x402": ("x402-foundation/x402", "6c470a80c6145b27fcbb4f6359c47a6a8cfe5887"),
     "forge-std": ("foundry-rs/forge-std", "0844d7e1fc5e60d77b68e469bff60265f236c398"),
     "openzeppelin-contracts": ("OpenZeppelin/openzeppelin-contracts", "5fd1781b1454fd1ef8e722282f86f9293cacf256"),

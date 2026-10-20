@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "revision": "visual-r3",
+  "revision": "mandate-product-scope-r4",
   "preparedOn": "2026-10-20",
   "technicalDocumentation": "competition/submission-2026-10-20/documents/mandate-wallet-technical-documentation.pdf",
-  "technicalDocumentationSHA256": "290591e9db34a54536f81c0085dffdd7159d267dc89732f5c32c3b6738a31b48",
-  "sourceDocumentationCommit": "3c34dd9d7e6ac73e9ccf1a85174399ca9d9de5ff",
+  "technicalDocumentationSHA256": "81d44f0b06d1b01a52da489ca6b90363dcb615c90f251b6085927be8f71bcb66",
+  "sourceDocumentationCommit": null,
   "slides": 14,
   "plannedPresentationSeconds": 600,
-  "EnglishSpokenWords": 1075,
+  "EnglishSpokenWords": 1072,
   "spokenLanguage": "English",
   "presenterDirections": "Chinese; not part of spoken narration",
   "timingMeasuredInSpeech": false,
@@ -30,63 +30,74 @@
   "nativeChart": 12,
   "files": [
     {
-      "path": "competition/submission-2026-10-20/presentation/mandate-wallet-10min-final.pptx",
-      "SHA256": "86d42e1526c8e30cae7ec011d55f570be9c4af451fec81f77584e10dec913760"
-    },
-    {
-      "path": "competition/submission-2026-10-20/presentation/mandate-wallet-10min.pdf",
-      "SHA256": "a892546c9632af972527d1fc3acaf2281bf9edb9875d5a6c6b6f250e119c6308"
-    },
-    {
-      "path": "competition/submission-2026-10-20/presentation/SPEAKER_NOTES.en.md",
-      "SHA256": "47a193fe65223ba97536f666e95afc3f9e68665864778e297b92ffea40808227"
-    },
-    {
-      "path": "competition/submission-2026-10-20/presentation/TIMING.zh-CN.md",
-      "SHA256": "0ad1bcd0466e49a036a37def2cfe3470e671b90f93ea7ef80a751bf4d06f9c59"
-    },
-    {
-      "path": "competition/submission-2026-10-20/presentation/content.json",
-      "SHA256": "d8761ebff104f6e6244851930bc1b55ba439d4e466a5f9e74b96b43c958442af"
-    },
-    {
-      "path": "competition/submission-2026-10-20/presentation/author.mjs",
-      "SHA256": "c9456f6b64f80147fee574df4f5c05107de52edaae77840011cc4e73940df4f5"
-    },
-    {
-      "path": "competition/submission-2026-10-20/presentation/visual-style.mjs",
-      "SHA256": "6f16ec37a13d155b68b39f81b937f817cd547454deb7252486708d6568b9e11d"
+      "path": "competition/submission-2026-10-20/presentation/.gitattributes",
+      "SHA256": "a12b0360d7596cca1b414d25083d140b07e9d62d87f75dc324f391b327c030e5"
     },
     {
       "path": "competition/submission-2026-10-20/presentation/README.en.md",
-      "SHA256": "b4a552fefb35993f3a972a2f9ac7c74713f40154932d945ffd1f672d7efe336c"
+      "SHA256": "a55675a51c95ca8efb5a10e98fa27d398fbf3c42b7548bb10ec8cfcfd275cd9e"
     },
     {
-      "path": "competition/submission-2026-10-20/presentation/preserve-chart-workbook.py",
-      "SHA256": "431054d6fc734ed920ec4955d88d32b0372d1dcb1228b931c6a0a713608155a8"
+      "path": "competition/submission-2026-10-20/presentation/SPEAKER_NOTES.en.md",
+      "SHA256": "dc87bbd65988c05460745219bd47a99c8a33321e239e078ad46c4f9af0c84595"
     },
     {
-      "path": "competition/submission-2026-10-20/presentation/assets/mandate-style-reference.pptx",
-      "SHA256": "5ebca1354fa2f3a921a1c3f7cd780e6c9004506270e4c414739e4dff920e6645"
-    },
-    {
-      "path": "competition/submission-2026-10-20/presentation/assets/backgrounds/mandate-metal-flow-hero-r3.png",
-      "SHA256": "955b134b50ba807dcff74a42ee708a313820b906e2f5befa492a80e0d515339e"
+      "path": "competition/submission-2026-10-20/presentation/TIMING.zh-CN.md",
+      "SHA256": "66568ca169f2d3d3e31108ac0d52b78e0d89291387b01110d525cff1acc13539"
     },
     {
       "path": "competition/submission-2026-10-20/presentation/assets/backgrounds/mandate-metal-flow-body-r3.png",
       "SHA256": "e610f35d89144683c052254320ac81a9d4e43c16638b3486633ac0610f7302c7"
     },
     {
-      "path": "competition/submission-2026-10-20/presentation/assets/backgrounds/prompts.json",
-      "SHA256": "64e361620d6a8d817a0c444b8ba0bc9273e266208f235973cc59fc6fbb4274dc"
+      "path": "competition/submission-2026-10-20/presentation/assets/backgrounds/mandate-metal-flow-hero-r3.png",
+      "SHA256": "955b134b50ba807dcff74a42ee708a313820b906e2f5befa492a80e0d515339e"
+    },
+    {
+      "path": "competition/submission-2026-10-20/presentation/assets/claude-case.jpg",
+      "SHA256": "5382abd59fcd6f6e21c2a8d824edbeaa66d2de011761994a9dba627cc380e9c1"
+    },
+    {
+      "path": "competition/submission-2026-10-20/presentation/assets/mandate-style-reference.pptx",
+      "SHA256": "917809e9f062f2a130f2f7f500a07798a31d53da8e8f42a366f835d8dd37f073"
+    },
+    {
+      "path": "competition/submission-2026-10-20/presentation/author.mjs",
+      "SHA256": "4100440660146e4a5ae849756abfd4884ff61db9898254d9adbfccfd86b21946"
+    },
+    {
+      "path": "competition/submission-2026-10-20/presentation/content.json",
+      "SHA256": "168bc31a7096d609b95330bd00c14acc57f58bb8cbddceee9f95d42905ae5efb"
+    },
+    {
+      "path": "competition/submission-2026-10-20/presentation/mandate-wallet-10min-final.pptx",
+      "SHA256": "917809e9f062f2a130f2f7f500a07798a31d53da8e8f42a366f835d8dd37f073"
+    },
+    {
+      "path": "competition/submission-2026-10-20/presentation/mandate-wallet-10min.pdf",
+      "SHA256": "4c3fa299ff4a41f81448ce26ddede16b2769a9caad98f40c70386d12ef54faba"
+    },
+    {
+      "path": "competition/submission-2026-10-20/presentation/preserve-chart-workbook.py",
+      "SHA256": "1f36a35fbfc2ceb5adf8604192573d5536ead0c3ab473c9d6de96b02136383e0"
+    },
+    {
+      "path": "competition/submission-2026-10-20/presentation/visual-style.mjs",
+      "SHA256": "6f16ec37a13d155b68b39f81b937f817cd547454deb7252486708d6568b9e11d"
     }
   ],
   "officialSubmissionSent": false,
-  "contentRevision": "technical-documentation-r2",
+  "contentRevision": "mandate-product-scope-r4",
   "teamInformationSlide": 1,
   "visualStyle": "Original blue-lit titanium flow backgrounds in Mandate graphite, silver and blue palette",
   "backgroundGeneration": "Built-in image_gen; full prompts stored with artwork",
-  "narrationChanged": false,
-  "slideTimingsChanged": false
+  "narrationChanged": true,
+  "slideTimingsChanged": false,
+  "benchmarkSource": "artifacts/m7/benchmarks/audit.json",
+  "chartFullTaskMedianMs": [
+    28.02,
+    59.36,
+    337.25,
+    416.55
+  ]
 }

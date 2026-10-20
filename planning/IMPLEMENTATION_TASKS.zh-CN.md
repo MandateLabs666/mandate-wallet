@@ -1,10 +1,10 @@
 # Mandate Wallet 实施任务清单
 
-版本：0.36
+版本：0.37
 
-更新日期：2026-10-19（新加坡时间）
+更新日期：2026-10-20（新加坡时间）
 
-本清单将[总体建设方案](MASTER_PLAN.zh-CN.md)拆成开发任务，并列出各项验收条件。M1—M5 已验收；T0—T3、T5—T7、T9 和 T10 已完成，T4.01—T4.05 的测试网部分已完成。T7 的九个子项、T9 的七个子项均已验收。M6 仍在进行，T8.01—T8.06 及 T8.09 已完成，其他要求见下方剩余验收表。G1、G2、G4 已关闭，G3 仍需完成 Web App 验收。T4 主网部分和 T8—T11 的剩余要求继续保留。开发按依赖和完成标准推进，不预设工期或人员。
+本清单将[总体建设方案](MASTER_PLAN.zh-CN.md)拆成开发任务，并列出各项验收条件。产品规格、支付兼容性、合约、服务和证据基础已经验收；T0、T2、T3、T5—T7、T9 和 T10 已完成，T4.01—T4.05 的测试网部分已完成。T7 的九个子项、T9 的七个子项均已验收。M6 仍在进行，T8.01—T8.06 及 T8.09 已完成，其他要求见下方剩余验收表。G1、G2、G4 已关闭，G3 仍需完成 Web App 验收。T4 主网部分和 T8—T11 的剩余要求继续保留。开发按依赖和完成标准推进，不预设工期或人员。
 
 ## 1 状态与完成规则
 
@@ -16,23 +16,22 @@
 
 | ID | 任务 | 依赖 | 状态 | 验收证据 |
 | --- | --- | --- | --- | --- |
-| T0 | 产品与协议规格 | 无 | 已完成 | [M1 规格](M1_SPEC.zh-CN.md)、[schemas](../schemas/m1.schema.json)、[验收](M1_ACCEPTANCE.zh-CN.md) |
-| T1 | Echo 基础修复和复现 | T0 的授权边界 | 已完成 | [M2 验收](M2_ACCEPTANCE.zh-CN.md)、[公共证据](../artifacts/m2/sepolia-evidence.json) |
-| T2 | x402 钱包兼容性验证 | T0 的支付范围 | 已完成 | [兼容性](M1_COMPATIBILITY.zh-CN.md)、[验收](M1_ACCEPTANCE.zh-CN.md)、[公共探测](../artifacts/public-probes.json) |
-| T3 | Mandate 授权与预算合约 | T0、T1、T2 | 已完成 | [M3 核心验收](M3_ACCEPTANCE.zh-CN.md)、[机器证据](../artifacts/m3/core-acceptance.json) |
-| T4 | 多网络部署和配置 | T1、T2、T3 | 进行中（测试网已完成） | [M3 验收](M3_ACCEPTANCE.zh-CN.md)；主网及完整服务证据待验收 |
+| T0 | 产品与协议规格 | 无 | 已完成 | [产品规格](M3_SPEC.zh-CN.md)、[schemas](../schemas/m1.schema.json) |
+| T2 | x402 钱包兼容性验证 | T0 的支付范围 | 已完成 | [兼容性](../mandate/sdk/SUPPORT.zh-CN.md)、[公共探测](../artifacts/public-probes.json) |
+| T3 | Mandate 授权与预算合约 | T0、T2 | 已完成 | [M3 核心验收](M3_ACCEPTANCE.zh-CN.md)、[机器证据](../artifacts/m3/core-acceptance.json) |
+| T4 | 多网络部署和配置 | T2、T3 | 进行中（测试网已完成） | [M3 验收](M3_ACCEPTANCE.zh-CN.md)；主网及完整服务证据待验收 |
 | T5 | Bazaar 与 x402 客户端 | T0、T2、T3、T4 的 Base Sepolia 部分 | 已完成 | [M4 验收](M4_ACCEPTANCE.zh-CN.md)、[Base HTTP 证据](../artifacts/m4/base-sepolia-http.json) |
 | T6 | Agent 与 MCP Gateway | T0 的接口，支付联调依赖 T3、T5 | 已完成 | [M4 验收](M4_ACCEPTANCE.zh-CN.md)、[真实宿主证据](../artifacts/m4/host-acceptance.json) |
 | T7 | 证据与宿主干预验证 | T0，集成依赖 T3、T5、T6 | 已完成 | [M5 验收](M5_ACCEPTANCE.zh-CN.md)、[干预/TLS 证据](../artifacts/m5/interference/acceptance.json) |
-| T8 | 官网与 Web App | T0 的产品流程，功能联调依赖 T3 至 T7 | 进行中 | [M6 验收](M6_ACCEPTANCE.zh-CN.md)、[实际钱包自动化](M6_BROWSER_WALLET_ACCEPTANCE.zh-CN.md)、[并发修复](M6_OWNER_CONCURRENCY.zh-CN.md)、[钱包边界/反馈](M6_WALLET_BOUNDARIES.zh-CN.md)、[待决审阅修复](M6_REVIEW_RACE.zh-CN.md)、[原生 Owner 恢复](M6_OWNER_RECONNECT.zh-CN.md)、[采购/现金反馈](M6_PURCHASE_FEEDBACK.zh-CN.md)、[托管连接允许/拒绝](M6_HOSTED_CONNECTION.zh-CN.md)、[人工试用入口](M6_MANUAL_UAT.zh-CN.md)；07/08/10 保留人工试用及剩余路径 |
+| T8 | 官网与 Web App | T0 的产品流程，功能联调依赖 T3 至 T7 | 进行中 | [M6 验收](M6_ACCEPTANCE.zh-CN.md)、[实际钱包自动化](M6_BROWSER_WALLET_ACCEPTANCE.zh-CN.md)、[并发修复](M6_OWNER_CONCURRENCY.zh-CN.md)、[钱包边界/反馈](M6_WALLET_BOUNDARIES.zh-CN.md)、[待决审阅修复](M6_REVIEW_RACE.zh-CN.md)、[原生 Owner 恢复](M6_OWNER_RECONNECT.zh-CN.md)、[服务实现](../mandate/services/client.ts)、[托管连接允许/拒绝](M6_HOSTED_CONNECTION.zh-CN.md)、[人工试用入口](M6_MANUAL_UAT.zh-CN.md)；07/08/10 保留人工试用及剩余路径 |
 | T9 | SDK 与开发者示例 | T0 的接口，完整交付依赖 T3 至 T7 | 已完成 | [SDK 验收](M6_SDK_ACCEPTANCE.zh-CN.md)、[干净目录记录](../artifacts/m6/sdk/clean-environment/execution.json) |
-| T10 | 运维与可复现实验 | T1 至 T9 的相关实现 | 已完成 | [运维](M7_OPERATIONS_ACCEPTANCE.zh-CN.md)、[比较实验](M7_BENCHMARK_ACCEPTANCE.zh-CN.md)、[形式边界](M7_FORMAL_BOUNDARIES.zh-CN.md)、[独立工具复核](M7_SECURITY_REVIEW.zh-CN.md)；不声称第三方人工审计 |
-| T11 | 比赛材料与版本冻结 | T4 至 T10 的验收结果 | 进行中 | [英文技术报告](../competition/TECHNICAL_REPORT.en.md)、[安全自评](../competition/SECURITY_SELF_ASSESSMENT.en.md)、[全材料核查](M7_MATERIAL_REVIEW.zh-CN.md)、[rc7 复现验收](M7_SOURCE_REFRESH.zh-CN.md)；03—08/10 完成，最终冻结/官方确认继续 |
+| T10 | 运维与可复现实验 | T3 至 T9 的相关实现 | 已完成 | [运维](M7_OPERATIONS_ACCEPTANCE.zh-CN.md)、[比较实验](M7_BENCHMARK_ACCEPTANCE.zh-CN.md)、[形式边界](M7_FORMAL_BOUNDARIES.zh-CN.md)、[安全自评](../competition/SECURITY_SELF_ASSESSMENT.en.md)；不声称第三方人工审计 |
+| T11 | 比赛材料与版本冻结 | T4 至 T10 的验收结果 | 进行中 | [英文技术报告](../competition/TECHNICAL_REPORT.en.md)、[安全自评](../competition/SECURITY_SELF_ASSESSMENT.en.md)、[源码交付](../competition/SOURCE_DELIVERY.en.md)；03—08/10 完成，最终冻结/官方确认继续 |
 | T12 | 自动开户与 Agent 接入向导 | T3、T6、T8、T9 | 进行中 | [M8 验收](M8_ACCEPTANCE.zh-CN.md)、[Base Sepolia 与原生 Claude 证据](../competition/video/claude-desktop-base-v1/execution-evidence/run.json)；7/8，签名独立安装、更新及本地节点持久化恢复继续 |
 
 ## 2.1 剩余验收入口
 
-原 T0—T11 已有 97/105 个子项通过验收。新增 T12 独立计数，目前 7/8 个子项通过，包含 Base Sepolia 与原生 Rabby 的开户及授权验收，父任务仍在进行。T12 不改变原有 97/105 的统计或 G3 要求。下表列出剩余工作，各子项仍按原有标准验收。自动化测试、源码归档和静态页面发布，不能代替要求中的人工试用或外部证据。
+原 T0—T11 已有 88/96 个子项通过验收。新增 T12 独立计数，目前 7/8 个子项通过，包含 Base Sepolia 与原生 Rabby 的开户及授权验收，父任务仍在进行。T12 不改变原有 88/96 的统计或 G3 要求。下表列出剩余工作，各子项仍按原有标准验收。自动化测试、源码归档和静态页面发布，不能代替要求中的人工试用或外部证据。
 
 | 剩余子项 | 已有成果 | 关闭前仍需要 |
 | --- | --- | --- |
@@ -40,21 +39,8 @@
 | T8.08 | 原生网络/非 Owner/取消/重连，受控 provider 拒绝提示；HTTPS 托管连接允许/拒绝；[Rabby 本地连接/网络/暂停签署](M6_RABBY_COMPATIBILITY.zh-CN.md) | 人工 U5—U6、托管页面原生 Owner 钱包确认及剩余支持路径；未实现的跨设备移动钱包连接须保持明确限制 |
 | T8.10 | 桌面/390px 自动化截图与交互 | 人工 U1—U10 可读性和操作反馈；实际设备覆盖单列，390px 窄屏测试不能代替实体手机测试 |
 | T11.01 | 官方资料指纹/规则差异与问题草稿 | 组委会对测试网、提交/更新规则等未明事项的实际答复；草稿未发送 |
-| T11.02 | 本地报名附件/前作来源检查；用户已说明 Echo 及 proposal 为其此前项目并授权本项目复用开发，Echo 两仓 README 声明 MIT | 实际提交附件/报名确认；比赛对前作披露/复用的未明规则归 T11.01，不重复索取已提供的开发授权 |
 | T11.09 | rc7 精确归档/独立复现及材料核对 | 完成剩余验收后固定最终提交 commit、依赖、部署、实验和材料；目前非最终冻结 |
 | T4.06、T4.07 主网部分 | 双测试网部署/服务/交易证据，主网只读兼容性核查 | 明确主网付款授权及既定安全/兼容预检，随后执行并保存完整服务证据 |
-
-人工反馈请求已发出，尚未收到结果；不重复索取密钥或凭据。需要用户参与或外部答复的事项仍保留为未完成。后续开发应处理实际缺陷，或补测已获授权但尚未覆盖的路径；仅整理归档或重编版本号，不增加完成数。
-
-人工入口现默认使用[Rabby](M6_MANUAL_UAT.zh-CN.md)，可见模式要求人主动运行`--visible`和交互终端。[入口检查](M6_MANUAL_RABBY.zh-CN.md)的 7 项保护条件及 headless 连接/截图检查通过，钱包未初始化、签名/付款均为 0；该结果不替代 U1—U10 反馈，不新增验收门槛，仍 97/105。当前托管原生钱包复验仍等待此前明确询问的 service-access token 转交授权，Ignore all 本地连接授权不覆盖此动作。
-
-2026-10-16 本地 UI 按用户反馈重新设计，视觉统一参考 Echo 官网的黑白/银灰/蓝色方向，Deye 仅参考用户指引逻辑：动态权限场（鼠标倾斜/粒子/光迹/点击反馈）、原创 SVG 图标与字标、购买/恢复/撤销三个示意场景、逐服务状态引导及一键本地演示，见[M6 D-M6-09](M6_SPEC.zh-CN.md)与[UI 证据](../artifacts/m6/ui-refresh/r4/acceptance.json)。最新迭代另完成去除画布边缘/辅助标注、三页中英文、13 节开发文档及 MIT 合约源码包（D-M6-11）；GitHub 发布目标待用户指定。新 UI 供 18742 本地查看；Sites、rc7、视频及 r15 完整材料核查保持此前固定范围，下一次提交版本同步时重新验收。既有完成数 97/105 不增加，T8.07/08/10 与 G3 继续保留人工/设备验收，本轮开发者浏览器检查不能代替人工试用。
-
-2026-10-17 按新用户反馈修复授权指引：定位具体操作并动态高亮，预设本地账户清楚说明 owner 签名限制，新增中英文完整流程演示与首次使用入口，见[M6 D-M6-12](M6_SPEC.zh-CN.md)及[UI r5 证据](../artifacts/m6/ui-refresh/r5/acceptance.json)。新增内容属于 T8 交互改进；保持 97/105 与 G3 人工/设备验收边界，不将流程示例作为链上结算证据。
-
-2026-10-17 继续修复服务页引导闪烁和操作被折叠/滚动遮挡：引导默认固定紧凑，详情手动展开，报价与执行控件前置，并通过现有本地测试任务实际采购及按原订单重试。见[M6 D-M6-13](M6_SPEC.zh-CN.md)和[UI r6](../artifacts/m6/ui-refresh/r6/acceptance.json)。本轮为 T8 交互修复与本地验证，仍 97/105，不将作者测试或模拟 USDC 结算作为人工/公共链验收。
-
-2026-10-17 文案修订：调整本地网站、流程演示、开发者指南、项目自写的中文计划与说明，以及英文报告部分段落和 PPT 讲稿。界面使用“设置采购权限”“批准会话权限”“按原订单重试”等表述，并说明预算、付款和服务结果的区别。新版 PPT 和讲稿已列入材料目录，原视频、源码归档和原始测试记录保留各自版本。检查结果见[文案修订记录](../artifacts/editorial/2026-10-17/review.json)。本次不改变任务验收状态，仍为 97/105；完整材料核查和最终提交版本仍需按 T11 要求完成。
 
 ## 3 T0 产品与协议规格
 
@@ -71,25 +57,6 @@
 
 完成标准：正常和异常流程都能依据规格判断下一状态、资金权限和用户可见结果。技术上未确定的选择记录为待验证，不编写为已提供的保证。
 
-## 4 T1 Echo 基础修复和复现
-
-交付固定版本的 Echo 基线、修复方案、源码变化和回归结果。
-
-- [x] **T1.01** 获取固定 commit，记录依赖和运行环境，核实源码授权。
-- [x] **T1.02** 运行已有构建和测试，区分通过、失败和未执行。
-- [x] **T1.03** 复现账户初始化、授权、session、swap 和撤销。
-- [x] **T1.04** 把 bearer secret 格式替换为绑定操作和授权上下文的数字签名。
-- [x] **T1.05** 统一 swap ABI、selector、字段偏移和 calldata 解析。
-- [x] **T1.06** 检查执行模式、原生币 value、输入资产和 allowance。
-- [x] **T1.07** 修正验证、执行和真实支出的记账关系。
-- [x] **T1.08** 检查 UserOperation 成功标志、receipt 和实际资产变化。
-- [x] **T1.09** 通过真实 EntryPoint／bundler 路径补充验证，不仅使用 mock 直接调用。
-
-M2 已于 2026 年 10 月 14 日 21:04（新加坡时间）通过完整验收：T1.04—T1.09 已勾选，T1 已完成，G1 已关闭。当前使用 PublicNode 普通 RPC、dRPC trace/第二来源和自建严格 Alto；公共 Geth/Lighthouse 已停止，可再下载的链数据库已清理。
-
-27 项合约测试、19 项客户端测试、15 项 M1 回归通过；明确无效输入超过 20,000 次，invariant 8,192 次。公共 session/execute 实扣分别为 50,000/100,000，失败操作采购支出为零，allowance 清零；撤销后的旧操作被拒绝且真实 handleOps 回滚。10 份部署代码/创建交易、29 份回执经双 RPC 核对；8 份源码通过 Sourcify。证据见 [M2 验收](M2_ACCEPTANCE.zh-CN.md)与[最终验收记录](../artifacts/m2/finalization.json)。历史失败及旧同步观察保留，不能代表当前状态。
-
-完成标准：旧问题有明确回归验证，公开 signature 数据不能被用来构造未经认证的新操作。文档与实际账户和事件模型一致。
 
 ## 5 T2 x402 钱包兼容性验证
 
@@ -226,7 +193,7 @@ M4/T6 已于 2026-10-15（新加坡时间）验收：两个真实宿主各采购
 - [x] **T10.03** 验证日志和存储访问控制，排除敏感凭证。
 - [x] **T10.04** 建立网络、任务、结算和异常监测。
 - [x] **T10.05** 定义正常任务集合、攻击分布和基线配置。
-- [x] **T10.06** 运行修复后的 Echo、普通支付基线和 Mandate 消融实验。
+- [x] **T10.06** 运行普通 EOA 与 Mandate 三种配置的同任务 HTTP 比较实验。
 - [x] **T10.07** 运行至少 10,000 个无效操作样本的初始 fuzz 实验，记录生成规则。
 - [x] **T10.08** 记录任务效果、金额、重复付款、证据验证、费用和延迟。
 - [x] **T10.09** 编写形式性质、反例和保证边界，不把有限样本结果当作一般证明。
@@ -272,160 +239,6 @@ M4/T6 已于 2026-10-15（新加坡时间）验收：两个真实宿主各采购
 
 新增[引导重置与进度修复](M8_GUIDE_RESET.zh-CN.md)：提供“重新开始引导”，保留账户与订单，独立 MCP 检查不再自动推进为 Agent 接入完成。五项新增回归和原账户浏览器检查通过；任务完成数不增加。
 
-最新结果见 [M8 验收](M8_ACCEPTANCE.zh-CN.md)。7/8 不代表面向普通用户的完整发行。2026-10-19 的公共链与原生 Claude 演示完成一次 0.01 测试 USDC 结算、同订单恢复和撤销后拒绝；八笔关键交易和历史排查记录分别保留。无声视频及英文配音稿已生成，用户配音待加入，未替换旧比赛发行材料。原 18742 工作区未重置。
+最新结果见 [M8 验收](M8_ACCEPTANCE.zh-CN.md)。7/8 不代表面向普通用户的完整发行。2026-10-19 的公共链与原生 Claude 演示完成一次 0.01 测试 USDC 结算、同订单恢复和撤销后拒绝；八笔关键交易和历史排查记录分别保留。原无声视频及英文配音稿保留历史版本。2026-10-20 已将十二段用户录音完成本地降噪、响度匹配和接缝处理，交付 4 分 23.4 秒有声成片及 59 条对齐字幕，见[成片检查](../competition/video/claude-desktop-base-v1/delivery-check.json)。本次仅更新展示材料，不增加正式任务完成数，不关闭官方确认或最终冻结。原 18742 工作区未重置。
 
 完成标准：新用户可按推荐向导完成账户准备、Agent 接入、采购及恢复；自动化通过的路径必须有对应公共网络及宿主证据，发行和持久化缺口关闭后才能完成父任务。T8/G3 人工与设备验收继续独立管理。
-
-## 15 首批实施任务
-
-首先开展 T0，把主要场景、威胁模型和接口整理成可实现规格。随后推进 T1 和 T2，形成修复基线与兼容性实验。
-
-G1 阶段需要回答四个问题：
-
-1. 哪个账户与支付组合确实能够工作？
-2. 资金规则在哪个实际执行路径生效？
-3. 并发和撤销时，预算承诺如何保持安全？
-4. 哪些服务和证据类型可以进入首个完整演示？
-
-在这些结果明确后推进协议核心和产品联调。实施过程中更新本清单，不提前将尚未验证的任务标记为完成。
-
-## 16 M1 映射与验收边界
-
-M1 已关闭 T0、T2，完成 T1.01—T1.03；G0 完成不代表 G1 完成。以下映射保持总体依赖：
-
-| M1 工作 | 正式任务归属 | 本轮验收 |
-| --- | --- | --- |
-| 工程、规格、schema、私有资料边界、比赛问题 | T0.01—T0.08 | 已完成；规格中的未来字段明确标注未实现。 |
-| 固定 Echo 源码、构建／测试、原流程复现 | T1.01—T1.03 | 已完成；原 gateway 两个失败保留，不代表 T1 修复完成。 |
-| 原型钱包、商户、facilitator、脚本、持久化和攻击测试 | T2 实验子项 | 本地和公共组合已通过；不提前关闭 T3—T10。 |
-| 原生 USDC 公共测试网正／负结算与路线确认 | T2.04、T2.05、T2.07、T2.10 | 已完成；真实转账、预验证后撤销回滚、余额与事件证据齐全。 |
-| 账户比较、资产源码、支付方法矩阵 | T2.01—T2.03、T2.06、T2.08—T2.09 | 按对应源码／本地实测证据验收，明确环境限制。 |
-
-M1 已满足 T2 的真实测试网 gate。下一轮补齐 T1 并关闭 G1，之后开始正式 T3／T4。实验代码的复用需按各正式任务重新验收，不能把本地原型当成产品交付。
-
-## 17 M2 映射与实施状态
-
-M2 已验收 T1.04—T1.09，见 [M2 规格与设计决策](M2_SPEC.zh-CN.md)。修复源码位于 `echo/`，基线 `vendor/echo-*` 保持原版本。Ethereum Sepolia 自建严格 Alto 为必过条件；仅本地成功不关闭 T1/G1。T1.04—T1.09 均已勾选，完整公共验收证据已保存。2026 年 10 月 14 日按用户选择采用第三方节点：dRPC trace＋PublicNode 交叉核对，停止公共同步服务（D-M2-07）。M2 完整公共验收已通过；T3 及 T4 测试网部分随后完成，当前状态见任务总览。
-
-M2 另记录 D-M2-04：固定 Alto commit 加显式 v0.7/Geth 兼容补丁；严格签名与 opcode 负对照通过，公共 gate 已通过。
-
-D-M2-08 补充 native delegation gas 恢复：8 份合约和 2 笔配置交易已成功，原 type-4 交易因 gas 低于协议下界被拒；原签名保留，修复只允许经双 RPC 证明未消费 nonce 的确定无效交易。新增两项恢复回归后当前客户端 19 项通过。公共完整验收仍待完成，T1/G1 状态不变。
-
-2026 年 10 月 14 日新增 D-M2-05：修复中断后把当前累计支出误当作失败交换支出的判断，改为具体交易的 canonical 事件检查点。客户端全套 17 项回归通过，严格 Alto 的实际中断/重启/重复运行保留相同操作且不重复消费 nonce。证据见 [严格恢复](../artifacts/m2/local-suite-resume-recovery.json)。此进展不改变六个 M2 子项的未勾选状态，公共 gate 已通过。
-
-同日新增 D-M2-06：同一 UserOperation 在 reorg 后改由另一笔交易打包时，客户端会重新查找 canonical 回执，保留原 nonce/签名。增强现有测试后 17 项回归通过；实际严格 Alto 恢复流程也按新客户端重跑通过，三个观察阶段使用相同源码摘要。见 [reorg 回归](../artifacts/m2/reorg-recovery.json)及[当前严格恢复](../artifacts/m2/local-suite-resume-recovery.json)。前者使用真实 EntryPoint 和测试 bundler 适配器，后者使用实际严格 Alto；两者范围分开，不代替公共 gate，T1/G1 状态不变。
-
-## 18 Goal 持续执行与后续轮次
-
-用户已授权持续完成比赛测试网版本及展示材料，不需逐轮发送“继续”。具体轮次、任务映射和运行边界见 [Goal 执行说明](GOAL_EXECUTION.zh-CN.md)。M2 完整验收仍是正式 T3/T4 的前置条件；等待时可推进工程恢复、依赖核查、规格草案和视觉设计。
-
-[M3 规格草案](M3_SPEC.draft.zh-CN.md)记录版本替换保留预算占用、两个 Agent 共享根预算、全局业务 nonce、已登记摘要验签和安全释放。草案不改变 T3/T4 的状态，G1 关闭后核对并冻结正式规格。
-
-主网付款、付费服务和正式比赛提交待用户明确授权。T4 主网部分与需要人工/组委会证据的 T11 子项保持独立状态，不因测试网产品或材料已准备而自动完成。
-
-2026 年 10 月 14 日已保存 [Mandate 视觉原型](../design/mandate-preview/README.zh-CN.md)，作为 M2 等待期间的设计准备。官网与七个控制台视图的 12 项浏览器模拟交互/布局核对通过；未连接真实钱包、API 或链。T8 仍未开始正式实施，各子项不提前勾选。
-
-同日完成 [官方材料要求复查](../competition/REQUIREMENTS_REVIEW.zh-CN.md)，保存三类来源及指纹、[英文交付清单](../competition/DELIVERY_CHECKLIST.en.md)和[组委会问题草稿](../competition/ORGANIZER_QUESTIONS.en.md)。测试网认可、提交版本更新、材料差异及真实报名附件仍需官方/用户证据；未发送邮件或提交，T11.01/T11.02 及父任务不提前勾选。
-
-后续准备另有 [测试资源核对](TESTNET_RESOURCES.zh-CN.md)和 [M3 预算/请求模型](M3_BUDGET_MODEL.zh-CN.md)。正式步骤拟增加账户所有者批准请求 hash；资金参数约束与实际 HTTP 用途分开验收。只读余额、模型论证和草案不替代正式合约或付款测试，T3/T4 不提前勾选。
-
-2026 年 10 月 14 日 RPC 负载分工更新：PublicNode 用于部署/客户端普通读写，dRPC 用于严格 Alto 的 trace 及第二来源核对。PublicNode 不提供 debug_traceCall，不承担严格 trace；两个来源按同一 chainId 和 finalized 锚点检查。公共回执轮询 5000ms，Alto 区块轮询 12000ms，减少免费端点压力。限流时恢复原记录，付费升级等待用户授权。
-
-M2 公共验收完成于 2026-10-14T21:04:25.318742+08:00，部署源码 commit `7524fde78953cf8d255655fe265ad11212977bbb`。T1.04—T1.09 已逐项验收，T1 已完成；结合已完成的 T2，G1 已关闭。T3—T11 仍未开始正式实施。证据见 M2_ACCEPTANCE 与 artifacts/m2/sepolia-*。
-
-2026-10-14 21:05 后进入 M3：正式规格已冻结，开始 T3.01—T3.09。合约/SDK/测试有对应证据后逐项勾选；T4 部署等待性质验证，不把开始实现当作完成。
-
-M3 测试网已验收，T4.01—T4.05 已勾选，G2 已关闭。源码验证采用本地固定编译/全部 immutable 与 CREATE2 参数重建/双 RPC 逐字节匹配；Sourcify 公开提交等待用户授权，未冒称第三方公开认证。T4.06 与 T4.07 保留，T5—T11 仍须正式验收。
-
-M4 已启动：T5.01 真实 Bazaar 分页/搜索/缓存验收完成（3 页 294 条+10 搜索结果）。完整受控 HTTP 采购、共享预算、持久化与 stdio MCP 已实现，21 项测试通过，包含临时未填 block hash、响应丢失、重启、预验证后撤销和真实 Anvil 重组。Base 原生 USDC 公共 HTTP 采购及 Codex/Claude 实际宿主记录尚待验收；T5/T6 父任务继续进行中。见[M4 记录](M4_ACCEPTANCE.zh-CN.md)。
-
-2026-10-15（SG）M4 服务层验收：T5.01—T5.08 全部完成。Base Sepolia 两 Agent 通过受控 HTTP 实际购买原生测试 USDC 服务，共 0.02；付款后服务 500 恢复、预验证后撤销拒付及到期未使用释放通过，12 笔交易双 RPC 一致。21 项本地/stdio 测试通过；T6.01/02/03/05/08 已验收，T6.04/06/07 待实际宿主流程及账户所有者签署完整状态流程，不关闭 T6/M4/G3。
-
-2026-10-15 M4 继续：真实 Codex 与 Claude Code 均完成各自 0.01 测试 USDC 采购，4 笔新增交易双 RPC 核对；M4 累计 0.04，钱包余 0.01。owner 请求待签/已签/canonical 生效/失败/撤销/reorg 已实现并经真实本地 EVM 验收，T6.07 已完成。26 项回归通过，任务/回执只读查询刷新链状态；价格变更在跨工具调用间持久化核对。T6.04 与 T6.06 仍需交互批准/拒绝、澄清及实际宿主恢复/共享步骤完整证据。
-
-2026-10-15（SG）M5 最终验收：T7.07/08/09 已勾选，有限控制器/外部留存及攻击反例、公开 HTTPS 真实 TLSNotary 评估完成；25 项 M5 与 26 项 M4 回归通过。T7/M5 完成，正式验收 66/105，G3 等待 T8。公共历史导入不是付款前锚定，同一操作系统不是管理员权限隔离，无法保证的绕过/grinding/历史尾部明确记录；未新增公共付款。
-
-2026-10-15（SG）M6 首批：T8.01—06 及 09 验收，七视图接实际共享 API、真实 owner calldata 摘要、整数预算及 paid/service/result 分离通过本地 EVM 链和 HTTP 服务与浏览器验证。5 项 M6、26 项 M4 回归通过；正式验收 73/105。真实钱包扩展、完整管理钱包浏览器与证据操作、SDK 快速开始/干净环境待补；T8/T9/M6 进行中，G3 开放，Sites 只注册未发布。
-
-2026-10-15（SG）M6 SDK 验收：T9.01—07 全部完成，统一入口/CLI/Agent/独立商户及冻结版本矩阵/快速开始在不含私有 runtime/node_modules 的新目录完成采购流程和验证记录和撤销。7 项 M6、26 项 M4、25 项 M5 回归通过；旧 invariant 驱动未执行 settle 的覆盖缺陷已修复，8192 调用及实际余额单测通过。正式验收 80/105；T8.07/08/10、M6/G3 保持开放，无新增公共付款。
-
-2026-10-15（SG）后续：owner-private 静态官网原生部署 succeeded，见[M6 补充验收](M6_ACCEPTANCE.zh-CN.md)；两个测试网的共同 finalized 代码/身份/余额核对通过，一次 Base RPC 失败保留。M7 正式规格冻结并开始独立恢复/运维工作，3 项真实 OS 进程和 4 项 RPC 观察测试通过，见[M7 进度](M7_PROGRESS.zh-CN.md)。T10 改为进行中但本批新增勾选 0，仍 80/105；M6/G3 继续等待实际钱包及完整移动流程，无新公共交易。
-
-M7 运维验收（2026-10-15 SG）：T10.01—04 全部完成，正式子项 84/105。21 项运维、25 项证据、26 项服务/网关、7 项 Web 回归及当前 SDK 独立进程演示通过；真实 RPC 连接故障、nonce 替换、OS 多 worker/退出、实际链重组与签名证据验证具备结果。D-M7-02 修复异常日志凭据片段和重组后的服务观察去重，不修改验证器规则。详见[M7 运维验收](M7_OPERATIONS_ACCEPTANCE.zh-CN.md)。T10.05—10/T11、M7/G4/G6 继续，M6/G3 仍等待外部钱包与移动端完整管理流程；新增公共交易 0。
-
-M7 数据集验收（2026-10-15 SG）：T10.05/T10.07 完成，正式子项 86/105。[实验协议](M7_EXPERIMENT_PROTOCOL.zh-CN.md)冻结 10 个正常任务、20 类无效输入及 5 个基线；最终 10000 条不同 calldata 直接调用真实本地合约，全部按预期拒绝，6 个合法控制通过，同源码/seed/config 的样本逐字节复核结果一致。r1 重复样本和后续修正均保留，见[数据集验收](M7_DATASET_ACCEPTANCE.zh-CN.md)。T10.06/08/09/10、T11、M7/G4/G6 及 M6/G3 继续，不将此结果当作已运行比较/性能或一般安全证明。公共交易新增 0。
-
-M7 比较验收（2026-10-15 SG）：T10.06/T10.08 完成，正式子项 88/105。修复 Echo 的 10 次真实 EntryPoint 受控 swap 与 1 次预算失败通过；B1—B4 的 120 个 HTTP 任务/132 笔结算最终有效、重复付款 0；8 个共享核心/边界状态实验及 3 类证据探测通过。金额、事件 nonce、gas/费用、P50/P95、披露和 66 份独立进程证据报告已复核，26 项服务回归与 TypeScript 通过，详见[M7 比较验收](M7_BENCHMARK_ACCEPTANCE.zh-CN.md)。保留初次并发/故障错误及重试，链上登记增加成本，controller 可被绕开而付款权限范围仍有效；同一宿主/HTTPS/历史保证不夸大。T10.09/10、T11、M7/G4/G6 及 M6/G3 继续。公共交易新增 0。
-
-M7 形式边界验收（2026-10-15 SG）：T10.09 完成，正式子项 89/105。11 条性质定义占用守恒、共享预算、session 子集、业务幂等、付款绑定、结算时撤销、严格释放、三组状态、最小披露、删尾及 controller 边界；手工论证、实际反例和源码/证据 SHA 见[M7 形式边界](M7_FORMAL_BOUNDARIES.zh-CN.md)与 artifacts/m7/formal/acceptance.json。未运行定理证明器，不宣称机器证明或独立安全审计。T10.10 及 T10/G4 继续开放；M6/G3 仍待实际外部钱包/移动端完整管理流程，T11 继续。新增公共交易 0。
-
-M7 英文文档验收（2026-10-15 SG）：T11.03 完成，正式子项 90/105。[技术报告](../competition/TECHNICAL_REPORT.en.md)区分 Echo 复用/M2 修复/Mandate 新增、协议/研究/测量及公共与 local 证据；[安全自评](../competition/SECURITY_SELF_ASSESSMENT.en.md)列权限分层、10 项实际发现/边界及未完成事项。35 个指标/地址/交易引用匹配原始 JSON，28 个本地链接解析及实际私有值排除检查通过，记录见 artifacts/competition/documentation-acceptance.json。T11 父任务仍进行中，T11.08 全材料核查/09 最终冻结未关闭；T10.10、M6/G3、主网及正式提交边界保持。新增公共交易 0，未发送组委会消息。
-
-M7 展示材料验收（2026-10-15 SG）：T11.04/T11.07 完成，正式子项 92/105。交付[12 页英文可编辑 PPTX](../competition/presentation/mandate-wallet-v2.pptx)及 971 词讲稿；115 词/分钟加 50 秒停顿估算 557 秒，非人工试讲计时。6 页原生表格、2 个含 workbook snapshot 的原生图表、12 页最终渲染均检查，数值和示例交易匹配实际数据。[执行证据索引](../competition/EXECUTION_EVIDENCE.en.md)将两测试网 14 笔既有交易通过各 2 个 RPC 重新核对 canonical/finalized、目标/selector、事件与费用，包含 2 笔真实 revert；对应 8 个演示步骤、付款后 500 按原订单重试及商户回执。新公共交易 0，无签名器或私有 runtime 读取；T11.05 视频、08 全材料检查、09 最终冻结、10 导出检查、官方/报名确认仍保留。T10.10 及 M6/G3 也继续开放。
-
-M7 实际视频验收（2026-10-15 SG）：T11.05 完成，正式子项 93/105。交付[172.05 秒实际 App/EVM 视频](../competition/video/mandate-wallet-demo-v1.mp4)、英文计算机旁白/字幕及逐段 transcript。录制独立 Chrome 测试会话和 Web/商户进程，10 个真实步骤，恰一笔 0.01 mock USDC 付款；付款后 500、同 hash 恢复、独立验证 overall=incomplete、禁用外部钱包确认预览、独立 fixture 账户所有者撤销及后续拒绝均有实际断言。232 个 CDP 帧按真实间隔编码，无剪切/变速；10 阶段及最终解码帧检查，完整 AV 解码、时长/音频峰值/无重叠、TypeScript 与导出敏感值检查通过。原始证据/限制见 artifacts/competition/video/acceptance.json。未注入钱包 provider，不关闭 T8 实际钱包/移动流程；T11 其他子项、T10.10 及相关 gate 继续。公共交易新增 0，未正式提交。
-
-M7 源码交付验收（2026-10-15 SG）：T11.06/T11.10 完成，正式子项 95/105。[rc2 源码交付](../competition/SOURCE_DELIVERY.en.md)固定 901cadda 源提交与 ZIP SHA，1865 个源/证据/材料文件；从实际 ZIP 在原项目外新目录复现 bootstrap、冻结 install、完整 build、23 项 Solidity、84 项 TypeScript 及多进程采购/恢复/证据/撤销演示，10 阶段全部通过。核对两 workspace 包解析在解压目录内，明确共享宿主工具和公共缓存；私有 runtime 未复制。包和嵌套内容对比 289 个实际私有值变体、禁入目录/密钥块/附件，许可 notice 保留。rc1 只因 macOS 路径别名检查误报失败，记录保留，rc2 修正并完整重跑。详见 artifacts/competition/source-delivery/acceptance.json。候选不等于 T11.09 最终冻结，未来改版重验；T8 真实钱包/移动、T10.10、T11.01/02/08/09 与相关 gate 继续。新增公共交易 0，未发布/正式提交。
-
-
-M6 实际钱包自动化补充（2026-10-15 SG）：官方未修改 MetaMask 13.52.0 的 680 个解压文件与固定 ZIP 逐一核对，通过独立浏览器原生 UI 完成 create、会话授权、policy 替换/重授权、撤销及两次报告故障实验。恰一次 0.01 mock USDC 付款；500 后同 hash 恢复，occupied 保留 10000，撤销后下一步骤拒绝。真实钱包广播后报告中断，浏览器重启用原 hash 恢复且交易集合不变；修复 fetch 断线提示并在第二次实际故障复验。最终七笔 Owner 交易、一次登记、一次结算，14 个桌面/390px 视图无页面溢出，7 项 Web 回归和 typecheck 通过。证据与复现见[M6 实际钱包记录](M6_BROWSER_WALLET_ACCEPTANCE.zh-CN.md)及 artifacts/m6/external-wallet/automation-acceptance.json。T8.07/08/10 继续保留人工试用、实际账户切换及剩余兼容路径，G3 开放，仍 95/105；不把自动化写成人工/实体手机验收，不把同机配置当恶意宿主隔离。新增公共交易 0；托管 Sites 和 rc2 仍为旧源码范围，最终交付需重验。
-
-
-M7 独立工具复核验收（2026-10-15 SG）：T10.10 完成，T10 全部十项完成；结合 T9 已完成，G4 关闭，正式子项 96/105。按既有 M7 规格的独立工具路线，用固定 Slither/crytic-compile 和 Semgrep CE 检查两个合约工程及 66 个 TypeScript 文件（含 evidence verifier），113 个初始信号逐项记录。真实复现 Echo 密钥库截短 GCM 标签仍可签署，已固定 16 字节标签；修复前后 probe 和 20 项 Echo 客户端/27 项 Echo 合约/23 项 Mandate 合约/25 项证据/26 项服务回归及 typecheck 通过，固定工具脚本重复扫描一致。最终 112 个原始提示保留具体处置，不声称零告警或第三方人工审计。完整记录见[M7 工具复核](M7_SECURITY_REVIEW.zh-CN.md)、[英文报告](../competition/STATIC_TOOL_REVIEW.en.md)及 artifacts/m7/security/acceptance.json。部署 runtime、ABI 及研究协议未变；新公共交易 0。M6/G3、T11 剩余要求及 G6 继续；主网/正式提交仍待明确授权。
-
-
-M6/M7 材料更新（2026-10-15 SG）：正式子项仍 96/105。实际 MetaMask 演练发现的新任务切换与 Owner 状态并发冲突已修复，8 项 Web、3 项 OwnerStatus 及 typecheck 通过，补充静态扫描信号集合不变。当前主展示更新为 12 页/964 词/估算 553 秒的 v3 幻灯片，以及 214.35 秒实际 MetaMask 确认视频：3 笔 Owner 交易、恰 1 笔 0.01 mock USDC 付款、500 后同 hash 恢复、撤销后拒绝。12 个最终视频阶段和 12 页幻灯片均视觉检查；原图表/workbook 精确保留，完整 AV 解码及敏感值检查通过。见[材料更新](M7_MATERIAL_REFRESH.zh-CN.md)、[钱包并发修复](M6_OWNER_CONCURRENCY.zh-CN.md)。T11.08 跨材料核对已推进但未关闭，T8 人工及剩余路径、T11.09 最终冻结继续；旧托管部署/rc2 包未冒充包含本轮改动，下一候选需重新复现。新公共交易 0。
-
-
-M7 全材料核查（2026-10-15 SG）：T11.08 验收，正式子项 97/105。材料清单明确当前 21 项主材料/网站源码及旧 deck/video/rc2/托管版本范围，80 项量化引用、原生图表、12 页 notes、12 阶段字幕、4 处字面地址/32 字节引用和 141 个本地链接核查通过；故意错误 gas 的负例被拒绝后恢复。12 项代码/证据表述审阅区分付款约束、HTTPS/历史/同一宿主边界和 Echo/proposal 来源。详见[材料核查](M7_MATERIAL_REVIEW.zh-CN.md)及 artifacts/competition/material-review/r2/acceptance.json。已修正旧执行/源码说明中的状态冲突；T11.09 最终冻结、T8 人工及剩余路径、官方/报名确认继续。下一源码候选将包括当前修复及原生钱包材料，并在干净目录新增 Echo 回归；无公共交易、新节点或 bundler。
-
-
-M7 源码更新验收（2026-10-15 SG）：rc4 固定 64108df 源提交和 677d03a9ecaaa77f79939694eb23a92ed594eaab853ca9ae581940308d1201c1 归档 SHA，2059 文件，包含实际钱包竞态/GCM 修复和当前展示材料；原工程外 13 阶段、50 项 Solidity、105 项 TypeScript 及多进程演示全部通过，未复制私有 runtime。337 敏感值变体及 2247 展开成员检查通过；rc3 的公开上游测试向量碰撞拒绝保留，仅在 5 个精确 SHA 固定文件中识别原有公开向量，其他位置/修改文件仍拒绝。新增说明后 T11.08 r3 核查 94 项引用及 143 链接通过。见[rc4 验收](M7_SOURCE_REFRESH.zh-CN.md)、artifacts/competition/source-delivery/rc4/acceptance.json。总数仍 97/105，T11.09/人工与剩余 T8/官方确认继续，旧托管网站未冒称更新。公共交易 0，无自建同步节点/bundler、push 或正式提交。
-
-
-M6 钱包边界补充（2026-10-15 SG）：未修改的 MetaMask 实际 UI 验证站点授权账户与全局选择的区别、错误网络/断连禁用、非 Owner 拒绝以及取消后同一请求重试；两个独立本地链合计恰 1 笔 Owner 交易、无 token 付款。另修复全局/审阅错误反馈超出可视区域，桌面和 390px 四个显示探针、8 项 Web 回归及补充静态扫描通过。原生钱包付款权限范围与受控 provider 显示探针分别记录，失败尝试保留；见[M6 钱包边界](M6_WALLET_BOUNDARIES.zh-CN.md)和 artifacts/m6/wallet-boundaries/acceptance.json。全材料 r5 重新核查 94 项引用、146 链接通过。正式子项仍 97/105；实际非 Owner 切回 Owner、其他 provider 错误、审阅并发及人工/实体手机试用继续，T8/G3 不关闭。rc4 和托管网站保留原版本，本轮修复尚待新候选导出/部署。新增公共交易 0，无同步节点、付费、push 或正式提交。
-
-
-M6 待决审阅修复（2026-10-15 SG）：从 0912257 固定源码复现旧确认关闭新审阅、旧完成切回旧任务、对账反馈串入新审阅、迟到快照覆盖及预检重复提示 5 项问题；原意图归属保持正确。新界面捕获 request/task/连接、隔离 epoch 及快照 generation，并在预检前加锁。六个修复后受控时序场景通过，每次独立本地链恰 1 笔 Owner 交易、token 付款 0、原 hash 一致；旧版重复提示探针主动拒绝第二个提示，没有第二笔广播。5 类 provider 错误×2 视口的 10 项显示、暂停/恢复明确摘要、8 项 Web 回归、TypeScript 及补充静态扫描通过。见[M6 审阅记录](M6_REVIEW_RACE.zh-CN.md)、artifacts/m6/review-race/acceptance.json。T11.08 r6 材料复核 94 项引用/148 链接通过。正式子项仍 97/105，G3 开放；实际非 Owner 恢复 Owner、其他钱包/人工及实体手机路径继续。显示检查另发现断开后禁用按钮仍保留 Owner connected 旧标签，后续应改正文案与旧网络/区块显示。rc4、视频及旧托管保留固定版本，本批尚需新源码候选/部署。新增公共交易 0，无付费、同步节点、push 或正式提交。
-
-
-M6 原生恢复/发布更新（2026-10-15 SG）：真实 MetaMask r14 完成非 Owner 拒绝→仅断开当前站点→恢复 Owner→原请求原生确认，独立 RPC 验证 sender/recipient/calldata/nonce、成功回执和 PauseChanged 事件；nonce6→7、恰 1 笔本地 Owner 交易、token 付款 0。断开标签与 8 项 Web 回归通过，见[原生恢复验收](M6_OWNER_RECONNECT.zh-CN.md)。产品 c9bb738 的六个静态文件通过 Sites 原生 owner-private 部署，source53c49a2、succeeded；访问范围不变，签名器/后端/数据库未上传，见 artifacts/m6/publication-refresh/acceptance.json。人工 U1—U10 步骤与可见浏览器启动器已准备，smoke 没有钱包初始化或签署，不冒称人工通过；已请求人工反馈，继续独立源码交付。全材料 r7 核查 94 项引用/154 链接并绑定当前托管源码通过。仍 97/105，T8/G3 和官方/最终冻结继续；rc4/视频保留旧固定源码。新增公共交易 0，无付费、自建节点或正式提交。
-
-
-rc5 交付复验（2026-10-15 SG）：固定源 b09319aedd73b1a15fa44620a89b63637066731c，2243 文件、37,212,611 字节，归档 SHA96208603ac1a831410067ab04808bb173b86b08894dc4de618314057075df016。原工程外 13 阶段、50 项 Solidity/105 项 TypeScript、多进程采购/500 后同 hash 恢复/独立检查/撤销/拒绝全部通过；359 实际私有值变体及 2431 展开成员检查，私有 runtime 未复制。见[当前源码验收](M7_SOURCE_REFRESH.zh-CN.md)及 artifacts/competition/source-delivery/rc5/acceptance.json。主材料 r9 核对 94 项引用/154 链接及当前托管源码通过；r8 因说明遗漏旧 rc2 精确范围而拒绝，补回历史标识并保留失败。公开官方附件与 14 日 SHA 相同，规则页仍未给测试网明确说明，见 artifacts/competition/requirements-recheck-2026-10-15.json；T11.01 不关闭。仍 97/105；人工 UAT 已请求反馈，T8/G3、官方/报名确认及 T11.09 最终冻结继续。下一批优先核对剩余服务兼容/低资金等错误的实际界面指引及人工结果，不重复创建候选包替代产品验收。无新公共交易、主网付款、付费或正式提交。
-
-
-M6 采购反馈/现金预检（2026-10-15 SG）：服务页补齐 Payment/Service/Result、原付款及可执行后续入口；固定 f554395 旧版已复现 paid/failed 在原服务卡片不显示。最终 13 个本地 EVM 链和 HTTP 服务/浏览器场景通过，覆盖 500 同 hash 恢复、结果 invalid、授权暂停/过期/旧版/root 和 session 撤销、5 类报价拒绝、低现金补款恢复。新采购现金不足保持 draft，不形成登记/付款签名或占用；27 项服务/网关测试验证可签署独立决策证据、补款后原 scope 采购及现金 0 时已付款恢复，8 项 Web 回归/TypeScript 通过。见[M6 采购反馈](M6_PURCHASE_FEEDBACK.zh-CN.md)及 artifacts/m6/purchase-feedback/acceptance.json。静态扫描 67TS 文件/67 信号，net+3 模板提示已编码复核及带正向对照的恶意文字探针通过；Solidity 信号 3/45 不变，非零告警。原 M4 生成 build 记录已保留历史原件，新 manifest 另存本批。源码验收器保留既有最低回归要求并读取实际 case 数，含新现金用例的候选须显式验证该通过项；禁止覆盖既有 acceptance。仍 97/105、T8/G3 人工及剩余兼容/设备路径继续；rc5 与当时网站保持原范围，下一步同步私有站点与新候选。公共交易 0，无主网/付费/正式提交。
-
-
-M6 采购反馈发布同步（2026-10-15 SG）：产品源 e3055036877c2ee8f66333395d6ed79741652f04 的六个静态文件已通过 Sites 原生 owner-private 发布，Site 源 d9f110e809d484768cc0dda1da5bef0bd0ab3b3e，状态 succeeded。逐文件 SHA、tar 内容及 322 个实际私有值变体检查通过；访问范围保持 owner-only，未上传后端/数据库/签名 runtime，现金预检须配套新版本地 Gateway。见 artifacts/m6/publication-purchase-feedback/acceptance.json。T11.08 r10 核对 94 项量化引用、158 本地链接和当前托管范围通过。rc5 仍保留旧固定源，新候选将从本次已提交资料独立复现；97/105 不变，T8/G3 人工及剩余设备路径、官方/报名和最终冻结继续。公共交易 0，无主网付款、付费或正式提交。
-
-
-rc6 交付复验（2026-10-15 SG）：固定源 a05ece867d9911ba6e0bd54098083a0649e0b777，2359 文件、39,953,134 字节，ZIP SHA85d9c974e8cbf68141c8a09e162cd91665663ba07d4b19685cd7b7338f1cc045。原工程外 13 阶段、50 项 Solidity/106 项 TypeScript 通过，含 27 项服务回归的低现金决策证据/补款采购/现金 0 已付款恢复组合；两项明确无效 fuzz 各 10001 次、8192 invariant 调用且 handler revert 为 0，多进程采购/500 后同 hash 恢复/独立检查/撤销/拒绝通过。359 实际私有值变体、2547 扫描成员（含 188 嵌套展开成员）及 148623538 字节检查；未复制私有 runtime，同一宿主工具/公共缓存明确。当前采购反馈静态站点已 owner-private 部署，签名器/后端仍在本机；历史 rc5/视频范围保留。见[当前源码验收](M7_SOURCE_REFRESH.zh-CN.md)及 artifacts/competition/source-delivery/rc6/acceptance.json。仍 97/105，T8/G3 人工和剩余设备路径、官方/报名确认、T11.09 最终冻结继续。新增公共交易 0，无主网付款、付费或正式提交。
-
-
-rc6 发布材料收尾核查（2026-10-15 SG）：T11.08 r11 核对 94 项量化引用和 159 个本地链接，当前源码候选及 owner-private 托管范围一致；新生成 24 个复现/验收证据文件另对 359 个实际私有值变体检查通过，记录 artifacts/competition/source-delivery/rc6/post-reproduction-privacy.json。未改写 rc5 等历史证据，当前任务 97/105；剩余入口已在本清单 2.1 汇总。
-
-
-M6 实际托管连接验收（2026-10-15 SG）：产品 bfa7fe8 已 owner-private 发布，Site 源 9a6da86；真实 HTTPS 页面在 Chrome151.0.7922.34 分别验证本机网络权限拒绝与允许。拒绝时桌面/390px 显示连接专用指引，零付款且现金/占用/Owner nonce 不变；允许时一次 0.01 mock-USDC 付款、500 后同 hash 恢复，事件/回执/余额准确。Cloudflare 平台脚本仅做固定模板的比较归一化，浏览器原样执行；三个变更负对照均拒绝。8 项 Web 回归/TypeScript 通过；首批 r2 检查 334 实际私有值变体，补强后的 r6 检查 339 变体（含 Site 访问值）通过；67TS 静态信号的规则/路径计数不变，财务与合约源码匹配 rc6。见[托管连接验收](M6_HOSTED_CONNECTION.zh-CN.md)及 artifacts/m6/hosted-connection/r6/acceptance.json。实验器问题和一次受控停止保留，不计业务失败或通过。仍 97/105，权限由自动化设置、私有站点用 service access，人工登录/钱包与实体手机不冒称通过；rc6 保留旧固定范围，下一次整体版本冻结时重导出。新增公共交易 0，无主网/付费/正式提交。
-
-
-托管连接收尾（2026-10-15 SG）：最终 r6 以原生 Chromium HTTP、逐请求 CDP 访问头保留同源跳转并拒绝跨源跳转，canary 目标 0 请求；允许/拒绝两条业务路径及 339 私有值变体检查通过。r2 原验收和验收器精确源码保留，r12 材料文本快照保留，最新 T11.08 r13 核对 108 项引用/162 本地链接通过。仍 97/105；下一可独立验证项为托管 App 中的原生 MetaMask Owner 授权/撤销，目前托管采购使用预批准 fixture session，这条钱包接入路径尚未验收。人工 UAT/实体设备、官方/报名确认及最终冻结继续，公共交易 0。
-
-
-Rabby 本地兼容性补充（2026-10-15 SG）：用户选择官方 Rabby，并明确授权本次隔离本地连接的 Ignore all。固定 0.94.12 官方 ZIP/1153 文件核对；headless 独立 profile、mock keychain 及公开 Anvil 账户，真实 provider 连接、错误网络拒绝、原生 Add 本地网络、Owner Sign/Confirm 暂停通过。独立 RPC 核对 sender/recipient/calldata/nonce、成功回执和 PauseChanged；nonce6→7、恰 1 笔本地 Owner 交易、末态 cash1000000（fixture 初始铸造相同）、occupied0、付款 0、公共交易 0。交互驱动逐字节保留；完整自动回放的审计/连接等待失败不计通过，停止重复启动该路线。见[Rabby 补充](M6_RABBY_COMPATIBILITY.zh-CN.md)及 artifacts/m6/rabby-wallet/local-r3/acceptance.json。未读取个人密码/profile；可见钱包测试需明确请求。仍 97/105，托管原生 Owner、完整 Rabby 流程、人工/设备与 T8/G3 继续，rc6/网站/视频未变。
-
-
-M6 新任务切换/Rabby 完整本地流程（2026-10-15 SG）：固定旧版 b0c1e78 复现创建后仍显示旧任务、后续 grant 指向旧任务；当前前端在原审核/连接/视图 generation 未改变时跟随新任务，保留后来的任务选择和审核。1 项旧版重现、10 项修复后 UI 场景、8 项 Web 回归/TypeScript/6 文件构建通过；67TS/67 原始静态信号规则路径计数不变，合约 SHA 不变。原生 Rabby 同会话完成新任务/会话授权/0.01 mock USDC 付款 500 后同 hash 恢复/session 撤销与新步骤拒绝；3 笔 Owner 交易、nonce6→9、现金 1000000→990000、occupied10000，独立 RPC 证明通过。该原生流程使用修复前源码并显式选择新任务，原生钱包流程未验证后续的自动切换修复。见[M6 任务切换](M6_CREATED_TASK_HANDOFF.zh-CN.md)。私有站点 service-access token 向本地测试器的输入被自动审批拒绝，未传递、未启动托管原生测试，已请求明确授权；本地验证独立完成。网站/rc6/视频保持各自版本，发布候选就绪；仍 97/105、T8/G3 及人工/官方/冻结继续，公共交易 0。
-
-
-M6 任务切换发布同步（2026-10-15 SG）：修复源码 4d4bd5e 已经 Sites 原生 owner-private 发布，Site 源 a3bcbd02、状态 succeeded；6 个静态文件及 manifest 通过 SHA/326 私有值变体检查，所有者访问范围及 policy revision 不变，签名器/后端/数据库未上传。见 artifacts/m6/publication-created-task/acceptance.json。当前原生托管复验仍等 service-access token 明确授权；旧 r6 连接证据固定 90062a7 并转为历史范围，材料核查继续验证旧证据全部断言及固定 Git 源码，不使用旧证据验收新发布版本。Rabby 完整本地流程/10 项 UI 修复及 8 项 Web 回归均已保存；rc6/视频不重写，97/105 及 T8/G3 人工/设备、官方/报名和最终冻结保持开放；公共交易 0。
-
-
-任务切换发布/材料收尾（2026-10-15 SG）：T11.08 r14 核对 124 项量化/状态引用、171 本地链接及 21 项材料通过；新托管 4d4bd5e 与旧 r6 源码范围分别核查，两个版本负对照拒绝。验收/源码/部署路径已经同步，未重新发送公共交易或改写 rc6/视频。当前 97/105；原生托管复验等待 service-access token 向本地测试器的明确授权，人工试用、官方/报名确认及最终冻结继续。
-
-
-rc7 交付复验（2026-10-15 SG）：固定源 f2fcc31f86a237a82f918fbe774157cc3c1e2a21，2587 文件、44,889,657 字节，ZIP SHA8749ce16b99894811feb92b2656e22562a6d4a609569aa9adf846a51a7823351。新增实际产品改动是已通过独立 UI 矩阵的新任务切换修复和托管连接提示；原生 Rabby 旧基线流程与人工入口保护的证据各保留精确范围。原工程外 13 阶段、50 项 Solidity/106 项 TypeScript、多进程采购/500 后同 hash 恢复/独立检查/撤销拒绝通过；两项明确无效 fuzz 各 10001 次、8192 invariant 调用且 handler revert 为 0。391 实际私有值变体、2775 扫描成员及 159246786 字节检查通过。没有复制私有 runtime，明确共享同一宿主工具/公共缓存；工程复现不能代替人工试用或托管钱包复核。见[rc7 验收](../artifacts/competition/source-delivery/rc7/acceptance.json)。当前 97/105，T11.09、人工 T8 及官方/报名确认继续；公共交易 0，无主网、付费或正式提交。
-
-
-本轮剩余验收审计（2026-10-15 SG）：rc7 实际修复已完成工程外复现，T11.08 r15 核对 124 项引用/173 链接/21 材料，6 个新构建前端文件匹配当前私有发布。剩余 8 子项逐项见[就绪审计](../artifacts/planning/goal-readiness-2026-10-15.json)：测试网完成仍依赖人工 UAT、托管令牌转交授权及报名/官方证据；主网保持未授权边界。相同外部条件已连续 3 个 Goal 轮次存在，能独立推进的实际修复/入口/交付工作均已保存；满足受阻状态审计条件，不宣称目标完成。当前 97/105 及各 T 任务标准保持，Goal 状态以工具返回为准。

@@ -56,13 +56,13 @@ config=root/'.runtime/security-review/semgrep-security.json';config.write_text(j
 run([str(runtime/'semgrep-venv/bin/python'),'-c',builder,str(root),str(output)])
 manifest={'sourceCommit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),'sourceFingerprint':{},'commands':[],'ruleSourceCommit':commit,'ruleArchiveSHA256':archive_sha,'thirdPartyHumanAudit':False,'newPublicTransactions':0}
 commands=[]
-for name in ['mandate','echo']:
+for name in ['mandate']:
     commands.append(('slither-'+name,[str(runtime/'slither-venv/bin/slither'),name+'/contracts','--compile-force-framework','foundry','--exclude-dependencies','--json',str(output/('slither-'+name+'.json')),'--disable-color'],{**os.environ,'VIRTUAL_ENV':str(runtime/'slither-venv')}))
 env={**os.environ,'SSL_CERT_FILE':str(runtime/'semgrep-venv/lib/python3.12/site-packages/certifi/cacert.pem'),'SEMGREP_SEND_METRICS':'off','SEMGREP_SETTINGS_FILE':str(runtime/'semgrep-settings.yml'),'SEMGREP_LOG_FILE':str(runtime/'semgrep.log'),'OTEL_SDK_DISABLED':'true','SEMGREP_APP_TOKEN':''}
-targets=['mandate/evidence','mandate/sdk','mandate/services','mandate/gateway','mandate/web','mandate/operations','echo/gateway']
+targets=['mandate/evidence','mandate/sdk','mandate/services','mandate/gateway','mandate/web','mandate/operations','mandate/onboarding','mandate/desktop']
 commands.append(('semgrep',[str(runtime/'semgrep-venv/bin/semgrep'),'scan','--config','.runtime/security-review/semgrep-security.json','--metrics','off','--disable-version-check','--oss-only','--disable-nosem','--include','*.ts','--exclude','**/test/**','--exclude','**/dist/**','--jobs','2','--json','--output',str(output/'semgrep.json'),*targets],env))
 sources=[p for target in targets for p in (root/target).rglob('*.ts') if 'test' not in p.parts and 'dist' not in p.parts]
-sources += [p for target in ['mandate/contracts/src','echo/contracts/src'] for p in (root/target).rglob('*.sol')]
+sources += [p for target in ['mandate/contracts/src'] for p in (root/target).rglob('*.sol')]
 manifest['sourceFingerprint']={str(p.relative_to(root)):sha(p) for p in sorted(sources)}
 for name,command,env in commands:
     with (output/(name+'.txt')).open('w') as stream:

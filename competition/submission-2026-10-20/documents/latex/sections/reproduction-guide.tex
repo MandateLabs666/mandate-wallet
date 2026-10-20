@@ -1,5 +1,5 @@
 \section{Source identity and prerequisites}
-Clone \url{https://github.com/MandateLabs666/mandate-wallet}. The tested source tag \code{fintechathon-2026-source} points to commit \src{29d10422954d36f0e37c2d89336986d10d014aba}. Later material-only publication changes have their own record. This guide describes the source-mode testnet release; SDK publication to npm and a signed independent installer are not assumed.\citep{implementation,repro}
+Clone \url{https://github.com/MandateLabs666/mandate-wallet}. The exact tested commit and source archive are identified by the product-scoped reproduction record. Later material-only publication changes have their own record. This guide describes the source-mode testnet release; SDK publication to npm and a signed independent installer are not assumed.\citep{implementation,repro}
 
 Use Node 24.x, at least 24.2, pnpm 11.25.0, Python 3.12+ and Foundry 1.5.1. The account build pins Solidity 0.8.26 with optimizer 200, viaIR and Cancun. Bootstrap downloads only pinned public dependency archives and validates their hashes. Modified dependency bytes cause a failure rather than a silent overwrite. The frozen lockfile controls package resolution.
 
@@ -35,20 +35,19 @@ The manual route remains available for existing Gateway profiles. Never upload a
 Run the local suites in independent output directories:
 \begin{lstlisting}
 pnpm m3:test:contracts
+pnpm test:contracts
+pnpm test
 pnpm m3:test
 pnpm m4:test
 pnpm m5:test
 pnpm m6:test
 pnpm m7:test
-python3 scripts/bootstrap-echo-tests.py
-pnpm m2:test:contracts
-pnpm m2:test
 pnpm setup:test
 pnpm exec vitest run --config mandate/desktop/vitest.config.ts
 \end{lstlisting}
 Formal contracts cover root/session bounds, signatures, versioning, expiry and independent reservation invariants. Service tests exercise real local EVM/HTTP recovery. Evidence tests cover disclosure and retention/controller boundaries. Web tests cover owner/status transitions and presentation logic. Operations tests cover workers, wire faults, reorg and diagnostics. Onboarding and desktop tests cover profile/package/connection behavior. These tests do not replace the separately recorded native Rabby/Claude run or remaining human-device acceptance.
 
-The accepted code snapshot passed 50 Solidity cases and 153 TypeScript tests in 16 reproduction phases. Two fuzz suites report 10001 runs each and the reservation invariant reports 8192 calls with no handler revert. These test counts are distinct from the research dataset's 10000 explicitly invalid eth\_call samples. Shared host toolchains and verified public caches are declared. Personal runtime and parent workspace dependencies were not copied.\citep{repro}
+The current product regression passed 44 Solidity cases and 148 TypeScript tests, including the procurement prototype suites. Two fuzz suites report 10001 runs each and the reservation invariant reports 8192 calls with no handler revert. These test counts are distinct from the research dataset's 10000 explicitly invalid eth\_call samples. Shared host toolchains and verified public caches are declared. Personal runtime and parent workspace dependencies were not copied.\citep{repro}
 
 \section{Existing public deployments and read-only verification}
 Base Sepolia (84532) uses native test USDC. Ethereum Sepolia (11155111) has controlled-token fixture evidence, not an assertion that every token there has the required contract-signature route. Use \src{mandate/sdk/VERSIONS.json}, network manifests and each run's explicit account/code fingerprints. The recorded Claude case uses a later owner-created account in the same factory family, so the historic M3 account address is not the video account.\citep{case}
@@ -71,7 +70,7 @@ Persist each deployment/funding/authorization intent, sender nonce, raw signed o
 
 Review token procurement limits separately from gas funding. A payment signature can leave the client only after its exact registration is confirmed. A five-minute payment authorization can expire inside a longer session. An expired unpaid business step cannot be reopened by changing the nonce; safe release and a genuinely new owner-approved purchase are separate actions.
 
-Mainnet writes, paid external services, unsupported schemes and new merchant/facilitator combinations require separate acceptance and authorization. The selected service-payment route does not use EntryPoint for every purchase. Echo's strict bundler deployment is a separate reference workflow and is not a prerequisite for ordinary Mandate local setup.
+Mainnet writes, paid external services, unsupported schemes and new merchant/facilitator combinations require separate acceptance and authorization. The selected service-payment route does not use EntryPoint for every purchase.
 
 \section{Operational acceptance and publication boundary}
 Keep private keys, connection tokens, SQLite stores, raw signed transactions and bound packages in private runtime directories. Public receipts/evidence signatures are different from reusable payment-authorization payloads. Source packages exclude registration forms and private proposal originals. Retain upstream licenses and notices rather than replacing them with the project's MIT label.

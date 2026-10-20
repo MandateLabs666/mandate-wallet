@@ -7,7 +7,6 @@
 | Base Sepolia + 原生测试 USDC + 已部署 MandateAccount ERC-1271 | 已实测 | artifacts/m4/base-sepolia-http.json、m5/lifecycle/base-sepolia.json；受控 HTTP/facilitator |
 | Ethereum Sepolia + 6 位受控 TestUSDC + MandateAccount | 已实测部署/合约 | artifacts/m3/11155111-acceptance.json；不是原生 Circle USDC 市场采购 |
 | Anvil + TestUSDC + 完整 SDK/商户/CLI | 已实测 | sdk-demo + 干净环境验收；非公共网络 |
-| Echo EIP-7702 | Echo v2 ERC-4337 swap 已验收；此支付 SDK 不采用 | T1 严格 Alto/Sepolia；EIP-3009 兼容性失败/原因保留于 M1 |
 | 任意 EOA/未知 ERC-1271 账户 | 不接受替代 Mandate 路线 | 付款约束检查必须由已检查的 Mandate 账户实现；不换管理钱包私钥绕过 |
 | Base 主网 USDC 代理/签名逻辑 | 只读核查 | M1 记录；此 SDK 写入不支持 8453，付款需另行授权 |
 | x402 v2 exact / EIP-3009 | 支持 | 登记前/后格式、预算与真实结算证据 |

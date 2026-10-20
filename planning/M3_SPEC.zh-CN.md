@@ -4,11 +4,11 @@
 
 ## 产品目标与路线
 
-把 T2 原型的已验证支付路径扩展为正式任务授权协议。首版采用已部署、不可升级的 ERC-1271 采购账户、指定原生 USDC、x402 v2 exact/EIP-3009。账户的 view 验签仅接受链上已登记的具体支付摘要，登记阶段原子预留共享预算；付款时再次检查最新权限。Echo v2 保留为 swap 基础及比较基线，不把 validateUserOp 当作 x402 token 结算的权限检查。
+把 T2 原型的已验证支付路径扩展为正式任务授权协议。首版采用已部署、不可升级的 ERC-1271 采购账户、指定原生 USDC、x402 v2 exact/EIP-3009。账户的 view 验签仅接受链上已登记的具体支付摘要，登记阶段原子预留共享预算；付款时再次检查最新权限。token 在实际结算时调用账户的 ERC-1271 接口检查付款权限。
 
 不提供 Agent 任意交易或任意消息签名工具。owner 的创建/修改/暂停/撤销由可信钱包签署，Gateway 仅提出待签请求。owner/browser signer 与 session/operator 分离；本机实验密钥不被描述为恶意宿主隔离。
 
-资产、链和 account implementation 固定在钱包构造参数内。工厂仅部署相同固定实现，不引入可升级代理。官方账户 ABI、schema、事件和 TypeScript SDK 共用版本 2，并与 M1/Echo v2 的接口命名及 EIP-712 域区分。
+资产、链和 account implementation 固定在钱包构造参数内。工厂仅部署相同固定实现，不引入可升级代理。官方账户 ABI、schema、事件和 TypeScript SDK 共用版本 2，各类管理动作、付款登记及 token 付款使用明确区分的 EIP-712 域。
 
 ## 授权与版本语义（T3.01、T3.02）
 
@@ -91,7 +91,7 @@ Base 主网仅配置和只读核查；T4.06 等待授权。M3 的新公共部署
 
 ## 来源、差异和待冻结问题
 
-- 账户选择沿用 [M1 兼容性与设计决策](M1_COMPATIBILITY.zh-CN.md)。正式模块与两个 Agent 的累计上限、版本继承是新增工作。
+- 账户选择沿用 [付款支持矩阵](../mandate/sdk/SUPPORT.zh-CN.md)。正式模块与两个 Agent 的累计上限、版本继承是新增工作。
 - [x402 钱包兼容性](https://docs.x402.org/advanced-concepts/wallet-compatibility)：ERC-1271 支持依 token 验证路径；规范描述不代替指定代币和 facilitator 实测。
 - [Signed Offers & Receipts](https://docs.x402.org/extensions/offer-receipt) 与 [上游规范](https://github.com/x402-foundation/x402/blob/main/specs/extensions/extension-offer-and-receipt.md)：正式证据需固定扩展版本，并验证商户与签名者的绑定。
 - 目前固定的 vendor/x402 仅包含 core/evm 所需源码；offer-receipt 扩展尚未集成。M5 固定兼容扩展来源及 schema，不在本草案宣称已有支持。

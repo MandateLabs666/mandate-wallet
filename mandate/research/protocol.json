@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "protocolId": "mandate-m7-r2",
+  "protocolId": "mandate-http-r3",
   "seed": "0x40271015",
   "localChainId": 31337,
   "genesisTimestamp": 1792000000,
@@ -83,17 +83,6 @@
     }
   ],
   "baselines": [
-    {
-      "id": "B0",
-      "name": "Echo repaired v2",
-      "action": "controlled swap through real EntryPoint handleOps",
-      "samePaidHTTPTask": false,
-      "signers": [
-        "execute",
-        "session"
-      ],
-      "perRoleRepetitions": 5
-    },
     {
       "id": "B1",
       "name": "controlled ordinary x402 EOA",

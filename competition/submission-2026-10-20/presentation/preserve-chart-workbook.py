@@ -6,7 +6,7 @@ import argparse, hashlib, json, posixpath
 from pathlib import Path
 from zipfile import ZipFile, ZIP_DEFLATED
 from xml.etree import ElementTree as ET
-parser=argparse.ArgumentParser();parser.add_argument('--source',required=True);parser.add_argument('--candidate',required=True);parser.add_argument('--output',required=True);parser.add_argument('--report',required=True);parser.add_argument('--source-slide',type=int,default=11);parser.add_argument('--candidate-slide',type=int,default=12);a=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--source',required=True);parser.add_argument('--candidate',required=True);parser.add_argument('--output',required=True);parser.add_argument('--report',required=True);parser.add_argument('--source-slide',type=int,default=12);parser.add_argument('--candidate-slide',type=int,default=12);a=parser.parse_args()
 require=lambda v,c:None if v else (_ for _ in ()).throw(RuntimeError(c))
 require(not Path(a.output).exists(),'REPAIRED_OUTPUT_EXISTS')
 ns={'c':'http://schemas.openxmlformats.org/drawingml/2006/chart','r':'http://schemas.openxmlformats.org/officeDocument/2006/relationships','p':'http://schemas.openxmlformats.org/package/2006/relationships'}

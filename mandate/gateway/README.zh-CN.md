@@ -29,7 +29,7 @@ default_tools_approval_mode = "writes"
 
 ## Claude Desktop 图形界面
 
-桌面聊天用户可按[手册第 09.1 至 09.6 步](http://127.0.0.1:18742/docs.html#case-09.1)导入[本地 MCPB 扩展](../../output/desktop/mandate-wallet-0.1.0.mcpb)，在设置界面选择已核对的 Agent 配置和 0600 私有连接文件。扩展包和配置字段见[说明](../desktop/README.zh-CN.md)。此路线独立于下方 Claude Code 项目配置，也不是远程连接器 URL。请先只读核对，再执行案例任务；导入不会创建授权。
+桌面聊天用户可按[手册第 09.1 至 09.6 步](http://127.0.0.1:18742/docs.html#case-09.1)导入`pnpm setup:build` 生成的本机桌面扩展，在设置界面选择已核对的 Agent 配置和 0600 私有连接文件。扩展包和配置字段见[说明](../desktop/README.zh-CN.md)。此路线独立于下方 Claude Code 项目配置，也不是远程连接器 URL。请先只读核对，再执行案例任务；导入不会创建授权。
 
 ## Claude Code
 

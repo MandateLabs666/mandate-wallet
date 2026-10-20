@@ -2,7 +2,7 @@
   "exitCode": 0,
   "report": {
     "schemaVersion": 2,
-    "observedAt": "2026-10-15T06:25:54.781Z",
+    "observedAt": "2026-10-20T08:03:34.430Z",
     "checks": [
       {
         "name": "checkpoint-integrity",
@@ -10,7 +10,7 @@
         "source": "session-signatures-and-salted-Merkle",
         "guarantee": "Disclosed fields match signed ordered checkpoints; hidden fields are not checked",
         "facts": {
-          "checkpoints": 5
+          "checkpoints": 4
         }
       },
       {
@@ -19,8 +19,8 @@
         "source": "pinned-controller-signatures-and-independent-retention",
         "guarantee": "offered checkpoints match independently retained roots in the trusted snapshot",
         "facts": {
-          "count": 5,
-          "lastSequence": "4",
+          "count": 4,
+          "lastSequence": "3",
           "mode": "live",
           "guarantee": "offered checkpoints match independently retained roots in the trusted snapshot",
           "limits": [
@@ -48,8 +48,8 @@
         "source": "canonical-registration-and-pinned-wallet-code",
         "guarantee": "Exact transaction, session signature, owner scope, validity and budget checks at the registration block",
         "facts": {
-          "registrationHash": "0x681d03114506b1cdb07a69a74bd7c62e5973e9c8bbcd4f7a0487b5be36e51eae",
-          "blockHash": "0xc367ca6ad0158ea5e62d43f23b7dd68bca3913d7f408f8ba926470e63836b3df",
+          "registrationHash": "0x39977668c1837e9b878b37150bd566dd34eacca1997b762d0b7a0c33a976a98d",
+          "blockHash": "0xa277076b3762668cca598415b2d3cfd0359b2f0f84575ce011a207e6c1459e54",
           "providers": 1
         }
       },
@@ -70,7 +70,7 @@
         "source": "canonical-token-AuthorizationUsed-and-matching-Transfer",
         "guarantee": "Actual payer, recipient, nonce and amount agree; delivery remains a separate check",
         "facts": {
-          "transaction": "0x3907c11d5c28e47d8e211d83db2d22cdf1f161c1fdc7ee5091e239590a2aa493",
+          "transaction": "0xee633df6d808c280e0d418003deaa79a3719f5e52df2a45278a0c18b49114bd9",
           "paidAtomic": "10000",
           "providers": 1
         }

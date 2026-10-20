@@ -32,9 +32,9 @@ The wizard generates a connection-specific Guided extension for Claude Desktop. 
 
 - [Technical documentation](competition/TECHNICAL_REPORT.en.md), [security self-assessment](competition/SECURITY_SELF_ASSESSMENT.en.md) and [build/test guide](competition/BUILD_AND_DEPLOY.en.md).
 - [Current submission folder](competition/submission-2026-10-20/README.en.md), including the 14-slide deck, ten-minute speaker script and PDF reports.
-- [Base Sepolia execution evidence](competition/video/claude-desktop-base-v1/execution-evidence/README.en.md), [picture edit and voice-over script](competition/video/claude-desktop-base-v1/README.zh-CN.md).
+- [Base Sepolia execution evidence](competition/video/claude-desktop-base-v1/execution-evidence/README.en.md), [narrated demonstration](competition/video/claude-desktop-base-v1/README.zh-CN.md).
 - [Chinese onboarding guide](mandate/onboarding/README.zh-CN.md), [MCP guide](mandate/gateway/README.zh-CN.md), [SDK quick start](mandate/sdk/QUICKSTART.zh-CN.md) and [illustrated manual](output/pdf/mandate-wallet-manual.zh-CN.pdf).
-- [Task checklist](planning/IMPLEMENTATION_TASKS.zh-CN.md) and [M8 acceptance](planning/M8_ACCEPTANCE.zh-CN.md). Original T0-T11 remains 97/105, T12 remains 7/8 and G3 remains open. Preparing submission files does not close those gates.
+- [Task checklist](planning/IMPLEMENTATION_TASKS.zh-CN.md) and [M8 acceptance](planning/M8_ACCEPTANCE.zh-CN.md). The checklist records the current Mandate product scope and its remaining acceptance requirements. Preparing submission files does not close those gates.
 
 ## Implementation map
 
@@ -46,7 +46,6 @@ The wizard generates a connection-specific Guided extension for Claude Desktop. 
 | mandate/onboarding, mandate/web | Guided setup and owner workspace. |
 | mandate/evidence | Signed checkpoints, selective disclosure, controller reference and independent verifier. |
 | mandate/research, mandate/operations | Evaluation, fault recovery and monitoring. |
-| echo | Repaired Echo v2 swap reference with real EntryPoint/strict Alto evidence. |
 | vendor | Pinned public upstream sources and their original notices. |
 
 ## Evidence and limits
@@ -66,11 +65,6 @@ Inspect the trust file separately. Recorded sessions may now be expired or revok
 
 ## Provenance and licensing
 
-Project-authored code is MIT. Pinned Echo, x402, OpenZeppelin and forge-std sources retain their own licenses and notices. [Source delivery](competition/SOURCE_DELIVERY.en.md) identifies the public snapshot and reproduction evidence. Registration files, private proposal originals, credentials, databases, signed transaction journals and machine-bound connection packages are excluded.
+Project-authored code is MIT. Pinned x402, OpenZeppelin and forge-std sources retain their own licenses and notices. [Source delivery](competition/SOURCE_DELIVERY.en.md) identifies the public snapshot and reproduction evidence. Registration files, private proposal originals, credentials, databases, signed transaction journals and machine-bound connection packages are excluded.
 
-The prior README is retained as [historical reproduction notes](docs/HISTORICAL_REPRODUCTION.zh-CN.md). Its dated status statements do not override the current task checklist or source manifest. No official competition submission has been sent by preparing or publishing this repository.
-
-
-## Expanded LaTeX documentation
-
-The current written deliverables are the [technical report](competition/submission-2026-10-20/documents/mandate-wallet-technical-documentation.pdf), [security self-assessment](competition/submission-2026-10-20/documents/mandate-wallet-security-self-assessment.pdf), [execution evidence guide](competition/submission-2026-10-20/documents/mandate-wallet-execution-evidence.pdf) and [reproduction/deployment guide](competition/submission-2026-10-20/documents/mandate-wallet-reproduction-and-deployment.pdf). Their covers identify all registered team members and academic contacts. The technical report has seven native architecture, sequence, state and verification diagrams and 25 bibliography entries. [LaTeX sources and compilation instructions](competition/submission-2026-10-20/documents/latex/README.en.md) accompany all four PDFs. The documents preserve the distinction between tested implementation, recorded evidence and prospective research.
+Source publication and the submission download are available separately from the organizer’s email submission.
