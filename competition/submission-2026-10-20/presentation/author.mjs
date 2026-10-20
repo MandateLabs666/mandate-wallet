@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises';
+import {applyVisualStyle} from './visual-style.mjs';
 const ROOT=process.env.MANDATE_SOURCE_ROOT || process.cwd();
 const C={bg:'#08090b',white:'#f5f6f8',muted:'#a0a5af',blue:'#62acff',line:'#354052',soft:'#192b43',amber:'#f4c47a'};
 const FONT='Arial';
@@ -100,9 +101,9 @@ export async function author({presentation:p}){
     text(s,'Next implementation priorities',766,214,450,55,29,C.blue,true);
     text(s,'Supported installation and updates\n\nBroader merchant compatibility\n\nIndependent source and history evidence',766,296,450,221,25,C.white);
     text(s,'Beacon commitments and stronger execution proofs remain research extensions.',64,552,1152,39,24,C.muted);
-    text(s,'Mengzhong Ma, Sat Chidananda, Vrushank Ajay Ahire, Wilfried Ariel Mulyawan',64,612,1152,27,20,C.white);
-    text(s,'Nanyang Technological University, Singapore',64,644,1000,24,18,C.muted);break;
+    break;
   }
  }
- return {slideCount:p.slides.items.length,sourceSlideOrder:order};
+ await applyVisualStyle({presentation:p});
+ return {slideCount:p.slides.items.length,sourceSlideOrder:order,visualRevision:'visual-r3'};
 }

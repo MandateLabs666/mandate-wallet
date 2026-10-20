@@ -6,7 +6,7 @@ import argparse, hashlib, json, posixpath
 from pathlib import Path
 from zipfile import ZipFile, ZIP_DEFLATED
 from xml.etree import ElementTree as ET
-parser=argparse.ArgumentParser();parser.add_argument('--source',required=True);parser.add_argument('--candidate',required=True);parser.add_argument('--output',required=True);parser.add_argument('--report',required=True);a=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--source',required=True);parser.add_argument('--candidate',required=True);parser.add_argument('--output',required=True);parser.add_argument('--report',required=True);parser.add_argument('--source-slide',type=int,default=11);parser.add_argument('--candidate-slide',type=int,default=12);a=parser.parse_args()
 require=lambda v,c:None if v else (_ for _ in ()).throw(RuntimeError(c))
 require(not Path(a.output).exists(),'REPAIRED_OUTPUT_EXISTS')
 ns={'c':'http://schemas.openxmlformats.org/drawingml/2006/chart','r':'http://schemas.openxmlformats.org/officeDocument/2006/relationships','p':'http://schemas.openxmlformats.org/package/2006/relationships'}
@@ -17,7 +17,7 @@ sha=lambda b:hashlib.sha256(b).hexdigest()
 copied=[]
 with ZipFile(a.source) as source,ZipFile(a.candidate) as candidate:
     data={n:candidate.read(n) for n in candidate.namelist()};content=ET.fromstring(data['[Content_Types].xml']);original_content=ET.fromstring(source.read('[Content_Types].xml'))
-    source_parts,candidate_parts=parts(source,'ppt/slides/slide11.xml'),parts(candidate,'ppt/slides/slide12.xml');require(len(source_parts)==len(candidate_parts)==1,'CHART_COUNT_CHANGED')
+    source_parts,candidate_parts=parts(source,f'ppt/slides/slide{a.source_slide}.xml'),parts(candidate,f'ppt/slides/slide{a.candidate_slide}.xml');require(len(source_parts)==len(candidate_parts)==1,'CHART_COUNT_CHANGED')
     for original,destination in zip(source_parts,candidate_parts):
         data[destination]=source.read(original);copied.append({'source':original,'destination':destination,'SHA256':sha(data[destination])})
         rel=posixpath.join(posixpath.dirname(original),'_rels',posixpath.basename(original)+'.rels');dest_rel=posixpath.join(posixpath.dirname(destination),'_rels',posixpath.basename(destination)+'.rels')
