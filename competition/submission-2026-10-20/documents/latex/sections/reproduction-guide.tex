@@ -1,5 +1,5 @@
 \section{Source identity and prerequisites}
-Clone \url{https://github.com/MandateLabs666/mandate-wallet}. The exact tested commit and source archive are identified by the product-scoped reproduction record. Later material-only publication changes have their own record. This guide describes the source-mode testnet release; SDK publication to npm and a signed independent installer are not assumed.\citep{implementation,repro}
+Clone \url{https://github.com/MandateLabs666/mandate-wallet}. The product-scoped source snapshot is commit \src{b44f8aaa8a8f57c03e982beef4625dd31b1d2ffd}. Its archive and independent reproduction are identified by the source record. Later material-only publication changes have their own record. This guide describes the source-mode testnet release; SDK publication to npm and a signed independent installer are not assumed.\citep{implementation,repro}
 
 Use Node 24.x, at least 24.2, pnpm 11.25.0, Python 3.12+ and Foundry 1.5.1. The account build pins Solidity 0.8.26 with optimizer 200, viaIR and Cancun. Bootstrap downloads only pinned public dependency archives and validates their hashes. Modified dependency bytes cause a failure rather than a silent overwrite. The frozen lockfile controls package resolution.
 

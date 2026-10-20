@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 2,
+  "project": "Mandate Wallet",
+  "repository": "https://github.com/MandateLabs666/mandate-wallet",
+  "sourceCommit": "b44f8aaa8a8f57c03e982beef4625dd31b1d2ffd",
+  "archive": "delivery/mandate-wallet-source-mandate-only-20261020-b44f8aaa.zip",
+  "archiveSHA256": "e76b7582f5e94e9a2a75c64a17817a75665c98d269865f7e30e4c34727be918b",
+  "sourceFiles": 2307,
+  "reproductionPhases": 15,
+  "allPassed": true,
+  "solidityCases": {
+    "contracts": 23,
+    "prototype-contracts": 21
+  },
+  "solidityTotal": 44,
+  "typescriptCases": {
+    "prototype-tests": 15,
+    "sdk-tests": 5,
+    "service-tests": 31,
+    "evidence-tests": 25,
+    "web-tests": 28,
+    "operations-tests": 21,
+    "onboarding-tests": 19,
+    "desktop-tests": 4
+  },
+  "typescriptTotal": 148,
+  "explicitlyInvalidFuzzRuns": {
+    "test/MandateAccount.t.sol:MandateAccountTest/testFuzz_explicitlyInvalidAmount(uint256)": 10001,
+    "test/MandateAccount.t.sol:MandateAccountTest/testFuzz_explicitlyWrongSigner(uint256)": 10001
+  },
+  "invariantCalls": 8192,
+  "invariantHandlerReverts": 0,
+  "privateRuntimeCopied": false,
+  "workspacePackagesResolveInsideExtractedSource": true,
+  "localRecoveryRevocationDemoPassed": true,
+  "requiredFinancialChecksPassed": true,
+  "evidenceOverall": "incomplete",
+  "privacy": {
+    "privateJSONFilesRead": 4402,
+    "privateSQLiteFilesRead": 641,
+    "temporaryVideoProfilesRead": 1,
+    "actualPrivateValueVariantsCompared": 413,
+    "scannedMembersIncludingNested": 2657,
+    "expandedMembers": 350,
+    "bytesScannedIncludingExpanded": 199179603,
+    "knownPrivateValuesExcluded": true,
+    "forbiddenPathsAndKeyBlocksExcluded": true,
+    "licenseNoticesRetained": true,
+    "pinnedPublicTestVectorClassification": [
+      {
+        "path": "vendor/x402/typescript/packages/mechanisms/evm/test/unit/batch-settlement/channelManager.test.ts",
+        "SHA256": "325069d0603b6cf8c64f3e639e42446532c55bc2e40fcfb0152e5bd044b0c7cd",
+        "reason": "well-known public local-EVM key already literal in this exact pinned upstream unit test; not an unknown runtime credential"
+      },
+      {
+        "path": "vendor/x402/typescript/packages/mechanisms/evm/test/unit/batch-settlement/client.test.ts",
+        "SHA256": "58296d4fc0284f56671eb46ae3fdf44d78fb6b60ca3ca3909b3dff8727e82a2c",
+        "reason": "well-known public local-EVM key already literal in this exact pinned upstream unit test; not an unknown runtime credential"
+      },
+      {
+        "path": "vendor/x402/typescript/packages/mechanisms/evm/test/unit/batch-settlement/facilitator.test.ts",
+        "SHA256": "913b1f1a82cbeb030c29156b4ea8e4b78916c57b223f77196ac3087625b0be8d",
+        "reason": "well-known public local-EVM key already literal in this exact pinned upstream unit test; not an unknown runtime credential"
+      },
+      {
+        "path": "vendor/x402/typescript/packages/mechanisms/evm/test/unit/batch-settlement/pendingSettlement.test.ts",
+        "SHA256": "e743f5d4e0bd8053a99f7e2ad6b5fa0033d6d97fa6247011c3a2628e8244acf5",
+        "reason": "well-known public local-EVM key already literal in this exact pinned upstream unit test; not an unknown runtime credential"
+      },
+      {
+        "path": "vendor/x402/typescript/packages/mechanisms/evm/test/unit/batch-settlement/server.test.ts",
+        "SHA256": "2f20ff32867e7e35e204e757957937ac8e2334cd6161d672688989e8cfb9742d",
+        "reason": "well-known public local-EVM key already literal in this exact pinned upstream unit test; not an unknown runtime credential"
+      }
+    ],
+    "publicVectorStillRejectedOutsideExactPinnedFiles": true
+  },
+  "newPublicTransactions": 0,
+  "officialSubmissionSent": false,
+  "finalProjectGateClosed": false,
+  "scope": "Exact current product source snapshot; later document-only changes are separately identified."
+}

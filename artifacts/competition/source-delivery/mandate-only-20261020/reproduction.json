@@ -1,0 +1,226 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-20T08:35:58.832333+00:00",
+  "sourceCommit": "b44f8aaa8a8f57c03e982beef4625dd31b1d2ffd",
+  "archiveSHA256": "e76b7582f5e94e9a2a75c64a17817a75665c98d269865f7e30e4c34727be918b",
+  "cleanDirectory": "/private/var/folders/f_/2883bgz93kd1j3dbr6xtb3cc0000gn/T/mandate-delivery-vqz886ps",
+  "initialPrivateRuntimeOrDependenciesPresent": false,
+  "publicSourceArchiveCacheSeeded": [
+    "x402",
+    "forge-std",
+    "openzeppelin-contracts"
+  ],
+  "sharedHostToolchainAndPackageCache": true,
+  "privateRuntimeCopied": false,
+  "sourceFileHashesVerifiedBeforeBuild": 2307,
+  "commands": [
+    {
+      "phase": "bootstrap",
+      "command": [
+        "python3",
+        "scripts/bootstrap-sdk.py"
+      ],
+      "startedAt": "2026-10-20T08:35:58.899698+00:00",
+      "finishedAt": "2026-10-20T08:35:59.358939+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/mandate-only-20261020/bootstrap.txt",
+      "logSHA256": "ff6900507f322a2d4c7f3621d51172900cb90693365635863a47950f680c9392"
+    },
+    {
+      "phase": "install",
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "startedAt": "2026-10-20T08:35:59.359419+00:00",
+      "finishedAt": "2026-10-20T08:36:03.716356+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/mandate-only-20261020/install.txt",
+      "logSHA256": "cc8fb140d467335e58493ce6fb692195bd3e020a7d5092ddf0f31b75a7417657"
+    },
+    {
+      "phase": "build",
+      "command": [
+        "pnpm",
+        "sdk:build"
+      ],
+      "startedAt": "2026-10-20T08:36:03.716960+00:00",
+      "finishedAt": "2026-10-20T08:36:47.741714+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/mandate-only-20261020/build.txt",
+      "logSHA256": "cb776d49743f307724073286d4cc8077b0458df4b3710a76a23ef9190262e5a0"
+    },
+    {
+      "phase": "contracts",
+      "command": [
+        "pnpm",
+        "m3:test:contracts",
+        "--json"
+      ],
+      "startedAt": "2026-10-20T08:36:47.742304+00:00",
+      "finishedAt": "2026-10-20T08:36:49.736910+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/mandate-only-20261020/contracts.txt",
+      "logSHA256": "d1a8b1f7bc19db4af96d5aacb19dd52e2dfaac820e6f41c6f7466ae60d9d013c"
+    },
+    {
+      "phase": "prototype-contracts",
+      "command": [
+        "pnpm",
+        "test:contracts",
+        "--json"
+      ],
+      "startedAt": "2026-10-20T08:36:49.737951+00:00",
+      "finishedAt": "2026-10-20T08:36:58.953225+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/mandate-only-20261020/prototype-contracts.txt",
+      "logSHA256": "93c2102da9add64a14f5e4243e9f70d4f06e30a6b79a35523e63ae62f6c18cc8"
+    },
+    {
+      "phase": "prototype-tests",
+      "command": [
+        "pnpm",
+        "test",
+        "--reporter=json",
+        "--outputFile=artifacts/reproduction/prototype-tests.json"
+      ],
+      "startedAt": "2026-10-20T08:36:58.954014+00:00",
+      "finishedAt": "2026-10-20T08:37:02.191594+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/mandate-only-20261020/prototype-tests.txt",
+      "logSHA256": "4befab5d4b420542557334c63a3a42ed92dd639da0cba9e117dd1f2c22ee0dfe"
+    },
+    {
+      "phase": "sdk-tests",
+      "command": [
+        "pnpm",
+        "m3:test",
+        "--reporter=json",
+        "--outputFile=artifacts/reproduction/sdk-tests.json"
+      ],
+      "startedAt": "2026-10-20T08:37:02.192165+00:00",
+      "finishedAt": "2026-10-20T08:37:03.608820+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/mandate-only-20261020/sdk-tests.txt",
+      "logSHA256": "6ca20702ccf417fb8d79090ad62117a40309c3ddc67160a01e4be2ba557aa4ad"
+    },
+    {
+      "phase": "service-tests",
+      "command": [
+        "pnpm",
+        "m4:test",
+        "--reporter=json",
+        "--outputFile=artifacts/reproduction/service-tests.json"
+      ],
+      "startedAt": "2026-10-20T08:37:03.609455+00:00",
+      "finishedAt": "2026-10-20T08:37:09.701421+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/mandate-only-20261020/service-tests.txt",
+      "logSHA256": "e0b279711d28fb3ba9b2a27d401a28f2d30aefa900f499d62f18544ed2d64fb9"
+    },
+    {
+      "phase": "evidence-tests",
+      "command": [
+        "pnpm",
+        "m5:test",
+        "--reporter=json",
+        "--outputFile=artifacts/reproduction/evidence-tests.json"
+      ],
+      "startedAt": "2026-10-20T08:37:09.702082+00:00",
+      "finishedAt": "2026-10-20T08:37:12.542071+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/mandate-only-20261020/evidence-tests.txt",
+      "logSHA256": "a86f321c9272e42fc2f76c195fedbeb931530aab9f46eed42cee9a1fb73d6677"
+    },
+    {
+      "phase": "web-tests",
+      "command": [
+        "pnpm",
+        "m6:test",
+        "--reporter=json",
+        "--outputFile=artifacts/reproduction/web-tests.json"
+      ],
+      "startedAt": "2026-10-20T08:37:12.542685+00:00",
+      "finishedAt": "2026-10-20T08:37:16.876348+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/mandate-only-20261020/web-tests.txt",
+      "logSHA256": "3bb2c79950e40cf149166b1c522056d61e013f56793dd1c2a08c134798f0294d"
+    },
+    {
+      "phase": "operations-tests",
+      "command": [
+        "pnpm",
+        "m7:test",
+        "--reporter=json",
+        "--outputFile=artifacts/reproduction/operations-tests.json"
+      ],
+      "startedAt": "2026-10-20T08:37:16.876933+00:00",
+      "finishedAt": "2026-10-20T08:37:22.618191+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/mandate-only-20261020/operations-tests.txt",
+      "logSHA256": "cbdd6f8766d815eec8daa705ad3f9b98a1e7d980e9d51f35704568f70bceacf0"
+    },
+    {
+      "phase": "demo",
+      "command": [
+        "pnpm",
+        "sdk:demo",
+        "artifacts/reproduction/demo"
+      ],
+      "startedAt": "2026-10-20T08:37:22.618895+00:00",
+      "finishedAt": "2026-10-20T08:37:26.972720+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/mandate-only-20261020/demo.txt",
+      "logSHA256": "a596cbd8fc489e80ae112063c4131ba3a5a7c16c10edeb229de9e027247643ba"
+    },
+    {
+      "phase": "onboarding-build",
+      "command": [
+        "pnpm",
+        "setup:build"
+      ],
+      "startedAt": "2026-10-20T08:37:26.973426+00:00",
+      "finishedAt": "2026-10-20T08:37:27.970277+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/mandate-only-20261020/onboarding-build.txt",
+      "logSHA256": "fa3f7a489145d04b144809961ca95525cd9b11a47612ca40ff7650a9d431a6c9"
+    },
+    {
+      "phase": "onboarding-tests",
+      "command": [
+        "pnpm",
+        "setup:test",
+        "--reporter=json",
+        "--outputFile=artifacts/reproduction/onboarding-tests.json"
+      ],
+      "startedAt": "2026-10-20T08:37:27.970953+00:00",
+      "finishedAt": "2026-10-20T08:37:33.891582+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/mandate-only-20261020/onboarding-tests.txt",
+      "logSHA256": "a43231556b7cbb91cd24feab2f3ad577987ac6491074b530896d84fa1948ea89"
+    },
+    {
+      "phase": "desktop-tests",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "--config",
+        "mandate/desktop/vitest.config.ts",
+        "--reporter=json",
+        "--outputFile=artifacts/reproduction/desktop-tests.json"
+      ],
+      "startedAt": "2026-10-20T08:37:33.892297+00:00",
+      "finishedAt": "2026-10-20T08:37:36.132170+00:00",
+      "exitCode": 0,
+      "log": "artifacts/competition/source-delivery/mandate-only-20261020/desktop-tests.txt",
+      "logSHA256": "f33cefdd14b1a07a8dca672deb77eb18446ad37ab714c2175a4b646d813c7d57"
+    }
+  ],
+  "newPublicTransactions": 0,
+  "allPassed": true,
+  "finishedAt": "2026-10-20T08:37:36.135864+00:00",
+  "workspaceCorePackageResolvesInsideExtractedSource": true
+}
