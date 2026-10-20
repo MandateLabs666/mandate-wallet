@@ -27,7 +27,9 @@
     "buildGuidePDF": "competition/submission-2026-10-20/documents/mandate-wallet-reproduction-and-deployment.pdf",
     "latexSourceGuide": "competition/submission-2026-10-20/documents/latex/README.en.md",
     "latexSourcePackage": "competition/submission-2026-10-20/documents/mandate-wallet-latex-sources.zip",
-    "documentationValidation": "competition/submission-2026-10-20/documents/latex-validation.json"
+    "documentationValidation": "competition/submission-2026-10-20/documents/latex-validation.json",
+    "presentationTiming": "competition/submission-2026-10-20/presentation/TIMING.zh-CN.md",
+    "presentationRevision": "competition/submission-2026-10-20/presentation/revision.json"
   },
   "websiteSource": [
     "mandate/web/static/index.html",
@@ -91,6 +93,10 @@
     {
       "path": "competition/presentation/mandate-wallet-v3.pptx",
       "scope": "previous accepted deck; superseded as primary by v4-copy editorial revision; original evidence retained"
+    },
+    {
+      "path": "competition/submission-2026-10-20/material-check.json",
+      "scope": "Validation of the earlier deck and materials before technical-documentation-r2; current authoring diagnostics retained privately."
     }
   ],
   "mainnetPaymentsAuthorized": false,
@@ -162,7 +168,6 @@
     },
     "previousBehaviorEvidence": "artifacts/m6/ui-refresh/r6/acceptance.json"
   },
-  "presentationAcceptance": "competition/submission-2026-10-20/material-check.json",
   "editorialRevision": {
     "date": "2026-10-17",
     "evidence": "artifacts/editorial/2026-10-17/review.json",
@@ -179,7 +184,8 @@
   "sourceRepository": {
     "url": "https://github.com/MandateLabs666/mandate-wallet",
     "testedSourceCommit": "29d10422954d36f0e37c2d89336986d10d014aba",
-    "officialSubmissionSent": false
+    "officialSubmissionSent": false,
+    "documentationCommit": "3c34dd9d7e6ac73e9ccf1a85174399ca9d9de5ff"
   },
   "documentationRevision": {
     "date": "2026-10-20",
@@ -189,6 +195,12 @@
     "teamInformation": "all four members, advisor and academic contact details from registration",
     "sourceCommit": "29d10422954d36f0e37c2d89336986d10d014aba",
     "historicalMarkdownReportsRetained": true,
-    "officialSubmissionSent": false
-  }
+    "officialSubmissionSent": false,
+    "publication": {
+      "status": "published and remote verified",
+      "commit": "3c34dd9d7e6ac73e9ccf1a85174399ca9d9de5ff",
+      "record": "artifacts/competition/documentation-latex-r1/publication-status.json"
+    }
+  },
+  "presentationRevision": "competition/submission-2026-10-20/presentation/revision.json"
 }

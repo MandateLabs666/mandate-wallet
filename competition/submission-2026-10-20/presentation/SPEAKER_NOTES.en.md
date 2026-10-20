@@ -1,115 +1,153 @@
-# Ten-minute presentation speaker script
+# Ten-minute presentation script
 
-Mandate Labs. Planned duration: 600 seconds across 14 slides. Timing is a rehearsal target, not a recorded speaking measurement. English narration and Chinese presenter cues follow.
+Mandate Labs. Technical-documentation revision, 20 October 2026. The English narration below is the spoken script. Chinese directions and source lists are presenter references and are not read aloud. The 14 slide windows total 600 seconds. Timing is planned rather than measured from a live rehearsal.
+
+The script contains 1075 English words. Per-slide pacing includes pauses for diagrams, transitions and emphasis. The timing table in TIMING.zh-CN.md gives cumulative checkpoints.
 
 ## 01. Mandate Wallet (00:00-00:20)
 
-Mandate Wallet lets an AI agent pay for an approved service while the owner controls its spending authority. We connect a real Claude Desktop session to a smart wallet on Base Sepolia. The demonstration buys an ETH statistics sample using test USDC, recovers a failed delivery and ends with an owner-signed revocation.
+Mandate Wallet gives AI agents a limited ability to purchase services. The owner controls the approved scope and budget through an external wallet. We demonstrate this with Claude Desktop, Rabby and a USDC payment on Base Sepolia.
 
-讲解提示：先说明产品用途，再说明演示使用 Base Sepolia 和测试 USDC。
+讲解提示：本项目为 Agent 提供有限的采购权限。开场说明所有者保留授权控制权，并介绍演示涉及的软件和网络。
 
-Sources: competition/video/claude-desktop-base-v1/execution-evidence/run.json
+Sources:
+- competition/submission-2026-10-20/documents/latex/sections/introduction.tex
+- competition/submission-2026-10-20/documents/latex/sections/public-case.tex
 
-## 02. Spending authority for AI agents (00:20-01:00)
+## 02. Spending authority for AI agents (00:20-00:50)
 
-An agent may know which API it needs, but that does not define what it may spend. Giving the runtime an unrestricted wallet key gives it more authority than a single task requires. An approval prompt for every small call also interrupts execution. We separate the owner’s spending decision from the agent’s operation. The owner specifies a task, approved services, payment asset, recipient, budget and expiry. The agent can then complete the approved steps. The contract checks the financial boundary even if the host uses the session key directly.
+A tool connection tells an agent what it can call. Financial authority also needs an approved purpose, recipient, amount and lifetime. Mandate places those limits in a smart account. The owner approves a finite task, and the agent executes permitted purchases through a session signer. The financial checks continue to apply when a host bypasses the normal client.
 
-讲解提示：解释任务权限与钱包主密钥权限的区别，避免泛泛介绍 AI 支付。
+讲解提示：本页区分工具接入与资金授权。说明链上约束针对具体任务，即使宿主绕过客户端，仍需满足合约的财务检查。
 
-Sources: mandate/contracts/src/MandateAccount.sol, planning/M1_SPEC.zh-CN.md
+Sources:
+- competition/submission-2026-10-20/documents/latex/sections/introduction.tex
+- competition/submission-2026-10-20/documents/latex/sections/model.tex
 
-## 03. The workspace and Claude share one task (01:00-01:35)
+## 03. System architecture and trust boundaries (00:50-01:40)
 
-Mandate is delivered as a wallet protocol with an owner workspace, a local gateway and agent integrations. The owner reviews permissions and transactions in the workspace and signs management operations in Rabby. Claude Desktop connects through a configured MCP extension. The gateway handles quotes, durable orders and recovery. The blockchain enforces the approved payment scope. The website and manual explain this workflow to new users. The owner key remains in the external wallet.
+The architecture separates owner administration from agent execution. The workspace prepares unsigned management requests, and Rabby signs them. Claude connects to the local MCP gateway, which runs the purchase client and durable journal. The merchant supplies the service, while the facilitator submits token settlement. On Base Sepolia, the token calls the account to validate the registered payment. A separate verifier checks exported evidence against independently reviewed trust settings. The dashed host region does not protect its keys from the administrator. Token behavior, canonical chain state and the trusted owner remain explicit assumptions.
 
-讲解提示：指出网站、MCP、Gateway 与链上钱包各自职责。
+讲解提示：沿架构图说明管理权限与执行权限的分工。随后指出本地宿主边界不等于安全隔离，独立验证也需要预先审核的信任配置。
 
-Sources: mandate/onboarding/README.zh-CN.md, mandate/gateway/README.zh-CN.md
+Sources:
+- competition/submission-2026-10-20/documents/latex/sections/architecture.tex
+- competition/submission-2026-10-20/documents/latex/sections/model.tex
 
-## 04. Claude purchases an ETH statistics sample (01:35-02:15)
+## 04. A bounded ETH data purchase (01:40-02:05)
 
-Our concrete task is to purchase a fixed ETH statistics sample and write a short brief. The owner funds the smart account with 0.15 test USDC, approves that total budget and caps each payment at 0.10. The quoted service costs 0.01. ETH names the requested dataset. USDC is the payment asset. Operator gas receives separate test ETH. These small test amounts make the result easy to inspect. The merchant and facilitator are controlled demonstration services, and the sample is not live market data.
+The task is to purchase an ETH statistics sample. The owner approves a total of 0.15 test USDC and a maximum of 0.10 per payment. The service costs 0.01. ETH names the fixed dataset. Payment uses USDC, and native ETH pays gas separately.
 
-讲解提示：强调 ETH 是数据名称，USDC 才是付款资产；三组金额均来自实测。
+讲解提示：用一个具体任务解释三项金额。ETH 表示固定数据样本，USDC 是实际付款资产，gas 则单独以测试 ETH 支付。
 
-Sources: competition/video/claude-desktop-base-v1/execution-evidence/run.json, competition/video/claude-desktop-base-v1/execution-evidence/new-eth-payment-evidence.json
+Sources:
+- competition/submission-2026-10-20/documents/latex/sections/introduction.tex
+- competition/submission-2026-10-20/documents/latex/sections/public-case.tex
 
-## 05. Account preparation and delegation (02:15-03:10)
+## 05. Account preparation and Claude connection (02:05-02:50)
 
-This sequence shows how the applications cooperate. The workspace prepares a decoded transaction for the owner to review. Rabby signs deployment, funding and permission transactions directly for Base Sepolia. The owner approves a session signer for explicit steps, a budget and a finite expiry. For this successful case, the session lasts two hours. The user imports the Guided connector into Claude Desktop. The connector already points to this local task, so the user does not select profile files. Claude first reads the network, account and current grant through the gateway. Importing the connector does not create new on-chain spending authority.
+The workspace first asks the owner to review account deployment and funding. Rabby signs those transactions for Base Sepolia. The owner then approves the task policy and a session with finite scope, budget and expiry. The successful recorded session lasts two hours. The user imports and enables the Guided extension in Claude Desktop. It selects the prepared local connection. Claude reads the account context through the gateway before procurement. Installing the extension alone creates no on-chain spending authority. The owner key stays in Rabby.
 
-讲解提示：按泳道逐行讲解。手动导入扩展属于用户操作，不将其画成自动安装。
+讲解提示：按时序图说明开户、注资、授权和 Claude 接入。强调用户需导入并启用扩展，扩展安装本身不会创建链上资金权限。
 
-Sources: competition/video/claude-desktop-base-v1/execution-evidence/transactions.json, planning/M8_ACCEPTANCE.zh-CN.md
+Sources:
+- competition/submission-2026-10-20/documents/latex/sections/architecture.tex
+- competition/submission-2026-10-20/documents/latex/sections/public-case.tex
+- https://modelcontextprotocol.io/specification/2025-11-25
 
-## 06. Quote, registration and settlement (03:10-04:20)
+## 06. x402 payment registration and settlement (02:50-03:45)
 
-Claude calls the approved service through the gateway. The gateway obtains a 402 quote and checks it against the owner-approved request and merchant. It constructs a concrete payment with a deterministic step nonce. Registration first reserves the task and session budgets on chain. Only after confirmed registration does the client release the exact payment signature. The merchant asks the facilitator to settle. The token invokes the wallet’s ERC-1271 check, which reads current authorization rather than relying only on an earlier precheck. A matching token transfer proves payment. The merchant response and the configured result checker then determine delivery and result status. These are three separate conclusions.
+Claude calls an approved step through the gateway. The merchant returns an HTTP 402 quote. The client checks the request, asset, recipient and price, then persists the payment intent. Registration atomically reserves both task and session budgets. The client waits for confirmation before releasing the token payment signature. The facilitator then submits an EIP-3009 authorization to USDC. At settlement, the token invokes the wallet’s ERC-1271 validator and checks current authority. A successful precheck cannot override a later revocation. Canonical transfer events establish payment. Service delivery and result quality receive separate status checks.
 
-讲解提示：重点解释先登记预留，再提供付款签名；预验证不能代替结算时验权。
+讲解提示：先指出登记确认与付款签名之间的先后关系，再说明 USDC 在实际结算时调用钱包验权。最后将付款、服务返回和结果检查分开叙述。
 
-Sources: mandate/services/client.ts, mandate/contracts/src/MandateAccount.sol, competition/video/claude-desktop-base-v1/execution-evidence/purchase-bundle.json
+Sources:
+- competition/submission-2026-10-20/documents/latex/sections/protocol.tex
+- competition/submission-2026-10-20/documents/latex/sections/runtime.tex
+- https://eips.ethereum.org/EIPS/eip-712
+- https://eips.ethereum.org/EIPS/eip-1271
+- https://eips.ethereum.org/EIPS/eip-3009
 
-## 07. Contract-enforced financial scope (04:20-05:05)
+## 07. Shared budgets and payment identity (03:45-04:25)
 
-Each policy uses one fixed payment asset and approves concrete merchant and request hashes. Sessions inherit a subset of the task scope. Registration atomically reserves the shared task and session budgets, so two 0.10 requests cannot both register against a 0.15 root. Each step has one deterministic payment nonce and remains marked as used. At token settlement, the wallet accepts only a registered exact digest with live permissions. Expired unused commitments can release their reservation safely. Paid or uncertain commitments remain occupied. Occupied budget is therefore different from confirmed spend and from wallet cash.
+The first property is bounded authorization. Registration checks the remaining root and session budgets and updates them atomically. Before an eligible release, two competing 0.10 requests cannot both reserve against a 0.15 root budget. A permanent used-step flag and a deterministic business nonce prevent a new session from turning the same step into another purchase. Paid and uncertain commitments remain occupied. Release requires strict expiry and an unused token nonce. Occupancy measures authorization usage and can differ from wallet cash.
 
-讲解提示：说明合约保护范围，同时区分预算占用、实际付款与钱包余额。
+讲解提示：本页给出预算约束及并发反例。说明确定性 nonce 与永久步骤标记共同限制重复采购，并解释预算占用为何不同于余额和已付款金额。
 
-Sources: mandate/contracts/src/MandateAccount.sol, planning/M7_FORMAL_BOUNDARIES.zh-CN.md
+Sources:
+- competition/submission-2026-10-20/documents/latex/sections/protocol.tex
+- competition/submission-2026-10-20/documents/latex/sections/analysis.tex
+- https://eips.ethereum.org/EIPS/eip-712
+- https://eips.ethereum.org/EIPS/eip-1271
+- https://eips.ethereum.org/EIPS/eip-3009
 
-## 08. One payment through a delivery failure (05:05-05:45)
+## 08. Recovery preserves the original payment (04:25-05:05)
 
-The real Base Sepolia purchase settled 0.01 test USDC. We deliberately made the first paid response fail with HTTP 500. The gateway recorded payment as paid, delivery as failed and the result as unchecked. Claude reconciled the existing order and resumed it. The same nonce and settlement hash remained in use. The second response returned HTTP 200 and passed the fixed-data checker. No second payment occurred. This does not guarantee that every merchant will deliver or refund. It shows that a retry can preserve the original payment identity.
+In the public case, the first response fails with HTTP 500 after payment. The journal records paid, failed and unchecked as separate outcomes. Claude resumes the same order. The client reconciles its original nonce and transaction hash, then retrieves the paid service without another settlement. The recovered response passes the fixed-data checker. An expired unpaid commitment follows a different path. It cannot receive a refreshed payment window or nonce merely because a service call failed.
 
-讲解提示：把服务故障作为恢复能力的实际案例，避免将付款成功解释为服务成功。
+讲解提示：用实际故障展示恢复流程。指出已付款但交付失败与付款到期未结算属于不同情形，不能通过更换 nonce 将后者伪装成重试。
 
-Sources: competition/video/claude-desktop-base-v1/execution-evidence/service-and-orders.json
+Sources:
+- competition/submission-2026-10-20/documents/latex/sections/runtime.tex
+- competition/submission-2026-10-20/documents/latex/sections/public-case.tex
 
-## 09. Revocation stops the next purchase (05:45-06:20)
+## 09. Research questions and implemented mechanisms (05:05-06:00)
 
-After the ETH task completed, Claude prepared an unsigned revocation request. The owner reviewed it and signed in Rabby. The SessionRevoked event and fresh chain state identify the same task and session. We then attempted the unused BTC sample once. The gateway returned AGENT_GRANT_INACTIVE before creating a payment authorization or broadcasting a registration. The wallet retained 0.14 test USDC. A completed payment remains paid after revocation. Revocation removes future authority rather than reversing the service purchase.
+The earlier proposal asks how approved intent binds to an action, what evidence supports delegated-session accountability, and what remains observable when a host interferes. Mandate answers the first question with typed payment registration and shared reservations. Signed checkpoints, selective disclosures and ActionProof address the second. A reference controller and retained-head comparisons test a bounded part of the third. Echo supplies a separate repaired UserOperation and swap reference. The contribution is this implemented combination and its failure analysis. Scoped wallets already exist, and the current release covers only part of the proposal’s broader research agenda.
 
-讲解提示：已签署撤销与随后广播前拒绝是两类证据，不捏造失败交易。
+讲解提示：三项研究问题分别对应授权约束、会话证据和宿主干预。说明 Echo 的基础作用与 Mandate 的新增实现，不把整个 proposal 的研究目标表述为既有成果。
 
-Sources: competition/video/claude-desktop-base-v1/execution-evidence/revocation-evidence.json, competition/video/claude-desktop-base-v1/execution-evidence/refusal-evidence.json
+Sources:
+- competition/submission-2026-10-20/documents/latex/sections/introduction.tex
+- competition/submission-2026-10-20/documents/latex/sections/analysis.tex
+- competition/submission-2026-10-20/documents/latex/references.bib (proposal, safe, metamask, acharya, baid)
 
-## 10. Evidence guarantees and their limits (06:20-07:10)
+## 10. Session evidence and independent verification (06:00-06:50)
 
-The financial record connects the owner-approved scope, registration, token nonce, amount and matching transfer. Signed checkpoints and salted Merkle disclosures connect the purchase to recorded observations. An independent verifier can check the disclosed request, merchant offer, receipt and fixed result against separately trusted configuration. In this run, the required checks passed, but the overall report remains incomplete. We have no independent HTTPS witness for this paid merchant and no external retained history anchor. A session signature cannot establish source truth, and a valid local prefix cannot prove that no later activity was omitted.
+Each checkpoint signs its scope, field commitment and previous checkpoint digest. Salted Merkle paths let an auditor inspect selected fields. ActionProof associates the pre-payment checkpoint with both the registration digest and token-payment digest. The verifier checks that association, historical authority, occupied budget and canonical token events using separate trust settings. Hidden fields leave their corresponding checks incomplete. In the public run, required financial checks passed while the overall result remained incomplete. The account does not enforce the entire checkpoint chain as an on-chain payment condition.
 
-讲解提示：研究重点在证据能证明什么，不能把签名和 Merkle 完整性等同于真实来源或完整历史。
+讲解提示：说明检查点、字段承诺与 ActionProof 的关系。强调独立验证需要单独的信任配置，选择性披露会限制可验证的结论，完整会话链也并非当前合约的强制付款条件。
 
-Sources: competition/video/claude-desktop-base-v1/execution-evidence/independent-verification.json, mandate/evidence/verifier.ts
+Sources:
+- competition/submission-2026-10-20/documents/latex/sections/evidence.tex
+- competition/submission-2026-10-20/documents/latex/sections/public-case.tex
 
-## 11. Evaluation and measured overhead (07:10-08:05)
+## 11. Host interference and missing history (06:50-07:35)
 
-The earlier controlled evaluation contains thirty tasks in each of four comparable HTTP configurations. Across 120 tasks, it recorded 132 settlements and zero duplicate payments, including retries and injected delivery failures. Ten thousand distinct explicitly invalid contract calls were rejected, with six legal controls. Eight stateful cases probe budget contention, replay, revocation and controller boundaries. The chart shows local median full-task time. Adding reservation, evidence and controller work increases cost. These measurements exclude setup and include export and verification where applicable. They are not public-network latency, production throughput or a ranking of commercial wallets.
+Consider two histories. One ends at checkpoint two. The other continues to checkpoint three, but the host withholds that tail. An auditor receiving only the same valid prefix cannot distinguish them without independent latest-head information. A separately retained head can reveal a missing known tail. It cannot establish every unobserved action. Likewise, the reference controller rejects a fourth query through an interface capped at three, but direct host calls can bypass that interface. These experiments identify the enforcement boundary.
 
-讲解提示：图表为既有本地实验，不把它当作本次 Base Sepolia 延迟；主动解释新增安全与证据工作的成本。
+讲解提示：用两段历史解释未锚定前缀的不可区分性。随后说明已保留的最新摘要可以帮助发现已知尾部缺失，但同机控制器无法限制宿主的所有调用。
 
-Sources: artifacts/m7/benchmarks/audit.json, artifacts/m7/research/dataset-audit.json, planning/M7_BENCHMARK_ACCEPTANCE.zh-CN.md
+Sources:
+- competition/submission-2026-10-20/documents/latex/sections/analysis.tex
 
-## 12. Echo, Mandate and the research proposal (08:05-08:55)
+## 12. Evaluation and measured overhead (07:35-08:30)
 
-Echo is our earlier account-abstraction project. We preserved its upstream baseline, then repaired operation signatures, swap decoding, execution restrictions and actual input-spend accounting. Mandate adds a separate registered-payment route for x402 API purchases. It uses an immutable ERC-1271 account, shared reservations, finite sessions and persistent purchase recovery. The earlier research proposal motivates accountability under host interference, selective disclosure and detection of suppressed history. We implemented and tested a bounded subset, and retained counterexamples where extra trust is necessary. We do not claim that all of the proposal’s intended guarantees are complete.
+Four HTTP configurations each run thirty tasks. B1 uses an EOA with honest local controls. B2 adds Mandate reservations. B3 adds evidence and separate verification. B4 adds the reference controller. Across 120 tasks, the experiment records 132 settlements with no duplicate payment, including explicit recovery. All ten thousand distinct invalid contract calls reject, while six legal controls accept. The chart shows local median full-task time. Reservation adds gas, and evidence and controller work add latency. These timings include applicable export and verification, exclude setup, and do not describe public-network performance.
 
-讲解提示：清楚披露前作与新增贡献，不照搬 Echo deck 中的 TEE、ZKP 或市场数据主张。
+讲解提示：介绍四个基线的差异，再解释样本数与统计口径。图中时间来自本地链实验，不代表 Base Sepolia 延迟；额外登记、证据和控制器均有成本。
 
-Sources: competition/TECHNICAL_REPORT.en.md, planning/M2_ACCEPTANCE.zh-CN.md, planning/M7_FORMAL_BOUNDARIES.zh-CN.md
+Sources:
+- competition/submission-2026-10-20/documents/latex/sections/evaluation.tex
+- artifacts/m7/benchmarks/audit.json
+- artifacts/m7/research/dataset-audit.json
 
-## 13. Current product and next priorities (08:55-09:40)
+## 13. Public execution and revocation evidence (08:30-09:15)
 
-The working product includes the wallet contracts, workspace, SDK, local MCP gateway and native Claude Desktop integration. The Base Sepolia case links real owner transactions to one purchase, delivery recovery and revocation. The next product priorities are a signed installer with a supported update path, persistent local practice state and broader third-party merchant and facilitator compatibility. A deployment with separately managed signing and evidence retention would need its own verification. Mainnet spending, physical-device coverage and an external human security audit remain outside the present acceptance. These are explicit release tasks rather than capabilities implied by the demonstration.
+The execution package links eight key Base Sepolia transactions, including account preparation, registration, settlement and owner revocation. The successful task pays 0.01 USDC once and retains a final balance of 0.14. After revocation, an unused step receives an inactive-grant response before another transaction. The explorer links and exported receipts let reviewers inspect these facts. The merchant and facilitator remain controlled fixtures. Independent HTTPS provenance and complete history are still missing, so the overall verification report stays incomplete.
 
-讲解提示：说明当前可用范围与发布缺口，避免把原生演示等同于正式产品发行。
+讲解提示：通过链上交易、最终余额和撤销后拒绝记录回顾实测结果。说明广播前拒绝不是链上失败交易，并保留受控服务及来源证据方面的限制。
 
-Sources: planning/IMPLEMENTATION_TASKS.zh-CN.md, planning/M8_ACCEPTANCE.zh-CN.md
+Sources:
+- competition/submission-2026-10-20/documents/latex/sections/public-case.tex
 
-## 14. Mandate Wallet (09:40-10:00)
+## 14. Current scope and next research steps (09:15-10:00)
 
-Mandate Wallet gives an agent a useful payment capability with a boundary that the owner can inspect and revoke. The demonstration and execution package show the approved scope, the actual USDC transfer, successful recovery and the rejected follow-up. We are building an agent wallet whose financial controls and evidence claims can be reviewed separately.
+The current product combines financial constraints, a graphical workspace, native agent connection and recoverable procurement records. A new user can prepare an account, authorize a finite session and purchase an approved service through Claude. The next priorities are supported installation and updates, broader merchant compatibility, independent source witnessing and separately managed retention. Beacon commitments and stronger execution proofs need further design and evaluation. The present evidence supports a specific testnet implementation. It leaves clear questions for the next engineering and research stages.
 
-讲解提示：以产品价值和可核对的结果结束，不增加未经验证的规模或收入预测。
+讲解提示：总结当前用户可以完成的流程，并将产品发行、服务兼容、独立来源见证和外部证据保留列为后续工作。随机信标承诺和更强执行证明仍属于研究方向。
 
-Sources: competition/video/claude-desktop-base-v1/execution-evidence/checks.json
+Sources:
+- competition/submission-2026-10-20/documents/latex/sections/conclusion.tex
+- competition/submission-2026-10-20/documents/latex/sections/analysis.tex
+- https://docs.drand.love/
